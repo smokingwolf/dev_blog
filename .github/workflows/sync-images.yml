@@ -16,7 +16,7 @@ jobs:
 
     - name: Prepare image list
       run: |
-        mkdir -p dev_blog/image/
+        mkdir -p docs/image/
         if [ "${{ github.event.before }}" = "0000000000000000000000000000000000000000" ]; then
           echo "初回コミットまたは履歴が無いため、source_img 全部をコピー対象にします"
           find source_img -type f > changed.txt
@@ -26,10 +26,10 @@ jobs:
           git diff --name-only ${{ github.event.before }} ${{ github.sha }} -- source_img/ > changed.txt
         fi
 
-    - name: Copy changed images to dev_blog
+    - name: Copy changed images to docs
       run: |
         while read file; do
-          target="dev_blog/image/${file#source_img/}"
+          target="docs/image/${file#source_img/}"
           mkdir -p "$(dirname "$target")"
           cp "$file" "$target"
           echo "[copy] $file → $target"
@@ -39,6 +39,6 @@ jobs:
       run: |
         git config user.name "github-actions"
         git config user.email "github-actions@users.noreply.github.com"
-        git add dev_blog/image/
+        git add docs/image/
         git commit -m "Auto sync new/updated images" || echo "No changes"
         git push
