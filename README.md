@@ -5,13 +5,13 @@
 
 ## MarkdownからHTMLへの変換について
 
-最終的には、変換処理を行うビルドスクリプトが用意される予定です。  
-このスクリプトは `source/*.md` の各ファイルを読み取り、それと同じ名前のHTMLファイルを `dev_blog/` フォルダ内に出力いたします。
+ビルドスクリプト `scripts/build.py` が `source/*.md` を読み取り、
+`dev_blog/` 以下に月別・カテゴリ別の HTML を生成します。
 
 実装が完了すると、以下のコマンドでローカルにてスクリプトを実行できるようになります：
 
 ```bash
-python build.py  # source/ から Markdown を読み取り、dev_blog/ に HTML を出力します
+python scripts/build.py
 ```
 
 ビルドスクリプトを実行することで、サイトをローカルでプレビューすることが可能になります。  
@@ -32,14 +32,14 @@ convert these posts into a static HTML site inside `dev_blog/`.
 
 ## Converting Markdown to HTML
 
-A build script will eventually handle the conversion. It will read each
-`source/*.md` file and write a corresponding HTML file with the same name under
-`dev_blog/`.
+The provided build script converts `source/*.md` into monthly archives
+(`dev_blog/archive/YYYY/MM.html`), category pages under
+`dev_blog/category/`, and an index page showing the latest posts.
 
 Once implemented, you will be able to run the script locally:
 
 ```bash
-python build.py  # reads Markdown from source/ and outputs HTML to dev_blog/
+python scripts/build.py
 ```
 
 Running the build script lets you preview the site locally. Existing files in
