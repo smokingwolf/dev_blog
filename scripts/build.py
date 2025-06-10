@@ -186,7 +186,7 @@ def render_entry_block(entry: dict, anchor_id: str, next_anchor: str | None):
     if next_anchor:
         arrow = (
             f"<span style='float:right;'>"
-            f"<a href='#{next_anchor}' title='次の記事へ'>▼</a>"
+            f"<a href='#{next_anchor}' class='jumplink' title='次の記事へ'>▼</a>"
             f"</span>"
         )
     else:
@@ -235,7 +235,18 @@ def render_sidebar(all_months: list[tuple[str, str]],
     lines.append(f"<div><a href='{rel_root}/archive/top/index.html'>トップへ</a></div>")
     lines.append("<hr>")
 
-    # Monthly section
+    # Category section first
+    lines.append("<div style='font-weight:bold;'>【カテゴリ】</div>")
+    cat_dir_map = cat_dir_map or {}
+    for cat in sorted(cat_counts.keys(), key=lambda c: (-cat_counts[c], c)):
+        safe = get_cat_dir(cat, cat_dir_map)
+        cnt = cat_counts[cat]
+        caption = f"{html.escape(cat) if cat else 'uncategorized'}&nbsp;<span class='sym'>({cnt})</span>"
+        lines.append(f"<div><a href='{rel_root}/category/{safe}/001.html'>{caption}</a></div>")
+
+    lines.append("<hr>")
+
+    # Monthly section second
     lines.append("<div style='font-weight:bold;'>【月別】</div>")
     for y in years_sorted:
         pane_id = f"y{y}"
@@ -250,17 +261,6 @@ def render_sidebar(all_months: list[tuple[str, str]],
             url = f"{rel_root}/archive/{y}/{m}.html"
             lines.append(f"<div><a href='{url}'>{caption}</a></div>")
         lines.append("</div>")
-    lines.append("<hr>")
-
-    # Category section
-    lines.append("<div style='font-weight:bold;'>【カテゴリ】</div>")
-    cat_dir_map = cat_dir_map or {}
-    for cat in sorted(cat_counts.keys(), key=lambda c: (-cat_counts[c], c)):
-        safe = get_cat_dir(cat, cat_dir_map)
-        cnt = cat_counts[cat]
-        caption = f"{html.escape(cat) if cat else 'uncategorized'}&nbsp;<span class='sym'>({cnt})</span>"
-        lines.append(f"<div><a href='{rel_root}/category/{safe}/001.html'>{caption}</a></div>")
-
     lines.append("</div>")  # #sidebar
     return "\n".join(lines)
 
