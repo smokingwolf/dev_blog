@@ -12,13 +12,27 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Sync new/updated images
+    - name: Prepare image list
       run: |
         mkdir -p dev_blog/image/
-        git diff --name-only HEAD^ HEAD -- source_img/ > changed.txt
+
+        # 初回コミット対応：github.event.before がゼロの場合、全ファイルを対象に
+        if [ "${{ github.event.before }}" = "0000000000000000000000000000000000000000" ]; then
+          echo "初回コミットまたは履歴が無いため、source_img 全部をコピー対象にします"
+          find source_img -type f > changed.txt
+        else
+          echo "差分検出中: ${{ github.event.before }} → ${{ github.sha }}"
+          git fetch origin
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} -- source_img/ > changed.txt
+        fi
+
+    - name: Copy changed images to dev_blog
+      run: |
         while read file; do
-          mkdir -p "$(dirname dev_blog/image/${file#source_img/})"
-          cp "$file" "dev_blog/image/${file#source_img/}"
+          target="dev_blog/image/${file#source_img/}"
+          mkdir -p "$(dirname "$target")"
+          cp "$file" "$target"
+          echo "[copy] $file → $target"
         done < changed.txt
 
     - name: Commit and push changes
