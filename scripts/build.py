@@ -82,11 +82,11 @@ def write_file(path, content):
 def render_entry_block(entry):
     """Return HTML snippet for a single entry including body and extended body."""
     title = html.escape(entry["title"])
-    date_str = entry["date_str"]
-    body = entry["body"]
-    extended = entry["extended"]
+    date_str = entry["date_str"].split()[0]
+    body = entry["body"].replace("\n", "<br>")
+    extended = entry["extended"].replace("\n", "<br>")
     ext_html = ""
-    if extended:
+    if entry["extended"]:
         ext_id = f"ext-{hash(date_str + title)}"
         ext_html = (
             f'<a href="javascript:void(0);" '
@@ -95,7 +95,7 @@ def render_entry_block(entry):
         )
     return (
         f"<div class='entry'>"
-        f"<div class='entry-title'>{date_str} {title}</div>"
+        f"<div class='entry-title'>{date_str}  {title}</div>"
         f"<div class='entry-body'>{body}</div>"
         f"{ext_html}"
         f"</div>"
@@ -137,7 +137,9 @@ def render_page(title, content, sidebar_html, navigation=""):
 body{{display:flex;}}
 #content{{flex:1;}}
 #sidebar{{width:80px;margin-left:10px;}}
-.entry-title{{background:#555;color:#fff;padding:4px;}}
+.nav{{margin:10px 0;}}
+.entry{{border:1px solid #ccc;border-radius:8px;margin:10px 0;overflow:hidden;}}
+.entry-title{{background:linear-gradient(to right,#9bb0c5,#6f7f92);color:#fff;padding:4px;}}
 .entry-body{{background:#fff;color:#444;padding:4px;}}
 </style>
 <script>
@@ -153,8 +155,9 @@ function toggleDisp(id){{
 </head>
 <body>
 <div id='content'>
-{navigation}
+<div class='nav'>{navigation}</div>
 {content}
+<div class='nav'>{navigation}</div>
 </div>
 {sidebar_html}
 </body>
@@ -186,15 +189,20 @@ def build():
         page_path = os.path.join(page_dir, f'{month}.html')
         prev_key = months_sorted[idx-1] if idx > 0 else None
         next_key = months_sorted[idx+1] if idx < len(months_sorted)-1 else None
-        nav = []
         if prev_key:
             prev_link = os.path.relpath(os.path.join(root, 'archive', prev_key[0], f'{prev_key[1]}.html'), os.path.dirname(page_path))
-            nav.append(f"<a href='{prev_link}'>前の月へ</a>")
+            prev_html = f"<a href='{prev_link}'>前の月へ</a>"
+        else:
+            prev_html = "<span style='color:#ccc'>前の月へ</span>"
         if next_key:
             next_link = os.path.relpath(os.path.join(root, 'archive', next_key[0], f'{next_key[1]}.html'), os.path.dirname(page_path))
-            nav.append(f"<a href='{next_link}'>次の月へ</a>")
-        navigation = ' | '.join(nav)
-        entry_html = '\n'.join(render_entry_block(e) for e in sorted(month_map[ym], key=lambda x: x['date'], reverse=True))
+            next_html = f"<a href='{next_link}'>次の月へ</a>"
+        else:
+            next_html = "<span style='color:#ccc'>次の月へ</span>"
+        navigation = f"{prev_html} | {next_html}"
+        entry_html = '<br><br><br>\n'.join(
+            render_entry_block(e) for e in sorted(month_map[ym], key=lambda x: x['date'], reverse=True)
+        )
         sidebar = render_sidebar(months_sorted, categories, os.path.dirname(page_path))
         html_page = render_page(f'{year}-{month}', entry_html, sidebar, navigation)
         write_file(page_path, html_page)
@@ -208,15 +216,18 @@ def build():
             page_num = idx // 10 + 1
             page_dir = os.path.join(root, 'category', safe)
             page_path = os.path.join(page_dir, f'{page_num:03d}.html')
-            nav_links = []
-            if idx + 10 < len(es_sorted):
-                next_link = f'{page_num+1:03d}.html'
-                nav_links.append(f"<a href='{next_link}'>次のページ</a>")
             if page_num > 1:
                 prev_link = f'{page_num-1:03d}.html'
-                nav_links.insert(0, f"<a href='{prev_link}'>前のページ</a>")
-            navigation = ' | '.join(nav_links)
-            entry_html = '\n'.join(render_entry_block(e) for e in chunk)
+                prev_html = f"<a href='{prev_link}'>前のページ</a>"
+            else:
+                prev_html = "<span style='color:#ccc'>前のページ</span>"
+            if idx + 10 < len(es_sorted):
+                next_link = f'{page_num+1:03d}.html'
+                next_html = f"<a href='{next_link}'>次のページ</a>"
+            else:
+                next_html = "<span style='color:#ccc'>次のページ</span>"
+            navigation = f"{prev_html} | {next_html}"
+            entry_html = '<br><br><br>\n'.join(render_entry_block(e) for e in chunk)
             sidebar = render_sidebar(months_sorted, categories, os.path.dirname(page_path))
             html_page = render_page(cat or 'uncategorized', entry_html, sidebar, navigation)
             write_file(page_path, html_page)
@@ -231,16 +242,22 @@ def build():
         if second_month:
             entries_for_index.extend(sorted(month_map[second_month], key=lambda x: x['date'], reverse=True))
         next_month = months_desc[2] if len(months_desc) > 2 else None
-        nav = ''
+        prev_html = "<span style='color:#ccc'>前へ</span>"
         if next_month:
             link = f"{next_month[0]}/{next_month[1]}.html"
-            nav = f"<a href='{link}'>次へ</a>"
+            next_html = f"<a href='{link}'>次へ</a>"
+        else:
+            next_html = "<span style='color:#ccc'>次へ</span>"
+        nav = f"{prev_html} | {next_html}"
         page_dir = os.path.join(root, 'archive')
         page_path = os.path.join(page_dir, 'index.html')
-        entry_html = '\n'.join(render_entry_block(e) for e in entries_for_index)
+        entry_html = '<br><br><br>\n'.join(render_entry_block(e) for e in entries_for_index)
         sidebar = render_sidebar(months_sorted, categories, page_dir)
         html_page = render_page('開発日誌', entry_html, sidebar, nav)
         write_file(page_path, html_page)
+
+    # ensure GitHub Pages skips Jekyll processing
+    write_file(os.path.join(root, '.nojekyll'), '')
 
 
 if __name__ == '__main__':
