@@ -163,8 +163,13 @@ window.addEventListener('DOMContentLoaded', ()=>{
 """
 
 
-def render_entry_block(entry: dict):
-    """Return HTML snippet for a single entry, including optional extended part."""
+def render_entry_block(entry: dict, anchor_id: str, next_anchor: str | None):
+    """Return HTML snippet for a single entry, including optional extended part.
+
+    ``anchor_id`` is the id assigned to this entry and ``next_anchor`` should be
+    the id of the next entry (or ``None``). A link with a ▼ symbol pointing to
+    ``next_anchor`` will be placed on the right side of the title bar.
+    """
     title = html.escape(entry["title"])
     date_str = entry["date_str"].split()[0]
     body = entry["body"].replace("\n", "<br>")
@@ -178,9 +183,22 @@ def render_entry_block(entry: dict):
             f'<div id="{ext_id}" style="display:none;">{extended}</div>'
         )
 
+    if next_anchor:
+        arrow = (
+            f"<span style='float:right;'>"
+            f"<a href='#{next_anchor}' title='次の記事へ'>▼</a>"
+            f"</span>"
+        )
+    else:
+        arrow = ""
+
+    title_html = (
+        f"■<a id='{anchor_id}'></a>{date_str}&nbsp;&nbsp;&nbsp;{title}{arrow}"
+    )
+
     return (
         f"<div class='entry'>"
-        f"<div class='entry-title'>{date_str}  {title}</div>"
+        f"<div class='entry-title'>{title_html}</div>"
         f"<div class='entry-body'>{body}</div>"
         f"{ext_html}"
         f"</div>"
@@ -237,7 +255,7 @@ def render_sidebar(all_months: list[tuple[str, str]],
     # Category section
     lines.append("<div style='font-weight:bold;'>【カテゴリ】</div>")
     cat_dir_map = cat_dir_map or {}
-    for cat in sorted(cat_counts.keys()):
+    for cat in sorted(cat_counts.keys(), key=lambda c: (-cat_counts[c], c)):
         safe = get_cat_dir(cat, cat_dir_map)
         cnt = cat_counts[cat]
         caption = f"{html.escape(cat) if cat else 'uncategorized'}&nbsp;<span class='sym'>({cnt})</span>"
@@ -258,6 +276,7 @@ def render_body(title: str, content: str, sidebar_html: str, navigation: str) ->
     body_parts.append(f"<div class='nav'>{navigation}</div>")
     body_parts.append(content)
     body_parts.append(f"<div class='nav'>{navigation}</div>")
+    body_parts.append("<a id='bottom'></a>")
     body_parts.append("</div>")  # #content
     body_parts.append(sidebar_html)
     return "\n".join(body_parts)
@@ -310,6 +329,19 @@ def build():
 
     cat_counts = {cat: len(lst) for cat, lst in cat_map.items()}
 
+    # Assign unique anchor ids for each entry based on the date. If multiple
+    # entries share the same date, add alphabetical suffixes (A, B, ...).
+    anchor_counter: dict[str, int] = defaultdict(int)
+    for e in entries:
+        key = e['date'].strftime('%Y-%m-%d')
+        idx = anchor_counter[key]
+        anchor_counter[key] += 1
+        if idx == 0:
+            anchor = key
+        else:
+            anchor = f"{key}{chr(ord('A') + idx - 1)}"
+        e['anchor_id'] = anchor
+
     months_sorted = sorted(month_map.keys())  # ascending
 
     # -------------------------
@@ -339,7 +371,12 @@ def build():
         navigation = f"{next_html} | {prev_html}"
 
         # Render entries for that month, newest first
-        entry_html = '<br><br><br>\n'.join(render_entry_block(e) for e in sorted(month_map[ym], key=lambda x: x['date'], reverse=True))
+        month_entries = sorted(month_map[ym], key=lambda x: x['date'], reverse=True)
+        blocks: list[str] = []
+        for i, ent in enumerate(month_entries):
+            next_id = month_entries[i + 1]['anchor_id'] if i < len(month_entries) - 1 else 'bottom'
+            blocks.append(render_entry_block(ent, ent['anchor_id'], next_id))
+        entry_html = '<br><br><br>\n'.join(blocks)
 
         sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map)
         body_html = render_body(f'{year}-{month}', entry_html, sidebar, navigation)
@@ -372,7 +409,11 @@ def build():
                 prev_html = "<span style='color:#ccc'>前のページ</span>"
             navigation = f"{next_html} | {prev_html}"
 
-            entry_html = '<br><br><br>\n'.join(render_entry_block(e) for e in chunk)
+            blocks = []
+            for i, ent in enumerate(chunk):
+                next_id = chunk[i + 1]['anchor_id'] if i < len(chunk) - 1 else 'bottom'
+                blocks.append(render_entry_block(ent, ent['anchor_id'], next_id))
+            entry_html = '<br><br><br>\n'.join(blocks)
             sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map)
             body_html = render_body(cat or 'uncategorized', entry_html, sidebar, navigation)
             full_html = assemble_full_page(cat or 'uncategorized', body_html, HEADER_TEMPLATE, FOOTER_TEMPLATE)
@@ -409,7 +450,11 @@ def build():
         page_dir = os.path.join(root, 'archive', 'top')
         page_path = os.path.join(page_dir, 'index.html')
 
-        entry_html = '<br><br><br>\n'.join(render_entry_block(e) for e in entries_for_index)
+        blocks = []
+        for i, ent in enumerate(entries_for_index):
+            next_id = entries_for_index[i + 1]['anchor_id'] if i < len(entries_for_index) - 1 else 'bottom'
+            blocks.append(render_entry_block(ent, ent['anchor_id'], next_id))
+        entry_html = '<br><br><br>\n'.join(blocks)
         sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map)
         body_html = render_body('開発日誌', entry_html, sidebar, navigation)
         full_html = assemble_full_page('開発日誌', body_html, HEADER_TEMPLATE, FOOTER_TEMPLATE)
