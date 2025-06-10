@@ -287,7 +287,8 @@ def build():
     ensure_dir(root)
 
     # Load category directory mapping if available
-    mapping_path = os.path.join('categories.json')
+    mapping_path = os.path.join('design', 'categories.json')
+
     if os.path.exists(mapping_path):
         with open(mapping_path, encoding='utf-8') as f:
             cat_dir_map: dict[str, str] = json.load(f)
