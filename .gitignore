@@ -1,0 +1,11 @@
+# Build output directory
+dev_blog/
+
+# Temporary or cache directories generated during builds
+cache/
+tmp/
+*.tmp
+
+# Python artifacts
+__pycache__/
+*.py[cod]
