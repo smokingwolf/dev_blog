@@ -1,21 +1,21 @@
 # 開発ブログ 自動ビルド
 
 このプロジェクトでは、Markdown形式の記事を `source/` ディレクトリ内に保存します。  
-目的は、これらの記事を `dev_blog/` フォルダ内に静的なHTMLサイトとして変換することです。
+目的は、これらの記事を `docs/` フォルダ内に静的なHTMLサイトとして変換することです。
 
 ## MarkdownからHTMLへの変換について
 
-最終的には、変換処理を行うビルドスクリプトが用意される予定です。  
-このスクリプトは `source/*.md` の各ファイルを読み取り、それと同じ名前のHTMLファイルを `dev_blog/` フォルダ内に出力いたします。
+ビルドスクリプト `scripts/build.py` が `source/*.md` を読み取り、
+`docs/` 以下に月別・カテゴリ別の HTML を生成します。
 
 実装が完了すると、以下のコマンドでローカルにてスクリプトを実行できるようになります：
 
 ```bash
-python build.py  # source/ から Markdown を読み取り、dev_blog/ に HTML を出力します
+python scripts/build.py
 ```
 
 ビルドスクリプトを実行することで、サイトをローカルでプレビューすることが可能になります。  
-なお、`dev_blog/` 内の既存ファイルは、ビルドのたびに上書きされますのでご注意ください。
+なお、`docs/` 内の既存ファイルは、ビルドのたびに上書きされますのでご注意ください。
 
 ## 今後のGitHub Actionsによる自動化ワークフロー
 
@@ -28,22 +28,22 @@ python build.py  # source/ から Markdown を読み取り、dev_blog/ に HTML 
 # Dev Blog AutoBuild
 
 This project stores Markdown posts in the `source/` directory. The goal is to
-convert these posts into a static HTML site inside `dev_blog/`.
+convert these posts into a static HTML site inside `docs/`.
 
 ## Converting Markdown to HTML
 
-A build script will eventually handle the conversion. It will read each
-`source/*.md` file and write a corresponding HTML file with the same name under
-`dev_blog/`.
+The provided build script converts `source/*.md` into monthly archives
+(`docs/archive/YYYY/MM.html`), category pages under
+`docs/category/`, and an index page showing the latest posts.
 
 Once implemented, you will be able to run the script locally:
 
 ```bash
-python build.py  # reads Markdown from source/ and outputs HTML to dev_blog/
+python scripts/build.py
 ```
 
 Running the build script lets you preview the site locally. Existing files in
-`dev_blog/` will be replaced during each build.
+`docs/` will be replaced during each build.
 
 ## Planned GitHub Actions workflow
 

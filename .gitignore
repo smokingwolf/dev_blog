@@ -1,6 +1,6 @@
 # Build output directory
-# Allow dev_blog/ HTML output to be committed while ignoring temporary cache
-dev_blog/cache/
+# Allow docs/ HTML output to be committed while ignoring temporary cache
+docs/cache/
 
 # Temporary or cache directories generated during builds
 cache/

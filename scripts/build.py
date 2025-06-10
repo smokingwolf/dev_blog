@@ -78,108 +78,169 @@ def write_file(path, content):
         f.write(content)
 
 
-def render_entry(entry, root):
-    slug = entry.get("slug")
+
+def render_entry_block(entry):
+    """Return HTML snippet for a single entry including body and extended body."""
     title = html.escape(entry["title"])
     date_str = entry["date_str"]
     body = entry["body"]
     extended = entry["extended"]
     ext_html = ""
     if extended:
-        ext_id = f"ext-{slug}"
+        ext_id = f"ext-{hash(date_str + title)}"
         ext_html = (
-            f'<a href="javascript:void(0);" ' +
-            f'onclick="toggle(\"{ext_id}\")">追記を開く</a>'
+            f'<a href="javascript:void(0);" '
+            f'onclick="toggle(\"{ext_id}\")">&#9660;追記を開く&#9660;</a>'
             f'<div id="{ext_id}" style="display:none;">{extended}</div>'
         )
-    html_content = f"""<!DOCTYPE html>
-<html>
-<head>
-<meta charset='utf-8'>
-<title>{title}</title>
-<script>
-function toggle(id){{
- var e=document.getElementById(id);
- if(e.style.display==='none'){{e.style.display='block';}}else{{e.style.display='none';}}
-}}
-</script>
-</head>
-<body>
-<h1>{title}</h1>
-<div>{date_str}</div>
-<div>{body}</div>
-{ext_html}
-</body>
-</html>"""
-    return html_content
+    return (
+        f"<div class='entry'>"
+        f"<div class='entry-title'>{date_str} {title}</div>"
+        f"<div class='entry-body'>{body}</div>"
+        f"{ext_html}"
+        f"</div>"
+    )
 
 
-def render_list(entries, title, page_path, root):
-    lines = ["<ul>"]
-    for e in entries:
-        url = os.path.relpath(os.path.join(root, 'posts', f"{e['slug']}.html"), os.path.dirname(page_path))
-        date_text = e['date'].strftime('%Y-%m-%d') if e['date'] else e['date_str']
-        lines.append(f"<li>{date_text} <a href='{url}'>{html.escape(e['title'])}</a> [{html.escape(e['category'])}]</li>")
-    lines.append("</ul>")
-    body = "\n".join(lines)
+def render_sidebar(all_months, categories, page_dir, root='docs'):
+    """Generate sidebar HTML with links relative to page_dir."""
+    rel_root = os.path.relpath(root, page_dir)
+    years = sorted({y for y, _ in all_months}, reverse=True)
+    month_by_year = defaultdict(list)
+    for y, m in all_months:
+        month_by_year[y].append(m)
+    lines = ["<div id='sidebar'>"]
+    lines.append(f"<div><a href='{rel_root}/archive/index.html'>開発日誌トップ</a></div>")
+    for y in years:
+        toggle_id = f"y{y}"
+        lines.append(f"<div><a href='javascript:void(0);' onclick=\"toggleDisp('{toggle_id}')\">{y}</a></div>")
+        lines.append(f"<div id='{toggle_id}' style='display:none;margin-left:10px;'>")
+        for m in sorted(month_by_year[y], reverse=True):
+            lines.append(f"<div><a href='{rel_root}/archive/{y}/{m}.html'>{m}</a></div>")
+        lines.append("</div>")
+    lines.append("<hr>")
+    for cat in sorted(categories):
+        safe = cat.replace('/', '_').replace(' ', '_') or 'uncategorized'
+        lines.append(f"<div><a href='{rel_root}/category/{safe}/001.html'>{html.escape(cat) if cat else 'uncategorized'}</a></div>")
+    lines.append("</div>")
+    return "\n".join(lines)
+
+
+def render_page(title, content, sidebar_html, navigation=""):
+    """Wrap page content with basic HTML."""
     return f"""<!DOCTYPE html>
 <html>
 <head>
 <meta charset='utf-8'>
 <title>{html.escape(title)}</title>
+<style>
+body{{display:flex;}}
+#content{{flex:1;}}
+#sidebar{{width:80px;margin-left:10px;}}
+.entry-title{{background:#555;color:#fff;padding:4px;}}
+.entry-body{{background:#fff;color:#444;padding:4px;}}
+</style>
 <script>
 function toggle(id){{
- var e=document.getElementById(id);
- if(e.style.display==='none'){{e.style.display='block';}}else{{e.style.display='none';}}
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){{e.style.display='block';}}else{{e.style.display='none';}}
+}}
+function toggleDisp(id){{
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){{e.style.display='block';}}else{{e.style.display='none';}}
 }}
 </script>
 </head>
 <body>
-<h1>{html.escape(title)}</h1>
-{body}
+<div id='content'>
+{navigation}
+{content}
+</div>
+{sidebar_html}
 </body>
 </html>"""
 
 
 def build():
     entries = parse_entries()
+    entries = [e for e in entries if e.get('date')]
     entries.sort(key=lambda e: e['date'])
-    root = 'dev_blog'
+    root = 'docs'
     ensure_dir(root)
 
-    # assign slug and write entry pages
-    for idx, e in enumerate(entries):
-        slug = e['date'].strftime('%Y%m%d%H%M%S') if e['date'] else f"entry{idx}"
-        e['slug'] = slug
-        path = os.path.join(root, 'posts', f'{slug}.html')
-        html_content = render_entry(e, root)
-        write_file(path, html_content)
-
-    # build month archives and categories
+    # group entries by month and category
     month_map = defaultdict(list)
     cat_map = defaultdict(list)
     for e in entries:
-        ym = e['date'].strftime('%Y/%m') if e['date'] else 'unknown'
+        ym = (e['date'].strftime('%Y'), e['date'].strftime('%m'))
         month_map[ym].append(e)
         cat_map[e['category']].append(e)
 
-    for ym, es in month_map.items():
-        year, month = ym.split('/')
-        page_path = os.path.join(root, 'archive', year, f'{month}.html')
-        content = render_list(sorted(es, key=lambda x: x['date'], reverse=True), f'{year}-{month}', page_path, root)
-        write_file(page_path, content)
+    months_sorted = sorted(month_map.keys())
+    categories = list(cat_map.keys())
 
+    # create monthly archive pages
+    for idx, ym in enumerate(months_sorted):
+        year, month = ym
+        page_dir = os.path.join(root, 'archive', year)
+        page_path = os.path.join(page_dir, f'{month}.html')
+        prev_key = months_sorted[idx-1] if idx > 0 else None
+        next_key = months_sorted[idx+1] if idx < len(months_sorted)-1 else None
+        nav = []
+        if prev_key:
+            prev_link = os.path.relpath(os.path.join(root, 'archive', prev_key[0], f'{prev_key[1]}.html'), os.path.dirname(page_path))
+            nav.append(f"<a href='{prev_link}'>前の月へ</a>")
+        if next_key:
+            next_link = os.path.relpath(os.path.join(root, 'archive', next_key[0], f'{next_key[1]}.html'), os.path.dirname(page_path))
+            nav.append(f"<a href='{next_link}'>次の月へ</a>")
+        navigation = ' | '.join(nav)
+        entry_html = '\n'.join(render_entry_block(e) for e in sorted(month_map[ym], key=lambda x: x['date'], reverse=True))
+        sidebar = render_sidebar(months_sorted, categories, os.path.dirname(page_path))
+        html_page = render_page(f'{year}-{month}', entry_html, sidebar, navigation)
+        write_file(page_path, html_page)
+
+    # create category pages (10 posts each)
     for cat, es in cat_map.items():
-        cat_file = cat.replace('/', '_')
-        page_path = os.path.join(root, 'category', f'{cat_file}.html')
-        content = render_list(sorted(es, key=lambda x: x['date'], reverse=True), cat, page_path, root)
-        write_file(page_path, content)
+        es_sorted = sorted(es, key=lambda x: x['date'], reverse=True)
+        safe = cat.replace('/', '_').replace(' ', '_') or 'uncategorized'
+        for idx in range(0, len(es_sorted), 10):
+            chunk = es_sorted[idx:idx+10]
+            page_num = idx // 10 + 1
+            page_dir = os.path.join(root, 'category', safe)
+            page_path = os.path.join(page_dir, f'{page_num:03d}.html')
+            nav_links = []
+            if idx + 10 < len(es_sorted):
+                next_link = f'{page_num+1:03d}.html'
+                nav_links.append(f"<a href='{next_link}'>次のページ</a>")
+            if page_num > 1:
+                prev_link = f'{page_num-1:03d}.html'
+                nav_links.insert(0, f"<a href='{prev_link}'>前のページ</a>")
+            navigation = ' | '.join(nav_links)
+            entry_html = '\n'.join(render_entry_block(e) for e in chunk)
+            sidebar = render_sidebar(months_sorted, categories, os.path.dirname(page_path))
+            html_page = render_page(cat or 'uncategorized', entry_html, sidebar, navigation)
+            write_file(page_path, html_page)
 
-    # latest page
-    latest_entries = sorted(entries, key=lambda e: e['date'], reverse=True)[:20]
-    latest_path = os.path.join(root, 'latest.html')
-    latest_content = render_list(latest_entries, 'Latest Posts', latest_path, root)
-    write_file(latest_path, latest_content)
+    # build index page showing latest two months
+    if months_sorted:
+        months_desc = sorted(months_sorted, reverse=True)
+        first_month = months_desc[0]
+        second_month = months_desc[1] if len(months_desc) > 1 else None
+        entries_for_index = []
+        entries_for_index.extend(sorted(month_map[first_month], key=lambda x: x['date'], reverse=True))
+        if second_month:
+            entries_for_index.extend(sorted(month_map[second_month], key=lambda x: x['date'], reverse=True))
+        next_month = months_desc[2] if len(months_desc) > 2 else None
+        nav = ''
+        if next_month:
+            link = f"{next_month[0]}/{next_month[1]}.html"
+            nav = f"<a href='{link}'>次へ</a>"
+        page_dir = os.path.join(root, 'archive')
+        page_path = os.path.join(page_dir, 'index.html')
+        entry_html = '\n'.join(render_entry_block(e) for e in entries_for_index)
+        sidebar = render_sidebar(months_sorted, categories, page_dir)
+        html_page = render_page('開発日誌', entry_html, sidebar, nav)
+        write_file(page_path, html_page)
 
 
 if __name__ == '__main__':
