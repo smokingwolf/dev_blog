@@ -4,7 +4,6 @@ from datetime import datetime
 from collections import defaultdict
 import html
 
-
 def parse_entries(source_dir="source"):
     entries = []
     for path in sorted(glob.glob(os.path.join(source_dir, "*.md"))):
