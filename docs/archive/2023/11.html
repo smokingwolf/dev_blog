@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>2023-11</title>
+<style>
+body{display:flex;}
+#content{flex:1;}
+#sidebar{width:80px;margin-left:10px;}
+.nav{margin:10px 0;}
+.entry{border:1px solid #ccc;border-radius:8px;margin:10px 0;overflow:hidden;}
+.entry-title{background:linear-gradient(to right,#9bb0c5,#6f7f92);color:#fff;padding:4px;}
+.entry-body{background:#fff;color:#444;padding:4px;}
+</style>
+<script>
+function toggle(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+function toggleDisp(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+</script>
+</head>
+<body>
+<div id='content'>
+<div class='nav'><a href='10.html'>前の月へ</a> | <a href='12.html'>次の月へ</a></div>
+<div class='entry'><div class='entry-title'>2023-11-25  片道勇者2開発+11　自動テスト機能搭載</div><div class='entry-body'>ということで『ウディタ翻訳サポートツール』も無事に発売でき、<br>ようやく久しぶりにフリーになれましたので『片道勇者2』の開発再開です！<br>もう40日以上ぶり！<br><br>しかし久しぶりに触ると分からないところだらけになっていて<br>恐ろしいほどシステムいじりに億劫になってしまっているので、<br>まずはリハビリ、兼、土台固めとして、<br>放置されていた山ほどのバグ修正からやっています。<br><br>それと本格的なデータ作りに入る前に、<br>今回からやってみようと思っていた<br>「自動テスト機能」の搭載も進めてます！<br><br>ゲーム開発者の方も見てるでしょうから<br>今回はその自動テスト機能についてお話をしましょう。<br><br><span style="color: #2196f3"><span style="font-size: 80%">※自動テスト機能で「新しく作ったアイテムをまとめて使わせる」といったこともワンキーでできるようになるので手軽！</span></span><br><img src="../image/2023/20231125.jpg" border="1" style="max-width:520px;"><br><br><HR><span style="font-size:x-large;"><B>◆片道勇者2　自動テスト機能</B></span><HR><br><span style="font-size:x-large;"><B>【その前に　手動テスト機能の話】</B></span><br><br>自動テストの話の前に、実は『片道勇者』には<br>前作にもテスト時用のデバッグ機能が用意されていて、<br>「指定した好きなアイテムを入手できる」とか<br>「好きなNPCを前に出す」といったことができていました。<br>なので、手動でテストをすること自体は何も問題なかったんですよ。<br><br>が、なんせデータ数が多く、まとめてテストするときに<br>一つ一つ選びながら全部手動でやり直すのは意外に大変で、<br>集中力を消耗します！<br>指定の要素を探すだけで5～10秒くらいかかるときがありますし、<br>それが面倒臭くなってテストへの心理的ハードルが<br>気付かぬうちに上がってしまっていたことも多々あります。<br><br>なので手動のデバッグ機能も十分以上に役に立ってはいたのですが、<br>私は「ゲーム開発」という長期戦でテストへの心理的ハードルが<br>上がるのはなるべく回避したいと考えていました。<br><br><hr size="1" /><br><span style="font-size:x-large;"><B>【自動テスト機能の搭載！】</B></span><br><br>そこで今回思い切って作ることにしたのが「自動テスト機能」！<br>たとえばtxtファイルに「目の前にゾンビを出現させて」<br>「油ビンを取得して投げて」「炎の巻物を取得して使って」<br>といったコマンドを指定しておけば、<br>キーボードからワンボタンで一連の動作をやってくれます！<br>このケースなら、油による炎ダメージ補正がかかっているかチェックできます。<br><br>そんな風に一つのシナジーをチェックする目的で使うときもあれば、<br>別のtxtファイルに<br><span style="color: #d50000"><B>　「アイテム1～999番までそれぞれの使い方で使って動作チェックする」とか、<br>「全ての敵を順番に呼び出して『炎の巻物』を<br>1回ずつ喰らわせて炎耐性のダメージチェックする」<br>「全NPCを順番に呼び出して友好化して会話の流れを全部出力」</B></span><br>みたいなことを書いておいて、定期的にテストするといったこともできます！<br><br><br>今のところ作った自動テスト機能は「アイテムの取得＆使用」や<br>「NPC設置」くらいですが、さらに機能を増やせば、<br><span style="color: #d50000"><B>「街やダンジョンを何度も作り直してNPC出現頻度の肌感覚を知る」<br>「1000km地点の砂漠地形の設定でランダムなマップを作ったり、<br>その地域設定で敵やアイテムを出しまくる」</B></span><br>みたいなランダムテーブルのチェックもできそうです。<br>まあ2つめの方はランダムテーブルリストを<br>見やすく表示するようにすればそれで済むことですけども！<br><br><span style="font-size: 80%"><B>※以下は最強のゾンビを配置→火炎ビンを投げる→<br>燃料油のビンを投げる→火炎ビンをまた投げる、という手順をワンキーで実行するテスト。<br>燃料油で火炎ダメージ3倍になってるか試しています。</B></span><br><iframe width="520" height="300" src="https://www.youtube.com/embed/aWXJ-jp5C-c?si=AkoJospl5u3gXp0s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><br><br>こうした『自動テスト機能』、テキストファイルに指示を書く手間は<br>ありますが、ローグライクみたいにランダム要素で<br>相乗効果だらけのゲームを作ったり、<br>低確率で起きる問題を再現するために<br>ひたすら試行しまくることが求められる状況では<br>力強い友になることでしょう。<br><br>前作ではデバッグやテスト周りで地獄を見たので、<br>今作ではもっと効率良くできるよう意識していきたいです！<br><br><HR><br>前作は地獄のバグをいっぱい出して大変なことになってしまったので、<br>今回は少し時間がかかっても処理の見通しをよくすることと、<br>何日か使ってもいいのでデバッグ力やデバッグ速度を<br>高めつつ進めることを意識していきたいと思います。<br><br>ということで引き続き『片道勇者2』開発、がんばっていきます！<br><br><hr size="1" /><br>以下はいただいた気になった拍手コメントです！　いつもありがとうございます！<br><br><span style="color:#0000FF">>最近過去の記事を見て思い出したんですが、以前販売していた<br>>メタルストラップの再販とかはないんでしょうか？　　　　　.<br>>今更になって欲しくなってきました…　　　　　　　　　　　　.</span><br><br>申し訳ございませんが今のところ再販の予定はありません。<br>もとより他のサークル様への外注として作ってもらったものなのもありますが、<br>今だと作るコストがそのときに比べて激増してたり、<br>一度に作る量が多い発注方式だったりして再販しにくいっぽいので、<br>次に何か作るならもうちょっと小さいロット（単位）で<br>発注・再販しやすそうなグッズも考えてみたいと思います。<br>（メタルストラップはお金出してまず型から作ってもらわないとダメですし、<br>その型もそんなに長く置いてもらえないみたいです。過去に作ったのはもうなさそう）<br><br>と思って調べたら手軽そうなアクリル製のグッズなども作成コストが<br>かなり上がったみたいでびっくりしています！　円安ー！！</div></div><br><br><br>
+<div class='entry'><div class='entry-title'>2023-11-11  WOLF RPGエディター翻訳サポートツール、発売！</div><div class='entry-body'>ということでついに<br>『<a target="_blank" href="https://silversecond.booth.pm/items/5151747"><B>WOLF RPGエディター翻訳サポートツール</B>(Boothへ)</a>』<br>が発売されました！<br><br>とはいえ今すぐ他言語版を作りたいという需要自体、<br>すごく少ないと思いますので、不具合報告すらレアな予感がします。<br>もし「うまく動かない」などございましたら積極的に情報いただけますと助かります！<br><br>紹介動画もアップしましたので気になる方はまずこちらからご覧ください！<br><br><iframe width="520" height="300" src="https://www.youtube.com/embed/uQNjll780WA?si=zWMozqdQtPoyO1GW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><br><br>今回はストアページやマニュアルにも書いてある情報の中で、<br>重要そうなものをピックアップしてご紹介します！<br><br><br><HR><span style="font-size:large;"><B>◆WOLF RPGエディター翻訳サポートツール</B></span><br><HR><br><span style="font-size:130%;"><B>【『ウディタ翻訳サポートツール』はどんなツール？】</B></span><br><br>この『翻訳サポートツール』は、Excel形式の対訳リストにしたがい、<br>『WOLF RPGエディター3（以下ウディタ）』製のゲームデータの文字列を置き換えて<br>「翻訳済ゲームデータ」を簡単に出力できるWindows用ツールです！<br><br>本ツールを使用すると、翻訳に際してゲームデータを開いて<br>文字列を1つずつ編集していく作業がなくなり、<br><B><span style="color: #d50000">本ツールとExcelファイル上の作業だけでまとめて翻訳作業を行うことが可能</span></B><br>になります！<br><br>翻訳済ゲームデータは、以下の手順で作ることができます。<br><br><img src="https://silversecond.net/data/p_diary5/20231111A.jpg" border="1" style="max-width:520px;"><br><img src="https://silversecond.net/data/p_diary5/20231111B.jpg" border="1" style="max-width:520px;"><br><br><span style="font-size: 150%"><B>【使用手順】</B></span><br><B>1.ボタン1つでゲームデータ内の全文字列を抽出し、「対訳Excelファイル」を出力します。</B><br><br><B>2.あなたがその「対訳Excelファイル」に、翻訳したい言語の「訳文」を書き込みます。</B><br>（対訳を付ける作業は自力で行います！　自動翻訳ではありません）<br><br><B>3.あとはボタンを数個押すだけで「翻訳済ゲームデータ」を<br>同時に最大10言語分作成できます！<br>この時点で翻訳済みのゲームがプレイ可能となります！</B><br><br><br><B>【!!】ゲームデータ修正時にはExcelファイルの調整も必要です</B><br>翻訳後にゲームデータを変更した場合は、Excelファイルの調整が必要です！<br>が、その場合でも、<B><span style="color: #d50000">ボタン1つ</span></B>で<B><span style="color: #d50000">「対訳Excelファイル」を最新のゲームデータに合わせて<br>調整</span></B>することができるようになっていますのでご安心ください！<br>（ただし複数の同じ「原文」に「異なる訳文」が付いていた場合、<br>状況次第では引き継ぎに失敗する場合がありますのであらかじめご了承ください）<br><br><span style="font-size: 80%">　※注1：「対訳Excelファイル」はPCの『Microsoft Excel』アプリだけでなく、無料でブラウザから<br>使える『Googleスプレッドシート』にアップロードすることでも書き換え可能です。<br><br>※注2：このツールでは<B><span style="color: #f44336">「元のゲームデータ」は一切変更されず、新たに言語別の「翻訳済ゲームデータ」が<br>それぞれ作成される</span></B>形となっています。それらは単体で起動可能なものとして出力されます。</span><br><br><br><HR><br><span style="font-size:130%;"><B>【ライセンスは最終的に3種類になりました】</B></span><br><br>色々悩んだ末に、販売するライセンスは以下の3種類になりました！<br>簡単に言うと、こんなルールになっています。<br><br><br><img src="https://silversecond.net/data/p_diary5/20231111L1.png" border="1" style="max-width:520px;"><br><B>●無料ゲーム用ライセンス/1チーム</B>　￥2,000<br>- 無料ゲームの抽出・翻訳にしか使えません。利用可能なのは購入者のみです<br>（同居のご家族が同じチームならその方も使用可能です）。<br>- 1チーム分（通常は自分のチーム用）のゲームだけにしか使えませんが、<br>その範囲内なら何作品でも翻訳可能です。<br><br><br><br><img src="https://silversecond.net/data/p_diary5/20231111L2.png" border="1" style="max-width:520px;"><br><B>●有料ゲーム用ライセンス/1チーム</B>　￥10,000<br>- 無料と有料ゲームの抽出・翻訳に使えます。利用可能なのは購入者のみです<br>（同居のご家族が同じチームならその方も使用可能です）。<br>- 1チーム分（通常は自分のチーム用）の有料ゲームだけにしか使えませんが、<br>その範囲内なら何作品でも翻訳可能です。<br>- なおこのライセンスの特例として、「無料ゲーム」ならば<br>他チームのものでも無制限に翻訳可能になっています。<br><br><br><br><img src="https://silversecond.net/data/p_diary5/20231111L3.png" border="1" style="max-width:520px;"><br><B>●エンタープライズライセンス/∞チーム</B>　￥95,000<br>- 企業用です。企業の1部門の全員か、チーム全員が仕事のために使えます。<br>- 無制限のチームの有料ゲーム・無料ゲームに対して何作品でも使用できます。<br><br><br><br>という感じで、有料ソフトなので部分的にややこしいルールもあるのですが、<br>個人開発者の方は<br><br><span style="color:#CC0000"><B>「普通に自チームにだけ使う分には1本買えば使い放題」<br>「ツールは他人に渡しちゃダメよ」<br>「無料ゲーム用ライセンスでは有料販売予定のゲームには使えないよ」</B></span><br><br>の3点だけ分かっていただければ、まず大丈夫です！<br><br><br><br><HR><br><span style="font-size:130%;"><B>【累計購入価格がライセンスの上位版以上の金額になったら<br>アップグレードできます！】</B></span><br><br>今回は複数のライセンスを購入する可能性がある都合上、<br>「ライセンスのアップグレード」もサポートさせていただきます。<br>条件や手順は以下の通り！<br><br><B>【条件】</B>複数のライセンスを購入した結果、1アカウント内のBOOST込みの購入金額の合計が上位ライセンスを買える以上の金額になる。<br><B>【手順】</B>上記条件を満たしたことをBOOTH内の「メッセージ」機能で伝えてください。<br>販売者は累計購入金額を確認し、ギフト機能でメッセージから上位ライセンスを送ります。<br><br>たとえば5チーム分の無料ゲームを翻訳するために「無料ゲーム用ライセンス」の5本目を<br>買ったとしたら、『有料ゲーム用ライセンス』を無料で(?)もらうことができます！<br>ただし他人にギフトしたライセンスの分は計算から差し引かれますので、<br>うっかりライセンスが余ってるからといって人にあげないように注意してください。<br><br>具体的なことは<B><a target="_blank" href="https://silversecond.booth.pm/items/5151747">ストアページ</a></B>の方に記載していますので、そちらをご確認ください。<br><br><br><br><HR><br><span style="font-size:130%;"><B>【プロテクト用キーがかかったゲームデータにも利用できます！】</B></span><br><br>翻訳サポートツールは、「ウディタプロ版のゲームデータ」や、プロ版の<br>「プロテクト用キーがかかったゲームデータ」にも利用できます！<br>プロテクトがかかったままでも、いちいち解除せずに翻訳できるので<br>手間もかからず安心です！<br><br>（ただし「プロテクト用キー」ありで読み込むためには、<br>【EditorPro.exe】でそのゲームデータが開ける状態にある必要が<br>ありますので注意してください。普通は問題ないはずですが念のため）<br><br><br><HR><br><span style="font-size:130%;"><B>【対訳Excelファイルはライセンスを持ってない人にも公開・譲渡可能！】</B></span><br><br><B><span style="color: #d50000">翻訳サポートツール自体は『共有禁止』</span></B>ですが、それによって抽出された<B><span style="color: #d50000"><br>『対訳Excelファイル』の方はライセンスを持っていない他人とでも共有可能</span></B><br>です！<br><br>なので、『対訳Excelファイル』を翻訳者さんに渡したり、<br>Googleスプレッドシートにアップして共同翻訳したりすることもできます。<br>ただし、文字列抽出していいのはご自分の作品<br>（あるいはあなたのライセンスが有効なチームの作品）だけですのでご注意ください。<br><br><br><br><HR><br><span style="font-size:130%;"><B>【『変数操作+』の「言語」番号を使えば言語別に処理を分岐させられます】</B></span><br><br>翻訳サポートツールの「翻訳設定」には、<br>言語設定で「2:英語」みたいに書かれていますが、<br>この数値は【変数操作+】コマンドの「その他」の「言語」から取得可能です。<br><br><span style="font-size: 80%"><B>※言語に応じて処理を分岐させる例　↓</B></span><br><img src="https://silversecond.net/data/p_diary5/20231111C.png" border="1" style="max-width:520px;"><br><br>つまりその「言語」の値を使って【元のゲームデータ】側に「言語別の分岐」を<br>作っておけば、本ツールで出力した言語別ゲームデータごとに<br>「ウィンドウ幅の調整」をしたりすることができます！<br><br>特に「英語」などは「日本語」の1.5倍くらいの長さになったりするので、<br>ウィンドウ幅を大きくするような調整が求められがちです。<br>Steamに出させていただいた私の『片道勇者(プラス)』でも、<br>英語版の説明文やアイテム欄の幅を日本語版よりも大きくしているんですよ。<br><br>この使い方は翻訳サポートツールを使う上で重要になるので、ぜひ覚えておいてください。<br><br><br><HR><br><br>思いつく分は以上です！<br>その他の詳しいことが気になる方は、よければ<B><a target="_blank" href="https://silversecond.booth.pm/items/5151747">ストアページ</a></B>や<B><a target="_blank" href="https://silversecond.com/WOLF_Translation_tool/Manual.html">マニュアル</a></B>もご覧ください！<br><br><br><br>そしてこれは個人的な裏話なんですが、実はこの翻訳サポートツール、<br>海外の方から「簡単に翻訳するツールが欲しいんですけど」と<br>依頼されて作り始めたものでした。<br><br>ですがいざ報酬をいただく場面になってそのまま連絡がつかなくなってしまったので、<br>本ツールはそのまま裏で知り合いなどに試してもらいつつ、<br>何年も徐々にブラッシュアップして仕上げたものだったりします。<br><br>なので地味に不幸な始まりだったのですが、<br>最終的に今こうやって一つの形にして世に出せたので<br>結果的には良い機会をいただけたと思います！<br><br>可能なら、そのときいただきそこねた報酬分くらいの収益に繋げられたらいいなあ、<br>というのが目標ですが、まずは第一歩として<br>「ウディタ製ゲームをそこそこ簡単に海外展開するチャンスができましたよー！」<br>というのを周知していければと思います！<br><br>そんなわけで、世界展開を目指すみなさま、応援しております！<br><br><br><B>【今後について】</B><br>そしてようやく本件が一段落したので、久しぶりに自分のゲーム開発に戻れます！<br>いずれこのツールで私も自作ゲームの海外展開を目指せるよう、<br>まずはゲームを作りませんとね！<br><br>引き続き目の前の課題をがんばります！　うおおおー！！</div></div>
+<div class='nav'><a href='10.html'>前の月へ</a> | <a href='12.html'>次の月へ</a></div>
+</div>
+<div id='sidebar'>
+<div><a href='../../archive/index.html'>開発日誌トップ</a></div>
+<div><a href='javascript:void(0);' onclick="toggleDisp('y2025')">2025</a></div>
+<div id='y2025' style='display:none;margin-left:10px;'>
+<div><a href='../../archive/2025/05.html'>05</a></div>
+<div><a href='../../archive/2025/04.html'>04</a></div>
+<div><a href='../../archive/2025/03.html'>03</a></div>
+<div><a href='../../archive/2025/02.html'>02</a></div>
+<div><a href='../../archive/2025/01.html'>01</a></div>
+</div>
+<div><a href='javascript:void(0);' onclick="toggleDisp('y2024')">2024</a></div>
+<div id='y2024' style='display:none;margin-left:10px;'>
+<div><a href='../../archive/2024/12.html'>12</a></div>
+<div><a href='../../archive/2024/11.html'>11</a></div>
+<div><a href='../../archive/2024/10.html'>10</a></div>
+<div><a href='../../archive/2024/09.html'>09</a></div>
+<div><a href='../../archive/2024/08.html'>08</a></div>
+<div><a href='../../archive/2024/07.html'>07</a></div>
+<div><a href='../../archive/2024/06.html'>06</a></div>
+<div><a href='../../archive/2024/05.html'>05</a></div>
+<div><a href='../../archive/2024/04.html'>04</a></div>
+<div><a href='../../archive/2024/03.html'>03</a></div>
+<div><a href='../../archive/2024/02.html'>02</a></div>
+<div><a href='../../archive/2024/01.html'>01</a></div>
+</div>
+<div><a href='javascript:void(0);' onclick="toggleDisp('y2023')">2023</a></div>
+<div id='y2023' style='display:none;margin-left:10px;'>
+<div><a href='../../archive/2023/12.html'>12</a></div>
+<div><a href='../../archive/2023/11.html'>11</a></div>
+<div><a href='../../archive/2023/10.html'>10</a></div>
+<div><a href='../../archive/2023/09.html'>09</a></div>
+<div><a href='../../archive/2023/08.html'>08</a></div>
+<div><a href='../../archive/2023/07.html'>07</a></div>
+<div><a href='../../archive/2023/06.html'>06</a></div>
+<div><a href='../../archive/2023/05.html'>05</a></div>
+<div><a href='../../archive/2023/04.html'>04</a></div>
+<div><a href='../../archive/2023/03.html'>03</a></div>
+<div><a href='../../archive/2023/02.html'>02</a></div>
+<div><a href='../../archive/2023/01.html'>01</a></div>
+</div>
+<div><a href='javascript:void(0);' onclick="toggleDisp('y2022')">2022</a></div>
+<div id='y2022' style='display:none;margin-left:10px;'>
+<div><a href='../../archive/2022/12.html'>12</a></div>
+<div><a href='../../archive/2022/11.html'>11</a></div>
+<div><a href='../../archive/2022/10.html'>10</a></div>
+<div><a href='../../archive/2022/09.html'>09</a></div>
+<div><a href='../../archive/2022/08.html'>08</a></div>
+<div><a href='../../archive/2022/07.html'>07</a></div>
+<div><a href='../../archive/2022/06.html'>06</a></div>
+<div><a href='../../archive/2022/05.html'>05</a></div>
+<div><a href='../../archive/2022/04.html'>04</a></div>
+<div><a href='../../archive/2022/03.html'>03</a></div>
+<div><a href='../../archive/2022/02.html'>02</a></div>
+<div><a href='../../archive/2022/01.html'>01</a></div>
+</div>
+<div><a href='javascript:void(0);' onclick="toggleDisp('y2021')">2021</a></div>
+<div id='y2021' style='display:none;margin-left:10px;'>
+<div><a href='../../archive/2021/12.html'>12</a></div>
+<div><a href='../../archive/2021/11.html'>11</a></div>
+<div><a href='../../archive/2021/10.html'>10</a></div>
+<div><a href='../../archive/2021/09.html'>09</a></div>
+<div><a href='../../archive/2021/08.html'>08</a></div>
+<div><a href='../../archive/2021/07.html'>07</a></div>
+<div><a href='../../archive/2021/06.html'>06</a></div>
+<div><a href='../../archive/2021/05.html'>05</a></div>
+<div><a href='../../archive/2021/04.html'>04</a></div>
+<div><a href='../../archive/2021/03.html'>03</a></div>
+<div><a href='../../archive/2021/02.html'>02</a></div>
+<div><a href='../../archive/2021/01.html'>01</a></div>
+</div>
+<hr>
+<div><a href='../../category/TRPG/001.html'>TRPG</a></div>
+<div><a href='../../category/WOLF_RPGエディター/001.html'>WOLF RPGエディター</a></div>
+<div><a href='../../category/その他/001.html'>その他</a></div>
+<div><a href='../../category/片道勇者2_開発/001.html'>片道勇者2 開発</a></div>
+<div><a href='../../category/落書き/001.html'>落書き</a></div>
+<div><a href='../../category/開発日誌/001.html'>開発日誌</a></div>
+</div>
+</body>
+</html>
