@@ -1,0 +1,30 @@
+name: Sync Images
+
+on:
+  push:
+    paths:
+      - 'source_img/**'
+
+jobs:
+  sync-images:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Sync new/updated images
+      run: |
+        mkdir -p dev_blog/image/
+        git diff --name-only HEAD^ HEAD -- source_img/ > changed.txt
+        while read file; do
+          mkdir -p "$(dirname dev_blog/image/${file#source_img/})"
+          cp "$file" "dev_blog/image/${file#source_img/}"
+        done < changed.txt
+
+    - name: Commit and push changes
+      run: |
+        git config user.name "github-actions"
+        git config user.email "github-actions@users.noreply.github.com"
+        git add dev_blog/image/
+        git commit -m "Auto sync new/updated images" || echo "No changes"
+        git push
