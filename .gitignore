@@ -1,5 +1,7 @@
 # Build output directory
-dev_blog/
+dev_blog/*
+!dev_blog/image/
+!dev_blog/image/**
 
 # Temporary or cache directories generated during builds
 cache/
