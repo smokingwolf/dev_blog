@@ -179,7 +179,7 @@ def render_entry_block(entry: dict, anchor_id: str, next_anchor: str | None):
     if entry["extended"]:
         ext_id = f"ext-{hash(date_str + title)}"
         ext_html = (
-            f'<a href="javascript:void(0);" onclick="toggle(\"{ext_id}\")">&#9660;追記を開く&#9660;</a>'
+            f'<a href="javascript:void(0);" onclick="toggle(\'{ext_id}\')">　&#9660;追記を開く&#9660;</a>'
             f'<div id="{ext_id}" style="display:none;">{extended}</div>'
         )
 
