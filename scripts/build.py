@@ -3,6 +3,7 @@ import glob
 from datetime import datetime
 from collections import defaultdict
 import html
+import json
 
 # =============================
 # Utility helpers
@@ -95,6 +96,15 @@ def write_file(path: str, content: str):
         f.write(content)
 
 
+def get_cat_dir(cat: str, mapping: dict[str, str]) -> str:
+    """Return directory name for category using mapping with safe fallback."""
+    if not cat:
+        return "uncategorized"
+    if cat in mapping:
+        return mapping[cat]
+    return cat.replace('/', '_').replace(' ', '_') or 'uncategorized'
+
+
 # =============================
 # HTML fragments
 # =============================
@@ -185,7 +195,8 @@ def render_sidebar(all_months: list[tuple[str, str]],
                    cat_counts: dict[str, int],
                    page_dir: str,
                    root: str = 'docs',
-                   month_counts: dict[tuple[str, str], int] | None = None) -> str:
+                   month_counts: dict[tuple[str, str], int] | None = None,
+                   cat_dir_map: dict[str, str] | None = None) -> str:
     """Generate sidebar HTML."""
     month_counts = month_counts or {}
     # Prepare relative path root → this page_dir
@@ -203,7 +214,7 @@ def render_sidebar(all_months: list[tuple[str, str]],
 
     # Heading & top link
     lines.append("<div style='font-weight:bold;'>開発日誌</div>")
-    lines.append(f"<div><a href='{rel_root}/archive/index.html'>トップへ</a></div>")
+    lines.append(f"<div><a href='{rel_root}/archive/top/index.html'>トップへ</a></div>")
     lines.append("<hr>")
 
     # Monthly section
@@ -225,8 +236,9 @@ def render_sidebar(all_months: list[tuple[str, str]],
 
     # Category section
     lines.append("<div style='font-weight:bold;'>【カテゴリ】</div>")
+    cat_dir_map = cat_dir_map or {}
     for cat in sorted(cat_counts.keys()):
-        safe = cat.replace('/', '_').replace(' ', '_') or 'uncategorized'
+        safe = get_cat_dir(cat, cat_dir_map)
         cnt = cat_counts[cat]
         caption = f"{html.escape(cat) if cat else 'uncategorized'}&nbsp;<span class='sym'>({cnt})</span>"
         lines.append(f"<div><a href='{rel_root}/category/{safe}/001.html'>{caption}</a></div>")
@@ -274,6 +286,14 @@ def build():
     root = 'docs'
     ensure_dir(root)
 
+    # Load category directory mapping if available
+    mapping_path = os.path.join('categories.json')
+    if os.path.exists(mapping_path):
+        with open(mapping_path, encoding='utf-8') as f:
+            cat_dir_map: dict[str, str] = json.load(f)
+    else:
+        cat_dir_map = {}
+
     # Group by month & category
     month_map: dict[tuple[str, str], list[dict]] = defaultdict(list)
     cat_map: dict[str, list[dict]] = defaultdict(list)
@@ -320,7 +340,7 @@ def build():
         # Render entries for that month, newest first
         entry_html = '<br><br><br>\n'.join(render_entry_block(e) for e in sorted(month_map[ym], key=lambda x: x['date'], reverse=True))
 
-        sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts)
+        sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map)
         body_html = render_body(f'{year}-{month}', entry_html, sidebar, navigation)
         full_html = assemble_full_page(f'{year}-{month}', body_html, HEADER_TEMPLATE, FOOTER_TEMPLATE)
         write_file(page_path, full_html)
@@ -330,7 +350,7 @@ def build():
     # -------------------------
     for cat, es in cat_map.items():
         es_sorted = sorted(es, key=lambda x: x['date'], reverse=True)
-        safe = cat.replace('/', '_').replace(' ', '_') or 'uncategorized'
+        safe = get_cat_dir(cat, cat_dir_map)
         for idx in range(0, len(es_sorted), 10):
             chunk = es_sorted[idx:idx+10]
             page_num = idx // 10 + 1
@@ -352,7 +372,7 @@ def build():
             navigation = f"{next_html} | {prev_html}"
 
             entry_html = '<br><br><br>\n'.join(render_entry_block(e) for e in chunk)
-            sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts)
+            sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map)
             body_html = render_body(cat or 'uncategorized', entry_html, sidebar, navigation)
             full_html = assemble_full_page(cat or 'uncategorized', body_html, HEADER_TEMPLATE, FOOTER_TEMPLATE)
             write_file(page_path, full_html)
@@ -374,7 +394,10 @@ def build():
         older_link_month = months_desc[2] if len(months_desc) > 2 else None
 
         if older_link_month:
-            older_link = f"{older_link_month[0]}/{older_link_month[1]}.html"
+            older_link = os.path.relpath(
+                os.path.join(root, 'archive', older_link_month[0], f"{older_link_month[1]}.html"),
+                os.path.join(root, 'archive', 'top')
+            )
             prev_html = f"<a href='{older_link}'>前へ</a>"
         else:
             prev_html = "<span style='color:#ccc'>前へ</span>"
@@ -382,11 +405,11 @@ def build():
         next_html = "<span style='color:#ccc'>次へ</span>"  # newest page has no newer link
         navigation = f"{next_html} | {prev_html}"
 
-        page_dir = os.path.join(root, 'archive')
+        page_dir = os.path.join(root, 'archive', 'top')
         page_path = os.path.join(page_dir, 'index.html')
 
         entry_html = '<br><br><br>\n'.join(render_entry_block(e) for e in entries_for_index)
-        sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts)
+        sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map)
         body_html = render_body('開発日誌', entry_html, sidebar, navigation)
         full_html = assemble_full_page('開発日誌', body_html, HEADER_TEMPLATE, FOOTER_TEMPLATE)
         write_file(page_path, full_html)
