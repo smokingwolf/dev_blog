@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>2021-02</title>
+<style>
+body{display:flex;}
+#content{flex:1;}
+#sidebar{width:80px;margin-left:10px;}
+.nav{margin:10px 0;}
+.entry{border:1px solid #ccc;border-radius:8px;margin:10px 0;overflow:hidden;}
+.entry-title{background:linear-gradient(to right,#9bb0c5,#6f7f92);color:#fff;padding:4px;}
+.entry-body{background:#fff;color:#444;padding:4px;}
+</style>
+<script>
+function toggle(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+function toggleDisp(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+</script>
+</head>
+<body>
+<style>
+body {display:flex; margin:0; font-family:YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;}
+#content {flex:1; padding:0 8px;}
+#sidebar {width:120px; background:#f8f8f8; border-left:1px solid #ddd; padding:4px 6px; box-sizing:border-box; font-size:14px;}
+#sidebar div {line-height:1.6;}
+#sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
+.nav {margin:10px 0; text-align:center;}
+.entry {border:1px solid #ccc; border-radius:8px; margin:14px 0; overflow:hidden;}
+.entry-title {background:linear-gradient(to right,#9bb0c5,#6f7f92); color:#fff; padding:4px; font-weight:bold;}
+.entry-body {background:#fff; color:#444; padding:6px;}
+.sym {color:#999; font-weight:normal;}
+</style>
+
+
+<script>
+function toggle(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+}
+
+// Year accordion with sessionStorage persistence
+function toggleYear(id){
+  const pane = document.getElementById(id);
+  const btn  = document.getElementById(id+'-btn');
+  if(!pane||!btn) return;
+  const sym  = btn.querySelector('.sym');
+  const isClosed = pane.style.display === 'none';
+  pane.style.display = isClosed ? 'block' : 'none';
+  sym.textContent   = isClosed ? '－' : '＋';
+  sessionStorage.setItem('year-'+id, isClosed ? 'open' : 'closed');
+}
+
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('[data-yearpane]').forEach(pane=>{
+    const id    = pane.id;
+    const state = sessionStorage.getItem('year-'+id);
+    const btn   = document.getElementById(id+'-btn');
+    const sym   = btn?.querySelector('.sym');
+    if(state === 'open'){
+      pane.style.display = 'block';
+      if(sym) sym.textContent = '－';
+    }else{
+      pane.style.display = 'none';
+      if(sym) sym.textContent = '＋';
+    }
+  });
+});
+</script>
+
+<div id='content'>
+<div class='nav'><span style='color:#ccc'>次のページ</span> | <span style='color:#ccc'>前のページ</span></div>
+<div class='entry'><div class='entry-title'>■<a id='2019-12-24'></a>2019-12-24&nbsp;&nbsp;&nbsp;シルバーセカンド、21周年！<span style='float:right;'><a href='#2019-11-02' title='次の記事へ'>▼</a></span></div><div class='entry-body'><span style="font-size:large;"><strong>【シルバーセカンド、21周年！】</strong></span><br><br>ということでこのサイト、「シルバーセカンド」は<br>2019年12月24日をもってついに<span style="color:#CC0000"><span style="font-size:large;"><strong>21周年</strong></span></span>をむかえました！<br><br><img src="../image/2019/20191224.jpg" border="1" title="フリーダ王女はちょっと盛りました"><br><span style="font-size:x-small;"><strong>今年の新しいコンテンツは片道勇者ノベライズ！　左はドラゴンブック版フリーダ王女、右は薬師ネムリ</strong></span><br><br>去年20周年を迎えたと思ったら、今年は色々あってあっという間に21周年です。<br>これも皆さまのお声や、手に支えられてたどることができた結果です。<br>本当にありがとうございます！<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【今年の成果】</strong></span><br><br>今年の成果は、<br><br><strong>◆一ヶ月かけてお仕事を完遂したけどお金がもらえなくて泣いた。<br><br>◆『片道勇者』ノベライズが発売！　私は(予想外に大変だった）監修業務を担当しました。<br><br>◆PCにさわれない時間で作るBプロジェクト進行中（電子書籍）。来年公開。<br><br>◆内緒のCプロジェクトが進んだけれどもボツになりそう。<br><br>◆内緒のDプロジェクトが順調に進行中。たぶん来年公開。<br><br>◆内緒のEプロジェクト企画が新たに発生。これも来年公開？<br><br>◆『片道勇者2』開発中、そろそろ基本システムがまとまりそう。アルファ2は出せず。</strong><br><br>という感じの、割と溜めの1年になりました。<br>表に出たのは『片道勇者』のノベライズだけですね！<br><br>このノベライズは私も監修をがんばったのと、<br>ライターさんが非常にプロい方だったのもあって、<br>皆さまの評価がものすごく高い一冊となりました。<br>気になる方はよければぜひ！　電子版が今だけ紙版の30％オフの「1079円」になっています！<br>↓<br>小説 <B>『片道勇者　滅びの闇と繰り返す英雄』</B><br><a  target="_blank" class="red" href="https://amzn.to/2BN24Vi" target="_blank"><IMG border="2" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=4040733525&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=smokingwolf-22&language=ja_JP" height="180"><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=smokingwolf-22&language=ja_JP&l=li1&o=9&a=4040733525" width="1" height="1" border="2" alt="" /><br><small>片道勇者 滅びの闇と繰り返す英雄 Amazonページへ</A><BR> Kindle版 \1,386（セール中は1079円） / 書籍版 \1,540 </small><br><br><hr size="1" /><br><span style="font-size:large;"><strong>【片道勇者2は？】</strong></span><br><br>メインの『片道勇者2』は、アルファ1での1000件を超えるフィードバックを頂いてから、<br>問題箇所を修正してみては壊し、作っては壊しの繰り返しをしつつ、徐々に進んでいます。<br><br>いつかは確実に終わるんですが、今年は開発維持費を稼ぎながらだったり、<br>家庭事情で時間や体力を消費することも増えてきたので、開発速度はゆっくりめです。<br><br>ゲームの中身に関しては、作ってても触ってても個人的に面白いので手応えはいい感じです。<br>ゲームにこれだけの素質が感じられれば、自然に最後までやり遂げられるでしょう。<br>ただ完璧を目指し出すとキリがないので、生存限界と相談しつつ<br>可能な範囲で全力を尽くしていきます。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【来年の目標】</strong></span><br><br>幸いにして2019年は無理せずに済んだおかげか、体の調子を崩すことは<br>あまりなかったのでそれは救いでした（介護行動で腰は頻繁に逝きましたけど）。<br>油断すると一瞬でHPがレッドゲージになったり病気になるので、<br>引き続き体調には注意して進めていきたいと思います。<br><br>来年の自分の目標は、<br><br><strong>◆『片道勇者2』の基本システムを固めてアルファ2を出す。<br>製品版やベータに向けてデータやストーリーを足していく。<br><br>◆Bプロジェクト書籍を1本以上リリースして生活の糧に繋げる。</strong><br><br>という感じになると思います。<br>その他の「内緒の」と付いている協同プロジェクトのいくつかもリリースされるでしょう。<br>ゲームの個人開発は長引くので、途中に何か出しつつやっていければと考えています。<br><br><hr size="1" /><br><strong>＜最後に＞</strong><br><br>2019年も本当にたくさんの人にお世話になりました。<br>今の自分は、サイトに来て下さる皆さまや、コメントを寄せてくださる皆さま、<br>そして見えない大勢の人に支えられて成り立っています。<br>今でも私のゲームや記事を見てくださっている皆さまには、本当に感謝の限りです！<br><br>今これを読んでくださっている皆さまも、<br>もしよければ来年もときどきでいいので、見にきてくださると幸いです。<br>今年も一年、本当にありがとうございました！<br><br><hr size="1" /><br>次回の開発日誌は2020年の元旦に更新予定です。<br>それでは皆さま、お体には気をつけて、よいお年を！</div></div><br><br><br>
+<div class='entry'><div class='entry-title'>■<a id='2019-11-02'></a>2019-11-02&nbsp;&nbsp;&nbsp;今回はおやすみです<span style='float:right;'><a href='#2019-02-16' title='次の記事へ'>▼</a></span></div><div class='entry-body'>今回の日誌はおやすみです！<br>この二週間はお仕事やら家庭の事情やら何やらあって<br>微妙に開発どころじゃありませんでした。<br><br><img src="../image/2019/20191102.jpg" border="1" title="リアル事情がどうしても先になっちゃいます、色々なんとかしないと"><br><br>毎日やることしっかりやってゲームも作っておられる方は<br>一体どれだけのバイタリティがあるのか！　本当に尊敬します。<br><br>少ない体力をうまく運用しないとキツい体だと、<br>やらねばならないことが増えると、<br>だんだんどん詰まりになってきてしまいますね。<br>稼げそうな大きな案件をいただいても、<br>まとまった時間が取れないと受注することさえ難しい！<br><br>そういう意味では、自分のペースで小さく成果を積み上げていけるゲーム開発や<br>創作業というのは柔軟性があるので、生きやすいのがいい点です。<br>成功しないと大変ですけれども！<br><br>とにかくより効率的に動いて、時間や心の余裕を持てる<br>生き方を工夫していきたいと思います。<br>隙間時間のさらに隙間も見つけてうまくやっていきたいですね！<br><br>最近は、パソコンさえ触れないときはスマホで本を作ったりしています。<br>スマホでも編集・校正作業ができる時代なので、<br>隙間時間を全部無駄なく投入できるのがいい！<br>そのうちKindleで出す予定です。ジャンルはTRPG系です。<br>こういった副業もうまく積み重ねて開発資金にしていきたいと考えています。</div></div><br><br><br>
+<div class='entry'><div class='entry-title'>■<a id='2019-02-16'></a>2019-02-16&nbsp;&nbsp;&nbsp;お仕事ウィーク<span style='float:right;'><a href='#2019-01-26' title='次の記事へ'>▼</a></span></div><div class='entry-body'><span style="font-size:large;"><strong>【お仕事ウィーク】</strong></span><br><br>ずっとお仕事週間です！<br>次のお仕事が届く前にいただき仕事の一つを片付けるべく必死になってたら<br>予想外にヘトヘトになって落書きする気力成分がなくなってしまったので、<br>今週の開発日誌はお絵かきなしです。<br><br><img src="../image/2019/20190216.jpg" border="1"><br><br>もうすでに1ヶ月くらいゲーム開発ができてなくてヤバいので、<br>そろそろちょっとずつでも開発する時間を挟んでいきたいですね。<br>というかお仕事しながらゲーム開発してる人って<br>一体どうやってるんですか！　すごすぎる！<br><br>といっても例年の流れだと2月中旬頃から約2ヶ月くらいの間、<br>体調が悪くなったり心理的に不安定になったり能力が下がりやすかったりするので、<br>しばらくはマイペースに、できることをできる範囲で片付けていきたいと思います。<br><br>あ、そういえばもうすぐ確定申告もありました！　ぐおおぉぉぉ！<br>色々ありますががんばっていきます！</div></div><br><br><br>
+<div class='entry'><div class='entry-title'>■<a id='2019-01-26'></a>2019-01-26&nbsp;&nbsp;&nbsp;パンパンの一週間！<span style='float:right;'><a href='#2019-01-12' title='次の記事へ'>▼</a></span></div><div class='entry-body'><span style="font-size:large;"><strong>【パンパンの一週間！】</strong></span><br><br>今週は引き続き別件作業をしつつプチ出張があったのに加えて、<br>新しい作業が増えて別件が予定通り2列になりました。<br>アイデアや気づきが湧かないと進まない仕事もあるので<br>いくらか並列してやれるとはいえ、しばらくはそれらにかかりっきりです。<br><br>いずれ皆さんの目に入るであろうお話や、<br>将来的にいつかやらねばならなかった件もあるので、<br>休憩時間には『片道勇者2』のネタも考えつつ、全力を尽くしていきたいところです。<br>かかわってくださる皆様は気のいい人たちばかりで<br>自然にがんばれるので、それは大きな救いですね。<br><br><img src="../image/2019/20190126.jpg" border="1"><br><br>必死にやれば作業ゲージは短くできそうなので、<br>品質は維持しつつ『片道勇者2』を作るための時間も稼げるよう、<br>集中力を上げていきたいところです。</div></div><br><br><br>
+<div class='entry'><div class='entry-title'>■<a id='2019-01-12'></a>2019-01-12&nbsp;&nbsp;&nbsp;20年を振り返る Final　ラッシーとアルバート<span style='float:right;'><a href='#2019-01-01' title='次の記事へ'>▼</a></span></div><div class='entry-body'><strong><span style="font-size:large;">【20年を振り返る　Final　ラッシーとアルバート】</span></strong><br><br><span style="font-size:x-small;"><strong>『開発日誌』のマスコット、ラッシーと、ほぼレギュラー化しているアルバート。20周年イラストの一部です。</strong></span><br><img src="../image/2019/20190112.jpg" border="1" title=""><br><br>20年記念イラストの中でまだ言及してなかったのがこの2人！<br>一時期の開発日誌のマスコットだったラッシーと、<br>私のゲームでほぼレギュラーとして登場しているアルバート！<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【マスコットキャラ　ラッシー】</strong></span><br><br>ラッシーはこの開発日誌、ならびに『ゲーム開発者の地図』という<br>Kindle本に登場しているマスコットキャラです。<br>ラッシーは愛称で、本名は「ラーシア」とかそんな感じを想定しています。<br><br>元々は2001年に描いたお絵かきが元で、10月をテーマとした絵の女の子でした。<br><a href="https://silversecond.net/contents/library/illust_image/illust_2001_10.jpg"" rel="lightbox[20190112]"><img src="https://silversecond.net/contents/library/illust_image/illust_2001_10.jpg" border="1" height="200"></a><br><br>その後、モノリスフィア感覚のマウスアクションゲームに登場させる案が出たのですが、<br>『片道勇者』のアイデアが降ってきたので一旦後回しにされました。<br>今も後回しにされています。<br><br>このラッシー、今のところ「ゲームが好きそう」の他は<br>変な性格的特徴も与えられておらず、私にしては普通の女の子っぽいキャラです。<br>とはいえ、ゲームに出たら絶対に変な性格的特徴が付くんでしょうけどね！！<br>会話量が多くなるほど普通でいることが無理なんですよホント！<br>あと私はふわふわウェーブヘアーが大好きなので描いていて幸福になれます。<br><br>で、この開発日誌でこのキャラをたくさん描いていてちょっと面白かったのが、<br><br>「同じキャラを描き続けると『同じポーズ』や『同じ構図』で描けないので、<br>自然と別の構成にしなければならず、ちょっとした練習になる」<br><br>という点でした。<br><br>というのも「同じキャラで同じポーズ」だと「完全に同じ絵」になってしまうので、<br>それを避けようとすると多少なりとも工夫する必要が出てくるため、<br>そういう挑戦や練習をするにあたっては、意外と同じキャラを描き続ける方がいいのかも？<br>と感じられる経験になりました。<br><br>また、『同じキャラを同じように描く』のがこれまた未熟な間は難しいんですよ！<br>ゲーム開発だと立ち絵パターンを作る都合上、<br>同じキャラを同じように描けることは、可能ならできた方がうれしい技術です。<br><br>といった点であまりに修行できる点だらけだったので、<br>たまにはお気に入りマスコットをいっぱい描いてみるのも<br>お絵かき修行として面白いかもしれません。<br><br><br><strong>＜ゲームに出たらどうなってた？＞</strong><br>キックでカードの兵隊や人形を蹴り飛ばしたり、複数段ジャンプなどもしつつ、<br>ほんわかしたおもちゃの国で生存と脱出をかけたバトルを繰り広げる予定でした。<br>マウス操作メインで、イメージとしては『モノリスフィア』の地上戦多めのゲームです。<br>『モノリスフィア』は今やっても個人的に面白いので、<br>いずれこれのプロトタイプを作ってみるのもいいかもしれませんね。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【もはやレギュラーキャラ　アルバート】</strong></span><br><br>アルバートは『シルフェイド見聞録』が初出のキャラで、<br>主人公エシュターのことを気にかけるクール系な友人ポジションでした。<br>が、出番が増えるごとにどんどん変な性格になっていき、<br><br>・相手を好きになりすぎると変な行動に走る<br>・（まじめさや好奇心のせいで）おかしな方向に全力で突っ走るときがある<br><br>という属性が付き、この方向性に従う限り<br>アルバートは何やってもおかしくないキャラになりました。<br><br>たとえば『シルフェイド学院物語』において、<br>「母乳が出るように肉体改造してもらったんだ！」などと叫ぶアルバートを見て、<br>「うわ……でもアルバートならやりそう」<br>で済まされるのはアルバートくらいではないでしょうか。<br>本当にひどい。<br><br>なお『シルフェイド幻想譚』、『片道勇者プラス』では新たに腹ぺこキャラ属性が付きました。<br>幻想譚では、異世界に来て最初に覚えた言葉が「おかわり！」だったという話が聞けます。<br>これはまあ普通といえば普通っぽくてあんまり面白みのない話ですが、<br>この調子だと、内容が衝突しない限りは無限に変な属性が増えていきそうです。<br><br><strong>＜他の作品に出てる？＞</strong><br>アルバートの登場作品は以下の通りです。<br>こうやって並べてみるとかなりいろんな作品に出ています。<br><br><strong>●シルフェイド見聞録</strong><br>普通に学生として登場。最初はクール系だったのに<br>どんどんボロが出て普通じゃなくなっていった。<br><br><strong>●シルフェイド幻想譚</strong><br>見聞録の世界で傭兵として働いているうちに幻想譚の世界に来たアルバート。<br>たしか15日目に相談するとエシュターのことを話題に挙げる。<br><br><strong>●シルエットノート</strong><br>学生として登場。別のアルバートとは特に関連性がない。<br>割とまともなままだったので、最後にゴスロリショタ化という<br>ひどいテコ入れがおこなわれた。<br><br><strong>●シルフェイド学院物語</strong><br>学生として登場。実はこの世界、幻想譚の世界と繋がっているのだが、<br>このアルバートはシルフェイド見聞録からのアルバートとは関連性がない<br>別のアルバートである。自発的に女体化する展開がある。<br><br><strong>●片道勇者プラス</strong><br>傭兵として登場。幻想譚の世界の後にいくつか世界を渡り歩いて、<br>その次に片道勇者の世界に来たらしいことがうかがえる。<br>聞いた言葉が分かる「翻訳指輪」だけでなく、<br>自分の意志を相手に伝えるアイテムも新たに持っている。<br>銃の弾がたまにしか出ない。<br><br><strong>●アルバート片道冒険記（ツイッターゲーム「片道勇者オンライン」）</strong><br>『片道勇者プラス』の次にたどりついた世界、<br>という設定で繰り広げられたアルバートの新たな冒険。<br>珍しくアルバートにヒロインが2人（1人と1匹？）できた。<br>お姫様を拾うあたりで「そうか、彼女をペットにすればいいんだ！」<br>とか言い出すあたりがやっぱりアルバートっぽい。<br><br>見たい人はこちらから↓<br><a href="https://silversecond.net/contents/library/event/2017_albert_katamichi_online.html" class="blue">https://silversecond.net/contents/library/event/2017_albert_katamichi_online.html</a><br><br><strong>●片道勇者TRPGアペンド（書籍内リプレイ）</strong><br>『アルバート片道冒険記』の最後に書かれている通り、<br>アルバートが片道冒険記の次におとずれた世界、という設定。<br>『片道勇者TRPGアペンド』のリプレイ内で作者（スモーキングウルフ）が<br>演じるプレイヤーキャラとして登場。大変な目にあった。というか死んだ。<br>アルバートがここ最近何回も片道勇者世界にとらわれているが、<br>たぶん『片道勇者2』にも出そうな気がする。<br><br><hr size="1" /><br>という感じで、思い返せれば隙あらばそこら中にアルバートの出番がありました。<br><br>思えばアルバートは、この20年で最も長く一緒に歩み続けてきた<br>キャラクターと言えるかもしれません。<br>アルバートはこれからも機会さえあれば登場しそうですので、<br>彼が好きな方は今後もご期待ください。</div></div><br><br><br>
+<div class='entry'><div class='entry-title'>■<a id='2019-01-01'></a>2019-01-01&nbsp;&nbsp;&nbsp;2019年あけまして！<span style='float:right;'><a href='#bottom' title='次の記事へ'>▼</a></span></div><div class='entry-body'><strong><span style="font-size:large;">【2019年　あけまして！】</span></strong><br><br>おかげさまで無事、2019年をむかえることができました！<br>あけましておめでとうございます！<br><br><span style="font-size:x-small;"><strong>開発日誌のマスコット、ラッシー</strong></span><br><img src="../image/2019/20190101.jpg" border="1"><br><span style="font-size:x-small;">イノシシぽいキャラって干支がテーマの作品や獣人多めでもない限りそうそういない気がするのでこの年はネタに困りますねえ！</span><br><br><br>ということでいつも通り今年の抱負！　2019年の目標は以下の通りです！<br><br><br><span style="font-size:large;"><strong>●片道勇者2、アルファ2を出す</strong></span><br><br>→　アルファ1のときよりはひっそり出すつもりですが、<br>いただいたご意見のいくらかを参考に、基本システムを<br>いくらかマシにしたアルファ2を公開して見ていただこうと考えています。<br><br>もうすぐ基本システムだけで開発開始から2周年になってしまい、<br>このままだと飢えてしまいそうなので、そこから先は<br>優先度の高いご意見を取り入れて中身を突っ込んでいき、<br>ひとまずの完成を目指していく感じになると思います。<br><br><br><span style="font-size:large;"><strong>●サブコンテンツも出したい</strong></span><br><br>→　開発維持費の確保のためにも、<br>ゲームよりは作る時間が短いサブコンテンツを<br>できればいくつか出して足しにしたいところです。<br><br><br><br><span style="font-size:large;"><strong>●片道勇者2、できれば早期アクセス版を目指す</strong></span><br><br>→　できれば早期アクセス版までいければいいんですが、<br>脇のお仕事ちょびっとや、生活維持のための副業もしつつになると思うので<br>少しゆっくりめになりそうです。2019年中に出せればいいですね……。<br><br>あとは私事ですが、家族の介護、というか支援や、<br>その関連作業に割かれる時間が去年から加速度的に増えつつあるので、<br>開発時間にもいくらか影響が出るかもしれません。これはみんな通る道です。<br><br><br><span style="font-size:large;"><strong>●健康維持！</strong></span><br><br>→　2018年は年間の1/4くらいずっと体調が万全でなくてゴホゴホしてたりしたので、<br>今年はもう少し、なんとか体調維持のための工夫にもリソースを割きたいと思います。<br>2019年は開発に使える時間が減少するかもしれないので、<br>その範囲で少しでも最大限の効率を出したいですね。<br><br><hr size="1" /><br>ということで色々ありますが、今年も一年、よろしくお願いします！<br>当サイトの有料作品セールも1/15過ぎまでやる予定ですので、よければぜひ！</div></div>
+<div class='nav'><span style='color:#ccc'>次のページ</span> | <span style='color:#ccc'>前のページ</span></div>
+<a id='bottom'></a>
+</div>
+<div id='sidebar'>
+<div style='font-weight:bold;'>開発日誌</div>
+<div><a href='../../archive/top/index.html'>トップへ</a></div>
+<hr>
+<div style='font-weight:bold;'>【月別】</div>
+<div><a href='javascript:void(0);' id='y2019-btn' onclick="toggleYear('y2019')">2019&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2019' data-yearpane style='display:none;margin-left:10px;'>
+<div><a href='../../archive/2019/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a href='../../archive/2019/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a href='../../archive/2019/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../archive/2019/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../archive/2019/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</div>
+<hr>
+<div style='font-weight:bold;'>【カテゴリ】</div>
+<div><a href='../../category/owh2dev/001.html'>片道勇者2 開発&nbsp;<span class='sym'>(12)</span></a></div>
+<div><a href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(6)</span></a></div>
+<div><a href='../../category/woditor/001.html'>WOLF RPGエディター&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../category/owh/001.html'>片道勇者 開発&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+
+</body>
+</html>
