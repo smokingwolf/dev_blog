@@ -102,7 +102,7 @@ def render_entry_block(entry):
     )
 
 
-def render_sidebar(all_months, categories, page_dir, root='dev_blog'):
+def render_sidebar(all_months, categories, page_dir, root='docs'):
     """Generate sidebar HTML with links relative to page_dir."""
     rel_root = os.path.relpath(root, page_dir)
     years = sorted({y for y, _ in all_months}, reverse=True)
@@ -165,7 +165,7 @@ def build():
     entries = parse_entries()
     entries = [e for e in entries if e.get('date')]
     entries.sort(key=lambda e: e['date'])
-    root = 'dev_blog'
+    root = 'docs'
     ensure_dir(root)
 
     # group entries by month and category
