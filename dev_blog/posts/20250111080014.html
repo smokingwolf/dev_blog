@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>ウディタ3.5開発中その8　BGSチャンネル･コマンド折りたたみ等</title>
+<script>
+function toggle(id){
+ var e=document.getElementById(id);
+ if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+</script>
+</head>
+<body>
+<h1>ウディタ3.5開発中その8　BGSチャンネル･コマンド折りたたみ等</h1>
+<div>2025-01-11 08:00:14</div>
+<div><TABLE padding="15px"><tr><td align="left" style="line-height: 1.5; word-break: break-all;">　ウディタ3.5開発の経過報告、その8！　たぶん最終回です！
+　引き続きX(Twitter)などでご要望をいただいて「あ、これ入れたいと思ってたやつだ、忘れてた！」となっては追加で実装する日々が続いております！
+　新機能は目次だけご覧になればだいたい分かるとは思いますが、それぞれ詳しく見ていきましょう！
+
+<HR><span style="font-size:large;"><B>●BGSの多チャンネル化！</B></span><HR>
+<img src="https://silversecond.net/data/p_diary5/20250111A.jpg" border="1" style="max-width:520px;" loading="lazy">
+　なんとウディタ3.5ではBGSにチャンネル機能が付きます！
+　以下の映像で再生見本を流しておりますので気になる方はぜひ！
+
+<a target="_blank" href="https://www.youtube.com/watch?v=-raNSyYmVUg">https://www.youtube.com/watch?v=-raNSyYmVUg</a>
+<iframe width="520" height="300" src="https://www.youtube.com/embed/-raNSyYmVUg?si=vpNe_I2fi1rFmnYv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+　「BGS」とは「WAVやOGG、MP3形式」のサウンドのみ、つまりMIDI以外を「ループ」で流せるモードなのですが、これが多チャンネルで再生できると色んなことができます！
+　滝の音や鳥の声みたいな環境音をたくさん同時に鳴らしたり、パン（左右偏り）や音量の大小差を付けたり、なんでしたら状況が変わるとシームレスに音が切り替わっていくインタラクティブミュージック的なこともしやすくなるかもしれません！
+　こだわる人には色々使い道があると思いますので、今後ぜひご利用ください！
+　
+
+<HR><span style="font-size:large;"><B>●ピクチャエフェクトにディレイ設定可！</B></span><HR>
+　エフェクトの「ピクチャ」にディレイが設定可能になります！
+　つまり座標を元のピクチャから+10する、みたいなのをディレイを付けて未来の分まで設定しほうだいになるってことですね！
+<img src="https://silversecond.net/data/p_diary5/20250111C.png" border="1" style="max-width:520px;" loading="lazy">
+
+　これによって、ディレイだけで大量のエフェクト予約などして気軽に動かしたりもできますし、そっちのほうがピクチャ本体を動かすより処理が軽いと思いますので、色んな意味でさらに無理ができると思います！　私もピクチャエフェクトで色々制御することが多いので、これは私も欲しかったやつです！
+
+　ちなみに、これはピクチャコマンドの「ディレイ」設定と内部処理的には同じものが使われていますので、ピクチャ側の「ディレイリセット」コマンドでエフェクトのディレイごと全部消すことができます。まとめて消えた方がラクだと思いますのでこれでいきます！
+
+
+<HR><span style="font-size:large;"><B>●コマンド折りたたみやコメントアウトが可能に！</B></span><HR>
+　これも映像を作ってありますのでよければご覧ください！
+<a target="_blank" href="https://www.youtube.com/watch?v=jZzEkfpF1yQ">https://www.youtube.com/watch?v=jZzEkfpF1yQ</a>
+<iframe width="520" height="300" src="https://www.youtube.com/embed/jZzEkfpF1yQ?si=L6vdmBDJIjxK4jtn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+　「折りたたみ」は文字通り、「条件分岐」や「ループ」コマンドを折りたたんでおける機能です！　条件分岐は分岐1つずつでも、全部まとめてでも折りたためます！
+　折りたたんだコマンドはダブルクリックですぐ展開可能です。
+
+　「コメントアウト」は直接そういうコマンド名があるわけではなく『0回ループに入れる』というコマンドが追加されます！
+　0回ループに入れた部分は処理されないので、コメントと同じく緑色になります。処理されない部分が一目瞭然に！
+　なお「0回ループ」内に「ラベル地点（他の場所からジャンプしてこられる）」コマンドを入れてそこに飛ばす、という使い方もあるので、0回ループ内でも「ラベル地点」があったらそこ以降は色が元に戻るようにしています。安心！
+
+　また、「0回ループ」や「1回ループ」を選択したときに右クリックメニューを開くと、ループ0→1回、1→0回の切り替えもできます！　ショートカット（Q）もあるのでバッチリ！
+　これから気軽に0～1回ループに入れていきましょう！
+　ただし「ループから出る」とか「ループ先頭に戻る」処理の範囲が変わってしまうので、それだけはご注意を。
+
+
+
+<HR><span style="font-size:large;"><B>●ファイル選択ウィンドウで音声再生も可能に！+画像が自動拡大で見やすく！</B></span><HR>
+　ファイル選択画面に以下の強化を加えました！
+
+<span style="color: #d50000"><B>●画像サイズに応じて自動拡大縮小されるようになります！　小さい画像は200～400%に、大きな画像は枠内におさまるように。
+●音声再生が可能です！　MIDIはゲーム内と同じ音源で再生されますし、効果音のチェックも非常にラクになります！</B></span>
+
+　見てみたい方はこちらの動画より！　↓
+<a target="_blank" href="https://www.youtube.com/watch?v=-kd-mIkBHaM">https://www.youtube.com/watch?v=-kd-mIkBHaM</a>
+<iframe width="520" height="300" src="https://www.youtube.com/embed/-kd-mIkBHaM?si=q5Z1Y_wxMAVIHFPf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+　しかしこの一見大したことなさそうな『ファイル選択ウィンドウ』、搭載されている機能を考えると余裕で1アプリ相当になると思います！　ツクールとかに入ってるファイル選択ウィンドウも実は凄い！　いろいろ見られるようにしたり、色んな形式の音声を再生できるようにしておくのは、実は思ったよりも大変でした。
+　でも、これからは画像も音声も気軽にチェックできますよ！
+
+
+<HR><span style="font-size:large;"><B>●\imgの特殊文字を強化！　文中にアニメーションアイコンを入れたり画像の一部切り出し可能に！</B></span><HR>
+　「\img」または「\imgS」に裏技を追加しました！
+　「\img(S)」の後に「<DIV/」「<CUT/」「<ANIME/」から始まるコードを記入すると、画像を特別な方法で表示することができます。それぞれの例は以下の通りです。
+
+<span style="color: #d50000"><B>- 分割表示 DIV　\\img[&lt;DIV/X3/Y4/5&gt;Pic/Test.jpg]</B></span>
+　　「Pic/Test.jpg」を横3、縦4パターンで分割し、パターン5を表示します。
+　　パターン番号はピクチャと同じで、「1」から始まります。
+
+<span style="color: #d50000"><B>- 部分切り出し CUT　\\img[&lt;CUT/X123-150/Y200-300&gt;Pic/Test.jpg]</B></span>
+　「Pic/Test.jpg」の X123～150、Y200～300pxの範囲だけ切り出して表示します。
+　 X0-2なら左端の1ピクセル目から幅2ピクセル分だけ表示されます。
+
+<span style="color: #d50000"><B>- アニメアイコン ANIME　\\img[&lt;ANIME/X6/Y4/8&gt;CharaChip/Chicken.png]</B></span>
+　「CharaChip/Chicken.png」を横6、縦4パターンで分割し、8フレームごとにアニメーションします。
+　アイコンとしてアニメーションさせた上にルビを付けることも可能です！
+　見本はこちら↓
+　<img src="https://silversecond.net/data/p_diary5/20250111B.png" border="1" style="max-width:520px;" loading="lazy">　→　<img src="https://silversecond.net/data/p_diary5/20250111B.gif" border="1" style="max-width:520px;" loading="lazy">
+
+
+<HR>
+
+　という感じで、今回もウディタ3.5での表現力がアップしたり、開発の快適性もアップしております！　普通に一ヶ月単位で遅れるくらい実装が大変な部分もありましたが、この先ずっとウディタを使うことを考えれば安い投資でしょう！
+
+
+<B>＜余談：マスク機能について＞</B>
+　あと、ご要望の中でたびたび挙がるものとしてマスク機能の強化があるのですが、これはライブラリ側の都合で、今の通り「マスク1枚しか使えない」+「画像を回転させたり拡大したりしてマスクすることはできなさそう」が限界そうでした（そしておそらく、1フレーム中に何度も切り替えする前提の処理速度で使えるマスク切り替え機能は入ってない気がします）。なので、マスクについては当面は変更されないと思います。
+
+　他にも描画周りはほとんどの処理をライブラリに依存しており、「何かの新機能を作るべく代わりの機能で似た機能を代替しようと思ったらめちゃめちゃ重くて結局使い物にならなかったー！」となって終わる経験も今回たびたび繰り返しています。
+　需要が高くても実装されないものは、だいたいこういう経緯で搭載を諦めていることが多かったりしますのでその点はご容赦ください。
+　他にも実装されない理由として、単純に技術的に難しいとか、出てきそうなバグがあまりに多すぎて心が折れた、私にとっての需要や興味がなさすぎた、などもあります。ウディタ3.5開発では、それを乗り越えられた量がすごくいっぱいありましたね！　やはり元気は大事！
+
+
+<B>＜今後について＞</B>
+　そしてまた、ウディタ開発予算もすでに超絶マイナス突破してるので、今回挙げた分で、3.5への修正は終わりにする予定です！　お賽銭やご支援をくださった皆さま、本当にありがとうございます！
+　現在は、すぐ見つかるバグの修正や、新機能の調整や、マニュアル修正にいそしんでおります！　一通りすぐ見つけられる分の問題を解決できましたらリリースできると思いますので、ほんのり楽しみにしつつ、もう少々お待ちください！（もちろん公開されてもバグは出るでしょうね！　よければご協力お願いいたします）
+
+　それでは最後の仕上げ作業、がんばっていきます！
+　</td></tr></table></div>
+
+</body>
+</html>
