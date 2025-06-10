@@ -4,29 +4,40 @@ from datetime import datetime
 from collections import defaultdict
 import html
 
-def parse_entries(source_dir="source"):
+# =============================
+# Utility helpers
+# =============================
+
+def parse_entries(source_dir: str = "source"):
+    """Parse all Markdown sources into a flat list of dicts."""
     entries = []
     for path in sorted(glob.glob(os.path.join(source_dir, "*.md"))):
         with open(path, encoding="utf-8") as f:
             content = f.read()
-        # split entries by separator lines of hyphens
+        # Each entry is delimited by 8 hyphens on its own line (--------)
         raw_entries = content.split("--------")
         for raw in raw_entries:
             raw = raw.strip()
             if not raw:
                 continue
-            lines = [line.rstrip("\n") for line in raw.splitlines()]
+            lines = [ln.rstrip("\n") for ln in raw.splitlines()]
             idx = 0
+
+            # TITLE (required)
             if idx < len(lines) and lines[idx].startswith("TITLE:"):
                 title = lines[idx][len("TITLE:"):].strip()
                 idx += 1
             else:
-                continue
+                continue  # Skip malformed block
+
+            # CATEGORY (optional)
             if idx < len(lines) and lines[idx].startswith("CATEGORY:"):
                 category = lines[idx][len("CATEGORY:"):].strip()
                 idx += 1
             else:
                 category = ""
+
+            # DATE (optional but expected)
             if idx < len(lines) and lines[idx].startswith("DATE:"):
                 date_str = lines[idx][len("DATE:"):].strip()
                 idx += 1
@@ -37,176 +48,286 @@ def parse_entries(source_dir="source"):
             else:
                 date = None
                 date_str = ""
-            # skip delimiter and BODY label
+
+            # Skip to BODY:
             while idx < len(lines) and lines[idx] != "BODY:":
                 idx += 1
-            if idx < len(lines) and lines[idx] == "BODY:":
-                idx += 1
-            body_lines = []
+            if idx < len(lines):
+                idx += 1  # skip "BODY:"
+
+            body_lines: list[str] = []
             while idx < len(lines) and lines[idx] != "-----":
                 body_lines.append(lines[idx])
                 idx += 1
+
+            # consume ----- delimiters after body
             while idx < len(lines) and lines[idx] == "-----":
                 idx += 1
-            # EXTENDED BODY
-            extended_lines = []
+
+            # EXTENDED BODY (optional)
+            extended_lines: list[str] = []
             if idx < len(lines) and lines[idx] == "EXTENDED BODY:":
                 idx += 1
                 while idx < len(lines) and lines[idx] != "-----":
                     extended_lines.append(lines[idx])
                     idx += 1
-            entry = {
-                "title": title,
-                "category": category,
-                "date": date,
-                "date_str": date_str,
-                "body": "\n".join(body_lines).strip(),
-                "extended": "\n".join(extended_lines).strip(),
-            }
-            entries.append(entry)
+
+            entries.append(
+                {
+                    "title": title,
+                    "category": category,
+                    "date": date,
+                    "date_str": date_str,
+                    "body": "\n".join(body_lines).strip(),
+                    "extended": "\n".join(extended_lines).strip(),
+                }
+            )
     return entries
 
 
-def ensure_dir(path):
+def ensure_dir(path: str):
     os.makedirs(path, exist_ok=True)
 
 
-def write_file(path, content):
+def write_file(path: str, content: str):
     ensure_dir(os.path.dirname(path))
     with open(path, "w", encoding="utf-8") as f:
         f.write(content)
 
 
+# =============================
+# HTML fragments
+# =============================
 
-def render_entry_block(entry):
-    """Return HTML snippet for a single entry including body and extended body."""
+STYLE_BLOCK = """
+<style>
+body {display:flex; margin:0; font-family:YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;}
+#content {flex:1; padding:0 8px;}
+#sidebar {width:120px; background:#f8f8f8; border-left:1px solid #ddd; padding:4px 6px; box-sizing:border-box; font-size:14px;}
+#sidebar div {line-height:1.6;}
+#sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
+.nav {margin:10px 0; text-align:center;}
+.entry {border:1px solid #ccc; border-radius:8px; margin:14px 0; overflow:hidden;}
+.entry-title {background:linear-gradient(to right,#9bb0c5,#6f7f92); color:#fff; padding:4px; font-weight:bold;}
+.entry-body {background:#fff; color:#444; padding:6px;}
+.sym {color:#999; font-weight:normal;}
+</style>
+"""
+
+SCRIPT_BLOCK = """
+<script>
+function toggle(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+}
+
+// Year accordion with sessionStorage persistence
+function toggleYear(id){
+  const pane = document.getElementById(id);
+  const btn  = document.getElementById(id+'-btn');
+  if(!pane||!btn) return;
+  const sym  = btn.querySelector('.sym');
+  const isClosed = pane.style.display === 'none';
+  pane.style.display = isClosed ? 'block' : 'none';
+  sym.textContent   = isClosed ? '－' : '＋';
+  sessionStorage.setItem('year-'+id, isClosed ? 'open' : 'closed');
+}
+
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('[data-yearpane]').forEach(pane=>{
+    const id    = pane.id;
+    const state = sessionStorage.getItem('year-'+id);
+    const btn   = document.getElementById(id+'-btn');
+    const sym   = btn?.querySelector('.sym');
+    if(state === 'open'){
+      pane.style.display = 'block';
+      if(sym) sym.textContent = '－';
+    }else{
+      pane.style.display = 'none';
+      if(sym) sym.textContent = '＋';
+    }
+  });
+});
+</script>
+"""
+
+
+def render_entry_block(entry: dict):
+    """Return HTML snippet for a single entry, including optional extended part."""
     title = html.escape(entry["title"])
     date_str = entry["date_str"].split()[0]
     body = entry["body"].replace("\n", "<br>")
     extended = entry["extended"].replace("\n", "<br>")
+
     ext_html = ""
     if entry["extended"]:
         ext_id = f"ext-{hash(date_str + title)}"
         ext_html = (
-            f'<a href="javascript:void(0);" '
-            f'onclick="toggle(\"{ext_id}\")">&#9660;追記を開く&#9660;</a>'
+            f'<a href="javascript:void(0);" onclick="toggle(\"{ext_id}\")">&#9660;追記を開く&#9660;</a>'
             f'<div id="{ext_id}" style="display:none;">{extended}</div>'
         )
+
     return (
         f"<div class='entry'>"
-        f"<div class='entry-title'>{date_str}  {title}</div>"
+        f"<div class='entry-title'>{date_str}  {title}</div>"
         f"<div class='entry-body'>{body}</div>"
         f"{ext_html}"
         f"</div>"
     )
 
 
-def render_sidebar(all_months, categories, page_dir, root='docs'):
-    """Generate sidebar HTML with links relative to page_dir."""
+# =============================
+# Sidebar
+# =============================
+
+def render_sidebar(all_months: list[tuple[str, str]],
+                   cat_counts: dict[str, int],
+                   page_dir: str,
+                   root: str = 'docs',
+                   month_counts: dict[tuple[str, str], int] | None = None) -> str:
+    """Generate sidebar HTML."""
+    month_counts = month_counts or {}
+    # Prepare relative path root → this page_dir
     rel_root = os.path.relpath(root, page_dir)
-    years = sorted({y for y, _ in all_months}, reverse=True)
-    month_by_year = defaultdict(list)
+
+    # Group months by year
+    month_by_year: dict[str, list[str]] = defaultdict(list)
     for y, m in all_months:
         month_by_year[y].append(m)
-    lines = ["<div id='sidebar'>"]
-    lines.append(f"<div><a href='{rel_root}/archive/index.html'>開発日誌トップ</a></div>")
-    for y in years:
-        toggle_id = f"y{y}"
-        lines.append(f"<div><a href='javascript:void(0);' onclick=\"toggleDisp('{toggle_id}')\">{y}</a></div>")
-        lines.append(f"<div id='{toggle_id}' style='display:none;margin-left:10px;'>")
+
+    years_sorted = sorted(month_by_year.keys(), reverse=True)
+
+    lines: list[str] = []
+    lines.append("<div id='sidebar'>")
+
+    # Heading & top link
+    lines.append("<div style='font-weight:bold;'>開発日誌</div>")
+    lines.append(f"<div><a href='{rel_root}/archive/index.html'>トップへ</a></div>")
+    lines.append("<hr>")
+
+    # Monthly section
+    lines.append("<div style='font-weight:bold;'>【月別】</div>")
+    for y in years_sorted:
+        pane_id = f"y{y}"
+        # Year button with plus/minus symbol
+        lines.append(
+            f"<div><a href='javascript:void(0);' id='{pane_id}-btn' onclick=\"toggleYear('{pane_id}')\">{y}&nbsp;<span class='sym'>＋</span></a></div>"
+        )
+        lines.append(f"<div id='{pane_id}' data-yearpane style='display:none;margin-left:10px;'>")
         for m in sorted(month_by_year[y], reverse=True):
-            lines.append(f"<div><a href='{rel_root}/archive/{y}/{m}.html'>{m}</a></div>")
+            cnt = month_counts.get((y, m), 0)
+            caption = f"{int(m):02d}月&nbsp;<span class='sym'>({cnt})</span>"
+            url = f"{rel_root}/archive/{y}/{m}.html"
+            lines.append(f"<div><a href='{url}'>{caption}</a></div>")
         lines.append("</div>")
     lines.append("<hr>")
-    for cat in sorted(categories):
+
+    # Category section
+    lines.append("<div style='font-weight:bold;'>【カテゴリ】</div>")
+    for cat in sorted(cat_counts.keys()):
         safe = cat.replace('/', '_').replace(' ', '_') or 'uncategorized'
-        lines.append(f"<div><a href='{rel_root}/category/{safe}/001.html'>{html.escape(cat) if cat else 'uncategorized'}</a></div>")
-    lines.append("</div>")
+        cnt = cat_counts[cat]
+        caption = f"{html.escape(cat) if cat else 'uncategorized'}&nbsp;<span class='sym'>({cnt})</span>"
+        lines.append(f"<div><a href='{rel_root}/category/{safe}/001.html'>{caption}</a></div>")
+
+    lines.append("</div>")  # #sidebar
     return "\n".join(lines)
 
 
-def render_page(title, content, sidebar_html, navigation=""):
-    """Wrap page content with basic HTML."""
-    return f"""<!DOCTYPE html>
-<html>
-<head>
-<meta charset='utf-8'>
-<title>{html.escape(title)}</title>
-<style>
-body{{display:flex;}}
-#content{{flex:1;}}
-#sidebar{{width:80px;margin-left:10px;}}
-.nav{{margin:10px 0;}}
-.entry{{border:1px solid #ccc;border-radius:8px;margin:10px 0;overflow:hidden;}}
-.entry-title{{background:linear-gradient(to right,#9bb0c5,#6f7f92);color:#fff;padding:4px;}}
-.entry-body{{background:#fff;color:#444;padding:4px;}}
-</style>
-<script>
-function toggle(id){{
-  var e=document.getElementById(id);
-  if(e.style.display==='none'){{e.style.display='block';}}else{{e.style.display='none';}}
-}}
-function toggleDisp(id){{
-  var e=document.getElementById(id);
-  if(e.style.display==='none'){{e.style.display='block';}}else{{e.style.display='none';}}
-}}
-</script>
-</head>
-<body>
-<div id='content'>
-<div class='nav'>{navigation}</div>
-{content}
-<div class='nav'>{navigation}</div>
-</div>
-{sidebar_html}
-</body>
-</html>"""
+# =============================
+# Full page assembler
+# =============================
 
+def render_body(title: str, content: str, sidebar_html: str, navigation: str) -> str:
+    """Return the HTML to be placed inside <body>."""
+    body_parts = [STYLE_BLOCK, SCRIPT_BLOCK]
+    body_parts.append("<div id='content'>")
+    body_parts.append(f"<div class='nav'>{navigation}</div>")
+    body_parts.append(content)
+    body_parts.append(f"<div class='nav'>{navigation}</div>")
+    body_parts.append("</div>")  # #content
+    body_parts.append(sidebar_html)
+    return "\n".join(body_parts)
+
+
+def assemble_full_page(title: str, body_html: str, header_tpl: str, footer_tpl: str) -> str:
+    """Merge header / body / footer. %TITLE% placeholder in header will be replaced."""
+    header = header_tpl.replace("%TITLE%", html.escape(title))
+    return header + body_html + footer_tpl
+
+
+# =============================
+# Build process
+# =============================
 
 def build():
-    entries = parse_entries()
-    entries = [e for e in entries if e.get('date')]
-    entries.sort(key=lambda e: e['date'])
+    entries = [e for e in parse_entries() if e.get('date')]
+    entries.sort(key=lambda e: e['date'])  # oldest → newest
+
+    # Load shared header & footer (required)
+    with open(os.path.join('design', 'header.txt'), encoding='utf-8') as f:
+        HEADER_TEMPLATE = f.read()
+    with open(os.path.join('design', 'footer.txt'), encoding='utf-8') as f:
+        FOOTER_TEMPLATE = f.read()
+
     root = 'docs'
     ensure_dir(root)
 
-    # group entries by month and category
-    month_map = defaultdict(list)
-    cat_map = defaultdict(list)
+    # Group by month & category
+    month_map: dict[tuple[str, str], list[dict]] = defaultdict(list)
+    cat_map: dict[str, list[dict]] = defaultdict(list)
+    month_counts: dict[tuple[str, str], int] = {}
+
     for e in entries:
         ym = (e['date'].strftime('%Y'), e['date'].strftime('%m'))
         month_map[ym].append(e)
         cat_map[e['category']].append(e)
 
-    months_sorted = sorted(month_map.keys())
-    categories = list(cat_map.keys())
+    for ym, lst in month_map.items():
+        month_counts[ym] = len(lst)
 
-    # create monthly archive pages
+    cat_counts = {cat: len(lst) for cat, lst in cat_map.items()}
+
+    months_sorted = sorted(month_map.keys())  # ascending
+
+    # -------------------------
+    # Monthly archive pages
+    # -------------------------
     for idx, ym in enumerate(months_sorted):
         year, month = ym
         page_dir = os.path.join(root, 'archive', year)
         page_path = os.path.join(page_dir, f'{month}.html')
-        prev_key = months_sorted[idx-1] if idx > 0 else None
-        next_key = months_sorted[idx+1] if idx < len(months_sorted)-1 else None
-        if prev_key:
-            prev_link = os.path.relpath(os.path.join(root, 'archive', prev_key[0], f'{prev_key[1]}.html'), os.path.dirname(page_path))
-            prev_html = f"<a href='{prev_link}'>前の月へ</a>"
-        else:
-            prev_html = "<span style='color:#ccc'>前の月へ</span>"
-        if next_key:
-            next_link = os.path.relpath(os.path.join(root, 'archive', next_key[0], f'{next_key[1]}.html'), os.path.dirname(page_path))
-            next_html = f"<a href='{next_link}'>次の月へ</a>"
+
+        older_key = months_sorted[idx-1] if idx > 0 else None  # 前 = older
+        newer_key = months_sorted[idx+1] if idx < len(months_sorted)-1 else None  # 次 = newer
+
+        # Build navigation ( "次の月へ | 前の月へ" )
+        if newer_key:
+            newer_link = os.path.relpath(os.path.join(root, 'archive', newer_key[0], f'{newer_key[1]}.html'), page_dir)
+            next_html = f"<a href='{newer_link}'>次の月へ</a>"
         else:
             next_html = "<span style='color:#ccc'>次の月へ</span>"
-        navigation = f"{prev_html} | {next_html}"
-        entry_html = '<br><br><br>\n'.join(
-            render_entry_block(e) for e in sorted(month_map[ym], key=lambda x: x['date'], reverse=True)
-        )
-        sidebar = render_sidebar(months_sorted, categories, os.path.dirname(page_path))
-        html_page = render_page(f'{year}-{month}', entry_html, sidebar, navigation)
-        write_file(page_path, html_page)
 
-    # create category pages (10 posts each)
+        if older_key:
+            older_link = os.path.relpath(os.path.join(root, 'archive', older_key[0], f'{older_key[1]}.html'), page_dir)
+            prev_html = f"<a href='{older_link}'>前の月へ</a>"
+        else:
+            prev_html = "<span style='color:#ccc'>前の月へ</span>"
+
+        navigation = f"{next_html} | {prev_html}"
+
+        # Render entries for that month, newest first
+        entry_html = '<br><br><br>\n'.join(render_entry_block(e) for e in sorted(month_map[ym], key=lambda x: x['date'], reverse=True))
+
+        sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts)
+        body_html = render_body(f'{year}-{month}', entry_html, sidebar, navigation)
+        full_html = assemble_full_page(f'{year}-{month}', body_html, HEADER_TEMPLATE, FOOTER_TEMPLATE)
+        write_file(page_path, full_html)
+
+    # -------------------------
+    # Category pages (10 posts each)
+    # -------------------------
     for cat, es in cat_map.items():
         es_sorted = sorted(es, key=lambda x: x['date'], reverse=True)
         safe = cat.replace('/', '_').replace(' ', '_') or 'uncategorized'
@@ -215,47 +336,62 @@ def build():
             page_num = idx // 10 + 1
             page_dir = os.path.join(root, 'category', safe)
             page_path = os.path.join(page_dir, f'{page_num:03d}.html')
+
+            # Category navigation (次 | 前)
             if page_num > 1:
-                prev_link = f'{page_num-1:03d}.html'
-                prev_html = f"<a href='{prev_link}'>前のページ</a>"
-            else:
-                prev_html = "<span style='color:#ccc'>前のページ</span>"
-            if idx + 10 < len(es_sorted):
-                next_link = f'{page_num+1:03d}.html'
-                next_html = f"<a href='{next_link}'>次のページ</a>"
+                newer_link = f'{page_num-1:03d}.html'
+                next_html = f"<a href='{newer_link}'>次のページ</a>"
             else:
                 next_html = "<span style='color:#ccc'>次のページ</span>"
-            navigation = f"{prev_html} | {next_html}"
-            entry_html = '<br><br><br>\n'.join(render_entry_block(e) for e in chunk)
-            sidebar = render_sidebar(months_sorted, categories, os.path.dirname(page_path))
-            html_page = render_page(cat or 'uncategorized', entry_html, sidebar, navigation)
-            write_file(page_path, html_page)
 
-    # build index page showing latest two months
+            if idx + 10 < len(es_sorted):
+                older_link = f'{page_num+1:03d}.html'
+                prev_html = f"<a href='{older_link}'>前のページ</a>"
+            else:
+                prev_html = "<span style='color:#ccc'>前のページ</span>"
+            navigation = f"{next_html} | {prev_html}"
+
+            entry_html = '<br><br><br>\n'.join(render_entry_block(e) for e in chunk)
+            sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts)
+            body_html = render_body(cat or 'uncategorized', entry_html, sidebar, navigation)
+            full_html = assemble_full_page(cat or 'uncategorized', body_html, HEADER_TEMPLATE, FOOTER_TEMPLATE)
+            write_file(page_path, full_html)
+
+    # -------------------------
+    # Index page (latest two months)
+    # -------------------------
     if months_sorted:
-        months_desc = sorted(months_sorted, reverse=True)
+        months_desc = sorted(months_sorted, reverse=True)  # newest first
         first_month = months_desc[0]
         second_month = months_desc[1] if len(months_desc) > 1 else None
-        entries_for_index = []
+
+        entries_for_index: list[dict] = []
         entries_for_index.extend(sorted(month_map[first_month], key=lambda x: x['date'], reverse=True))
         if second_month:
             entries_for_index.extend(sorted(month_map[second_month], key=lambda x: x['date'], reverse=True))
-        next_month = months_desc[2] if len(months_desc) > 2 else None
-        prev_html = "<span style='color:#ccc'>前へ</span>"
-        if next_month:
-            link = f"{next_month[0]}/{next_month[1]}.html"
-            next_html = f"<a href='{link}'>次へ</a>"
+
+        # Determine link to older month (前へ) – third newest
+        older_link_month = months_desc[2] if len(months_desc) > 2 else None
+
+        if older_link_month:
+            older_link = f"{older_link_month[0]}/{older_link_month[1]}.html"
+            prev_html = f"<a href='{older_link}'>前へ</a>"
         else:
-            next_html = "<span style='color:#ccc'>次へ</span>"
-        nav = f"{prev_html} | {next_html}"
+            prev_html = "<span style='color:#ccc'>前へ</span>"
+
+        next_html = "<span style='color:#ccc'>次へ</span>"  # newest page has no newer link
+        navigation = f"{next_html} | {prev_html}"
+
         page_dir = os.path.join(root, 'archive')
         page_path = os.path.join(page_dir, 'index.html')
-        entry_html = '<br><br><br>\n'.join(render_entry_block(e) for e in entries_for_index)
-        sidebar = render_sidebar(months_sorted, categories, page_dir)
-        html_page = render_page('開発日誌', entry_html, sidebar, nav)
-        write_file(page_path, html_page)
 
-    # ensure GitHub Pages skips Jekyll processing
+        entry_html = '<br><br><br>\n'.join(render_entry_block(e) for e in entries_for_index)
+        sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts)
+        body_html = render_body('開発日誌', entry_html, sidebar, navigation)
+        full_html = assemble_full_page('開発日誌', body_html, HEADER_TEMPLATE, FOOTER_TEMPLATE)
+        write_file(page_path, full_html)
+
+    # Ensure GitHub pages skips Jekyll processing
     write_file(os.path.join(root, '.nojekyll'), '')
 
 
