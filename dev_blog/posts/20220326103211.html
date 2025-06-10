@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>ウディタにアナログスティック＆タッチ機能搭載中</title>
+<script>
+function toggle(id){
+ var e=document.getElementById(id);
+ if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+</script>
+</head>
+<body>
+<h1>ウディタにアナログスティック＆タッチ機能搭載中</h1>
+<div>2022-03-26 10:32:11</div>
+<div><span style="font-size:large;"><strong>【ウディタにアナログスティック＆タッチ機能搭載中】</strong></span>
+
+ウディタ製のゲームがブラウザ化できるかもしれないということで、
+ただいまウディタへの「タッチ操作」実装のついでに「キー入力」周りの強化中です！
+
+「タッチ操作」はWindowsタブレット（対応してるか不明）で遊んだり
+ブラウザやスマホに展開しないと使わなさそうな機能なので
+重要度はほどほどだと思います。
+どちらかというと今回の目玉はゲームパッドの
+アナログスティック対応＆（POV）十字キー対応！
+
+<iframe width="520" height="300" src="https://www.youtube.com/embed/Ad-CC-oyCm0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+RPGだとアナログスティックをそこまで使わないかもしれませんが、
+Steam展開やゲーム機移植などを最終目標にされていて
+特にアクション性のあるゲームを作られる方なら、
+この機能があるとうれしい場面があると思います。
+特に右スティックが使えるようになるのが大きい！
+パッドの十字キーもショートカットとして使えるでしょう。
+
+今のところPC上では上記動画のように動いていますが、その他だとまだまだこれからです。
+
+
+<hr size="1" />
+<span style="font-size:large;"><strong>【おまけ　エラー表示の強化】</strong></span>
+
+ウディタの緑帯エラーはエラー発生地点が表示されるのですが、
+今回それに強化を加え、次バージョンから
+
+<span style="color:#CC0000"><span style="font-size:large;"><strong>『エラー箇所までのイベント実行経路を表示する機能』</strong></span></span>
+
+が追加されます！
+プログラミングだと「スタックトレース」と呼ばれている機能のようです。
+
+<img src="../image/2022/20220326.jpg" border="1">
+
+熟練者ほど同じコモンイベントをうまく流用するため、
+エラー地点の表示だけだと「どの経路から呼ばれた処理が原因になっているか」が
+特定しづらいことが多くなってしまいがちなのですが、
+この機能を入れたおかげでデバッグ効率が格段に向上しました。
+
+いま私が作っている『片道勇者2』はコモンイベントがかなり巨大化していたため、
+エラーが起きたときの調査で猛烈に効率が下がってたので大助かりでした。
+このデバッグ機能は、巨大化したシステムほど有用になると思います。
+
+<hr size="1" />
+今回の新機能、特に入力周りがブラウザ側と連携できそうか
+いまチェック中ですので、いけそうだと分かった頃に一般公開されると思います。
+もう少々お待ちください。</div>
+
+</body>
+</html>

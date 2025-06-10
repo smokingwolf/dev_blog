@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>片道勇者2 【58】 NPC作成と付随機能と</title>
+<script>
+function toggle(id){
+ var e=document.getElementById(id);
+ if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+</script>
+</head>
+<body>
+<h1>片道勇者2 【58】 NPC作成と付随機能と</h1>
+<div>2022-01-29 20:01:19</div>
+<div><span style="font-size:large;"><strong>【片道勇者2　NPC作成と付随機能と】</strong></span>
+
+ずっとNPC作成や施設作成中です！
+量が多い！　必要なシステムもどんどん作業リストに積み上がっていく！
+
+ひとまず今回出くわしたバグ動画を撮っておきましたので
+よければご覧ください　↓
+
+<strong><span style="font-size:x-small;">【開発中のハイライト動画（24秒動画）】</span></strong>
+<iframe width="520" height="285" src="https://www.youtube.com/embed/V407LTcBJY0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<hr size="1" />
+<strong><span style="font-size:large;">【鍛冶屋】</span></strong>
+
+ということで、いまいち変化のない地味～な画面写真の中から
+がんばって引っ張り出した今回の作業の目玉は、
+
+「鍛冶屋に装備中のもの以外でも渡して修理できるようにしたぞー！」とか。
+（つまり今作では装備中以外の武具も選んで修理できます、装備入れ替えは面倒ですからね）
+<img src="../image/2022/20220129.jpg" border="1">
+<span style="font-size:x-small;"><strong>アイテム選択画面。これを応用して回復アイテムだけ渡すとか（腐った）ナユタの実をネムリにあげるとか作れるはず</strong></span>
+
+と思ったらバグで修理費用がすごくてびっくりしたとか。
+<img src="https://silversecond.net/data/p_diary5/20220129A.jpg" border="1">
+<span style="font-size:x-small;"><strong>直す必要のない装備を選んだら修理額がすごかったバグ</strong></span>
+
+<hr size="1" />
+<span style="font-size:large;"><strong>【装備の調整師】</strong></span>
+
+他にも、
+「今作の付与の調整師は外すだけじゃなくて1つの付与を付けてもらえるぞー！」
+<img src="https://silversecond.net/data/p_diary5/20220129B.jpg" border="1">
+<span style="font-size:x-small;"><strong>付けてもらえるのはランダムで1種類ですが今作の付与は全部強力です</strong></span>
+
+など、新機能の追加が必要なキャラの作成をがんばっていました。
+「新しいウィンドウ処理」とか「（滅多に使わない）修理コマンド」とか
+「付与の追加処理」とか作らなきゃいけないので、この辺は
+「メッセージ書けばとりあえずNPC完成！」ってわけにもいかないんですね。
+
+ちなみに、一番上の動画の「酒場のマスター」に「水だけ（無料）」みたいな選択肢が
+増えたりしたのもそうですが、一部のNPCはちょっとずつブラッシュアップされています。
+全体的にありがたさを増していきたいですね！
+
+他にも、旧作のデータ再現だけでも膨大で、
+作らなきゃいけない「特殊処理」はまだまだ盛りだくさん！
+でもアイデアを考える時間は使わないので、その分いくらか早いはずです。
+
+<hr size="1" />
+<span style="font-size:large;"><strong>【その次は？　さらなる地帯の色づけをしたい】</strong></span>
+
+で、「前作にもあった基本的なNPC」の搭載が一通り済んだら、
+次は地形ごとにさらに個性付けするためのネタなどを入れていきたいと考えています。
+
+たとえばいつかいただいた、環境保護団体「緑の森」の建物が「草原」地帯にあるとか！
+
+荒野では荒くれ者や犯罪者ばっかりで、施設にも「山賊ハウス」みたいなのが出てきて
+そこではネムリが捕まってたり商人が捕まってたりするとか！
+
+そういう、これまで色が薄かった「地帯ごとの特色の強化案」を色々入れていきたいですね！
+火山と雪原と洞窟と海岸と要塞あたりは割と個性付けされていた感じがありましたが
+草原と荒野と山脈と遺跡地帯あたりは個性がイマイチだったので。
+
+
+そこまでできれば、一通りのアイテムや地形の出方を含めた
+ゲームバランスが具体的にチェックできるようになってきます。
+
+「ちょっと作れば分かるんじゃ？」　と思われるかもしれませんが、
+ローグライクは「アイテムの種類が増えた」というだけで
+回復アイテムの出現率が相対的に減ったりして
+ゲームバランスがドカーンと変わったりするゲームジャンルなので、
+ひととおりそろわないと何が起きるか本当に掴みにくいんですよ。
+
+
+ひとまず最初は、自分の一番楽しい難しさを
+「ハード」名目の難易度として作っていきたいと考えております。
+自分が100時間くらい遊べるゲームにできれば理想なんですけれども果たして！</div>
+
+</body>
+</html>

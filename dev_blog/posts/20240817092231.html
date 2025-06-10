@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>ウディタ作品ブラウザ化＆Androidスマホアプリ化！</title>
+<script>
+function toggle(id){
+ var e=document.getElementById(id);
+ if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+</script>
+</head>
+<body>
+<h1>ウディタ作品ブラウザ化＆Androidスマホアプリ化！</h1>
+<div>2024-08-17 09:22:31</div>
+<div>この一週間でウディタ作品のブラウザ化やスマホアプリ化について
+急激に話が進みましたのでご報告です！
+
+なおブラウザウディタは<a target="_blank" href="https://ci-en.net/creator/12702"><B>ruka様</B></a>のプロジェクトです！
+私は横から見てるだけで、技術的にどうやっているのかなどについてはよく分かっていません。
+
+<img src="../image/2024/20240817.jpg" border="1" width="450">
+
+
+<HR><span style="font-size:large;"><B>【ウディタ作品のブラウザ化、実現！】</B></span><HR>
+2024年8月10日、ruka様がウディタのブラウザ化プロトタイプを公開されました！
+
+<span style="font-size: 150%"><B>【ブラウザウディタ:プロトタイプ版を公開】</B></span>
+<B><a href="https://ci-en.net/creator/12702/article/1207619" class="red">https://ci-en.net/creator/12702/article/1207619</a></B>
+
+なんとこちらで公開されているファイルをサーバーに
+アップするだけでブラウザゲームとして動作！　すごい簡単！
+
+ちなみに「ブラウザ化で何できるの？」って話ですが、
+単純に【ダウンロードしなくてもすぐゲームが遊べる】ようになります！
+フリーゲームをDLして遊ぶのって地味にハードル高いですからこれは一つ大きな利点！
+さらに大きいのが、【スマホ上】でもブラウザを開いてウディタ作品が遊べるようになります！
+
+たとえば、私の持ってるスマホ「Pixel 6a」で『片道勇者（無印版）』が動くのを確認済みです！
+気になる点といっても「インターネット接続機能が使えない」、
+「ごく一部の挙動がPC版と違う気がする」くらいで、
+「他は全部Windows版通りに動作」し
+「普通に安定して60fps（100%の動作速度）」が出ました！
+安定性だけでなくてパフォーマンスもすでにかなり高い完成度！
+
+もちろんまだまだ動作しない部分や、こうなって欲しいなあ～という部分なども
+あると思いますが、プロトタイプでこのポテンシャルなら十分すぎると思います！
+
+
+
+<span style="font-size: 150%"><B>【ブラウザ化の簡単な注意点】</B></span>
+
+『ブラウザウディタ』の使い方自体は上の記事から
+ダウンロードできるZipファイルにも書いてありますが、
+ウディタ本体開発者から見た利用時の注意点は以下の4点！
+
+
+●プロトタイプのZipに入ってるpublicフォルダをそのままサーバーにアップするだけでとりあえず同梱のサンプルゲームが動きます！
+<span style="color: #90caf9">　→　それが大変な人は、K-Shin07様の「<a target="_blank" href="https://alpha-stella.com/tool/wodistant/"><B>Wodistant</B></a>」というツールを使えば、サーバーにアップしなくてもブラウザ版のテストが可能です！</span>
+
+
+●「Data.wolf」を自前で用意したものに上書きすれば自分のゲームが動きます！
+<span style="color: #90caf9">　→　ただしゲームデータの「BasicData」フォルダ内に、ブラウザウディタに入ってる「<span style="color: #d50000"><B>BrowserWoditor.dat</B></span>」を入れてから暗号化する必要がありますので、そこはご注意を。</span>
+
+
+●ブラウザウディタのpublicフォルダには作品名などを設定するテキストファイル「settings.js」も用意されているので、できればそれもいじっておくといいと思います。そこで設定されているゲーム名はセーブデータの認識用に使われてるそうです。
+
+
+●私とサポートしてる人が違うので、色んなご都合でサポートが止まる可能性があります。
+利害が一致しそうな人はよければ少しでも活動続けられるようにruka様にチップあげてくださるとみんなWin-Winだと思います！！　私も少しですが入れさせていただきました！
+
+
+
+<HR><span style="font-size:large;"><B>さらにAndroidスマホアプリ化もできた！</B></span><HR>
+この『ブラウザウディタ』、「.wasm」というファイル形式のエンジンやJavaScriptなどによってHTML上で動いているものなのですが、なんといろいろ変換すればスマホアプリにできます！
+
+私はAndroidスマホ化に成功しましたが、その作業途中でコマンドを変えればiOS用にも変換できるらしいので、たぶんiOS用アプリも作れると思います。
+（ただその場合、macを持ってて、かつApp Storeに出すための権利をお金払って持ってないといけない？ らしいです）
+
+<B>Android化に成功してスマホ上で撮影した画面　↓</B>
+<blockquote class="twitter-tweet" data-media-max-width="560"><p lang="ja" dir="ltr">【 <a href="https://twitter.com/hashtag/%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%82%A6%E3%83%87%E3%82%A3%E3%82%BF?src="hash&amp;ref_src=twsrc%5Etfw"">#ブラウザウディタ</a> でAndroidスマホアプリ化成功！】<br>試してみたらブラウザウディタのデータをAnrdoidスマホ化することができました！<br>（apk作成に使ったのはIonicさんちのCapacitorとAndroid Studio）<br><br>ウディタ作品をスマホ化できる足がかりが見えてこれは夢が広がります！　ウヒョー！ <a href="https://t.co/fU7ZtuSwaT" class="red">https://t.co/fU7ZtuSwaT</a> <a href="https://t.co/8MlrcSnj8F" class="red">pic.twitter.com/8MlrcSnj8F</a></p>&mdash; SmokingWOLF＠片道勇者2開発中/ゲーム開発者 (@WO_LF) <a href="https://twitter.com/WO_LF/status/1822528445567701363?ref_src=twsrc%5Etfw" class="red">August 11, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+Androidアプリ化のやり方はちょっと長いですが以下の通り！
+コマンドプロンプトとか使うのでちょっと大変ですよ。
+
+
+
+<HR><span style="font-size:large;"><B>ブラウザウディタをAndroidアプリ化する方法！</B></span><HR>ざっくりですが『ブラウザウディタ』のデータをAndroidアプリ化する方法メモを掲載しておきます！
+まだメモ状態なのでスクリーンショットなどはありませんが、参考にできる人は参考にしてみてください。
+
+
+
+<B>【1. Node.jsをインストール】</B>
+
+1-1. <a target="_blank" href="https://nodejs.org/en/download/package-manager">https://nodejs.org/en/download/package-manager</a>
+のサイトを開き、「Prebuilt Installer」のタブを開き、インストーラーをダウンロード
+(今どきのWindowsなら選択肢は「最初に出てるバージョン」「Windows」「x64」を選んでダウンロードすればいいと思います。万が一32bitのWindowsなら最後は「x86」を選んでください）
+
+
+1-2.DLしたファイルを実行し、インストールを進める。
+途中の「I accept the terms in the Liecense Agreement」はチェックを当然入れる。
+全部「Next」。（追加のChocolatey？がどうとか言うのはインストールしなくても動きました）
+
+
+
+<B>【2. Ionic CLIをインストールします】</B>
+Windowsの「コマンドプロンプト」を開き、以下のコマンドを実行します。
+（npmはNode.jsをインストール後に使えるコマンドです）
+
+<div class="code-container"><code>npm install -g @ionic/cli
+</code></div>
+
+
+
+<B>【3. Capacitor用のまとめフォルダと作品フォルダを作ります】</B>
+Capacitor（スマホアプリ用データを作るソフト）用のまとめフォルダを作ります。ここでは「Cドライブ」の「Capacitor-apps」フォルダを作るとします。
+この中に、作品ごとのフォルダが新たに作られます。
+
+Windowsの「コマンドプロンプト」を開いて以下を実行してください（Windowsの検索窓を開いて「cmd」と入れてもでてきます）。
+
+<div class="code-container"><code>cd C:\
+mkdir Capacitor-apps
+cd Capacitor-apps
+npm init @capacitor/app
+</code></div>
+<span style="color: #a0a0a0"><span style="font-size: 80%">※「\」はコマンドプロンプト中で「＼」と出るかもしれませんが意味は同じです</span></span>
+
+ここまで実行すると初回だけ
+「Need to install the following packages:
+@capacitor/create-app@0.3.0
+Ok to proceed? (y)」
+と出るのでyを押してEnterする
+
+ここからは作品ごとのフォルダ作成フェイズ。
+次に「? What is the name of your app? 」と出たらゲーム名を入れる。
+何か入れないといけないみたいなのでここでは「SampleGame」と入れたことにします。
+ 
+「? What directory should be used for your app?」は作成するフォルダ名を指定。
+ここでは何も入れずにただ「Enter」して「my-app」フォルダを作った前提で進めていきます。
+ 
+「 ? What should be the App ID for your app?」でAppID入れるらしいですけど知らないので何も入れずに「com.example.app」のままEnterして進めたとします。
+
+これで準備完了！　「Capacitor-apps」フォルダの中に「my-app」フォルダが作られ、その中に色々ファイルが作られています！
+これらの質問で打ち込んだ内容は「my-app」フォルダ内の「capacitor.config.json」ファイルに書かれているので、後の手順でまた修正します。
+
+
+
+
+<B>【4.Capacitorフォルダの中にAndroid用のプロジェクトを作成】</B>
+
+コマンドプロンプトで以下を実行し、Androidプロジェクト作成処理をします。
+【さっき作った「my-app」フォルダ内に移動】してから色々インストールしてるのが分かりますね。
+
+<div class="code-container"><code>cd c:\Capacitor-apps\my-app\
+npm install @capacitor/core @capacitor/cli
+npm install @capacitor/android
+npx cap add android
+</code></div>
+
+※初回だけ「? Share anonymous usage data? » (Y/n)」と出るかもしれないのでその場合は「Y」か「n」を入力。
+(「匿名で利用データを送るか？」 なのでイヤな人は「n」でいいです）
+
+
+
+<B>【5.wwwフォルダを作ってブラウザウディタのファイルを入れる】</B>
+
+5-1.
+作ったフォルダが「my-app」の場合、その中に以下のファイル構成で「www」フォルダを作り、「ブラウザウディタ用ゲームデータ」のファイルを入れます。
+
+<div class="code-container"><code>my-app/
+├── android/
+├── src/
+├── node_modules/
+├── www/   ← ★このフォルダを新たに作成し、ブラウザウディタの
+│   │　　　　　「public」フォルダ内の全ファイルを入れます
+│   ├──→ index.htmlやwoditor.wasm    ← つまりここに入ります
+│   └── Data.wolf　←★あなたのゲームのData.wolfを上書き。
+│　　　　　　※ただしBasicData内に「BrowserWoditor.dat」を入れる必要あり
+├── capacitor.config.json
+└── package.json など
+</code></div>
+
+
+
+5-2.「my-app」下の「<B>capacitor.config.json</B>」をむりやりメモ帳などで開いて（メモ帳にドラッグ＆ドロップでできます）、必要ならちょっと書き換えます。
+このファイルには、「スマホアプリ化されるときのアプリ情報」や「(my-appフォルダ内の)どのフォルダをスマホアプリ化するか」が記載されています。
+
+<div class="code-container"><code> {
+  "appId": "com.example.app",  ←動かすだけならこのままで可
+  "appName": "SampleGame",   ←ここがスマホ内でアプリアイコンの下に表示されるゲーム名
+  "webDir": "www",   ←★ブラウザウディタの入ってるフォルダ、"dist"などになってたら"www"に書き換えてください！！
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  }
+ }
+</code></div>
+
+<span style="color: #64b5f6"><span style="font-size: 80%">※"webDir"が"dist"のままだと、後にapkを作ってもCapacitorの紹介画面しか出てこなかったりしますので注意して下さい。1回やらかしました。
+
+※5-1で作ったゲームデータ用フォルダ、「www」フォルダでなく最初から「dist」フォルダを作っておいたらよくない？　って感じはしますが、いちおうこのjsonファイル内で指定してるんだよってのを示すために「www」にしました。それに将来の初期フォルダが「dist」フォルダじゃなくなるかもしれない。
+
+※appIdとappNameはアプリの識別に使ってるようです。たとえばスマホにapkを再インストールしたとき、この2つが前と同じだとアプリを上書きするか聞いてくれます。</span></span>
+
+
+
+
+
+<B>【6.Android Studioをインストール（ここは1回やれば以後やる必要なし）】</B>
+
+6-1.
+<a target="_blank" href="https://developer.android.com/studio?hl=ja">https://developer.android.com/studio?hl=ja</a>
+で「Android Studio Koalaをダウンロード」をクリック（2024/08/11時点）
+1.2GBくらいあります。DLしたらインストールしてください。
+→　インストール時は全部「Next」とか「Finish」でいいです。
+
+→ インストール後に英語でなんか出てきますが「前のデータ読み込むか」とか「匿名のデータ送信」なので「Do not import settings(設定をインポートしない)」とか「Send usage satistics to Google(Googleに送る）」とか選んでおけばいいと思います。
+
+
+6-2.
+ Android Studioを起動、インストールするとセットアップウィザードが始まる。
+選択肢は「Standard」でいいと思います。その後「Next」。
+「License Agreement」画面まで来たら「Accept」を選んで、最後は「Finish」。
+
+なお「Starting Downloading...」 から全然進まないように見えますがちゃんと進んでたので信じて待つこと。
+なんか質問が出たり管理者モード質問でたらとにかく「Yes」とか「はい」をしていきます。。
+終わったら「Finish」。
+
+
+
+<B>【7. Android Studioを起動してビルド】</B>
+
+7-1. 以下のコマンドをコマンドプロンプトで実行します（フォルダ名はあなたの作ったものに合わせて変更してください）
+<span style="color: #d50000"><B>この手順は「www」フォルダ内のData.wolfを最新にするたびに実行が必要です。</B></span>
+
+<div class="code-container"><code>cd C:\Capacitor-apps\my-app\
+npx cap sync android
+</code></div>
+
+
+7.2.Android Studioを起動して「Open」を選び、「C:\Capacitor-apps\my-app\android\」を選択します。
+
+※「android」フォルダ側を選ぶのが重要です！
+　→「settings.gradle(.kts)」ファイルが存在するフォルダを開かないとビルドできません。
+　　まちがえて「my-app」の方のフォルダを開いて何もできなかったことがありました。
+
+
+→ 選んだ後、途中で「Trust and Open Project 'my-app'?」と出てきた場合は「Trust Project」を選択
+
+→　プロジェクトが開いたら左上の「三」メニューから
+　「Build」→「Build App Bundles(s) / APK(s)」→「Build APK(s)」を選択
+
+→　初回だけ終わるまですごい時間かかる気がしますので待ちましょう。2回目からは数秒で終わります。
+　　もし途中でなにかが足りないってでてきたら適宜インストールやらアップデートしてください。
+
+
+
+7.3.処理が終わったら
+ C:\Capacitor-apps\my-app\android\app\build\outputs\apk\debug
+あたりにdebug用のAPKファイルが出力されています。
+
+
+7.4. そのapkファイルをなんとかしてAndroidスマホで読ませてインストールすると、スマホ上で実行できます。
+その辺りの手順は紹介しないので、調べてがんばってみてください。私は「Google Drive」にアップしたapkファイルをスマホでダウンロードしています。
+
+<span style="font-size: 80%"><span style="color: #a0a0a0">※なお、スマホ側の設定で「野良APKを許可する」的な設定をオンにする必要がある場合があります。
+私だとGoogle Drive上でapkファイルをクリックすると「不明なアプリのインストール」みたいな画面が出てくるので「許可する」を選ぶ、という手順が必要でした。</span></span>
+
+
+<span style="font-size: 80%"><span style="color: #a0a0a0">※今回作ったapkファイルはdebug(デバッグ)版です。アプリストアに公開するなら他にも色々設定してrelease(リリース)版を作れるところまでがんばらないといけないそうですが、今回は調べてません。</span></span>
+
+
+
+
+<strong>【8. 今後、新しいData.wolfを作った場合は？】</strong>
+
+もし後でData.wolfを新しくした場合は、以下の手順だけを行えばOKです！
+
+ 8-1.「www」フォルダ内に新しいData.wolfを上書き
+
+ 8-2.「コマンドプロンプト」で以下を実行する
+ 
+<div class="code-container"><code>cd C:\Capacitor-apps\my-app\
+npx cap sync android
+</code></div>
+
+ 8-3. Android Studioで「Build」→「Build App Bundles(s) / APK(s)」→「Build APK(s)」を選択
+
+<HR>
+以上です！
+もしかしたらインストールしたてのWindowsパソコンでやると
+他にインストールが必要なファイルなども出てくるかもしれませんが、
+私のパソコンだとこの手順でなんとかなりました。
+
+もし自分のゲームをAndroidスマホアプリとして
+動かしてみたいという人がいらっしゃいましたらぜひお試しください。
+
+<span style="color: #64b5f6"><span style="font-size: 80%">（ちなみに今回の作業4(Android用のプロジェクトを作成)あたりからアレンジすればiOS用の基礎ファイルもそのまま作れるらしいです、Capacitorすごい。
+ただしiOSのスマホアプリ用データ作成には、macOS上でのみ起動できる「Xcode」というソフトや、年100ドル(約1.5万円)かかるApple Developer Programへの登録などが必要だそうです）</span></span>
+
+<HR>
+ということで、夢が広がるブラウザ化がとても良い感じに進んでいます！
+
+そして第16回ウディコンの審査期間ももうすぐ終了！
+一般審査締め切りは8/20の23:59、結果発表は8/24(土)あたりにおこなう予定です！
+
+もしブラウザ版もバッチリ使えるのでしたら、
+次回ウディコンでは作品一覧に「ブラウザ版」へのリンクも
+掲載していいかもしれません。
+そしたらスマホからでもウディコン作品が遊べちゃいますよ！
+今のところ問題の方が多そうなので実現できるかは分かりませんが！
+　（仮によそのサイトにアップするにしてもそこのトップページからの流入が
+　あると不公平になったりするので悩ましいとか、
+　自前サーバーにアップしても通信帯域がすぐオーバーしちゃうとか）
+
+それでもみなさまのすばらしいゲームの数々がいろんな人に
+遊んでもらえるチャンスが増えるに越したことはないので、
+やれそうな範囲でめざしていきたいですね！</div>
+
+</body>
+</html>

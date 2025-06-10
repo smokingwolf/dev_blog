@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>WOLFエディタVer0.955</title>
+<script>
+function toggle(id){
+ var e=document.getElementById(id);
+ if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+</script>
+</head>
+<body>
+<h1>WOLFエディタVer0.955</h1>
+<div>2007-11-27 21:48:19</div>
+<div>WOLF RPGエディターVer0.955(11/28緊急修正）をアップしました。
+マウス機能とDBのファイル入出力機能を追加！
+初めての人、サンプルゲームを見たい人は↓をダウンロード！
+<a href="http://www.silversecond.com/data/WolfRPGEditor_Alpha0955.exe" class="red"><strong>WOLF RPGエディター&alpha; フルパッケージ(ver0.955) 2.5MB</strong></a>
+（※サンプルにマウス射的ゲームが追加されています）
+すでに入れてある人、exe3つだけ上書きしたい人は↓から！
+<a href="http://www.silversecond.com/data/WolfRPGEditor_Alpha0955mini.exe" class="red"><strong>WOLF RPGエディター&alpha;　exeのみ(ver0.955) 1.2MB</strong></a>
+
+説明書→<a href="http://www.silversecond.com/data/WolfRPGEditorHelp/" class="red">「WOLF RPGエディター公式サイト」(新ウィンドウ）</a>
+ツールのバグ報告→<a href="http://www.silversecond.com/data/SilSecThreadBBS/bbs.cgi?1188269949&l20" class="red">「WOLF RPGエディタースレッド」</a>
+ウディタ素材・情報交換→<a target="_blank" href="http://www.silversecond.com/WolfEditorWiki/">「WOLF RPGエディターWiki」(新ウィンドウ)</a>
+
+<hr size=1 />
+<span style="font-size:large;"><strong>【Ver0.95→0.955(緊急修正)の更新内容】</strong></span>
+・[変数操作]で下の2つのボックスにて、「X番の変数読込」が
+正常に機能していなかったバグを修正
+
+<span style="font-size:large;"><strong>【Ver0.91→0.95の更新内容】</strong></span>
+
+<span style="font-size:large;">[新機能]</span>
+
+・マウス機能を追加しましたマウスのクリック状態やホイール状態は、
+[変数操作+]の「その他」にて取得可能に。
+マウスポインタの座標についてはシステム変数71番（X座標）と
+72番（Y座標）で読み込むことが可能です。
+
+・データベースのファイル入出力機能を追加。
+多人数開発でパラメータを設定するときなどに便利です。
+ファイル入出力できるのは
+「タイプ設定」
+「特定のタイプの設定＋全データ」
+「データのみ（複数可）」
+の3種類です。
+
+<span style="font-size:large;">[Editor.exeの修正]</span>
+
+・[サウンド]
+　「直接指定」の「（停止）」を指定した場合に、
+　修正時の表示が崩れるのを修正。
+
+・[条件分岐（変数）]
+　「3変数を連動」の挙動を修正しました。
+
+・[タイルセット設定]　
+一部環境でクリック座標がズレるエラーの修正（を試みました）。
+
+<span style="font-size:large;">[Game.exeの修正]　</span>
+
+※今回は割と困るバグが多いのでアップデートを推奨します。
+
+・イベントの出現条件をセルフ変数にしたとき、全て
+イベント0のセルフ変数を読みに行ってしまうバグがあったのを修正。
+
+・マップ切り替え時にスクロールが停止するバグを今度こそ修正（たぶん）
+
+・BGMとBGSの併用ができない＆タイトルに戻ると鳴らないバグを修正
+
+・マップ番号0のマップでは条件付きのイベントが自動実行できないバグ修正</div>
+
+</body>
+</html>
