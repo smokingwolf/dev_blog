@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>開発日誌</title>
+<style>
+body{display:flex;}
+#content{flex:1;}
+#sidebar{width:80px;margin-left:10px;}
+.entry-title{background:#555;color:#fff;padding:4px;}
+.entry-body{background:#fff;color:#444;padding:4px;}
+</style>
+<script>
+function toggle(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+function toggleDisp(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+</script>
+</head>
+<body>
+<div id='content'>
+
+<div class='entry'><div class='entry-title'>2025-01-01 00:00:33 2025年！ 新年あけまして！</div><div class='entry-body'><TABLE padding="15px"><tr><td align="left" style="line-height: 1.5; word-break: break-all;">　あけましておめでとうございます！　2025年、令和7年となりました！
+
+<HR><span style="font-size:large;"><B>●新年あけましたイラスト！</B></span><HR>
+　今年のイラストは巳年（みどし・ヘビ年）ということで特に誰でもないキャラクター！
+　去年に引き続いてスケイル（竜っぽいキャラ、たまにうなぎ扱いされる）でもいい気がしましたがさすがに2連続はね！
+
+<img src="../image/2025/20250101.jpg" border="1" style="max-width:520px;" loading="lazy">
+
+　
+
+<HR><span style="font-size:large;"><B>●今年の抱負・目標！</B></span><HR>
+　今年は年初からやりたいことといいますか、忙しい用事がありますね！
+
+<HR>
+<span style="font-size:120%;"><B>【ウディタ3.5公開に向けてがんばる！】</B></span>
+
+　もうあとからあとから入れたい機能が周りのコメントなどから気付かされて無限に追加オーダーされているのでどんどん遅れております！　
+　が、それでもさすがに1月中には公開したいので全力を尽くします！
+　
+　なおすでに実装済みや実装が確定しているのはこちらにまとめてあります！
+→　<a target="_blank" href="https://silversecond.com/WolfRPGEditor/ReleaseLogNew_3.50.html"><span style="font-size: 150%"><B>●ウディタ3.5更新予定内容 </B></span></a>
+　（そのうち消すと思いますので数年後に見た人はリンク切れしてるかも）
+　
+　最新の手元の作業としては『条件分岐やループの折りたたみ・展開機能』に挑戦中です！　あまりにも改造しなきゃいけない内容が複雑で、分岐が壊れてめちゃめちゃなことになっちゃうとか、まだまだバグまみれです。
+　でもこれは私もそこそこ使うかもしれないので、こういったイベントコマンド操作周りはじっくり改良していきたいところです！　私の開発するゲームでは、作業の80%以上はイベントコマンドいじりになりますからね！
+
+
+<HR>
+<span style="font-size:120%;"><B>【そして『片道勇者2』へ！】</B></span>
+
+　『片道勇者2』は前作に加えて「デッキ構築要素」も取り込んだ強制スクロールRPGです！
+　今は睡眠も十分に取れる環境を取り戻せたので、バージョン3.5に羽化したウディタを使ってバリバリ作っていきます！　ウディタ3.5の進化が大きすぎて、「すでに作った部分を最初から3.5で作れてたらどんだけラクだったかーぐおお！！」と思わないでもないですが！
+
+　そしてこの『片道勇者2』、作り始めた頃は「デッキ構築ローグライクって一般的じゃないからチュートリアルなどをかなり慎重に作らないとダメそうだなあ」と思ってたら、今やデッキ構築が一般化しちゃうほど流行しちゃいましたが、それはそれでなじみやすさが上がっているので、利点ととらえてがんばります！　もちろん初めて遊ぶ人にも楽しめるようがんばりますよ！
+　とにかく面白くなるよう、やれる努力と工夫をやっていきます！
+
+
+<HR>
+<span style="font-size:120%;"><B>【体に気をつけてがんばる！】</B></span>
+
+　これは抱負ですが、体に気をつけてがんばります！
+　この数年間の介護で腰も膝もやられてしまってるのはまあいいとして、最近は一回風邪や病気をもらうと一ヶ月くらい不調になることも多くなってるご時世ですので、なるべく常に全力を出せるよう、健康には気をつけていきたいと思います！
+
+　特にこれからは「（介護で）熟睡時間ゼロ」みたいな日はしばらくはなくなるはずですからね！　睡眠はちゃんとしっかり取ろうと思います！
+
+<HR><span style="font-size:large;"><B>●年末に生放送やりました！</B></span><HR>
+　年末に2024年を振り返る生放送をやりました！　去年も1年いろいろ事件も面白いこともありましたし、時代の変化も色々感じられましたね！
+
+<a target="_blank" href="https://youtube.com/live/oCWEhI3Gng0">【シルバーセカンド26周年！　Xで1年を振り返る生放送！】<img src="https://silversecond.net/data/p_diary5/20250101A.jpg" border="1" style="max-width:520px;" loading="lazy"></a>
+
+　少しAI話、ゲーム開発話、少し介護話、少しウディコン話、ウディタ話、などが話のテーマだったと思いますので、そういったのが気になる方はよければお正月の時間つぶしにでもぜひ！
+
+<HR>
+　という感じで今年もさっそくがんばっていきますので、2025年もよろしくお願いいたします！
+　まずはウディタ3.5修正の完了を目指して全力でがんばります！　うおおお！</td></tr></table></div></div>
+<div class='entry'><div class='entry-title'>2021-12-24 00:00:00 シルバーセカンド23周年！</div><div class='entry-body'><span style="font-size:large;"><strong>【シルバーセカンド『23』周年！】</strong></span>
+
+ということで、本サイト「シルバーセカンド」は
+2021年12月24日をもってついに23周年をむかえました！
+
+ここまで長いこと続けられたのも皆さまのお声と手に支えられたおかげです！
+いつも本当にありがとうございます！
+
+<img src="https://silversecond.net/data/p_diary5/20211224A.jpg" border="1" border="スケイルとクバ！">
+<strong><span style="font-size:x-small;">今回は『シルフェイド幻想譚』からスケイル（←）と、『旅団世界TRPGリプレイ2巻』からクバ（→）！</span></strong>
+
+<hr size="1" />
+<span style="font-size:large;"><strong>【2021年の成果】</strong></span>
+
+2021年の成果は以下の通り！
+
+
+<span style="font-size:large;"><strong>●ウディタの修正が大変でした！</strong></span>
+1月をいくらか過ぎた頃から早々、Windowsの問題で
+2ヶ月以上にわたるウディタの大規模修正をするはめになりました。
+「Windows10では起きないけどWin7と8だけで起きる環境依存バグだとか
+10分放置してると起きるバグとかやめてぇぇー！」
+となっていました。
+使用していたライブラリも3年ぶりに最新にしたら大変なことに！
+
+Steamの片道勇者にも影響が出たので修正していたみたいですが、
+確認したら4月中旬くらいまで対応に駆けずり回っていたようです。
+
+ですが、今年はウディタに様々なご支援をいただくことができ、
+おかげさまで「動画再生機能」や「効果音チャンネル再生機能」など
+追加機能をいろいろ搭載する機会も生まれました（今はタイル48x48対応などの作業中）。
+2018年以来、久々に複数の新機能を搭載できた1年でしたね！
+
+
+
+<span style="font-size:large;"><strong>●旅団世界TRPGリプレイ2巻発売！</strong></span>
+TRPGリプレイ、今年は2巻目を出させていただきました！
+今回は片道勇者ベースの舞台でお送りします！
+パラレル世界の薬師ネムリも出るぞ！（でもネムリの過去は相変わらず悲惨）
+通勤通学の読書のお供に！
+
+<a href="https://amzn.to/3ld67QT" class="red">旅団世界TRPGリプレイ2巻販売ページ
+<img src="https://silversecond.net/contents/game/TRPG/ryodan_sekai_trpg/image_official/ryodan2_cover.jpg" border="2" height="190"></a>
+
+個人デジタルゲーム開発だけだと、数年単位でお話を書かない時期があったり、
+キャラクターの絵を全然描かなかったりするシーズンができてしまうので、
+TRPGのセッションやリプレイでお話作りから絵作りからゲームバランス感覚の維持まで
+一通りの基礎訓練ができるのはとても助かっています。
+
+なお、2022年は3巻が発売予定です！
+プレイがだいぶゆっくりだったのとあくまで副業ポジションのペース配分なので、
+発売は2022年の「中盤」以降になりそうです。
+楽しみにしてくださっている方は少々お待ちください！
+
+
+
+<span style="font-size:large;"><strong>●シルフェイド幻想譚、顔グラフィックリファイン！</strong></span>
+今さらですが『シルフェイド幻想譚』のグラフィックをリファインしました！
+元の雰囲気を残したまま顔グラフィックを整形したのが主なので
+遠い記憶の中にあるシルフェイド幻想譚と比べるとあんまり変わってないと思いますが、
+また遊び直してくださる方がいらっしゃったのはうれしかったです！
+<img src="https://silversecond.net/data/p_diary5/20210508A.png" border="1" width="323">
+
+「絵は後から差し替えできるから今はヘタでも大丈夫！
+とにかく中味の方をしっかり作ればいいんだ！」
+といつからか思うようになったのですが、再び話題に挙がった中で、
+シル幻の中味は今でもある程度通用するらしいので、
+もしかしたらいいものを作れたのかな、と小さく自画自賛していました。
+
+というのも、私は世界で唯一「完全ネタバレ済みの」シル幻しか知らない身なので、
+シル幻がどう面白いかがよく分かってないんですよ！
+幸福な身のはずなのに自分が最も遊びたかったものが体験できない不幸！
+似たようなコンセプトのものを作ってみても、同じ面白さを出せるかは運になりそうです。
+
+
+
+<span style="font-size:large;"><strong>●TRPGテストプレイなどのお仕事ちょこちょこ</strong></span>
+ご縁があってTRPGのテストプレイなどに2件関わらせていただきました！
+
+<strong>『光砕のリヴァルチャー』（開発日誌中の記事）</strong>
+<a href="https://smokingwolf.blog.fc2.com/blog-entry-731.html" class="red"><strong>https://smokingwolf.blog.fc2.com/blog-entry-731.html</strong></a>
+身体が闘争を求めている人が喜びそうなロボTRPG！
+テストプレイだけでなく敵データも1体作らせていただきました。
+
+<strong>『瞳逸らさぬイリスベイン』（こちらはTwitterで一言）</strong>
+<strong><a href="https://twitter.com/WO_LF/status/1408337415866093568" class="red">https://twitter.com/WO_LF/status/1408337415866093568</a></strong>
+独特の世界設定のもとで行われる現代復讐劇TRPG！
+世界設定が面白くて好きでした。
+
+他人の創作物のデータのブラッシュアップ工程を間近で見たのは
+ほぼ初めてだったので、すごく勉強になりました。
+と同時に、テストプレイ側の観点も体験できたのでとても勉強になりました。
+「この立場だとこういう指示が欲しいんだな！」と思ったりできるのは大事な体験です。
+
+
+
+<span style="font-size:large;"><strong>●3Dアバター作ってみた！</strong></span>
+こちらは新たな挑戦！
+動くと気持ち悪いペンギンをBlenderで作ってみたり、
+VRoid Studioというソフトでマスコットキャラのラッシーを作ってみたりしました。
+
+ペンギンは「かわいいのできたー、やったー！」と思っていざ動かしてみたら
+全然期待通りじゃなくて大笑いしてました。今でも特に直していません。
+
+記念に動画も作ったのでよかったらぜひご覧ください。
+
+<strong>動くと気持ち悪いペンギンの動画</strong> <a href="https://youtu.be/DAurvppfSPo" class="red">
+<img src="https://silversecond.net/data/p_diary5/20211224E1.jpg" width="200" border="2"></a>
+
+<strong>3Dの女の子（ラッシー）の動画</strong><a href="https://youtu.be/pFh5emEJ3SM" class="red">
+<img src="https://silversecond.net/data/p_diary5/20211224E2.jpg" width="200" border="2"></a>
+
+
+
+
+<span style="font-size:large;"><strong>●『片道勇者2』がいっぱい進んだ！</strong></span>
+今年は『片道勇者2』の開発がいっぱい進みました！
+
+もちろんあれこれ試行錯誤するシーンも相当に長く、
+画面サイズ変更やらバトルシステム変更といった
+大規模改修も複数回発生してしまったのですが、
+ようやく『片道勇者』の『2っぽい感じ！』という目標が
+満たせそうなベースができあがってきた感触になったので、
+今はヒャッホーと言いながらデータをガンガン作っているところです。
+
+でもここからが一番長い！　
+ローグライクRPGというジャンルの特性上、
+「面白くなったら完成！」という最も難しいゴールとの戦いになります。
+でもきっとやれるはず。
+
+<hr size="1" />
+<span style="font-size:large;"><strong>【今年の振り返り】</strong></span>
+
+振り返って一番よく思い出すのは、
+今年はたびたび体調が悪くなった一年だったということでした。
+今も調子が悪い！
+
+今年は6月頃から非常に体がだるかったり思考体力が低下した時期があったのと、
+それ以後は寝てるときに急に呼吸が苦しくなったりする症状が
+出たりするのにちょっと困っていました。
+いちおうお医者さんの診察は受けています。
+
+慣れて、そうなる前提の覚悟を持って行動を取れるようになれば
+そんなに大したことじゃないんですが、
+慣れない間はイレギュラーな状況が突然起きるのが怖い！
+でも覚悟ができて、それ前提の行動を取っていればまあまあ平気！
+
+あと、新型感染症のアレコレもいちおう振り返っておきますと、
+5月頃や夏頃は地域によっては一時
+病院に入れないほど感染者数が激化してましたが、
+今の日本はかなり落ち着いてていいですね！
+（でも増えつつはあるのかもしれません、ご注意を）
+
+私はどのみちあまり出かけられませんが、
+周りのみなさんが平穏無事な心持ちだと、私も心安らかになれます。
+
+<hr size="1" />
+<span style="font-size:large;"><strong>【23周年生放送をしました（追記）】</strong></span>
+
+<a href="https://youtu.be/T7RTOKFfvdg" class="red">Youtube配信ページ
+<img src="https://silversecond.net/data/p_diary5/20211224E.jpg" border="2"></a>
+
+23周年記念で1年を振り返る生放送をさせていただきました（私の生声注意！）。
+みなさまのたくさんのコメント、本当にありがとうございます！　勉強になりました！
+
+<hr size="1" />
+<span style="font-size:large;"><strong>【来年の目標！】</strong></span>
+
+<span style="font-size:large;"><strong>●旅団世界TRPGリプレイの3巻を出す。</strong></span>
+いよいよ、この企画の初期目標であるリプレイ3巻に到達します！
+次回は不思議なルールの状況でかわいい＆セクシー盛りだくさん（予定）の一冊です！
+
+
+<span style="font-size:large;"><strong>●『片道勇者2』の開発続行！</strong></span>
+思ったより全然終わりが見えませんが、
+ゴールには近付いているのと、方向性が固まってきたので、
+あとはひたすら走り続けます。
+
+<hr size="1" />
+<span style="font-size:large;"><strong>【最後に】</strong></span>
+
+2021年も、本当にたくさんの人のお世話になりました！
+ここを見てくださるみなさまや、ゲームを遊んでくださっているみなさま、
+ご支援してくださったみなさまのおかげで、
+自分は今も大好きな開発を続けることができています。
+今でも私のゲームや記事を見てくださっている皆さまには、本当に感謝の限りです！
+
+もしよければ来年もときどきでいいので、見にきてくださると幸いです。
+今年も一年、本当にありがとうございました！
+
+<hr size="1" />
+次回の開発日誌は2022年の元旦に更新予定です。
+それでは皆さま、お体には気をつけて、よいお年を！</div></div>
+<div class='entry'><div class='entry-title'>2021-09-04 11:49:05 休養中＋3巻発売時期</div><div class='entry-body'><span style="font-size:large;"><strong>【休養中】</strong></span>
+
+ウディコンが終わる直前くらいから今に至るまで
+体調の悪さが激化していたので現在休養中です！
+
+<img src="../image/2021/20210904.jpg" border="1">
+
+もともと呼吸の問題で仰向けで寝るのがしんどくて、寝るときは横になるか、
+最近は横よりやや下向き気味の方が楽な感じになってきている身なのですが、
+ここに来てますます息が苦しくなってヤバそうな感じになったので診てもらったところ、
+お医者さんによると各種パラメータは健全で
+こんなときに限って新型感染症っぽくもなさそうとのことで、
+もしかしたらストレスとか神経周りとかそっち系かもしれないから
+もうとにかく休んで治せという感じでした。
+
+まだ全然がんばってない気がするのに不調になるというのはかなりションボリです。
+不調時でもやれる作業はそれはそれで進めつつ、
+コンディション調整にもリソース割り振りつつ、
+全力を出せる状態を整えていきたいですね。
+
+特にゲーム開発は、細切れ作業でやると
+状況把握が大変になってしまう場面がちょいちょいあるので、
+やりたい作業を一気に進めるための体力は維持したいです。
+（お絵かきや文書編集、小さいネタ出し等は細切れ時間でも平気ですが、
+ストーリーやシステム作成は盛り上がりや一時記憶が消えないうちに一気にやりたい！）
+
+あとそれとは別に、今は例の感染症が猛威を振るっていますので、
+それも含めて皆さまもどうかお気を付けて！
+
+<hr size="1" />
+<span style="font-size:large;"><strong>【旅団世界リプレイ3巻発売時期について】</strong></span>
+
+何もないのもアレなので、今回はお絵かきストックから一枚ご紹介！
+
+以下は来年2022年発売予定の『旅団世界TRPGリプレイ3巻』に登場予定の
+ケモ耳の女の子の「セレ」、ウェイトレス版です！
+（ちなみに2巻にもボロをまとって登場していました）
+
+<img src="https://silversecond.net/data/p_diary5/20210904A.jpg" border="1">
+
+ちなみに旅団世界TRPGのリプレイ収録はものすごくゆっくりやっていて、
+1年かけて1巻分のセッションを進める感じのペースになっています。
+というかそもそもまだ3巻分のセッションも終わってないので、
+2022年（※来年）の「年末」までには出せたらいいなあ、というくらいの締め切り感です。
+
+そんなわけで3巻はどう考えても『2022年の夏以降』になると思いますので、
+3巻をお待ちの方はごゆっくりお待ちください。
+どちらかというと『片道勇者2』の方を優先しなければなりませんからね！
+
+なお、<a href="https://amzn.to/3yJvQFs" class="red"><strong>「旅団世界TRPG2巻」（Amazon Kindle）</strong></a>の人気投票は
+まだまだ絶賛募集中なので皆さまのご投票、お待ちしております！
+コメント掲載のチャンス！</div></div>
+<div class='entry'><div class='entry-title'>2021-05-12 16:42:50 シルフェイド幻想譚リファイン！</div><div class='entry-body'><span style="font-size:large;"><strong>【シルフェイド幻想譚リファイン！】</strong></span>
+
+ということで、突然ですが懐かしの『シルフェイド幻想譚』をリファインしました！
+
+やったのは「ほぼ全ての人間キャラ」の顔グラフィックの修正です。
+さすがに初めて描いたとき（2004年）から17年、
+公開後からのカウントでも16年も経ってしまったのでこの辺で美容整形！
+絵の差し替えだけなら後からしやすいので、いつかやりたいとは思っていました。
+
+<strong><span style="font-size:x-small;">たぶんちょっとかわいくなった2人↓</span></strong>
+<img src="../image/2021/20210508.png" border="1" width="323">
+
+<img src="https://silversecond.net/data/p_diary5/20210508A.png" border="1" width="323">
+
+<hr size="1" />
+<span style="font-size:large;"><strong>【ダウンロード】</strong></span>
+
+ということで、ダウンロードはこちらから！
+↓
+<a href="https://www.vector.co.jp/soft/dl/winnt/game/se363424.html" class="red"><span style="font-size:large;"><strong>【シルフェイド幻想譚 Ver1.31のダウンロード（Vectorへ）】</strong></span></a>
+
+以下のように、タイトルの右下に「2005 - UPDATE 2021」と出ていればリファイン版です！
+<img src="https://silversecond.net/data/p_diary5/20210508B.jpg" border="1" width="320">
+
+いまだに新しくプレイしてくださる方がいらっしゃるようで、本当に感謝の限りです！
+おかげさまで、長年の積み重ねで総ダウンロード数は最低でも50万以上に達しています。
+自慢の1本！
+
+<hr size="1" />
+<strong><span style="font-size:large;">【コンテストパーク受賞時の記事！】</span></strong>
+
+あとインターネットアーカイブで『コンテストパーク　名誉の殿堂』の
+『シルフェイド幻想譚』の記事がありましたのでご紹介！
+もう元のページがないので貴重な記事です！
+
+<a href="https://web.archive.org/web/20060208043401/http://www.enterbrain.co.jp/techwin/data/contents/cpd/silfeid.html" class="red"><span style="font-size:x-small;">https://web.archive.org/web/20060208043401/http://www.enterbrain.co.jp/techwin/data/contents/cpd/silfeid.html</span>
+<img src="https://silversecond.net/data/p_diary5/20210508C.png" border="2" width="500"></a>
+
+<strong>用意されたレールをなぞるRPGではなく、
+「遊ぶ人それぞれにとってそれぞれの物語があるRPGにできればいいな」
+ということを徹底的に意識しました。</strong>
+
+とコメントにありますが、いま見るとその目標に関しては、
+けっこうがんばって作れたのかなあという感触があります。
+TRPG好きマンとしては、「自分で参加している感」はすごく大事にしたいと思ってました。
+
+とはいえ、「絶対面白いよこういうRPG！　遊んでみたい！」と思って必死で作ってみたものの、
+実際に作者（私）が遊んでみると面白さを感じられなくて
+ちょっぴり切なくなったのはいい思い出です。
+
+いやだって、このゲームの「全部ネタバレしてる状態の面白さ」って、
+もう「噛みすぎて味のなくなったスルメ」くらいの味しかしないんですよ！
+
+「いったい何が面白かったのか」を私だけ体験できなかったので、
+今度作るときはなんというか、もう少し喜びを感じやすい形を
+工夫して作れたらいいなと思います。
+
+そういう意味だと、片道勇者みたいな『ローグライク』は
+私自身も楽しく遊べて、作ってて幸せなジャンルの一つですね！
+
+
+でもそこは置いといて、また『シルフェイド幻想譚』みたいなRPGを作るのも面白そうです。
+でもいまどき、昔ながらの2DのRPGとか遊ばれる人はいらっしゃいますかね？
+有料ゲーム置き場でウディタやツクールっぽい昔ながらの2D RPGの画面を見て
+テンションが上がる人はもう絶滅しているような気もする今日この頃です。
+うまいこと見せ方を変えたものならインディーゲームとしても割といけるかも？
+
+何はともあれ、今は目の前の新作開発です！
+まだまだ時間がかかりそうですががんばっていきます。</div></div>
+<div class='entry'><div class='entry-title'>2021-01-01 00:00:50 2021年あけまして！</div><div class='entry-body'><span style="font-size:large;"><strong>【2021年あけまして！】</strong></span>
+
+おかげさまで無事、2021年をむかえることができました！
+あけましておめでとうございます！
+
+<span style="font-size:x-small;"><strong>去年12月に色々調べてたらカモシカがシカじゃなくてウシだと知ってしまったので共有です</strong></span>
+<img src="../image/2021/20210101.jpg" border="1">
+
+<span style="font-size:large;"><strong>【今年の目標】</strong></span>
+
+<strong>◆さすがに今年中には『片道勇者2』の終わりが見えそうなところまでは進めたいです！
+ローグライクは物量を無限に詰め込めるので完成が非常に見切りにくいのですが、
+自分で30時間遊んでも平気なくらいのプレイ耐久度を目指したいところです。
+
+◆旅団世界TRPGリプレイ3巻の作成！
+
+◆ウディタ翻訳サポートツールを完成させる。</strong>
+
+
+最近の寒さで体が不調になることが増えてきたので
+気をつけながらやっていきたいと思います。
+みなさまもどうかお体にはお気を付けて！
+
+ということで、今年も1年、よろしくお願いいたしまーす！</div></div>
+</div>
+<div id='sidebar'>
+<div><a href='../../archive/index.html'>開発日誌トップ</a></div>
+<div><a href='javascript:void(0);' onclick="toggleDisp('y2025')">2025</a></div>
+<div id='y2025' style='display:none;margin-left:10px;'>
+<div><a href='../../archive/2025/05.html'>05</a></div>
+<div><a href='../../archive/2025/04.html'>04</a></div>
+<div><a href='../../archive/2025/03.html'>03</a></div>
+<div><a href='../../archive/2025/02.html'>02</a></div>
+<div><a href='../../archive/2025/01.html'>01</a></div>
+</div>
+<div><a href='javascript:void(0);' onclick="toggleDisp('y2021')">2021</a></div>
+<div id='y2021' style='display:none;margin-left:10px;'>
+<div><a href='../../archive/2021/12.html'>12</a></div>
+<div><a href='../../archive/2021/11.html'>11</a></div>
+<div><a href='../../archive/2021/10.html'>10</a></div>
+<div><a href='../../archive/2021/09.html'>09</a></div>
+<div><a href='../../archive/2021/08.html'>08</a></div>
+<div><a href='../../archive/2021/07.html'>07</a></div>
+<div><a href='../../archive/2021/06.html'>06</a></div>
+<div><a href='../../archive/2021/05.html'>05</a></div>
+<div><a href='../../archive/2021/04.html'>04</a></div>
+<div><a href='../../archive/2021/03.html'>03</a></div>
+<div><a href='../../archive/2021/02.html'>02</a></div>
+<div><a href='../../archive/2021/01.html'>01</a></div>
+</div>
+<hr>
+<div><a href='../../category/TRPG/001.html'>TRPG</a></div>
+<div><a href='../../category/WOLF_RPGエディター/001.html'>WOLF RPGエディター</a></div>
+<div><a href='../../category/その他/001.html'>その他</a></div>
+<div><a href='../../category/片道勇者2_開発/001.html'>片道勇者2 開発</a></div>
+<div><a href='../../category/開発日誌/001.html'>開発日誌</a></div>
+</div>
+</body>
+</html>

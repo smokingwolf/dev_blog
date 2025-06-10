@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>2021-05</title>
+<style>
+body{display:flex;}
+#content{flex:1;}
+#sidebar{width:80px;margin-left:10px;}
+.entry-title{background:#555;color:#fff;padding:4px;}
+.entry-body{background:#fff;color:#444;padding:4px;}
+</style>
+<script>
+function toggle(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+function toggleDisp(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+</script>
+</head>
+<body>
+<div id='content'>
+<a href='04.html'>前の月へ</a> | <a href='06.html'>次の月へ</a>
+<div class='entry'><div class='entry-title'>2021-05-29 13:42:14 片道勇者2【50】 まずは最小完成へ</div><div class='entry-body'><span style="font-size:large;"><strong>【片道勇者2開発 まずは最小完成へ】</strong></span>
+
+現在は、例の「<strong><a href="https://smokingwolf.blog.fc2.com/blog-entry-569.html" class="red">完成させる作り方</a></strong>」をもとに、まずは
+「最小のスタートからエンドまでの流れ（↓の②番）」を作ろうという
+目標に向けて作業しています！
+↓
+<img src="https://silversecond.net/data/p_diary5/20210529B.jpg" border="1">
+
+その中でエンディング用の絵も何枚か作成したので、今回はその中から新ネムリ絵をご紹介！
+<img src="../image/2021/20210529.jpg" border="1">
+TRPGや、リメイク版への出張版ネムリの頭にだいたい花がくっついてたので、
+それにならって2代目ネムリもベールに花が付くことになりました。
+
+その他のデザインなどは1のネムリ（たぶん2ネムリのおばあちゃん）とほとんど同じです。
+
+そういえば特に重要ではない話ですが、実は1のネムリには
+体格がけっこういい設定とかありました。
+↓
+<img src="https://silversecond.net/data/p_diary5/20210529A.jpg" border="1" title="">
+<strong><span style="font-size:x-small;">ベスト着てない版の片道勇者1ネムリ。
+ネムリが羽織ってるベストは人からジロジロ見られないために
+着ているという設定がありました。</span></strong>
+
+<hr size="1" />
+<span style="font-size:large;"><strong>【データを考えてみた】</strong></span>
+
+『片道勇者2』はデッキ構築型要素を盛り込むということで、
+これまでよりたくさんの種類のスキルが出てくる予定です。
+デッキ構築という都合上、1枚がめちゃつよでもあくまで全体のうちの1枚なので、
+そう簡単にバランス崩壊しないのが作り手として面白そうな点です。
+
+そんなわけで、今回は「剣士」で試しに実装してみたスキルカードを一部ご紹介！
+数値は最終的に調整されそうですが、まずはこんなのをぶっ込んでみて
+テストしてみることを考えています。
+（カード画像は採用が決まったら描きます）
+
+
+<span style="font-size:large;"><strong>◆燃える血の刃[アクティブ・サポートカード]</strong></span>
+
+HP5を消費して使用し、5ターンの間、
+「物理ダメージ」を「火炎ダメージ」に変換する状態になる。
+
+<span style="color:#3333FF">→　1枚持ってれば1デッキ回転ごとに5ターン分も火炎ダメージ化できるので、
+剣士でありながらけっこう属性攻撃をし続けられるようになるカード。
+物理攻撃が通用しにくいスライム対策に1枚持ってると安心。</span>
+
+
+<span style="font-size:large;"><strong>◆ファイナルストライク[攻撃スキルカード]</strong></span>
+
+武器の耐久度50を使って通常攻撃の20倍（仮）のダメージを与える。
+このカード自体に3～5回くらいの使用回数制限がある。
+
+<span style="color:#3333FF">→　超威力な1枚！　この他に、
+「手札に入っていればその間だけ武器耐久を消費しなくなる
+サポートカード」　や　「耐久度無限の武器」　なども存在するので、
+それと組み合わせて引くことができればほぼノーリスクで撃てる。
+
+→　「攻撃力アップ」の補助や「クリティカル率アップ」を積んで
+最大火力の高い武器で撃てばいい、使い方が分かりやすいカード。</span>
+
+
+<span style="font-size:large;"><strong>◆バトルステップ　[パッシブ・サポートカード]</strong></span>
+
+手札にあるだけで自動的に効果が発動。
+[いま手札にある【攻撃スキル】の枚数]×10％（仮）の確率で、
+「行動後に追加のターンを得られる」サポートカード。
+ついでに確定で回避率＋20％もつく。
+
+<span style="color:#3333FF">→　デッキのアイテムや経験値などが減ってピンチになるほど
+手元に攻撃スキルが来やすくなって追加ターン発生率が上がり、
+「ずっと俺のターン！」ができるかもしれないカード。
+
+→　手札を一時的に増やすカードとの相性は抜群。</span>
+
+<hr size="1" />
+と、こんな感じです。
+
+属性変化の「燃える血の刃」、武器消費極大の「ファイナルストライク」などは
+従来の『片道勇者』でもギリギリ出せそうな技ですが、
+「バトルステップ」みたいな「手札がうまい組み合わせだと強い」系は
+デッキ構築システムでしか作れないスキルになりそうで、
+また新たな方向性を出せそうです（面白いかはやってみないと分からない！）。
+
+
+これ以外にももちろんたくさん技のアイデアをリストアップしているので、
+今後もちょこちょこ公開していきたいと思います！　お楽しみに！</div></div>
+<div class='entry'><div class='entry-title'>2021-05-12 16:42:50 シルフェイド幻想譚リファイン！</div><div class='entry-body'><span style="font-size:large;"><strong>【シルフェイド幻想譚リファイン！】</strong></span>
+
+ということで、突然ですが懐かしの『シルフェイド幻想譚』をリファインしました！
+
+やったのは「ほぼ全ての人間キャラ」の顔グラフィックの修正です。
+さすがに初めて描いたとき（2004年）から17年、
+公開後からのカウントでも16年も経ってしまったのでこの辺で美容整形！
+絵の差し替えだけなら後からしやすいので、いつかやりたいとは思っていました。
+
+<strong><span style="font-size:x-small;">たぶんちょっとかわいくなった2人↓</span></strong>
+<img src="../image/2021/20210508.png" border="1" width="323">
+
+<img src="https://silversecond.net/data/p_diary5/20210508A.png" border="1" width="323">
+
+<hr size="1" />
+<span style="font-size:large;"><strong>【ダウンロード】</strong></span>
+
+ということで、ダウンロードはこちらから！
+↓
+<a href="https://www.vector.co.jp/soft/dl/winnt/game/se363424.html" class="red"><span style="font-size:large;"><strong>【シルフェイド幻想譚 Ver1.31のダウンロード（Vectorへ）】</strong></span></a>
+
+以下のように、タイトルの右下に「2005 - UPDATE 2021」と出ていればリファイン版です！
+<img src="https://silversecond.net/data/p_diary5/20210508B.jpg" border="1" width="320">
+
+いまだに新しくプレイしてくださる方がいらっしゃるようで、本当に感謝の限りです！
+おかげさまで、長年の積み重ねで総ダウンロード数は最低でも50万以上に達しています。
+自慢の1本！
+
+<hr size="1" />
+<strong><span style="font-size:large;">【コンテストパーク受賞時の記事！】</span></strong>
+
+あとインターネットアーカイブで『コンテストパーク　名誉の殿堂』の
+『シルフェイド幻想譚』の記事がありましたのでご紹介！
+もう元のページがないので貴重な記事です！
+
+<a href="https://web.archive.org/web/20060208043401/http://www.enterbrain.co.jp/techwin/data/contents/cpd/silfeid.html" class="red"><span style="font-size:x-small;">https://web.archive.org/web/20060208043401/http://www.enterbrain.co.jp/techwin/data/contents/cpd/silfeid.html</span>
+<img src="https://silversecond.net/data/p_diary5/20210508C.png" border="2" width="500"></a>
+
+<strong>用意されたレールをなぞるRPGではなく、
+「遊ぶ人それぞれにとってそれぞれの物語があるRPGにできればいいな」
+ということを徹底的に意識しました。</strong>
+
+とコメントにありますが、いま見るとその目標に関しては、
+けっこうがんばって作れたのかなあという感触があります。
+TRPG好きマンとしては、「自分で参加している感」はすごく大事にしたいと思ってました。
+
+とはいえ、「絶対面白いよこういうRPG！　遊んでみたい！」と思って必死で作ってみたものの、
+実際に作者（私）が遊んでみると面白さを感じられなくて
+ちょっぴり切なくなったのはいい思い出です。
+
+いやだって、このゲームの「全部ネタバレしてる状態の面白さ」って、
+もう「噛みすぎて味のなくなったスルメ」くらいの味しかしないんですよ！
+
+「いったい何が面白かったのか」を私だけ体験できなかったので、
+今度作るときはなんというか、もう少し喜びを感じやすい形を
+工夫して作れたらいいなと思います。
+
+そういう意味だと、片道勇者みたいな『ローグライク』は
+私自身も楽しく遊べて、作ってて幸せなジャンルの一つですね！
+
+
+でもそこは置いといて、また『シルフェイド幻想譚』みたいなRPGを作るのも面白そうです。
+でもいまどき、昔ながらの2DのRPGとか遊ばれる人はいらっしゃいますかね？
+有料ゲーム置き場でウディタやツクールっぽい昔ながらの2D RPGの画面を見て
+テンションが上がる人はもう絶滅しているような気もする今日この頃です。
+うまいこと見せ方を変えたものならインディーゲームとしても割といけるかも？
+
+何はともあれ、今は目の前の新作開発です！
+まだまだ時間がかかりそうですががんばっていきます。</div></div>
+</div>
+<div id='sidebar'>
+<div><a href='../../archive/index.html'>開発日誌トップ</a></div>
+<div><a href='javascript:void(0);' onclick="toggleDisp('y2025')">2025</a></div>
+<div id='y2025' style='display:none;margin-left:10px;'>
+<div><a href='../../archive/2025/05.html'>05</a></div>
+<div><a href='../../archive/2025/04.html'>04</a></div>
+<div><a href='../../archive/2025/03.html'>03</a></div>
+<div><a href='../../archive/2025/02.html'>02</a></div>
+<div><a href='../../archive/2025/01.html'>01</a></div>
+</div>
+<div><a href='javascript:void(0);' onclick="toggleDisp('y2021')">2021</a></div>
+<div id='y2021' style='display:none;margin-left:10px;'>
+<div><a href='../../archive/2021/12.html'>12</a></div>
+<div><a href='../../archive/2021/11.html'>11</a></div>
+<div><a href='../../archive/2021/10.html'>10</a></div>
+<div><a href='../../archive/2021/09.html'>09</a></div>
+<div><a href='../../archive/2021/08.html'>08</a></div>
+<div><a href='../../archive/2021/07.html'>07</a></div>
+<div><a href='../../archive/2021/06.html'>06</a></div>
+<div><a href='../../archive/2021/05.html'>05</a></div>
+<div><a href='../../archive/2021/04.html'>04</a></div>
+<div><a href='../../archive/2021/03.html'>03</a></div>
+<div><a href='../../archive/2021/02.html'>02</a></div>
+<div><a href='../../archive/2021/01.html'>01</a></div>
+</div>
+<hr>
+<div><a href='../../category/TRPG/001.html'>TRPG</a></div>
+<div><a href='../../category/WOLF_RPGエディター/001.html'>WOLF RPGエディター</a></div>
+<div><a href='../../category/その他/001.html'>その他</a></div>
+<div><a href='../../category/片道勇者2_開発/001.html'>片道勇者2 開発</a></div>
+<div><a href='../../category/開発日誌/001.html'>開発日誌</a></div>
+</div>
+</body>
+</html>
