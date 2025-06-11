@@ -247,7 +247,7 @@ def render_sidebar(all_months: list[tuple[str, str]],
             title = html.escape(ent['title'])
             url = f"{rel_root}/archive/{y}/{m}.html#{ent['anchor_id']}"
             caption = f"{m}/{d} {title}"
-            lines.append(f"<div><a class='sidebar_link_recent' href='{url}'>{caption}</a></div>")
+            lines.append(f"<div><a class='sidebar_link_recent' href='{url}'>●{caption}</a></div>")
     lines.append("<hr>")
 
     # Category section first
