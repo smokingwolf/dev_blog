@@ -4,16 +4,115 @@
 <meta charset='utf-8'>
 <title>シルバーセカンド開発日誌  - SmokingWOLFの記録 -</title>
 <meta name="viewport" content="width=700">
-<script src="../../js/smoothscroll.js" type="text/javascript"></script> 
+<script src="../../js/smoothscroll_up.js" type="text/javascript"></script> 
 <style>
-body{display:flex;}
-#content{flex:1;}
-#sidebar{width:80px;margin-left:10px;}
-.nav{margin:10px 0;}
-.entry{border:1px solid #ccc;border-radius:8px;margin:10px 0;overflow:hidden;}
-.entry-title{background:linear-gradient(to right,#9bb0c5,#6f7f92);color:#fff;padding:4px;}
-.entry-body{background:#fff;color:#444;padding:4px;}
+BODY{
+  /*display:flex;*/
+  font-size:13px;
+  margin:0;
+  font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+
+}
+
+TD{
+  font-size:1em;
+}
+
+
+A:LINK,A:VISITED {  color:#5658f6;  text-decoration:underline ;}
+A:HOVER,A:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.red:LINK,A.red:VISITED{color:#d6385c;display: inline-block;text-shadow: 0 0 15px #ffddcc, 0 0 15px #ffddaa;}
+A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shadow: 0 0 15px #ffcccc, 0 0 15px #ffaaaa;}
+
+A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
+A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.g:LINK,A.g:VISITED,
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38a68c;
+}
+
+A.g:HOVER,A.g:ACTIVE{
+	color : #68b6ac;
+	text-decoration : underline;
+}
+
+A.jumplink:HOVER,A.jumplink:ACTIVE{
+	color : #68b6ac;
+}
+
+A.jumplink{
+	text-shadow: 0 0 15px #ccffcc, 0 0 15px #aaffaa;
+	text-decoration : none;
+}
+
+
+#sidebar {
+	background:#f8f8f8; 
+	border-left:1px solid #ddd; 
+	padding:4px 6px;
+	font-size:12px;
+}
+
+A.sidebar_link:LINK,A.sidebar_link:VISITED,
+A.sidebar_link_recent:LINK,A.sidebar_link_recent:VISITED{
+    color:#5658f6;
+	text-decoration: underline;
+}
+A.sidebar_link:HOVER,A.sidebar_link:ACTIVE,
+A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
+	color: #9698e6;
+	text-decoration: underline;
+}
+
+.sidebar_link{
+	font-size:13px;
+}
+
+.sidebar_link_recent{ /* 1つ1つの項目ごとに隙間を空ける */
+	font-size:11px;
+	line-height: 1.2;
+	display: inline-block;
+	margin-top:5px;
+}
+
+
+.entry {
+	border:1px solid #ccc; 
+	border-radius:8px; 
+	margin:14px 0; 
+	overflow:hidden;
+
+}
+.entry-title {
+	background:linear-gradient(to right,#4243ff,#aaaacf);
+
+	font-size:1.4em;
+	color:#fff; 
+	padding:4px; 
+	font-weight:bold;
+	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
+}
+
+.entry-body {background:#fff; color:#444; padding:10px;}
+
+
+/*--●形状整理用--*/
+body {display:flex; margin:0;}
+#content {flex:1; padding:0 8px;}
+#sidebar {width:120px;  box-sizing:border-box; }
+#sidebar div {line-height:1.6;}
+#sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
+.nav {margin:10px 0; text-align:center;}
+.sym {color:#999; font-weight:normal;}
+
 </style>
+
+
+
+
+
 <script>
 function toggle(id){
   var e=document.getElementById(id);
@@ -26,18 +125,9 @@ function toggleDisp(id){
 </script>
 </head>
 <body>
-<style>
-body {display:flex; margin:0; font-family:YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;}
-#content {flex:1; padding:0 8px;}
-#sidebar {width:120px; background:#f8f8f8; border-left:1px solid #ddd; padding:4px 6px; box-sizing:border-box; font-size:14px;}
-#sidebar div {line-height:1.6;}
-#sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
-.nav {margin:10px 0; text-align:center;}
-.entry {border:1px solid #ccc; border-radius:8px; margin:14px 0; overflow:hidden;}
-.entry-title {background:linear-gradient(to right,#9bb0c5,#6f7f92); color:#fff; padding:4px; font-weight:bold;}
-.entry-body {background:#fff; color:#444; padding:6px;}
-.sym {color:#999; font-weight:normal;}
-</style>
+
+
+
 
 
 <script>
@@ -77,40 +167,96 @@ window.addEventListener('DOMContentLoaded', ()=>{
 </script>
 
 <div id='content'>
+<style>
+
+.TopTitle{
+  width:515px;
+  font-weight:bold;
+  font-size:16pt;
+  color: #ffffff;
+  background-color:#535365 ;
+  border-width: 0px;
+  border-color:#535365;
+  border-style:solid;
+  background: -moz-linear-gradient(left top, #42435f, #fafaff);
+  background: -webkit-gradient(linear, left top, right bottom, from(#42435f), to(#fafaff));
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#DD42425f', endColorstr='#FFfafaff');
+  
+  text-align:left;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.header3{
+	color:#555588;
+}
+</style>
+
+
+<div class="TopTitle" style="margin-top:20px;">　　シルバーセカンド開発日誌</div>
+<!--ここにコメント文-->
+<div class="header3" style="margin-top:6px;">　ゲーム開発者SmokingWOLFの開発日誌。気付けば足跡も数十年分！</div>
+
 <div class='nav'><span style='color:#ccc'>次のページ</span> | <span style='color:#ccc'>前のページ</span></div>
 <div class='entry'><div class='entry-title'>■<a id='2019-03-02'></a>2019-03-02&nbsp;&nbsp;&nbsp;落書き　妖精クリス<span style='float:right;'><a href='#2019-02-02' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><span style="font-size:large;"><strong>【落書き　妖精クリス】</strong></span><br><br>今週もお仕事ウィークでお見せできるものがないのでボーっと書いてた落書きを1枚！<br>『片道勇者2』のアドバイザー妖精のクリス、寝間着っぽい感じ。<br><br><img src="../../image/2019/20190301.jpg" border="1"><br><br>まだゲーム上では妖精クリスがラフのままなので、<br>時間を見つけて『片道勇者2』の基本システムを完成させて<br>キャラを一通り上げて清書に入りたいです。<br>（※クオリティ均質化のため、仕上げ作業は平均的に行っていく予定なのです）<br>なんとか時間を作っていかないとですね。</div></div><br><br><br>
 <div class='entry'><div class='entry-title'>■<a id='2019-02-02'></a>2019-02-02&nbsp;&nbsp;&nbsp;落書き　旅行と世界雑談<span style='float:right;'><a href='#2019-01-19' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><span style="font-size:large;"><strong>【落書き1枚　旅行と世界雑談】</strong></span><br><br>今週もいただき仕事を進めただけの一週間となりましたので、<br>今回もお絵かきを1枚！<br><br><img src="../../image/2019/20190202.jpg" border="1" title="だいぶ昔に描いたやつですが、まだ公開はしてなかったはず。ちょっとアレンジして別ゲーム用キャラに使ったことがあります。ブボボ"><br><br>旅行に出かける感じの落書き1枚！<br>プチ出張に行ったりすると毎度思いますが、旅行するにもやっぱり体力が必要で、<br>私の場合、たとえば航空機に長時間乗った後や、<br>日本でも1泊2日の遠出をするだけで次の日に一定確率で倒れるくらいの体なので<br>よほどのことがない限りあまり行く気力が出ないのが残念だったりします。<br><br>とはいえ、自分の作ったゲームを通して、<br>間接的ながら世界と繋がる機会をもらえたのはとてもいい経験でした。<br>海外からいただくコメントを見ると、<br>言葉が別でもやっぱり日本人と同じ部分が気になるんだなあとか、<br>日本よりもポジティブな部分にもコメントくれる人が多いなとか、<br>いただく罵倒が日本語と違う感じでセンス感じるなあとか、<br>文化の端々が見えて面白いです。<br><br>最近は翻訳エンジンが優秀になってるので、たとえばTwitterなどで<br>英語でコメントをいただいたときに日本語で返しても普通に通じるのが助かります。<br>私の英語力はかろうじてゲームの「ミッション目標」が安定して読めるくらいで、<br>会話部分は意味がつかめない部分がまだまだいっぱい、<br>英作文はほぼダメ、というくらいです。<br><br>今後は中国語でローカライズする可能性も出ているのですが、<br>私は中国語が全然読めないので、中国語も少しくらい勉強したいところです。<br>全然違う文章が入ってしまっていることに気付けるくらいには、<br>かじっておきたい気持ちがあります。</div></div><br><br><br>
 <div class='entry'><div class='entry-title'>■<a id='2019-01-19'></a>2019-01-19&nbsp;&nbsp;&nbsp;落書き  耳長女子　/ 別件だらけの数週間<span style='float:right;'><a href='#bottom' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><span style="font-size:large;"><strong>【落書き / 別件だらけの数週間】</strong></span><br><br>色々あって年末からの2週間くらい頭のCPUを燃やしながら別件に取り組んでて、<br>やっと一段落したと思ったら次の別件が入って<br>ただいま別件の永久コンボになっているウルフです。<br>いちおう将来的に開発維持費の獲得につながるであろう話なので、<br>こっちもこっちでがんばります。<br><br>ということで、たぶんあと数週間は別件で埋まりそうで開発日誌のネタがないため、<br>当面は落書きなどでお茶濁ししていきます！　今回は耳長人の女の子！<br><br><a href="../../image/2019/20190119.jpg" class="blue">クリックで拡大<br><img src="../../image/2019/20190119.jpg" border="1" width="380" title="デザイン分からなかったところはテキトー！"></a><br><br>「耳長人」というと『片道勇者』ですが、こんなひと登場してたっけ？<br>と思われるかもしれません。<br>実はこれ、書籍『片道勇者TRPGプラス』の巻末にある<br>落合なごみ様によるコマ用画像の、「耳長人B」のイラストを<br>参考にさせていただいたものです（『片道勇者TRPGプラス』 p.186くらい）。<br>デザインがかわいかったので、いつか落書きさせていただこうと思っていました。<br><br>ちなみにどうしてコマ用画像の耳長人がこんなのかというと、<br>『片道勇者TRPG』だと耳長人の特徴として「耳長の剣」を自動でもらえるのですが、<br>これを活用する都合上、クラスが剣士か騎士など戦士系になることが多いので、<br>TRPGでの耳長人PCはこんな軽戦士っぽいイメージの方が運用上は合うわけですね。<br>露出度についてはデザインしてくださった人の趣味……というより、<br>私が描くと割とみんな着込んでるので、差別化してくださったのだと思います。<br><br><br>それにしても、『片道勇者』なら「耳長人」の顔あり仲間とか<br>いてもおかしくなさそうだったのに『片道勇者1』だと最終的に一人もいませんでしたね！<br>というか異種族がいなくて人間だけ！<br><br>『片道勇者2』では一人くらい、耳長人キャラの仲間を作ってもいいかなと思っています。<br>前回いなかった美少年系キャラなども似合うかもしれません。<br><br><hr size="1" /><br>以下は気になった拍手コメントです。いつもコメントありがとうございます！<br><br><span style="color:#3300FF"><strong>＞シルノでネコミミ少女を追い続けるアルバートは<br>＞あれでも"割とまとも"だったんですかね？　　　.</strong></span><br><br>私の基準では物足りないくらいで、だいたい「うす味」くらいのランクだと思っています。<br>できれば忘れられないくらい濃厚ドロリなキャラを目指したいのですが、<br>たいていごく一部しか実現できないか、よくて「中味」止まりで、<br>キャラ作りって難しいなあと痛感する日々です。</div></div>
 <div class='nav'><span style='color:#ccc'>次のページ</span> | <span style='color:#ccc'>前のページ</span></div>
 <a id='bottom'></a>
+
+<BR><BR>
+<CENTER><a href="#top" class="jumplink">▲一番上へ戻る</a></CENTER>
+<BR>
+<HR>
+Copyright © SmokingWOLF / Silver Second
+<HR>
+
+
 </div>
 <div id='sidebar'>
 <div style='font-weight:bold;'>開発日誌</div>
-<div><a href='../../archive/top/index.html'>トップへ</a></div>
+<div><a class='sidebar_link' href='../../archive/top/index.html'>トップへ</a></div>
+<hr>
+<div style='font-weight:bold;'>【最新記事】</div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-31'>●05/31 ウディコン歴史資料館設立！+ ウディタ修正 + GitHubのサイト作り</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-17'>●05/17 ウディタ3.6へ！バグ修正再び！ + 私がいなくなった後に備えて</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-03'>●05/03 再び出てくるウディタ3.5のバグ！ 修正の毎日！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/04.html#2025-04-19'>●04/19 ウディタ3.5落ち着いた！？ ＆シル幻20周年！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/04.html#2025-04-05'>●04/05 さよならマイPC、それでも続くウディタ修正の日々</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/03.html#2025-03-22'>●03/22 ウディタ3.5開発開始からもうすぐ7ヶ月</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/03.html#2025-03-08'>●03/08 ウディタ3.5正式版公開！　したけど毎日バグ修正!!!</a></div>
 <hr>
 <div style='font-weight:bold;'>【カテゴリ】</div>
-<div><a href='../../category/片道勇者2/001.html'>片道勇者2&nbsp;<span class='sym'>(12)</span></a></div>
-<div><a href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(6)</span></a></div>
-<div><a href='../../category/ウディタ/001.html'>ウディタ&nbsp;<span class='sym'>(4)</span></a></div>
-<div><a href='../../category/片道勇者/001.html'>片道勇者&nbsp;<span class='sym'>(4)</span></a></div>
-<div><a href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(3)</span></a></div>
-<div><a href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../category/ウディタ/001.html'>ウディタ&nbsp;<span class='sym'>(15)</span></a></div>
+<div><a class='sidebar_link' href='../../category/片道勇者2/001.html'>片道勇者2&nbsp;<span class='sym'>(12)</span></a></div>
+<div><a class='sidebar_link' href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(7)</span></a></div>
+<div><a class='sidebar_link' href='../../category/片道勇者/001.html'>片道勇者&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(3)</span></a></div>
 <hr>
 <div style='font-weight:bold;'>【月別】</div>
-<div><a href='javascript:void(0);' id='y2019-btn' onclick="toggleYear('y2019')">2019&nbsp;<span class='sym'>＋</span></a></div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2025-btn' onclick="toggleYear('y2025')">2025&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2025' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2025/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2019-btn' onclick="toggleYear('y2019')">2019&nbsp;<span class='sym'>＋</span></a></div>
 <div id='y2019' data-yearpane style='display:none;margin-left:10px;'>
-<div><a href='../../archive/2019/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
-<div><a href='../../archive/2019/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
-<div><a href='../../archive/2019/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
-<div><a href='../../archive/2019/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
-<div><a href='../../archive/2019/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
-<div><a href='../../archive/2019/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
-<div><a href='../../archive/2019/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
-<div><a href='../../archive/2019/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
-<div><a href='../../archive/2019/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
-<div><a href='../../archive/2019/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
-<div><a href='../../archive/2019/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
-<div><a href='../../archive/2019/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
 </div>
 </div>
 

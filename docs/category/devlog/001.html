@@ -4,16 +4,115 @@
 <meta charset='utf-8'>
 <title>シルバーセカンド開発日誌  - SmokingWOLFの記録 -</title>
 <meta name="viewport" content="width=700">
-<script src="../../js/smoothscroll.js" type="text/javascript"></script> 
+<script src="../../js/smoothscroll_up.js" type="text/javascript"></script> 
 <style>
-body{display:flex;}
-#content{flex:1;}
-#sidebar{width:80px;margin-left:10px;}
-.nav{margin:10px 0;}
-.entry{border:1px solid #ccc;border-radius:8px;margin:10px 0;overflow:hidden;}
-.entry-title{background:linear-gradient(to right,#9bb0c5,#6f7f92);color:#fff;padding:4px;}
-.entry-body{background:#fff;color:#444;padding:4px;}
+BODY{
+  /*display:flex;*/
+  font-size:13px;
+  margin:0;
+  font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+
+}
+
+TD{
+  font-size:1em;
+}
+
+
+A:LINK,A:VISITED {  color:#5658f6;  text-decoration:underline ;}
+A:HOVER,A:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.red:LINK,A.red:VISITED{color:#d6385c;display: inline-block;text-shadow: 0 0 15px #ffddcc, 0 0 15px #ffddaa;}
+A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shadow: 0 0 15px #ffcccc, 0 0 15px #ffaaaa;}
+
+A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
+A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.g:LINK,A.g:VISITED,
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38a68c;
+}
+
+A.g:HOVER,A.g:ACTIVE{
+	color : #68b6ac;
+	text-decoration : underline;
+}
+
+A.jumplink:HOVER,A.jumplink:ACTIVE{
+	color : #68b6ac;
+}
+
+A.jumplink{
+	text-shadow: 0 0 15px #ccffcc, 0 0 15px #aaffaa;
+	text-decoration : none;
+}
+
+
+#sidebar {
+	background:#f8f8f8; 
+	border-left:1px solid #ddd; 
+	padding:4px 6px;
+	font-size:12px;
+}
+
+A.sidebar_link:LINK,A.sidebar_link:VISITED,
+A.sidebar_link_recent:LINK,A.sidebar_link_recent:VISITED{
+    color:#5658f6;
+	text-decoration: underline;
+}
+A.sidebar_link:HOVER,A.sidebar_link:ACTIVE,
+A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
+	color: #9698e6;
+	text-decoration: underline;
+}
+
+.sidebar_link{
+	font-size:13px;
+}
+
+.sidebar_link_recent{ /* 1つ1つの項目ごとに隙間を空ける */
+	font-size:11px;
+	line-height: 1.2;
+	display: inline-block;
+	margin-top:5px;
+}
+
+
+.entry {
+	border:1px solid #ccc; 
+	border-radius:8px; 
+	margin:14px 0; 
+	overflow:hidden;
+
+}
+.entry-title {
+	background:linear-gradient(to right,#4243ff,#aaaacf);
+
+	font-size:1.4em;
+	color:#fff; 
+	padding:4px; 
+	font-weight:bold;
+	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
+}
+
+.entry-body {background:#fff; color:#444; padding:10px;}
+
+
+/*--●形状整理用--*/
+body {display:flex; margin:0;}
+#content {flex:1; padding:0 8px;}
+#sidebar {width:120px;  box-sizing:border-box; }
+#sidebar div {line-height:1.6;}
+#sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
+.nav {margin:10px 0; text-align:center;}
+.sym {color:#999; font-weight:normal;}
+
 </style>
+
+
+
+
+
 <script>
 function toggle(id){
   var e=document.getElementById(id);
@@ -26,18 +125,9 @@ function toggleDisp(id){
 </script>
 </head>
 <body>
-<style>
-body {display:flex; margin:0; font-family:YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;}
-#content {flex:1; padding:0 8px;}
-#sidebar {width:120px; background:#f8f8f8; border-left:1px solid #ddd; padding:4px 6px; box-sizing:border-box; font-size:14px;}
-#sidebar div {line-height:1.6;}
-#sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
-.nav {margin:10px 0; text-align:center;}
-.entry {border:1px solid #ccc; border-radius:8px; margin:14px 0; overflow:hidden;}
-.entry-title {background:linear-gradient(to right,#9bb0c5,#6f7f92); color:#fff; padding:4px; font-weight:bold;}
-.entry-body {background:#fff; color:#444; padding:6px;}
-.sym {color:#999; font-weight:normal;}
-</style>
+
+
+
 
 
 <script>
@@ -77,7 +167,38 @@ window.addEventListener('DOMContentLoaded', ()=>{
 </script>
 
 <div id='content'>
+<style>
+
+.TopTitle{
+  width:515px;
+  font-weight:bold;
+  font-size:16pt;
+  color: #ffffff;
+  background-color:#535365 ;
+  border-width: 0px;
+  border-color:#535365;
+  border-style:solid;
+  background: -moz-linear-gradient(left top, #42435f, #fafaff);
+  background: -webkit-gradient(linear, left top, right bottom, from(#42435f), to(#fafaff));
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#DD42425f', endColorstr='#FFfafaff');
+  
+  text-align:left;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.header3{
+	color:#555588;
+}
+</style>
+
+
+<div class="TopTitle" style="margin-top:20px;">　　シルバーセカンド開発日誌</div>
+<!--ここにコメント文-->
+<div class="header3" style="margin-top:6px;">　ゲーム開発者SmokingWOLFの開発日誌。気付けば足跡も数十年分！</div>
+
 <div class='nav'><span style='color:#ccc'>次のページ</span> | <span style='color:#ccc'>前のページ</span></div>
+<div class='entry'><div class='entry-title'>■<a id='2025-01-01'></a>2025-01-01&nbsp;&nbsp;&nbsp;2025年！　新年あけまして！<span style='float:right;'><a href='#2019-12-24' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'>　あけましておめでとうございます！　2025年、令和7年となりました！<br><br><HR><span style="font-size:large;"><B>●新年あけましたイラスト！</B></span><HR><br>　今年のイラストは巳年（みどし・ヘビ年）ということで特に誰でもないキャラクター！<br>　去年に引き続いてスケイル（竜っぽいキャラ、たまにうなぎ扱いされる）でもいい気がしましたがさすがに2連続はね！<br><br><img src="../../image/2025/20250101.jpg" border="1" style="max-width:520px;" loading="lazy"><br><br>　<br><br><HR><span style="font-size:large;"><B>●今年の抱負・目標！</B></span><HR><br>　今年は年初からやりたいことといいますか、忙しい用事がありますね！<br><br><HR><br><span style="font-size:120%;"><B>【ウディタ3.5公開に向けてがんばる！】</B></span><br><br>　もうあとからあとから入れたい機能が周りのコメントなどから気付かされて無限に追加オーダーされているのでどんどん遅れております！　<br>　が、それでもさすがに1月中には公開したいので全力を尽くします！<br>　<br>　なおすでに実装済みや実装が確定しているのはこちらにまとめてあります！<br>→　<a target="_blank" href="https://silversecond.com/WolfRPGEditor/ReleaseLogNew_3.50.html"><span style="font-size: 150%"><B>●ウディタ3.5更新予定内容 </B></span></a><br>　（そのうち消すと思いますので数年後に見た人はリンク切れしてるかも）<br>　<br>　最新の手元の作業としては『条件分岐やループの折りたたみ・展開機能』に挑戦中です！　あまりにも改造しなきゃいけない内容が複雑で、分岐が壊れてめちゃめちゃなことになっちゃうとか、まだまだバグまみれです。<br>　でもこれは私もそこそこ使うかもしれないので、こういったイベントコマンド操作周りはじっくり改良していきたいところです！　私の開発するゲームでは、作業の80%以上はイベントコマンドいじりになりますからね！<br><br><br><HR><br><span style="font-size:120%;"><B>【そして『片道勇者2』へ！】</B></span><br><br>　『片道勇者2』は前作に加えて「デッキ構築要素」も取り込んだ強制スクロールRPGです！<br>　今は睡眠も十分に取れる環境を取り戻せたので、バージョン3.5に羽化したウディタを使ってバリバリ作っていきます！　ウディタ3.5の進化が大きすぎて、「すでに作った部分を最初から3.5で作れてたらどんだけラクだったかーぐおお！！」と思わないでもないですが！<br><br>　そしてこの『片道勇者2』、作り始めた頃は「デッキ構築ローグライクって一般的じゃないからチュートリアルなどをかなり慎重に作らないとダメそうだなあ」と思ってたら、今やデッキ構築が一般化しちゃうほど流行しちゃいましたが、それはそれでなじみやすさが上がっているので、利点ととらえてがんばります！　もちろん初めて遊ぶ人にも楽しめるようがんばりますよ！<br>　とにかく面白くなるよう、やれる努力と工夫をやっていきます！<br><br><br><HR><br><span style="font-size:120%;"><B>【体に気をつけてがんばる！】</B></span><br><br>　これは抱負ですが、体に気をつけてがんばります！<br>　この数年間の介護で腰も膝もやられてしまってるのはまあいいとして、最近は一回風邪や病気をもらうと一ヶ月くらい不調になることも多くなってるご時世ですので、なるべく常に全力を出せるよう、健康には気をつけていきたいと思います！<br><br>　特にこれからは「（介護で）熟睡時間ゼロ」みたいな日はしばらくはなくなるはずですからね！　睡眠はちゃんとしっかり取ろうと思います！<br><br><HR><span style="font-size:large;"><B>●年末に生放送やりました！</B></span><HR><br>　年末に2024年を振り返る生放送をやりました！　去年も1年いろいろ事件も面白いこともありましたし、時代の変化も色々感じられましたね！<br><br><a target="_blank" href="https://youtube.com/live/oCWEhI3Gng0">【シルバーセカンド26周年！　Xで1年を振り返る生放送！】<img src="../../image/2025/20250101A.jpg" border="1" style="max-width:520px;" loading="lazy"></a><br><br>　少しAI話、ゲーム開発話、少し介護話、少しウディコン話、ウディタ話、などが話のテーマだったと思いますので、そういったのが気になる方はよければお正月の時間つぶしにでもぜひ！<br><br><HR><br>　という感じで今年もさっそくがんばっていきますので、2025年もよろしくお願いいたします！<br>　まずはウディタ3.5修正の完了を目指して全力でがんばります！　うおおお！</div></div><br><br><br>
 <div class='entry'><div class='entry-title'>■<a id='2019-12-24'></a>2019-12-24&nbsp;&nbsp;&nbsp;シルバーセカンド、21周年！<span style='float:right;'><a href='#2019-11-02' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><span style="font-size:large;"><strong>【シルバーセカンド、21周年！】</strong></span><br><br>ということでこのサイト、「シルバーセカンド」は<br>2019年12月24日をもってついに<span style="color:#CC0000"><span style="font-size:large;"><strong>21周年</strong></span></span>をむかえました！<br><br><img src="../../image/2019/20191224.jpg" border="1" title="フリーダ王女はちょっと盛りました"><br><span style="font-size:x-small;"><strong>今年の新しいコンテンツは片道勇者ノベライズ！　左はドラゴンブック版フリーダ王女、右は薬師ネムリ</strong></span><br><br>去年20周年を迎えたと思ったら、今年は色々あってあっという間に21周年です。<br>これも皆さまのお声や、手に支えられてたどることができた結果です。<br>本当にありがとうございます！<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【今年の成果】</strong></span><br><br>今年の成果は、<br><br><strong>◆一ヶ月かけてお仕事を完遂したけどお金がもらえなくて泣いた。<br><br>◆『片道勇者』ノベライズが発売！　私は(予想外に大変だった）監修業務を担当しました。<br><br>◆PCにさわれない時間で作るBプロジェクト進行中（電子書籍）。来年公開。<br><br>◆内緒のCプロジェクトが進んだけれどもボツになりそう。<br><br>◆内緒のDプロジェクトが順調に進行中。たぶん来年公開。<br><br>◆内緒のEプロジェクト企画が新たに発生。これも来年公開？<br><br>◆『片道勇者2』開発中、そろそろ基本システムがまとまりそう。アルファ2は出せず。</strong><br><br>という感じの、割と溜めの1年になりました。<br>表に出たのは『片道勇者』のノベライズだけですね！<br><br>このノベライズは私も監修をがんばったのと、<br>ライターさんが非常にプロい方だったのもあって、<br>皆さまの評価がものすごく高い一冊となりました。<br>気になる方はよければぜひ！　電子版が今だけ紙版の30％オフの「1079円」になっています！<br>↓<br>小説 <B>『片道勇者　滅びの闇と繰り返す英雄』</B><br><a  target="_blank" class="red" href="https://amzn.to/2BN24Vi" target="_blank"><IMG border="2" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=4040733525&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=smokingwolf-22&language=ja_JP" height="180"><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=smokingwolf-22&language=ja_JP&l=li1&o=9&a=4040733525" width="1" height="1" border="2" alt="" /><br><small>片道勇者 滅びの闇と繰り返す英雄 Amazonページへ</A><BR> Kindle版 \1,386（セール中は1079円） / 書籍版 \1,540 </small><br><br><hr size="1" /><br><span style="font-size:large;"><strong>【片道勇者2は？】</strong></span><br><br>メインの『片道勇者2』は、アルファ1での1000件を超えるフィードバックを頂いてから、<br>問題箇所を修正してみては壊し、作っては壊しの繰り返しをしつつ、徐々に進んでいます。<br><br>いつかは確実に終わるんですが、今年は開発維持費を稼ぎながらだったり、<br>家庭事情で時間や体力を消費することも増えてきたので、開発速度はゆっくりめです。<br><br>ゲームの中身に関しては、作ってても触ってても個人的に面白いので手応えはいい感じです。<br>ゲームにこれだけの素質が感じられれば、自然に最後までやり遂げられるでしょう。<br>ただ完璧を目指し出すとキリがないので、生存限界と相談しつつ<br>可能な範囲で全力を尽くしていきます。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【来年の目標】</strong></span><br><br>幸いにして2019年は無理せずに済んだおかげか、体の調子を崩すことは<br>あまりなかったのでそれは救いでした（介護行動で腰は頻繁に逝きましたけど）。<br>油断すると一瞬でHPがレッドゲージになったり病気になるので、<br>引き続き体調には注意して進めていきたいと思います。<br><br>来年の自分の目標は、<br><br><strong>◆『片道勇者2』の基本システムを固めてアルファ2を出す。<br>製品版やベータに向けてデータやストーリーを足していく。<br><br>◆Bプロジェクト書籍を1本以上リリースして生活の糧に繋げる。</strong><br><br>という感じになると思います。<br>その他の「内緒の」と付いている協同プロジェクトのいくつかもリリースされるでしょう。<br>ゲームの個人開発は長引くので、途中に何か出しつつやっていければと考えています。<br><br><hr size="1" /><br><strong>＜最後に＞</strong><br><br>2019年も本当にたくさんの人にお世話になりました。<br>今の自分は、サイトに来て下さる皆さまや、コメントを寄せてくださる皆さま、<br>そして見えない大勢の人に支えられて成り立っています。<br>今でも私のゲームや記事を見てくださっている皆さまには、本当に感謝の限りです！<br><br>今これを読んでくださっている皆さまも、<br>もしよければ来年もときどきでいいので、見にきてくださると幸いです。<br>今年も一年、本当にありがとうございました！<br><br><hr size="1" /><br>次回の開発日誌は2020年の元旦に更新予定です。<br>それでは皆さま、お体には気をつけて、よいお年を！</div></div><br><br><br>
 <div class='entry'><div class='entry-title'>■<a id='2019-11-02'></a>2019-11-02&nbsp;&nbsp;&nbsp;今回はおやすみです<span style='float:right;'><a href='#2019-02-16' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'>今回の日誌はおやすみです！<br>この二週間はお仕事やら家庭の事情やら何やらあって<br>微妙に開発どころじゃありませんでした。<br><br><img src="../../image/2019/20191102.jpg" border="1" title="リアル事情がどうしても先になっちゃいます、色々なんとかしないと"><br><br>毎日やることしっかりやってゲームも作っておられる方は<br>一体どれだけのバイタリティがあるのか！　本当に尊敬します。<br><br>少ない体力をうまく運用しないとキツい体だと、<br>やらねばならないことが増えると、<br>だんだんどん詰まりになってきてしまいますね。<br>稼げそうな大きな案件をいただいても、<br>まとまった時間が取れないと受注することさえ難しい！<br><br>そういう意味では、自分のペースで小さく成果を積み上げていけるゲーム開発や<br>創作業というのは柔軟性があるので、生きやすいのがいい点です。<br>成功しないと大変ですけれども！<br><br>とにかくより効率的に動いて、時間や心の余裕を持てる<br>生き方を工夫していきたいと思います。<br>隙間時間のさらに隙間も見つけてうまくやっていきたいですね！<br><br>最近は、パソコンさえ触れないときはスマホで本を作ったりしています。<br>スマホでも編集・校正作業ができる時代なので、<br>隙間時間を全部無駄なく投入できるのがいい！<br>そのうちKindleで出す予定です。ジャンルはTRPG系です。<br>こういった副業もうまく積み重ねて開発資金にしていきたいと考えています。</div></div><br><br><br>
 <div class='entry'><div class='entry-title'>■<a id='2019-02-16'></a>2019-02-16&nbsp;&nbsp;&nbsp;お仕事ウィーク<span style='float:right;'><a href='#2019-01-26' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><span style="font-size:large;"><strong>【お仕事ウィーク】</strong></span><br><br>ずっとお仕事週間です！<br>次のお仕事が届く前にいただき仕事の一つを片付けるべく必死になってたら<br>予想外にヘトヘトになって落書きする気力成分がなくなってしまったので、<br>今週の開発日誌はお絵かきなしです。<br><br><img src="../../image/2019/20190216.jpg" border="1"><br><br>もうすでに1ヶ月くらいゲーム開発ができてなくてヤバいので、<br>そろそろちょっとずつでも開発する時間を挟んでいきたいですね。<br>というかお仕事しながらゲーム開発してる人って<br>一体どうやってるんですか！　すごすぎる！<br><br>といっても例年の流れだと2月中旬頃から約2ヶ月くらいの間、<br>体調が悪くなったり心理的に不安定になったり能力が下がりやすかったりするので、<br>しばらくはマイペースに、できることをできる範囲で片付けていきたいと思います。<br><br>あ、そういえばもうすぐ確定申告もありました！　ぐおおぉぉぉ！<br>色々ありますががんばっていきます！</div></div><br><br><br>
@@ -86,34 +207,60 @@ window.addEventListener('DOMContentLoaded', ()=>{
 <div class='entry'><div class='entry-title'>■<a id='2019-01-01'></a>2019-01-01&nbsp;&nbsp;&nbsp;2019年あけまして！<span style='float:right;'><a href='#bottom' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><strong><span style="font-size:large;">【2019年　あけまして！】</span></strong><br><br>おかげさまで無事、2019年をむかえることができました！<br>あけましておめでとうございます！<br><br><span style="font-size:x-small;"><strong>開発日誌のマスコット、ラッシー</strong></span><br><img src="../../image/2019/20190101.jpg" border="1"><br><span style="font-size:x-small;">イノシシぽいキャラって干支がテーマの作品や獣人多めでもない限りそうそういない気がするのでこの年はネタに困りますねえ！</span><br><br><br>ということでいつも通り今年の抱負！　2019年の目標は以下の通りです！<br><br><br><span style="font-size:large;"><strong>●片道勇者2、アルファ2を出す</strong></span><br><br>→　アルファ1のときよりはひっそり出すつもりですが、<br>いただいたご意見のいくらかを参考に、基本システムを<br>いくらかマシにしたアルファ2を公開して見ていただこうと考えています。<br><br>もうすぐ基本システムだけで開発開始から2周年になってしまい、<br>このままだと飢えてしまいそうなので、そこから先は<br>優先度の高いご意見を取り入れて中身を突っ込んでいき、<br>ひとまずの完成を目指していく感じになると思います。<br><br><br><span style="font-size:large;"><strong>●サブコンテンツも出したい</strong></span><br><br>→　開発維持費の確保のためにも、<br>ゲームよりは作る時間が短いサブコンテンツを<br>できればいくつか出して足しにしたいところです。<br><br><br><br><span style="font-size:large;"><strong>●片道勇者2、できれば早期アクセス版を目指す</strong></span><br><br>→　できれば早期アクセス版までいければいいんですが、<br>脇のお仕事ちょびっとや、生活維持のための副業もしつつになると思うので<br>少しゆっくりめになりそうです。2019年中に出せればいいですね……。<br><br>あとは私事ですが、家族の介護、というか支援や、<br>その関連作業に割かれる時間が去年から加速度的に増えつつあるので、<br>開発時間にもいくらか影響が出るかもしれません。これはみんな通る道です。<br><br><br><span style="font-size:large;"><strong>●健康維持！</strong></span><br><br>→　2018年は年間の1/4くらいずっと体調が万全でなくてゴホゴホしてたりしたので、<br>今年はもう少し、なんとか体調維持のための工夫にもリソースを割きたいと思います。<br>2019年は開発に使える時間が減少するかもしれないので、<br>その範囲で少しでも最大限の効率を出したいですね。<br><br><hr size="1" /><br>ということで色々ありますが、今年も一年、よろしくお願いします！<br>当サイトの有料作品セールも1/15過ぎまでやる予定ですので、よければぜひ！</div></div>
 <div class='nav'><span style='color:#ccc'>次のページ</span> | <span style='color:#ccc'>前のページ</span></div>
 <a id='bottom'></a>
+
+<BR><BR>
+<CENTER><a href="#top" class="jumplink">▲一番上へ戻る</a></CENTER>
+<BR>
+<HR>
+Copyright © SmokingWOLF / Silver Second
+<HR>
+
+
 </div>
 <div id='sidebar'>
 <div style='font-weight:bold;'>開発日誌</div>
-<div><a href='../../archive/top/index.html'>トップへ</a></div>
+<div><a class='sidebar_link' href='../../archive/top/index.html'>トップへ</a></div>
+<hr>
+<div style='font-weight:bold;'>【最新記事】</div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-31'>●05/31 ウディコン歴史資料館設立！+ ウディタ修正 + GitHubのサイト作り</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-17'>●05/17 ウディタ3.6へ！バグ修正再び！ + 私がいなくなった後に備えて</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-03'>●05/03 再び出てくるウディタ3.5のバグ！ 修正の毎日！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/04.html#2025-04-19'>●04/19 ウディタ3.5落ち着いた！？ ＆シル幻20周年！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/04.html#2025-04-05'>●04/05 さよならマイPC、それでも続くウディタ修正の日々</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/03.html#2025-03-22'>●03/22 ウディタ3.5開発開始からもうすぐ7ヶ月</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/03.html#2025-03-08'>●03/08 ウディタ3.5正式版公開！　したけど毎日バグ修正!!!</a></div>
 <hr>
 <div style='font-weight:bold;'>【カテゴリ】</div>
-<div><a href='../../category/片道勇者2/001.html'>片道勇者2&nbsp;<span class='sym'>(12)</span></a></div>
-<div><a href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(6)</span></a></div>
-<div><a href='../../category/ウディタ/001.html'>ウディタ&nbsp;<span class='sym'>(4)</span></a></div>
-<div><a href='../../category/片道勇者/001.html'>片道勇者&nbsp;<span class='sym'>(4)</span></a></div>
-<div><a href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(3)</span></a></div>
-<div><a href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../category/ウディタ/001.html'>ウディタ&nbsp;<span class='sym'>(15)</span></a></div>
+<div><a class='sidebar_link' href='../../category/片道勇者2/001.html'>片道勇者2&nbsp;<span class='sym'>(12)</span></a></div>
+<div><a class='sidebar_link' href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(7)</span></a></div>
+<div><a class='sidebar_link' href='../../category/片道勇者/001.html'>片道勇者&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(3)</span></a></div>
 <hr>
 <div style='font-weight:bold;'>【月別】</div>
-<div><a href='javascript:void(0);' id='y2019-btn' onclick="toggleYear('y2019')">2019&nbsp;<span class='sym'>＋</span></a></div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2025-btn' onclick="toggleYear('y2025')">2025&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2025' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2025/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2019-btn' onclick="toggleYear('y2019')">2019&nbsp;<span class='sym'>＋</span></a></div>
 <div id='y2019' data-yearpane style='display:none;margin-left:10px;'>
-<div><a href='../../archive/2019/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
-<div><a href='../../archive/2019/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
-<div><a href='../../archive/2019/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
-<div><a href='../../archive/2019/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
-<div><a href='../../archive/2019/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
-<div><a href='../../archive/2019/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
-<div><a href='../../archive/2019/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
-<div><a href='../../archive/2019/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
-<div><a href='../../archive/2019/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
-<div><a href='../../archive/2019/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
-<div><a href='../../archive/2019/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
-<div><a href='../../archive/2019/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
 </div>
 </div>
 
