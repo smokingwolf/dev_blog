@@ -9,7 +9,7 @@ import json
 # Utility helpers
 # =============================
 
-def parse_entries(source_dir: str = "source"):
+def parse_entries(source_dir: str = "source_txt"):
     """Parse all Markdown sources into a flat list of dicts."""
     entries = []
     for path in sorted(glob.glob(os.path.join(source_dir, "*.txt"))):
