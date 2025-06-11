@@ -12,7 +12,7 @@ import json
 def parse_entries(source_dir: str = "source"):
     """Parse all Markdown sources into a flat list of dicts."""
     entries = []
-    for path in sorted(glob.glob(os.path.join(source_dir, "*.md"))):
+    for path in sorted(glob.glob(os.path.join(source_dir, "*.txt"))):
         with open(path, encoding="utf-8") as f:
             content = f.read()
         # Each entry is delimited by 8 hyphens on its own line (--------)
