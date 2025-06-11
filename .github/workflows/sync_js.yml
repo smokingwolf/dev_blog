@@ -6,7 +6,7 @@ on:
       - 'source_js/**'
 
 jobs:
-  sync-images:
+  sync-js:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
