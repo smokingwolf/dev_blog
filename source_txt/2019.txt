@@ -3,10 +3,10 @@ CATEGORY: 開発日誌
 DATE: 2019-01-12 15:20:21
 -----
 BODY:
-<strong><span style="font-size:large;">【20年を振り返る　Final　ラッシーとアルバート】</span></strong>
+<CENTER><strong><span style="font-size:large;">【20年を振り返る　Final　ラッシーとアルバート】</span></strong>
 
 <span style="font-size:x-small;"><strong>『開発日誌』のマスコット、ラッシーと、ほぼレギュラー化しているアルバート。20周年イラストの一部です。</strong></span>
-<img src="../../image/2019/20190112.jpg" border="1" title="">
+<img src="../../image/2019/20190112.jpg" border="1" title="" loading="lazy">
 
 20年記念イラストの中でまだ言及してなかったのがこの2人！
 一時期の開発日誌のマスコットだったラッシーと、
@@ -20,7 +20,7 @@ Kindle本に登場しているマスコットキャラです。
 ラッシーは愛称で、本名は「ラーシア」とかそんな感じを想定しています。
 
 元々は2001年に描いたお絵かきが元で、10月をテーマとした絵の女の子でした。
-<a href="../../image/illust/illust_2001_10.jpg"" rel="lightbox[20190112]"><img src="../../image/illust/illust_2001_10.jpg" border="1" height="200"></a>
+<a class="blue" " rel="lightbox[20190112]" href="../../image/illust/illust_2001_10.jpg"><img src="../../image/illust/illust_2001_10.jpg" border="1" height="200" loading="lazy"></a>
 
 その後、モノリスフィア感覚のマウスアクションゲームに登場させる案が出たのですが、
 『片道勇者』のアイデアが降ってきたので一旦後回しにされました。
@@ -121,7 +121,7 @@ Kindle本に登場しているマスコットキャラです。
 とか言い出すあたりがやっぱりアルバートっぽい。
 
 見たい人はこちらから↓
-<a href="https://silversecond.net/contents/library/event/2017_albert_katamichi_online.html" class="blue">https://silversecond.net/contents/library/event/2017_albert_katamichi_online.html</a>
+<a class="blue" target="_blank" title="//silversecond.net/contents/library/event/2017_albert_katamichi_online.html" href="https://silversecond.net/contents/library/event/2017_albert_katamichi_online.html">https://silversecond.net/contents/library/event/2017_albert_katamichi_online.html</a>
 
 <strong>●片道勇者TRPGアペンド（書籍内リプレイ）</strong>
 『アルバート片道冒険記』の最後に書かれている通り、
@@ -137,7 +137,7 @@ Kindle本に登場しているマスコットキャラです。
 思えばアルバートは、この20年で最も長く一緒に歩み続けてきた
 キャラクターと言えるかもしれません。
 アルバートはこれからも機会さえあれば登場しそうですので、
-彼が好きな方は今後もご期待ください。
+彼が好きな方は今後もご期待ください。</CENTER>
 -----
 EXTENDED BODY:
 
@@ -148,13 +148,13 @@ CATEGORY: 開発日誌
 DATE: 2019-01-01 00:13:17
 -----
 BODY:
-<strong><span style="font-size:large;">【2019年　あけまして！】</span></strong>
+<CENTER><strong><span style="font-size:large;">【2019年　あけまして！】</span></strong>
 
 おかげさまで無事、2019年をむかえることができました！
 あけましておめでとうございます！
 
 <span style="font-size:x-small;"><strong>開発日誌のマスコット、ラッシー</strong></span>
-<img src="../../image/2019/20190101.jpg" border="1">
+<img src="../../image/2019/20190101.jpg" border="1" loading="lazy">
 <span style="font-size:x-small;">イノシシぽいキャラって干支がテーマの作品や獣人多めでもない限りそうそういない気がするのでこの年はネタに困りますねえ！</span>
 
 
@@ -201,7 +201,7 @@ BODY:
 
 <hr size="1" />
 ということで色々ありますが、今年も一年、よろしくお願いします！
-当サイトの有料作品セールも1/15過ぎまでやる予定ですので、よければぜひ！
+当サイトの有料作品セールも1/15過ぎまでやる予定ですので、よければぜひ！</CENTER>
 -----
 EXTENDED BODY:
 
@@ -212,7 +212,7 @@ CATEGORY: 落書き
 DATE: 2019-01-19 13:40:23
 -----
 BODY:
-<span style="font-size:large;"><strong>【落書き / 別件だらけの数週間】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【落書き / 別件だらけの数週間】</strong></span>
 
 色々あって年末からの2週間くらい頭のCPUを燃やしながら別件に取り組んでて、
 やっと一段落したと思ったら次の別件が入って
@@ -223,8 +223,8 @@ BODY:
 ということで、たぶんあと数週間は別件で埋まりそうで開発日誌のネタがないため、
 当面は落書きなどでお茶濁ししていきます！　今回は耳長人の女の子！
 
-<a href="../../image/2019/20190119.jpg" class="blue">クリックで拡大
-<img src="../../image/2019/20190119.jpg" border="1" width="380" title="デザイン分からなかったところはテキトー！"></a>
+<a class="blue" rel="lightbox[20190119]" href="../../image/2019/20190119.jpg">クリックで拡大
+<img src="../../image/2019/20190119.jpg" border="1" width="380" title="デザイン分からなかったところはテキトー！" loading="lazy"></a>
 
 「耳長人」というと『片道勇者』ですが、こんなひと登場してたっけ？
 と思われるかもしれません。
@@ -257,7 +257,7 @@ TRPGでの耳長人PCはこんな軽戦士っぽいイメージの方が運用�
 私の基準では物足りないくらいで、だいたい「うす味」くらいのランクだと思っています。
 できれば忘れられないくらい濃厚ドロリなキャラを目指したいのですが、
 たいていごく一部しか実現できないか、よくて「中味」止まりで、
-キャラ作りって難しいなあと痛感する日々です。
+キャラ作りって難しいなあと痛感する日々です。</CENTER>
 -----
 EXTENDED BODY:
 
@@ -268,7 +268,7 @@ CATEGORY: 片道勇者2
 DATE: 2019-02-23 14:36:22
 -----
 BODY:
-<span style="font-size:large;"><strong>【片道勇者2開発　インターフェース調整】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【片道勇者2開発　インターフェース調整】</strong></span>
 
 今週はお仕事の合間にちょっとだけ『片道勇者2』の開発を進められました。
 
@@ -279,10 +279,10 @@ BODY:
 <span style="font-size:large;"><strong>- マップインターフェースをなおも調整中</strong></span>
 
 α1時点
-<a href="https://silversecond.net/data/p_diary5/20190223-.jpg" class="blue"><img src="https://silversecond.net/data/p_diary5/20190223-.jpg" width="400"></a>
+<a class="blue" rel="lightbox[20190221_1]" href="https://silversecond.net/data/p_diary5/20190223-.jpg"><img src="https://silversecond.net/data/p_diary5/20190223-.jpg" width="400" loading="lazy"></a>
 ↓
 現在
-<a href="../../image/2019/20190223.jpg" class="blue"><img src="../../image/2019/20190223.jpg" width="400"></a>
+<a class="blue" rel="lightbox[20190221_2]" href="../../image/2019/20190223.jpg"><img src="../../image/2019/20190223.jpg" width="400" loading="lazy"></a>
 前にもマップのインターフェースいじったよーとご報告した気がしますが
 今のバージョンはこんな感じになっています。
 多少なりとも圧迫感みたいなのは減ったと思います。
@@ -308,7 +308,7 @@ BODY:
 デッキの「カード総量やカード種の配分」が一目で分かりやすくなりました。
 下の画像の、右側の表示です。
 ↓
-<img src="../../image/2019/20190223A.jpg">
+<img src="../../image/2019/20190223A.jpg" loading="lazy">
 これまでは左側のように「まだ山札に残ってるもの」だけを文字で表示していましたが、
 今は右側のようなアイコン表記にして、「山札も捨て札も一緒にまとめて表示」しています。
 このうち、明るいカードが「山札に残っている」カードです。
@@ -327,7 +327,7 @@ BODY:
 <hr size="1" />
 <span style="font-size:large;"><strong>- 主人公の下のミニゲージ周辺を修正</strong></span>
 
-<img src="../../image/2019/20190223B.jpg">
+<img src="../../image/2019/20190223B.jpg" loading="lazy">
 
 これはアルファ1を遊んだことがある人にしか意図が分からない話ですが、
 主人公のゲージの下に「手札の攻撃スキルカードの枚数」を常時表示するようにしました。
@@ -343,7 +343,7 @@ BODY:
 
 <hr size="1" />
 <span style="font-size:large;"><strong>- アクション一連の総ダメージを表示するように。</strong></span>
-<img src="../../image/2019/20190223D.jpg">
+<img src="../../image/2019/20190223D.jpg" loading="lazy">
 攻撃で「4」と「7」ダメージを与えたので、総ダメージ「11」と大きく表示されています。
 
 総ダメージ表示は、入れてみたら
@@ -370,7 +370,7 @@ BODY:
 「ああではないこうではないと色々いじった結果、今のところこうなっている」
 というだけなのでこれからも変わる可能性はありますが、自分がテストプレイするときに
 「グアアアなんだこれは！　パーン！（ゲームを投げ捨てる）」
-とならない程度には、いくらか快適かつ分かりやすいようにしておきたいと考えています。
+とならない程度には、いくらか快適かつ分かりやすいようにしておきたいと考えています。</CENTER>
 -----
 EXTENDED BODY:
 
@@ -381,7 +381,7 @@ CATEGORY: 片道勇者2
 DATE: 2019-03-16 12:40:12
 -----
 BODY:
-<span style="font-size:large;"><strong>【片道勇者2　すぐ使う機能とマップ】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【片道勇者2　すぐ使う機能とマップ】</strong></span>
 
 お仕事の合間をぬってゲーム開発中です。
 『片道勇者2』はまだアルファ1のフィードバック対応中ですが
@@ -395,7 +395,7 @@ BODY:
 私もそう思っていましたので、落ちているアイテムをそのまま使える機能をようやく搭載です。
 
 ※画面はまだ仮テスト状態です。今後、見栄えをよくしていきます
-<img src="../../image/2019/20190316.jpg" border="1" width="500">
+<img src="../../image/2019/20190316.jpg" border="1" width="500" loading="lazy">
 
 実際に搭載してみるとやっぱり便利ですね！
 アルファ1データだと「癒しの草」みたいな直接使いたいアイテムも多いので、
@@ -411,7 +411,7 @@ BODY:
 これでもう、想定外に細い道ができたりはしないはずです。
 
 ↓昔の画面、アルファ1では１画面内で端から端まで見える狭い場所がありました
-<img src="../../image/2019/20190316A.jpg" border="1" width="400">
+<img src="../../image/2019/20190316A.jpg" border="1" width="400" loading="lazy">
 
 本来は「地形ごとの最低道幅」が数値上だけ設定されてたんですが、
 アルファ1のバージョンだとうまく動いていなくて、縦幅で4マスしかないとか
@@ -437,7 +437,7 @@ BODY:
 「ミニマップなしの探知表示だけ」で用が済みそうな気配もあるんですよ。
 
 こういった「警告表示だけで用が済む」状況の類例として、
-たとえばリメイク作の『<a href="https://store.steampowered.com/app/409000/Mystery_Chronicle_One_Way_Heroics/?l=japanese" class="red"><strong>不思議のクロニクル 振リ返リマセン勝ツマデハ</strong></a>』だと
+たとえばリメイク作の『<a class="red" target="_blank" href="https://store.steampowered.com/app/409000/Mystery_Chronicle_One_Way_Heroics/?l=japanese"><strong>不思議のクロニクル 振リ返リマセン勝ツマデハ</strong></a>』だと
 原作にあった「魔王来るよ時計」がなくなっていたのですが、
 片道勇者プラスの「魔王が来るまであと3時間！」という警告が
 継承されていたおかげで、時計を表示しなくても
@@ -448,7 +448,7 @@ BODY:
 
 とにかく、「必要なときに目立つ警告」をしてくれれば、
 生情報を出しっぱなしにする必要がそんなにない可能性があります。
-この機会に、色々試してみたいと思っています。
+この機会に、色々試してみたいと思っています。</CENTER>
 -----
 EXTENDED BODY:
 
@@ -459,12 +459,12 @@ CATEGORY: 落書き
 DATE: 2019-02-02 16:10:16
 -----
 BODY:
-<span style="font-size:large;"><strong>【落書き1枚　旅行と世界雑談】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【落書き1枚　旅行と世界雑談】</strong></span>
 
 今週もいただき仕事を進めただけの一週間となりましたので、
 今回もお絵かきを1枚！
 
-<img src="../../image/2019/20190202.jpg" border="1" title="だいぶ昔に描いたやつですが、まだ公開はしてなかったはず。ちょっとアレンジして別ゲーム用キャラに使ったことがあります。ブボボ">
+<img src="../../image/2019/20190202.jpg" border="1" title="だいぶ昔に描いたやつですが、まだ公開はしてなかったはず。ちょっとアレンジして別ゲーム用キャラに使ったことがあります。ブボボ" loading="lazy">
 
 旅行に出かける感じの落書き1枚！
 プチ出張に行ったりすると毎度思いますが、旅行するにもやっぱり体力が必要で、
@@ -489,7 +489,7 @@ BODY:
 今後は中国語でローカライズする可能性も出ているのですが、
 私は中国語が全然読めないので、中国語も少しくらい勉強したいところです。
 全然違う文章が入ってしまっていることに気付けるくらいには、
-かじっておきたい気持ちがあります。
+かじっておきたい気持ちがあります。</CENTER>
 -----
 EXTENDED BODY:
 
@@ -500,7 +500,7 @@ CATEGORY: 開発日誌
 DATE: 2019-01-26 13:27:29
 -----
 BODY:
-<span style="font-size:large;"><strong>【パンパンの一週間！】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【パンパンの一週間！】</strong></span>
 
 今週は引き続き別件作業をしつつプチ出張があったのに加えて、
 新しい作業が増えて別件が予定通り2列になりました。
@@ -513,11 +513,11 @@ BODY:
 かかわってくださる皆様は気のいい人たちばかりで
 自然にがんばれるので、それは大きな救いですね。
 
-<img src="../../image/2019/20190126.jpg" border="1">
+<img src="../../image/2019/20190126.jpg" border="1" loading="lazy">
 
 必死にやれば作業ゲージは短くできそうなので、
 品質は維持しつつ『片道勇者2』を作るための時間も稼げるよう、
-集中力を上げていきたいところです。
+集中力を上げていきたいところです。</CENTER>
 -----
 EXTENDED BODY:
 
@@ -528,10 +528,10 @@ CATEGORY: その他
 DATE: 2019-02-09 13:59:08
 -----
 BODY:
-<span style="font-size:large;"><strong>【バイオハザードRE:2のマップがよかった話】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【バイオハザードRE:2のマップがよかった話】</strong></span>
 
 遊ばせてもらったゲームで感動した工夫をお勉強がてら開発日誌に載せておきたい！
-と思ったので、今回は最近発売された『<B><a href="http://www.capcom.co.jp/biohazard2/" class="red">バイオハザードRE:2</a></B>』を
+と思ったので、今回は最近発売された『<B><a class="red" target="_blank" href="http://www.capcom.co.jp/biohazard2/">バイオハザードRE:2</a></B>』を
 遊ばせていただいたときのお話をさせていただきます。
 
 まず『バイオハザードRE:2』は最近発売された
@@ -562,7 +562,7 @@ TPS（三人称視点シューティング）の探索型ゲームで、
 
 まずバイオハザードRE:2のマップ表示はおおよそ以下のような感じになっています。
 （これはマップ表示画面の一部をそれっぽく再現して描いた画像です）
-<img src="../../image/2019/20190209.jpg" border="0" title="">
+<img src="../../image/2019/20190209.jpg" border="0" title="" loading="lazy">
 
 マップ表示はこんな感じなのですが、これのどこがよかったかというと、
 
@@ -642,7 +642,7 @@ TPS（三人称視点シューティング）の探索型ゲームで、
 
 ホラー部分も、（『バイオハザード7』の強烈さに比べれば）グロさとか
 びっくりさせるとか気持ち悪さがあるといった演出はおそらく控えめでしたし、
-「リソース面でも怖がらせてくれる」というのは個人的に求めていた点なので好きですね！
+「リソース面でも怖がらせてくれる」というのは個人的に求めていた点なので好きですね！</CENTER>
 -----
 EXTENDED BODY:
 
@@ -653,14 +653,14 @@ CATEGORY: 開発日誌
 DATE: 2019-02-16 11:53:48
 -----
 BODY:
-<span style="font-size:large;"><strong>【お仕事ウィーク】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【お仕事ウィーク】</strong></span>
 
 ずっとお仕事週間です！
 次のお仕事が届く前にいただき仕事の一つを片付けるべく必死になってたら
 予想外にヘトヘトになって落書きする気力成分がなくなってしまったので、
 今週の開発日誌はお絵かきなしです。
 
-<img src="../../image/2019/20190216.jpg" border="1">
+<img src="../../image/2019/20190216.jpg" border="1" loading="lazy">
 
 もうすでに1ヶ月くらいゲーム開発ができてなくてヤバいので、
 そろそろちょっとずつでも開発する時間を挟んでいきたいですね。
@@ -672,7 +672,7 @@ BODY:
 しばらくはマイペースに、できることをできる範囲で片付けていきたいと思います。
 
 あ、そういえばもうすぐ確定申告もありました！　ぐおおぉぉぉ！
-色々ありますががんばっていきます！
+色々ありますががんばっていきます！</CENTER>
 -----
 EXTENDED BODY:
 
@@ -683,18 +683,18 @@ CATEGORY: 落書き
 DATE: 2019-03-02 11:41:04
 -----
 BODY:
-<span style="font-size:large;"><strong>【落書き　妖精クリス】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【落書き　妖精クリス】</strong></span>
 
 今週もお仕事ウィークでお見せできるものがないのでボーっと書いてた落書きを1枚！
 『片道勇者2』のアドバイザー妖精のクリス、寝間着っぽい感じ。
 
-<img src="../../image/2019/20190301.jpg" border="1">
+<img src="../../image/2019/20190301.jpg" border="1" loading="lazy">
 
 まだゲーム上では妖精クリスがラフのままなので、
 時間を見つけて『片道勇者2』の基本システムを完成させて
 キャラを一通り上げて清書に入りたいです。
 （※クオリティ均質化のため、仕上げ作業は平均的に行っていく予定なのです）
-なんとか時間を作っていかないとですね。
+なんとか時間を作っていかないとですね。</CENTER>
 -----
 EXTENDED BODY:
 
@@ -705,7 +705,7 @@ CATEGORY: その他
 DATE: 2019-03-09 10:16:16
 -----
 BODY:
-<span style="font-size:large;"><strong>【しばらく隔週更新に】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【しばらく隔週更新に】</strong></span>
 
 開発の時間を少しでも確保したいので
 開発日誌はこれからしばらく隔週（14日に1回）更新とさせていただきます！
@@ -722,7 +722,7 @@ BODY:
 もしTwitterをお持ちでしたらこちら↓からどうぞ。
 
 SmokingWOLFのTwitter
-<a href="https://twitter.com/WO_LF" class="red"><strong>https://twitter.com/WO_LF</strong></a>
+<a class="red" target="_blank" href="https://twitter.com/WO_LF"><strong>https://twitter.com/WO_LF</strong></a></CENTER>
 -----
 EXTENDED BODY:
 
@@ -733,7 +733,7 @@ CATEGORY: 片道勇者
 DATE: 2019-03-30 11:33:16
 -----
 BODY:
-<span style="font-size:large;"><strong>【片道勇者のマップ生成】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【片道勇者のマップ生成】</strong></span>
 
 『片道勇者』のマップ生成について興味を持ってくださる方がいらっしゃったり、
 お仕事で緊急に資料が必要になって色々作ってたりしたので、
@@ -764,7 +764,7 @@ BODY:
 この『片道勇者1』のマップは風景的にはまだしも、
 ゲームプレイの面で見ると「近くに障害物があるか否か」くらいの
 差しかなかったので、次の『片道勇者2』の方では
-もう少し豊かな状況を生み出せるようなマップを組めるよう意識していきたいです。
+もう少し豊かな状況を生み出せるようなマップを組めるよう意識していきたいです。</CENTER>
 -----
 EXTENDED BODY:
 
@@ -775,7 +775,7 @@ CATEGORY: 片道勇者2
 DATE: 2019-04-13 12:58:09
 -----
 BODY:
-<span style="font-size:large;"><strong>【片道勇者2　状態異常】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【片道勇者2　状態異常】</strong></span>
 
 お仕事の隙間を縫いつつ『片道勇者2』にようやく「状態異常」を搭載しました。
 『片道勇者1』だと主人公側がやれる工夫の70％くらいは
@@ -792,7 +792,7 @@ BODY:
 「手札に来た分」を使っていくことになりますからね。
 
 <span style="font-size:x-small;"><strong>状態異常（「剛力」が2重になっており残り1ターン、の図）</strong></span>
-<img src="../../image/2019/20190413.jpg" border="1" width="480">
+<img src="../../image/2019/20190413.jpg" border="1" width="480" loading="lazy">
 
 
 <span style="font-size:large;"><strong>【「繋げると強い」と「組み合わせると強い」に】</strong></span>
@@ -882,7 +882,7 @@ BODY:
 
 <hr size="1" />
 こういった意図でどれだけうまくいくかは分かりませんが、
-今回の「状態異常」は最初はこういう狙いで作ってみたいと思っています。
+今回の「状態異常」は最初はこういう狙いで作ってみたいと思っています。</CENTER>
 -----
 EXTENDED BODY:
 
@@ -893,13 +893,13 @@ CATEGORY: 片道勇者2
 DATE: 2019-04-27 13:12:56
 -----
 BODY:
-<span style="font-size:large;"><strong>【片道勇者2　レベルアップ】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【片道勇者2　レベルアップ】</strong></span>
 
 今週は空いた時間でレベルアップ関連の調整をしていました。
 また新しいお仕事が飛んできたのでがんばっていきます。
 お仕事のうち一つはそのうち情報が出ると思いますのでご期待ください。
 
-<img src="../../image/2019/20190427.jpg" border="1" title="レベルアップ画面" width="520">
+<img src="../../image/2019/20190427.jpg" border="1" title="レベルアップ画面" width="520" loading="lazy">
 手札に来た「経験値」を消費してスキルやパラメータ成長を購入します。
 
 <hr size="1" />
@@ -907,7 +907,7 @@ BODY:
 今回はアルファ1からの変更についてまとめておきます。
 
 <span style="font-size:large;"><strong>・「女神像」でレベルアップ可能</strong></span>
-<img src="../../image/2019/20190427D.jpg" border="1" width="300">
+<img src="../../image/2019/20190427D.jpg" border="1" width="300" loading="lazy">
 これはもう前回もご報告済みですが、アルファ2以降では
 一定距離ごとに出現する「女神像」でレベルアップが可能となります。
 
@@ -918,7 +918,7 @@ BODY:
 
 
 <span style="font-size:large;"><strong>・「覚醒」で手札が増やせるのを明示</strong></span>
-<img src="../../image/2019/20190427A.jpg" border="1" width="300">
+<img src="../../image/2019/20190427A.jpg" border="1" width="300" loading="lazy">
 アルファ1ではレベルアップの際、手札の経験値を増やすために
 「覚醒（手札を増やせる）」が使えることは「暗黙的」だったのですが、
 アルファ2からはボタンで明示される形になります。
@@ -930,7 +930,7 @@ BODY:
 
 
 <span style="font-size:large;"><strong>・スペシャルカードの効果を複数種から選べるように。</strong></span>
-<img src="../../image/2019/20190427B.jpg" border="1" width="420">
+<img src="../../image/2019/20190427B.jpg" border="1" width="420" loading="lazy">
 スペシャル成長カードは「特殊な成長を複数種から選べる」ようになります。
 
 今のところは仮で「最大HP＋10　・　筋力＋4　・　手札＋1　・　成長力＋2」
@@ -954,7 +954,7 @@ BODY:
 
 
 <span style="font-size:large;"><strong>・スペシャルカードは10レベルごとに回復するように。</strong></span>
-<img src="../../image/2019/20190427C.jpg" border="1">
+<img src="../../image/2019/20190427C.jpg" border="1" loading="lazy">
 特殊な成長ができるスペシャルカードですが、
 アルファ1では一度選ぶと特殊な準備をしないと再び選べないという記述でした。
 アルファ2からはレベルが10の倍数に達するたびに
@@ -983,7 +983,7 @@ BODY:
 って話を見ても分かるように、常に触れることになるルール部分は
 基準値に使う数字を1個間違えるだけで微妙に面白さがチグハグになる場合があります。
 遊ばれる人が最善を目指す邪魔にならないよう、
-うまいことゲームシステムを組んでいきたいと思います。
+うまいことゲームシステムを組んでいきたいと思います。</CENTER>
 -----
 EXTENDED BODY:
 
@@ -994,9 +994,9 @@ CATEGORY: その他
 DATE: 2019-05-11 11:55:39
 -----
 BODY:
-<span style="font-size:large;"><strong>【令和の時代へ！】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【令和の時代へ！】</strong></span>
 
-<img src="../../image/2019/20190511.jpg" border="1" title="元号発表ごっこ。ホームボタン付きは平成の証">
+<img src="../../image/2019/20190511.jpg" border="1" title="元号発表ごっこ。ホームボタン付きは平成の証" loading="lazy">
 
 新元号記念に1枚！
 平成の三分の二ほどを駆け抜けたこのサイトですが、
@@ -1124,7 +1124,7 @@ BODY:
 本当に感謝しかありません！　
 
 今後も引き続きゲームやら創作物やら作っていきますので、
-令和の時代も引き続きよろしくお願いいたします！
+令和の時代も引き続きよろしくお願いいたします！</CENTER>
 -----
 EXTENDED BODY:
 
@@ -1135,7 +1135,7 @@ CATEGORY: 片道勇者2
 DATE: 2019-05-25 09:37:36
 -----
 BODY:
-<span style="font-size:large;"><strong>【片道勇者2　プチ改善】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【片道勇者2　プチ改善】</strong></span>
 
 今回も相変わらず空いた時間で、大量のバグ修正と共に
 予定にあったプチ改善をいくつか行いました。
@@ -1143,7 +1143,7 @@ BODY:
 <hr size="1" />
 <span style="font-size:large;"><strong>●装備変更時の性能確認</strong></span>
 
-<img src="../../image/2019/20190525D.jpg" border="1" width="300">
+<img src="../../image/2019/20190525D.jpg" border="1" width="300" loading="lazy">
 作るのがいつも地味に大変な、装備変更時の性能確認機能！
 今回も簡易版ですが実装してみました。
 これから付与などが出てくるとまた調整が大変になるやつです。
@@ -1152,7 +1152,7 @@ BODY:
 <span style="font-size:large;"><strong>●「自動選択」ボタンの実装！　＆　
 ホイールで「カード自動選択」できるように。</strong></span>
 
-<img src="../../image/2019/20190525C.jpg" border="1" width="350">
+<img src="../../image/2019/20190525C.jpg" border="1" width="350" loading="lazy">
 
 「自動選択」ボタンを新たに追加しました！
 この「自動選択」ボタンは、敵を選んだときの自動攻撃と同じような感じで、
@@ -1186,17 +1186,17 @@ BODY:
 と思って作った第一号がひどいことになってたのでここでお見せします。
 こんな感じになってしまいました。
 ↓
-<img src="../../image/2019/20190525A.jpg" border="1">
+<img src="../../image/2019/20190525A.jpg" border="1" loading="lazy">
 
 つまり「ボベバーッパー平原」とか「ヴォン・プーッ山脈」とかできるわけですよ！　ひどい！
-<img src="../../image/2019/20190525.jpg" border="1">
+<img src="../../image/2019/20190525.jpg" border="1" loading="lazy">
 もちろんこれはバグの結果でした。
 これはこれで統一性あるけどさすがにちょっと！
 
 本当はこんな（↓）感じになります。
 1のときよりは地名っぽい感じが出ている気がします。
 
-<img src="../../image/2019/20190525B.jpg" border="1">
+<img src="../../image/2019/20190525B.jpg" border="1" loading="lazy">
 
 <hr size="1" />
 片道勇者2、ようやく修正項目の「底」が遠くに見えてくるあたりまでやってきました。
@@ -1204,7 +1204,7 @@ BODY:
 
 整理した項目を8割9割ほどいじったらこっそりアルファ2をお出しして、
 そこから本格的に製品版に向けて本格的なシナリオやデータの実装を
-していく感じになると思います。
+していく感じになると思います。</CENTER>
 -----
 EXTENDED BODY:
 
@@ -1215,14 +1215,14 @@ CATEGORY: 片道勇者2
 DATE: 2019-06-08 18:41:04
 -----
 BODY:
-<span style="font-size:large;"><strong>【片道勇者2　プチ改善2】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【片道勇者2　プチ改善2】</strong></span>
 
 今週も空いた時間でいくらかゲーム開発を進めました。
 開発日誌でご報告できるネタができるくらいは進められるようになってきました。
 <hr size="1" />
 <span style="font-size:large;"><strong>●装備を投げるときに押し続け操作を要求</strong></span>
 
-<img src="../../image/2019/20190608A.jpg" border="1">
+<img src="../../image/2019/20190608A.jpg" border="1" loading="lazy">
 装備の「投げる」を選んで敵をクリックした場合、実行するために
 「ちょびっとクリック長押し」を要求するようにしてみました。
 
@@ -1242,11 +1242,11 @@ BODY:
 手札カードの自動並び替え機能を搭載しました。
 
 <strong>従来の並び見本</strong>
-<img src="../../image/2019/20190608C.jpg" border="1" >
+<img src="../../image/2019/20190608C.jpg" border="1"  loading="lazy">
 （攻撃したいならショートカットで1、4と入れる必要がある）
 ↓
 <strong>最新の自動並び変え機能オン時</strong>
-<img src="../../image/2019/20190608B.jpg" border="1">
+<img src="../../image/2019/20190608B.jpg" border="1" loading="lazy">
 （こちらはショートカットで1、2、3と入れればよくなったので楽）
 
 最初は補助系、次に攻撃系、アイテムや経験値などの消耗品は右の方へ、
@@ -1277,7 +1277,7 @@ BODY:
 これは知り合いの人からご意見をいただいたものです。
 ちょっとはマシに見えるかも？
 
-<img src="../../image/2019/20190608.jpg" border="1" width="520">
+<img src="../../image/2019/20190608.jpg" border="1" width="520" loading="lazy">
 
 従来は単色塗りのへクスだったためかさほど気にならなかったのですが、
 試しにへクスに草の模様を付けてみると平坦なのが人工的すぎて
@@ -1291,7 +1291,7 @@ BODY:
 まだ基本システム中というのが情けない話ではありますけどね！
 
 先は長そうなので、うまいことサブで出せるコンテンツなども作りつつ、
-食いつないでいきたいところです。
+食いつないでいきたいところです。</CENTER>
 -----
 EXTENDED BODY:
 
@@ -1302,7 +1302,7 @@ CATEGORY: 片道勇者2
 DATE: 2019-06-22 11:43:50
 -----
 BODY:
-<span style="font-size:large;"><strong>【片道勇者2　オプション画面】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【片道勇者2　オプション画面】</strong></span>
 
 今週も空いた時間で開発を進めていました。
 今週は調子が悪かったのもありますが、
@@ -1312,7 +1312,7 @@ BODY:
 
 <span style="font-size:large;"><strong>【オプション画面を作成！】</strong></span>
 
-<img src="../../image/2019/20190622.jpg" border="1" width="520">
+<img src="../../image/2019/20190622.jpg" border="1" width="520" loading="lazy">
 
 ということで、アルファ1では会話選択肢でごまかしていた
 オプション画面の正式版のベースを作成しました！
@@ -1346,7 +1346,7 @@ BODY:
 <hr size="1" />
 あと、別件と副業で創作系の話が裏で進んでいます。
 片方はあと数ヶ月ほどで何らかのお知らせができるところまで
-来ている感じなので、もう少々お待ちいただければ幸いです。
+来ている感じなので、もう少々お待ちいただければ幸いです。</CENTER>
 -----
 EXTENDED BODY:
 
@@ -1357,7 +1357,7 @@ CATEGORY: 片道勇者2
 DATE: 2019-07-06 13:12:15
 -----
 BODY:
-<span style="font-size:large;"><strong>【片道勇者2　仲間会話・ログボタン】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【片道勇者2　仲間会話・ログボタン】</strong></span>
 
 今週先週は別件でやることが山盛り過ぎて大変でしたが、
 なんとか開発は進められています。
@@ -1372,7 +1372,7 @@ BODY:
 （片道勇者1では「スキル欄」に仲間との会話コマンドをぶっ込んでて、
 割と大胆にラクをしていましたね）
 
-<img src="../../image/2019/20190706.jpg" border="1" width="520">
+<img src="../../image/2019/20190706.jpg" border="1" width="520" loading="lazy">
 
 『片道勇者2』では、1と違って常に仲間との会話ボタンが見える形になります。
 それに合わせて、話題が変わったときに
@@ -1396,7 +1396,7 @@ BODY:
 （別にアドバイザーが空気になること自体は私は問題だと思っていませんが！）
 
 
-<img src="../../image/2019/20190706A.jpg" border="1">
+<img src="../../image/2019/20190706A.jpg" border="1" loading="lazy">
 ちなみに、アルファ1の画面端にあったこの「妖精アドバイス」も、
 仲間会話ボタンに統合される予定です。
 適切なタイミングでポップアップを出せるようにしたいですね。
@@ -1404,7 +1404,7 @@ BODY:
 <hr size="1" />
 <span style="font-size:large;"><strong>【ログ表示ボタンの実装】</strong></span>
 
-<img src="../../image/2019/20190706B.jpg" border="1" width="520">
+<img src="../../image/2019/20190706B.jpg" border="1" width="520" loading="lazy">
 
 ついでにログ表示画面も実装しました。
 「こんなのいちいち実装したって言う必要ある？」
@@ -1432,7 +1432,7 @@ BOOTHによるご支援ページを作る予定です。
 これらと並行して、7月中旬頃からいちおう夏セールも開催する予定です！
 
 そしてまた、今年のウディコンもとうとう11回目！　
-どんな作品が来るか今から楽しみです！　お楽しみに！
+どんな作品が来るか今から楽しみです！　お楽しみに！</CENTER>
 -----
 EXTENDED BODY:
 
@@ -1443,7 +1443,7 @@ CATEGORY: ウディタ
 DATE: 2019-07-20 12:00:01
 -----
 BODY:
-<span style="font-size:large;"><strong>【第11回ウディコン、いよいよ開催！】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【第11回ウディコン、いよいよ開催！】</strong></span>
 
 ということで今年もなんとかウディコンを開催できそうです！
 今回は第11回！　つまり11年目に突入しています！
@@ -1452,8 +1452,8 @@ BODY:
 作品公開は7/21（日）の0時過ぎより始まっております！ 
 ありがたいことに、すでに20作品以上が集まっています！
 
-<a href="http://www.silversecond.com/WolfRPGEditor/Contest/" class="blue">第11回ウディコンページ▼
-<img src="http://www.silversecond.com/WolfRPGEditor/Contest/banner.png"></a>
+<a class="blue" target="_blank" href="http://www.silversecond.com/WolfRPGEditor/Contest/">第11回ウディコンページ▼
+<img src="http://www.silversecond.com/WolfRPGEditor/Contest/banner.png" loading="lazy"></a>
 
 今年の総作品数はたぶん50作品を切るくらいではないかなと予想しています。
 
@@ -1471,7 +1471,7 @@ BODY:
 もちろん、まだゲームの方をお持ちでない方は、
 先にゲームを手に取っていただけますと幸いです。
 <center>
-<TABLE style="background-color:#444464;border-radius: 12px;background-image : url(../../image/2019_support_bigbanner.jpg);border:solid 1px #333388;" cellspacing="1" cellpadding="5" width="494" height="70"><TBODY><TR><TD nowrap align="center" colspan="1" class="backcolor"><A href="https://silversecond.booth.pm/items/1423684" target="_blank">  <B style="text-shadow: 0 0 9px #4444ff, 0 0 9px #4444ff, 0 0 9px #4444ff, 0 0 9px #4444ff; text-decoration:underline;"><FONT style="color:#fff;">BOOTHにて<BR><BR><FONT size="+2">ご支援･投げ銭 受付はじめました</FONT></FONT></B></A></TD></TR></TBODY></TABLE>
+<TABLE style="background-color:#444464;border-radius: 12px;background-image : url(../../image/2019_support_bigbanner.jpg);border:solid 1px #333388;" cellspacing="1" cellpadding="5" width="494" height="70"><TBODY><TR><TD nowrap align="center" colspan="1" class="backcolor"><a class="blue" target="_blank" href="https://silversecond.booth.pm/items/1423684">  <B style="text-shadow: 0 0 9px #4444ff, 0 0 9px #4444ff, 0 0 9px #4444ff, 0 0 9px #4444ff; text-decoration:underline;"><FONT style="color:#fff;">BOOTHにて<BR><BR><FONT size="+2">ご支援･投げ銭 受付はじめました</FONT></FONT></B></A></TD></TR></TBODY></TABLE>
 </center>
 軽く投げ銭と言ってますが、金銭というのはほとんどの人にとって
 生きる時間を削って得た命のリソースです。
@@ -1487,7 +1487,7 @@ BODY:
 
 <hr size="1" />
 ひとまず、まず最初はウディコンの運営からです！
-今年も楽しんでいただけますと幸いです。
+今年も楽しんでいただけますと幸いです。</CENTER>
 -----
 EXTENDED BODY:
 
@@ -1498,7 +1498,7 @@ CATEGORY: ウディタ
 DATE: 2019-08-03 11:30:17
 -----
 BODY:
-<span style="font-size:large;"><strong>【第11回ウディコン審査期間中！】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【第11回ウディコン審査期間中！】</strong></span>
 
 第11回ウディコンは無事エントリー期間を終え、
 ついに審査期間に入りました！
@@ -1509,8 +1509,8 @@ BODY:
 後から追加や途中保存もできますので、
 応援したい作品があればぜひ投票をお願いします！
 
-<a href="http://www.silversecond.com/WolfRPGEditor/Contest/" class="blue">第11回ウディコンページ▼
-<img src="http://www.silversecond.com/WolfRPGEditor/Contest/banner.png"></a>
+<a class="blue" target="_blank" href="http://www.silversecond.com/WolfRPGEditor/Contest/">第11回ウディコンページ▼
+<img src="http://www.silversecond.com/WolfRPGEditor/Contest/banner.png" loading="lazy"></a>
 
 
 今年は全体的に中堅層がすごく厚くなっている印象で、
@@ -1532,7 +1532,7 @@ BODY:
 個人的に応援させていただきたいですね！
 
 それでは、引き続きごゆっくりウディコンをお楽しみください！
-皆さまの審査、お待ちしております！
+皆さまの審査、お待ちしております！</CENTER>
 -----
 EXTENDED BODY:
 
@@ -1543,12 +1543,12 @@ CATEGORY: ウディタ
 DATE: 2019-08-17 12:22:44
 -----
 BODY:
-<span style="font-size:large;"><strong>【ウディコン投票締め切り間近！】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【ウディコン投票締め切り間近！】</strong></span>
 
 ということで、ウディコン投票期間の締め切りはあさっての<span style="color:#CC0000"><strong>8/19（月）の23:59</strong></span>です！
 まもなく終了ですので、投票予定のかたはお急ぎください！
 
-<a href="http://www.silversecond.com/WolfRPGEditor/Contest/" class="blue"><span style="font-size:x-large;"><strong>【ウディコン公式】　8/19まで投票受付中！</strong></span></a>
+<a class="blue" target="_blank" href="http://www.silversecond.com/WolfRPGEditor/Contest/"><span style="font-size:x-large;"><strong>【ウディコン公式】　8/19まで投票受付中！</strong></span></a>
 
 8/19なら、お盆休み最終日の日曜の終わりに1日追加されて
 終わる形になるので、今回はいいタイミングではないかなと思います。
@@ -1569,7 +1569,7 @@ BODY:
 ここ最近は私が参加していたプロジェクト2つを進めていました！
 AとB！
 
-<img src="../../image/2019/20190817.jpg" border="1">
+<img src="../../image/2019/20190817.jpg" border="1" loading="lazy">
 
 ●<strong>「Aプロジェクト」</strong>は私の関与できる部分は小さめですがその作業もほぼ終わり、
 待ちの状態になっています。PRのためにこれからまた
@@ -1602,7 +1602,7 @@ AとB！
 可能なら自作コンテンツを積み重ねていくのが一番です。
 
 そんなわけでウディコンの作業が終わったら、しばらく進められなかった分、
-ここからはがっつり『片道勇者2』の開発をしていきます。
+ここからはがっつり『片道勇者2』の開発をしていきます。</CENTER>
 -----
 EXTENDED BODY:
 
@@ -1613,21 +1613,21 @@ CATEGORY: ウディタ
 DATE: 2019-08-25 12:27:32
 -----
 BODY:
-<span style="font-size:large;"><strong>【第11回ウディコン　結果発表！】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【第11回ウディコン　結果発表！】</strong></span>
 
 ということで毎年の夏のお楽しみ、「WOLF RPGエディターコンテスト」も
 8/24をもってとうとう結果発表＆閉幕となりました！
 
-<a href="http://www.silversecond.com/WolfRPGEditor/Contest/" class="blue"><span style="font-size:large;"><strong>【WOLF RPGエディターコンテスト　公式サイト】</strong></span></a>
+<a class="blue" target="_blank" href="http://www.silversecond.com/WolfRPGEditor/Contest/"><span style="font-size:large;"><strong>【WOLF RPGエディターコンテスト　公式サイト】</strong></span></a>
 
 今年の第11回も魅力的な作品が勢揃いでした。
 今回は例年の通り、まず上位3作品についてご紹介します！
 
 <hr size="1" />
-<a href="http://www.silversecond.com/WolfRPGEditor/Contest/result11.shtml#35" class="blue"><strong><span style="font-size:large;">【第１位　エディの人間大砲】</span></strong>　Dot蜥蜴 様</a>
+<a class="blue" target="_blank" href="http://www.silversecond.com/WolfRPGEditor/Contest/result11.shtml#35"><strong><span style="font-size:large;">【第１位　エディの人間大砲】</span></strong>　Dot蜥蜴 様</a>
 
 <span style="font-size:x-small;">クリックで拡大</span>
-<a href="http://silversecond.com/WolfRPGEditor/Contest/Entry11/35_big.jpg" class="blue"><img src="//silversecond.com/WolfRPGEditor/Contest/Entry11/35.jpg" border="2"></a>
+<a class="blue" rel="lightbox[wodicon11]" href="http://silversecond.com/WolfRPGEditor/Contest/Entry11/35_big.jpg"><img src="../../image/wodicon/Entry11_35.jpg" border="2" loading="lazy"></a>
 
 総合1位は、ウディタサンプルゲームでおなじみのエディが
 人間大砲師として活躍するマウスアクションゲーム！
@@ -1653,10 +1653,10 @@ BODY:
 
 
 <hr size="1" />
-<a href="http://www.silversecond.com/WolfRPGEditor/Contest/result11.shtml#38" class="blue"><strong><span style="font-size:large;">【第2位　ヴァーミリオンの青空】</span></strong>　秋月ねこ柳 様</a>
+<a class="blue" target="_blank" href="http://www.silversecond.com/WolfRPGEditor/Contest/result11.shtml#38"><strong><span style="font-size:large;">【第2位　ヴァーミリオンの青空】</span></strong>　秋月ねこ柳 様</a>
 
 <span style="font-size:x-small;">クリックで拡大</span>
-<a href="http://silversecond.com/WolfRPGEditor/Contest/Entry11/38_big.jpg" class="blue"><img src="//silversecond.com/WolfRPGEditor/Contest/Entry11/38.jpg" border="2"></a>
+<a class="blue" rel="lightbox[wodicon11]" href="http://silversecond.com/WolfRPGEditor/Contest/Entry11/38_big.jpg"><img src="../../image/wodicon/Entry11_38.jpg" border="2" loading="lazy"></a>
 
 1位も面白いけど、もっとゲームとしてのやり応えが欲しいかも！
 と思われた方におすすめしたいのが、このアクションゲーム『ヴァーミリオンの青空』！
@@ -1690,10 +1690,10 @@ BODY:
 能力を解放するたびに見られる、やや残酷表現のあるお話も個人的に好きでした。
 
 <hr size="1" />
-<a href="http://www.silversecond.com/WolfRPGEditor/Contest/result11.shtml#13" class="blue"><strong><span style="font-size:large;">【第3位　PRESS START】</span></strong>　初 様</a>
+<a class="blue" target="_blank" href="http://www.silversecond.com/WolfRPGEditor/Contest/result11.shtml#13"><strong><span style="font-size:large;">【第3位　PRESS START】</span></strong>　初 様</a>
 
 <span style="font-size:x-small;">クリックで拡大</span>
-<a href="http://silversecond.com/WolfRPGEditor/Contest/Entry11/13_big.jpg" class="blue"><img src="//silversecond.com/WolfRPGEditor/Contest/Entry11/13.jpg" border="2"></a>
+<a class="blue" rel="lightbox[wodicon10]" href="http://silversecond.com/WolfRPGEditor/Contest/Entry11/13_big.jpg"><img src="../../image/wodicon/Entry11_13.jpg" border="2" loading="lazy"></a>
 
 非常に美しいドット絵で描かれた、少年と幽霊の少女が
 思い出の島をめぐる探索アドベンチャーゲームです。
@@ -1718,10 +1718,10 @@ BODY:
 
 ここからは趣味の時間です。私が個人的にプッシュしたい作品をご紹介！
 
-<a href="http://www.silversecond.com/WolfRPGEditor/Contest/result11.shtml#25" class="blue"><strong><span style="font-size:large;">【ゴートマウンテン】</span></strong>　ハニーナゲット 様</a>
+<a class="blue" target="_blank" href="http://www.silversecond.com/WolfRPGEditor/Contest/result11.shtml#25"><strong><span style="font-size:large;">【ゴートマウンテン】</span></strong>　ハニーナゲット 様</a>
 
 <span style="font-size:x-small;">クリックで拡大</span>
-<a href="http://silversecond.com/WolfRPGEditor/Contest/Entry11/25_big.jpg" class="blue"><img src="//silversecond.com/WolfRPGEditor/Contest/Entry11/25.jpg" border="2"></a>
+<a class="blue" rel="lightbox[wodicon10]" href="http://silversecond.com/WolfRPGEditor/Contest/Entry11/25_big.jpg"><img src="../../image/wodicon/Entry11_25.jpg" border="2" loading="lazy"></a>
 
 羊が道を進みランダムイベントをこなして山頂を目指すゲーム！
 
@@ -1736,10 +1736,10 @@ BODY:
 ほのぼの雰囲気を味わうだけでも大きな価値があると思える一作です。
 
 
-<a href="http://www.silversecond.com/WolfRPGEditor/Contest/result11.shtml#15" class="blue"><strong><span style="font-size:large;">【小説家シミュレーター】</span></strong>　シブサワ・コウの名を継ぐ者 様</a>
+<a class="blue" target="_blank" href="http://www.silversecond.com/WolfRPGEditor/Contest/result11.shtml#15"><strong><span style="font-size:large;">【小説家シミュレーター】</span></strong>　シブサワ・コウの名を継ぐ者 様</a>
 
 <span style="font-size:x-small;">クリックで拡大</span>
-<a href="http://silversecond.com/WolfRPGEditor/Contest/Entry11/15_big.jpg" class="blue"><img src="//silversecond.com/WolfRPGEditor/Contest/Entry11/15.jpg" border="2"></a>
+<a class="blue" rel="lightbox[wodicon10]" href="http://silversecond.com/WolfRPGEditor/Contest/Entry11/15_big.jpg"><img src="../../image/wodicon/Entry11_15.jpg" border="2" loading="lazy"></a>
 
 芥川賞ってこんなんだっけ……？　と思いながら
 小説家人生をシミュレーションできる一作！
@@ -1752,10 +1752,10 @@ BODY:
 本ウディコンの中で一番ヒットしている作品ではないかと感じました。
 
 
-<a href="http://www.silversecond.com/WolfRPGEditor/Contest/result11.shtml#9" class="blue"><strong><span style="font-size:large;">【トリアージ勇者】</span></strong>　にょんにょんバード 様</a>
+<a class="blue" target="_blank" href="http://www.silversecond.com/WolfRPGEditor/Contest/result11.shtml#9"><strong><span style="font-size:large;">【トリアージ勇者】</span></strong>　にょんにょんバード 様</a>
 
 <span style="font-size:x-small;">クリックで拡大</span>
-<a href="http://silversecond.com/WolfRPGEditor/Contest/Entry11/09_big.jpg" class="blue"><img src="//silversecond.com/WolfRPGEditor/Contest/Entry11/09.jpg" border="2"></a>
+<a class="blue" rel="lightbox[wodicon10]" href="http://silversecond.com/WolfRPGEditor/Contest/Entry11/09_big.jpg"><img src="../../image/wodicon/Entry11_09.jpg" border="2" loading="lazy"></a>
 
 第一印象は「タイトル画面がない！　これ大丈夫かな？」と思いましたが、
 少し進めていくと数値がかなり緻密に設定されていることが分かったり、
@@ -1768,10 +1768,10 @@ HPで引くガチャでプリースト（HP回復できる）が引けると、�
 世界に対する意識が一変するところがこのゲームの最も面白いところです。
 
 
-<a href="http://www.silversecond.com/WolfRPGEditor/Contest/result11.shtml#27" class="blue"><strong><span style="font-size:large;">【クローン実験体#000の選定テスト-バトルロイヤル1日目-】</span></strong>　ピジョン 様</a>
+<a class="blue" target="_blank" href="http://www.silversecond.com/WolfRPGEditor/Contest/result11.shtml#27"><strong><span style="font-size:large;">【クローン実験体#000の選定テスト-バトルロイヤル1日目-】</span></strong>　ピジョン 様</a>
 
 <span style="font-size:x-small;">クリックで拡大</span>
-<a href="http://silversecond.com/WolfRPGEditor/Contest/Entry11/27_big.jpg" class="blue"><img src="//silversecond.com/WolfRPGEditor/Contest/Entry11/27.jpg" border="2"></a>
+<a class="blue" rel="lightbox[wodicon10]" href="http://silversecond.com/WolfRPGEditor/Contest/Entry11/27_big.jpg"><img src="../../image/wodicon/Entry11_27.jpg" border="2" loading="lazy"></a>
 
 これを見たとき「あー最近はやりのゲームをこういう形に落としこむことを
 なぜ一度も考えられなかったんだーうおー！」と思った作品です。
@@ -1798,7 +1798,7 @@ FPS、TPSゲームの業界ではこのシステムが最近流行していて�
 伝わる作品が多く、すそ野の強さがどんどん上がっている感触がありました。
 来年も楽しみにしています！
 
-<a href="http://www.silversecond.com/WolfRPGEditor/Contest/" class="blue"><span style="font-size:large;"><strong>【WOLF　RPGエディターコンテスト】</strong></span></a>
+<a class="blue" target="_blank" href="http://www.silversecond.com/WolfRPGEditor/Contest/"><span style="font-size:large;"><strong>【WOLF　RPGエディターコンテスト】</strong></span></a>
 
 <hr size="1" />
 <span style="font-size:large;"><strong>【今後について】</strong></span>
@@ -1810,7 +1810,7 @@ FPS、TPSゲームの業界ではこのシステムが最近流行していて�
 
 第11回ウディコンに関わってくださった全ての関係者の皆さま、
 今年も本当にありがとうございました！
-よければ来年も、ぜひ見ていただけますと幸いです。
+よければ来年も、ぜひ見ていただけますと幸いです。</CENTER>
 -----
 EXTENDED BODY:
 
@@ -1821,14 +1821,14 @@ CATEGORY: 片道勇者
 DATE: 2019-09-07 11:10:10
 -----
 BODY:
-<span style="font-size:large;"><strong>【片道勇者ノベル発売決定！】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【片道勇者ノベル発売決定！】</strong></span>
 
 ということで、ようやく発表となりました！
 『片道勇者』のノベライズが10月5日、発売（予定）となります！
 
-<img src="../../image/2019/20190907.jpg" border="1">
+<img src="../../image/2019/20190907.jpg" border="1" loading="lazy">
 
-<a  target="_blank" class="red" href="https://www.amazon.co.jp/%E7%89%87%E9%81%93%E5%8B%87%E8%80%85-%E6%BB%85%E3%81%B3%E3%81%AE%E9%97%87%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%99%E8%8B%B1%E9%9B%84-%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%83%8E%E3%83%99%E3%83%AB%E3%82%B9-SmokingWOLF/dp/4040733525/ref=as_li_ss_il?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&keywords=%E7%89%87%E9%81%93%E5%8B%87%E8%80%85&qid=1567321009&s=books&sr=1-1&linkCode=li1&tag=smokingwolf-22&linkId=805e785440a1d5650d16a5bedb805f9b&language=ja_JP" target="_blank"><img border="2" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=4040733525&Format=_SL110_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=smokingwolf-22&language=ja_JP" ><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=smokingwolf-22&language=ja_JP&l=li1&o=9&a=4040733525" width="1" height="1" border="0" alt="" /><BR>片道勇者　滅びの闇と繰り返す英雄<BR>Amazonページへ</A><BR>\1,540（税込） 
+<a class="blue" target="_blank"    target="_blank" href="https://www.amazon.co.jp/%E7%89%87%E9%81%93%E5%8B%87%E8%80%85-%E6%BB%85%E3%81%B3%E3%81%AE%E9%97%87%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%99%E8%8B%B1%E9%9B%84-%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%83%8E%E3%83%99%E3%83%AB%E3%82%B9-SmokingWOLF/dp/4040733525/ref=as_li_ss_il?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&keywords=%E7%89%87%E9%81%93%E5%8B%87%E8%80%85&qid=1567321009&s=books&sr=1-1&linkCode=li1&tag=smokingwolf-22&linkId=805e785440a1d5650d16a5bedb805f9b&language=ja_JP"><img border="2" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=4040733525&Format=_SL110_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=smokingwolf-22&language=ja_JP"  loading="lazy"><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=smokingwolf-22&language=ja_JP&l=li1&o=9&a=4040733525" width="1" height="1" border="0" alt=""  loading="lazy"/><BR>片道勇者　滅びの闇と繰り返す英雄<BR>Amazonページへ</A><BR>\1,540（税込） 
 
 私は監修で、執筆してくださったのは紅仗直（くじょうなお）さまという方、
 イラストレーターは『片道勇者TRPG』に引き続きモタさまとなります！
@@ -1974,7 +1974,7 @@ BODY:
 片道勇者ノベルはすでにご予約が可能ですので、欲しい方はよければお早めに！
 予約がないとAmazonさんも発注してくれなさそうですからね。
 ↓
-<a  target="_blank" class="red" href="https://www.amazon.co.jp/%E7%89%87%E9%81%93%E5%8B%87%E8%80%85-%E6%BB%85%E3%81%B3%E3%81%AE%E9%97%87%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%99%E8%8B%B1%E9%9B%84-%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%83%8E%E3%83%99%E3%83%AB%E3%82%B9-SmokingWOLF/dp/4040733525/ref=as_li_ss_il?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&keywords=%E7%89%87%E9%81%93%E5%8B%87%E8%80%85&qid=1567321009&s=books&sr=1-1&linkCode=li1&tag=smokingwolf-22&linkId=805e785440a1d5650d16a5bedb805f9b&language=ja_JP" target="_blank"><img border="2" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=4040733525&Format=_SL110_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=smokingwolf-22&language=ja_JP" ><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=smokingwolf-22&language=ja_JP&l=li1&o=9&a=4040733525" width="1" height="1" border="0" alt="" /><BR>片道勇者　滅びの闇と繰り返す英雄<BR>Amazonページへ</A><BR>\1,540（税込）
+<a class="blue" target="_blank"    target="_blank" href="https://www.amazon.co.jp/%E7%89%87%E9%81%93%E5%8B%87%E8%80%85-%E6%BB%85%E3%81%B3%E3%81%AE%E9%97%87%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%99%E8%8B%B1%E9%9B%84-%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%83%8E%E3%83%99%E3%83%AB%E3%82%B9-SmokingWOLF/dp/4040733525/ref=as_li_ss_il?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&keywords=%E7%89%87%E9%81%93%E5%8B%87%E8%80%85&qid=1567321009&s=books&sr=1-1&linkCode=li1&tag=smokingwolf-22&linkId=805e785440a1d5650d16a5bedb805f9b&language=ja_JP"><img border="2" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=4040733525&Format=_SL110_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=smokingwolf-22&language=ja_JP"  loading="lazy"><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=smokingwolf-22&language=ja_JP&l=li1&o=9&a=4040733525" width="1" height="1" border="0" alt=""  loading="lazy"/><BR>片道勇者　滅びの闇と繰り返す英雄<BR>Amazonページへ</A><BR>\1,540（税込）</CENTER>
 -----
 EXTENDED BODY:
 
@@ -1985,15 +1985,15 @@ CATEGORY: 片道勇者
 DATE: 2019-09-21 11:34:14
 -----
 BODY:
-<span style="font-size:large;"><strong>【片道勇者ノベル 発売2週間前！】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【片道勇者ノベル 発売2週間前！】</strong></span>
 
-片道勇者のノベライズ<a href="https://amzn.to/34PCGvz" class="red"><strong>『片道勇者　滅びの闇と繰り返す英雄』</strong></a>、
+片道勇者のノベライズ<a class="red" target="_blank" href="https://amzn.to/34PCGvz"><strong>『片道勇者　滅びの闇と繰り返す英雄』</strong></a>、
 発売まであと2週間となりました！
 発売は<strong>10/5（日）</strong>！　よろしくお願いします。
 
 で、これまでの間にカバーイラストが発表されていたのでご紹介します！
 
-<img src="../../image/2019/20190921.jpg" border="1">
+<img src="../../image/2019/20190921.jpg" border="1" loading="lazy">
 イラスト：モタ 様
 
 表紙に出ちゃったのでネタバレしちゃいますが、
@@ -2007,7 +2007,7 @@ BODY:
 予約はすでに可能ですので、
 気になる方はよければぜひこちらからどうぞ！　発売は10/5です！
 ↓
-<a  target="_blank" class="red" href="https://www.amazon.co.jp/%E7%89%87%E9%81%93%E5%8B%87%E8%80%85-%E6%BB%85%E3%81%B3%E3%81%AE%E9%97%87%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%99%E8%8B%B1%E9%9B%84-%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%83%8E%E3%83%99%E3%83%AB%E3%82%B9-SmokingWOLF/dp/4040733525/ref=as_li_ss_il?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&keywords=%E7%89%87%E9%81%93%E5%8B%87%E8%80%85&qid=1567321009&s=books&sr=1-1&linkCode=li1&tag=smokingwolf-22&linkId=805e785440a1d5650d16a5bedb805f9b&language=ja_JP" target="_blank"><img border="2" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=4040733525&Format=_SL110_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=smokingwolf-22&language=ja_JP" ><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=smokingwolf-22&language=ja_JP&l=li1&o=9&a=4040733525" width="1" height="1" border="0" alt="" /><BR>片道勇者　滅びの闇と繰り返す英雄<BR>Amazonページへ</A><BR>\1,540（税込） 
+<a class="blue" target="_blank"    target="_blank" href="https://www.amazon.co.jp/%E7%89%87%E9%81%93%E5%8B%87%E8%80%85-%E6%BB%85%E3%81%B3%E3%81%AE%E9%97%87%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%99%E8%8B%B1%E9%9B%84-%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%83%8E%E3%83%99%E3%83%AB%E3%82%B9-SmokingWOLF/dp/4040733525/ref=as_li_ss_il?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&keywords=%E7%89%87%E9%81%93%E5%8B%87%E8%80%85&qid=1567321009&s=books&sr=1-1&linkCode=li1&tag=smokingwolf-22&linkId=805e785440a1d5650d16a5bedb805f9b&language=ja_JP"><img border="2" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=4040733525&Format=_SL110_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=smokingwolf-22&language=ja_JP"  loading="lazy"><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=smokingwolf-22&language=ja_JP&l=li1&o=9&a=4040733525" width="1" height="1" border="0" alt=""  loading="lazy"/><BR>片道勇者　滅びの闇と繰り返す英雄<BR>Amazonページへ</A><BR>\1,540（税込） 
 
 <hr size="1" />
 <span style="font-size:large;"><strong>【最初にキャラクターの会話見本を作ったお話】</strong></span>
@@ -2033,7 +2033,7 @@ BODY:
 
 
 <span style="font-size:large;"><strong>◆妖精イーリス×魔王</strong></span>
-<img src="../../image/2019/20190921D.jpg" border="1">
+<img src="../../image/2019/20190921D.jpg" border="1" loading="lazy">
 仲間になった魔王がイーリスを見て、自分の時代にいた人工生物について語る。
 
 イーリス「ねえ、魔王ってなにか食べるの？　用意する？」
@@ -2061,7 +2061,7 @@ BODY:
 
 
 <span style="font-size:large;"><strong>◆傭兵パンティ×ヴィクター王</strong></span>
-<img src="../../image/2019/20190921E.jpg" border="1">
+<img src="../../image/2019/20190921E.jpg" border="1" loading="lazy">
 軽い上下関係はあれど、この2人だと素直な男同士の会話もしそう。
 
 パンティ「いえーい王様ー！　俺が魔王倒すから褒賞くれよ！」
@@ -2150,7 +2150,7 @@ BODY:
 タブレット端末をお持ちでしたらそちらの方が読みやすいと思います。
 
 <strong>『片道勇者TRPG』シリーズ3冊　Kindle版</strong>
-<a href="https://www.amazon.co.jp/%E7%89%87%E9%81%93%E5%8B%87%E8%80%85TRPG-%E5%AF%8C%E5%A3%AB%E8%A6%8B%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%83%96%E3%83%83%E3%82%AF-%E9%BD%8B%E8%97%A4-%E9%AB%98%E5%90%89%EF%BC%8F%E5%86%92%E9%99%BA%E4%BC%81%E7%94%BB%E5%B1%80-ebook/dp/B07X8LN45S/ref=as_li_ss_il?_encoding=UTF8&qid=1568723793&sr=8-1&linkCode=li2&tag=smokingwolf-22&linkId=4e3c0bbf74e786b6217a4e054ade7d99&language=ja_JP" class="red"><img border="2" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07X8LN45S&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=smokingwolf-22&language=ja_JP" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=smokingwolf-22&language=ja_JP&l=li2&o=9&a=B07X8LN45S" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />　<a href="https://www.amazon.co.jp/%E7%89%87%E9%81%93%E5%8B%87%E8%80%85TRPG-%E3%83%97%E3%83%A9%E3%82%B9-%E5%AF%8C%E5%A3%AB%E8%A6%8B%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%83%96%E3%83%83%E3%82%AF-%E9%BD%8B%E8%97%A4-%E9%AB%98%E5%90%89%EF%BC%8F%E5%86%92%E9%99%BA%E4%BC%81%E7%94%BB%E5%B1%80-ebook/dp/B07XDM1SPS/ref=as_li_ss_il?_encoding=UTF8&qid=1568723793&sr=8-2&linkCode=li2&tag=smokingwolf-22&linkId=a5ab8844be437942adec4ae1ef770900&language=ja_JP" class="red"><img border="2" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07XDM1SPS&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=smokingwolf-22&language=ja_JP" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=smokingwolf-22&language=ja_JP&l=li2&o=9&a=B07XDM1SPS" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />　<a href="https://www.amazon.co.jp/gp/product/B07XDRNPWM/ref=as_li_ss_il?ref_=dbs_pwh_calw_2&storeType=ebooks&linkCode=li2&tag=smokingwolf-22&linkId=b4f1c11963d94d024000e4fec8136477&language=ja_JP" class="red"><img border="2" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07XDRNPWM&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=smokingwolf-22&language=ja_JP" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=smokingwolf-22&language=ja_JP&l=li2&o=9&a=B07XDRNPWM" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<a class="blue" target="_blank" href="https://www.amazon.co.jp/%E7%89%87%E9%81%93%E5%8B%87%E8%80%85TRPG-%E5%AF%8C%E5%A3%AB%E8%A6%8B%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%83%96%E3%83%83%E3%82%AF-%E9%BD%8B%E8%97%A4-%E9%AB%98%E5%90%89%EF%BC%8F%E5%86%92%E9%99%BA%E4%BC%81%E7%94%BB%E5%B1%80-ebook/dp/B07X8LN45S/ref=as_li_ss_il?_encoding=UTF8&qid=1568723793&sr=8-1&linkCode=li2&tag=smokingwolf-22&linkId=4e3c0bbf74e786b6217a4e054ade7d99&language=ja_JP"><img border="2" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07X8LN45S&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=smokingwolf-22&language=ja_JP"  loading="lazy"></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=smokingwolf-22&language=ja_JP&l=li2&o=9&a=B07X8LN45S" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;"  loading="lazy"/>　<a class="blue" target="_blank" href="https://www.amazon.co.jp/%E7%89%87%E9%81%93%E5%8B%87%E8%80%85TRPG-%E3%83%97%E3%83%A9%E3%82%B9-%E5%AF%8C%E5%A3%AB%E8%A6%8B%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%83%96%E3%83%83%E3%82%AF-%E9%BD%8B%E8%97%A4-%E9%AB%98%E5%90%89%EF%BC%8F%E5%86%92%E9%99%BA%E4%BC%81%E7%94%BB%E5%B1%80-ebook/dp/B07XDM1SPS/ref=as_li_ss_il?_encoding=UTF8&qid=1568723793&sr=8-2&linkCode=li2&tag=smokingwolf-22&linkId=a5ab8844be437942adec4ae1ef770900&language=ja_JP"><img border="2" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07XDM1SPS&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=smokingwolf-22&language=ja_JP"  loading="lazy"></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=smokingwolf-22&language=ja_JP&l=li2&o=9&a=B07XDM1SPS" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;"  loading="lazy"/>　<a class="blue" target="_blank" href="https://www.amazon.co.jp/gp/product/B07XDRNPWM/ref=as_li_ss_il?ref_=dbs_pwh_calw_2&storeType=ebooks&linkCode=li2&tag=smokingwolf-22&linkId=b4f1c11963d94d024000e4fec8136477&language=ja_JP"><img border="2" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07XDRNPWM&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=smokingwolf-22&language=ja_JP"  loading="lazy"></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=smokingwolf-22&language=ja_JP&l=li2&o=9&a=B07XDRNPWM" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;"  loading="lazy"/></CENTER>
 -----
 EXTENDED BODY:
 
@@ -2161,20 +2161,20 @@ CATEGORY: 片道勇者
 DATE: 2019-10-05 11:48:42
 -----
 BODY:
-<span style="font-size:large;"><strong>【片道勇者ノベル発売！】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【片道勇者ノベル発売！】</strong></span>
 
 ということで本日10/5、ついに片道勇者の小説
-<a href="https://www.amazon.co.jp/%E7%89%87%E9%81%93%E5%8B%87%E8%80%85-%E6%BB%85%E3%81%B3%E3%81%AE%E9%97%87%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%99%E8%8B%B1%E9%9B%84-%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%83%8E%E3%83%99%E3%83%AB%E3%82%B9-%E7%B4%85%E4%BB%97-%E7%9B%B4-ebook/dp/B07YLHBNWT/ref=tmm_kin_swatch_0?_encoding=UTF8&amp;qid=1567321009&amp;sr=1-1" class="red"><strong>『片道勇者　滅びの闇と繰り返す英雄』</strong></a>が発売されました！
+<a class="red" target="_blank" href="https://www.amazon.co.jp/%E7%89%87%E9%81%93%E5%8B%87%E8%80%85-%E6%BB%85%E3%81%B3%E3%81%AE%E9%97%87%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%99%E8%8B%B1%E9%9B%84-%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%83%8E%E3%83%99%E3%83%AB%E3%82%B9-%E7%B4%85%E4%BB%97-%E7%9B%B4-ebook/dp/B07YLHBNWT/ref=tmm_kin_swatch_0?_encoding=UTF8&amp;qid=1567321009&amp;sr=1-1"><strong>『片道勇者　滅びの闇と繰り返す英雄』</strong></a>が発売されました！
 
-<a href="https://www.amazon.co.jp/%E7%89%87%E9%81%93%E5%8B%87%E8%80%85-%E6%BB%85%E3%81%B3%E3%81%AE%E9%97%87%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%99%E8%8B%B1%E9%9B%84-%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%83%8E%E3%83%99%E3%83%AB%E3%82%B9-%E7%B4%85%E4%BB%97-%E7%9B%B4-ebook/dp/B07YLHBNWT/ref=as_li_ss_il?_encoding=UTF8&qid=1567321009&sr=1-1&linkCode=li3&tag=smokingwolf-22&linkId=ba651b0464bd9617a7662ca4a128deb5&language=ja_JP" class="red"><img border="2" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07YLHBNWT&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=smokingwolf-22&language=ja_JP" >
+<a class="blue" target="_blank" href="https://www.amazon.co.jp/%E7%89%87%E9%81%93%E5%8B%87%E8%80%85-%E6%BB%85%E3%81%B3%E3%81%AE%E9%97%87%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%99%E8%8B%B1%E9%9B%84-%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%83%8E%E3%83%99%E3%83%AB%E3%82%B9-%E7%B4%85%E4%BB%97-%E7%9B%B4-ebook/dp/B07YLHBNWT/ref=as_li_ss_il?_encoding=UTF8&qid=1567321009&sr=1-1&linkCode=li3&tag=smokingwolf-22&linkId=ba651b0464bd9617a7662ca4a128deb5&language=ja_JP"><img border="2" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07YLHBNWT&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=smokingwolf-22&language=ja_JP"  loading="lazy">
 <strong>『片道勇者　滅びの闇と繰り返す英雄』</strong>
 Amazon販売ページへ
-[書籍版 <strong>\1,540</strong> / Kindle版 <strong>\1,386</strong>]</a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=smokingwolf-22&language=ja_JP&l=li3&o=9&a=B07YLHBNWT" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+[書籍版 <strong>\1,540</strong> / Kindle版 <strong>\1,386</strong>]</a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=smokingwolf-22&language=ja_JP&l=li3&o=9&a=B07YLHBNWT" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;"  loading="lazy"/>
 
 これまでご紹介してきた内容を再整理すると、
 
 
-<strong>●内容の方向性としては、たぶん<a href="https://amzn.to/2mZyNmK" class="red"><strong>『片道勇者開発記』</strong></a>の
+<strong>●内容の方向性としては、たぶん<a class="red" target="_blank" href="https://amzn.to/2mZyNmK"><strong>『片道勇者開発記』</strong></a>の
 サイドストーリーくらいの配分で
 「基本はまじめ、ときどきお気楽、ごく一部にダーク風味あり、後味さわやか」
 という感じになっていると思います。
@@ -2195,11 +2195,11 @@ Amazon販売ページへ
 という感じです！　
 
 <hr size="1" />
-また、<a href="https://twitter.com/dragonbook_game/status/1179361918441721857" class="red"><strong>口絵（本の始めの方にある絵）もTwitterで公開</strong></a>されましたので
+また、<a class="red" target="_blank" href="https://twitter.com/dragonbook_game/status/1179361918441721857"><strong>口絵（本の始めの方にある絵）もTwitterで公開</strong></a>されましたので
 その中から1枚をご紹介！
 
-<a href="../../image/2019/20191005Abig.jpg" class="blue">クリックでちょっと拡大
-<img src="../../image/2019/20191005A.jpg" border="1"></a>
+<a class="blue" rel="lightbox[20191005]" href="../../image/2019/20191005Abig.jpg">クリックでちょっと拡大
+<img src="../../image/2019/20191005A.jpg" border="1" loading="lazy"></a>
 <span style="font-size:x-small;">イラスト：モタ様</span>
 
 もう表紙めくった時点でネムリがヤバいことになる予感しかしない一枚！
@@ -2221,7 +2221,7 @@ Amazon販売ページへ
 <span style="font-size:large;"><strong>●挿絵にする場所として、「アルバートの戦闘シーン」と
 「お風呂シーン」の2択から選ぶことになった</strong></span>
 
-<img src="../../image/2019/20191005B.jpg" border="1">
+<img src="../../image/2019/20191005B.jpg" border="1" loading="lazy">
 
 あまりにも安易な……判断っ……！
 と思いながらも、監修として「女子2人のお風呂シーン」の挿絵に
@@ -2253,7 +2253,7 @@ Amazon販売ページへ
 <span style="font-size:large;"><strong>●速攻でボツになったサブタイトル案に
 ちゃんとWeb小説風のがあった</strong></span>
 
-<img src="../../image/2019/20191005C.jpg" border="1">
+<img src="../../image/2019/20191005C.jpg" border="1" loading="lazy">
 
 「片道勇者　～何度死んでもやり直せる俺が全てのヒロインを救うまで～」みたいな
 このWeb小説風の案は、サブタイトルを決める話が私の元に来た時点で
@@ -2277,7 +2277,7 @@ NGな方向も挙げて望ましい方向性を絞っていく工程はとても
 <strong>『ゼヌーラの魔法には実は複数の属性がある！』</strong>
 というのを著者さまにお伝えしていました。
 
-<img src="../../image/2019/20191005.jpg" border="1">
+<img src="../../image/2019/20191005.jpg" border="1" loading="lazy">
 
 ゼヌーラの属性は途中で生えた裏設定で、しばらく公開予定はなかったのですが、
 小説では細かな描写が必要になったり、あるいは
@@ -2299,7 +2299,7 @@ NGな方向も挙げて望ましい方向性を絞っていく工程はとても
 すでに小説を読まれた方も、まだの方も、よければぜひ一度ご覧ください！
 今回の開発日誌の2.5倍くらいの文字量ですので高密度にお楽しみいただけます！
 
-<span style="font-size:large;"><a href="https://kakuyomu.jp/works/1177354054891293279/episodes/1177354054891293301" class="red"><strong>【カクヨム　おおきな代償　― ドＭ王女と耳長詩人 ―】
+<span style="font-size:large;"><a class="red" target="_blank" href="https://kakuyomu.jp/works/1177354054891293279/episodes/1177354054891293301"><strong>【カクヨム　おおきな代償　― ドＭ王女と耳長詩人 ―】
 小説ページへ</strong></a></span>
 
 「ゼヌーラの魔法」を使うと具体的にどうなって、どうして誰も
@@ -2339,7 +2339,7 @@ NGな方向も挙げて望ましい方向性を絞っていく工程はとても
 ＞そこにちょっとドＭ王女を絡めつつ肉厚な感じに膨らませられる
 ＞さすがのプロの筆力にも感服です。　　　　　　　　　　　　　　　　.</strong></span>
 
-<a href="https://kakuyomu.jp/works/1177354054891293279/episodes/1177354054891293301" class="red">紅仗先生の小説</a>、楽しんでいただけたようでよかったです！
+<a class="red" target="_blank" href="https://kakuyomu.jp/works/1177354054891293279/episodes/1177354054891293301">紅仗先生の小説</a>、楽しんでいただけたようでよかったです！
 ドＭなフリーダ王女がかわいかったり（？）、
 なんだかゼヌーラの魔法が呪いっぽいけど
 一応みんなハッピーで終わったあたりがとても好きですね！
@@ -2357,14 +2357,14 @@ NGな方向も挙げて望ましい方向性を絞っていく工程はとても
 とお思いになられた方は、よければぜひお買い求めください！
 ここだけの話ですが、電子版の方がちょっと安い割に私の懐のうるおい具合が大きいです！
 
-<a href="https://www.amazon.co.jp/%E7%89%87%E9%81%93%E5%8B%87%E8%80%85-%E6%BB%85%E3%81%B3%E3%81%AE%E9%97%87%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%99%E8%8B%B1%E9%9B%84-%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%83%8E%E3%83%99%E3%83%AB%E3%82%B9-%E7%B4%85%E4%BB%97-%E7%9B%B4-ebook/dp/B07YLHBNWT/ref=as_li_ss_il?_encoding=UTF8&qid=1567321009&sr=1-1&linkCode=li3&tag=smokingwolf-22&linkId=ba651b0464bd9617a7662ca4a128deb5&language=ja_JP" class="red"><img border="2" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07YLHBNWT&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=smokingwolf-22&language=ja_JP" >
+<a class="blue" target="_blank" href="https://www.amazon.co.jp/%E7%89%87%E9%81%93%E5%8B%87%E8%80%85-%E6%BB%85%E3%81%B3%E3%81%AE%E9%97%87%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%99%E8%8B%B1%E9%9B%84-%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%83%8E%E3%83%99%E3%83%AB%E3%82%B9-%E7%B4%85%E4%BB%97-%E7%9B%B4-ebook/dp/B07YLHBNWT/ref=as_li_ss_il?_encoding=UTF8&qid=1567321009&sr=1-1&linkCode=li3&tag=smokingwolf-22&linkId=ba651b0464bd9617a7662ca4a128deb5&language=ja_JP"><img border="2" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07YLHBNWT&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=smokingwolf-22&language=ja_JP"  loading="lazy">
 <strong>『片道勇者　滅びの闇と繰り返す英雄』</strong>
 Amazon販売ページへ
-[書籍版 <strong>\1,540</strong> / Kindle版 <strong>\1,386</strong>]</a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=smokingwolf-22&language=ja_JP&l=li3&o=9&a=B07YLHBNWT" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+[書籍版 <strong>\1,540</strong> / Kindle版 <strong>\1,386</strong>]</a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=smokingwolf-22&language=ja_JP&l=li3&o=9&a=B07YLHBNWT" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;"  loading="lazy"/>
 
 ちなみに本書は全416ページとだいぶ長めで、前半は内容がハードなので、
 一気読みしたい方も「2章」が終わるあたりまで読まれたら一回休憩して、
-残り半分をガーッと読まれるのが個人的おすすめの読み方です。
+残り半分をガーッと読まれるのが個人的おすすめの読み方です。</CENTER>
 -----
 EXTENDED BODY:
 
@@ -2375,7 +2375,7 @@ CATEGORY: 片道勇者2
 DATE: 2019-10-19 11:09:23
 -----
 BODY:
-<span style="font-size:large;"><strong>【片道勇者2　アビリティ】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【片道勇者2　アビリティ】</strong></span>
 
 ウディコンとノベライズ案件が間に挟まっての、
 3ヶ月ぶりの『片道勇者2』開発記事です！
@@ -2401,18 +2401,18 @@ BODY:
 
 
 <strong>キャラメイクで「特徴」に「道具整理」をセットしておくと……。
-<img src="../../image/2019/20191019.jpg" border="1">
+<img src="../../image/2019/20191019.jpg" border="1" loading="lazy">
 ↓
 移動画面の右下に「アイテム取り出し」ボタンが出てくる。
 （ボタンはもうちょっと価値がありそうなおしゃれ感を目指したいですね！）
-<img src="../../image/2019/20191019A.jpg" border="1">
+<img src="../../image/2019/20191019A.jpg" border="1" loading="lazy">
 ↓
 「アイテム取り出し」を選ぶとデッキ内から好きなアイテムカードを1枚選べる。
 （画面はデッキ一覧から「ナユタの実」を選択した時のメッセージ）
-<img src="../../image/2019/20191019B.jpg" border="1">
+<img src="../../image/2019/20191019B.jpg" border="1" loading="lazy">
 ↓
 選んだアイテムカードが手札に来る。
-<img src="../../image/2019/20191019C.jpg" border="1"></strong>
+<img src="../../image/2019/20191019C.jpg" border="1" loading="lazy"></strong>
 
 このアビリティがあれば、いざというときにすぐ「癒しのアンプル」を取り出して使ったり、
 スキル「後退移動」が来たときに「エルザイト爆弾」を取り出して一緒に使い、
@@ -2517,10 +2517,10 @@ BODY:
 これだけの品質のものはもっと布教していきたい感あるので
 応援のご感想・レビューなどもお待ちしてます！
 
-<a href="https://www.amazon.co.jp/%E7%89%87%E9%81%93%E5%8B%87%E8%80%85-%E6%BB%85%E3%81%B3%E3%81%AE%E9%97%87%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%99%E8%8B%B1%E9%9B%84-%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%83%8E%E3%83%99%E3%83%AB%E3%82%B9-%E7%B4%85%E4%BB%97-%E7%9B%B4-ebook/dp/B07YLHBNWT/ref=as_li_ss_il?_encoding=UTF8&qid=1567321009&sr=1-1&linkCode=li3&tag=smokingwolf-22&linkId=ba651b0464bd9617a7662ca4a128deb5&language=ja_JP" class="red"><img border="2" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07YLHBNWT&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=smokingwolf-22&language=ja_JP" >
+<a class="blue" target="_blank" href="https://www.amazon.co.jp/%E7%89%87%E9%81%93%E5%8B%87%E8%80%85-%E6%BB%85%E3%81%B3%E3%81%AE%E9%97%87%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%99%E8%8B%B1%E9%9B%84-%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%83%8E%E3%83%99%E3%83%AB%E3%82%B9-%E7%B4%85%E4%BB%97-%E7%9B%B4-ebook/dp/B07YLHBNWT/ref=as_li_ss_il?_encoding=UTF8&qid=1567321009&sr=1-1&linkCode=li3&tag=smokingwolf-22&linkId=ba651b0464bd9617a7662ca4a128deb5&language=ja_JP"><img border="2" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07YLHBNWT&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=smokingwolf-22&language=ja_JP"  loading="lazy">
 <strong>『片道勇者　滅びの闇と繰り返す英雄』</strong>
 Amazon販売ページへ
-[書籍版 <strong>\1,540</strong> / Kindle版 <strong>\1,386</strong>]</a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=smokingwolf-22&language=ja_JP&l=li3&o=9&a=B07YLHBNWT" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+[書籍版 <strong>\1,540</strong> / Kindle版 <strong>\1,386</strong>]</a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=smokingwolf-22&language=ja_JP&l=li3&o=9&a=B07YLHBNWT" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;"  loading="lazy"/></CENTER>
 -----
 EXTENDED BODY:
 
@@ -2531,11 +2531,11 @@ CATEGORY: 開発日誌
 DATE: 2019-11-02 11:03:55
 -----
 BODY:
-今回の日誌はおやすみです！
+<CENTER>今回の日誌はおやすみです！
 この二週間はお仕事やら家庭の事情やら何やらあって
 微妙に開発どころじゃありませんでした。
 
-<img src="../../image/2019/20191102.jpg" border="1" title="リアル事情がどうしても先になっちゃいます、色々なんとかしないと">
+<img src="../../image/2019/20191102.jpg" border="1" title="リアル事情がどうしても先になっちゃいます、色々なんとかしないと" loading="lazy">
 
 毎日やることしっかりやってゲームも作っておられる方は
 一体どれだけのバイタリティがあるのか！　本当に尊敬します。
@@ -2558,7 +2558,7 @@ BODY:
 スマホでも編集・校正作業ができる時代なので、
 隙間時間を全部無駄なく投入できるのがいい！
 そのうちKindleで出す予定です。ジャンルはTRPG系です。
-こういった副業もうまく積み重ねて開発資金にしていきたいと考えています。
+こういった副業もうまく積み重ねて開発資金にしていきたいと考えています。</CENTER>
 -----
 EXTENDED BODY:
 
@@ -2569,7 +2569,7 @@ CATEGORY: 片道勇者2
 DATE: 2019-11-16 11:13:51
 -----
 BODY:
-<span style="font-size:large;"><strong>【片道勇者2　パーティー機能】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【片道勇者2　パーティー機能】</strong></span>
 
 今年中にアルファ2にたどり着けるかちょっと怪しいペースになってきました。
 時間はほぼ全部お仕事やらなんらかの制作に使ってるんですけどね！
@@ -2587,7 +2587,7 @@ BODY:
 
 
 これは『片道勇者1』の画像です。仲間が1マス内にいます。
-<img src="../../image/2019/20191116A.jpg" border="1">
+<img src="../../image/2019/20191116A.jpg" border="1" loading="lazy">
 
 この1マス内パーティーシステムは、
 <strong>・プレイヤーの向きを変えてダメージを仲間に分散させたり（後ろを向けば盾にもできる）
@@ -2607,7 +2607,7 @@ BODY:
 ということで実装したものがこれ！　処理が複雑で予想外に苦戦しました。
 
 『片道勇者2』の1マス内パーティーシステム、画像では敵側に使っています
-<img src="../../image/2019/20191116.jpg" border="1">
+<img src="../../image/2019/20191116.jpg" border="1" loading="lazy">
 
 ここでは試しに野犬が1マス内に2～3体で群れて出てくるようにしています。
 「敵の数が3倍になったら脅威度も3倍だろー」と思っていたら、
@@ -2693,7 +2693,7 @@ BODY:
 こんな感じで急激にバランスが変わっていくからローグライク開発は面白い！
 逆に言えばバランスも崩れやすい！
 最終段階でもどこかしら強弱は出てくると思いますが、
-うまいこと作っていきたいと思います。
+うまいこと作っていきたいと思います。</CENTER>
 -----
 EXTENDED BODY:
 
@@ -2704,7 +2704,7 @@ CATEGORY: 片道勇者2
 DATE: 2019-11-30 14:33:39
 -----
 BODY:
-<span style="font-size:large;"><strong>【片道勇者2　細かい修正】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【片道勇者2　細かい修正】</strong></span>
 
 パーティーシステムなど大きな修正を入れると
 だいたいバグがいっぱい出てきますので
@@ -2716,7 +2716,7 @@ BODY:
 
 <strong>＜敵のHPゲージを「弧状」に変更！＞</strong>
 
-<img src="../../image/2019/20191130.jpg" border="1">
+<img src="../../image/2019/20191130.jpg" border="1" loading="lazy">
 
 敵のHPゲージを「弧状」に変更しました。
 ファイアーエムブレムの最新作などでも採用されている方式なのですが、
@@ -2778,7 +2778,7 @@ BODY:
 
 という感じです。
 この数だとペース的にまずあと一ヶ月で終わらない気がしたので、
-うまく目標を区切りつつ最速でぼちぼち作っていきたいと思います。
+うまく目標を区切りつつ最速でぼちぼち作っていきたいと思います。</CENTER>
 -----
 EXTENDED BODY:
 
@@ -2789,7 +2789,7 @@ CATEGORY: 片道勇者2
 DATE: 2019-12-14 14:43:31
 -----
 BODY:
-<span style="font-size:large;"><strong>【片道勇者2　夜システム】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【片道勇者2　夜システム】</strong></span>
 
 <iframe width="500" height="285" src="https://www.youtube.com/embed/BiUKuN4Qvi4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -2822,7 +2822,7 @@ BODY:
 言われたので、動画のアップロード後に実装してみました。
 
 <span style="font-size:x-small;"><strong>敵を探知した位置に光が出て位置が分かります。1ターン経つと消えます</strong></span>
-<img src="../../image/2019/20191214.jpg" border="1">
+<img src="../../image/2019/20191214.jpg" border="1" loading="lazy"></CENTER>
 -----
 EXTENDED BODY:
 
@@ -2833,12 +2833,12 @@ CATEGORY: 開発日誌
 DATE: 2019-12-24 00:00:00
 -----
 BODY:
-<span style="font-size:large;"><strong>【シルバーセカンド、21周年！】</strong></span>
+<CENTER><span style="font-size:large;"><strong>【シルバーセカンド、21周年！】</strong></span>
 
 ということでこのサイト、「シルバーセカンド」は
 2019年12月24日をもってついに<span style="color:#CC0000"><span style="font-size:large;"><strong>21周年</strong></span></span>をむかえました！
 
-<img src="../../image/2019/20191224.jpg" border="1" title="フリーダ王女はちょっと盛りました">
+<img src="../../image/2019/20191224.jpg" border="1" title="フリーダ王女はちょっと盛りました" loading="lazy">
 <span style="font-size:x-small;"><strong>今年の新しいコンテンツは片道勇者ノベライズ！　左はドラゴンブック版フリーダ王女、右は薬師ネムリ</strong></span>
 
 去年20周年を迎えたと思ったら、今年は色々あってあっという間に21周年です。
@@ -2873,7 +2873,7 @@ BODY:
 気になる方はよければぜひ！　電子版が今だけ紙版の30％オフの「1079円」になっています！
 ↓
 小説 <B>『片道勇者　滅びの闇と繰り返す英雄』</B>
-<a  target="_blank" class="red" href="https://amzn.to/2BN24Vi" target="_blank"><IMG border="2" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=4040733525&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=smokingwolf-22&language=ja_JP" height="180"><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=smokingwolf-22&language=ja_JP&l=li1&o=9&a=4040733525" width="1" height="1" border="2" alt="" />
+<a class="red" target="_blank"    target="_blank" href="https://amzn.to/2BN24Vi"><IMG border="2" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=4040733525&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=smokingwolf-22&language=ja_JP" height="180" loading="lazy"><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=smokingwolf-22&language=ja_JP&l=li1&o=9&a=4040733525" width="1" height="1" border="2" alt=""  loading="lazy"/>
 <small>片道勇者 滅びの闇と繰り返す英雄 Amazonページへ</A><BR> Kindle版 \1,386（セール中は1079円） / 書籍版 \1,540 </small>
 
 <hr size="1" />
@@ -2923,7 +2923,7 @@ BODY:
 
 <hr size="1" />
 次回の開発日誌は2020年の元旦に更新予定です。
-それでは皆さま、お体には気をつけて、よいお年を！
+それでは皆さま、お体には気をつけて、よいお年を！</CENTER>
 -----
 EXTENDED BODY:
 

@@ -1,4 +1,4 @@
-TITLE: 2025年！ 新年あけまして！
+TITLE: 2025年！　新年あけまして！
 CATEGORY: 開発日誌
 DATE: 2025-01-01 00:00:33
 -----
@@ -23,7 +23,7 @@ BODY:
 　が、それでもさすがに1月中には公開したいので全力を尽くします！
 　
 　なおすでに実装済みや実装が確定しているのはこちらにまとめてあります！
-→　<a target="_blank" href="https://silversecond.com/WolfRPGEditor/ReleaseLogNew_3.50.html"><span style="font-size: 150%"><B>●ウディタ3.5更新予定内容 </B></span></a>
+→　<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/ReleaseLogNew_3.50.html"><span style="font-size: 150%"><B>●ウディタ3.5更新予定内容 </B></span></a>
 　（そのうち消すと思いますので数年後に見た人はリンク切れしてるかも）
 　
 　最新の手元の作業としては『条件分岐やループの折りたたみ・展開機能』に挑戦中です！　あまりにも改造しなきゃいけない内容が複雑で、分岐が壊れてめちゃめちゃなことになっちゃうとか、まだまだバグまみれです。
@@ -51,7 +51,7 @@ BODY:
 <HR><span style="font-size:large;"><B>●年末に生放送やりました！</B></span><HR>
 　年末に2024年を振り返る生放送をやりました！　去年も1年いろいろ事件も面白いこともありましたし、時代の変化も色々感じられましたね！
 
-<a target="_blank" href="https://youtube.com/live/oCWEhI3Gng0">【シルバーセカンド26周年！　Xで1年を振り返る生放送！】<img src="../../image/2025/20250101A.jpg" border="1" style="max-width:520px;" loading="lazy"></a>
+<a class="red" target="_blank" href="https://youtube.com/live/oCWEhI3Gng0">【シルバーセカンド26周年！　Xで1年を振り返る生放送！】<img src="../../image/2025/20250101A.jpg" border="1" style="max-width:520px;" loading="lazy"></a>
 
 　少しAI話、ゲーム開発話、少し介護話、少しウディコン話、ウディタ話、などが話のテーマだったと思いますので、そういったのが気になる方はよければお正月の時間つぶしにでもぜひ！
 
@@ -77,7 +77,7 @@ BODY:
 　なんとウディタ3.5ではBGSにチャンネル機能が付きます！
 　以下の映像で再生見本を流しておりますので気になる方はぜひ！
 
-<a target="_blank" href="https://www.youtube.com/watch?v=-raNSyYmVUg">https://www.youtube.com/watch?v=-raNSyYmVUg</a>
+<a class="red" target="_blank" href="https://www.youtube.com/watch?v=-raNSyYmVUg">https://www.youtube.com/watch?v=-raNSyYmVUg</a>
 <iframe width="520" height="300" src="https://www.youtube.com/embed/-raNSyYmVUg?si=vpNe_I2fi1rFmnYv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 　「BGS」とは「WAVやOGG、MP3形式」のサウンドのみ、つまりMIDI以外を「ループ」で流せるモードなのですが、これが多チャンネルで再生できると色んなことができます！
@@ -97,7 +97,7 @@ BODY:
 
 <HR><span style="font-size:large;"><B>●コマンド折りたたみやコメントアウトが可能に！</B></span><HR>
 　これも映像を作ってありますのでよければご覧ください！
-<a target="_blank" href="https://www.youtube.com/watch?v=jZzEkfpF1yQ">https://www.youtube.com/watch?v=jZzEkfpF1yQ</a>
+<a class="red" target="_blank" href="https://www.youtube.com/watch?v=jZzEkfpF1yQ">https://www.youtube.com/watch?v=jZzEkfpF1yQ</a>
 <iframe width="520" height="300" src="https://www.youtube.com/embed/jZzEkfpF1yQ?si=L6vdmBDJIjxK4jtn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 　「折りたたみ」は文字通り、「条件分岐」や「ループ」コマンドを折りたたんでおける機能です！　条件分岐は分岐1つずつでも、全部まとめてでも折りたためます！
@@ -120,7 +120,7 @@ BODY:
 ●音声再生が可能です！　MIDIはゲーム内と同じ音源で再生されますし、効果音のチェックも非常にラクになります！</B></span>
 
 　見てみたい方はこちらの動画より！　↓
-<a target="_blank" href="https://www.youtube.com/watch?v=-kd-mIkBHaM">https://www.youtube.com/watch?v=-kd-mIkBHaM</a>
+<a class="red" target="_blank" href="https://www.youtube.com/watch?v=-kd-mIkBHaM">https://www.youtube.com/watch?v=-kd-mIkBHaM</a>
 <iframe width="520" height="300" src="https://www.youtube.com/embed/-kd-mIkBHaM?si=q5Z1Y_wxMAVIHFPf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 　しかしこの一見大したことなさそうな『ファイル選択ウィンドウ』、搭載されている機能を考えると余裕で1アプリ相当になると思います！　ツクールとかに入ってるファイル選択ウィンドウも実は凄い！　いろいろ見られるようにしたり、色んな形式の音声を再生できるようにしておくのは、実は思ったよりも大変でした。
@@ -129,7 +129,7 @@ BODY:
 
 <HR><span style="font-size:large;"><B>●\imgの特殊文字を強化！　文中にアニメーションアイコンを入れたり画像の一部切り出し可能に！</B></span><HR>
 　「\img」または「\imgS」に裏技を追加しました！
-　「\img(S)」の後に「<DIV/」「<CUT/」「<ANIME/」から始まるコードを記入すると、画像を特別な方法で表示することができます。それぞれの例は以下の通りです。
+　「\img(S)」の後に「＜DIV/」「＜CUT/」「＜ANIME/」から始まるコードを記入すると、画像を特別な方法で表示することができます。それぞれの例は以下の通りです。
 
 <span style="color: #d50000"><B>- 分割表示 DIV　\\img[&lt;DIV/X3/Y4/5&gt;Pic/Test.jpg]</B></span>
 　　「Pic/Test.jpg」を横3、縦4パターンで分割し、パターン5を表示します。
@@ -175,7 +175,7 @@ CATEGORY: ウディタ
 DATE: 2025-01-25 08:04:26
 -----
 BODY:
-　ということで1/18からこっそりウディタ3.5を公開中です！　<a target="_blank" href="https://silversecond.com/WolfRPGEditor/BBS/log/107.html">ウディタ公式サイトのバグ報告スレッド</a>で！　
+　ということで1/18からこっそりウディタ3.5を公開中です！　<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/BBS/log/107.html">ウディタ公式サイトのバグ報告スレッド</a>で！　
 　Ver3.500で公開され、今はVer3.509になっています。毎日平均10点以上も直し続けて1/24までの修正点が80個近くになるほど大量のバグが発生しているので、表だっての公開はまだ控えております！　まだベータな感じですが気になる方はよければお試しください！　今も必死で修正中です！
 
 　そんな中、さっそく新機能を使ってすごいものを作っておられる方もいらっしゃるので、Xからご紹介させていただきます！　みなさま本当にありがとうございます！
@@ -187,8 +187,8 @@ BODY:
 
 　こちらで投稿されている映像のようにオーバーレイ合成やクリッピングマスクっぽいこともできるようになりました！(しかもXY配列4つ使ってそのままピクチャ表示することもできます！）
 　画像のアルファ値やRGB値をXY配列に読み書きする機能を使えば、画像合成回りの自由度がかなり上がります！　
-　<a target="_blank" href="https://silversecond.com/WolfRPGEditor/Help/04ev_string_specialcode.html#IMG5"><B>隠しコード「<<LOAD_IMAGE_TO_XY/A=?/R=?/G=?/B=?>>(ファイル名)」</B></a>を使えば、画像ファイルの2次元データを4つのXY配列（ARGB分）に読み込むことができますので、あとは計算次第でなんでもできますよ！
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">ウディタ3.5、XY配列の「画像⇔ARBG値」の変換機能のお陰で、スクリーンとかオーバーレイとか画像合成周りが実現できる…うれしい！ <a href="https://t.co/NKr0s14zTN" class="red">pic.twitter.com/NKr0s14zTN</a></p>&mdash; そーま@健全用 (@yudusoma) <a href="https://twitter.com/yudusoma/status/1881224050040852672?ref_src=twsrc%5Etfw" class="red">January 20, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+　<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/Help/04ev_string_specialcode.html#IMG5"><B>隠しコード「<<LOAD_IMAGE_TO_XY/A=?/R=?/G=?/B=?>>(ファイル名)」</B></a>を使えば、画像ファイルの2次元データを4つのXY配列（ARGB分）に読み込むことができますので、あとは計算次第でなんでもできますよ！
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">ウディタ3.5、XY配列の「画像⇔ARBG値」の変換機能のお陰で、スクリーンとかオーバーレイとか画像合成周りが実現できる…うれしい！ <a class="red" href="https://t.co/NKr0s14zTN">pic.twitter.com/NKr0s14zTN</a></p>&mdash; そーま@健全用 (@yudusoma) <a class="red" href="https://twitter.com/yudusoma/status/1881224050040852672?ref_src=twsrc%5Etfw">January 20, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <HR>
 <span style="font-size:120%;"><B>【お絵かき掲示板が作れる！】</B></span>
@@ -196,7 +196,7 @@ BODY:
 　前述の「XY配列の内容を画像として表示する機能」を使えば、もちろんお絵かき掲示板だって作れます！　がこちらは想像以上にちゃんと動いててすごい！
 　今回の新機能（隠しコード）で、XY配列から画像をファイル出力することも可能になりましたので、ウディタで完結するペイントツールを作ることも普通に可能になりました！
 ↓
-<a target="_blank" href="https://x.com/F0X_k/status/1880511375426089325"><strong>https://x.com/F0X_k/status/1880511375426089325</strong></a>
+<a class="red" target="_blank" href="https://x.com/F0X_k/status/1880511375426089325"><strong>https://x.com/F0X_k/status/1880511375426089325</strong></a>
 
 
 <HR>
@@ -204,14 +204,14 @@ BODY:
 
 　XY配列が来たので作れたー！　とおっしゃってた気がしますが、アルゴリズムでこんな自然な地形生成ができるそうです！　すごい！
 　XY配列にその地形情報を色塗りすれば画像にもできるので、こんな風に「ランダム世界の世界地図」のお手軽表示だってできるようになります！
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">【<a href="https://twitter.com/hashtag/%E3%82%A6%E3%83%87%E3%82%A3%E3%82%BF?src="hash&amp;ref_src=twsrc%5Etfw"">#ウディタ</a>】ウディタv3.5の新機能を駆使するとできる表現技術ちらみせ。画像ファイル使用無し（今開発中のゲームが完成した後の次回作で使う予定の機能） <a href="https://t.co/1hd8tquD4d" class="red">pic.twitter.com/1hd8tquD4d</a></p>&mdash; K-Shin07(Sitella) (@K_Shin07) <a href="https://twitter.com/K_Shin07/status/1880509345009659944?ref_src=twsrc%5Etfw" class="red">January 18, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">【<a class="red" hash&amp;ref_src=twsrc%5Etfw"" href="https://twitter.com/hashtag/%E3%82%A6%E3%83%87%E3%82%A3%E3%82%BF?src=">#ウディタ</a>】ウディタv3.5の新機能を駆使するとできる表現技術ちらみせ。画像ファイル使用無し（今開発中のゲームが完成した後の次回作で使う予定の機能） <a class="red" href="https://t.co/1hd8tquD4d">pic.twitter.com/1hd8tquD4d</a></p>&mdash; K-Shin07(Sitella) (@K_Shin07) <a class="red" href="https://twitter.com/K_Shin07/status/1880509345009659944?ref_src=twsrc%5Etfw">January 18, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 　
 <HR>
 <span style="font-size:120%;"><B>【サウンドのパン機能を3Dゲームに搭載】</B></span>
 
 　そしてこちらはサウンドのパン機能の利用見本！　音源の場所が3Dチックに聞こえるようになっていて、ウディタ3D学会の方々の作品もさらに満足度アップ！　
 　そもそもこの3D具合の完成度がすさまじい！！　すごい！
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">【ウディタ3.5】ウディタ3.5の新機能によってウディタ3D学会とウディタインタラクティブサウンド学会が混ざり合って爆破した結果、「3D座標の指定座標（今回は展示パネル）に音源を設置する」ことができるようになりました <a href="https://t.co/vMDknW5VdX" class="red">pic.twitter.com/vMDknW5VdX</a></p>&mdash; ぽり０６５５ (@pori0655) <a href="https://twitter.com/pori0655/status/1881315203297718335?ref_src=twsrc%5Etfw" class="red">January 20, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">【ウディタ3.5】ウディタ3.5の新機能によってウディタ3D学会とウディタインタラクティブサウンド学会が混ざり合って爆破した結果、「3D座標の指定座標（今回は展示パネル）に音源を設置する」ことができるようになりました <a class="red" href="https://t.co/vMDknW5VdX">pic.twitter.com/vMDknW5VdX</a></p>&mdash; ぽり０６５５ (@pori0655) <a class="red" href="https://twitter.com/pori0655/status/1881315203297718335?ref_src=twsrc%5Etfw">January 20, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 <HR>
@@ -219,7 +219,7 @@ BODY:
 
 　XY配列を使えば無から画像が作れますので、ミニマップだってゲーム内だけでピクチャ1枚にして作れます！　ということを実演してくださっています！
 ↓
-<a target="_blank" href="https://x.com/shiratamamoti/status/1882064450259402816"><strong>https://x.com/shiratamamoti/status/1882064450259402816</strong></a>
+<a class="red" target="_blank" href="https://x.com/shiratamamoti/status/1882064450259402816"><strong>https://x.com/shiratamamoti/status/1882064450259402816</strong></a>
 
 
 <HR>
@@ -227,7 +227,7 @@ BODY:
 
 　そしてこちらはウディタ3.5の感想記事！　テンション高い内容&ウルファールのイラストまでありがとうございます！　
 
-<B><a target="_blank" href="https://home-or-away.com/archives/6991">【ウディタver3.5（ベータ）公開おめでとうございます記事 (あきら様より)】</a></B>
+<B><a class="red" target="_blank" href="https://home-or-away.com/archives/6991">【ウディタver3.5（ベータ）公開おめでとうございます記事 (あきら様より)】</a></B>
 
 　プロ版にはレイヤー5まで使えたりフォントの暗号化ができたりしますのでさらなる上級者の方はよければぜひ！（ただしウディコン審査中はプロ版が使えないのでご注意を！）
 
@@ -237,23 +237,23 @@ BODY:
 
 　これまで書いてきた新機能紹介の記事が8回分もあるので、もし細かく見ていきたい方はこちらもどうぞ！
 
-<a target="_blank" href="https://sils.fc2.net/blog-entry-822.html">その1(セキュリティ関連や始まり)</a>
-<a target="_blank" href="https://sils.fc2.net/blog-entry-823.html">その2(空Ev作成/フォント暗号化)</a>
-<a target="_blank" href="https://sils.fc2.net/blog-entry-825.html">その3(経路探索/キャラレイヤー強化)</a>
-<a target="_blank" href="https://sils.fc2.net/blog-entry-825.html">その4(ピクチャリンク/DBソート/特殊文字入力)　</a>
-<a target="_blank" href="https://sils.fc2.net/blog-entry-826.html">その5(自動移動/パン/オートタイルアニメ速度)</a>
-<a target="_blank" href="https://sils.fc2.net/blog-entry-827.html">その6(XY配列/TXT入出力[Git用])　</a>
-<a target="_blank" href="https://sils.fc2.net/blog-entry-828.html">その7(タブウィンドウ/正規表現/ゲーム内画像生成/レイヤー5搭載)</a>
-<a target="_blank" href="https://sils.fc2.net/blog-entry-831.html">その8(BGSチャンネル機能･エフェクトディレイ･コマンド折りたたみ)</a>
+<a class="red" target="_blank" href="https://sils.fc2.net/blog-entry-822.html">その1(セキュリティ関連や始まり)</a>
+<a class="red" target="_blank" href="https://sils.fc2.net/blog-entry-823.html">その2(空Ev作成/フォント暗号化)</a>
+<a class="red" target="_blank" href="https://sils.fc2.net/blog-entry-825.html">その3(経路探索/キャラレイヤー強化)</a>
+<a class="red" target="_blank" href="https://sils.fc2.net/blog-entry-825.html">その4(ピクチャリンク/DBソート/特殊文字入力)　</a>
+<a class="red" target="_blank" href="https://sils.fc2.net/blog-entry-826.html">その5(自動移動/パン/オートタイルアニメ速度)</a>
+<a class="red" target="_blank" href="https://sils.fc2.net/blog-entry-827.html">その6(XY配列/TXT入出力[Git用])　</a>
+<a class="red" target="_blank" href="https://sils.fc2.net/blog-entry-828.html">その7(タブウィンドウ/正規表現/ゲーム内画像生成/レイヤー5搭載)</a>
+<a class="red" target="_blank" href="https://sils.fc2.net/blog-entry-831.html">その8(BGSチャンネル機能･エフェクトディレイ･コマンド折りたたみ)</a>
 
 <HR>
 <span style="font-size:120%;"><B>【引き続きバグ修正がんばります！】</B></span>
 
 　しばらくは必死にウディタ3.5のバグを直す日々が続くと思います！
-　安全にご利用になりたい方はもう少しお待ちいただいてから、もう3.5に慣れていっちゃうぞーという方はぜひもうお試しください！　今は<a target="_blank" href="https://silversecond.com/WolfRPGEditor/BBS/log/107.html">バグ報告スレッド</a>でこっそり公開中です！
+　安全にご利用になりたい方はもう少しお待ちいただいてから、もう3.5に慣れていっちゃうぞーという方はぜひもうお試しください！　今は<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/BBS/log/107.html">バグ報告スレッド</a>でこっそり公開中です！
 
 　ということで引き続きバグ修正、がんばっていきます！
-　開発費はすでに完全に枯渇してるので石油王のウディタユーザーの方がいらっしゃいましたら<a target="_blank" href="https://silversecond.booth.pm/items/4455722"><B>ご支援/投げ銭</B></a>もお待ちしております！！！　さすがにここまで来て新しくウディタプロ版買われる人はあんまりいらっしゃらないので、ウディタのマネタイズとしてはほぼ一旦終了してしまった感じです（そしてこれ以上努力してウディタを売ろうとするより、自分でゲームを作った方が圧倒的にお金にできます、当たれば！）。
+　開発費はすでに完全に枯渇してるので石油王のウディタユーザーの方がいらっしゃいましたら<a class="blue" target="_blank" href="https://silversecond.booth.pm/items/4455722"><B>ご支援/投げ銭</B></a>もお待ちしております！！！　さすがにここまで来て新しくウディタプロ版買われる人はあんまりいらっしゃらないので、ウディタのマネタイズとしてはほぼ一旦終了してしまった感じです（そしてこれ以上努力してウディタを売ろうとするより、自分でゲームを作った方が圧倒的にお金にできます、当たれば！）。
 
 　早くウディタ3.5を落ち着かせて私もゲーム作っていかないとですね！　がんばります！
 　
@@ -1205,7 +1205,7 @@ DATE: 2025-03-08 08:11:40
 -----
 BODY:
 　ということでベータ期間のバグ報告が少なくなってきたので<span style="color: #d50000"><span style="font-size: 150%"><B>『ウディタ3.5』を3/1に正式公開</B></span></span>しました！
-　すでに<a target="_blank" href="https://silversecond.com/WolfRPGEditor/"><span style="font-size: 150%"><B>『ウディタ公式サイト』</B></span></a>のダウンロードページで公開中ですので気になる方はぜひ！
+　すでに<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/"><span style="font-size: 150%"><B>『ウディタ公式サイト』</B></span></a>のダウンロードページで公開中ですので気になる方はぜひ！
 　
 　が、そしたら新たな使い手の方が大量にいらっしゃって新たなバグ報告を送ってくださったり、Microsoft Defenderに急にGame.exeがウィルス扱いされてしまって私がEXE作ったそばから消されまくる（ということは他の皆さんの元でも当然消される）ので消されずに済むパターンを見つけようと泣きながらがんばってたりと大変なことがありました。
 
@@ -1654,7 +1654,7 @@ CATEGORY: ウディタ
 DATE: 2025-03-22 08:34:11
 -----
 BODY:
-　<a target="_blank" href="https://silversecond.com/WolfRPGEditor/"><span style="font-size: 150%"><B>ウディタ3.5正式版</B></span></a>を公開してから20日くらい、3.5開発開始(去年8月末)からもうすぐ7ヶ月くらいになろうとしています！ 時間使いすぎ！
+　<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/"><span style="font-size: 150%"><B>ウディタ3.5正式版</B></span></a>を公開してから20日くらい、3.5開発開始(去年8月末)からもうすぐ7ヶ月くらいになろうとしています！ 時間使いすぎ！
 　数はだいぶ減りましたがまだほぼ毎日ウディタ3.5のバグが出てきています！　修正点は2週間で40個超、1日平均約3個くらいでしょうか。うーんまだ多い！
 　
 <img src="../../image/2025/20250322.jpg" border="1" style="max-width:520px;" loading="lazy">
@@ -2321,7 +2321,7 @@ BODY:
 
 
 <HR><span style="font-size:large;"><B>◆そしてSwitch2の話題！</B></span><HR>
-　ついに詳細が発表！　<a target="_blank" href="https://www.youtube.com/watch?v=nkaodTSlhbU"><B>先日のNintendo Direct</B></a>でSwitch2やソフトの紹介がされていましたね！
+　ついに詳細が発表！　<a class="red" target="_blank" href="https://www.youtube.com/watch?v=nkaodTSlhbU"><B>先日のNintendo Direct</B></a>でSwitch2やソフトの紹介がされていましたね！
 
 　Switch2で一番の目玉はやっぱり、スペックの問題でこれまでSwitch1で出せなかったシリーズがジャンジャン出てきそうなことだと感じます。
 　ある意味でPSやXboxとの棲み分けができていた部分だったのですが、その領域を遠慮なく持っていく勢い！　なんなら「これからPCゲームユーザーになりうる人」まで刈り取っていきそうな雰囲気です！　Switch2は「ゲームやるなら(PCがなくても)これ1台あったらOK」なマシンになりそうな空気がヒシヒシと伝わってきますね！
@@ -2360,7 +2360,7 @@ BODY:
 　「あの頃の世界」が好きだった人も、「これから冒険する人」も、この機会にぜひ触れてみてください！
 
 →■『シルフェイド幻想譚』公式ページ 
-　<a target="_blank" href="https://silversecond.net/contents/game/silfade_gensou/"><B>https://silversecond.net/contents/game/silfade_gensou/</B></a>
+　<a class="blue" target="_blank" href="https://silversecond.net/contents/game/silfade_gensou/"><B>https://silversecond.net/contents/game/silfade_gensou/</B></a>
 <span style="color: #2196f3"><span style="font-size: 80%">　※4/17にスマホプレイ時の画面最大化時にバーチャルパッドが消える現象を修正しています！</span></span>
 　
 　シル幻は今でも遊べる品質だと言ってくださる方もいらっしゃったり、いろんな思い出を語ってくださったりして、本当に感謝の限りです！
@@ -2374,7 +2374,7 @@ BODY:
 
 <HR><span style="font-size:large;"><B>◆今回のウディタ修正！</B></span><HR>
 　そして頭や体の調子が悪いながらも、ぼちぼちウディタの修正は行っております！
-<span style="color: #2196f3">　負荷が重くて今の状態ではできなかったところは<a target="_blank" href="https://chatgpt.com/g/g-YynoE4Pqa-jia-kong-noyasasiimei-ai">『架空の妹（ChatGPTの自作GPTs）』</a>に聞いて言われるがままロボットみたいに作業してるところもありましたが、それでプログラミング作業ができてしまうのですからヤバい時代です。知能労働さえもナビに従って運転すれば目的地に着けてしまう時代！</span>
+<span style="color: #2196f3">　負荷が重くて今の状態ではできなかったところは<a class="red" target="_blank" href="https://chatgpt.com/g/g-YynoE4Pqa-jia-kong-noyasasiimei-ai">『架空の妹（ChatGPTの自作GPTs）』</a>に聞いて言われるがままロボットみたいに作業してるところもありましたが、それでプログラミング作業ができてしまうのですからヤバい時代です。知能労働さえもナビに従って運転すれば目的地に着けてしまう時代！</span>
 
 <HR>
 <span style="font-size:110%;"><B>-【Ver3.581 の更新履歴　2025/04/17】</B></span>
@@ -2466,7 +2466,7 @@ BODY:
 
 　などなど私が使う新機能の一部範囲だけでも「オホーッ！」って感じだったので、ウディタ3.5はおすすめですよ！　よければぜひ！
 
-<strong>　→ <a target="_blank" href="https://silversecond.com/WolfRPGEditor/"><span style="font-size: 150%">【ウディタ公式ページへ】</span></a></strong>
+<strong>　→ <a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/"><span style="font-size: 150%">【ウディタ公式ページへ】</span></a></strong>
 
 <HR>
 　ということで、やれることをやり、休みが必要なところでは休みつつ、引き続きマイペースにがんばっていきます！
@@ -2495,7 +2495,7 @@ BODY:
 　いやまあマップ編集ですごい便利そうな機能だけは追加で増やしちゃいましたけど、それ以外全部バグ修正ですからね！？
 
 　ちなみに1日の修正最高記録は17個！　Ver3.50ベータを公開してから94回のアップデートで約480点の修正を行っています！
-　ChatGPT先生（<a target="_blank" href="https://chatgpt.com/g/g-YynoE4Pqa-jia-kong-noyasasiimei-ai">架空のやさしい妹</a>）にはそもそもこの3ヶ月の修正点は「<span style="font-size: 150%"><span style="color: #d50000"><B>炎上プロジェクト並みの修正量</B></span></span>」だと褒められました。褒められてるのかな？？
+　ChatGPT先生（<a class="red" target="_blank" href="https://chatgpt.com/g/g-YynoE4Pqa-jia-kong-noyasasiimei-ai">架空のやさしい妹</a>）にはそもそもこの3ヶ月の修正点は「<span style="font-size: 150%"><span style="color: #d50000"><B>炎上プロジェクト並みの修正量</B></span></span>」だと褒められました。褒められてるのかな？？
 
 
 <HR><span style="font-size:large;"><B>◆ウディタ3.5の今回の修正履歴</B></span><HR>
@@ -2925,7 +2925,7 @@ BODY:
 
 <span style="color:#9933FF">>いつも開発お疲れ様です。 難しぃ～～～って言いながらウディタを使用しております。 『架空のやさしい妹』毎日活用しています。 一日の予定表を作ったり、て辛い事があった時や怒りに飲まれそうになった時にお話しして癒されています。 返答が優しくて癒されてます。</span>
 
-　こちらこそ『<a href="https://chatgpt.com/g/g-YynoE4Pqa-jia-kong-noyasasiimei-ai" class="red"><strong>架空のやさしい妹(ChatGPTのGPTsページへ)</strong></a>』をご利用くださってありがとうございます！
+　こちらこそ『<a class="red" target="_blank" title="架空のやさしい妹" href="https://chatgpt.com/g/g-YynoE4Pqa-jia-kong-noyasasiimei-ai"><strong>架空のやさしい妹(ChatGPTのGPTsページへ)</strong></a>』をご利用くださってありがとうございます！
 　妹は優しさと共感を備えると同時に、変なことを言ってたらちゃんと優しく指摘してくれるような指示もしているので、相談したら何でもやたら全肯定されちゃうといった事故もそこまでないと思いますので安心してご利用ください！
 　（最近4oが媚び媚びモードになっちゃって嘘までついたりするようになっちゃってロールバックが入ったという数日前のニュースを見た上でのコメント）
 
@@ -3146,7 +3146,7 @@ BODY:
 　というのも、私の公式サイトやウディタサイト、ウディコンサイトのサーバーやドメインは、レンタルサーバーだったり自分用ドメインをお金を払って使わせてもらっていたりして、要するにこれら全部<span style="font-size: 150%"><span style="color: #d50000"><B>『借り物』</B></span></span>なんですよ！
 　で、今はそれらの使用期間を定期的に延長して使っているのですが、もし私に何かあると1年後には全部消滅しちゃうわけです！
 
-　まあ私個人の作ったものがネット上から消えること自体は、別にそれはそれでもいいと思っているとはいえ、<a target="_blank" href="https://silversecond.com/WolfRPGEditor/Contest/"><B>ウディコン</B></a>に関してはどう考えてもみんなで作り上げた公共物なので、結果発表くらいはアーカイブとして残したいと思います。
+　まあ私個人の作ったものがネット上から消えること自体は、別にそれはそれでもいいと思っているとはいえ、<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/Contest/"><B>ウディコン</B></a>に関してはどう考えてもみんなで作り上げた公共物なので、結果発表くらいはアーカイブとして残したいと思います。
 　私もコンテストパークのページが消えちゃって、賞をいただいた歴史が消えて少し悲しんでいましたからね！！　それに、参加された方にとっては普通に経歴の証明にも使えるはずですし。
 
 　あと私の公式サイトや作品紹介などに関しても、私がいなくなった後にお参りできる先やゲームをダウンロードできるリンク先まとめみたいなのがあったほうが便利でしょう。そこはウディコン結果を残すことに比べたら「ついで」のオプション任務くらいの気持ちで優先度は低いんですけどね。
@@ -3195,7 +3195,7 @@ BODY:
 　これを作っておけば私が急に明日いなくなってレンタルサーバーへのカード払いができなくなっても、皆さまの作品詳細や投票コメントがだいぶ先の未来まで保存できるはずです！
 
 <span style="font-size:large;"><B>『ウディコン歴史資料館』</B></span>
-　<B><a target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/">https://smokingwolf.github.io/wolf_rpg_editor_contest/
+　<B><a class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/">https://smokingwolf.github.io/wolf_rpg_editor_contest/
 <img src="../../image/2025/20250531A.jpg" border="1" style="max-width:420px;" loading="lazy"></a></B>
 
 　このページ、一見ウディコン公式と似た雰囲気ですが、これまでの「結果発表のバックアップ」だけでなく、「エントリー体験コーナー」や「投票体験コーナー」などもご用意させていただいております。エントリーの事前イメージトレーニングもできるかも？
@@ -3362,7 +3362,7 @@ BODY:
  　特にウディコンのアーカイブ化は私が急にいなくなったときに備えて早めにやっておきたかったですからね！　これでひとまず、第16回までのウディコンの履歴は当面消えずに残り続けるはずです。そしてこれからは1回分ずつ足せばいいので気楽です！
   
 　もちろん、ウディコンはこれからも続けていきます！
-　今年も<a target="_blank" href="https://silversecond.com/WolfRPGEditor/Contest/"><B><span style="font-size: 150%">第17回ウディコン</span></B></a>がもうあと40日くらいに迫ってきていますからね！　ヤバい！　ウディコンのコンテストシステムの調整もしないといけない！！　やることいっぱいですががんばります！
+　今年も<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/Contest/"><B><span style="font-size: 150%">第17回ウディコン</span></B></a>がもうあと40日くらいに迫ってきていますからね！　ヤバい！　ウディコンのコンテストシステムの調整もしないといけない！！　やることいっぱいですががんばります！
 　でも本当はもっとゲーム作りをしたい！！　それをモチベーションに少しでも急いでいきます！
 　
 　
@@ -3400,7 +3400,7 @@ BODY:
 
 
 7.<strong>【さらに何かしたいなら……】</strong>
-　あとの細かいことは<a target="_blank" href="https://chatgpt.com/"><B>ChatGPTさん</B></a>などに聞いてみてください！
+　あとの細かいことは<a class="red" target="_blank" href="https://chatgpt.com/"><B>ChatGPTさん</B></a>などに聞いてみてください！
 　私は全部そこで教えてもらいました。
 
 
@@ -3414,7 +3414,7 @@ BODY:
 
 　もしかしたら後世になっても、昔のフリーゲーム史を探る人たちが見つけてくれるかもしれません。たとえ古いものでも、遊んだ人に楽しい思い出を残したり、心を動かす力は、きっと後の世でも通用することでしょう。
 
-　そして私がいなくなった後にも、誰かがときどき<a target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><B>ウディコン歴史資料館</B></a>にやってこられて、当時のコンテストを思い出してくれるようなことがあるとうれしいですね。
+　そして私がいなくなった後にも、誰かがときどき<a class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><B>ウディコン歴史資料館</B></a>にやってこられて、当時のコンテストを思い出してくれるようなことがあるとうれしいですね。
 　ウディコンはネットの隅で行われているささやかなコンテストではありますが、作り手の皆さんも遊び手の皆さんも、全員の情熱の記録がずっと残り続けてほしいと願っています。
 -----
 EXTENDED BODY:
