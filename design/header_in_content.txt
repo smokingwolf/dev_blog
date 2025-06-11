@@ -21,9 +21,52 @@
 .header3{
 	color:#555588;
 }
+
+.home-link {
+  font-size: 12px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: underline;
+}
 </style>
 
+<!--戻るリンク、サイトがなくなってたらアーカイブにつながるようにしたが404ページがアレなのかうまくいかない-->
+<!--
+<font id="home-link-placeholder">
+  <noscript>
+    <a href="https://smokingwolf.github.io/" class="home-link">← ホーム(アーカイブサイト)に戻る</a>
+  </noscript>
+</font>
 
-<div class="TopTitle" style="margin-top:20px;">　　シルバーセカンド開発日誌</div>
+<script>
+(async () => {
+  try {
+    // HEADで軽くチェック（no-corsなのでステータス確認は不可）
+    // 自分のサイトのインフォメーションページにつなげるならサイトがまだあると認識する
+    await fetch("https://silversecond.net/contents/etc/info.shtml", { method: "HEAD", mode: "no-cors" });
+
+    const link = document.createElement("a");
+    link.href = "https://silversecond.net/";
+    link.textContent = "← ホームに戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  } catch {
+    const link = document.createElement("a");
+    link.href = "https://smokingwolf.github.io/";
+    link.textContent = "← ホーム(アーカイブサイト)に戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  }
+})();
+</script>
+-->
+
+<div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
 <!--ここにコメント文-->
-<div class="header3" style="margin-top:6px;">　ゲーム開発者SmokingWOLFの開発日誌。気付けば足跡も数十年分！</div>
+<div class="header3" style="margin-top:6px;">　ゲーム開発者SmokingWOLFの開発日誌です。ここまでずいぶん長く歩いてきました。<BR>
+　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
+　
+
+</div>

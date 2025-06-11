@@ -1,7 +1,9 @@
 
 <BR><BR>
-<CENTER><a href="#top" class="jumplink">▲一番上へ戻る</a></CENTER>
+<div align="right"><a href="#top" class="g">▲一番上へ戻る</a></div>
 <BR>
+<CENTER>
 <HR>
 Copyright © SmokingWOLF / Silver Second
 <HR>
+</CENTER>

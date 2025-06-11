@@ -11,7 +11,6 @@ BODY{
   font-size:13px;
   margin:0;
   font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
-
 }
 
 TD{
@@ -28,9 +27,9 @@ A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shado
 A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
 A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
 
-A.g:LINK,A.g:VISITED,
-A.jumplink:LINK,A.jumplink:VISITED{
+A.g:LINK,A.g:VISITED{
 	color:#38a68c;
+	text-decoration:underline;
 }
 
 A.g:HOVER,A.g:ACTIVE{
@@ -38,15 +37,26 @@ A.g:HOVER,A.g:ACTIVE{
 	text-decoration : underline;
 }
 
+
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38c6ac;
+}
+
 A.jumplink:HOVER,A.jumplink:ACTIVE{
-	color : #68b6ac;
+	color : #68f6ac;
 }
 
 A.jumplink{
-	text-shadow: 0 0 15px #ccffcc, 0 0 15px #aaffaa;
+	text-shadow: 0 0 15px #ccddcc, 0 0 15px #aaddaa;
 	text-decoration : none;
 }
 
+
+
+#content {
+	font-size:14px;
+	
+}
 
 #sidebar {
 	background:#f8f8f8; 
@@ -95,12 +105,17 @@ A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
 	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
 }
 
-.entry-body {background:#fff; color:#444; padding:10px;}
+.entry-body,.extended {
+	background:#fff; 
+	color:#444; 
+	padding:10px;
+	font-size:14px;
+}
 
 
 /*--●形状整理用--*/
 body {display:flex; margin:0;}
-#content {flex:1; padding:0 8px;}
+#content {width:580px; padding:0 8px;}
 #sidebar {width:120px;  box-sizing:border-box; }
 #sidebar div {line-height:1.6;}
 #sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
@@ -125,4 +140,4 @@ function toggleDisp(id){
 </script>
 </head>
 <body>
-
+<a id="top"></a>
