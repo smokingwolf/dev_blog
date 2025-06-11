@@ -4,6 +4,7 @@ from datetime import datetime, timedelta, timezone
 from collections import defaultdict
 import html
 import json
+import re
 
 # Number of recent entries to show in sidebar. Set to 0 to disable section.
 LATEST_POST_COUNT = 7
@@ -153,6 +154,16 @@ window.addEventListener('DOMContentLoaded', ()=>{
 });
 </script>
 """
+
+# Meta tags to prevent caching, inserted only for the top index page
+NO_CACHE_META = """
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+"""
+
+# Precompiled regex for locating the opening <head> tag
+HEAD_OPEN_RE = re.compile(r"(<head[^>]*>)", re.IGNORECASE)
 
 
 def render_entry_block(entry: dict, anchor_id: str, next_anchor: str | None):
@@ -501,6 +512,8 @@ def build():
             FOOTER_END_CONTENT,
         )
         full_html = assemble_full_page('開発日誌', body_html, HEADER_TEMPLATE, FOOTER_TEMPLATE)
+        # Insert no-cache meta tags only on the top index page
+        full_html = HEAD_OPEN_RE.sub(r"\1\n" + NO_CACHE_META, full_html, count=1)
         write_file(page_path, full_html)
 
     # Ensure GitHub pages skips Jekyll processing
