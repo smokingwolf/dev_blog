@@ -4,16 +4,115 @@
 <meta charset='utf-8'>
 <title>シルバーセカンド開発日誌  - SmokingWOLFの記録 -</title>
 <meta name="viewport" content="width=700">
-<script src="../../js/smoothscroll.js" type="text/javascript"></script> 
+<script src="../../js/smoothscroll_up.js" type="text/javascript"></script> 
 <style>
-body{display:flex;}
-#content{flex:1;}
-#sidebar{width:80px;margin-left:10px;}
-.nav{margin:10px 0;}
-.entry{border:1px solid #ccc;border-radius:8px;margin:10px 0;overflow:hidden;}
-.entry-title{background:linear-gradient(to right,#9bb0c5,#6f7f92);color:#fff;padding:4px;}
-.entry-body{background:#fff;color:#444;padding:4px;}
+BODY{
+  /*display:flex;*/
+  font-size:13px;
+  margin:0;
+  font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+
+}
+
+TD{
+  font-size:1em;
+}
+
+
+A:LINK,A:VISITED {  color:#5658f6;  text-decoration:underline ;}
+A:HOVER,A:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.red:LINK,A.red:VISITED{color:#d6385c;display: inline-block;text-shadow: 0 0 15px #ffddcc, 0 0 15px #ffddaa;}
+A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shadow: 0 0 15px #ffcccc, 0 0 15px #ffaaaa;}
+
+A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
+A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.g:LINK,A.g:VISITED,
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38a68c;
+}
+
+A.g:HOVER,A.g:ACTIVE{
+	color : #68b6ac;
+	text-decoration : underline;
+}
+
+A.jumplink:HOVER,A.jumplink:ACTIVE{
+	color : #68b6ac;
+}
+
+A.jumplink{
+	text-shadow: 0 0 15px #ccffcc, 0 0 15px #aaffaa;
+	text-decoration : none;
+}
+
+
+#sidebar {
+	background:#f8f8f8; 
+	border-left:1px solid #ddd; 
+	padding:4px 6px;
+	font-size:12px;
+}
+
+A.sidebar_link:LINK,A.sidebar_link:VISITED,
+A.sidebar_link_recent:LINK,A.sidebar_link_recent:VISITED{
+    color:#5658f6;
+	text-decoration: underline;
+}
+A.sidebar_link:HOVER,A.sidebar_link:ACTIVE,
+A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
+	color: #9698e6;
+	text-decoration: underline;
+}
+
+.sidebar_link{
+	font-size:13px;
+}
+
+.sidebar_link_recent{ /* 1つ1つの項目ごとに隙間を空ける */
+	font-size:11px;
+	line-height: 1.2;
+	display: inline-block;
+	margin-top:5px;
+}
+
+
+.entry {
+	border:1px solid #ccc; 
+	border-radius:8px; 
+	margin:14px 0; 
+	overflow:hidden;
+
+}
+.entry-title {
+	background:linear-gradient(to right,#4243ff,#aaaacf);
+
+	font-size:1.4em;
+	color:#fff; 
+	padding:4px; 
+	font-weight:bold;
+	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
+}
+
+.entry-body {background:#fff; color:#444; padding:10px;}
+
+
+/*--●形状整理用--*/
+body {display:flex; margin:0;}
+#content {flex:1; padding:0 8px;}
+#sidebar {width:120px;  box-sizing:border-box; }
+#sidebar div {line-height:1.6;}
+#sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
+.nav {margin:10px 0; text-align:center;}
+.sym {color:#999; font-weight:normal;}
+
 </style>
+
+
+
+
+
 <script>
 function toggle(id){
   var e=document.getElementById(id);
@@ -26,3 +125,4 @@ function toggleDisp(id){
 </script>
 </head>
 <body>
+

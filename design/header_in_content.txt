@@ -1,11 +1,9 @@
 <style>
-.TopTitle{
-  padding:2px 0px 0px 4px;
-  height:15px;
-  width:515px;
 
+.TopTitle{
+  width:515px;
   font-weight:bold;
-  font-size:10pt;
+  font-size:16pt;
   color: #ffffff;
   background-color:#535365 ;
   border-width: 0px;
@@ -14,9 +12,18 @@
   background: -moz-linear-gradient(left top, #42435f, #fafaff);
   background: -webkit-gradient(linear, left top, right bottom, from(#42435f), to(#fafaff));
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#DD42425f', endColorstr='#FFfafaff');
+  
+  text-align:left;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.header3{
+	color:#555588;
 }
 </style>
 
-<div class="TopTitle" style="text-align:left;padding-bottom:3px;border-top-left-radius: 7px;border-bottom-left-radius: 7px;">　　シルバーセカンド開発日誌</div>
+
+<div class="TopTitle" style="margin-top:20px;">　　シルバーセカンド開発日誌</div>
 <!--ここにコメント文-->
-<div class="header3">　ゲーム開発者SmokingWOLFの開発日誌。気付けば足跡も数十年分！</div>
+<div class="header3" style="margin-top:6px;">　ゲーム開発者SmokingWOLFの開発日誌。気付けば足跡も数十年分！</div>
