@@ -1,0 +1,22 @@
+<style>
+.TopTitle{
+  padding:2px 0px 0px 4px;
+  height:15px;
+  width:515px;
+
+  font-weight:bold;
+  font-size:10pt;
+  color: #ffffff;
+  background-color:#535365 ;
+  border-width: 0px;
+  border-color:#535365;
+  border-style:solid;
+  background: -moz-linear-gradient(left top, #42435f, #fafaff);
+  background: -webkit-gradient(linear, left top, right bottom, from(#42435f), to(#fafaff));
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#DD42425f', endColorstr='#FFfafaff');
+}
+</style>
+
+<div class="TopTitle" style="text-align:left;padding-bottom:3px;border-top-left-radius: 7px;border-bottom-left-radius: 7px;">　　シルバーセカンド開発日誌</div>
+<!--ここにコメント文-->
+<div class="header3">　ゲーム開発者SmokingWOLFの開発日誌。気付けば足跡も数十年分！</div>
