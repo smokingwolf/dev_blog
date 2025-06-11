@@ -1,6 +1,6 @@
 import os
 import glob
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from collections import defaultdict
 import html
 import json
@@ -79,8 +79,8 @@ def parse_entries(source_dir: str = "source_txt"):
                     "category": category,
                     "date": date,
                     "date_str": date_str,
-                    "body": "\n".join(body_lines).strip(),
-                    "extended": "\n".join(extended_lines).strip(),
+                    "body": "\n".join(body_lines).rstrip(),
+                    "extended": "\n".join(extended_lines).rstrip(),
                 }
             )
     return entries
@@ -293,7 +293,10 @@ def assemble_full_page(title: str, body_html: str, header_tpl: str, footer_tpl: 
 # =============================
 
 def build():
-    entries = [e for e in parse_entries() if e.get('date')]
+    all_entries = [e for e in parse_entries() if e.get('date')]
+    jst = timezone(timedelta(hours=9))
+    now_jst = datetime.now(jst).replace(tzinfo=None)
+    entries = [e for e in all_entries if e['date'] <= now_jst]
     entries.sort(key=lambda e: e['date'])  # oldest → newest
 
     # Load shared header & footer (required)
