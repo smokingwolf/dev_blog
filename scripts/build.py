@@ -113,18 +113,7 @@ def get_cat_dir(cat: str, mapping: dict[str, str]) -> str:
 # =============================
 
 STYLE_BLOCK = """
-<style>
-body {display:flex; margin:0; font-family:YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;}
-#content {flex:1; padding:0 8px;}
-#sidebar {width:120px; background:#f8f8f8; border-left:1px solid #ddd; padding:4px 6px; box-sizing:border-box; font-size:14px;}
-#sidebar div {line-height:1.6;}
-#sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
-.nav {margin:10px 0; text-align:center;}
-.entry {border:1px solid #ccc; border-radius:8px; margin:14px 0; overflow:hidden;}
-.entry-title {background:linear-gradient(to right,#9bb0c5,#6f7f92); color:#fff; padding:4px; font-weight:bold;}
-.entry-body {background:#fff; color:#444; padding:6px;}
-.sym {color:#999; font-weight:normal;}
-</style>
+
 """
 
 SCRIPT_BLOCK = """
