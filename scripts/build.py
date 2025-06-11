@@ -121,14 +121,6 @@ body {display:flex; margin:0; font-family:YuGothic, "Hiragino Kaku Gothic Pro", 
 .entry-title {background:linear-gradient(to right,#9bb0c5,#6f7f92); color:#fff; padding:4px; font-weight:bold;}
 .entry-body {background:#fff; color:#444; padding:6px;}
 .sym {color:#999; font-weight:normal;}
-.fixed-menu {display:none; background: rgba(240, 240, 255, 0.9); top: 0; left: 0; width:100%; box-sizing: border-box; position: fixed; padding: 6px 14px; justify-content: center; gap: 20px; border-radius: 0 0 20px 20px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); z-index: 1000; line-height:1.7; flex-wrap: wrap; min-width:680px;}
-.fixed-menu a {display:inline-block; white-space:nowrap; text-decoration:none; font-weight:bold; color:#004466; font-size:14px; padding:2px 8px; transition:all 0.2s; border-radius:6px;}
-.fixed-menu a:hover {background-color:#a5e5c6; color:#002233;}
-@media (max-width:680px){
-  #sidebar{display:none;}
-  .fixed-menu{display:flex;}
-  body{display:block; padding-top:60px;}
-}
 </style>
 """
 
@@ -273,65 +265,13 @@ def render_sidebar(all_months: list[tuple[str, str]],
     return "\n".join(lines)
 
 
-def render_fixed_menu(all_months: list[tuple[str, str]],
-                      cat_counts: dict[str, int],
-                      page_dir: str,
-                      root: str = 'docs',
-                      month_counts: dict[tuple[str, str], int] | None = None,
-                      cat_dir_map: dict[str, str] | None = None) -> str:
-    """Generate responsive top menu for small screens."""
-    month_counts = month_counts or {}
-    rel_root = os.path.relpath(root, page_dir)
-    rel_home = os.path.relpath('.', page_dir)
-
-    month_by_year: dict[str, list[str]] = defaultdict(list)
-    for y, m in all_months:
-        month_by_year[y].append(m)
-    years_sorted = sorted(month_by_year.keys(), reverse=True)
-
-    lines: list[str] = []
-    lines.append("<nav class='fixed-menu'><center>")
-    lines.append(f"<a href='{rel_home}/' class='blue'>←ホームへ</a>")
-    lines.append("<small>開発日誌</small>")
-    lines.append(f"<a href='{rel_root}/archive/top/index.html' class='g'>トップページ</a>")
-
-    # Category dropdown
-    lines.append("<details class='menu-cat' style='display:inline-block;'>")
-    lines.append("<summary>カテゴリー</summary>")
-    cat_dir_map = cat_dir_map or {}
-    for cat in sorted(cat_counts.keys(), key=lambda c: (-cat_counts[c], c)):
-        safe = get_cat_dir(cat, cat_dir_map)
-        cnt = cat_counts[cat]
-        caption = f"{html.escape(cat) if cat else 'uncategorized'}&nbsp;<span class='sym'>({cnt})</span>"
-        lines.append(f"<div><a href='{rel_root}/category/{safe}/001.html'>{caption}</a></div>")
-    lines.append("</details>")
-
-    # Monthly dropdown
-    lines.append("<details class='menu-month' style='display:inline-block;'>")
-    lines.append("<summary>月別データ</summary>")
-    for y in years_sorted:
-        lines.append("<details style='margin-left:10px;'>")
-        lines.append(f"<summary>{y}</summary>")
-        for m in sorted(month_by_year[y], reverse=True):
-            cnt = month_counts.get((y, m), 0)
-            caption = f"{int(m):02d}月&nbsp;<span class='sym'>({cnt})</span>"
-            url = f"{rel_root}/archive/{y}/{m}.html"
-            lines.append(f"<div><a href='{url}'>{caption}</a></div>")
-        lines.append("</details>")
-    lines.append("</details>")
-    lines.append("</center></nav>")
-    return "\n".join(lines)
-
-
 # =============================
 # Full page assembler
 # =============================
 
-def render_body(title: str, content: str, sidebar_html: str, navigation: str, fixed_menu: str = "") -> str:
+def render_body(title: str, content: str, sidebar_html: str, navigation: str) -> str:
     """Return the HTML to be placed inside <body>."""
     body_parts = [STYLE_BLOCK, SCRIPT_BLOCK]
-    if fixed_menu:
-        body_parts.append(fixed_menu)
     body_parts.append("<div id='content'>")
     body_parts.append(f"<div class='nav'>{navigation}</div>")
     body_parts.append(content)
@@ -439,8 +379,7 @@ def build():
         entry_html = '<br><br><br>\n'.join(blocks)
 
         sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map)
-        fixed_menu = render_fixed_menu(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map)
-        body_html = render_body(f'{year}-{month}', entry_html, sidebar, navigation, fixed_menu)
+        body_html = render_body(f'{year}-{month}', entry_html, sidebar, navigation)
         full_html = assemble_full_page(f'{year}-{month}', body_html, HEADER_TEMPLATE, FOOTER_TEMPLATE)
         write_file(page_path, full_html)
 
@@ -476,8 +415,7 @@ def build():
                 blocks.append(render_entry_block(ent, ent['anchor_id'], next_id))
             entry_html = '<br><br><br>\n'.join(blocks)
             sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map)
-            fixed_menu = render_fixed_menu(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map)
-            body_html = render_body(cat or 'uncategorized', entry_html, sidebar, navigation, fixed_menu)
+            body_html = render_body(cat or 'uncategorized', entry_html, sidebar, navigation)
             full_html = assemble_full_page(cat or 'uncategorized', body_html, HEADER_TEMPLATE, FOOTER_TEMPLATE)
             write_file(page_path, full_html)
 
@@ -518,8 +456,7 @@ def build():
             blocks.append(render_entry_block(ent, ent['anchor_id'], next_id))
         entry_html = '<br><br><br>\n'.join(blocks)
         sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map)
-        fixed_menu = render_fixed_menu(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map)
-        body_html = render_body('開発日誌', entry_html, sidebar, navigation, fixed_menu)
+        body_html = render_body('開発日誌', entry_html, sidebar, navigation)
         full_html = assemble_full_page('開発日誌', body_html, HEADER_TEMPLATE, FOOTER_TEMPLATE)
         write_file(page_path, full_html)
 
