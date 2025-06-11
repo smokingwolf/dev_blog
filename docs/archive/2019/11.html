@@ -2,7 +2,9 @@
 <html>
 <head>
 <meta charset='utf-8'>
-<title>2021-02</title>
+<title>シルバーセカンド開発日誌  - SmokingWOLFの記録 -</title>
+<meta name="viewport" content="width=700">
+<script src="../../js/smoothscroll.js" type="text/javascript"></script> 
 <style>
 body{display:flex;}
 #content{flex:1;}
@@ -35,6 +37,14 @@ body {display:flex; margin:0; font-family:YuGothic, "Hiragino Kaku Gothic Pro", 
 .entry-title {background:linear-gradient(to right,#9bb0c5,#6f7f92); color:#fff; padding:4px; font-weight:bold;}
 .entry-body {background:#fff; color:#444; padding:6px;}
 .sym {color:#999; font-weight:normal;}
+.fixed-menu {display:none; background: rgba(240, 240, 255, 0.9); top: 0; left: 0; width:100%; box-sizing: border-box; position: fixed; padding: 6px 14px; justify-content: center; gap: 20px; border-radius: 0 0 20px 20px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); z-index: 1000; line-height:1.7; flex-wrap: wrap; min-width:680px;}
+.fixed-menu a {display:inline-block; white-space:nowrap; text-decoration:none; font-weight:bold; color:#004466; font-size:14px; padding:2px 8px; transition:all 0.2s; border-radius:6px;}
+.fixed-menu a:hover {background-color:#a5e5c6; color:#002233;}
+@media (max-width:680px){
+  #sidebar{display:none;}
+  .fixed-menu{display:flex;}
+  body{display:block; padding-top:60px;}
+}
 </style>
 
 
@@ -74,6 +84,38 @@ window.addEventListener('DOMContentLoaded', ()=>{
 });
 </script>
 
+<nav class='fixed-menu'><center>
+<a href='../../../' class='blue'>←ホームへ</a>
+<small>開発日誌</small>
+<a href='../../archive/top/index.html' class='g'>トップページ</a>
+<details class='menu-cat' style='display:inline-block;'>
+<summary>カテゴリー</summary>
+<div><a href='../../category/owh2dev/001.html'>片道勇者2 開発&nbsp;<span class='sym'>(12)</span></a></div>
+<div><a href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(6)</span></a></div>
+<div><a href='../../category/woditor/001.html'>WOLF RPGエディター&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../category/owh/001.html'>片道勇者 開発&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(3)</span></a></div>
+</details>
+<details class='menu-month' style='display:inline-block;'>
+<summary>月別データ</summary>
+<details style='margin-left:10px;'>
+<summary>2019</summary>
+<div><a href='../../archive/2019/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a href='../../archive/2019/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a href='../../archive/2019/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../archive/2019/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../archive/2019/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</details>
+</details>
+</center></nav>
 <div id='content'>
 <div class='nav'><a href='12.html'>次の月へ</a> | <a href='10.html'>前の月へ</a></div>
 <div class='entry'><div class='entry-title'>■<a id='2019-11-30'></a>2019-11-30&nbsp;&nbsp;&nbsp;片道勇者2【42】 細かい修正と残り<span style='float:right;'><a href='#2019-11-16' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><span style="font-size:large;"><strong>【片道勇者2　細かい修正】</strong></span><br><br>パーティーシステムなど大きな修正を入れると<br>だいたいバグがいっぱい出てきますので<br>内部処理の修正にほとんどの時間を費やした二週間でした。<br>見た目に変化がないし、期待通りに動くようにしていただけなので何もお見せできない！<br><br>今回の中で目に見える変更といえば以下くらいです。<br><br><br><strong>＜敵のHPゲージを「弧状」に変更！＞</strong><br><br><img src="../image/2019/20191130.jpg" border="1"><br><br>敵のHPゲージを「弧状」に変更しました。<br>ファイアーエムブレムの最新作などでも採用されている方式なのですが、<br>真横のバーより敵の見た目の邪魔にならないのがいいですね。<br><br>ウディタでの実装だと、ゲージの減り具合が違う画像を10パターンくらい作って<br>絵ごと切り替えるようにして作っています。実は『片道勇者1』の敵ゲージもそうでした。<br>ゲージが小さければ10％ごとの区切りでもそんなに困らない感じです。<br><br><hr size="1" /><br><strong><span style="font-size:large;">【アルファ2に向けての残り作業】</span></strong><br><br>ここからのアルファ2に向けての実装項目は以下の通りです。<br>たいていはこれら実装作業そのものとは別に、<br>バグ修正や微調整によって不明の追加時間がかかります。<br><br>●【システム】ショップ機能を抜本的に修正。売却は手持ち全部からまとめて行えるようにする。<br>（アルファ1ではドラ○もんのポケットみたいに買い物中に「引き直し」して<br>手札に売りたいアイテムが来るまで回すマニアックすぎる仕組みでした）<br><br>●【システム】視界制限機能（夜間に視界外のNPCを見えなくさせる機能）<br><br>●【システム】昼夜の切り替え機能。<br><br>●【システム】施設の位置を遠くからマーカーで教えてくれる機能。<br><br>●【システム】アドバイス機能を仲間コメント機能で出すよう全面的に変更。<br>（アドバイスが出るタイミングで仲間ボタンからピコッと吹き出しが出て、<br>その後に仲間に話すとアドバイスを教えてくれる）<br><br>●【データ】アルファ1で絵がなかったカードに絵を付ける。<br><br>●【データ】アイテムや特徴を少し増やしたい。<br><br>●【データ】敵の出現度合いや強さを距離によって変えてよりゲームらしさを増す。<br><br>●【キャラクター】ラフのままの妖精クリスをどうにかする。<br><br>●【通信】Twitter通信機能でエンド画面を3枚送信できるようにする。<br>→　要望が多かった、「死に際の画面」「所持カード一覧と能力値」「評価画面」の3枚を<br>一斉にTwitterに送信できるようにします。仮実装は済んでいます。<br><br>●【システム】仮オプションの完成。<br><br>●【システム】全体的な視認性の向上。従来で「いつの間にかXXしてた」<br>という状態になっていた地味な部分をもっと目立たせる。<br><br>●【システム】ゲームパッド・キーボードへの仮対応。<br>これが一体どのくらいかかるか分からないくらい大変そうです。<br>「移動状態のままカードを選べる」プレイ方式というのが<br>操作の構築のややこしさを生んでいます。<br>解法は色々あるでしょうけれども、何通りか試しに作っては壊しながら、<br>一番マシなのを探していく作業になると思います。<br>また、各画面モードごとに全部操作を作らないといけないので作業量も相当多い！<br>一方で、ここは評価に一定量影響しそうな部分だとも考えているので、<br>仮でもいいので第一版を作って見てもらいたいところです。<br><br>●その他、ここに書くのを忘れているであろう要素いろいろ。<br><br>という感じです。<br>この数だとペース的にまずあと一ヶ月で終わらない気がしたので、<br>うまく目標を区切りつつ最速でぼちぼち作っていきたいと思います。</div></div><br><br><br>

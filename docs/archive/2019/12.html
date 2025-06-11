@@ -2,7 +2,9 @@
 <html>
 <head>
 <meta charset='utf-8'>
-<title>2021-02</title>
+<title>シルバーセカンド開発日誌  - SmokingWOLFの記録 -</title>
+<meta name="viewport" content="width=700">
+<script src="../../js/smoothscroll.js" type="text/javascript"></script> 
 <style>
 body{display:flex;}
 #content{flex:1;}
@@ -35,6 +37,14 @@ body {display:flex; margin:0; font-family:YuGothic, "Hiragino Kaku Gothic Pro", 
 .entry-title {background:linear-gradient(to right,#9bb0c5,#6f7f92); color:#fff; padding:4px; font-weight:bold;}
 .entry-body {background:#fff; color:#444; padding:6px;}
 .sym {color:#999; font-weight:normal;}
+.fixed-menu {display:none; background: rgba(240, 240, 255, 0.9); top: 0; left: 0; width:100%; box-sizing: border-box; position: fixed; padding: 6px 14px; justify-content: center; gap: 20px; border-radius: 0 0 20px 20px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); z-index: 1000; line-height:1.7; flex-wrap: wrap; min-width:680px;}
+.fixed-menu a {display:inline-block; white-space:nowrap; text-decoration:none; font-weight:bold; color:#004466; font-size:14px; padding:2px 8px; transition:all 0.2s; border-radius:6px;}
+.fixed-menu a:hover {background-color:#a5e5c6; color:#002233;}
+@media (max-width:680px){
+  #sidebar{display:none;}
+  .fixed-menu{display:flex;}
+  body{display:block; padding-top:60px;}
+}
 </style>
 
 
@@ -74,6 +84,38 @@ window.addEventListener('DOMContentLoaded', ()=>{
 });
 </script>
 
+<nav class='fixed-menu'><center>
+<a href='../../../' class='blue'>←ホームへ</a>
+<small>開発日誌</small>
+<a href='../../archive/top/index.html' class='g'>トップページ</a>
+<details class='menu-cat' style='display:inline-block;'>
+<summary>カテゴリー</summary>
+<div><a href='../../category/owh2dev/001.html'>片道勇者2 開発&nbsp;<span class='sym'>(12)</span></a></div>
+<div><a href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(6)</span></a></div>
+<div><a href='../../category/woditor/001.html'>WOLF RPGエディター&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../category/owh/001.html'>片道勇者 開発&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(3)</span></a></div>
+</details>
+<details class='menu-month' style='display:inline-block;'>
+<summary>月別データ</summary>
+<details style='margin-left:10px;'>
+<summary>2019</summary>
+<div><a href='../../archive/2019/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a href='../../archive/2019/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a href='../../archive/2019/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../archive/2019/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../archive/2019/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</details>
+</details>
+</center></nav>
 <div id='content'>
 <div class='nav'><span style='color:#ccc'>次の月へ</span> | <a href='11.html'>前の月へ</a></div>
 <div class='entry'><div class='entry-title'>■<a id='2019-12-24'></a>2019-12-24&nbsp;&nbsp;&nbsp;シルバーセカンド、21周年！<span style='float:right;'><a href='#2019-12-14' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><span style="font-size:large;"><strong>【シルバーセカンド、21周年！】</strong></span><br><br>ということでこのサイト、「シルバーセカンド」は<br>2019年12月24日をもってついに<span style="color:#CC0000"><span style="font-size:large;"><strong>21周年</strong></span></span>をむかえました！<br><br><img src="../image/2019/20191224.jpg" border="1" title="フリーダ王女はちょっと盛りました"><br><span style="font-size:x-small;"><strong>今年の新しいコンテンツは片道勇者ノベライズ！　左はドラゴンブック版フリーダ王女、右は薬師ネムリ</strong></span><br><br>去年20周年を迎えたと思ったら、今年は色々あってあっという間に21周年です。<br>これも皆さまのお声や、手に支えられてたどることができた結果です。<br>本当にありがとうございます！<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【今年の成果】</strong></span><br><br>今年の成果は、<br><br><strong>◆一ヶ月かけてお仕事を完遂したけどお金がもらえなくて泣いた。<br><br>◆『片道勇者』ノベライズが発売！　私は(予想外に大変だった）監修業務を担当しました。<br><br>◆PCにさわれない時間で作るBプロジェクト進行中（電子書籍）。来年公開。<br><br>◆内緒のCプロジェクトが進んだけれどもボツになりそう。<br><br>◆内緒のDプロジェクトが順調に進行中。たぶん来年公開。<br><br>◆内緒のEプロジェクト企画が新たに発生。これも来年公開？<br><br>◆『片道勇者2』開発中、そろそろ基本システムがまとまりそう。アルファ2は出せず。</strong><br><br>という感じの、割と溜めの1年になりました。<br>表に出たのは『片道勇者』のノベライズだけですね！<br><br>このノベライズは私も監修をがんばったのと、<br>ライターさんが非常にプロい方だったのもあって、<br>皆さまの評価がものすごく高い一冊となりました。<br>気になる方はよければぜひ！　電子版が今だけ紙版の30％オフの「1079円」になっています！<br>↓<br>小説 <B>『片道勇者　滅びの闇と繰り返す英雄』</B><br><a  target="_blank" class="red" href="https://amzn.to/2BN24Vi" target="_blank"><IMG border="2" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=4040733525&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=smokingwolf-22&language=ja_JP" height="180"><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=smokingwolf-22&language=ja_JP&l=li1&o=9&a=4040733525" width="1" height="1" border="2" alt="" /><br><small>片道勇者 滅びの闇と繰り返す英雄 Amazonページへ</A><BR> Kindle版 \1,386（セール中は1079円） / 書籍版 \1,540 </small><br><br><hr size="1" /><br><span style="font-size:large;"><strong>【片道勇者2は？】</strong></span><br><br>メインの『片道勇者2』は、アルファ1での1000件を超えるフィードバックを頂いてから、<br>問題箇所を修正してみては壊し、作っては壊しの繰り返しをしつつ、徐々に進んでいます。<br><br>いつかは確実に終わるんですが、今年は開発維持費を稼ぎながらだったり、<br>家庭事情で時間や体力を消費することも増えてきたので、開発速度はゆっくりめです。<br><br>ゲームの中身に関しては、作ってても触ってても個人的に面白いので手応えはいい感じです。<br>ゲームにこれだけの素質が感じられれば、自然に最後までやり遂げられるでしょう。<br>ただ完璧を目指し出すとキリがないので、生存限界と相談しつつ<br>可能な範囲で全力を尽くしていきます。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【来年の目標】</strong></span><br><br>幸いにして2019年は無理せずに済んだおかげか、体の調子を崩すことは<br>あまりなかったのでそれは救いでした（介護行動で腰は頻繁に逝きましたけど）。<br>油断すると一瞬でHPがレッドゲージになったり病気になるので、<br>引き続き体調には注意して進めていきたいと思います。<br><br>来年の自分の目標は、<br><br><strong>◆『片道勇者2』の基本システムを固めてアルファ2を出す。<br>製品版やベータに向けてデータやストーリーを足していく。<br><br>◆Bプロジェクト書籍を1本以上リリースして生活の糧に繋げる。</strong><br><br>という感じになると思います。<br>その他の「内緒の」と付いている協同プロジェクトのいくつかもリリースされるでしょう。<br>ゲームの個人開発は長引くので、途中に何か出しつつやっていければと考えています。<br><br><hr size="1" /><br><strong>＜最後に＞</strong><br><br>2019年も本当にたくさんの人にお世話になりました。<br>今の自分は、サイトに来て下さる皆さまや、コメントを寄せてくださる皆さま、<br>そして見えない大勢の人に支えられて成り立っています。<br>今でも私のゲームや記事を見てくださっている皆さまには、本当に感謝の限りです！<br><br>今これを読んでくださっている皆さまも、<br>もしよければ来年もときどきでいいので、見にきてくださると幸いです。<br>今年も一年、本当にありがとうございました！<br><br><hr size="1" /><br>次回の開発日誌は2020年の元旦に更新予定です。<br>それでは皆さま、お体には気をつけて、よいお年を！</div></div><br><br><br>

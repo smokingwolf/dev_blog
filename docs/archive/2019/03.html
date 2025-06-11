@@ -2,7 +2,9 @@
 <html>
 <head>
 <meta charset='utf-8'>
-<title>2021-02</title>
+<title>シルバーセカンド開発日誌  - SmokingWOLFの記録 -</title>
+<meta name="viewport" content="width=700">
+<script src="../../js/smoothscroll.js" type="text/javascript"></script> 
 <style>
 body{display:flex;}
 #content{flex:1;}
@@ -35,6 +37,14 @@ body {display:flex; margin:0; font-family:YuGothic, "Hiragino Kaku Gothic Pro", 
 .entry-title {background:linear-gradient(to right,#9bb0c5,#6f7f92); color:#fff; padding:4px; font-weight:bold;}
 .entry-body {background:#fff; color:#444; padding:6px;}
 .sym {color:#999; font-weight:normal;}
+.fixed-menu {display:none; background: rgba(240, 240, 255, 0.9); top: 0; left: 0; width:100%; box-sizing: border-box; position: fixed; padding: 6px 14px; justify-content: center; gap: 20px; border-radius: 0 0 20px 20px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); z-index: 1000; line-height:1.7; flex-wrap: wrap; min-width:680px;}
+.fixed-menu a {display:inline-block; white-space:nowrap; text-decoration:none; font-weight:bold; color:#004466; font-size:14px; padding:2px 8px; transition:all 0.2s; border-radius:6px;}
+.fixed-menu a:hover {background-color:#a5e5c6; color:#002233;}
+@media (max-width:680px){
+  #sidebar{display:none;}
+  .fixed-menu{display:flex;}
+  body{display:block; padding-top:60px;}
+}
 </style>
 
 
@@ -74,6 +84,38 @@ window.addEventListener('DOMContentLoaded', ()=>{
 });
 </script>
 
+<nav class='fixed-menu'><center>
+<a href='../../../' class='blue'>←ホームへ</a>
+<small>開発日誌</small>
+<a href='../../archive/top/index.html' class='g'>トップページ</a>
+<details class='menu-cat' style='display:inline-block;'>
+<summary>カテゴリー</summary>
+<div><a href='../../category/owh2dev/001.html'>片道勇者2 開発&nbsp;<span class='sym'>(12)</span></a></div>
+<div><a href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(6)</span></a></div>
+<div><a href='../../category/woditor/001.html'>WOLF RPGエディター&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../category/owh/001.html'>片道勇者 開発&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(3)</span></a></div>
+</details>
+<details class='menu-month' style='display:inline-block;'>
+<summary>月別データ</summary>
+<details style='margin-left:10px;'>
+<summary>2019</summary>
+<div><a href='../../archive/2019/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a href='../../archive/2019/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a href='../../archive/2019/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../archive/2019/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../archive/2019/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</details>
+</details>
+</center></nav>
 <div id='content'>
 <div class='nav'><a href='04.html'>次の月へ</a> | <a href='02.html'>前の月へ</a></div>
 <div class='entry'><div class='entry-title'>■<a id='2019-03-30'></a>2019-03-30&nbsp;&nbsp;&nbsp;片道勇者1マップ生成動画<span style='float:right;'><a href='#2019-03-16' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><span style="font-size:large;"><strong>【片道勇者のマップ生成】</strong></span><br><br>『片道勇者』のマップ生成について興味を持ってくださる方がいらっしゃったり、<br>お仕事で緊急に資料が必要になって色々作ってたりしたので、<br>その副産物としてマップ生成の流れを紹介する合成音声動画を作ってみました！<br>これまで極秘だったマップ生成手法がいま明らかに！<br><br><iframe width="520" height="290" src="https://www.youtube.com/embed/bvU967LuKno" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br><br>『片道勇者』のマップ、意外とそれなりの品質でできているように見えますが、<br>作り方は意外なほどランダム任せだったりします。<br>詳細は動画の方をご覧ください。<br>最後の方でも言っていますが、たぶん横スクロールRPG向けです。<br><br>特に、もっとも重要であろう「山」や「水地形」などの配置も、<br>言ってしまえば「ランダムサイズのマップチップの塊をランダムに置いてる」だけ！<br>作り方がうまいことハマってたのか最終的にはまともに見えるものになりましたが、<br>こんなあまりにザツな手法でそれっぽいマップが作れてしまうのかと驚いたほどでした。<br><br>ただそれでも、開発の過程ではパラメータをかなり試行錯誤したり、<br>生成方法を何度も変えてみたりした結果なんとかうまくいったのがこのやり方なので、<br>きっと各手順ごとに、たまたまうまくいく要因が積み重なっていたのだと思います。<br><br>皆さんが同じ試行錯誤を繰り返す必要はないと思いますので、<br>もちろんこの手法を真似てくださっても構いません。<br>せっかく作った資料ですので、後の人のための足がかりになれば幸いです。<br><br><hr size="1" /><br>この『片道勇者1』のマップは風景的にはまだしも、<br>ゲームプレイの面で見ると「近くに障害物があるか否か」くらいの<br>差しかなかったので、次の『片道勇者2』の方では<br>もう少し豊かな状況を生み出せるようなマップを組めるよう意識していきたいです。</div></div><br><br><br>

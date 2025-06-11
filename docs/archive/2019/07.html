@@ -2,7 +2,9 @@
 <html>
 <head>
 <meta charset='utf-8'>
-<title>2021-02</title>
+<title>シルバーセカンド開発日誌  - SmokingWOLFの記録 -</title>
+<meta name="viewport" content="width=700">
+<script src="../../js/smoothscroll.js" type="text/javascript"></script> 
 <style>
 body{display:flex;}
 #content{flex:1;}
@@ -35,6 +37,14 @@ body {display:flex; margin:0; font-family:YuGothic, "Hiragino Kaku Gothic Pro", 
 .entry-title {background:linear-gradient(to right,#9bb0c5,#6f7f92); color:#fff; padding:4px; font-weight:bold;}
 .entry-body {background:#fff; color:#444; padding:6px;}
 .sym {color:#999; font-weight:normal;}
+.fixed-menu {display:none; background: rgba(240, 240, 255, 0.9); top: 0; left: 0; width:100%; box-sizing: border-box; position: fixed; padding: 6px 14px; justify-content: center; gap: 20px; border-radius: 0 0 20px 20px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); z-index: 1000; line-height:1.7; flex-wrap: wrap; min-width:680px;}
+.fixed-menu a {display:inline-block; white-space:nowrap; text-decoration:none; font-weight:bold; color:#004466; font-size:14px; padding:2px 8px; transition:all 0.2s; border-radius:6px;}
+.fixed-menu a:hover {background-color:#a5e5c6; color:#002233;}
+@media (max-width:680px){
+  #sidebar{display:none;}
+  .fixed-menu{display:flex;}
+  body{display:block; padding-top:60px;}
+}
 </style>
 
 
@@ -74,6 +84,38 @@ window.addEventListener('DOMContentLoaded', ()=>{
 });
 </script>
 
+<nav class='fixed-menu'><center>
+<a href='../../../' class='blue'>←ホームへ</a>
+<small>開発日誌</small>
+<a href='../../archive/top/index.html' class='g'>トップページ</a>
+<details class='menu-cat' style='display:inline-block;'>
+<summary>カテゴリー</summary>
+<div><a href='../../category/owh2dev/001.html'>片道勇者2 開発&nbsp;<span class='sym'>(12)</span></a></div>
+<div><a href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(6)</span></a></div>
+<div><a href='../../category/woditor/001.html'>WOLF RPGエディター&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../category/owh/001.html'>片道勇者 開発&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(3)</span></a></div>
+</details>
+<details class='menu-month' style='display:inline-block;'>
+<summary>月別データ</summary>
+<details style='margin-left:10px;'>
+<summary>2019</summary>
+<div><a href='../../archive/2019/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a href='../../archive/2019/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a href='../../archive/2019/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../archive/2019/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../archive/2019/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</details>
+</details>
+</center></nav>
 <div id='content'>
 <div class='nav'><a href='08.html'>次の月へ</a> | <a href='06.html'>前の月へ</a></div>
 <div class='entry'><div class='entry-title'>■<a id='2019-07-20'></a>2019-07-20&nbsp;&nbsp;&nbsp;第11回ウディコン、いよいよ開催！<span style='float:right;'><a href='#2019-07-06' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><span style="font-size:large;"><strong>【第11回ウディコン、いよいよ開催！】</strong></span><br><br>ということで今年もなんとかウディコンを開催できそうです！<br>今回は第11回！　つまり11年目に突入しています！<br>気付けばなかなかの長寿コンテストになってしまいました。<br><br>作品公開は7/21（日）の0時過ぎより始まっております！ <br>ありがたいことに、すでに20作品以上が集まっています！<br><br><a href="http://www.silversecond.com/WolfRPGEditor/Contest/" class="red">第11回ウディコンページ▼<br><img src="http://www.silversecond.com/WolfRPGEditor/Contest/banner.png"></a><br><br>今年の総作品数はたぶん50作品を切るくらいではないかなと予想しています。<br><br>参加者の皆さんには、ある程度の盛り上がりや名誉や感想を得られる規模を、<br>開催者の私としては、負担になりすぎないくらいの大きさを、<br>という2点を両立できる程度の、自分の身の丈に合った規模で<br>続けていけるといいなと考えています。<br><br>今年も皆さまの情熱あふれる作品、楽しみにお待ちしております！<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【ご支援受付ページを作りました】</strong></span><br><br>セールに合わせてご支援受付ページを作らせていただきました！<br>もちろん、まだゲームの方をお持ちでない方は、<br>先にゲームを手に取っていただけますと幸いです。<br><center><br><TABLE style="background-color:#444464;border-radius: 12px;background-image : url(https://silversecond.net/image/2019_support_bigbanner.jpg);border:solid 1px #333388;" cellspacing="1" cellpadding="5" width="494" height="70"><TBODY><TR><TD nowrap align="center" colspan="1" class="backcolor"><A href="https://silversecond.booth.pm/items/1423684" target="_blank">  <B style="text-shadow: 0 0 9px #4444ff, 0 0 9px #4444ff, 0 0 9px #4444ff, 0 0 9px #4444ff; text-decoration:underline;"><FONT style="color:#fff;">BOOTHにて<BR><BR><FONT size="+2">ご支援･投げ銭 受付はじめました</FONT></FONT></B></A></TD></TR></TBODY></TABLE><br></center><br>軽く投げ銭と言ってますが、金銭というのはほとんどの人にとって<br>生きる時間を削って得た命のリソースです。<br>すでに25名以上の方が、ほぼ何もない見返りに対して大変なコストをかけて<br>ご支援をお寄せくださいました。本当に感謝の限りです！<br><br>しばらく何も出せていない自分なんて生きていていいんだろうか……<br>といつものごとく自分の存在意義を疑っていましたが、<br>まだ期待してくださったり、見てくださっている方がいらっしゃることが分かって、<br>冗談抜きで、生きる元気とさらなる緊張感をいただけました！<br><br>これまで以上に気持ちを引き締めて、全力を尽くしてがんばらせていただきます。<br><br><hr size="1" /><br>ひとまず、まず最初はウディコンの運営からです！<br>今年も楽しんでいただけますと幸いです。</div></div><br><br><br>

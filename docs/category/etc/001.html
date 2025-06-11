@@ -2,7 +2,9 @@
 <html>
 <head>
 <meta charset='utf-8'>
-<title>2021-02</title>
+<title>シルバーセカンド開発日誌  - SmokingWOLFの記録 -</title>
+<meta name="viewport" content="width=700">
+<script src="../../js/smoothscroll.js" type="text/javascript"></script> 
 <style>
 body{display:flex;}
 #content{flex:1;}
@@ -35,6 +37,14 @@ body {display:flex; margin:0; font-family:YuGothic, "Hiragino Kaku Gothic Pro", 
 .entry-title {background:linear-gradient(to right,#9bb0c5,#6f7f92); color:#fff; padding:4px; font-weight:bold;}
 .entry-body {background:#fff; color:#444; padding:6px;}
 .sym {color:#999; font-weight:normal;}
+.fixed-menu {display:none; background: rgba(240, 240, 255, 0.9); top: 0; left: 0; width:100%; box-sizing: border-box; position: fixed; padding: 6px 14px; justify-content: center; gap: 20px; border-radius: 0 0 20px 20px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); z-index: 1000; line-height:1.7; flex-wrap: wrap; min-width:680px;}
+.fixed-menu a {display:inline-block; white-space:nowrap; text-decoration:none; font-weight:bold; color:#004466; font-size:14px; padding:2px 8px; transition:all 0.2s; border-radius:6px;}
+.fixed-menu a:hover {background-color:#a5e5c6; color:#002233;}
+@media (max-width:680px){
+  #sidebar{display:none;}
+  .fixed-menu{display:flex;}
+  body{display:block; padding-top:60px;}
+}
 </style>
 
 
@@ -74,6 +84,38 @@ window.addEventListener('DOMContentLoaded', ()=>{
 });
 </script>
 
+<nav class='fixed-menu'><center>
+<a href='../../../' class='blue'>←ホームへ</a>
+<small>開発日誌</small>
+<a href='../../archive/top/index.html' class='g'>トップページ</a>
+<details class='menu-cat' style='display:inline-block;'>
+<summary>カテゴリー</summary>
+<div><a href='../../category/owh2dev/001.html'>片道勇者2 開発&nbsp;<span class='sym'>(12)</span></a></div>
+<div><a href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(6)</span></a></div>
+<div><a href='../../category/woditor/001.html'>WOLF RPGエディター&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../category/owh/001.html'>片道勇者 開発&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(3)</span></a></div>
+</details>
+<details class='menu-month' style='display:inline-block;'>
+<summary>月別データ</summary>
+<details style='margin-left:10px;'>
+<summary>2019</summary>
+<div><a href='../../archive/2019/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a href='../../archive/2019/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a href='../../archive/2019/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../archive/2019/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../archive/2019/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</details>
+</details>
+</center></nav>
 <div id='content'>
 <div class='nav'><span style='color:#ccc'>次のページ</span> | <span style='color:#ccc'>前のページ</span></div>
 <div class='entry'><div class='entry-title'>■<a id='2019-05-11'></a>2019-05-11&nbsp;&nbsp;&nbsp;令和の時代へ！　始まりを振り返る<span style='float:right;'><a href='#2019-03-09' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><span style="font-size:large;"><strong>【令和の時代へ！】</strong></span><br><br><img src="../image/2019/20190511.jpg" border="1" title="元号発表ごっこ。ホームボタン付きは平成の証"><br><br>新元号記念に1枚！<br>平成の三分の二ほどを駆け抜けたこのサイトですが、<br>令和になってもよろしくお願いします！<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【平成昔話】</strong></span><br><br>せっかくなのでこの機会に昔話をさせていただきます。<br><br>突然ですが、実はこのサイトが生まれた平成10年（1998年）あたりは、<br>インターネットがそこまで普及していませんでした。<br>当時はいちいち電話回線を占有して通信しなければなかったので、<br>繋いでいる時間だけ電話代がかかりましたし、もちろんその間は電話も取れません。<br><br>夜中だけ通信が定額になる「テレホーダイ」というサービスもあるにはありましたが、<br>当時の私は少年だったので夜中まで起きていない都合上、<br>残念ながらその恩恵にはあずかれませんでした。<br>一瞬だけ繋いでサイトのデータをアップロードしては、すぐ切ってました。<br><br>それが今や日中でもほぼ常時繋ぎっぱなしでインターネットが使えて、<br>まるで水道と同じくらい日常に普及しているというのは、<br>その過程を見てきた身としては凄いと思うばかりです。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【「ダウンロード」という概念との出会い】</strong></span><br><br>私がゲーム作りを生きる道にし始めた理由として一番大きかったのが、<br>「ダウンロード」という概念との出会いです。<br><br>実は私、インターネットの前に<br>「ゲームのダウンロード」という概念に触れていました。<br>それが平成7年（1995年）頃、スーパーファミコンというゲーム機の付属品である<br>「サテラビュー」というハード＆ソフトの、衛星放送通信でのデータ配信でした。<br><br>そこでは家庭用ゲーム機のソフトや、『RPGツクール2』の<br>投稿作品の優秀なユーザ作成データが配信されていたりして、<br>当時はその仕組みにものすごくロマンを感じていたのです。<br><br>というのも、当時は「自作したゲーム」を不特定多数のみんなに遊んでもらう方法が<br>「ゲーム投稿雑誌に載る」くらいしかなかったんですよ！<br>それが「ダウンロード」という形でどこからともなく多くの人へと配信できるというのは、<br>物理媒体のゲームソフトしか知らない当時の私にとって<br>ものすごく先進的で夢のあることだと感じたのです。<br>「いいゲームを作れたら自分のゲームもダウンロード配信してもらえるのでは」<br>なんて傲慢な夢を抱いたこともありました。<br><br>それからインターネットに触れるようになったのが<br>2～3年後だったのですが、そこで状況が一変しました。<br>「不特定多数にダウンロードしてもらう」ことが<br>いきなり自分の手だけで実現可能な手段となってしまったのです！<br><br>そしてそのことこそ、私がゲーム開発に人生の労力をかけることができた、<br>一番大きな理由になりました。<br>というのも、「不特定多数にダウンロードしてもらう」手段が<br>手軽に使用できない世界だったならば、私はきっと「ゲーム作りを諦めていた」か、<br>「趣味程度のもの」にとどめていたはずだからです。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【ゲーム作りを諦めていた理由と再燃】</strong></span><br><br>このサイトを作る前の「インターネットの存在をよく知らなかった自分」は、<br>ここまで長い時間をゲーム開発に投入するつもりは全くありませんでした。<br><br>「ゲームを作る人間になりたい……けど人生のコストパフォーマンス悪いよなあ」<br>という気持ちだけが当時少年だった私の中にくすぶっていた程度で、<br>真剣にゲーム開発者になるつもりはなかったのです。<br><br>というのも、「人生を賭けてゲームを作りたい」と思えば<br>当時は主に「企業に属する道」しかなかったわけですが、<br>プロのゲーム開発者になっても、そこではおそらく<br><strong>「自由にゲームを作れるようになるまでになるコストが高すぎて分が悪い」<br>あるいは「一生自由に作れるチャンスが来ないかもしれない」</strong><br>と私は考えていました。<br><br>いくら当時の私が子供でも、企業勤めをすると最初は部下から始まり、<br>えらい人の言うことを聞いて作らねばならないことくらいは知ってます。<br><br>なので、自分の作りたいゲームを作れる道が「企業に入って偉くなる」しかないのなら、<br>「ゲーム作りの夢は諦めて別の人生を探した方がいいかな」<br>と考えていたのです。<br><br>もちろんゲーム作り自体はすごくやりたかったんですけど、<br>私が作りたいのは『自分の作りたいゲーム』です。<br>文字で書くとなんだか間抜けな感じがしますが、<br>それを実行するのは条件が整わないとかなり難しいことです。<br>仮に作れても、人に見せる手段がないなら自分にとって作る意味がないですからね。<br><br><br>ところが、そう考えていた中で出会ってしまったのが「インターネットの世界」です！<br>オンライン上では商業流通のラインを完全に無視し、<br>みんなが好き勝手に自作ゲームを公開できてしまうという、<br>あまりに自由すぎる世界が広がっていました。<br><br>当時はアマチュアゲーム開発の場合、<br>「ゲーム投稿雑誌に載る」か、「認められて配信サービスに載せてもらう」かの<br>2つしかゲームを公開する入り口がなかったのに、急に自分の手だけで<br>不特定多数へのリリースが簡単にできるようになってしまったのです！<br><br>「え、嘘でしょ！？　いいの！？」と当時の私は思いました。<br><br>私は、多くの人が簡単に繋がれる「インターネットの世界」なら<br><strong>『自分の作りたいゲームを作り続ける』</strong><br>という目標に最短でたどり着ける気がしました。<br><br>「ゲーム企業に入って何年もかけてがんばって偉くなる」という道をたどらなくても、<br>今から作りたいゲームを作って、みんなに見せることができるのです！<br>作るだけなら「ツクール」シリーズという心強い味方がいます。<br><br>そう気付いた少年時代の私の中で、「ゲームを作る」という、<br>まだぼんやりしていた夢が再び燃え上がりました。<br><br><br>そうやって全てが始まったときから今までの間ずっと、<br>私はゲームや様々な創作物を作り続けることができました。<br>最初はレジェンドオブレストールを置くためだけの<br>なんとなく生まれたサイトでしたが、<br>見てくださる皆様のおかげで20年以上も続けることができました。<br><br><hr size="1" /><br>平成時代でのインターネットとの出会いは、<br>私の人生を本当に大きく変えてくれたと思っています。<br><br>そしてまた、時代を越えてこのサイトを見てくださる皆様がいてくださることには、<br>本当に感謝しかありません！　<br><br>今後も引き続きゲームやら創作物やら作っていきますので、<br>令和の時代も引き続きよろしくお願いいたします！</div></div><br><br><br>

@@ -2,7 +2,9 @@
 <html>
 <head>
 <meta charset='utf-8'>
-<title>2021-02</title>
+<title>シルバーセカンド開発日誌  - SmokingWOLFの記録 -</title>
+<meta name="viewport" content="width=700">
+<script src="../../js/smoothscroll.js" type="text/javascript"></script> 
 <style>
 body{display:flex;}
 #content{flex:1;}
@@ -35,6 +37,14 @@ body {display:flex; margin:0; font-family:YuGothic, "Hiragino Kaku Gothic Pro", 
 .entry-title {background:linear-gradient(to right,#9bb0c5,#6f7f92); color:#fff; padding:4px; font-weight:bold;}
 .entry-body {background:#fff; color:#444; padding:6px;}
 .sym {color:#999; font-weight:normal;}
+.fixed-menu {display:none; background: rgba(240, 240, 255, 0.9); top: 0; left: 0; width:100%; box-sizing: border-box; position: fixed; padding: 6px 14px; justify-content: center; gap: 20px; border-radius: 0 0 20px 20px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); z-index: 1000; line-height:1.7; flex-wrap: wrap; min-width:680px;}
+.fixed-menu a {display:inline-block; white-space:nowrap; text-decoration:none; font-weight:bold; color:#004466; font-size:14px; padding:2px 8px; transition:all 0.2s; border-radius:6px;}
+.fixed-menu a:hover {background-color:#a5e5c6; color:#002233;}
+@media (max-width:680px){
+  #sidebar{display:none;}
+  .fixed-menu{display:flex;}
+  body{display:block; padding-top:60px;}
+}
 </style>
 
 
@@ -74,6 +84,38 @@ window.addEventListener('DOMContentLoaded', ()=>{
 });
 </script>
 
+<nav class='fixed-menu'><center>
+<a href='../../../' class='blue'>←ホームへ</a>
+<small>開発日誌</small>
+<a href='../../archive/top/index.html' class='g'>トップページ</a>
+<details class='menu-cat' style='display:inline-block;'>
+<summary>カテゴリー</summary>
+<div><a href='../../category/owh2dev/001.html'>片道勇者2 開発&nbsp;<span class='sym'>(12)</span></a></div>
+<div><a href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(6)</span></a></div>
+<div><a href='../../category/woditor/001.html'>WOLF RPGエディター&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../category/owh/001.html'>片道勇者 開発&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(3)</span></a></div>
+</details>
+<details class='menu-month' style='display:inline-block;'>
+<summary>月別データ</summary>
+<details style='margin-left:10px;'>
+<summary>2019</summary>
+<div><a href='../../archive/2019/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a href='../../archive/2019/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a href='../../archive/2019/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../archive/2019/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../archive/2019/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</details>
+</details>
+</center></nav>
 <div id='content'>
 <div class='nav'><a href='03.html'>次の月へ</a> | <a href='01.html'>前の月へ</a></div>
 <div class='entry'><div class='entry-title'>■<a id='2019-02-23'></a>2019-02-23&nbsp;&nbsp;&nbsp;片道勇者2【32】 インターフェース調整<span style='float:right;'><a href='#2019-02-16' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><span style="font-size:large;"><strong>【片道勇者2開発　インターフェース調整】</strong></span><br><br>今週はお仕事の合間にちょっとだけ『片道勇者2』の開発を進められました。<br><br>今回はこれまでの『片道勇者2』開発でやったことの中で<br>アルファ1からインターフェースをいじった点について一部ご紹介します！<br><br><hr size="1" /><br><span style="font-size:large;"><strong>- マップインターフェースをなおも調整中</strong></span><br><br>α1時点<br><a href="https://silversecond.net/data/p_diary5/20190223-.jpg" class="blue"><img src="https://silversecond.net/data/p_diary5/20190223-.jpg" width="400"></a><br>↓<br>現在<br><a href="../image/2019/20190223.jpg" class="blue"><img src="../image/2019/20190223.jpg" width="400"></a><br>前にもマップのインターフェースいじったよーとご報告した気がしますが<br>今のバージョンはこんな感じになっています。<br>多少なりとも圧迫感みたいなのは減ったと思います。<br><br><strong>・「手札」は右下から中央下に移動。<br>・「ゲージ類」は右側から左側に移動。<br>・「システムメッセージ」は中央下寄りから中央上寄りに移動。</strong><br><br>という感じにしました。スマホ対応を考えていた時期もありましたが<br>どうやらそもそも処理の重さ的に無理くさいことが判明しつつあるので、<br>横着せずに完全にPC用チューンで行くことになりました。<br><br>そのほか、細かな修正部分を以下にご紹介していきます。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>- α1と違い、「デッキ内容表示」をアイコンにしてみた</strong></span><br><br>「デッキの残りカード一覧」、これまでは文字で表示されていたのですが<br>デッキの中身が直感的に分からなかったので、<br>ここも色々と悩んで試行錯誤していた部分でした。<br><br>今はデッキ内容一覧を「アイコン」で表示してみているのですが、<br>デッキの「カード総量やカード種の配分」が一目で分かりやすくなりました。<br>下の画像の、右側の表示です。<br>↓<br><img src="https://silversecond.net/data/p_diary5/20190223A.jpg"><br>これまでは左側のように「まだ山札に残ってるもの」だけを文字で表示していましたが、<br>今は右側のようなアイコン表記にして、「山札も捨て札も一緒にまとめて表示」しています。<br>このうち、明るいカードが「山札に残っている」カードです。<br><br>このアイコン表示、私がプレイしてみたところ、いま何を何割くらい持っているのか、<br>何がどのくらい残っているかが直感的に分かりやすくなり、<br>「あーデッキの半分くらいが経験値になってるわー早く女神像を見つけないとなー」<br>みたいな判断が一瞬でできるようになったので、結構いい感じでした。<br><br>これまであんまり意識できてませんでしたが、<br>「アイコンってザツに使っても便利だな！」<br>ということに今さら気付いて感動しています。<br>『片道勇者1』の画面右に出る状態異常一覧なども、<br>アイコンにすればもっとスッキリしてたでしょうね。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>- 主人公の下のミニゲージ周辺を修正</strong></span><br><br><img src="https://silversecond.net/data/p_diary5/20190223B.jpg"><br><br>これはアルファ1を遊んだことがある人にしか意図が分からない話ですが、<br>主人公のゲージの下に「手札の攻撃スキルカードの枚数」を常時表示するようにしました。<br>これは「自動攻撃したときに何回攻撃できそうか」を把握するためのものです。<br><br>自動攻撃したときに「行動力」をおおよそ使い切れる場合は青く光り、<br>行動力が余る状態、つまり「まだ行動できるのに手札にスキルカードが足りない」状態ならば<br>黄色やオレンジに光って分かりやすく知らせるようにしました。<br><br>あとアルファ1ではゲージ横に常に出ていた「HPやSTの数字」も、<br>ゲージの％そのものに注目してもらうにあたって邪魔になっていたので、<br>変化があったときだけ表示されるようにしました。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>- アクション一連の総ダメージを表示するように。</strong></span><br><img src="https://silversecond.net/data/p_diary5/20190223D.jpg"><br>攻撃で「4」と「7」ダメージを与えたので、総ダメージ「11」と大きく表示されています。<br><br>総ダメージ表示は、入れてみたら<br>「なんで最初にこれがなかったんだ！」と思ってしまったものです。<br>α1では与えたダメージが「単発分ずつ」しか出なかったのですが、<br>これからは「総ダメージ」のほうが目立って表示されるようになっています。<br><br>今作は「手札のコンボで1ターンの総ダメージ効率をどれだけ上げられるか」が<br>主軸の一つとなるゲームなので、この総ダメージ表示メインの方が<br>手札のパワーやデッキ構築のうまさを評価しやすい感じがありました。<br>「覚醒」込み込みで6回攻撃して総ダメージ200とか出ると気持ちがいい！<br><br>何より、推定総ダメージ（上の画像の「(剣) 9～17」 と出てる部分）と<br>実際の総ダメージを比較しやすいので、そういう意味でも合理的になりました。<br>これは（計算が苦手な私には）よそのデッキ構築RPGでも欲しいかもですね。<br><br><hr size="1" /><br>といった感じで、地味ながらプレイしやすさに影響する部分も<br>試行錯誤しながらいじっています。<br><br>普段はよそのゲームの基本系をまねて作ってなんとかなってただけなので、<br>今回はまだまだインターフェースについてたくさん学ぶことがありそうです。<br><br>「ああではないこうではないと色々いじった結果、今のところこうなっている」<br>というだけなのでこれからも変わる可能性はありますが、自分がテストプレイするときに<br>「グアアアなんだこれは！　パーン！（ゲームを投げ捨てる）」<br>とならない程度には、いくらか快適かつ分かりやすいようにしておきたいと考えています。</div></div><br><br><br>

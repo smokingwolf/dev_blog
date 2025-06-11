@@ -2,7 +2,9 @@
 <html>
 <head>
 <meta charset='utf-8'>
-<title>2021-02</title>
+<title>シルバーセカンド開発日誌  - SmokingWOLFの記録 -</title>
+<meta name="viewport" content="width=700">
+<script src="../../js/smoothscroll.js" type="text/javascript"></script> 
 <style>
 body{display:flex;}
 #content{flex:1;}
@@ -35,6 +37,14 @@ body {display:flex; margin:0; font-family:YuGothic, "Hiragino Kaku Gothic Pro", 
 .entry-title {background:linear-gradient(to right,#9bb0c5,#6f7f92); color:#fff; padding:4px; font-weight:bold;}
 .entry-body {background:#fff; color:#444; padding:6px;}
 .sym {color:#999; font-weight:normal;}
+.fixed-menu {display:none; background: rgba(240, 240, 255, 0.9); top: 0; left: 0; width:100%; box-sizing: border-box; position: fixed; padding: 6px 14px; justify-content: center; gap: 20px; border-radius: 0 0 20px 20px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); z-index: 1000; line-height:1.7; flex-wrap: wrap; min-width:680px;}
+.fixed-menu a {display:inline-block; white-space:nowrap; text-decoration:none; font-weight:bold; color:#004466; font-size:14px; padding:2px 8px; transition:all 0.2s; border-radius:6px;}
+.fixed-menu a:hover {background-color:#a5e5c6; color:#002233;}
+@media (max-width:680px){
+  #sidebar{display:none;}
+  .fixed-menu{display:flex;}
+  body{display:block; padding-top:60px;}
+}
 </style>
 
 
@@ -74,6 +84,38 @@ window.addEventListener('DOMContentLoaded', ()=>{
 });
 </script>
 
+<nav class='fixed-menu'><center>
+<a href='../../../' class='blue'>←ホームへ</a>
+<small>開発日誌</small>
+<a href='../../archive/top/index.html' class='g'>トップページ</a>
+<details class='menu-cat' style='display:inline-block;'>
+<summary>カテゴリー</summary>
+<div><a href='../../category/owh2dev/001.html'>片道勇者2 開発&nbsp;<span class='sym'>(12)</span></a></div>
+<div><a href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(6)</span></a></div>
+<div><a href='../../category/woditor/001.html'>WOLF RPGエディター&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../category/owh/001.html'>片道勇者 開発&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(3)</span></a></div>
+</details>
+<details class='menu-month' style='display:inline-block;'>
+<summary>月別データ</summary>
+<details style='margin-left:10px;'>
+<summary>2019</summary>
+<div><a href='../../archive/2019/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a href='../../archive/2019/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a href='../../archive/2019/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../archive/2019/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../archive/2019/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</details>
+</details>
+</center></nav>
 <div id='content'>
 <div class='nav'><a href='001.html'>次のページ</a> | <span style='color:#ccc'>前のページ</span></div>
 <div class='entry'><div class='entry-title'>■<a id='2019-03-16'></a>2019-03-16&nbsp;&nbsp;&nbsp;片道勇者2【33】 すぐ使う機能とマップ<span style='float:right;'><a href='#2019-02-23' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><span style="font-size:large;"><strong>【片道勇者2　すぐ使う機能とマップ】</strong></span><br><br>お仕事の合間をぬってゲーム開発中です。<br>『片道勇者2』はまだアルファ1のフィードバック対応中ですが<br>ちょっとずつ進んでいます。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【落ちてるアイテムをそのまま使える機能を実装】</strong></span><br><br>アルファ1で「落ちているアイテムをいちいち拾ってから使うの面倒くさい！」<br>「カード所持数いっぱいでも使いたい！」とのご意見をいくつかいただいていました。<br>私もそう思っていましたので、落ちているアイテムをそのまま使える機能をようやく搭載です。<br><br>※画面はまだ仮テスト状態です。今後、見栄えをよくしていきます<br><img src="../image/2019/20190316.jpg" border="1" width="500"><br><br>実際に搭載してみるとやっぱり便利ですね！<br>アルファ1データだと「癒しの草」みたいな直接使いたいアイテムも多いので、<br>操作の手間が減らせるのは大きいです。<br>従来だと「クリック→マウス移動→クリック→マウス移動→クリック」だったのが<br>「ボタン1クリック」で片付くのは早い！<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【マップ生成機能の再調整】</strong></span><br><br>アルファ1では作りが悪くてうまく制御がきかなかったので、<br>マップのランダム作成処理を作り直していました。<br>これでもう、想定外に細い道ができたりはしないはずです。<br><br>↓昔の画面、アルファ1では１画面内で端から端まで見える狭い場所がありました<br><img src="https://silversecond.net/data/p_diary5/20190316A.jpg" border="1" width="400"><br><br>本来は「地形ごとの最低道幅」が数値上だけ設定されてたんですが、<br>アルファ1のバージョンだとうまく動いていなくて、縦幅で4マスしかないとか<br>ヤバいほど狭いマップになってるところがあったんですよ！<br><br>あれは狙ったものでもなんでもなくてただのバグで、<br>少なくとも「草原地帯」であんな細い道は作られないようにするつもりです。<br>「渓谷地帯」みたいな、細い道しかなさそうな場所もある地形ならありだと思います。<br><br><br><span style="font-size:large;"><strong>＜ミニマップはどうする？＞</strong></span><br><br>「片道勇者2」でミニマップを入れるかは検討中で、<br>ぶっちゃけ<strong>「建物」や「女神像」に一定まで近づいたら、<br>「その方角と距離などが示される」</strong>形でも十分じゃないかなと<br>思うところもあって、一回それを試してみる予定です。<br><br>ミニマップはミニマップで情報量が多いのですが、<br>「見続けないと効果がない」という弱点があります（あと、すでに画面が狭い）。<br>当初は、「ミニマップ」に加えて建物などに近づいた時点で<br>「この方角になんか建物があるぞ！」と前作の<br>狩人の敵探知みたいなマークを出そうと思ったんですが、よく考えたらこれ、<br>「ミニマップなしの探知表示だけ」で用が済みそうな気配もあるんですよ。<br><br>こういった「警告表示だけで用が済む」状況の類例として、<br>たとえばリメイク作の『<a href="https://store.steampowered.com/app/409000/Mystery_Chronicle_One_Way_Heroics/?l=japanese" class="red"><strong>不思議のクロニクル 振リ返リマセン勝ツマデハ</strong></a>』だと<br>原作にあった「魔王来るよ時計」がなくなっていたのですが、<br>片道勇者プラスの「魔王が来るまであと3時間！」という警告が<br>継承されていたおかげで、時計を表示しなくても<br>ほぼ困らないことが分かっています。<br><br>もし3時間前で足りなければ6時間前、12時間前にも出せばいいだけですし、<br>さらには襲撃時間を「3日目12時に襲来」と端に文字で出してもいいと思います。<br><br>とにかく、「必要なときに目立つ警告」をしてくれれば、<br>生情報を出しっぱなしにする必要がそんなにない可能性があります。<br>この機会に、色々試してみたいと思っています。</div></div><br><br><br>
