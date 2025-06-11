@@ -29,7 +29,7 @@ jobs:
     - name: Copy changed js to docs
       run: |
         while read file; do
-          target="docs/${file#source_js/}"
+          target="docs/js/${file#source_js/}"
           mkdir -p "$(dirname "$target")"
           cp "$file" "$target"
           echo "[copy] $file → $target"
