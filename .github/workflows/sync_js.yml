@@ -1,0 +1,44 @@
+name: Sync Js
+
+on:
+  push:
+    paths:
+      - 'source_js/**'
+
+jobs:
+  sync-images:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # フル履歴を取得して diff に備える
+
+    - name: Prepare image list
+      run: |
+        mkdir -p docs/js/
+        if [ "${{ github.event.before }}" = "0000000000000000000000000000000000000000" ]; then
+          echo "初回コミットまたは履歴が無いため、source_js 全部をコピー対象にします"
+          find source_js -type f > changed.txt
+        else
+          echo "差分検出中: ${{ github.event.before }} → ${{ github.sha }}"
+          git fetch origin
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} -- source_js/ > changed.txt
+        fi
+
+    - name: Copy changed js to docs
+      run: |
+        while read file; do
+          target="docs/${file#source_js/}"
+          mkdir -p "$(dirname "$target")"
+          cp "$file" "$target"
+          echo "[copy] $file → $target"
+        done < changed.txt
+
+    - name: Commit and push changes
+      run: |
+        git config user.name "github-actions"
+        git config user.email "github-actions@users.noreply.github.com"
+        git add docs/js/
+        git commit -m "Auto sync new/updated js" || echo "No changes"
+        git push
