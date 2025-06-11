@@ -5,6 +5,9 @@ from collections import defaultdict
 import html
 import json
 
+# Number of recent entries to show in sidebar. Set to 0 to disable section.
+LATEST_POST_COUNT = 7
+
 # =============================
 # Utility helpers
 # =============================
@@ -214,7 +217,8 @@ def render_sidebar(all_months: list[tuple[str, str]],
                    page_dir: str,
                    root: str = 'docs',
                    month_counts: dict[tuple[str, str], int] | None = None,
-                   cat_dir_map: dict[str, str] | None = None) -> str:
+                   cat_dir_map: dict[str, str] | None = None,
+                   recent_entries: list[dict] | None = None) -> str:
     """Generate sidebar HTML."""
     month_counts = month_counts or {}
     # Prepare relative path root → this page_dir
@@ -232,7 +236,18 @@ def render_sidebar(all_months: list[tuple[str, str]],
 
     # Heading & top link
     lines.append("<div style='font-weight:bold;'>開発日誌</div>")
-    lines.append(f"<div><a href='{rel_root}/archive/top/index.html'>トップへ</a></div>")
+    lines.append(f"<div><a class='sidebar_link' href='{rel_root}/archive/top/index.html'>トップへ</a></div>")
+    if recent_entries:
+        lines.append("<hr>")
+        lines.append("<div style='font-weight:bold;'>【最新記事】</div>")
+        for ent in recent_entries:
+            y = ent['date'].strftime('%Y')
+            m = ent['date'].strftime('%m')
+            d = ent['date'].strftime('%d')
+            title = html.escape(ent['title'])
+            url = f"{rel_root}/archive/{y}/{m}.html#{ent['anchor_id']}"
+            caption = f"{m}/{d} {title}"
+            lines.append(f"<div><a class='sidebar_link_recent' href='{url}'>{caption}</a></div>")
     lines.append("<hr>")
 
     # Category section first
@@ -242,7 +257,7 @@ def render_sidebar(all_months: list[tuple[str, str]],
         safe = get_cat_dir(cat, cat_dir_map)
         cnt = cat_counts[cat]
         caption = f"{html.escape(cat) if cat else 'uncategorized'}&nbsp;<span class='sym'>({cnt})</span>"
-        lines.append(f"<div><a href='{rel_root}/category/{safe}/001.html'>{caption}</a></div>")
+        lines.append(f"<div><a class='sidebar_link' href='{rel_root}/category/{safe}/001.html'>{caption}</a></div>")
 
     lines.append("<hr>")
 
@@ -252,14 +267,14 @@ def render_sidebar(all_months: list[tuple[str, str]],
         pane_id = f"y{y}"
         # Year button with plus/minus symbol
         lines.append(
-            f"<div><a href='javascript:void(0);' id='{pane_id}-btn' onclick=\"toggleYear('{pane_id}')\">{y}&nbsp;<span class='sym'>＋</span></a></div>"
+            f"<div><a class='sidebar_link' href='javascript:void(0);' id='{pane_id}-btn' onclick=\"toggleYear('{pane_id}')\">{y}&nbsp;<span class='sym'>＋</span></a></div>"
         )
         lines.append(f"<div id='{pane_id}' data-yearpane style='display:none;margin-left:10px;'>")
         for m in sorted(month_by_year[y], reverse=True):
             cnt = month_counts.get((y, m), 0)
             caption = f"{int(m):02d}月&nbsp;<span class='sym'>({cnt})</span>"
             url = f"{rel_root}/archive/{y}/{m}.html"
-            lines.append(f"<div><a href='{url}'>{caption}</a></div>")
+            lines.append(f"<div><a class='sidebar_link' href='{url}'>{caption}</a></div>")
         lines.append("</div>")
     lines.append("</div>")  # #sidebar
     return "\n".join(lines)
@@ -340,6 +355,7 @@ def build():
     # Assign unique anchor ids for each entry based on the date. If multiple
     # entries share the same date, add alphabetical suffixes (A, B, ...).
     anchor_counter: dict[str, int] = defaultdict(int)
+
     for e in entries:
         key = e['date'].strftime('%Y-%m-%d')
         idx = anchor_counter[key]
@@ -349,6 +365,11 @@ def build():
         else:
             anchor = f"{key}{chr(ord('A') + idx - 1)}"
         e['anchor_id'] = anchor
+
+    if LATEST_POST_COUNT > 0:
+        recent_entries = sorted(entries, key=lambda x: x['date'], reverse=True)[:LATEST_POST_COUNT]
+    else:
+        recent_entries = []
 
     months_sorted = sorted(month_map.keys())  # ascending
 
@@ -386,7 +407,7 @@ def build():
             blocks.append(render_entry_block(ent, ent['anchor_id'], next_id))
         entry_html = '<br><br><br>\n'.join(blocks)
 
-        sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map)
+        sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map, recent_entries)
         body_html = render_body(f'{year}-{month}', entry_html, sidebar, navigation, HEADER_IN_CONTENT)
         full_html = assemble_full_page(f'{year}-{month}', body_html, HEADER_TEMPLATE, FOOTER_TEMPLATE)
         write_file(page_path, full_html)
@@ -422,7 +443,7 @@ def build():
                 next_id = chunk[i + 1]['anchor_id'] if i < len(chunk) - 1 else 'bottom'
                 blocks.append(render_entry_block(ent, ent['anchor_id'], next_id))
             entry_html = '<br><br><br>\n'.join(blocks)
-            sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map)
+            sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map, recent_entries)
             body_html = render_body(cat or 'uncategorized', entry_html, sidebar, navigation, HEADER_IN_CONTENT)
             full_html = assemble_full_page(cat or 'uncategorized', body_html, HEADER_TEMPLATE, FOOTER_TEMPLATE)
             write_file(page_path, full_html)
@@ -463,7 +484,7 @@ def build():
             next_id = entries_for_index[i + 1]['anchor_id'] if i < len(entries_for_index) - 1 else 'bottom'
             blocks.append(render_entry_block(ent, ent['anchor_id'], next_id))
         entry_html = '<br><br><br>\n'.join(blocks)
-        sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map)
+        sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map, recent_entries)
         body_html = render_body('開発日誌', entry_html, sidebar, navigation, HEADER_IN_CONTENT)
         full_html = assemble_full_page('開発日誌', body_html, HEADER_TEMPLATE, FOOTER_TEMPLATE)
         write_file(page_path, full_html)
