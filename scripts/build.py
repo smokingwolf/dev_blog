@@ -285,7 +285,7 @@ def render_sidebar(all_months: list[tuple[str, str]],
 # =============================
 
 def render_body(title: str, content: str, sidebar_html: str, navigation: str,
-                header_in_content: str) -> str:
+                header_in_content: str, footer_end_content: str) -> str:
     """Return the HTML to be placed inside <body>."""
     body_parts = [STYLE_BLOCK, SCRIPT_BLOCK]
     body_parts.append("<div id='content'>")
@@ -295,6 +295,8 @@ def render_body(title: str, content: str, sidebar_html: str, navigation: str,
     body_parts.append(content)
     body_parts.append(f"<div class='nav'>{navigation}</div>")
     body_parts.append("<a id='bottom'></a>")
+    body_parts.append(footer_end_content)
+    body_parts.append("")
     body_parts.append("</div>")  # #content
     body_parts.append(sidebar_html)
     return "\n".join(body_parts)
@@ -324,6 +326,8 @@ def build():
         FOOTER_TEMPLATE = f.read()
     with open(os.path.join('design', 'header_in_content.txt'), encoding='utf-8') as f:
         HEADER_IN_CONTENT = f.read()
+    with open(os.path.join('design', 'footer_end_content.txt'), encoding='utf-8') as f:
+        FOOTER_END_CONTENT = f.read()
 
     root = 'docs'
     ensure_dir(root)
@@ -408,7 +412,14 @@ def build():
         entry_html = '<br><br><br>\n'.join(blocks)
 
         sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map, recent_entries)
-        body_html = render_body(f'{year}-{month}', entry_html, sidebar, navigation, HEADER_IN_CONTENT)
+        body_html = render_body(
+            f'{year}-{month}',
+            entry_html,
+            sidebar,
+            navigation,
+            HEADER_IN_CONTENT,
+            FOOTER_END_CONTENT,
+        )
         full_html = assemble_full_page(f'{year}-{month}', body_html, HEADER_TEMPLATE, FOOTER_TEMPLATE)
         write_file(page_path, full_html)
 
@@ -444,7 +455,14 @@ def build():
                 blocks.append(render_entry_block(ent, ent['anchor_id'], next_id))
             entry_html = '<br><br><br>\n'.join(blocks)
             sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map, recent_entries)
-            body_html = render_body(cat or 'uncategorized', entry_html, sidebar, navigation, HEADER_IN_CONTENT)
+            body_html = render_body(
+                cat or 'uncategorized',
+                entry_html,
+                sidebar,
+                navigation,
+                HEADER_IN_CONTENT,
+                FOOTER_END_CONTENT,
+            )
             full_html = assemble_full_page(cat or 'uncategorized', body_html, HEADER_TEMPLATE, FOOTER_TEMPLATE)
             write_file(page_path, full_html)
 
@@ -485,7 +503,14 @@ def build():
             blocks.append(render_entry_block(ent, ent['anchor_id'], next_id))
         entry_html = '<br><br><br>\n'.join(blocks)
         sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map, recent_entries)
-        body_html = render_body('開発日誌', entry_html, sidebar, navigation, HEADER_IN_CONTENT)
+        body_html = render_body(
+            '開発日誌',
+            entry_html,
+            sidebar,
+            navigation,
+            HEADER_IN_CONTENT,
+            FOOTER_END_CONTENT,
+        )
         full_html = assemble_full_page('開発日誌', body_html, HEADER_TEMPLATE, FOOTER_TEMPLATE)
         write_file(page_path, full_html)
 
