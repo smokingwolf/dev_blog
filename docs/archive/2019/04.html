@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>シルバーセカンド開発日誌  - SmokingWOLFの記録 -</title>
+<meta name="viewport" content="width=700">
+<script src="../../js/smoothscroll.js" type="text/javascript"></script> 
+<style>
+body{display:flex;}
+#content{flex:1;}
+#sidebar{width:80px;margin-left:10px;}
+.nav{margin:10px 0;}
+.entry{border:1px solid #ccc;border-radius:8px;margin:10px 0;overflow:hidden;}
+.entry-title{background:linear-gradient(to right,#9bb0c5,#6f7f92);color:#fff;padding:4px;}
+.entry-body{background:#fff;color:#444;padding:4px;}
+</style>
+<script>
+function toggle(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+function toggleDisp(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+</script>
+</head>
+<body>
+<style>
+body {display:flex; margin:0; font-family:YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;}
+#content {flex:1; padding:0 8px;}
+#sidebar {width:120px; background:#f8f8f8; border-left:1px solid #ddd; padding:4px 6px; box-sizing:border-box; font-size:14px;}
+#sidebar div {line-height:1.6;}
+#sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
+.nav {margin:10px 0; text-align:center;}
+.entry {border:1px solid #ccc; border-radius:8px; margin:14px 0; overflow:hidden;}
+.entry-title {background:linear-gradient(to right,#9bb0c5,#6f7f92); color:#fff; padding:4px; font-weight:bold;}
+.entry-body {background:#fff; color:#444; padding:6px;}
+.sym {color:#999; font-weight:normal;}
+</style>
+
+
+<script>
+function toggle(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+}
+
+// Year accordion with sessionStorage persistence
+function toggleYear(id){
+  const pane = document.getElementById(id);
+  const btn  = document.getElementById(id+'-btn');
+  if(!pane||!btn) return;
+  const sym  = btn.querySelector('.sym');
+  const isClosed = pane.style.display === 'none';
+  pane.style.display = isClosed ? 'block' : 'none';
+  sym.textContent   = isClosed ? '－' : '＋';
+  sessionStorage.setItem('year-'+id, isClosed ? 'open' : 'closed');
+}
+
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('[data-yearpane]').forEach(pane=>{
+    const id    = pane.id;
+    const state = sessionStorage.getItem('year-'+id);
+    const btn   = document.getElementById(id+'-btn');
+    const sym   = btn?.querySelector('.sym');
+    if(state === 'open'){
+      pane.style.display = 'block';
+      if(sym) sym.textContent = '－';
+    }else{
+      pane.style.display = 'none';
+      if(sym) sym.textContent = '＋';
+    }
+  });
+});
+</script>
+
+<div id='content'>
+<div class='nav'><a href='05.html'>次の月へ</a> | <a href='03.html'>前の月へ</a></div>
+<div class='entry'><div class='entry-title'>■<a id='2019-04-27'></a>2019-04-27&nbsp;&nbsp;&nbsp;片道勇者2【35】レベルアップ<span style='float:right;'><a href='#2019-04-13' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><span style="font-size:large;"><strong>【片道勇者2　レベルアップ】</strong></span><br><br>今週は空いた時間でレベルアップ関連の調整をしていました。<br>また新しいお仕事が飛んできたのでがんばっていきます。<br>お仕事のうち一つはそのうち情報が出ると思いますのでご期待ください。<br><br><img src="../../image/2019/20190427.jpg" border="1" title="レベルアップ画面" width="520"><br>手札に来た「経験値」を消費してスキルやパラメータ成長を購入します。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【レベルアップ画面の調整】</strong></span><br>今回はアルファ1からの変更についてまとめておきます。<br><br><span style="font-size:large;"><strong>・「女神像」でレベルアップ可能</strong></span><br><img src="../../image/2019/20190427D.jpg" border="1" width="300"><br>これはもう前回もご報告済みですが、アルファ2以降では<br>一定距離ごとに出現する「女神像」でレベルアップが可能となります。<br><br>もちろん経験値がたまってない場合や何もいらない場合もあるかもしれないので、<br>レベルアップのかわりに「経験値をもらう」選択肢や、<br>願いを叶えてもらうのに使える「女神ポイント」を増やす選択肢も選べます。<br>この選択を終えると、片道勇者1の女神像であったような「願い」の選択に入ります。<br><br><br><span style="font-size:large;"><strong>・「覚醒」で手札が増やせるのを明示</strong></span><br><img src="../../image/2019/20190427A.jpg" border="1" width="300"><br>アルファ1ではレベルアップの際、手札の経験値を増やすために<br>「覚醒（手札を増やせる）」が使えることは「暗黙的」だったのですが、<br>アルファ2からはボタンで明示される形になります。<br><br>「頼む経験値来てくれ！」と祈りながら<br>気軽に押してしまうのでどんどん「覚醒」が減ります。<br>今回は「覚醒」が一定距離ごとに回復するので、<br>うまいタイミングで使ってもらえたらと思います。<br><br><br><span style="font-size:large;"><strong>・スペシャルカードの効果を複数種から選べるように。</strong></span><br><img src="../../image/2019/20190427B.jpg" border="1" width="420"><br>スペシャル成長カードは「特殊な成長を複数種から選べる」ようになります。<br><br>今のところは仮で「最大HP＋10　・　筋力＋4　・　手札＋1　・　成長力＋2」<br>の4種から選ぶことができます。「成長力」は<strong>「レベルアップ時の手札の枚数」</strong>で、<br>これが増えるほど手札の総経験値の期待値が高くなります。<br><br>デッキ構築がうまいプロい人は、手札や成長力を増やさずに<br>パラメータを伸ばす方が強かったりするかもしれません。<br><br>ちなみに、選べる成長内容に「行動力＋1」も一度入れてみたんですが、<br>「行動力」の基本値が増やせるとゲーム後半の一手の操作量が増えて<br>面倒くささが増えてしまい、「ウガー！」となってしまいました。<br><br>「行動力」周りに関しては初期値から増やさず、<br>「パッシブカードなどで行動力が増やせる」<br>「いざというときは経験値や覚醒を消費して行動力を増やす」など<br>そういった形でゆるやかに調整していければと考えています。<br>（アルファ2仕様では、移動中に「経験値」を消費することで<br>手札と行動力を一時的に増やすことができます）<br><br><br><br><span style="font-size:large;"><strong>・スペシャルカードは10レベルごとに回復するように。</strong></span><br><img src="../../image/2019/20190427C.jpg" border="1"><br>特殊な成長ができるスペシャルカードですが、<br>アルファ1では一度選ぶと特殊な準備をしないと再び選べないという記述でした。<br>アルファ2からはレベルが10の倍数に達するたびに<br>スペシャルカードが1回分補給されます。<br><br>……と思っていたんですが、これを書いてる最中に<br>「取りたくもないスキルカードをムダに取らなければならない場面」が<br>出てくるとイヤだなということに気付きました。<br>デッキ構築ゲームはデッキが完成したら<br>基本的にいじらなくていいゲームのはずですからね。<br><br>スペシャルカード回復は、「レベルごと」でなく<br>「距離ごと（たとえば500kmに1つとか）」などにしたほうが<br>開発側としても遊ばれる側としても扱いやすいかもしれません。<br><br>特に、「距離さえ進めば筋力を上げられるチャンスが出る」みたいな感じで、<br>経験値をためにくい職業の救済にもなりうるのは重要かもしれません。<br>とにかくここは要調整ポイントです。<br><br><hr size="1" /><br>試行錯誤してはあっちいってはこっちへ来てというのをまだ繰り返してますが、<br>現状のレベルアップ仕様に関してはこんな感じとなっております。<br><br>最後のスペシャルカードの回復の話で<br>「レベル」より「距離」を基準にした方がいいんじゃねえの、<br>って話を見ても分かるように、常に触れることになるルール部分は<br>基準値に使う数字を1個間違えるだけで微妙に面白さがチグハグになる場合があります。<br>遊ばれる人が最善を目指す邪魔にならないよう、<br>うまいことゲームシステムを組んでいきたいと思います。</div></div><br><br><br>
+<div class='entry'><div class='entry-title'>■<a id='2019-04-13'></a>2019-04-13&nbsp;&nbsp;&nbsp;片道勇者2【34】状態異常<span style='float:right;'><a href='#bottom' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><span style="font-size:large;"><strong>【片道勇者2　状態異常】</strong></span><br><br>お仕事の隙間を縫いつつ『片道勇者2』にようやく「状態異常」を搭載しました。<br>『片道勇者1』だと主人公側がやれる工夫の70％くらいは<br>この「状態異常」で生み出しているので、片道勇者にとって非常に重要な部分です。<br><br>たとえば『片道勇者1』においては、「浮遊」したり<br>「ベルセルク（HP回復しながら攻撃力アップ）」したり<br>「グレートウォール（動かなければ受ダメージ減少）」したり<br>「英雄の歌」で仲間を強化したり「ゼヌーラ」したり、<br>こういう部分は全て「状態異常」として作られています。<br><br>ただし今回は「デッキ構築」要素の上に「状態異常」を載せることになるので、<br>これまでとは扱いが変わってきます。メニューを開けばいつでも使えるのではなく、<br>「手札に来た分」を使っていくことになりますからね。<br><br><span style="font-size:x-small;"><strong>状態異常（「剛力」が2重になっており残り1ターン、の図）</strong></span><br><img src="../../image/2019/20190413.jpg" border="1" width="480"><br><br><br><span style="font-size:large;"><strong>【「繋げると強い」と「組み合わせると強い」に】</strong></span><br><br>デッキ構築ゲームだと特定のカードが出てくるのは一定ターンに一回なので、<br>「使いたいときに使う」というものから、<br>「ある程度ランダムかつ定期的に使うチャンスが来る」<br>という感じに変わります。<br><br>今のところ、状態異常を使って面白く出来そうなアイデアとしては、<br><strong>「他と組み合わせられると強い」「うまく繋げられると強い」</strong><br>の2つかなと考えています。<br>それぞれについての意図を書いておきます。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【他と組み合わせられると強い】</strong></span><br><br>「他と組み合わせられると強い」は<br>「複数種類の状態効果がうまく乗るとおいしい」というバランスのことです。<br><br>たとえば、ダメージ幅が「1～40」で1回攻撃しかできない斧を使ってるときに、<br>手札に補助カードの「急所熟知」2枚（クリティカル率＋80％）と<br>「必中の目」（最低ダメージを「最大ダメージ×0.9」に引き上げ）が来ると強い、<br>といった感じです。<br><br>その状況ならほぼ「クリティカル（ダメージ2倍）」が期待でき、<br>基本ダメージ幅も「1～40」から「36～40」に上がるため、<br>元は平均20ダメージだったところが、<br>普通に「72」ダメージくらい出るようになります。<br><br>ですが一方で、「手札」内に補助カードの「必中の目」が<br>2枚以上来ても効果は上がらないので意味がありませんし、<br>手札が「急所熟知」だけになってしまって1回も「攻撃」できないのも意味がありません。<br><br>こんな感じで、「色んな種類の効果がそろうとめちゃ強い」という風にできると<br>カード配分テクニック次第で強さの上限がどんどん伸びていくので理想的です。<br>α1だとこのコンボはあれど効果的に地味すぎたので、<br>もっと気持ちよくバランス調整したいですね。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【うまく繋げられると強い】</strong></span><br><br>『片道勇者2』のα1では「瞬間剛力」「防御態勢」のように<br>「1ターンだけ攻撃力や防御力が上がるスキル」が用意されていました。<br>「数ターン続く」状態異常自体は未実装だったのですが、<br>「1行動中だけダメージや能力が変化する効果」だけは作れたからです。<br><br>が、これだけだと正直あんまり面白くありませんでした。<br>デッキ構築ゲームでは1ターンに多数回攻撃できるので、<br>「効果が1ターンだけの攻撃力上昇」でも条件がそろえば強いのですが、<br>そうでなければ逆に補助カードが手札にある分だけムダな枠を取って弱くなる場合もあり、<br>せっかく補助スキルを取ってもいまいちな状況が出てくるのです。<br><br>これはいただいたご意見の中にも似たようなコメントがありました。<br>「せめて2ターン続かないと物足りない」などのご意見です。<br>「効果的に物足りない」も非常に納得のご意見なのですが、<br>それ以上に、「持続する」ことによって次ターンに繋がる期待を持たせられることは<br>今作の「状態異常の役割」として非常に重要なことのように感じました。<br><br>そんなわけで、α2からは自動戦闘でも使えるコストの軽い強化状態の効果時間を、<br>「1ターン」から「2ターン」にしてみることにしました。<br>（あっても、長く維持できるもので3ターンになります）<br><br>そして、これに加えてもうひと味加えてみることにしました。<br>それが<strong>「効果が一定まで重複する」</strong>というものです。<br><br>たとえば「剛力1段階　残り1ターン」の状態で「剛力の呼吸（仮）」スキルを使うと、<br>「剛力2段階　残り2ターン」になり、剛力のレベルが増える上に維持ターンも元に戻ります。<br>さらに次のターンに「剛力の呼吸」が来たなら、「剛力3段階　残り2ターン」にできます。<br><br>つまり、運良く「剛力の呼吸」カードを1枚ずつ引き続けることができれば、<br>この「3段階目」の強力な状態をずっと維持することができるのです！<br>もちろん、状態を切らしたらまた1段階目からになります。<br><br>こんな感じであれば、「20枚デッキなら『剛力の呼吸』を3枚だけ持つのが最適」みたいな<br>「状態効果がつながりやすい適切なカード配分」を狙うことが最強に繋がります。<br>適切なカード配分を狙っていくのはこのゲームの肝になる部分なので、<br>コンセプト通りの働きをしてくれるでしょうし、<br>最大段階で状態が繋がればすごく強い状態を維持できるので、たぶん面白くなるでしょう。<br><br>もちろん、状態が繋がるかどうかはある程度は運次第になりますが、<br>「運がよかったり、デッキがうまくできていれば強さの上限が激しく上がっていく」<br>というのがデッキ構築型ゲームの面白いところだと思うので、<br>このあたりでうまくテンションを上げられたり、軽度の運試し感を楽しめるように<br>作っていけたらいいなと思っています。<br>α1は、状態周りに関しても全体的に息苦しい感じだったので反省しています。<br><br><hr size="1" /><br>こういった意図でどれだけうまくいくかは分かりませんが、<br>今回の「状態異常」は最初はこういう狙いで作ってみたいと思っています。</div></div>
+<div class='nav'><a href='05.html'>次の月へ</a> | <a href='03.html'>前の月へ</a></div>
+<a id='bottom'></a>
+</div>
+<div id='sidebar'>
+<div style='font-weight:bold;'>開発日誌</div>
+<div><a href='../../archive/top/index.html'>トップへ</a></div>
+<hr>
+<div style='font-weight:bold;'>【カテゴリ】</div>
+<div><a href='../../category/片道勇者2/001.html'>片道勇者2&nbsp;<span class='sym'>(12)</span></a></div>
+<div><a href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(6)</span></a></div>
+<div><a href='../../category/ウディタ/001.html'>ウディタ&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../category/片道勇者/001.html'>片道勇者&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(3)</span></a></div>
+<hr>
+<div style='font-weight:bold;'>【月別】</div>
+<div><a href='javascript:void(0);' id='y2019-btn' onclick="toggleYear('y2019')">2019&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2019' data-yearpane style='display:none;margin-left:10px;'>
+<div><a href='../../archive/2019/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a href='../../archive/2019/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a href='../../archive/2019/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a href='../../archive/2019/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../archive/2019/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a href='../../archive/2019/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</div>
+</div>
+
+</body>
+</html>
