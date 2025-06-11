@@ -4,6 +4,7 @@ from datetime import datetime
 from collections import defaultdict
 import html
 import json
+import re
 
 # =============================
 # Utility helpers
@@ -105,6 +106,34 @@ def get_cat_dir(cat: str, mapping: dict[str, str]) -> str:
     return cat.replace('/', '_').replace(' ', '_') or 'uncategorized'
 
 
+def markdown_to_html(text: str) -> str:
+    """Convert a very small subset of Markdown to HTML."""
+    # Headings
+    def repl_heading(match: re.Match[str]) -> str:
+        level = len(match.group(1))
+        content = match.group(2)
+        return f"<h{level}>{content}</h{level}>"
+
+    lines = []
+    for line in text.split("\n"):
+        lines.append(re.sub(r"^(#{1,6})\s*(.*)$", repl_heading, line))
+    text = "\n".join(lines)
+
+    # Inline elements
+    patterns = [
+        (r"\*\*([^*]+)\*\*", r"<strong>\1</strong>"),
+        (r"__([^_]+)__", r"<strong>\1</strong>"),
+        (r"\*([^*]+)\*", r"<em>\1</em>"),
+        (r"_([^_]+)_", r"<em>\1</em>"),
+        (r"`([^`]+)`", r"<code>\1</code>"),
+        (r"\[([^\]]+)\]\(([^)]+)\)", r"<a href=\"\2\">\1</a>"),
+    ]
+    for pat, repl in patterns:
+        text = re.sub(pat, repl, text)
+
+    return text
+
+
 # =============================
 # HTML fragments
 # =============================
@@ -172,8 +201,8 @@ def render_entry_block(entry: dict, anchor_id: str, next_anchor: str | None):
     """
     title = html.escape(entry["title"])
     date_str = entry["date_str"].split()[0]
-    body = entry["body"].replace("\n", "<br>")
-    extended = entry["extended"].replace("\n", "<br>")
+    body = markdown_to_html(entry["body"]).replace("\n", "<br>")
+    extended = markdown_to_html(entry["extended"]).replace("\n", "<br>")
 
     ext_html = ""
     if entry["extended"]:
