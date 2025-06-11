@@ -11,7 +11,6 @@ BODY{
   font-size:13px;
   margin:0;
   font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
-
 }
 
 TD{
@@ -28,9 +27,9 @@ A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shado
 A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
 A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
 
-A.g:LINK,A.g:VISITED,
-A.jumplink:LINK,A.jumplink:VISITED{
+A.g:LINK,A.g:VISITED{
 	color:#38a68c;
+	text-decoration:underline;
 }
 
 A.g:HOVER,A.g:ACTIVE{
@@ -38,15 +37,26 @@ A.g:HOVER,A.g:ACTIVE{
 	text-decoration : underline;
 }
 
+
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38c6ac;
+}
+
 A.jumplink:HOVER,A.jumplink:ACTIVE{
-	color : #68b6ac;
+	color : #68f6ac;
 }
 
 A.jumplink{
-	text-shadow: 0 0 15px #ccffcc, 0 0 15px #aaffaa;
+	text-shadow: 0 0 15px #ccddcc, 0 0 15px #aaddaa;
 	text-decoration : none;
 }
 
+
+
+#content {
+	font-size:14px;
+	
+}
 
 #sidebar {
 	background:#f8f8f8; 
@@ -95,12 +105,17 @@ A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
 	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
 }
 
-.entry-body {background:#fff; color:#444; padding:10px;}
+.entry-body,.extended {
+	background:#fff; 
+	color:#444; 
+	padding:10px;
+	font-size:14px;
+}
 
 
 /*--●形状整理用--*/
 body {display:flex; margin:0;}
-#content {flex:1; padding:0 8px;}
+#content {width:580px; padding:0 8px;}
 #sidebar {width:120px;  box-sizing:border-box; }
 #sidebar div {line-height:1.6;}
 #sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
@@ -125,7 +140,7 @@ function toggleDisp(id){
 </script>
 </head>
 <body>
-
+<a id="top"></a>
 
 
 
@@ -190,12 +205,55 @@ window.addEventListener('DOMContentLoaded', ()=>{
 .header3{
 	color:#555588;
 }
+
+.home-link {
+  font-size: 12px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: underline;
+}
 </style>
 
+<!--戻るリンク、サイトがなくなってたらアーカイブにつながるようにしたが404ページがアレなのかうまくいかない-->
+<!--
+<font id="home-link-placeholder">
+  <noscript>
+    <a href="https://smokingwolf.github.io/" class="home-link">← ホーム(アーカイブサイト)に戻る</a>
+  </noscript>
+</font>
 
-<div class="TopTitle" style="margin-top:20px;">　　シルバーセカンド開発日誌</div>
+<script>
+(async () => {
+  try {
+    // HEADで軽くチェック（no-corsなのでステータス確認は不可）
+    // 自分のサイトのインフォメーションページにつなげるならサイトがまだあると認識する
+    await fetch("https://silversecond.net/contents/etc/info.shtml", { method: "HEAD", mode: "no-cors" });
+
+    const link = document.createElement("a");
+    link.href = "https://silversecond.net/";
+    link.textContent = "← ホームに戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  } catch {
+    const link = document.createElement("a");
+    link.href = "https://smokingwolf.github.io/";
+    link.textContent = "← ホーム(アーカイブサイト)に戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  }
+})();
+</script>
+-->
+
+<div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
 <!--ここにコメント文-->
-<div class="header3" style="margin-top:6px;">　ゲーム開発者SmokingWOLFの開発日誌。気付けば足跡も数十年分！</div>
+<div class="header3" style="margin-top:6px;">　ゲーム開発者SmokingWOLFの開発日誌です。ここまでずいぶん長く歩いてきました。<BR>
+　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
+　
+
+</div>
 
 <div class='nav'><span style='color:#ccc'>次のページ</span> | <span style='color:#ccc'>前のページ</span></div>
 <div class='entry'><div class='entry-title'>■<a id='2019-10-05'></a>2019-10-05&nbsp;&nbsp;&nbsp;片道勇者ノベル発売！＆裏話<span style='float:right;'><a href='#2019-09-21' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><span style="font-size:large;"><strong>【片道勇者ノベル発売！】</strong></span><br><br>ということで本日10/5、ついに片道勇者の小説<br><a href="https://www.amazon.co.jp/%E7%89%87%E9%81%93%E5%8B%87%E8%80%85-%E6%BB%85%E3%81%B3%E3%81%AE%E9%97%87%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%99%E8%8B%B1%E9%9B%84-%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%83%8E%E3%83%99%E3%83%AB%E3%82%B9-%E7%B4%85%E4%BB%97-%E7%9B%B4-ebook/dp/B07YLHBNWT/ref=tmm_kin_swatch_0?_encoding=UTF8&amp;qid=1567321009&amp;sr=1-1" class="red"><strong>『片道勇者　滅びの闇と繰り返す英雄』</strong></a>が発売されました！<br><br><a href="https://www.amazon.co.jp/%E7%89%87%E9%81%93%E5%8B%87%E8%80%85-%E6%BB%85%E3%81%B3%E3%81%AE%E9%97%87%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%99%E8%8B%B1%E9%9B%84-%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%83%8E%E3%83%99%E3%83%AB%E3%82%B9-%E7%B4%85%E4%BB%97-%E7%9B%B4-ebook/dp/B07YLHBNWT/ref=as_li_ss_il?_encoding=UTF8&qid=1567321009&sr=1-1&linkCode=li3&tag=smokingwolf-22&linkId=ba651b0464bd9617a7662ca4a128deb5&language=ja_JP" class="red"><img border="2" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07YLHBNWT&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=smokingwolf-22&language=ja_JP" ><br><strong>『片道勇者　滅びの闇と繰り返す英雄』</strong><br>Amazon販売ページへ<br>[書籍版 <strong>\1,540</strong> / Kindle版 <strong>\1,386</strong>]</a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=smokingwolf-22&language=ja_JP&l=li3&o=9&a=B07YLHBNWT" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /><br><br>これまでご紹介してきた内容を再整理すると、<br><br><br><strong>●内容の方向性としては、たぶん<a href="https://amzn.to/2mZyNmK" class="red"><strong>『片道勇者開発記』</strong></a>の<br>サイドストーリーくらいの配分で<br>「基本はまじめ、ときどきお気楽、ごく一部にダーク風味あり、後味さわやか」<br>という感じになっていると思います。<br><br>●キャラクターの再現性は、私がセリフ1つ1つまで細かく監修したので<br>一定の品質は確保されています！<br><br>●特定の仲間キャラの株が大きく下がるような展開は、<br>基本的にありませんのでご安心下さい！<br></strong>→　ただ、1人だけ一般人だったり原作上の都合で調子が悪いことが多いのもあって、<br>ネムリに少しだけ足手まといっぽさを感じる人もいるかも？<br><br><strong>●物語の範囲としては「片道勇者」の無印版がベースで、<br>一部に「片道勇者プラス」のデータや仲間が使われています（アルバートなど）。<br>小説ならではの「おっ」と思う掘り下げもあると思うのでご期待ください！</strong><br><br><br>という感じです！　<br><br><hr size="1" /><br>また、<a href="https://twitter.com/dragonbook_game/status/1179361918441721857" class="red"><strong>口絵（本の始めの方にある絵）もTwitterで公開</strong></a>されましたので<br>その中から1枚をご紹介！<br><br><a href="../../image/2019/20191005Abig.jpg" class="blue">クリックでちょっと拡大<br><img src="../../image/2019/20191005A.jpg" border="1"></a><br><span style="font-size:x-small;">イラスト：モタ様</span><br><br>もう表紙めくった時点でネムリがヤバいことになる予感しかしない一枚！<br>なかなか仲間を救えない、守れない、そんな中でがんばるのが、<br>この物語の主人公である勇者です。<br>妖精イーリスが「どうやって倒せばいいのさ！？」と思う敵も登場するらしいぞ！<br><br>あと、「傭兵パンティいなくない！？」って思われそうですが<br>デュークガルツと同じくらいには出番があるのでご安心ください！<br>小説内では傭兵パンティ始め、男たちがやたらかっこいい生き様を見せてくれますよ。<br><br><hr size="1" /><br><span style="font-size:x-large;"><strong>【ノベライズ裏話】</strong></span><br><br>今回はノベル紹介のおそらくラストということで、<br>ノベライズ作成過程で起きた裏話をご紹介していきます！<br><br><br><span style="font-size:large;"><strong>●挿絵にする場所として、「アルバートの戦闘シーン」と<br>「お風呂シーン」の2択から選ぶことになった</strong></span><br><br><img src="../../image/2019/20191005B.jpg" border="1"><br><br>あまりにも安易な……判断っ……！<br>と思いながらも、監修として「女子2人のお風呂シーン」の挿絵に<br>ちゃんと一票を入れておきましたので褒めてください！　いやー仕事したなあ！<br><br>挿絵になるシーンは、キャラの登場率やアピールしたい部分、見た目の紹介目的など<br>多角的に判断されて選ばれると思うのですが、このケースにおいては<br>私がいくら考えてもお風呂シーンのテーマ力が強すぎて<br>完全に答えが1択しかなかったのが印象深かったです。<br>本文にお風呂描写があるのに挿絵がないとか、いくらなんでも読者の人に怒られる！<br>そしてそんなイラストもバッチリ描いてくださったモタ先生、本当にありがとうございます！<br><br><br><strong>＜アルバートの出番＞</strong><br><br>なお、もう片方の案として「アルバートの戦闘シーン」が挙がったり、<br>表紙イラストにもでっかく描かれていることから予想できるかもしれませんが、<br>アルバートはちょっと出てくるだけのゲスト参加キャラではなく、<br>20～25％分くらいのお話に関わってくる重要人物の立ち位置です！<br>アルバートの活躍をじっくり見たい方もぜひご期待ください。<br><br>ノベル著者の紅仗直さまは、アルバートの経歴や性格を調べるために<br>私の知らない間に『片道勇者』以外の過去作品まで調査してくださっていました。<br>きっと「アルバートって予想以上に変態キャラなんだな……」と理解されたことと思います。<br>おかげさまで、本文中ではアルバートのかっこいいところも変なところも<br>両方しっかり用意されていますよ。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>●速攻でボツになったサブタイトル案に<br>ちゃんとWeb小説風のがあった</strong></span><br><br><img src="../../image/2019/20191005C.jpg" border="1"><br><br>「片道勇者　～何度死んでもやり直せる俺が全てのヒロインを救うまで～」みたいな<br>このWeb小説風の案は、サブタイトルを決める話が私の元に来た時点で<br>すでにボツになっていました。なんて早い判断なんだ……。<br><br>「むしろWeb小説風のが好き！」という方も中にはいらっしゃると思いますが、<br>私やファンの方が求める最大公約数の方向性としては<br>もうちょっとお堅い方がいいと考えたので、案出しや相談の結果、<br>最終的に『<strong>片道勇者　滅びの闇と繰り返す英雄</strong>』になりました。<br><br>でも、ちゃんと流行に合わせたものも一案として出ているのは、<br>とてもいいことだと思ったんですよ。<br>共同作業だと、「今回のケースだとこっち方面は合わないですよね」と<br>NGな方向も挙げて望ましい方向性を絞っていく工程はとても重要ですから、<br>あえてそのNG案を挙げてくださったのはむしろ安心できた部分だったりします。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>●「ゼヌーラの魔法」には複数の属性があった！</strong></span><br><br>実は執筆前に作った設定まとめ資料の中で<br><strong>『ゼヌーラの魔法には実は複数の属性がある！』</strong><br>というのを著者さまにお伝えしていました。<br><br><img src="../../image/2019/20191005.jpg" border="1"><br><br>ゼヌーラの属性は途中で生えた裏設定で、しばらく公開予定はなかったのですが、<br>小説では細かな描写が必要になったり、あるいは<br>言わずにいたせいで将来的な設定とのズレが出るとまずいので、<br>この小説から使っていただくことにしました。<br>おかげさまで、「ゼヌーラの魔法」は風の魔法ということになっています。<br><br><span style="font-size:x-small;">（先に言っておきますが本編のゼヌーラにはあまり期待しないでください！<br>片道勇者開発記のサイドストーリーくらいの扱いです）</span><br><br>上の画像で言うゼヌーラの4属性ってのはたぶん<br>「炎・水・風・土」とかそういうのだと思いますが、<br>一番露出度がひどいのがゲーム内でも使われている「風」のゼヌーラですね！<br>服がはじける上に「風」では何も隠せない！<br>せめて「水」なら超絶シースルーで済むのに！<br><br>そんな「風」の「ゼヌーラの魔法」がテーマの、ノベル著者の紅仗直さまが<br>書いてくださった発売記念ミニ小説が先日アップされましたので、<br>すでに小説を読まれた方も、まだの方も、よければぜひ一度ご覧ください！<br>今回の開発日誌の2.5倍くらいの文字量ですので高密度にお楽しみいただけます！<br><br><span style="font-size:large;"><a href="https://kakuyomu.jp/works/1177354054891293279/episodes/1177354054891293301" class="red"><strong>【カクヨム　おおきな代償　― ドＭ王女と耳長詩人 ―】<br>小説ページへ</strong></a></span><br><br>「ゼヌーラの魔法」を使うと具体的にどうなって、どうして誰も<br>一緒に旅をしてくれなくなるかがよく分かるストーリーとなっております。<br>ゲーム中ではただサラッと脱いでるだけの描写しかありませんがが、<br>小説並みに描写が細かくなるだけですごいひどさが伝わります。<br><br><hr size="1" /><br>以下は拍手コメントより、気になったコメントへの返信です。<br>ご感想、誠にありがとうございます！<br><br><span style="color:#3300FF"><strong>＞えっ、ゼヌーラって４種類あるんですか！？　じゃあひょっとして（某コミック名）って<br>＞ゼヌーラの亜種とかじゃなくて思いっきり正統の四大ゼヌーラの一種なんですか!? <br>＞いやそんなことは置いといてこのお姉さんの出番ってこれだけですか！？　　　　　.<br>＞これだけなんですか！？　もったいない！ 　２に出しません！？　無理ですか！？<br>＞っていうか土はまだしも水で全身覆っても覆ってるだけで透け透けで　　　　　　　　　.<br>＞「まさに濡れ透け」な気がするんですけど、それ大丈夫なn…――　　　　　　　　　 　.<br>＞あ、そもそもゼヌーラってそういう奥義でしたわ　　　　　　　　　　　　　　　　　　　　　　.</strong></span><br><br>世界展開まで視野に入れると、あんまり露出度高いお姉さんを出すと<br>いつ規制が厳しくなって出せなくなるか分からないので<br>上のお姉さんをゲーム内で出す予定は今のところないです！　すみません！<br>『片道勇者2』では、全裸ファイアおじさんあたりなら出すかもしれませんね。<br><br>他のゼヌーラの使い手からは、<br>「風のゼヌーラとか何も隠せないんじゃない！？　え、マジで使うの！？　嘘でしょ！？」<br>みたいに言われそうです。<br><br><br><br><span style="color:#3300FF"><strong>＞紅仗先生の掌編読みました＆笑いました。特に笑ったのが<br>＞「願ったり叶ったりですね♪」「ふんだりけったりだよッ！」と<br>＞「手で隠したら戦えないだろう？」「いま戦ってないでしょおおお!!」<br>＞のくだりです。いやぁー、やっぱりゼヌーラって呪いなんですねぇ。<br>＞理術の世界で魔の法と書いてマホウと読むだけありますわ。<br>＞そして、いくらゼヌーラという奥義の存在感が絶大とはいえ、<br>＞そこにちょっとドＭ王女を絡めつつ肉厚な感じに膨らませられる<br>＞さすがのプロの筆力にも感服です。　　　　　　　　　　　　　　　　.</strong></span><br><br><a href="https://kakuyomu.jp/works/1177354054891293279/episodes/1177354054891293301" class="red">紅仗先生の小説</a>、楽しんでいただけたようでよかったです！<br>ドＭなフリーダ王女がかわいかったり（？）、<br>なんだかゼヌーラの魔法が呪いっぽいけど<br>一応みんなハッピーで終わったあたりがとても好きですね！<br><br>ちなみにこの掌編、<br>「これ本編と違いすぎない！？　すごいハジけてるせいで<br>本編もギャグみたいに思われたりしない！？　大丈夫！？」<br>みたいに監修のときにツッコんでました。<br>本編はもうちょっとまじめなんですよ。お気楽な章もありますけど！<br><br><hr size="1" /><br>ということで、今回までご紹介させていただいてきた片道勇者小説！<br><br>これまでご紹介してきた内容で「読む価値がありそうかな？」<br>とお思いになられた方は、よければぜひお買い求めください！<br>ここだけの話ですが、電子版の方がちょっと安い割に私の懐のうるおい具合が大きいです！<br><br><a href="https://www.amazon.co.jp/%E7%89%87%E9%81%93%E5%8B%87%E8%80%85-%E6%BB%85%E3%81%B3%E3%81%AE%E9%97%87%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%99%E8%8B%B1%E9%9B%84-%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%83%8E%E3%83%99%E3%83%AB%E3%82%B9-%E7%B4%85%E4%BB%97-%E7%9B%B4-ebook/dp/B07YLHBNWT/ref=as_li_ss_il?_encoding=UTF8&qid=1567321009&sr=1-1&linkCode=li3&tag=smokingwolf-22&linkId=ba651b0464bd9617a7662ca4a128deb5&language=ja_JP" class="red"><img border="2" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07YLHBNWT&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=smokingwolf-22&language=ja_JP" ><br><strong>『片道勇者　滅びの闇と繰り返す英雄』</strong><br>Amazon販売ページへ<br>[書籍版 <strong>\1,540</strong> / Kindle版 <strong>\1,386</strong>]</a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=smokingwolf-22&language=ja_JP&l=li3&o=9&a=B07YLHBNWT" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /><br><br>ちなみに本書は全416ページとだいぶ長めで、前半は内容がハードなので、<br>一気読みしたい方も「2章」が終わるあたりまで読まれたら一回休憩して、<br>残り半分をガーッと読まれるのが個人的おすすめの読み方です。</div></div><br><br><br>
@@ -206,12 +264,13 @@ window.addEventListener('DOMContentLoaded', ()=>{
 <a id='bottom'></a>
 
 <BR><BR>
-<CENTER><a href="#top" class="jumplink">▲一番上へ戻る</a></CENTER>
+<div align="right"><a href="#top" class="g">▲一番上へ戻る</a></div>
 <BR>
+<CENTER>
 <HR>
 Copyright © SmokingWOLF / Silver Second
 <HR>
-
+</CENTER>
 
 </div>
 <div id='sidebar'>

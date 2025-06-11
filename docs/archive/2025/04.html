@@ -11,7 +11,6 @@ BODY{
   font-size:13px;
   margin:0;
   font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
-
 }
 
 TD{
@@ -28,9 +27,9 @@ A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shado
 A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
 A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
 
-A.g:LINK,A.g:VISITED,
-A.jumplink:LINK,A.jumplink:VISITED{
+A.g:LINK,A.g:VISITED{
 	color:#38a68c;
+	text-decoration:underline;
 }
 
 A.g:HOVER,A.g:ACTIVE{
@@ -38,15 +37,26 @@ A.g:HOVER,A.g:ACTIVE{
 	text-decoration : underline;
 }
 
+
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38c6ac;
+}
+
 A.jumplink:HOVER,A.jumplink:ACTIVE{
-	color : #68b6ac;
+	color : #68f6ac;
 }
 
 A.jumplink{
-	text-shadow: 0 0 15px #ccffcc, 0 0 15px #aaffaa;
+	text-shadow: 0 0 15px #ccddcc, 0 0 15px #aaddaa;
 	text-decoration : none;
 }
 
+
+
+#content {
+	font-size:14px;
+	
+}
 
 #sidebar {
 	background:#f8f8f8; 
@@ -95,12 +105,17 @@ A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
 	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
 }
 
-.entry-body {background:#fff; color:#444; padding:10px;}
+.entry-body,.extended {
+	background:#fff; 
+	color:#444; 
+	padding:10px;
+	font-size:14px;
+}
 
 
 /*--●形状整理用--*/
 body {display:flex; margin:0;}
-#content {flex:1; padding:0 8px;}
+#content {width:580px; padding:0 8px;}
 #sidebar {width:120px;  box-sizing:border-box; }
 #sidebar div {line-height:1.6;}
 #sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
@@ -125,7 +140,7 @@ function toggleDisp(id){
 </script>
 </head>
 <body>
-
+<a id="top"></a>
 
 
 
@@ -190,12 +205,55 @@ window.addEventListener('DOMContentLoaded', ()=>{
 .header3{
 	color:#555588;
 }
+
+.home-link {
+  font-size: 12px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: underline;
+}
 </style>
 
+<!--戻るリンク、サイトがなくなってたらアーカイブにつながるようにしたが404ページがアレなのかうまくいかない-->
+<!--
+<font id="home-link-placeholder">
+  <noscript>
+    <a href="https://smokingwolf.github.io/" class="home-link">← ホーム(アーカイブサイト)に戻る</a>
+  </noscript>
+</font>
 
-<div class="TopTitle" style="margin-top:20px;">　　シルバーセカンド開発日誌</div>
+<script>
+(async () => {
+  try {
+    // HEADで軽くチェック（no-corsなのでステータス確認は不可）
+    // 自分のサイトのインフォメーションページにつなげるならサイトがまだあると認識する
+    await fetch("https://silversecond.net/contents/etc/info.shtml", { method: "HEAD", mode: "no-cors" });
+
+    const link = document.createElement("a");
+    link.href = "https://silversecond.net/";
+    link.textContent = "← ホームに戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  } catch {
+    const link = document.createElement("a");
+    link.href = "https://smokingwolf.github.io/";
+    link.textContent = "← ホーム(アーカイブサイト)に戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  }
+})();
+</script>
+-->
+
+<div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
 <!--ここにコメント文-->
-<div class="header3" style="margin-top:6px;">　ゲーム開発者SmokingWOLFの開発日誌。気付けば足跡も数十年分！</div>
+<div class="header3" style="margin-top:6px;">　ゲーム開発者SmokingWOLFの開発日誌です。ここまでずいぶん長く歩いてきました。<BR>
+　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
+　
+
+</div>
 
 <div class='nav'><a href='05.html'>次の月へ</a> | <a href='03.html'>前の月へ</a></div>
 <div class='entry'><div class='entry-title'>■<a id='2025-04-19'></a>2025-04-19&nbsp;&nbsp;&nbsp;ウディタ3.5落ち着いた！？ ＆シル幻20周年！<span style='float:right;'><a href='#2025-04-05' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'>　前回パソコン壊れたーとか言ってましたが、少し休んで気が抜けたのか風邪でももらったのか花粉症なのか、どんどん体の不調が吹き出してきて私も故障気味です。こんなにずっとうっすら調子悪いのは、例の流行病疑いになったとき以来です。<br>　花粉症でくしゃみ連発しながらでも作業はできたのに、今は心も体もだるくて動けない！<br><br>　とはいえ奇跡的にウディタのバグもそんなに起きてないみたいなので、ゆっくり休ませていただいております！<br>　ウディタ3.5の初期の問題はほぼ終わりを迎えたのかもしれません。去年8月末からずっとお世話してきましたがようやく安定期に入ったようです。<br><br>　そしてまた、前回からのみなさまからのご支援も本当にありがとうございます！　ありがたく機材の交換費用や健康維持費などに使わせていただきます！<br><br><HR><span style="font-size:large;"><B>◆『シルフェイド幻想譚』4/16でなんと20周年！</B></span><HR>　去年まちがえて20周年してしまいましたが、今年の4/16こそ真なる『シルフェイド幻想譚』、<span style="font-size: 150%"><B>20周年</B></span>となります！（2005年の4/16がオンライン公開日）　いやー長い時間がたちましたね！<br><br><img src="../../image/2025/20250419.jpg" border="1" style="max-width:520px;" loading="lazy"><br><br>　ちなみに『シルフェイド幻想譚』、今はeasy RPGプレイヤーによる<span style="font-size: 150%"><span style="color: #d50000"><B>ブラウザ版</B></span></span>がありまして、スマホからでも気軽にプレイ可能となっております！　触ってみたい方はよければぜひ！<br>　「あの頃の世界」が好きだった人も、「これから冒険する人」も、この機会にぜひ触れてみてください！<br><br>→■『シルフェイド幻想譚』公式ページ <br>　<a target="_blank" href="https://silversecond.net/contents/game/silfade_gensou/"><B>https://silversecond.net/contents/game/silfade_gensou/</B></a><br><span style="color: #2196f3"><span style="font-size: 80%">　※4/17にスマホプレイ時の画面最大化時にバーチャルパッドが消える現象を修正しています！</span></span><br>　<br>　シル幻は今でも遊べる品質だと言ってくださる方もいらっしゃったり、いろんな思い出を語ってくださったりして、本当に感謝の限りです！<br>　あの頃遊んでくださった方もすでに20年の旅を歩んでこられたわけで、皆さまこれまでそれぞれたくさんのことがあったかもしれません。私もあのときのフリーゲーム全盛期だった頃の思い出を振り返って懐かしくなってしまいます。<br>　<br>　そして自分を育ててくれたフリーゲームの世界に恩を感じているのは今もそうで、今だって少しでも盛り上げに寄与できればなあ、と思っております！<br>　無料ゲーム開発ツールである『ウディタ』の公開もそうですし、『ウディコン』みたいなコンテストイベントだって、なんだかんだやってみるとすごく楽しいですからね！　サブカルチャーとして、こういった面白い部分は残していきたいです！<br>　そしていずれはそれに参加された方々がインディーゲームの世界などにも進出して、ゲーム作りを生活の糧にできる人が生まれればなおうれしいと思います！<br>　<br>　といいますか私もゲームを生活の糧にすることをがんばらないとヤバいのでがんばります。かなり長いこと新しいゲーム公開できてない！　ウディタ開発はやればやるほど餓死に近づく道楽状態なので、ビジネス面を考えたら本当はそっちは最小限にしなければなりませんね！<br><br><HR><span style="font-size:large;"><B>◆今回のウディタ修正！</B></span><HR><br>　そして頭や体の調子が悪いながらも、ぼちぼちウディタの修正は行っております！<br><span style="color: #2196f3">　負荷が重くて今の状態ではできなかったところは<a target="_blank" href="https://chatgpt.com/g/g-YynoE4Pqa-jia-kong-noyasasiimei-ai">『架空の妹（ChatGPTの自作GPTs）』</a>に聞いて言われるがままロボットみたいに作業してるところもありましたが、それでプログラミング作業ができてしまうのですからヤバい時代です。知能労働さえもナビに従って運転すれば目的地に着けてしまう時代！</span><br><br><HR><br><span style="font-size:110%;"><B>-【Ver3.581 の更新履歴　2025/04/17】</B></span><br><br><br><B>【ゲーム部の修正】</B><br><br>●【自動移動･経路探索/不具合】Ver3.580のみ経路探索の最初の1歩目の情報がなくなっていたバグを修正<br>　→ これにより自動移動の挙動もこれまでと違った動きになってしまっていました。<br><br><br><B>【エディター部の修正】</B><br><br>●【DB操作/不具合】Ver3.580のみDB操作コマンドを「編集」して「OK」を押すとクラッシュするバグを修正<br><br>●【マップ選択/不具合】システムDBタイプ0で「遠景ファイル」を手動で設定したときだけ、「マップ選択」でマップを切り替えると（ファイルがあっても）遠景ファイルがありませんと言われて遠景が表示されないバグを修正<br><br><HR><br><span style="font-size:110%;"><B>-【Ver3.580 の更新履歴　2025/04/17】</B></span><br><br><br><B>【ゲーム部の修正】</B><br><br><span style="color: #d50000"><B>●【自動移動･経路探索/調整】広いマップでの経路探索の処理を最適化。<br>　条件次第で従来より高速に処理されるようになります。<br>　また経路探索や自動移動させる際に1000マス以上の非常に広いマップになると処理が遅くなっていた現象に対し、今回の修正でマップサイズにかかわらず常にほぼ同じ処理速度が出るようになりました。</B><br> → 特に数千×数千サイズのマップでは従来の10倍以上の効率が出るようになります。</span><br> <span style="color: #2196f3">→ 経路探索を基幹処理からガッツリいじってしまったので何か問題が起きてたら教えてください、と思ってたら出たので3.581でいろいろ直してました。</span><br><br><br><B>【エディター部の修正】</B><br><br>●【システム変数/調整】Sys120の名前を「ﾘｾｯﾄ履歴 0=ﾅｼ/1=F12/2=[ﾀｲﾄﾙ画面へ]ｺﾏﾝﾄﾞ」に変更<br>　→　従来は[ﾀｲﾄﾙ画面へ]部分がなく、当該コマンドによるフラグだと分かりにくかったためです<br><br>●【DB操作/不具合】プルダウンメニュー選択時、下部のキャプション欄に選んだメニュー内容が反映されていなかったのを修正<br><br>●【パーティ画像/不具合】「パーティ画像」の入力後のコマンドが黒色で表示されていたのを黄色に修正。<br><br>●【データベースウィンドウ/調整】右の項目欄の「入力欄」と「プルダウンメニュー」の基本サイズが、リソースDLL内の「ダイアログ側で指定されている1個目のサイズ」に応じて変わるよう修正<br>　→　普通の利用者の方には影響ありません、翻訳時などにのみ影響があります。<br><br><span style="color: #d50000"><B>●【空データ作成処理/調整】 空データ作成処理がマルウェアの挙動と誤認される現象があったので処理を調整してみました。</B></span><br><span style="color: #2196f3">→　実は従来の空データ作成処理は <B>Zipを出力→それを解凍→Zipを削除</B>、という順で処理されているのですが、それがマルウェアの挙動みたいに思われたのかディフェンダーに引っかかるというご報告がありました。<br>　新しい処理では、内部で解凍を済ませてファイル出力だけ行うように変更しています。<br>　一見たいしたことのない修正に見えますが今のポンコツな頭の状態では地獄のような苦労をしました。これでもディフェンダー先生に怒られるようだったらまた別の手段を考えます。</span><br><span style="color: #2196f3"><br>　ウディタ3.5になってからディフェンダーマンには正義の名のもとにしょっちゅういじわるされています。つらい。<br>　チャットAIに聞いたら2024年末くらいからディフェンダーのマルウェア判定が超厳しくなったらしく、私だけでなく他の開発者の方にも影響が発生しているとのことです。いっぱい相談されてるんだろうなあ。</span><br><br><br><HR><br><span style="font-size:110%;"><B>-【Ver3.579 の更新履歴　2025/04/09】</B></span><br><br><br><B>【エディター部の修正】</B><br><br>●【マップ保存/不具合】マップのサイズを一気に大きくしたあとに「保存」した際、クラッシュすることがあったバグを修正<br><br>●【マップ設定/調整】マップサイズ入力欄の下部のキャプションに「10×8より小さい」「縦か横が10000以上」「縦×横が1000万チップ超」の各種エラーを表示するよう修正<br><br>●【マップ設定/調整】マップサイズ欄で上下キーを押すと最大1024マスまでしか増やせなかったのを、最大9999まで拡張<br><br><HR><br><br>　という感じで、今回は少数の問題修正のみでした。<br><br><br><HR><span style="font-size:large;"><B>◆ウディタ3.5で遊んでいます！</B></span><HR><br>　それと、もう完全にゲームの作り方を忘れてるので、ひっそりウディタ3.5の慣らしやリハビリや最新技術の実験もかねて元気な時間にちょっとしたウディタ製ゲームをいじっています。<br>　あくまで技術研究用のものなのでボツになるかもしれませんが、もしゲームとして形になるようなら公開します！<br>　その前に心身の調子を取り戻すのが先決かもしれませんが！　よく休みます！<br><span style="color: #2196f3"><span style="font-size: 80%">　ちなみにおすすめ食習慣や健康対策などはAI（妹）に聞いてはそれに従いまくってます！　ほとんどの人にとって理想的な健康生活を気軽に教えてくれるのでどんどん実践していきたいですね。</span></span><br><br>　それはそれとして、ウディタ3.5が自分の思ってた以上にすごい使いやすくてビックリしました！<br>　私としては3.3頃のコマンド切り替え時のねっとりとしたレスポンスが改善されてるだけで十分だと思っていましたが、「Gitでバージョン管理できる」だけで開発のセーブポイントが作り放題なのが安心感つよい！<br>　他にもQキー一発でコメントアウトしたりコメントアウト解除(1回ループに）できたり、条件分岐作ったら1択目の中に勝手にカーソルが合わさったりできる細かい挙動もありがたい！<br><br>　あ、でも折りたたみ機能とタブ機能はまだ私は全然使えていません。すでに慣れている人はCtrl+R（前に選んでいた場所に戻る）で十分な場面も多いと思うんですよね。きっと大規模なゲームをいじり始めると、この辺も役に立ってくると思います。<br><br>　そして「文字列操作」の強化！！　データ処理しまくりマンには置換も切り取り高速化もありがたい！！　正規表現を使えば数値の0埋め（12を00012に、1234を01234にする）などもコマンド2行くらいで作れて簡単！<br>　たとえば\cself[10]を5桁で0埋めしたいなら、文字列"00000\cself[10]"を作った後に正規表現で「(\d{5})$」を抽出すれば、後ろ5文字だけ抜かれて"00015"みたいな文字列を簡単に作れるんですよ！<br><br>　また「エフェクト」内にある「ピクチャ」の「ディレイ」機能はどんなゲーム作るときもきっとありがたいですね！<br>　なめらかに動きを止めたりするときの挙動が、従来よりだいぶ楽に作れるようになりました。これは入れてよかった！<br><br>　ついでにエディターのウィンドウサイズの変更も地味にいい！<br>　画面が小さいと「文字がつぶれてもいいからコマンド挿入ウィンドウだけ1割だけ小さくさせてくれー！」と思うことも多いので、より好みにあわせて扱いやすくなったと思います！<br><br>　などなど私が使う新機能の一部範囲だけでも「オホーッ！」って感じだったので、ウディタ3.5はおすすめですよ！　よければぜひ！<br><br><strong>　→ <a target="_blank" href="https://silversecond.com/WolfRPGEditor/"><span style="font-size: 150%">【ウディタ公式ページへ】</span></a></strong><br><br><HR><br>　ということで、やれることをやり、休みが必要なところでは休みつつ、引き続きマイペースにがんばっていきます！<br>　まずは体調！　季節の変わり目ですがみなさまもお体にはお気をつけて！</div></div><br><br><br>
@@ -204,12 +262,13 @@ window.addEventListener('DOMContentLoaded', ()=>{
 <a id='bottom'></a>
 
 <BR><BR>
-<CENTER><a href="#top" class="jumplink">▲一番上へ戻る</a></CENTER>
+<div align="right"><a href="#top" class="g">▲一番上へ戻る</a></div>
 <BR>
+<CENTER>
 <HR>
 Copyright © SmokingWOLF / Silver Second
 <HR>
-
+</CENTER>
 
 </div>
 <div id='sidebar'>

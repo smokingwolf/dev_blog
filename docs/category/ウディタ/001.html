@@ -11,7 +11,6 @@ BODY{
   font-size:13px;
   margin:0;
   font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
-
 }
 
 TD{
@@ -28,9 +27,9 @@ A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shado
 A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
 A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
 
-A.g:LINK,A.g:VISITED,
-A.jumplink:LINK,A.jumplink:VISITED{
+A.g:LINK,A.g:VISITED{
 	color:#38a68c;
+	text-decoration:underline;
 }
 
 A.g:HOVER,A.g:ACTIVE{
@@ -38,15 +37,26 @@ A.g:HOVER,A.g:ACTIVE{
 	text-decoration : underline;
 }
 
+
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38c6ac;
+}
+
 A.jumplink:HOVER,A.jumplink:ACTIVE{
-	color : #68b6ac;
+	color : #68f6ac;
 }
 
 A.jumplink{
-	text-shadow: 0 0 15px #ccffcc, 0 0 15px #aaffaa;
+	text-shadow: 0 0 15px #ccddcc, 0 0 15px #aaddaa;
 	text-decoration : none;
 }
 
+
+
+#content {
+	font-size:14px;
+	
+}
 
 #sidebar {
 	background:#f8f8f8; 
@@ -95,12 +105,17 @@ A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
 	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
 }
 
-.entry-body {background:#fff; color:#444; padding:10px;}
+.entry-body,.extended {
+	background:#fff; 
+	color:#444; 
+	padding:10px;
+	font-size:14px;
+}
 
 
 /*--●形状整理用--*/
 body {display:flex; margin:0;}
-#content {flex:1; padding:0 8px;}
+#content {width:580px; padding:0 8px;}
 #sidebar {width:120px;  box-sizing:border-box; }
 #sidebar div {line-height:1.6;}
 #sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
@@ -125,7 +140,7 @@ function toggleDisp(id){
 </script>
 </head>
 <body>
-
+<a id="top"></a>
 
 
 
@@ -190,12 +205,55 @@ window.addEventListener('DOMContentLoaded', ()=>{
 .header3{
 	color:#555588;
 }
+
+.home-link {
+  font-size: 12px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: underline;
+}
 </style>
 
+<!--戻るリンク、サイトがなくなってたらアーカイブにつながるようにしたが404ページがアレなのかうまくいかない-->
+<!--
+<font id="home-link-placeholder">
+  <noscript>
+    <a href="https://smokingwolf.github.io/" class="home-link">← ホーム(アーカイブサイト)に戻る</a>
+  </noscript>
+</font>
 
-<div class="TopTitle" style="margin-top:20px;">　　シルバーセカンド開発日誌</div>
+<script>
+(async () => {
+  try {
+    // HEADで軽くチェック（no-corsなのでステータス確認は不可）
+    // 自分のサイトのインフォメーションページにつなげるならサイトがまだあると認識する
+    await fetch("https://silversecond.net/contents/etc/info.shtml", { method: "HEAD", mode: "no-cors" });
+
+    const link = document.createElement("a");
+    link.href = "https://silversecond.net/";
+    link.textContent = "← ホームに戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  } catch {
+    const link = document.createElement("a");
+    link.href = "https://smokingwolf.github.io/";
+    link.textContent = "← ホーム(アーカイブサイト)に戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  }
+})();
+</script>
+-->
+
+<div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
 <!--ここにコメント文-->
-<div class="header3" style="margin-top:6px;">　ゲーム開発者SmokingWOLFの開発日誌。気付けば足跡も数十年分！</div>
+<div class="header3" style="margin-top:6px;">　ゲーム開発者SmokingWOLFの開発日誌です。ここまでずいぶん長く歩いてきました。<BR>
+　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
+　
+
+</div>
 
 <div class='nav'><span style='color:#ccc'>次のページ</span> | <a href='002.html'>前のページ</a></div>
 <div class='entry'><div class='entry-title'>■<a id='2025-05-31'></a>2025-05-31&nbsp;&nbsp;&nbsp;ウディコン歴史資料館設立！+ ウディタ修正 + GitHubのサイト作り<span style='float:right;'><a href='#2025-05-17' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'>　ということでこの2週間もみっちり忙しかったウルフです！<br>　やっぱりウディタの修正がまだまだ重いですね。ご報告される問題がどんどん奥深い場所になってきて1つの修正にかなりの時間がかかることも頻発してきています。その隙にちょっとアルバイトもしております！<br><br>　今回の話題は「ウディコンサイトのアーカイブページを作成してまーす」という話と、いつもの「ウディタの修正報告」です！<br>　そして今回のおまけは「GitHub Pagesでのサイト作りのやり方」紹介です！<br> <br><HR><span style="font-size:large;"><B>◆ウディコン歴史資料館、設立！</B></span><HR><br>　ということで『ウディコン歴史資料館』というページを設立しました！<br><br>　ここは主に、ウディコン結果発表のバックアップを置いておくページです。<br>　これを作っておけば私が急に明日いなくなってレンタルサーバーへのカード払いができなくなっても、皆さまの作品詳細や投票コメントがだいぶ先の未来まで保存できるはずです！<br><br><span style="font-size:large;"><B>『ウディコン歴史資料館』</B></span><br>　<B><a target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/">https://smokingwolf.github.io/wolf_rpg_editor_contest/<br><img src="../../image/2025/20250531A.jpg" border="1" style="max-width:420px;" loading="lazy"></a></B><br><br>　このページ、一見ウディコン公式と似た雰囲気ですが、これまでの「結果発表のバックアップ」だけでなく、「エントリー体験コーナー」や「投票体験コーナー」などもご用意させていただいております。エントリーの事前イメージトレーニングもできるかも？<br><br>　ちなみに、サイトのデータを置いてるのはMicrosoftさんが持ってる『GitHub』というコード保存プラットフォーム！<br>　無料で利用可能ですし、これまでデータが消されたという話もよほどの容量オーバーしない限りはないらしいので、問題さえ起こさなければ長いこと消滅せずに保存され続けると思います！<br><br><br>　なお余裕があれば、自分のサイトの「作品の紹介ページ」や「それ以外に作ってきたものまとめ」などもGitHubさんちに整理しようかなと思っています。「シルバーセカンド思い出の部屋」みたいな感じで！<br>　レンタルサーバーだと、私が事故にあったりしてサーバー費の支払いができなくなった場合、1年以内にサイトが消えちゃいますからね。<br>　その場合、私の痕跡が何もなくなるのはさみしいので、私がいなくなった後もふと思い出してくれた人に【ゲームの置き場を案内できるページ】くらいは作っておきたいかな、なんて思っています。<br><br><br><br><HR><span style="font-size:large;"><B>◆今回のウディタ修正</B></span><HR><br>　そしていつも通りのウディタ修正！　だいぶバグは減ってきましたがまだ落ち着けないですね！<br><br>　今回は、<span style="color: #d50000"><B>大きなセーブデータを複数扱うとメモリオーバーでクラッシュする問題</B></span>を解決するのに苦戦していました。<br>　これまでメモリ回りはあまり意識していなかった部分ですが、皆さんの作品の大規模化や、XY配列の搭載によってメモリ問題が表面化するようになってきました。今後は、そのあたりの最適化も進めていく必要がありそうです。せめて無言でクラッシュする前にエラーは出して欲しいですよね！<br><br><HR><br><span style="font-size:110%;"><B>-【Ver3.613 の更新履歴　2025/05/30】</B></span><br><br><br><B>【ゲーム部の修正】</B><br><br><span style="color: #d50000"><B>●【トランジション準備･変数操作+/不具合】<br>　「トランジション準備」をしたまま「場所移動」を行ったタイミングで「変数操作+」で「主人公」の「キャラチップ縦分割数」などを取得するとクラッシュするバグを修正</B></span><br><span style="color: #2196f3">→　条件が細くて全然見つけられなかった上に直し方が全然分からなくてオカルト修正してしまいました（「よく分からないけどこの処理が入ると安定する、無意味に見えるけど抜いちゃダメ！」ってコメントが入る修正）</span><br><br><span style="color: #d50000"><B>●【仮想全画面・セーブ･ロード操作/不具合】<br>・仮想全画面状態でロードすると画面が一瞬真っ暗になるバグ修正<br>・仮想全画面状態でロードしたとき、トランジションの画像サイズがロード前より巨大に表示されるバグを修正</B></span><br><span style="color: #2196f3">→　これも難易度が高かったバグです。しかもこの修正の副作用でロード時に1枚だけスプライトが増える現象が起きている気がしますので調査中です。絶望は続く……！</span><br><br>●【タイル設定/不具合】<br>　指定したタイルのファイルがないときにクラッシュする可能性があった問題を修正<br><br><br><br><B>【エディター部の修正】</B><br><br>●【仕様変更情報･メニューバー･タイルセット設定/不具合】<br>・細かな誤字を修正。<br>・タイルセット「複数保存(TXT)」時の保存時ファイル形式名を修正。<br><br><br><HR><br><span style="font-size:110%;"><B>-【Ver3.612 の更新履歴　2025/05/27】</B></span><br><br><br><B>【新機能】</B><br><br><span style="color: #d50000"><B>●【文字列操作･隠しコード/新機能】セーブデータのキャッシュを<br>　メモリから全解放する隠しコード＜＜DELETE_SAVE_CACHE＞＞を追加。</B></span><br>→　セーブデータのキャッシュをメモリから即時破棄して、その分の残りメモリを増やすことができます。メモリ不足が疑われる際にご活用ください。<br>→　このコードを実行すると、次にセーブ/ロード、あるいは「セーブデータからの変数読み込み、書き込み」される際にまたHDD/SSDからセーブデータが再読込されます。<br><br><span style="font-size: 80%">　※前提として、ウディタ内ではセーブデータに部分的な　書き込み、読み込みを行った場合、HDD/SSDから読まれたセーブデータは以後丸ごとメモリにキャッシュされ、メモリから読み込まれるようになっています。<br>　<br>　※なお、もしセーブデータを読み込む際に残りメモリが不足した場合は、このコマンドと同等の処理で【セーブデータのキャッシュが自動で解放される】ようになりました(後述)ので、このコマンドを手動で使わなくてもなるべく問題が起きないようになっています。</span><br><br><br><br><B>【ゲーム部の修正】</B><br><br><span style="color: #d50000"><B>●【セーブ・ロード処理/不具合】<br>　大きなデータを含むセーブデータを多数保存・読み込みするとキャッシュがあふれてメモリ不足でクラッシュする問題に対し、メモリあふれが起きそうなら自動でキャッシュ解除して読み直す処理を追加。</B></span><br><span style="color: #2196f3">→　今回の大物！　この件だけで3日くらいかかってしまいました。上でも言った通り、これまでメモリ関連の処理があまり厳重ではなかったんですよね。<br>　ですが、この修正によって要セーブ内容がメモリ消費400MBに達するような巨大なデータ量にもいくらか耐えられるようになりました。<br>　ただやはりエラーが何回か出た後にクラッシュしたり、セーブデータが読めなかったりする可能性は残ります。</span><br><br><span style="color: #2196f3">→　セーブロード時にエラーが起きたりクラッシュする場合は、<br>　-「扱うセーブデータを1つだけ（+システムデータのみ）」にしたり、<br>　-「セーブ」前に巨大なXY配列に対して「配列の削除」などを<br>　　行ってからセーブしたり、<br>　-「可変DB」のデータ数が多いタイプのデータを減らしてセーブしたり、<br>　- 1ファイルの変数書き込みやセーブごとに「1フレームのウェイト」を入れる(※)<br>　といった処理をするようにしてみてください。</span><br><br><span style="font-size: 80%">　(※)セーブデータの変数書き込みはフレーム終了時にまとめて行われるため、1フレーム中にたくさんのセーブデータに書き込むとその分フレーム終了までに抱えておかなければならないメモリキャッシュが増えてメモリ超過の危険性が増えるのです。</span><br><br><HR><br><span style="font-size:110%;"><B>-【Ver3.611 の更新履歴　2025/05/24】</B></span><br><br><br><B>【ゲーム部の修正】</B><br><br><span style="color: #d50000"><B>●【エフェクト/不具合】「ファイル読み込み」「文字列」のピクチャを「ピクチャをリンク(XYズーム連動)」して、そのピクチャを（自由変形でない）座標として0以外の位置で表示し、かつエフェクトの「マップ」「ズーム」した際、期待通りの「座標」にならなかったバグを修正（拡大縮小するほどずれていく）</B></span><br><span style="color: #2196f3">→　これも割と重要なバグ修正です！　なお「自由変形」はすでにそれらしく表示されていたようです。</span><br><br><br>●【エフェクト/不具合】「ピクチャをリンク」で「ピクチャのまま」を選んでリンクさせている場合だけ、同じフレーム中に「リンク解除」→別MapEvにリンクし直す、という手順を行うとリンク先が切り替わらないバグを修正<br><br><br><span style="color: #d50000"><B>●【セーブ・ロード処理/不具合】<br>　大きなデータを含むセーブデータを保存・読み込みするとメモリ不足でクラッシュする場合があったため、メモリ不足でセーブ不能な場合や読み込み不能な場合はなるべくエラーを出すように<br>　（ただし何度もそのエラーが出た後にクラッシュする場合があります）</B></span><br><br><br><br><B>【エディター部の修正】</B><br><br>●【エフェクト/不具合】「ピクチャをリンク」で「全リンク解除」を指定したコマンドを「編集」して、そのプルダウンメニューを「をリンク解除」などに切り替えた際、ピクチャID欄の数値が「0」になるが上下キーで数値変更できなくなるバグを修正<br><br>●【動作指定/仕様変更】動作指定の「繰り返し」「移動を飛ばす」がオンのとき、入力されたコマンドの表記にも[ﾙｰﾌﾟ][ｽｷｯﾌﾟ]と記載するよう修正<br><br>●【コモンイベントコマンド/不具合】<br>　選んだコモンイベントの「入力内容の設定」で「文字列」の個数を減らした後、そのコモンイベントを設定した「イベントの挿入[名]」コマンドを編集したとき、返り値が「＜どこにも代入しない＞」に変わってしまうバグを修正<br><br>●【コモンイベントウィンドウ/不具合】<br>　「折りたたみ」した行がある状態でCtrl+Rで前に戻ると戻った行数がずれるバグを修正<br><br><br><HR><br><span style="font-size:110%;"><B>-【Ver3.610 の更新履歴　2025/05/21】</B></span><br><br><br><B>【エディター部の修正】</B><br><br>●【マップ選択/不具合】<br>　エディターオプションから「ウィンドウ倍率」を小さくすると下部ボタンがウィンドウ外に行ってしまったりするバグを修正<br><br>●【DB操作/調整】DB操作コマンドの表記として、「名前」が指定されている部分を「""」で囲むように修正。<br>  例：可変DB[ "主人公ステータス":このEvのSelf0:"キャラ名" ] (0:-:0) =  0<br><br>●【ゲームデータの作成/調整】「暗号化バージョンの選択」で「Ver3.50～時点の暗号化」や「Ver2.25～2.29時点の暗号化」という表記を「Ver3.50時点の暗号化」「Ver2.25時点の暗号化」に変更。<br><br>●【タスクリスト/不具合】タスクリストで何も項目が入っていないときにリスト欄をダブルクリックするとエラーが起きるバグを修正<br><br>●【タブ機能/不具合】DBのタイプ・データ名やイベント名に「&」を入れると＆が消えてその次の文字に下線が付いて表示されてしまうバグを修正<br><br><br><HR><br><span style="font-size:110%;"><B>-【Ver3.609 の更新履歴　2025/05/17】</B></span><br><br><br><B>【ゲーム部の修正】</B><br><br>●【DB操作/不具合】「可変DB」に「項目数」が今のゲームデータ側より多いタイプがある状態で「セーブ」したデータを読み込んで「CSVへ保存→」をするとクラッシュするバグを修正<br><span style="color: #2196f3">→　前より可変DBの項目数が減るとクラッシュするというかなりレアなバグ！</span><br><br><br><B>【エディター部の修正】</B><br><br>●【マップ･コモンイベントウィンドウ/不具合】<br> 「タブ」に表示されているイベント行数が折りたたみ分を抜いた行数になっており、かつ、タブを切り替えても折りたたみの変化を加味した場所に戻れなかったバグを修正<br><br>●【マップ･コモンイベントウィンドウ/不具合】タブを切り替えたとき、ウィンドウの「行数」が0になる現象を修正<br><br>●【マップイベントウィンドウ/不具合】<br>　イベントが一定数ある状態で一番IDが大きいイベントを削除したとき、「マップイベント一覧」で右クリックしたときに選ばれる位置がずれてしまうバグを修正<br> → 削除時に正しくスクロールされ直されていないのが問題でした。<br><br>●【マップイベントウィンドウ/不具合】<br> マップイベント一覧で「切り取り」をしたときだけ、イベント一覧からは消えるのに、開かれているイベント内容が「切り取られたイベント」のままになっているバグ修正<br><br>●【マップ選択/仕様変更】<br>　マップ選択ウィンドウにウィンドウサイズ補正、フォント変更機能が反映されるように修正。<br> → これだけ技術的な都合でうまく対応できていませんでした。<br> <br> <HR><br> 　という感じで、いつも通り山盛りウディタ修正と、アルバイトと、ウディコンのアーカイブ作業をそれぞれやっておりました！<br> 　特にウディコンのアーカイブ化は私が急にいなくなったときに備えて早めにやっておきたかったですからね！　これでひとまず、第16回までのウディコンの履歴は当面消えずに残り続けるはずです。そしてこれからは1回分ずつ足せばいいので気楽です！<br>  <br>　もちろん、ウディコンはこれからも続けていきます！<br>　今年も<a target="_blank" href="https://silversecond.com/WolfRPGEditor/Contest/"><B><span style="font-size: 150%">第17回ウディコン</span></B></a>がもうあと40日くらいに迫ってきていますからね！　ヤバい！　ウディコンのコンテストシステムの調整もしないといけない！！　やることいっぱいですががんばります！<br>　でも本当はもっとゲーム作りをしたい！！　それをモチベーションに少しでも急いでいきます！<br>　<br>　<br><HR><span style="font-size:large;"><B>【おまけ：GitHub Pagesによる簡単なサイトの作り方説明】</B></span><HR><br>　GitHub Pagesというものがあることを知ってから実際にページを作るまで、（私がGitHubをまともに使ったことないのもあって）ほんのちょっとだけ苦戦したので、とっかかり程度になるよう、GitHub Pages機能でのサイトの作り方を載せておきます！<br>　このやり方で、誰でも無料で長期保存可能なサイトを作れますよ。<br><br><br>1. <strong>【まずはアカウント作成】 </strong>まだ持ってなかったらGitHubの新規アカウントを取る。<br>　<br><br>2.<strong>【リポジトリの作成画面にたどりつく】</strong><br>　GitHubにログイン後、「Repositories」タブを開いて「New」から「Repository（リポジトリ）」を新たに作る。<br>　もし「Repositories」タブが見えないなら、たぶん「ダッシュボード」にいるので、少し下にスクロールすると「Start a new repository for (あなたのID名)」みたいに書いてある場所があるのでそこに記入することで作れます。<br>　<span style="color: #64b5f6">（なおここではリポジトリ=「プロジェクト」みたいな解釈でいいと思います。実際は「貯蔵庫」って意味みたいですが）</span><br><br><br>3.<strong>【「(アカウント名).github.io」リポジトリを作る】</strong><br>　リポジトリ作成画面で「Repository name」に「smokingwolf.github.io」みたいな「(アカウント名).github.io」という名前を設定し、「Public」を選んで「Create a new repository」する。<br><br><br>4.<strong>【index.htmlをアップする】</strong><br>　「smokingwolf.github.io」リポジトリの「Code」タブを開き、「+」か「Add file」ボタン内の「Upload files」より、パソコン内で作っておいた「index.html」をアップロードする（index.htmlはサイトの1ページ分のファイル）。<br>　アップロードが終わったら、下の方の「Commit changes」（難解な言い方ですが要するに「保存」）ボタンをクリックします。<br><br><br>5<strong>.【設定をいじってサイトとして公開する】</strong><br>　次にリポジトリの「Settings」タブを選んで左のリストから「Pages」を開き、「Branch」に「main」「/(root)」とセットして「Save」する（でも[～.github.io]リポジトリならいらなかったかも？）<br><br><br>6.<strong>【しばらくすると……できあがり！】</strong><br>　5分くらい経ってからブラウザで「http://smokingwolf.github.io/」（smokingwolfはあなたのアカウント名にしてください）にアクセスすると、さっきアップしたindex.htmlが見られます！　これにて最低限のサイト開設完了！<br>　なお、子ディレクトリを作れば、URLもそれに対応したアドレスでアクセスできます。たとえば「child」ディレクトリを作ったら「http://smokingwolf.github.io/child/」でアクセス可能です。<br><span style="font-size: 80%">（ただし「フォルダごとアップロード」するか、「Create new file（新ファイル作成）」でファイル名の欄に「<B>child/index.html</B>」みたいに入れて何かファイルを作らないとディレクトリが作られません）</span><br><br><br>7.<strong>【さらに何かしたいなら……】</strong><br>　あとの細かいことは<a target="_blank" href="https://chatgpt.com/"><B>ChatGPTさん</B></a>などに聞いてみてください！<br>　私は全部そこで教えてもらいました。<br><br><br><span style="font-size: 80%">※なおちょっと裏技っぽい仕様として、別のリポジトリ「test」(github.ioはいらない)などを作って「5」の手順でBranchを「main」にすると、URL「http://smokingwolf.github.io/<span style="color: #d50000"><B>test</B></span>/」のアドレスでアクセスできるようになります。<br>　私はこれを利用し、ウディコン歴史資料館では各年のコンテストごとに別々のリポジトリを作っています。<br>　<br>※大きなゲームデータのファイルはGitHub内の「<B><span style="color: #d50000">Release</span></B>」という部分に置くことが可能で、サイト側からそのファイルにリンクさせることも可能です。<span style="color: #d50000"><B>あなたのフリーゲームのファイルも置いておけます</B></span>よ！　Releaseの設定欄はちょっとややこしいですが、そのあたりもチャットAIに聞いてみてくださると詳しく教えてくれます。</span><br><br><HR><br>　ということで、よければゲーム開発者のみなさまも、自分のゲームのポートフォリオサイトをGitHubに置いてみるのはいかがでしょうか！<br><br>　もしかしたら後世になっても、昔のフリーゲーム史を探る人たちが見つけてくれるかもしれません。たとえ古いものでも、遊んだ人に楽しい思い出を残したり、心を動かす力は、きっと後の世でも通用することでしょう。<br><br>　そして私がいなくなった後にも、誰かがときどき<a target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><B>ウディコン歴史資料館</B></a>にやってこられて、当時のコンテストを思い出してくれるようなことがあるとうれしいですね。<br>　ウディコンはネットの隅で行われているささやかなコンテストではありますが、作り手の皆さんも遊び手の皆さんも、全員の情熱の記録がずっと残り続けてほしいと願っています。</div></div><br><br><br>
@@ -212,12 +270,13 @@ window.addEventListener('DOMContentLoaded', ()=>{
 <a id='bottom'></a>
 
 <BR><BR>
-<CENTER><a href="#top" class="jumplink">▲一番上へ戻る</a></CENTER>
+<div align="right"><a href="#top" class="g">▲一番上へ戻る</a></div>
 <BR>
+<CENTER>
 <HR>
 Copyright © SmokingWOLF / Silver Second
 <HR>
-
+</CENTER>
 
 </div>
 <div id='sidebar'>

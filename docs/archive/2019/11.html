@@ -11,7 +11,6 @@ BODY{
   font-size:13px;
   margin:0;
   font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
-
 }
 
 TD{
@@ -28,9 +27,9 @@ A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shado
 A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
 A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
 
-A.g:LINK,A.g:VISITED,
-A.jumplink:LINK,A.jumplink:VISITED{
+A.g:LINK,A.g:VISITED{
 	color:#38a68c;
+	text-decoration:underline;
 }
 
 A.g:HOVER,A.g:ACTIVE{
@@ -38,15 +37,26 @@ A.g:HOVER,A.g:ACTIVE{
 	text-decoration : underline;
 }
 
+
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38c6ac;
+}
+
 A.jumplink:HOVER,A.jumplink:ACTIVE{
-	color : #68b6ac;
+	color : #68f6ac;
 }
 
 A.jumplink{
-	text-shadow: 0 0 15px #ccffcc, 0 0 15px #aaffaa;
+	text-shadow: 0 0 15px #ccddcc, 0 0 15px #aaddaa;
 	text-decoration : none;
 }
 
+
+
+#content {
+	font-size:14px;
+	
+}
 
 #sidebar {
 	background:#f8f8f8; 
@@ -95,12 +105,17 @@ A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
 	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
 }
 
-.entry-body {background:#fff; color:#444; padding:10px;}
+.entry-body,.extended {
+	background:#fff; 
+	color:#444; 
+	padding:10px;
+	font-size:14px;
+}
 
 
 /*--●形状整理用--*/
 body {display:flex; margin:0;}
-#content {flex:1; padding:0 8px;}
+#content {width:580px; padding:0 8px;}
 #sidebar {width:120px;  box-sizing:border-box; }
 #sidebar div {line-height:1.6;}
 #sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
@@ -125,7 +140,7 @@ function toggleDisp(id){
 </script>
 </head>
 <body>
-
+<a id="top"></a>
 
 
 
@@ -190,12 +205,55 @@ window.addEventListener('DOMContentLoaded', ()=>{
 .header3{
 	color:#555588;
 }
+
+.home-link {
+  font-size: 12px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: underline;
+}
 </style>
 
+<!--戻るリンク、サイトがなくなってたらアーカイブにつながるようにしたが404ページがアレなのかうまくいかない-->
+<!--
+<font id="home-link-placeholder">
+  <noscript>
+    <a href="https://smokingwolf.github.io/" class="home-link">← ホーム(アーカイブサイト)に戻る</a>
+  </noscript>
+</font>
 
-<div class="TopTitle" style="margin-top:20px;">　　シルバーセカンド開発日誌</div>
+<script>
+(async () => {
+  try {
+    // HEADで軽くチェック（no-corsなのでステータス確認は不可）
+    // 自分のサイトのインフォメーションページにつなげるならサイトがまだあると認識する
+    await fetch("https://silversecond.net/contents/etc/info.shtml", { method: "HEAD", mode: "no-cors" });
+
+    const link = document.createElement("a");
+    link.href = "https://silversecond.net/";
+    link.textContent = "← ホームに戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  } catch {
+    const link = document.createElement("a");
+    link.href = "https://smokingwolf.github.io/";
+    link.textContent = "← ホーム(アーカイブサイト)に戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  }
+})();
+</script>
+-->
+
+<div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
 <!--ここにコメント文-->
-<div class="header3" style="margin-top:6px;">　ゲーム開発者SmokingWOLFの開発日誌。気付けば足跡も数十年分！</div>
+<div class="header3" style="margin-top:6px;">　ゲーム開発者SmokingWOLFの開発日誌です。ここまでずいぶん長く歩いてきました。<BR>
+　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
+　
+
+</div>
 
 <div class='nav'><a href='12.html'>次の月へ</a> | <a href='10.html'>前の月へ</a></div>
 <div class='entry'><div class='entry-title'>■<a id='2019-11-30'></a>2019-11-30&nbsp;&nbsp;&nbsp;片道勇者2【42】 細かい修正と残り<span style='float:right;'><a href='#2019-11-16' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><span style="font-size:large;"><strong>【片道勇者2　細かい修正】</strong></span><br><br>パーティーシステムなど大きな修正を入れると<br>だいたいバグがいっぱい出てきますので<br>内部処理の修正にほとんどの時間を費やした二週間でした。<br>見た目に変化がないし、期待通りに動くようにしていただけなので何もお見せできない！<br><br>今回の中で目に見える変更といえば以下くらいです。<br><br><br><strong>＜敵のHPゲージを「弧状」に変更！＞</strong><br><br><img src="../../image/2019/20191130.jpg" border="1"><br><br>敵のHPゲージを「弧状」に変更しました。<br>ファイアーエムブレムの最新作などでも採用されている方式なのですが、<br>真横のバーより敵の見た目の邪魔にならないのがいいですね。<br><br>ウディタでの実装だと、ゲージの減り具合が違う画像を10パターンくらい作って<br>絵ごと切り替えるようにして作っています。実は『片道勇者1』の敵ゲージもそうでした。<br>ゲージが小さければ10％ごとの区切りでもそんなに困らない感じです。<br><br><hr size="1" /><br><strong><span style="font-size:large;">【アルファ2に向けての残り作業】</span></strong><br><br>ここからのアルファ2に向けての実装項目は以下の通りです。<br>たいていはこれら実装作業そのものとは別に、<br>バグ修正や微調整によって不明の追加時間がかかります。<br><br>●【システム】ショップ機能を抜本的に修正。売却は手持ち全部からまとめて行えるようにする。<br>（アルファ1ではドラ○もんのポケットみたいに買い物中に「引き直し」して<br>手札に売りたいアイテムが来るまで回すマニアックすぎる仕組みでした）<br><br>●【システム】視界制限機能（夜間に視界外のNPCを見えなくさせる機能）<br><br>●【システム】昼夜の切り替え機能。<br><br>●【システム】施設の位置を遠くからマーカーで教えてくれる機能。<br><br>●【システム】アドバイス機能を仲間コメント機能で出すよう全面的に変更。<br>（アドバイスが出るタイミングで仲間ボタンからピコッと吹き出しが出て、<br>その後に仲間に話すとアドバイスを教えてくれる）<br><br>●【データ】アルファ1で絵がなかったカードに絵を付ける。<br><br>●【データ】アイテムや特徴を少し増やしたい。<br><br>●【データ】敵の出現度合いや強さを距離によって変えてよりゲームらしさを増す。<br><br>●【キャラクター】ラフのままの妖精クリスをどうにかする。<br><br>●【通信】Twitter通信機能でエンド画面を3枚送信できるようにする。<br>→　要望が多かった、「死に際の画面」「所持カード一覧と能力値」「評価画面」の3枚を<br>一斉にTwitterに送信できるようにします。仮実装は済んでいます。<br><br>●【システム】仮オプションの完成。<br><br>●【システム】全体的な視認性の向上。従来で「いつの間にかXXしてた」<br>という状態になっていた地味な部分をもっと目立たせる。<br><br>●【システム】ゲームパッド・キーボードへの仮対応。<br>これが一体どのくらいかかるか分からないくらい大変そうです。<br>「移動状態のままカードを選べる」プレイ方式というのが<br>操作の構築のややこしさを生んでいます。<br>解法は色々あるでしょうけれども、何通りか試しに作っては壊しながら、<br>一番マシなのを探していく作業になると思います。<br>また、各画面モードごとに全部操作を作らないといけないので作業量も相当多い！<br>一方で、ここは評価に一定量影響しそうな部分だとも考えているので、<br>仮でもいいので第一版を作って見てもらいたいところです。<br><br>●その他、ここに書くのを忘れているであろう要素いろいろ。<br><br>という感じです。<br>この数だとペース的にまずあと一ヶ月で終わらない気がしたので、<br>うまく目標を区切りつつ最速でぼちぼち作っていきたいと思います。</div></div><br><br><br>
@@ -205,12 +263,13 @@ window.addEventListener('DOMContentLoaded', ()=>{
 <a id='bottom'></a>
 
 <BR><BR>
-<CENTER><a href="#top" class="jumplink">▲一番上へ戻る</a></CENTER>
+<div align="right"><a href="#top" class="g">▲一番上へ戻る</a></div>
 <BR>
+<CENTER>
 <HR>
 Copyright © SmokingWOLF / Silver Second
 <HR>
-
+</CENTER>
 
 </div>
 <div id='sidebar'>

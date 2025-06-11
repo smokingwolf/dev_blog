@@ -11,7 +11,6 @@ BODY{
   font-size:13px;
   margin:0;
   font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
-
 }
 
 TD{
@@ -28,9 +27,9 @@ A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shado
 A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
 A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
 
-A.g:LINK,A.g:VISITED,
-A.jumplink:LINK,A.jumplink:VISITED{
+A.g:LINK,A.g:VISITED{
 	color:#38a68c;
+	text-decoration:underline;
 }
 
 A.g:HOVER,A.g:ACTIVE{
@@ -38,15 +37,26 @@ A.g:HOVER,A.g:ACTIVE{
 	text-decoration : underline;
 }
 
+
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38c6ac;
+}
+
 A.jumplink:HOVER,A.jumplink:ACTIVE{
-	color : #68b6ac;
+	color : #68f6ac;
 }
 
 A.jumplink{
-	text-shadow: 0 0 15px #ccffcc, 0 0 15px #aaffaa;
+	text-shadow: 0 0 15px #ccddcc, 0 0 15px #aaddaa;
 	text-decoration : none;
 }
 
+
+
+#content {
+	font-size:14px;
+	
+}
 
 #sidebar {
 	background:#f8f8f8; 
@@ -95,12 +105,17 @@ A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
 	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
 }
 
-.entry-body {background:#fff; color:#444; padding:10px;}
+.entry-body,.extended {
+	background:#fff; 
+	color:#444; 
+	padding:10px;
+	font-size:14px;
+}
 
 
 /*--●形状整理用--*/
 body {display:flex; margin:0;}
-#content {flex:1; padding:0 8px;}
+#content {width:580px; padding:0 8px;}
 #sidebar {width:120px;  box-sizing:border-box; }
 #sidebar div {line-height:1.6;}
 #sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
@@ -125,7 +140,7 @@ function toggleDisp(id){
 </script>
 </head>
 <body>
-
+<a id="top"></a>
 
 
 
@@ -190,12 +205,55 @@ window.addEventListener('DOMContentLoaded', ()=>{
 .header3{
 	color:#555588;
 }
+
+.home-link {
+  font-size: 12px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: underline;
+}
 </style>
 
+<!--戻るリンク、サイトがなくなってたらアーカイブにつながるようにしたが404ページがアレなのかうまくいかない-->
+<!--
+<font id="home-link-placeholder">
+  <noscript>
+    <a href="https://smokingwolf.github.io/" class="home-link">← ホーム(アーカイブサイト)に戻る</a>
+  </noscript>
+</font>
 
-<div class="TopTitle" style="margin-top:20px;">　　シルバーセカンド開発日誌</div>
+<script>
+(async () => {
+  try {
+    // HEADで軽くチェック（no-corsなのでステータス確認は不可）
+    // 自分のサイトのインフォメーションページにつなげるならサイトがまだあると認識する
+    await fetch("https://silversecond.net/contents/etc/info.shtml", { method: "HEAD", mode: "no-cors" });
+
+    const link = document.createElement("a");
+    link.href = "https://silversecond.net/";
+    link.textContent = "← ホームに戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  } catch {
+    const link = document.createElement("a");
+    link.href = "https://smokingwolf.github.io/";
+    link.textContent = "← ホーム(アーカイブサイト)に戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  }
+})();
+</script>
+-->
+
+<div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
 <!--ここにコメント文-->
-<div class="header3" style="margin-top:6px;">　ゲーム開発者SmokingWOLFの開発日誌。気付けば足跡も数十年分！</div>
+<div class="header3" style="margin-top:6px;">　ゲーム開発者SmokingWOLFの開発日誌です。ここまでずいぶん長く歩いてきました。<BR>
+　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
+　
+
+</div>
 
 <div class='nav'><a href='11.html'>次の月へ</a> | <a href='09.html'>前の月へ</a></div>
 <div class='entry'><div class='entry-title'>■<a id='2019-10-19'></a>2019-10-19&nbsp;&nbsp;&nbsp;片道勇者2【40】　アビリティ<span style='float:right;'><a href='#2019-10-05' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><span style="font-size:large;"><strong>【片道勇者2　アビリティ】</strong></span><br><br>ウディコンとノベライズ案件が間に挟まっての、<br>3ヶ月ぶりの『片道勇者2』開発記事です！<br>急がないと今年が終わってしまう！<br><br>なお直近の2週間は『片道勇者2』の開発やお仕事作業を進めつつ、<br>ベビーシッターなどもやりつつの日々でした。おむつ付け替え経験値が上がります。<br>大人のおむつ付け替えよりは気分が楽ですね。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【新たな要素「アビリティ」の搭載】</strong></span><br><br>現状ですが、『片道勇者2』は一応のシステムの完成を目指すべく、<br>アルファ1で出た問題に対応するための試行錯誤を続けています。<br><br>今回は、そんな中で新たに生まれたシステム「アビリティ」の紹介です！<br><br>たとえばアビリティ「アイテム取り出し」！<br>これは移動中、行動消費なしでいつでもデッキ内から<br>アイテムカードを1つ取り出して手札に入れることができる能力です。<br><br>どんな風に使うか例をお見せしますと……。<br><br><br><strong>キャラメイクで「特徴」に「道具整理」をセットしておくと……。<br><img src="../../image/2019/20191019.jpg" border="1"><br>↓<br>移動画面の右下に「アイテム取り出し」ボタンが出てくる。<br>（ボタンはもうちょっと価値がありそうなおしゃれ感を目指したいですね！）<br><img src="../../image/2019/20191019A.jpg" border="1"><br>↓<br>「アイテム取り出し」を選ぶとデッキ内から好きなアイテムカードを1枚選べる。<br>（画面はデッキ一覧から「ナユタの実」を選択した時のメッセージ）<br><img src="../../image/2019/20191019B.jpg" border="1"><br>↓<br>選んだアイテムカードが手札に来る。<br><img src="../../image/2019/20191019C.jpg" border="1"></strong><br><br>このアビリティがあれば、いざというときにすぐ「癒しのアンプル」を取り出して使ったり、<br>スキル「後退移動」が来たときに「エルザイト爆弾」を取り出して一緒に使い、<br>後退して爆弾投げして目の前に集まっている敵をまとめて吹き飛ばしたりと、<br>アイテム＋スキルのコンボがかなり組みやすくなります。<br>武器を使い切ったときにすぐ次の武器を出せるので、それだけでも強力ですね。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【最初は「手札のロック機能」を考えていた】</strong></span><br><br>この「アイテム取り出し」アビリティが生まれるまでには紆余曲折あり、<br>当初は「手札のロック機能（ロックしていると引き直ししてもカードが手札に残る）」<br>みたいなのを作ろうと考えていました。<br><br>ですが、ロック機能は少しやりかけてみると以下の問題があることが分かりました。<br><br><span style="color:#CC0000"><strong>◆「手札を見てロックするためのカードを吟味する」という行為が<br>『手札が入れ替わるたび』に発生してしまい、<br>最善手のプレイをしようとすると従来よりめちゃめちゃ面倒くさい！</strong></span><br><br><span style="font-size:x-small;">→　個人的には、普通の人が遊ぶ『片道勇者1』のように、<br>「ピンチになってから所持品をチェックする」程度の頻度で<br>手札を確認するくらいでちょうどいいのでは、と考えていました。<br>そのためロック機能のせいで毎回手札を確認するコストが発生するのは、<br>私にとっては望まない方向性だったのです。<br>アルファ1の「レベルアップ」（経験値カードの管理）でも同じ問題を引き起こしたので、<br>アルファ2では調整が入っています。</span><br><br><br>それで「手札のロック機能」よりももっとシンプルかつ開発的にも使い回せる構成で<br>何かできないかと色々悩んでいたのですが、あるとき、<br><strong>「毎回手札を見て1枚好きなのをロックして持っておく」</strong>のも、<br><strong>「いつでも1枚好きなのを取り出せる」</strong>のも、<br><strong><span style="color:#CC0000">「使いたいカードを使いたいときに用意できる」</span></strong>という意味では<br>実質的にほぼ同じ効果だと気付きました。<br>結局は「コンボを組みやすくしたい」「危機回避カードをいつでも使えるようにしたい」<br>というのが重要な願いのはずです。<br><br>ついでに手札ロック専用の処理を入れるくらいなら、汎用のボタンで<br>色んな種類の能力を使える方が遊ぶ人も覚えることが少なくて済みますし、<br>将来的にも拡張しやすいはずなので、思い切ってここで<br>「アビリティ」という概念を増やし、元「手札のロック機能」だったものは<br>そこに放り込むことにしたのです。<br><br>「好きなカードを1枚取り出す」機能は「ロック機能」よりも<br>「狙う」「先読みする」感は減ってしまいますが、<br>一方で変な特殊操作が増えずに済んだので、<br>ゲームプレイは割とスッキリしたままにできそうです。<br>なるべくスッキリさせたままで拡張しようとすると、<br>いつもこんな感じですごく悩むんですよ。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【「アビリティ」の性質】</strong></span><br><br>「アビリティ」は今のところ、「特徴」で2種類分まで持っていける予定です。<br><br>今回ご紹介した「アイテム取り出し」の他にも、<br>「瞬間引き直し」（ターンを消費せずに引き直せる）、<br>「どこでもセーブ」などがアビリティとして用意される予定です。<br><br>使うとコストの支払いの他に「クールタイム」も発生するので時間を空けねばならず、<br>連発はできませんが、何が来るか分からない手札と違って確実に使えるので、<br>プレイスタイルや好みに応じて選んでいただけると思います。<br><br>ただ、前作の「荷物整理（所持重量を増やせる）」がほぼ必須の特徴だったような勢いで、<br>好きなアイテムカードを出せる「アイテム取り出し」や「スキル取り出し」的な<br>アビリティは、今回もかなり有力候補になると思います。<br><br>こういう「取り出し」系アビリティがあるとデッキに1枚しか入れないカードも運用しやすいので、<br>アルファ1の普通の（？）デッキ構築ゲームとはプレイ感が大きく変わることでしょう。<br>これくらいの間口の広さにできれば、少しは遊びやすくなるのではないかなと思います。<br><br><hr size="1" /><br>ひとまずプレイヤーさんの「こういう遊び方をしたい！」系の願いは、<br>前回からある「特徴」補正に加えて、この「アビリティ」でも補う形でやっていこうと考えています。<br><br>たとえば一つの武器を長く使いたい人や武器の使い分けを考えたくない人向けに、<br>アビリティで「装備の耐久回復」などを作ったり、といった感じに<br>遊び方のルールをいじれるはずです。<br>（前回あった、「常に装備耐久力の減少を抑える特徴」で実現するのもいいのですけれど）<br><br>今作は、前作のように特定の「スキル」がいつでも確実に使えないので、<br>「アビリティ」のような「いつでも確実に使える何か」は<br>もともと必要だったように思います。<br><br>全部の願いは補えないと思いますが、この「アビリティ」の選び方によっては<br>ゲーム内ルールの一つや二つくらいは破壊できるか緩和できることでしょう。<br>「狙ってルールを部分的に破壊できる」とゲームの楽しみが増すと思ってるので、<br>こういうのが用意されてる方が、より私の好みに近いと感じます。<br><br><HR><br>『片道勇者2』の「移動中に任意に行える『操作』の枠」としては、<br>アルファ1時の「手札使用」や「覚醒使用」、「デッキ管理」に加えて、<br>この「アビリティ」の追加で、ひとまずの完成にできそうな気がしています。<br>これら以外のシステムはまだまだ実装できてないんですけどね！<br><br>あとはデータや環境をうまく作って判断を面白くしていけるよう、<br>色々と考えていきたいところ！　うまいこと進めていきたいと思います。<br><HR><br>あと、片道勇者ノベル『片道勇者　滅びの闇と繰り返す英雄』が発売されました！<br>かなり評価は高いっぽいのでもしよければぜひ！<br>これだけの品質のものはもっと布教していきたい感あるので<br>応援のご感想・レビューなどもお待ちしてます！<br><br><a href="https://www.amazon.co.jp/%E7%89%87%E9%81%93%E5%8B%87%E8%80%85-%E6%BB%85%E3%81%B3%E3%81%AE%E9%97%87%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%99%E8%8B%B1%E9%9B%84-%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%83%8E%E3%83%99%E3%83%AB%E3%82%B9-%E7%B4%85%E4%BB%97-%E7%9B%B4-ebook/dp/B07YLHBNWT/ref=as_li_ss_il?_encoding=UTF8&qid=1567321009&sr=1-1&linkCode=li3&tag=smokingwolf-22&linkId=ba651b0464bd9617a7662ca4a128deb5&language=ja_JP" class="red"><img border="2" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07YLHBNWT&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=smokingwolf-22&language=ja_JP" ><br><strong>『片道勇者　滅びの闇と繰り返す英雄』</strong><br>Amazon販売ページへ<br>[書籍版 <strong>\1,540</strong> / Kindle版 <strong>\1,386</strong>]</a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=smokingwolf-22&language=ja_JP&l=li3&o=9&a=B07YLHBNWT" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></div></div><br><br><br>
@@ -204,12 +262,13 @@ window.addEventListener('DOMContentLoaded', ()=>{
 <a id='bottom'></a>
 
 <BR><BR>
-<CENTER><a href="#top" class="jumplink">▲一番上へ戻る</a></CENTER>
+<div align="right"><a href="#top" class="g">▲一番上へ戻る</a></div>
 <BR>
+<CENTER>
 <HR>
 Copyright © SmokingWOLF / Silver Second
 <HR>
-
+</CENTER>
 
 </div>
 <div id='sidebar'>

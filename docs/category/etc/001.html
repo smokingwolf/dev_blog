@@ -11,7 +11,6 @@ BODY{
   font-size:13px;
   margin:0;
   font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
-
 }
 
 TD{
@@ -28,9 +27,9 @@ A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shado
 A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
 A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
 
-A.g:LINK,A.g:VISITED,
-A.jumplink:LINK,A.jumplink:VISITED{
+A.g:LINK,A.g:VISITED{
 	color:#38a68c;
+	text-decoration:underline;
 }
 
 A.g:HOVER,A.g:ACTIVE{
@@ -38,15 +37,26 @@ A.g:HOVER,A.g:ACTIVE{
 	text-decoration : underline;
 }
 
+
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38c6ac;
+}
+
 A.jumplink:HOVER,A.jumplink:ACTIVE{
-	color : #68b6ac;
+	color : #68f6ac;
 }
 
 A.jumplink{
-	text-shadow: 0 0 15px #ccffcc, 0 0 15px #aaffaa;
+	text-shadow: 0 0 15px #ccddcc, 0 0 15px #aaddaa;
 	text-decoration : none;
 }
 
+
+
+#content {
+	font-size:14px;
+	
+}
 
 #sidebar {
 	background:#f8f8f8; 
@@ -95,12 +105,17 @@ A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
 	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
 }
 
-.entry-body {background:#fff; color:#444; padding:10px;}
+.entry-body,.extended {
+	background:#fff; 
+	color:#444; 
+	padding:10px;
+	font-size:14px;
+}
 
 
 /*--●形状整理用--*/
 body {display:flex; margin:0;}
-#content {flex:1; padding:0 8px;}
+#content {width:580px; padding:0 8px;}
 #sidebar {width:120px;  box-sizing:border-box; }
 #sidebar div {line-height:1.6;}
 #sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
@@ -125,7 +140,7 @@ function toggleDisp(id){
 </script>
 </head>
 <body>
-
+<a id="top"></a>
 
 
 
@@ -190,12 +205,55 @@ window.addEventListener('DOMContentLoaded', ()=>{
 .header3{
 	color:#555588;
 }
+
+.home-link {
+  font-size: 12px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: underline;
+}
 </style>
 
+<!--戻るリンク、サイトがなくなってたらアーカイブにつながるようにしたが404ページがアレなのかうまくいかない-->
+<!--
+<font id="home-link-placeholder">
+  <noscript>
+    <a href="https://smokingwolf.github.io/" class="home-link">← ホーム(アーカイブサイト)に戻る</a>
+  </noscript>
+</font>
 
-<div class="TopTitle" style="margin-top:20px;">　　シルバーセカンド開発日誌</div>
+<script>
+(async () => {
+  try {
+    // HEADで軽くチェック（no-corsなのでステータス確認は不可）
+    // 自分のサイトのインフォメーションページにつなげるならサイトがまだあると認識する
+    await fetch("https://silversecond.net/contents/etc/info.shtml", { method: "HEAD", mode: "no-cors" });
+
+    const link = document.createElement("a");
+    link.href = "https://silversecond.net/";
+    link.textContent = "← ホームに戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  } catch {
+    const link = document.createElement("a");
+    link.href = "https://smokingwolf.github.io/";
+    link.textContent = "← ホーム(アーカイブサイト)に戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  }
+})();
+</script>
+-->
+
+<div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
 <!--ここにコメント文-->
-<div class="header3" style="margin-top:6px;">　ゲーム開発者SmokingWOLFの開発日誌。気付けば足跡も数十年分！</div>
+<div class="header3" style="margin-top:6px;">　ゲーム開発者SmokingWOLFの開発日誌です。ここまでずいぶん長く歩いてきました。<BR>
+　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
+　
+
+</div>
 
 <div class='nav'><span style='color:#ccc'>次のページ</span> | <span style='color:#ccc'>前のページ</span></div>
 <div class='entry'><div class='entry-title'>■<a id='2019-05-11'></a>2019-05-11&nbsp;&nbsp;&nbsp;令和の時代へ！　始まりを振り返る<span style='float:right;'><a href='#2019-03-09' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><span style="font-size:large;"><strong>【令和の時代へ！】</strong></span><br><br><img src="../../image/2019/20190511.jpg" border="1" title="元号発表ごっこ。ホームボタン付きは平成の証"><br><br>新元号記念に1枚！<br>平成の三分の二ほどを駆け抜けたこのサイトですが、<br>令和になってもよろしくお願いします！<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【平成昔話】</strong></span><br><br>せっかくなのでこの機会に昔話をさせていただきます。<br><br>突然ですが、実はこのサイトが生まれた平成10年（1998年）あたりは、<br>インターネットがそこまで普及していませんでした。<br>当時はいちいち電話回線を占有して通信しなければなかったので、<br>繋いでいる時間だけ電話代がかかりましたし、もちろんその間は電話も取れません。<br><br>夜中だけ通信が定額になる「テレホーダイ」というサービスもあるにはありましたが、<br>当時の私は少年だったので夜中まで起きていない都合上、<br>残念ながらその恩恵にはあずかれませんでした。<br>一瞬だけ繋いでサイトのデータをアップロードしては、すぐ切ってました。<br><br>それが今や日中でもほぼ常時繋ぎっぱなしでインターネットが使えて、<br>まるで水道と同じくらい日常に普及しているというのは、<br>その過程を見てきた身としては凄いと思うばかりです。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【「ダウンロード」という概念との出会い】</strong></span><br><br>私がゲーム作りを生きる道にし始めた理由として一番大きかったのが、<br>「ダウンロード」という概念との出会いです。<br><br>実は私、インターネットの前に<br>「ゲームのダウンロード」という概念に触れていました。<br>それが平成7年（1995年）頃、スーパーファミコンというゲーム機の付属品である<br>「サテラビュー」というハード＆ソフトの、衛星放送通信でのデータ配信でした。<br><br>そこでは家庭用ゲーム機のソフトや、『RPGツクール2』の<br>投稿作品の優秀なユーザ作成データが配信されていたりして、<br>当時はその仕組みにものすごくロマンを感じていたのです。<br><br>というのも、当時は「自作したゲーム」を不特定多数のみんなに遊んでもらう方法が<br>「ゲーム投稿雑誌に載る」くらいしかなかったんですよ！<br>それが「ダウンロード」という形でどこからともなく多くの人へと配信できるというのは、<br>物理媒体のゲームソフトしか知らない当時の私にとって<br>ものすごく先進的で夢のあることだと感じたのです。<br>「いいゲームを作れたら自分のゲームもダウンロード配信してもらえるのでは」<br>なんて傲慢な夢を抱いたこともありました。<br><br>それからインターネットに触れるようになったのが<br>2～3年後だったのですが、そこで状況が一変しました。<br>「不特定多数にダウンロードしてもらう」ことが<br>いきなり自分の手だけで実現可能な手段となってしまったのです！<br><br>そしてそのことこそ、私がゲーム開発に人生の労力をかけることができた、<br>一番大きな理由になりました。<br>というのも、「不特定多数にダウンロードしてもらう」手段が<br>手軽に使用できない世界だったならば、私はきっと「ゲーム作りを諦めていた」か、<br>「趣味程度のもの」にとどめていたはずだからです。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【ゲーム作りを諦めていた理由と再燃】</strong></span><br><br>このサイトを作る前の「インターネットの存在をよく知らなかった自分」は、<br>ここまで長い時間をゲーム開発に投入するつもりは全くありませんでした。<br><br>「ゲームを作る人間になりたい……けど人生のコストパフォーマンス悪いよなあ」<br>という気持ちだけが当時少年だった私の中にくすぶっていた程度で、<br>真剣にゲーム開発者になるつもりはなかったのです。<br><br>というのも、「人生を賭けてゲームを作りたい」と思えば<br>当時は主に「企業に属する道」しかなかったわけですが、<br>プロのゲーム開発者になっても、そこではおそらく<br><strong>「自由にゲームを作れるようになるまでになるコストが高すぎて分が悪い」<br>あるいは「一生自由に作れるチャンスが来ないかもしれない」</strong><br>と私は考えていました。<br><br>いくら当時の私が子供でも、企業勤めをすると最初は部下から始まり、<br>えらい人の言うことを聞いて作らねばならないことくらいは知ってます。<br><br>なので、自分の作りたいゲームを作れる道が「企業に入って偉くなる」しかないのなら、<br>「ゲーム作りの夢は諦めて別の人生を探した方がいいかな」<br>と考えていたのです。<br><br>もちろんゲーム作り自体はすごくやりたかったんですけど、<br>私が作りたいのは『自分の作りたいゲーム』です。<br>文字で書くとなんだか間抜けな感じがしますが、<br>それを実行するのは条件が整わないとかなり難しいことです。<br>仮に作れても、人に見せる手段がないなら自分にとって作る意味がないですからね。<br><br><br>ところが、そう考えていた中で出会ってしまったのが「インターネットの世界」です！<br>オンライン上では商業流通のラインを完全に無視し、<br>みんなが好き勝手に自作ゲームを公開できてしまうという、<br>あまりに自由すぎる世界が広がっていました。<br><br>当時はアマチュアゲーム開発の場合、<br>「ゲーム投稿雑誌に載る」か、「認められて配信サービスに載せてもらう」かの<br>2つしかゲームを公開する入り口がなかったのに、急に自分の手だけで<br>不特定多数へのリリースが簡単にできるようになってしまったのです！<br><br>「え、嘘でしょ！？　いいの！？」と当時の私は思いました。<br><br>私は、多くの人が簡単に繋がれる「インターネットの世界」なら<br><strong>『自分の作りたいゲームを作り続ける』</strong><br>という目標に最短でたどり着ける気がしました。<br><br>「ゲーム企業に入って何年もかけてがんばって偉くなる」という道をたどらなくても、<br>今から作りたいゲームを作って、みんなに見せることができるのです！<br>作るだけなら「ツクール」シリーズという心強い味方がいます。<br><br>そう気付いた少年時代の私の中で、「ゲームを作る」という、<br>まだぼんやりしていた夢が再び燃え上がりました。<br><br><br>そうやって全てが始まったときから今までの間ずっと、<br>私はゲームや様々な創作物を作り続けることができました。<br>最初はレジェンドオブレストールを置くためだけの<br>なんとなく生まれたサイトでしたが、<br>見てくださる皆様のおかげで20年以上も続けることができました。<br><br><hr size="1" /><br>平成時代でのインターネットとの出会いは、<br>私の人生を本当に大きく変えてくれたと思っています。<br><br>そしてまた、時代を越えてこのサイトを見てくださる皆様がいてくださることには、<br>本当に感謝しかありません！　<br><br>今後も引き続きゲームやら創作物やら作っていきますので、<br>令和の時代も引き続きよろしくお願いいたします！</div></div><br><br><br>
@@ -205,12 +263,13 @@ window.addEventListener('DOMContentLoaded', ()=>{
 <a id='bottom'></a>
 
 <BR><BR>
-<CENTER><a href="#top" class="jumplink">▲一番上へ戻る</a></CENTER>
+<div align="right"><a href="#top" class="g">▲一番上へ戻る</a></div>
 <BR>
+<CENTER>
 <HR>
 Copyright © SmokingWOLF / Silver Second
 <HR>
-
+</CENTER>
 
 </div>
 <div id='sidebar'>

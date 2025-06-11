@@ -11,7 +11,6 @@ BODY{
   font-size:13px;
   margin:0;
   font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
-
 }
 
 TD{
@@ -28,9 +27,9 @@ A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shado
 A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
 A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
 
-A.g:LINK,A.g:VISITED,
-A.jumplink:LINK,A.jumplink:VISITED{
+A.g:LINK,A.g:VISITED{
 	color:#38a68c;
+	text-decoration:underline;
 }
 
 A.g:HOVER,A.g:ACTIVE{
@@ -38,15 +37,26 @@ A.g:HOVER,A.g:ACTIVE{
 	text-decoration : underline;
 }
 
+
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38c6ac;
+}
+
 A.jumplink:HOVER,A.jumplink:ACTIVE{
-	color : #68b6ac;
+	color : #68f6ac;
 }
 
 A.jumplink{
-	text-shadow: 0 0 15px #ccffcc, 0 0 15px #aaffaa;
+	text-shadow: 0 0 15px #ccddcc, 0 0 15px #aaddaa;
 	text-decoration : none;
 }
 
+
+
+#content {
+	font-size:14px;
+	
+}
 
 #sidebar {
 	background:#f8f8f8; 
@@ -95,12 +105,17 @@ A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
 	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
 }
 
-.entry-body {background:#fff; color:#444; padding:10px;}
+.entry-body,.extended {
+	background:#fff; 
+	color:#444; 
+	padding:10px;
+	font-size:14px;
+}
 
 
 /*--●形状整理用--*/
 body {display:flex; margin:0;}
-#content {flex:1; padding:0 8px;}
+#content {width:580px; padding:0 8px;}
 #sidebar {width:120px;  box-sizing:border-box; }
 #sidebar div {line-height:1.6;}
 #sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
@@ -125,7 +140,7 @@ function toggleDisp(id){
 </script>
 </head>
 <body>
-
+<a id="top"></a>
 
 
 
@@ -190,12 +205,55 @@ window.addEventListener('DOMContentLoaded', ()=>{
 .header3{
 	color:#555588;
 }
+
+.home-link {
+  font-size: 12px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: underline;
+}
 </style>
 
+<!--戻るリンク、サイトがなくなってたらアーカイブにつながるようにしたが404ページがアレなのかうまくいかない-->
+<!--
+<font id="home-link-placeholder">
+  <noscript>
+    <a href="https://smokingwolf.github.io/" class="home-link">← ホーム(アーカイブサイト)に戻る</a>
+  </noscript>
+</font>
 
-<div class="TopTitle" style="margin-top:20px;">　　シルバーセカンド開発日誌</div>
+<script>
+(async () => {
+  try {
+    // HEADで軽くチェック（no-corsなのでステータス確認は不可）
+    // 自分のサイトのインフォメーションページにつなげるならサイトがまだあると認識する
+    await fetch("https://silversecond.net/contents/etc/info.shtml", { method: "HEAD", mode: "no-cors" });
+
+    const link = document.createElement("a");
+    link.href = "https://silversecond.net/";
+    link.textContent = "← ホームに戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  } catch {
+    const link = document.createElement("a");
+    link.href = "https://smokingwolf.github.io/";
+    link.textContent = "← ホーム(アーカイブサイト)に戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  }
+})();
+</script>
+-->
+
+<div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
 <!--ここにコメント文-->
-<div class="header3" style="margin-top:6px;">　ゲーム開発者SmokingWOLFの開発日誌。気付けば足跡も数十年分！</div>
+<div class="header3" style="margin-top:6px;">　ゲーム開発者SmokingWOLFの開発日誌です。ここまでずいぶん長く歩いてきました。<BR>
+　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
+　
+
+</div>
 
 <div class='nav'><a href='001.html'>次のページ</a> | <span style='color:#ccc'>前のページ</span></div>
 <div class='entry'><div class='entry-title'>■<a id='2019-03-16'></a>2019-03-16&nbsp;&nbsp;&nbsp;片道勇者2【33】 すぐ使う機能とマップ<span style='float:right;'><a href='#2019-02-23' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><span style="font-size:large;"><strong>【片道勇者2　すぐ使う機能とマップ】</strong></span><br><br>お仕事の合間をぬってゲーム開発中です。<br>『片道勇者2』はまだアルファ1のフィードバック対応中ですが<br>ちょっとずつ進んでいます。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【落ちてるアイテムをそのまま使える機能を実装】</strong></span><br><br>アルファ1で「落ちているアイテムをいちいち拾ってから使うの面倒くさい！」<br>「カード所持数いっぱいでも使いたい！」とのご意見をいくつかいただいていました。<br>私もそう思っていましたので、落ちているアイテムをそのまま使える機能をようやく搭載です。<br><br>※画面はまだ仮テスト状態です。今後、見栄えをよくしていきます<br><img src="../../image/2019/20190316.jpg" border="1" width="500"><br><br>実際に搭載してみるとやっぱり便利ですね！<br>アルファ1データだと「癒しの草」みたいな直接使いたいアイテムも多いので、<br>操作の手間が減らせるのは大きいです。<br>従来だと「クリック→マウス移動→クリック→マウス移動→クリック」だったのが<br>「ボタン1クリック」で片付くのは早い！<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【マップ生成機能の再調整】</strong></span><br><br>アルファ1では作りが悪くてうまく制御がきかなかったので、<br>マップのランダム作成処理を作り直していました。<br>これでもう、想定外に細い道ができたりはしないはずです。<br><br>↓昔の画面、アルファ1では１画面内で端から端まで見える狭い場所がありました<br><img src="../../image/2019/20190316A.jpg" border="1" width="400"><br><br>本来は「地形ごとの最低道幅」が数値上だけ設定されてたんですが、<br>アルファ1のバージョンだとうまく動いていなくて、縦幅で4マスしかないとか<br>ヤバいほど狭いマップになってるところがあったんですよ！<br><br>あれは狙ったものでもなんでもなくてただのバグで、<br>少なくとも「草原地帯」であんな細い道は作られないようにするつもりです。<br>「渓谷地帯」みたいな、細い道しかなさそうな場所もある地形ならありだと思います。<br><br><br><span style="font-size:large;"><strong>＜ミニマップはどうする？＞</strong></span><br><br>「片道勇者2」でミニマップを入れるかは検討中で、<br>ぶっちゃけ<strong>「建物」や「女神像」に一定まで近づいたら、<br>「その方角と距離などが示される」</strong>形でも十分じゃないかなと<br>思うところもあって、一回それを試してみる予定です。<br><br>ミニマップはミニマップで情報量が多いのですが、<br>「見続けないと効果がない」という弱点があります（あと、すでに画面が狭い）。<br>当初は、「ミニマップ」に加えて建物などに近づいた時点で<br>「この方角になんか建物があるぞ！」と前作の<br>狩人の敵探知みたいなマークを出そうと思ったんですが、よく考えたらこれ、<br>「ミニマップなしの探知表示だけ」で用が済みそうな気配もあるんですよ。<br><br>こういった「警告表示だけで用が済む」状況の類例として、<br>たとえばリメイク作の『<a href="https://store.steampowered.com/app/409000/Mystery_Chronicle_One_Way_Heroics/?l=japanese" class="red"><strong>不思議のクロニクル 振リ返リマセン勝ツマデハ</strong></a>』だと<br>原作にあった「魔王来るよ時計」がなくなっていたのですが、<br>片道勇者プラスの「魔王が来るまであと3時間！」という警告が<br>継承されていたおかげで、時計を表示しなくても<br>ほぼ困らないことが分かっています。<br><br>もし3時間前で足りなければ6時間前、12時間前にも出せばいいだけですし、<br>さらには襲撃時間を「3日目12時に襲来」と端に文字で出してもいいと思います。<br><br>とにかく、「必要なときに目立つ警告」をしてくれれば、<br>生情報を出しっぱなしにする必要がそんなにない可能性があります。<br>この機会に、色々試してみたいと思っています。</div></div><br><br><br>
@@ -204,12 +262,13 @@ window.addEventListener('DOMContentLoaded', ()=>{
 <a id='bottom'></a>
 
 <BR><BR>
-<CENTER><a href="#top" class="jumplink">▲一番上へ戻る</a></CENTER>
+<div align="right"><a href="#top" class="g">▲一番上へ戻る</a></div>
 <BR>
+<CENTER>
 <HR>
 Copyright © SmokingWOLF / Silver Second
 <HR>
-
+</CENTER>
 
 </div>
 <div id='sidebar'>

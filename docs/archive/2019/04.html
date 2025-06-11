@@ -11,7 +11,6 @@ BODY{
   font-size:13px;
   margin:0;
   font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
-
 }
 
 TD{
@@ -28,9 +27,9 @@ A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shado
 A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
 A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
 
-A.g:LINK,A.g:VISITED,
-A.jumplink:LINK,A.jumplink:VISITED{
+A.g:LINK,A.g:VISITED{
 	color:#38a68c;
+	text-decoration:underline;
 }
 
 A.g:HOVER,A.g:ACTIVE{
@@ -38,15 +37,26 @@ A.g:HOVER,A.g:ACTIVE{
 	text-decoration : underline;
 }
 
+
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38c6ac;
+}
+
 A.jumplink:HOVER,A.jumplink:ACTIVE{
-	color : #68b6ac;
+	color : #68f6ac;
 }
 
 A.jumplink{
-	text-shadow: 0 0 15px #ccffcc, 0 0 15px #aaffaa;
+	text-shadow: 0 0 15px #ccddcc, 0 0 15px #aaddaa;
 	text-decoration : none;
 }
 
+
+
+#content {
+	font-size:14px;
+	
+}
 
 #sidebar {
 	background:#f8f8f8; 
@@ -95,12 +105,17 @@ A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
 	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
 }
 
-.entry-body {background:#fff; color:#444; padding:10px;}
+.entry-body,.extended {
+	background:#fff; 
+	color:#444; 
+	padding:10px;
+	font-size:14px;
+}
 
 
 /*--●形状整理用--*/
 body {display:flex; margin:0;}
-#content {flex:1; padding:0 8px;}
+#content {width:580px; padding:0 8px;}
 #sidebar {width:120px;  box-sizing:border-box; }
 #sidebar div {line-height:1.6;}
 #sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
@@ -125,7 +140,7 @@ function toggleDisp(id){
 </script>
 </head>
 <body>
-
+<a id="top"></a>
 
 
 
@@ -190,12 +205,55 @@ window.addEventListener('DOMContentLoaded', ()=>{
 .header3{
 	color:#555588;
 }
+
+.home-link {
+  font-size: 12px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: underline;
+}
 </style>
 
+<!--戻るリンク、サイトがなくなってたらアーカイブにつながるようにしたが404ページがアレなのかうまくいかない-->
+<!--
+<font id="home-link-placeholder">
+  <noscript>
+    <a href="https://smokingwolf.github.io/" class="home-link">← ホーム(アーカイブサイト)に戻る</a>
+  </noscript>
+</font>
 
-<div class="TopTitle" style="margin-top:20px;">　　シルバーセカンド開発日誌</div>
+<script>
+(async () => {
+  try {
+    // HEADで軽くチェック（no-corsなのでステータス確認は不可）
+    // 自分のサイトのインフォメーションページにつなげるならサイトがまだあると認識する
+    await fetch("https://silversecond.net/contents/etc/info.shtml", { method: "HEAD", mode: "no-cors" });
+
+    const link = document.createElement("a");
+    link.href = "https://silversecond.net/";
+    link.textContent = "← ホームに戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  } catch {
+    const link = document.createElement("a");
+    link.href = "https://smokingwolf.github.io/";
+    link.textContent = "← ホーム(アーカイブサイト)に戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  }
+})();
+</script>
+-->
+
+<div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
 <!--ここにコメント文-->
-<div class="header3" style="margin-top:6px;">　ゲーム開発者SmokingWOLFの開発日誌。気付けば足跡も数十年分！</div>
+<div class="header3" style="margin-top:6px;">　ゲーム開発者SmokingWOLFの開発日誌です。ここまでずいぶん長く歩いてきました。<BR>
+　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
+　
+
+</div>
 
 <div class='nav'><a href='05.html'>次の月へ</a> | <a href='03.html'>前の月へ</a></div>
 <div class='entry'><div class='entry-title'>■<a id='2019-04-27'></a>2019-04-27&nbsp;&nbsp;&nbsp;片道勇者2【35】レベルアップ<span style='float:right;'><a href='#2019-04-13' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><span style="font-size:large;"><strong>【片道勇者2　レベルアップ】</strong></span><br><br>今週は空いた時間でレベルアップ関連の調整をしていました。<br>また新しいお仕事が飛んできたのでがんばっていきます。<br>お仕事のうち一つはそのうち情報が出ると思いますのでご期待ください。<br><br><img src="../../image/2019/20190427.jpg" border="1" title="レベルアップ画面" width="520"><br>手札に来た「経験値」を消費してスキルやパラメータ成長を購入します。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【レベルアップ画面の調整】</strong></span><br>今回はアルファ1からの変更についてまとめておきます。<br><br><span style="font-size:large;"><strong>・「女神像」でレベルアップ可能</strong></span><br><img src="../../image/2019/20190427D.jpg" border="1" width="300"><br>これはもう前回もご報告済みですが、アルファ2以降では<br>一定距離ごとに出現する「女神像」でレベルアップが可能となります。<br><br>もちろん経験値がたまってない場合や何もいらない場合もあるかもしれないので、<br>レベルアップのかわりに「経験値をもらう」選択肢や、<br>願いを叶えてもらうのに使える「女神ポイント」を増やす選択肢も選べます。<br>この選択を終えると、片道勇者1の女神像であったような「願い」の選択に入ります。<br><br><br><span style="font-size:large;"><strong>・「覚醒」で手札が増やせるのを明示</strong></span><br><img src="../../image/2019/20190427A.jpg" border="1" width="300"><br>アルファ1ではレベルアップの際、手札の経験値を増やすために<br>「覚醒（手札を増やせる）」が使えることは「暗黙的」だったのですが、<br>アルファ2からはボタンで明示される形になります。<br><br>「頼む経験値来てくれ！」と祈りながら<br>気軽に押してしまうのでどんどん「覚醒」が減ります。<br>今回は「覚醒」が一定距離ごとに回復するので、<br>うまいタイミングで使ってもらえたらと思います。<br><br><br><span style="font-size:large;"><strong>・スペシャルカードの効果を複数種から選べるように。</strong></span><br><img src="../../image/2019/20190427B.jpg" border="1" width="420"><br>スペシャル成長カードは「特殊な成長を複数種から選べる」ようになります。<br><br>今のところは仮で「最大HP＋10　・　筋力＋4　・　手札＋1　・　成長力＋2」<br>の4種から選ぶことができます。「成長力」は<strong>「レベルアップ時の手札の枚数」</strong>で、<br>これが増えるほど手札の総経験値の期待値が高くなります。<br><br>デッキ構築がうまいプロい人は、手札や成長力を増やさずに<br>パラメータを伸ばす方が強かったりするかもしれません。<br><br>ちなみに、選べる成長内容に「行動力＋1」も一度入れてみたんですが、<br>「行動力」の基本値が増やせるとゲーム後半の一手の操作量が増えて<br>面倒くささが増えてしまい、「ウガー！」となってしまいました。<br><br>「行動力」周りに関しては初期値から増やさず、<br>「パッシブカードなどで行動力が増やせる」<br>「いざというときは経験値や覚醒を消費して行動力を増やす」など<br>そういった形でゆるやかに調整していければと考えています。<br>（アルファ2仕様では、移動中に「経験値」を消費することで<br>手札と行動力を一時的に増やすことができます）<br><br><br><br><span style="font-size:large;"><strong>・スペシャルカードは10レベルごとに回復するように。</strong></span><br><img src="../../image/2019/20190427C.jpg" border="1"><br>特殊な成長ができるスペシャルカードですが、<br>アルファ1では一度選ぶと特殊な準備をしないと再び選べないという記述でした。<br>アルファ2からはレベルが10の倍数に達するたびに<br>スペシャルカードが1回分補給されます。<br><br>……と思っていたんですが、これを書いてる最中に<br>「取りたくもないスキルカードをムダに取らなければならない場面」が<br>出てくるとイヤだなということに気付きました。<br>デッキ構築ゲームはデッキが完成したら<br>基本的にいじらなくていいゲームのはずですからね。<br><br>スペシャルカード回復は、「レベルごと」でなく<br>「距離ごと（たとえば500kmに1つとか）」などにしたほうが<br>開発側としても遊ばれる側としても扱いやすいかもしれません。<br><br>特に、「距離さえ進めば筋力を上げられるチャンスが出る」みたいな感じで、<br>経験値をためにくい職業の救済にもなりうるのは重要かもしれません。<br>とにかくここは要調整ポイントです。<br><br><hr size="1" /><br>試行錯誤してはあっちいってはこっちへ来てというのをまだ繰り返してますが、<br>現状のレベルアップ仕様に関してはこんな感じとなっております。<br><br>最後のスペシャルカードの回復の話で<br>「レベル」より「距離」を基準にした方がいいんじゃねえの、<br>って話を見ても分かるように、常に触れることになるルール部分は<br>基準値に使う数字を1個間違えるだけで微妙に面白さがチグハグになる場合があります。<br>遊ばれる人が最善を目指す邪魔にならないよう、<br>うまいことゲームシステムを組んでいきたいと思います。</div></div><br><br><br>
@@ -204,12 +262,13 @@ window.addEventListener('DOMContentLoaded', ()=>{
 <a id='bottom'></a>
 
 <BR><BR>
-<CENTER><a href="#top" class="jumplink">▲一番上へ戻る</a></CENTER>
+<div align="right"><a href="#top" class="g">▲一番上へ戻る</a></div>
 <BR>
+<CENTER>
 <HR>
 Copyright © SmokingWOLF / Silver Second
 <HR>
-
+</CENTER>
 
 </div>
 <div id='sidebar'>
