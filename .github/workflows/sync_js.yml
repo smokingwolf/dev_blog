@@ -14,7 +14,7 @@ jobs:
       with:
         fetch-depth: 0  # フル履歴を取得して diff に備える
 
-    - name: Prepare image list
+    - name: Prepare js list
       run: |
         mkdir -p docs/js/
         if [ "${{ github.event.before }}" = "0000000000000000000000000000000000000000" ]; then
