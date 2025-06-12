@@ -1,4 +1,4 @@
-TITLE: 2025年！ 新年あけまして！
+TITLE: 2025年！　新年あけまして！
 CATEGORY: 開発日誌
 DATE: 2025-01-01 00:00:33
 -----
@@ -188,7 +188,7 @@ BODY:
 　こちらで投稿されている映像のようにオーバーレイ合成やクリッピングマスクっぽいこともできるようになりました！(しかもXY配列4つ使ってそのままピクチャ表示することもできます！）
 　画像のアルファ値やRGB値をXY配列に読み書きする機能を使えば、画像合成回りの自由度がかなり上がります！　
 　<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/Help/04ev_string_specialcode.html#IMG5"><B>隠しコード「<<LOAD_IMAGE_TO_XY/A=?/R=?/G=?/B=?>>(ファイル名)」</B></a>を使えば、画像ファイルの2次元データを4つのXY配列（ARGB分）に読み込むことができますので、あとは計算次第でなんでもできますよ！
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">ウディタ3.5、XY配列の「画像⇔ARBG値」の変換機能のお陰で、スクリーンとかオーバーレイとか画像合成周りが実現できる…うれしい！ <a class="red" href="https://t.co/NKr0s14zTN">pic.twitter.com/NKr0s14zTN</a></p>&mdash; そーま@健全用 (@yudusoma) <a class="red" href="https://twitter.com/yudusoma/status/1881224050040852672?ref_src=twsrc%5Etfw">January 20, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">ウディタ3.5、XY配列の「画像⇔ARBG値」の変換機能のお陰で、スクリーンとかオーバーレイとか画像合成周りが実現できる…うれしい！ <a class="red"  target="_top" href="https://t.co/NKr0s14zTN">pic.twitter.com/NKr0s14zTN</a></p>&mdash; そーま@健全用 (@yudusoma) <a class="red"  target="_top" href="https://twitter.com/yudusoma/status/1881224050040852672?ref_src=twsrc%5Etfw">January 20, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <HR>
 <span style="font-size:120%;"><B>【お絵かき掲示板が作れる！】</B></span>
@@ -204,14 +204,14 @@ BODY:
 
 　XY配列が来たので作れたー！　とおっしゃってた気がしますが、アルゴリズムでこんな自然な地形生成ができるそうです！　すごい！
 　XY配列にその地形情報を色塗りすれば画像にもできるので、こんな風に「ランダム世界の世界地図」のお手軽表示だってできるようになります！
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">【<a class="red" hash&amp;ref_src=twsrc%5Etfw"" href="https://twitter.com/hashtag/%E3%82%A6%E3%83%87%E3%82%A3%E3%82%BF?src=">#ウディタ</a>】ウディタv3.5の新機能を駆使するとできる表現技術ちらみせ。画像ファイル使用無し（今開発中のゲームが完成した後の次回作で使う予定の機能） <a class="red" href="https://t.co/1hd8tquD4d">pic.twitter.com/1hd8tquD4d</a></p>&mdash; K-Shin07(Sitella) (@K_Shin07) <a class="red" href="https://twitter.com/K_Shin07/status/1880509345009659944?ref_src=twsrc%5Etfw">January 18, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">【<a class="red" hash&amp;ref_src=twsrc%5Etfw"" target="_top" href="https://twitter.com/hashtag/%E3%82%A6%E3%83%87%E3%82%A3%E3%82%BF?src=">#ウディタ</a>】ウディタv3.5の新機能を駆使するとできる表現技術ちらみせ。画像ファイル使用無し（今開発中のゲームが完成した後の次回作で使う予定の機能） <a class="red"  target="_top" href="https://t.co/1hd8tquD4d">pic.twitter.com/1hd8tquD4d</a></p>&mdash; K-Shin07(Sitella) (@K_Shin07) <a class="red"  target="_top" href="https://twitter.com/K_Shin07/status/1880509345009659944?ref_src=twsrc%5Etfw">January 18, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 　
 <HR>
 <span style="font-size:120%;"><B>【サウンドのパン機能を3Dゲームに搭載】</B></span>
 
 　そしてこちらはサウンドのパン機能の利用見本！　音源の場所が3Dチックに聞こえるようになっていて、ウディタ3D学会の方々の作品もさらに満足度アップ！　
 　そもそもこの3D具合の完成度がすさまじい！！　すごい！
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">【ウディタ3.5】ウディタ3.5の新機能によってウディタ3D学会とウディタインタラクティブサウンド学会が混ざり合って爆破した結果、「3D座標の指定座標（今回は展示パネル）に音源を設置する」ことができるようになりました <a class="red" href="https://t.co/vMDknW5VdX">pic.twitter.com/vMDknW5VdX</a></p>&mdash; ぽり０６５５ (@pori0655) <a class="red" href="https://twitter.com/pori0655/status/1881315203297718335?ref_src=twsrc%5Etfw">January 20, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">【ウディタ3.5】ウディタ3.5の新機能によってウディタ3D学会とウディタインタラクティブサウンド学会が混ざり合って爆破した結果、「3D座標の指定座標（今回は展示パネル）に音源を設置する」ことができるようになりました <a class="red"  target="_top" href="https://t.co/vMDknW5VdX">pic.twitter.com/vMDknW5VdX</a></p>&mdash; ぽり０６５５ (@pori0655) <a class="red"  target="_top" href="https://twitter.com/pori0655/status/1881315203297718335?ref_src=twsrc%5Etfw">January 20, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 <HR>
