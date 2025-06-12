@@ -20,8 +20,11 @@ python scripts/build.py
 
 GitHub Actionsを用いたワークフローにより、mainブランチへの「source_txt/」へのpushごとに自動的にビルド処理を行います。 
 このアクションは変換スクリプトを実行し、生成されたHTMLをコミットすることで、ブログが常に最新の状態に保たれるようになります。
+
 ブログ投稿者は「source_txt/」「source_img/」「source_js/」内のみ操作するようにしてください。
+
 デザイン変更時は「design/」内を編集します（ただしその後に「source_txt」を更新して再ビルドを行うまで反映されません）
 
 ・「source_img/」内に画像がpushされた場合、「docs/image/」内にコピーされます。
+
 ・「source_js/」内に画像がpushされた場合、「docs/js/」内にコピーされます。
