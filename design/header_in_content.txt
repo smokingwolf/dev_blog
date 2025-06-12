@@ -20,6 +20,7 @@
 
 .header3{
 	color:#555588;
+	margin-bottom:16px;
 }
 
 .home-link {
@@ -67,8 +68,5 @@
 <!--ここにコメント文-->
 <div class="header3" style="margin-top:6px;">　ここはゲーム開発者SmokingWOLF(スモーキングウルフ)の開発日誌です。<BR>
 　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
-　<B style="color:#ff5555;">※以前のfc2ブログ版がBANされてしまったようなのでただいまこちらの開発日誌に移転中です</B>
-　<BR>
-　
-
+　<B style="color:#ff5555;">※以前のブログが使えなくなったので、ただいまこの開発日誌に移転中です。</B>
 </div>

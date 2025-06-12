@@ -124,6 +124,7 @@ A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
 .entry-foot {
 	background:#fff; 
 	text-align:center;
+	vertical-align:middle;
 	color:#ccf;
 	font-size:12px;
 	padding-top:20px;
@@ -141,7 +142,7 @@ body {display:flex; margin:0;}
 #sidebar {width:120px;  box-sizing:border-box; }
 #sidebar div {line-height:1.6;}
 #sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
-.nav {margin:4px 0; text-align:center;}
+.nav {margin:0px 0 -20px 0; text-align:center;}
 .sym {color:#999; font-weight:normal;}
 
 </style>
