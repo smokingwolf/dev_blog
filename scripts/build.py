@@ -143,6 +143,10 @@ STYLE_BLOCK = """
   position: absolute;
   pointer-events: none;
   opacity: 0;
+  max-width: 80vw;             /* 画面幅の 80% で折り返す */
+  overflow-wrap: anywhere;     /* 長い URL を途中で区切る */
+  word-break: break-all;       /* ↑が効かない旧ブラウザ保険 */
+  white-space: pre-wrap;       /* \n を改行として扱い、余計な連続空白は1個に */
 }
 .article_end_date{
   font-size:0.9em;
@@ -188,17 +192,17 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
 function copyLink(date, title, el){
   const url = `https://smokingwolf.github.io/dev_blog/archive/${date.slice(0,4)}/${date.slice(5,7)}.html#${date}`;
-  const text = `【${date}\u3000${title}】 ${url}`;
+  const text = `\n【${date}\u3000${title}】\n ${url}`;
   navigator.clipboard.writeText(text).then(()=>{
     if(el && el.tagName === 'BUTTON'){
       const orig = el.textContent;
       el.textContent = '✅ コピー完了!';
-      setTimeout(()=>{ el.textContent = '🔗 リンクをコピー'; }, 1500);
+      setTimeout(()=>{ el.textContent = '🔗 リンクをコピー'; }, 2000);
     }
 
     const popup = document.createElement('div');
     popup.className = 'copy-popup';
-    popup.textContent = `✅ コピー完了：「${text}」`;
+    popup.textContent = `✅ コピー完了：${text}`;
     document.body.appendChild(popup);
 
     const rect = el.getBoundingClientRect();
@@ -268,7 +272,7 @@ def render_entry_block(entry: dict, anchor_id: str, next_anchor: str | None):
         arrow = ""
 
     title_html = (
-        f"■<a id='{anchor_id}'></a>"
+        f"■"
         f"<span onclick=\"copyLink('{date_str}','{title_js}', this)\" style='cursor:pointer;'>"
         f"{date_str}&nbsp;&nbsp;&nbsp;{title_html_safe}</span>{arrow}"
     )
@@ -290,7 +294,7 @@ def render_entry_block(entry: dict, anchor_id: str, next_anchor: str | None):
     )
 
     return (
-        f"<div class='entry'>"
+        f"<a id='{anchor_id}'></a><BR><div class='entry'>"
         f"<div class='entry-title'>{title_html}</div>"
         f"<div class='entry-body'>{body}</div>"
         f"{ext_html}"
