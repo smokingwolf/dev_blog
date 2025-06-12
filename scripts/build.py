@@ -283,9 +283,9 @@ def render_entry_block(entry: dict, anchor_id: str, next_anchor: str | None):
     )
     end_html = (
         f"<div class='entry-foot'>"
-        f"<font class='article_end_date'>{date_str}　{title_html_safe}</font><br>"
+        f"　<font class='article_end_date'>{date_str}</font>　"
         f"{clap_html}<span style='display:inline-block;width:15px;'></span>"
-        f"<button class='linkbutton' onclick=\"copyLink('{date_str}','{title_js}', this)\">📋 リンクをコピー</button>"
+        f" <button class='linkbutton' onclick=\"copyLink('{date_str}','{title_js}', this)\">📋 リンクをコピー</button>"
         f"</div>"
     )
 
