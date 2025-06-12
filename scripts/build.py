@@ -5,6 +5,7 @@ from collections import defaultdict
 import html
 import json
 import re
+import urllib.parse
 
 # Number of recent entries to show in sidebar. Set to 0 to disable section.
 LATEST_POST_COUNT = 7
@@ -114,7 +115,39 @@ def get_cat_dir(cat: str, mapping: dict[str, str]) -> str:
 # =============================
 
 STYLE_BLOCK = """
-
+<style type='text/css'>
+.linkbutton{
+  font-size: 0.9em;
+  padding: 1px 6px;
+  vertical-align: baseline;
+  line-height: 1;
+  height: auto;
+  margin-left: 4px;
+  color:#66f;
+  background-color:#f9f9f9;
+  border: 1px solid #888;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.copy-popup{
+  background-color: #eef;
+  border: 1px solid #88c;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  color: #333;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.5s ease;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+}
+.article_end_date{
+  font-size:0.9em;
+}
+</style>
 """
 
 SCRIPT_BLOCK = """
@@ -152,6 +185,43 @@ window.addEventListener('DOMContentLoaded', ()=>{
     }
   });
 });
+
+function copyLink(date, title, el){
+  const url = `https://smokingwolf.github.io/dev_blog/archive/${date.slice(0,4)}/${date.slice(5,7)}.html#${date}`;
+  const text = `【${date}\u3000${title}】 ${url}`;
+  navigator.clipboard.writeText(text).then(()=>{
+    if(el && el.tagName === 'BUTTON'){
+      const orig = el.textContent;
+      el.textContent = '✅ コピー完了!';
+      setTimeout(()=>{ el.textContent = '🔗 リンクをコピー'; }, 1500);
+    }
+
+    const popup = document.createElement('div');
+    popup.className = 'copy-popup';
+    popup.textContent = `✅ コピー完了：「${text}」`;
+    document.body.appendChild(popup);
+
+    const rect = el.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    const popupWidth = popup.offsetWidth;
+    const pageWidth = document.documentElement.clientWidth;
+
+    let left = rect.left + scrollLeft + (rect.width / 2) - (popupWidth / 2);
+    let top  = rect.top  + scrollTop - popup.offsetHeight - 8;
+    if(left < scrollLeft + 4) left = scrollLeft + 4;
+    if(left + popupWidth > scrollLeft + pageWidth - 4)
+        left = scrollLeft + pageWidth - popupWidth - 4;
+
+    popup.style.left = `${left}px`;
+    popup.style.top  = `${top}px`;
+    popup.style.opacity = '1';
+    popup.style.zIndex = '9999';
+
+    setTimeout(()=>{ popup.style.opacity = '0'; }, 1800);
+    setTimeout(()=>{ popup.remove(); }, 2500);
+  });
+}
 </script>
 """
 
@@ -173,14 +243,16 @@ def render_entry_block(entry: dict, anchor_id: str, next_anchor: str | None):
     the id of the next entry (or ``None``). A link with a ▼ symbol pointing to
     ``next_anchor`` will be placed on the right side of the title bar.
     """
-    title = html.escape(entry["title"])
+    title_raw = entry["title"]
+    title_html_safe = html.escape(title_raw)
     date_str = entry["date_str"].split()[0]
     body = entry["body"].replace("\n", "<br>")
     extended = entry["extended"].replace("\n", "<br>")
+    title_js = title_raw.replace("\\", "\\\\").replace("'", "\\'")
 
     ext_html = ""
     if entry["extended"]:
-        ext_id = f"ext-{hash(date_str + title)}"
+        ext_id = f"ext-{hash(date_str + title_raw)}"
         ext_html = (
             f'<CENTER>　<a href="javascript:void(0);" onclick="toggle(\'{ext_id}\')">&#9660;追記を開く&#9660;</a></CENTER>'
             f'<div id="{ext_id}" style="display:none;" class="extended">{extended}</div>'
@@ -196,7 +268,25 @@ def render_entry_block(entry: dict, anchor_id: str, next_anchor: str | None):
         arrow = ""
 
     title_html = (
-        f"■<a id='{anchor_id}'></a>{date_str}&nbsp;&nbsp;&nbsp;{title}{arrow}"
+        f"■<a id='{anchor_id}'></a>"
+        f"<span onclick=\"copyLink('{date_str}','{title_js}', this)\" style='cursor:pointer;'>"
+        f"{date_str}&nbsp;&nbsp;&nbsp;{title_html_safe}</span>{arrow}"
+    )
+
+    year, month, _ = date_str.split('-')
+    link = f"https://smokingwolf.github.io/dev_blog/archive/{year}/{month}.html#{anchor_id}"
+    enc_url = urllib.parse.quote(link, safe='')
+    enc_title = urllib.parse.quote(entry['title'], safe='')
+    clap_html = (
+        f"<a href=\"//clap.fc2.com/post/smokingwolf/?url={enc_url}&title={enc_title}\" target=\"_blank\" title=\"web拍手 by FC2\">"
+        f"<img src=\"//clap.fc2.com/images/button/green/smokingwolf?url={enc_url}&lang=ja\" alt=\"web拍手 by FC2\" style=\"border:none;\" /></a>"
+    )
+    end_html = (
+        f"<div class='entry-foot'>"
+        f"<font class='article_end_date'>{date_str}　{title_html_safe}</font><br>"
+        f"{clap_html}<span style='display:inline-block;width:15px;'></span>"
+        f"<button class='linkbutton' onclick=\"copyLink('{date_str}','{title_js}', this)\">📋 リンクをコピー</button>"
+        f"</div>"
     )
 
     return (
@@ -204,7 +294,7 @@ def render_entry_block(entry: dict, anchor_id: str, next_anchor: str | None):
         f"<div class='entry-title'>{title_html}</div>"
         f"<div class='entry-body'>{body}</div>"
         f"{ext_html}"
-        f"</div>"
+        f"{end_html}</div>"
     )
 
 
