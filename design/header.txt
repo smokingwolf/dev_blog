@@ -14,7 +14,7 @@ BODY{
 }
 
 TD{
-  font-size:13px;
+  font-size:12px;
 }
 
 
@@ -117,7 +117,8 @@ A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
 	background:#fff; 
 	color:#444; 
 	padding:10px;
-	font-size:14px;
+	font-size:13px;
+	line-height:24px;
 }
 
 .entry-foot {
