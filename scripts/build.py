@@ -286,7 +286,7 @@ def render_entry_block(entry: dict, anchor_id: str, next_anchor: str | None,
     enc_title = urllib.parse.quote(entry['title'], safe='')
     clap_html = (
         f"<a href=\"//clap.fc2.com/post/smokingwolf/?url={enc_url}&title={enc_title}\" target=\"_blank\" title=\"web拍手 by FC2\">"
-        f"<img src=\"//clap.fc2.com/images/button/green/smokingwolf?url={enc_url}&lang=ja\" alt=\"web拍手 by FC2\" style=\"border:none;\" /></a>"
+        f"<img src=\"//clap.fc2.com/images/button/white/smokingwolf?url={enc_url}&lang=ja\" alt=\"web拍手 by FC2\" style=\"border:none;\" /></a>"
     )
     cat_html = ""
     category = entry.get("category")
