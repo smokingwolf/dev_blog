@@ -240,7 +240,8 @@ NO_CACHE_META = """
 HEAD_OPEN_RE = re.compile(r"(<head[^>]*>)", re.IGNORECASE)
 
 
-def render_entry_block(entry: dict, anchor_id: str, next_anchor: str | None):
+def render_entry_block(entry: dict, anchor_id: str, next_anchor: str | None,
+                       page_dir: str, root: str = 'docs'):
     """Return HTML snippet for a single entry, including optional extended part.
 
     ``anchor_id`` is the id assigned to this entry and ``next_anchor`` should be
@@ -250,6 +251,8 @@ def render_entry_block(entry: dict, anchor_id: str, next_anchor: str | None):
     title_raw = entry["title"]
     title_html_safe = html.escape(title_raw)
     date_str = entry["date_str"].split()[0]
+    weekday = "月火水木金土日"[entry["date"].weekday()]
+    date_disp = f"{date_str} ({weekday})"
     body = entry["body"].replace("\n", "<br>")
     extended = entry["extended"].replace("\n", "<br>")
     title_js = title_raw.replace("\\", "\\\\").replace("'", "\\'")
@@ -274,7 +277,7 @@ def render_entry_block(entry: dict, anchor_id: str, next_anchor: str | None):
     title_html = (
         f"■"
         f"<span onclick=\"copyLink('{date_str}','{title_js}', this)\" style='cursor:pointer;'>"
-        f"{date_str}&nbsp;&nbsp;&nbsp;{title_html_safe}</span>{arrow}"
+        f"{date_disp}&nbsp;&nbsp;&nbsp;{title_html_safe}</span>{arrow}"
     )
 
     year, month, _ = date_str.split('-')
@@ -285,11 +288,22 @@ def render_entry_block(entry: dict, anchor_id: str, next_anchor: str | None):
         f"<a href=\"//clap.fc2.com/post/smokingwolf/?url={enc_url}&title={enc_title}\" target=\"_blank\" title=\"web拍手 by FC2\">"
         f"<img src=\"//clap.fc2.com/images/button/green/smokingwolf?url={enc_url}&lang=ja\" alt=\"web拍手 by FC2\" style=\"border:none;\" /></a>"
     )
+    cat_html = ""
+    category = entry.get("category")
+    cat_dir = entry.get("cat_dir")
+    if category and page_dir:
+        rel_root = os.path.relpath(root, page_dir)
+        cat_link = f"{rel_root}/category/{cat_dir}/001.html"
+        cat_html = (
+            f" <span style='float:right;'>カテゴリ: <a href='{cat_link}'>{html.escape(category)}</a></span>"
+        )
+
     end_html = (
         f"<div class='entry-foot'>"
-        f"　<font class='article_end_date'>{date_str}</font>　"
+        f"　<font class='article_end_date'>{date_disp}</font>　"
         f"{clap_html}<span style='display:inline-block;width:15px;'></span>"
         f" <button class='linkbutton' onclick=\"copyLink('{date_str}','{title_js}', this)\">📋 リンクをコピー</button>"
+        f"{cat_html}"
         f"</div>"
     )
 
@@ -468,6 +482,7 @@ def build():
         else:
             anchor = f"{key}{chr(ord('A') + idx - 1)}"
         e['anchor_id'] = anchor
+        e['cat_dir'] = get_cat_dir(e['category'], cat_dir_map)
 
     if LATEST_POST_COUNT > 0:
         recent_entries = sorted(entries, key=lambda x: x['date'], reverse=True)[:LATEST_POST_COUNT]
@@ -507,7 +522,7 @@ def build():
         blocks: list[str] = []
         for i, ent in enumerate(month_entries):
             next_id = month_entries[i + 1]['anchor_id'] if i < len(month_entries) - 1 else 'bottom'
-            blocks.append(render_entry_block(ent, ent['anchor_id'], next_id))
+            blocks.append(render_entry_block(ent, ent['anchor_id'], next_id, page_dir, root))
         entry_html = '<br><br><br>\n'.join(blocks)
 
         sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map, recent_entries)
@@ -552,7 +567,7 @@ def build():
             blocks = []
             for i, ent in enumerate(chunk):
                 next_id = chunk[i + 1]['anchor_id'] if i < len(chunk) - 1 else 'bottom'
-                blocks.append(render_entry_block(ent, ent['anchor_id'], next_id))
+                blocks.append(render_entry_block(ent, ent['anchor_id'], next_id, page_dir, root))
             entry_html = '<br><br><br>\n'.join(blocks)
             sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map, recent_entries)
             total_pages = (len(es_sorted) + 9) // 10
@@ -603,7 +618,7 @@ def build():
         blocks = []
         for i, ent in enumerate(entries_for_index):
             next_id = entries_for_index[i + 1]['anchor_id'] if i < len(entries_for_index) - 1 else 'bottom'
-            blocks.append(render_entry_block(ent, ent['anchor_id'], next_id))
+            blocks.append(render_entry_block(ent, ent['anchor_id'], next_id, page_dir, root))
         entry_html = '<br><br><br>\n'.join(blocks)
         sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map, recent_entries)
         body_html = render_body(
