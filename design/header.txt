@@ -116,8 +116,8 @@ A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
 .entry-body,.extended {
 	background:#fff; 
 	color:#444; 
-	padding:10px;
-	font-size:13px;
+	padding:15px;
+	font-size:14px;
 	line-height:24px;
 }
 
@@ -125,7 +125,13 @@ A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
 	text-align:center;
 	color:#ccf;
 	font-size:12px;
-	padding-bottom:5px;
+	padding-top:20px;
+	padding-right:20px;
+	padding-bottom:10px;
+}
+
+.linkbutton{
+	padding:3px;
 }
 
 /*--●形状整理用--*/
