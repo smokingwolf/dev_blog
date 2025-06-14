@@ -2,9 +2,10 @@ name: Scheduled blog build Saturday 8:30
 
 on:
   schedule:
-#    - cron: '30 23 * * 5'  # 毎週土曜8:30（JST）に1回
-    - cron: '0 * * * *'  # テスト用 毎時処理
-  workflow_dispatch:  # 手動実行もOK
+    - cron: '0 18-23 * * 5' # 金曜日 18:00〜23:00 UTC ＝ JST 土曜 3:00〜8:00 を 1時間おき
+    - cron: '0 0 * * 6'     # 土曜日 00:00 UTC ＝ JST 土曜 9:00
+#    - cron: '0 * * * *'  # テスト用 毎時処理
+  workflow_dispatch:  # 手動実行コマンドを表示
 
 permissions:
   contents: write
