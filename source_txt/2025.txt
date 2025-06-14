@@ -3430,9 +3430,10 @@ DATE: 2025-06-14 08:00:00
 BODY:
 　だいぶウディタのバグ修正が平和になったと思ったらたまに来るのが難しい課題ばかりになっていて毎回オエエエって言いながら直してるウルフです。
 
-　ここ2週間は、前回<B><a class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/">『ウディコン歴史資料館』</a></B>を作った勢いで自サイトの調整をしておりました！　今回はそのお話！
+　ここ2週間は、前回<B><a class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/">『ウディコン歴史資料館』</a></B>を作った勢いで自サイトの調整をしておりました！　
+　というのと、長年使わせていただいてたFC2ブログでどうもBANされちゃったっぽいのでGitHub内に開発日誌を移転しました！　今回はそれらのお話！
 
-<div class="toc-box"><ul class="toc-list"><li class="toc-level1"><a class="g"  target="_top" href="#2025-06-14-1">◆今回の作業：各ゲーム紹介ページのフレームをなくして整理する！</a></li><li class="toc-level1"><a class="g"  target="_top" href="#2025-06-14-2">◆ある日判明した事実　私にしかFC2の日誌が見えてなかった</a></li><ul><li class="toc-level2"><a class="g"  target="_top" href="#2025-06-14-3">- 移住にあたってGitHubにブログ生成システムを作った！</a></li><li class="toc-level2"><a class="g"  target="_top" href="#2025-06-14-4">- ChatGPTの『Codex』に大部分を作ってもらいました</a></li></ul></ul></div>
+<div class="toc-box"><ul class="toc-list"><li class="toc-level1"><a class="g"  target="_top" href="#2025-06-14-1">◆今回の作業：各ゲーム紹介ページのフレームをなくして整理する！</a></li><li class="toc-level1"><a class="g"  target="_top" href="#2025-06-14-2">◆ある日判明した事実　私にしかFC2の日誌が見えてなかった → 移住を決意 </a></li><ul><li class="toc-level2"><a class="g"  target="_top" href="#2025-06-14-3">- 移住にあたってGitHubにブログ生成システムを作った！</a></li><li class="toc-level2"><a class="g"  target="_top" href="#2025-06-14-4">- ChatGPTの『Codex』に大部分を作ってもらいました</a></li></ul></ul></div>
 <a id="2025-06-14-1"></a><h1>◆今回の作業：各ゲーム紹介ページのフレームをなくして整理する！</h1>
 　まず今回進めてた作業のひとつは、ゲーム紹介ページの『フレーム』のページをなくすことでした！
 <span style="color: #42a5f5"><span style="font-size: 80%">　※フレームって何？：複数のHTMLファイルを、分割したフレーム内にそれぞれ出すことで1つのように見せて表示するページ。メニュー部分だけ分離させたりして便利だった。</span></span>
@@ -3451,7 +3452,7 @@ BODY:
 
 
 
-<a id="2025-06-14-2"></a><h1>◆ある日判明した事実　私にしかFC2の日誌が見えてなかった</h1>
+<a id="2025-06-14-2"></a><h1>◆ある日判明した事実　私にしかFC2の日誌が見えてなかった → 開発日誌移転へ</h1>
 　5月頃、「（シルバーセカンド公式サイト側の）開発日誌が見られません！」というご報告が届きました。
 
 　<B>「えー私には見えるんですけど。スマホから見たらダメとかかなあ、うーん？」</B>
