@@ -364,6 +364,7 @@ def render_sidebar(all_months: list[tuple[str, str]],
     # Heading & top link
     lines.append("<div style='font-weight:bold;'>開発日誌</div>")
     lines.append(f"<div><a class='sidebar_link' href='{rel_root}/archive/top/index.html'>トップへ</a></div>")
+    lines.append(f"<div><B><a class='sidebar_link' href='{rel_root}/index.html'>全記事一覧</a></B></div>")
     if recent_entries:
         lines.append("<hr>")
         lines.append("<div style='font-weight:bold;'>【最新記事】</div>")
@@ -671,10 +672,10 @@ def build():
     years = sorted(by_year.keys(), reverse=True)
 
     lines: list[str] = []
-    lines.append("<a id='top'></a>")
+    lines.append("<br><B><font color='#aaaaff'>【全記事一覧】</font></B><div class='master_years'>")
     year_links = '　'.join([f"<a href='#{y}' class='g'>{y}年</a>" for y in years])
     lines.append(year_links)
-    lines.append("<br><br>")
+    lines.append("</div><br><br>")
     for idx, y in enumerate(years):
         lines.append(f"<a id='{y}'></a><H1>{y}</H1>")
         for ent in by_year[y]:
@@ -692,7 +693,7 @@ def build():
     body_html = render_body('記事一覧', index_content, sidebar, '', HEADER_IN_CONTENT, FOOTER_END_CONTENT)
     full_html = assemble_full_page('記事一覧', body_html, HEADER_TEMPLATE, FOOTER_TEMPLATE)
     # Adjust script path for root index and add scroll position persistence
-    full_html = full_html.replace('../../js/', '../js/')
+    full_html = full_html.replace('../../js/', 'js/')
     scroll_js = (
         "<script>\n"
         "window.addEventListener('DOMContentLoaded',()=>{\n"
