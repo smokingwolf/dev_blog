@@ -7,11 +7,19 @@ import json
 import re
 import urllib.parse
 
+# ★GitHub Secrets（環境変数）から秘密の本文を取得して置換
+# ※GitHubの「Secrets and variables」→ 「Codespaces」 →
+#  「New repository secret」で「FINAL_LETTER_TEXT_SECRET」に入れた文字列が
+#   BODY内の [[FINAL_LETTER_TEXT_SECRET]] で表示可能です。
+secret_text = os.environ.get("FINAL_LETTER_TEXT_SECRET", "[NO SECRET]")
+
+
 # Fixed timezone for Japanese local time
 JST = timezone(timedelta(hours=9))
 
 # Number of recent entries to show in sidebar. Set to 0 to disable section.
 LATEST_POST_COUNT = 7
+
 
 # =============================
 # Utility helpers
@@ -81,7 +89,11 @@ def parse_entries(source_dir: str = "source_txt"):
                 while idx < len(lines) and lines[idx] != "-----":
                     extended_lines.append(lines[idx])
                     idx += 1
-
+            
+            # BODYにFINAL_LETTER_TEXT_SECRET  (body_lines)
+            # body_lines に置換をかける
+            body_lines = [line.replace("{{FINAL_LETTER_TEXT_SECRET}}", secret_text) for line in body_lines]
+            
             entries.append(
                 {
                     "title": title,
@@ -289,8 +301,8 @@ def render_entry_block(entry: dict, anchor_id: str, next_anchor: str | None,
     enc_url = urllib.parse.quote(link, safe='')
     enc_title = urllib.parse.quote(entry['title'], safe='')
     clap_html = (
-        f"<a href=\"//clap.fc2.com/post/smokingwolf/?url={enc_url}&title={enc_title}\" target=\"_blank\" title=\"web拍手 by FC2\">"
-        f"<img src=\"//clap.fc2.com/images/button/white/smokingwolf?url={enc_url}&lang=ja\" alt=\"web拍手 by FC2\" style=\"border:none;\" /></a>"
+        #f"<a href=\"//clap.fc2.com/post/smokingwolf/?url={enc_url}&title={enc_title}\" target=\"_blank\" title=\"web拍手 by FC2\">"
+        #f"<img src=\"//clap.fc2.com/images/button/white/smokingwolf?url={enc_url}&lang=ja\" alt=\"web拍手 by FC2\" style=\"border:none;\" /></a>"
     )
     cat_html = ""
     category = entry.get("category")
