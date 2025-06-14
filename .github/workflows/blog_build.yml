@@ -36,3 +36,4 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "chore: rebuild dev blog (with heartbeat)" && git push
+          fi
