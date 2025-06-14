@@ -675,7 +675,7 @@ def build():
     year_links = '　'.join([f"<a href='#{y}' class='g'>{y}年</a>" for y in years])
     lines.append(year_links)
     lines.append("<br><br>")
-    for y in years:
+    for idx, y in enumerate(years):
         lines.append(f"<a id='{y}'></a><H1>{y}</H1>")
         for ent in by_year[y]:
             date = ent['date'].strftime('%Y-%m-%d')
@@ -684,12 +684,27 @@ def build():
             url = f"archive/{y}/{month}.html#{ent['anchor_id']}"
             title = html.escape(ent['title'])
             lines.append(f"・<a href='{url}' class='blue'>{date}({weekday})　{title}</a><br>")
-        lines.append(f"<a href='#top' class='g'>↑一番上へ戻る</a><br><br>")
+        if idx < len(years) - 1:
+            lines.append("<div align='right'><a href='#top' class='g'>▲一番上へ戻る</a></div><br>")
     index_content = "\n".join(lines)
 
     sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map, recent_entries)
     body_html = render_body('記事一覧', index_content, sidebar, '', HEADER_IN_CONTENT, FOOTER_END_CONTENT)
     full_html = assemble_full_page('記事一覧', body_html, HEADER_TEMPLATE, FOOTER_TEMPLATE)
+    # Adjust script path for root index and add scroll position persistence
+    full_html = full_html.replace('../../js/', '../js/')
+    scroll_js = (
+        "<script>\n"
+        "window.addEventListener('DOMContentLoaded',()=>{\n"
+        "  const p = sessionStorage.getItem('index-scroll');\n"
+        "  if(p!==null) window.scrollTo(0, parseInt(p,10));\n"
+        "});\n"
+        "window.addEventListener('beforeunload',()=>{\n"
+        "  sessionStorage.setItem('index-scroll', window.pageYOffset);\n"
+        "});\n"
+        "</script>\n"
+    )
+    full_html = full_html.replace('</body>', scroll_js + '</body>')
     write_file(page_path, full_html)
 
     # Ensure GitHub pages skips Jekyll processing
