@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 heartbeat_file = 'source_txt/final_letter.txt'
 
 # 50日後の「00:00:00」形式で日時を作成
-new_date = (datetime.now() + timedelta(days=0)).strftime('%Y-%m-%d') + ' 00:00:00'
+new_date = (datetime.now() + timedelta(days=50)).strftime('%Y-%m-%d') + ' 00:00:00'
 
 with open(heartbeat_file, 'r', encoding='utf-8') as f:
     lines = f.readlines()
