@@ -3,7 +3,7 @@ name: Scheduled blog build
 on:
   workflow_dispatch:  # これを入れると手動実行が可能
   schedule:
-    - cron: '0 0 * * 6'
+    - cron: '30 1 * * 6'
 
 permissions:
   contents: write
