@@ -1,0 +1,12 @@
+TITLE: 最後に
+CATEGORY: その他
+DATE: 2199-01-01 00:00:00
+-----
+BODY:
+{{FINAL_LETTER_TEXT_SECRET}}
+
+-----
+EXTENDED BODY:
+
+-----
+--------
