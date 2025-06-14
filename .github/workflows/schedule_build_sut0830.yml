@@ -1,0 +1,36 @@
+name: Scheduled blog build Saturday 8:30
+
+on:
+  workflow_dispatch:  # 手動実行もOK
+  schedule:
+#    - cron: '30 23 * * 5'  # 毎週土曜8:30（JST）に1回
+    - cron: '0 * * * *'  # テスト用 毎時処理
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Build site
+        run: python scripts/build.py
+
+      - name: Force commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs
+          TIMESTAMP=$(TZ=Asia/Tokyo date +'%Y-%m-%d %H:%M:%S')
+          echo "<!-- Scheduled build at $TIMESTAMP -->" >> docs/.buildlog.html
+          git add docs/.buildlog.html
+          git commit -m "chore: scheduled rebuild at $TIMESTAMP"
+          git push
