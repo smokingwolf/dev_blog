@@ -7,6 +7,9 @@ import json
 import re
 import urllib.parse
 
+# Fixed timezone for Japanese local time
+JST = timezone(timedelta(hours=9))
+
 # Number of recent entries to show in sidebar. Set to 0 to disable section.
 LATEST_POST_COUNT = 7
 
@@ -51,6 +54,7 @@ def parse_entries(source_dir: str = "source_txt"):
                     date = datetime.strptime(date_str, "%Y-%m-%d %H:%M:%S")
                 except ValueError:
                     date = datetime.strptime(date_str, "%Y-%m-%d")
+                date = date.replace(tzinfo=JST)
             else:
                 date = None
                 date_str = ""
@@ -427,8 +431,7 @@ def assemble_full_page(title: str, body_html: str, header_tpl: str, footer_tpl: 
 
 def build():
     all_entries = [e for e in parse_entries() if e.get('date')]
-    jst = timezone(timedelta(hours=9))
-    now_jst = datetime.now(jst).replace(tzinfo=None)
+    now_jst = datetime.now(JST)
     entries = [e for e in all_entries if e['date'] <= now_jst]
     entries.sort(key=lambda e: e['date'])  # oldest → newest
 
