@@ -47,12 +47,13 @@ def parse_entries(source_dir: str = "source_txt"):
             else:
                 continue  # Skip malformed block
 
-            # CATEGORY (optional)
+            # CATEGORY (optional, comma-separated allowed)
             if idx < len(lines) and lines[idx].startswith("CATEGORY:"):
-                category = lines[idx][len("CATEGORY:"):].strip()
+                category_line = lines[idx][len("CATEGORY:"):].strip()
                 idx += 1
             else:
-                category = ""
+                category_line = ""
+            categories = [c.strip() for c in category_line.split(',') if c.strip()] if category_line else []
 
             # DATE (optional but expected)
             if idx < len(lines) and lines[idx].startswith("DATE:"):
@@ -97,7 +98,8 @@ def parse_entries(source_dir: str = "source_txt"):
             entries.append(
                 {
                     "title": title,
-                    "category": category,
+                    "category": category_line,
+                    "categories": categories,
                     "date": date,
                     "date_str": date_str,
                     "body": "\n".join(body_lines).rstrip(),
@@ -305,14 +307,15 @@ def render_entry_block(entry: dict, anchor_id: str, next_anchor: str | None,
         #f"<img src=\"//clap.fc2.com/images/button/white/smokingwolf?url={enc_url}&lang=ja\" alt=\"web拍手 by FC2\" style=\"border:none;\" /></a>"
     )
     cat_html = ""
-    category = entry.get("category")
-    cat_dir = entry.get("cat_dir")
-    if category and page_dir:
+    categories: list[str] = entry.get("categories") or []
+    cat_dirs: list[str] = entry.get("cat_dirs") or []
+    if categories and page_dir:
         rel_root = os.path.relpath(root, page_dir)
-        cat_link = f"{rel_root}/category/{cat_dir}/001.html"
-        cat_html = (
-            f" <span style='float:right;'>カテゴリ: <a href='{cat_link}'>{html.escape(category)}</a></span>"
-        )
+        links = []
+        for c, d in zip(categories, cat_dirs):
+            link = f"{rel_root}/category/{d}/001.html"
+            links.append(f"<a href='{link}'>{html.escape(c)}</a>")
+        cat_html = f" <span style='float:right;'>カテゴリ: {', '.join(links)}</span>"
 
     end_html = (
         f"<div class='entry-foot'>"
@@ -477,7 +480,12 @@ def build():
     for e in entries:
         ym = (e['date'].strftime('%Y'), e['date'].strftime('%m'))
         month_map[ym].append(e)
-        cat_map[e['category']].append(e)
+        cats = e.get('categories') or ['']
+        if not cats:
+            cat_map[''].append(e)
+        else:
+            for c in cats:
+                cat_map[c].append(e)
 
     for ym, lst in month_map.items():
         month_counts[ym] = len(lst)
@@ -497,7 +505,8 @@ def build():
         else:
             anchor = f"{key}{chr(ord('A') + idx - 1)}"
         e['anchor_id'] = anchor
-        e['cat_dir'] = get_cat_dir(e['category'], cat_dir_map)
+        cats = e.get('categories') or ['']
+        e['cat_dirs'] = [get_cat_dir(c, cat_dir_map) for c in cats]
 
     if LATEST_POST_COUNT > 0:
         recent_entries = sorted(entries, key=lambda x: x['date'], reverse=True)[:LATEST_POST_COUNT]
@@ -649,6 +658,39 @@ def build():
         # Insert no-cache meta tags only on the top index page
         full_html = HEAD_OPEN_RE.sub(r"\1\n" + NO_CACHE_META, full_html, count=1)
         write_file(page_path, full_html)
+
+    # -------------------------
+    # Master index page (all titles)
+    # -------------------------
+    page_dir = root
+    page_path = os.path.join(page_dir, 'index.html')
+    all_sorted = sorted(entries, key=lambda x: x['date'], reverse=True)
+    by_year: dict[str, list[dict]] = defaultdict(list)
+    for ent in all_sorted:
+        by_year[ent['date'].strftime('%Y')].append(ent)
+    years = sorted(by_year.keys(), reverse=True)
+
+    lines: list[str] = []
+    lines.append("<a id='top'></a>")
+    year_links = '　'.join([f"<a href='#{y}' class='g'>{y}年</a>" for y in years])
+    lines.append(year_links)
+    lines.append("<br><br>")
+    for y in years:
+        lines.append(f"<a id='{y}'></a><H1>{y}</H1>")
+        for ent in by_year[y]:
+            date = ent['date'].strftime('%Y-%m-%d')
+            weekday = '月火水木金土日'[ent['date'].weekday()]
+            month = ent['date'].strftime('%m')
+            url = f"archive/{y}/{month}.html#{ent['anchor_id']}"
+            title = html.escape(ent['title'])
+            lines.append(f"・<a href='{url}' class='blue'>{date}({weekday})　{title}</a><br>")
+        lines.append(f"<a href='#top' class='g'>↑一番上へ戻る</a><br><br>")
+    index_content = "\n".join(lines)
+
+    sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map, recent_entries)
+    body_html = render_body('記事一覧', index_content, sidebar, '', HEADER_IN_CONTENT, FOOTER_END_CONTENT)
+    full_html = assemble_full_page('記事一覧', body_html, HEADER_TEMPLATE, FOOTER_TEMPLATE)
+    write_file(page_path, full_html)
 
     # Ensure GitHub pages skips Jekyll processing
     write_file(os.path.join(root, '.nojekyll'), '')
