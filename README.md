@@ -33,7 +33,3 @@ GitHub Actionsを用いたワークフローにより、mainブランチへの�
 
 `build.py`は「`source_txt/`内に何かがプッシュされる」か「毎週土曜の明け方」のタイミングで実行されます。
 実行されると、`source_txt/`内の全txtを使用して`docs/`内に全期間・全カテゴリーのブログHTMLを生成します。
-
-### scripts/heartbeat.pyについて
-
-`heartbeat.py`は`source_txt/`に何かがプッシュされるたびに実行され、`source/txt/final_letter.txt`の記事の`DATE:`を現在から50日後の日付に上書きします。
