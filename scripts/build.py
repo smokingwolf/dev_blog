@@ -683,7 +683,9 @@ def build():
             month = ent['date'].strftime('%m')
             url = f"archive/{y}/{month}.html#{ent['anchor_id']}"
             title = html.escape(ent['title'])
-            lines.append(f"・<a href='{url}' class='blue'>{date}({weekday})　{title}</a><br>")
+            cat = ent.get('category', '')
+            cat_html = f" <font class='top_minicategory'>{html.escape(cat)}</font>" if cat else ''
+            lines.append(f"・<a href='{url}' class='blue'>{date}({weekday})　{title}</a>{cat_html}<br>")
         if idx < len(years) - 1:
             lines.append("<div align='right'><a href='#top' class='g'>▲一番上へ戻る</a></div><br>")
     index_content = "\n".join(lines)
