@@ -3,11 +3,11 @@
 このプロジェクトでは、あるTXT形式の原稿を `source_txt/` ディレクトリ内に保存すると
 それらの記事を `docs/` フォルダ内に静的なHTMLサイトとして変換する自動ビルド機能が実装されてます。
 
-## MarkdownからHTMLへの変換について
+## txtからHTMLへの変換について
 
-ビルドスクリプト `scripts/build.py` が `source/*.md` を読み取り、
+ビルドスクリプト `scripts/build.py` が `source/*.txt` を読み取り、
 `docs/` 以下に月別・カテゴリ別の HTML を生成します。
-生成に使用する処理は以下のみです（ローカルでも実行可能です）。
+生成に使用する処理は以下のみです（以下はローカルでの実行コマンド）。
 
 ```bash
 python scripts/build.py
