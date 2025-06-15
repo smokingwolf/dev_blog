@@ -696,21 +696,30 @@ def build():
     # Adjust script path for root index and add scroll position persistence
     full_html = full_html.replace('../../js/', 'js/')
     scroll_js = (
-        "<script>\n"
-        "const restore=()=>{\n"
-        "  const p=sessionStorage.getItem('index-scroll');\n"
-        "  if(p!==null) window.scrollTo(0,parseInt(p,10));\n"
-        "};\n"
-        "const save=()=>{\n"
-        "  sessionStorage.setItem('index-scroll',window.pageYOffset);\n"
-        "};\n"
-        "window.addEventListener('DOMContentLoaded',restore);\n"
-        "window.addEventListener('pageshow',restore);\n"
-        "window.addEventListener('beforeunload',save);\n"
-        "window.addEventListener('pagehide',save);\n"
-        "</script>\n"
+      "<script>\n"
+      "// 1. 自動スクロール復元をオフ\n"
+      "if ('scrollRestoration' in history) {\n"
+      "history.scrollRestoration = 'manual';\n"
+      "}\n"
+      "// 2. 保存・復元ロジック\n"
+      "const KEY = 'index-scroll';\n"
+      "const saveScroll = () => {\n"
+      "sessionStorage.setItem(KEY, window.pageYOffset);\n"
+      "};\n"
+      "const restoreScroll = () => {\n"
+      "const p = sessionStorage.getItem(KEY);\n"
+      "if (p !== null) {\n"
+      "window.scrollTo(0, parseInt(p, 10));\n"
+      "}\n"
+      "};\n"
+      "// 3. 保存は pagehide で\n"
+      "window.addEventListener('pagehide', saveScroll);\n"
+      "// 4. 復元は load と pageshow で\n"
+      "window.addEventListener('load', restoreScroll);\n"
+      "window.addEventListener('pageshow', restoreScroll);\n"
+      "</script>\n"
     )
-    full_html = full_html.replace('</body>', scroll_js + '</body>')
+    full_html = full_html.replace('</title>', '</title>\n' + scroll_js)
     write_file(page_path, full_html)
 
     # Ensure GitHub pages skips Jekyll processing
