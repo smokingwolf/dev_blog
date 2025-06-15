@@ -697,13 +697,17 @@ def build():
     full_html = full_html.replace('../../js/', 'js/')
     scroll_js = (
         "<script>\n"
-        "window.addEventListener('DOMContentLoaded',()=>{\n"
-        "  const p = sessionStorage.getItem('index-scroll');\n"
-        "  if(p!==null) window.scrollTo(0, parseInt(p,10));\n"
-        "});\n"
-        "window.addEventListener('beforeunload',()=>{\n"
-        "  sessionStorage.setItem('index-scroll', window.pageYOffset);\n"
-        "});\n"
+        "const restore=()=>{\n"
+        "  const p=sessionStorage.getItem('index-scroll');\n"
+        "  if(p!==null) window.scrollTo(0,parseInt(p,10));\n"
+        "};\n"
+        "const save=()=>{\n"
+        "  sessionStorage.setItem('index-scroll',window.pageYOffset);\n"
+        "};\n"
+        "window.addEventListener('DOMContentLoaded',restore);\n"
+        "window.addEventListener('pageshow',restore);\n"
+        "window.addEventListener('beforeunload',save);\n"
+        "window.addEventListener('pagehide',save);\n"
         "</script>\n"
     )
     full_html = full_html.replace('</body>', scroll_js + '</body>')
