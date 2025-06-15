@@ -28,3 +28,12 @@ GitHub Actionsを用いたワークフローにより、mainブランチへの�
 ・「source_img/」内に画像がpushされた場合、「docs/image/」内にコピーされます。
 
 ・「source_js/」内に画像がpushされた場合、「docs/js/」内にコピーされます。
+
+### scripts/build.pyについて
+
+build.pyは「source_txt/に何かがプッシュされる」か「毎週土曜の明け方」のタイミングで実行されます。
+実行されると、source_txt/内の全txtを使用してdocs/内に全期間・全カテゴリーのブログHTMLを生成します。
+
+### scripts/heartbeat.pyについて
+
+heartbeat.pyはsource_txt/にプッシュされるたびに実行され、source/txt/final_letter.txtの記事のDATE:を現在から50日後の日付に延ばします。
