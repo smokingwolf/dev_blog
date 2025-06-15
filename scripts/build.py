@@ -7,19 +7,18 @@ import json
 import re
 import urllib.parse
 
-# ★GitHub Secrets（環境変数）から秘密の本文を取得して置換
-# ※GitHubの「Secrets and variables」→ 「Codespaces」 →
-#  「New repository secret」で「FINAL_LETTER_TEXT_SECRET」に入れた文字列が
-#   BODY内の [[FINAL_LETTER_TEXT_SECRET]] で表示可能です。
-secret_text = os.environ.get("FINAL_LETTER_TEXT_SECRET", "[NO SECRET]")
-
-
 # Fixed timezone for Japanese local time
 JST = timezone(timedelta(hours=9))
 
 # Number of recent entries to show in sidebar. Set to 0 to disable section.
 LATEST_POST_COUNT = 7
 
+
+# ★GitHub Secrets（環境変数）から秘密の本文を取得して置換
+# ※GitHubの「Secrets and variables」→ 「Codespaces」 →
+#  「New repository secret」で「FINAL_LETTER_TEXT_SECRET」に入れた文字列が
+#   BODY内の {{FINAL_LETTER_TEXT_SECRET}} で表示可能です。
+secret_text = os.environ.get("FINAL_LETTER_TEXT_SECRET", "[NO SECRET]")
 
 # =============================
 # Utility helpers
