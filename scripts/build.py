@@ -413,17 +413,21 @@ def render_sidebar(all_months: list[tuple[str, str]],
 
 def render_body(title: str, content: str, sidebar_html: str, navigation: str,
                 header_in_content: str, footer_end_content: str,
-                article_pos: str = "") -> str:
+                article_pos: str = "", article_pos_html: str | None = None) -> str:
     """Return the HTML to be placed inside <body>."""
     body_parts = [STYLE_BLOCK, SCRIPT_BLOCK]
     body_parts.append("<div id='content'>")
     body_parts.append(header_in_content)
     body_parts.append("")
-    if article_pos:
+    if article_pos_html is not None:
+        body_parts.append(f"<div class='article_pos'>{article_pos_html}</div>")
+    elif article_pos:
         body_parts.append(f"<div class='article_pos'>{html.escape(article_pos)}</div>")
     body_parts.append(f"<div class='nav'>{navigation}</div>")
     body_parts.append(content)
-    if article_pos:
+    if article_pos_html is not None:
+        body_parts.append(f"<div class='article_pos'>{article_pos_html}</div>")
+    elif article_pos:
         body_parts.append(f"<div class='article_pos'>{html.escape(article_pos)}</div>")
     body_parts.append(f"<div class='nav'>{navigation}</div>")
     body_parts.append("<a id='bottom'></a>")
@@ -596,6 +600,12 @@ def build():
             sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map, recent_entries)
             total_pages = (len(es_sorted) + 9) // 10
             pos_text = f"{cat or 'uncategorized'} {page_num}/{total_pages}"
+            rel_root = os.path.relpath(root, page_dir)
+            if page_num != total_pages and total_pages > 1:
+                last_link = f"{rel_root}/category/{safe}/{total_pages:03d}.html"
+                pos_html = f"{html.escape(cat or 'uncategorized')} {page_num}/<a href='{last_link}'>{total_pages}</a>"
+            else:
+                pos_html = None
             body_html = render_body(
                 cat or 'uncategorized',
                 entry_html,
@@ -604,6 +614,7 @@ def build():
                 HEADER_IN_CONTENT,
                 FOOTER_END_CONTENT,
                 pos_text,
+                pos_html,
             )
             full_html = assemble_full_page(cat or 'uncategorized', body_html, HEADER_TEMPLATE, FOOTER_TEMPLATE)
             write_file(page_path, full_html)
