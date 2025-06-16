@@ -671,12 +671,13 @@ def build():
     years = sorted(by_year.keys(), reverse=True)
 
     lines: list[str] = []
-    lines.append("<br><B><font color='#aaaaff'>【全記事一覧】</font></B><div class='master_years'>")
+    total_count = len(entries)
+    lines.append(f"<br><B><font color='#aaaaff'>【全記事一覧】　{total_count}件</font></B><div class='master_years'>")
     year_links = '　'.join([f"<a href='#{y}' class='g'>{y}年</a>" for y in years])
     lines.append(year_links)
     lines.append("</div><br><br>")
     for idx, y in enumerate(years):
-        lines.append(f"<a id='{y}'></a><H1>{y}</H1>")
+        lines.append(f"<a id='{y}'></a><H1>{y}年</H1>")
         for ent in by_year[y]:
             date = ent['date'].strftime('%Y-%m-%d')
             weekday = '月火水木金土日'[ent['date'].weekday()]
