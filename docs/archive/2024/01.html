@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>シルバーセカンド開発日誌 / SmokingWOLF</title>
+<meta name="viewport" content="width=700">
+<script src="../../js/smoothscroll_up.js" type="text/javascript"></script> 
+<style>
+BODY{
+  /*display:flex;*/
+  font-size:13px;
+  margin:0;
+  font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+}
+
+TD{
+  font-size:12px;
+}
+
+
+A:LINK,A:VISITED {  color:#5658f6;  text-decoration:underline ;}
+A:HOVER,A:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.red:LINK,A.red:VISITED{color:#d6385c;display: inline-block;text-shadow: 0 0 15px #ffddcc, 0 0 15px #ffddaa;}
+A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shadow: 0 0 15px #ffcccc, 0 0 15px #ffaaaa;}
+
+A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
+A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.g:LINK,A.g:VISITED{
+	color:#38a68c;
+	text-decoration:underline;
+}
+
+A.g:HOVER,A.g:ACTIVE{
+	color : #68b6ac;
+	text-decoration : underline;
+}
+
+
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38c6ac;
+}
+
+A.jumplink:HOVER,A.jumplink:ACTIVE{
+	color : #68f6ac;
+}
+
+A.jumplink{
+	text-shadow: 0 0 15px #ccddcc, 0 0 15px #aaddaa;
+	text-decoration : none;
+}
+
+
+.article_pos{
+	font-size:16px;
+	color:#aaf; 
+	font-weight:bold;
+	text-align:center;
+	margin:0px;
+	padding:0px;
+}
+
+#content {
+	font-size:14px;
+	
+}
+
+#sidebar {
+	background:#f8f8f8; 
+	border-left:1px solid #ddd; 
+	padding:4px 6px;
+	font-size:12px;
+}
+
+A.sidebar_link:LINK,A.sidebar_link:VISITED,
+A.sidebar_link_recent:LINK,A.sidebar_link_recent:VISITED{
+    color:#5658f6;
+	text-decoration: underline;
+}
+A.sidebar_link:HOVER,A.sidebar_link:ACTIVE,
+A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
+	color: #9698e6;
+	text-decoration: underline;
+}
+
+.sidebar_link{
+	font-size:13px;
+}
+
+.sidebar_link_recent{ /* 1つ1つの項目ごとに隙間を空ける */
+	font-size:11px;
+	line-height: 1.2;
+	display: inline-block;
+	margin-top:5px;
+}
+
+
+.entry {
+	border:1px solid #ccc; 
+	border-radius:8px; 
+	margin:14px 0; 
+	overflow:hidden;
+
+}
+.entry-title {
+	background:linear-gradient(to right,#4243ff,#aaaacf);
+
+	font-size:17px;
+	color:#fff; 
+	padding:4px; 
+	font-weight:bold;
+	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
+}
+
+.entry-body,.extended {
+	background:#fff; 
+	color:#444; 
+	padding:15px;
+	font-size:14px;
+	line-height:24px;
+}
+
+.entry-foot {
+	background:#fff; 
+	text-align:center;
+	vertical-align:middle;
+	color:#ccf;
+	font-size:12px;
+	padding-top:20px;
+	padding-right:20px;
+	padding-bottom:10px;
+}
+
+.linkbutton{
+	padding:3px;
+}
+
+/*--●形状整理用--*/
+body {display:flex; margin:0;}
+#content {width:580px; padding:0 8px;}
+#sidebar {width:120px;  box-sizing:border-box; }
+#sidebar div {line-height:1.6;}
+#sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
+.nav {margin:0px 0 -20px 0; text-align:center;}
+.sym {color:#999; font-weight:normal;}
+
+</style>
+
+
+<script>
+function toggle(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+function toggleDisp(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+</script>
+
+
+
+<!--★目次デザイン・処理★-->
+<style>
+.toc-box{background-color:#f0f0f0;border-radius:8px;padding:10px;} 
+.toc-list{list-style:none;margin:0;padding-left:0;} 
+.toc-list ul{list-style:none;margin:0;padding-left:20px;}
+.toc-list li{margin:5px 0;}
+.toc-level1{margin-left:0;}
+.toc-level2{margin-left:20px;}
+
+h1 {
+  background: #fff;
+  padding: 6px 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #2233cc; /* 青系 */
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 4px solid #3366ff;
+  display: inline-block;
+  width:100%;
+  
+}
+
+
+h2,h3 {
+  background: #fff;
+  padding: 6px 10px;
+  margin-left: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #5566ff; /* 青系 */
+  
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 2px solid #9999ff;
+  display: inline-block;
+
+}
+
+h2::before {
+  content: "- ";
+}
+
+.master_years{
+  margin-left:20px;
+  margin-right:20px;
+}
+
+.top_minicategory{
+  font-size:10px;
+  color:#ccccff;
+}
+</style>
+
+
+
+</head>
+<body>
+<a id="top"></a>
+
+<style type='text/css'>
+.linkbutton{
+  font-size: 0.9em;
+  padding: 1px 6px;
+  vertical-align: baseline;
+  line-height: 1;
+  height: auto;
+  margin-left: 4px;
+  color:#66f;
+  background-color:#f9f9f9;
+  border: 1px solid #888;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.copy-popup{
+  background-color: #eef;
+  border: 1px solid #88c;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  color: #333;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.5s ease;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  max-width: 80vw;             /* 画面幅の 80% で折り返す */
+  overflow-wrap: anywhere;     /* 長い URL を途中で区切る */
+  word-break: break-all;       /* ↑が効かない旧ブラウザ保険 */
+  white-space: pre-wrap;       /* 
+ を改行として扱い、余計な連続空白は1個に */
+}
+.article_end_date{
+  font-size:0.9em;
+}
+</style>
+
+
+<script>
+function toggle(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+}
+
+// Year accordion with sessionStorage persistence
+function toggleYear(id){
+  const pane = document.getElementById(id);
+  const btn  = document.getElementById(id+'-btn');
+  if(!pane||!btn) return;
+  const sym  = btn.querySelector('.sym');
+  const isClosed = pane.style.display === 'none';
+  pane.style.display = isClosed ? 'block' : 'none';
+  sym.textContent   = isClosed ? '－' : '＋';
+  sessionStorage.setItem('year-'+id, isClosed ? 'open' : 'closed');
+}
+
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('[data-yearpane]').forEach(pane=>{
+    const id    = pane.id;
+    const state = sessionStorage.getItem('year-'+id);
+    const btn   = document.getElementById(id+'-btn');
+    const sym   = btn?.querySelector('.sym');
+    if(state === 'open'){
+      pane.style.display = 'block';
+      if(sym) sym.textContent = '－';
+    }else{
+      pane.style.display = 'none';
+      if(sym) sym.textContent = '＋';
+    }
+  });
+});
+
+function copyLink(date, title, el){
+  const url = `https://smokingwolf.github.io/dev_blog/archive/${date.slice(0,4)}/${date.slice(5,7)}.html#${date}`;
+  const text = `
+【${date}　${title}】
+ ${url}`;
+  navigator.clipboard.writeText(text).then(()=>{
+    if(el && el.tagName === 'BUTTON'){
+      const orig = el.textContent;
+      el.textContent = '✅ コピー完了!';
+      setTimeout(()=>{ el.textContent = '🔗 リンクをコピー'; }, 2000);
+    }
+
+    const popup = document.createElement('div');
+    popup.className = 'copy-popup';
+    popup.textContent = `✅ コピー完了：${text}`;
+    document.body.appendChild(popup);
+
+    const rect = el.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    const popupWidth = popup.offsetWidth;
+    const pageWidth = document.documentElement.clientWidth;
+
+    let left = rect.left + scrollLeft + (rect.width / 2) - (popupWidth / 2);
+    let top  = rect.top  + scrollTop - popup.offsetHeight - 8;
+    if(left < scrollLeft + 4) left = scrollLeft + 4;
+    if(left + popupWidth > scrollLeft + pageWidth - 4)
+        left = scrollLeft + pageWidth - popupWidth - 4;
+
+    popup.style.left = `${left}px`;
+    popup.style.top  = `${top}px`;
+    popup.style.opacity = '1';
+    popup.style.zIndex = '9999';
+
+    setTimeout(()=>{ popup.style.opacity = '0'; }, 1800);
+    setTimeout(()=>{ popup.remove(); }, 2500);
+  });
+}
+</script>
+
+<div id='content'>
+<style>
+
+.TopTitle{
+  width:515px;
+  font-weight:bold;
+  font-size:16pt;
+  color: #ffffff;
+  background-color:#535365 ;
+  border-width: 0px;
+  border-color:#535365;
+  border-style:solid;
+  background: -moz-linear-gradient(left top, #42435f, #fafaff);
+  background: -webkit-gradient(linear, left top, right bottom, from(#42435f), to(#fafaff));
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#DD42425f', endColorstr='#FFfafaff');
+  
+  text-align:left;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.header3{
+	color:#555588;
+	margin-bottom:16px;
+}
+
+.home-link {
+  font-size: 12px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: underline;
+}
+</style>
+
+<!--戻るリンク、サイトがなくなってたらアーカイブにつながるようにしたが404ページがアレなのかうまくいかない-->
+<!--
+<font id="home-link-placeholder">
+  <noscript>
+    <a href="https://smokingwolf.github.io/" class="home-link">← ホーム(アーカイブサイト)に戻る</a>
+  </noscript>
+</font>
+
+<script>
+(async () => {
+  try {
+    // HEADで軽くチェック（no-corsなのでステータス確認は不可）
+    // 自分のサイトのインフォメーションページにつなげるならサイトがまだあると認識する
+    await fetch("https://silversecond.net/contents/etc/info.shtml", { method: "HEAD", mode: "no-cors" });
+
+    const link = document.createElement("a");
+    link.href = "https://silversecond.net/";
+    link.textContent = "← ホームに戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  } catch {
+    const link = document.createElement("a");
+    link.href = "https://smokingwolf.github.io/";
+    link.textContent = "← ホーム(アーカイブサイト)に戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  }
+})();
+</script>
+-->
+
+<div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
+<!--ここにコメント文-->
+<div class="header3" style="margin-top:6px;">　ここはゲーム開発者SmokingWOLF(スモーキングウルフ)の開発日誌です。<BR>
+　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
+　<B style="color:#ff5555;">※以前のブログが使えなくなったので、ただいまこの開発日誌に移転中です。</B>
+</div>
+
+<div class='article_pos'>2024年01月</div>
+<div class='nav'><a href='02.html'>次の月へ</a> | <span style='color:#ccc'>前の月へ</span></div>
+<a id='2024-01-20'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2024-01-20','フリーゲーム関係×2  ＆  『片道勇者』SteamDeck対応', this)" style='cursor:pointer;'>2024-01-20 (土)&nbsp;&nbsp;&nbsp;フリーゲーム関係×2  ＆  『片道勇者』SteamDeck対応</span><span style='float:right;'><a href='#2024-01-01' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER>介護が最近ますます大変になってきて<br>腰のダメージが回復するどころかずっと増え続けているウルフです。<br><br>ここ最近はSteam版『片道勇者（プラス）』のSteam Deck対応をがんばったのと、<br>ウディタの修正を行っていました。<br>サポート業務ばっかりでメインの開発が進んでないので心が重い！<br><br>今回は「フリーゲーム話」を2つと「Steamのお話」を2つお送りします！<br><br><HR><span style="font-size:large;"><B>●最後の『フリゲ2023』 コメントありがとうございます！</B></span><br><br><img src="../../image/2024/20240120.jpg" border="1" style="max-width:420px;" loading="lazy"><br><br>『フリゲ2023 (The Final)　あなたのベストフリーゲーム』という、<br>フリーゲームへのコメントを募るイベントがありまして、<br>私の作品にも多くのコメントをいただきました！<br><br>といいますかリストの作品数がとんでもない！<br>世界にはこんなにフリーゲームがあふれているんだ！　と驚かされます！<br>ウディコン作品もいっぱい載ってましたね！<br><br>→<B>◆フリゲ2023ページ</B> <a class="red" target="_blank" href="https://web.archive.org/web/20250531071922/https://furige.herokuapp.com/2023/">https://furige.herokuapp.com/2023/ (ｱｰｶｲﾌﾞ)</a><br><br>私のゲームにいただいたコメント集へのリンクは、<br>見つけられた分で以下の通りでした。<br>私からのコメントも各作品に送らせていただきましたので、ここでもご紹介！<br><br><br><span style="font-size: 150%"><B>●シルフェイド見聞録</B></span> <a class="red" target="_blank" href="https://web.archive.org/web/20241007014615/https://furige.herokuapp.com/2023/comment/11119">https://furige.herokuapp.com/2023/comment/11119 (ｱｰｶｲﾌﾞ)</a><br><span style="color: #2962ff">　<span style="font-size: 80%"><B>私のコメント</B>：まだ覚えてくださっている方がたくさんいらっしゃって作者として感激です！<br>『シルフェイド見聞録』は私にとってほぼ原点の作品でありながら、<br>当時の未熟さゆえに完結させられていないままの作品です。<br>私の生きているうちにリブートしたいなという気持ちは本当にありますので、<br>期待度は低めで、気長にお待ちいただけますと幸いです！</span></span><br>→　リブートするなら思い出補正を乗り越える必要があるので、<br>その壁を乗り越えられると見込めるようになった頃が<br>プロジェクトの再開タイミングになると思います！　修行あるのみ！<br><br><br><span style="font-size: 150%"><B>●シルフェイド幻想譚</B></span> <a class="red" target="_blank" href="https://web.archive.org/web/20250619065351/https://furige.herokuapp.com/2023/comment/10600">https://furige.herokuapp.com/2023/comment/10600 (ｱｰｶｲﾌﾞ)</a><br><span style="color: #2962ff">　<span style="font-size: 80%"><B>私のコメント</B>：たくさんの思い出のコメント、本当に感謝の限りです！　<br>『シルフェイド幻想譚』は自分の思っていた以上に、みなさまの中に<br>色んな楽しみや思い出を生み出せていたことをコメントから気付かされました。<br>こういった作風のRPG、生きてる間にもう一本くらい作ってみたいですね。</span></span><br>→　これも割と直感寄りで作った1本だったので、<br>面白さを分析、再構築できるようにして、<br>もう一本くらいはこういうRPGを狙って作ってみたいです！<br><br><br><span style="font-size: 150%"><B>●モノリスフィア</B></span> <a class="red" target="_blank" href="https://web.archive.org/web/20250619065714/https://furige.herokuapp.com/2023/comment/10650">https://furige.herokuapp.com/2023/comment/10650 (ｱｰｶｲﾌﾞ)</a><br><span style="color: #2962ff">　<span style="font-size: 80%"><B>私のコメント</B>：たくさんのコメントありがとうございます！　<br>マウスアクションという新しい挑戦をした一作なのですが、<br>まだ覚えていてくださる方がいらっしゃって、本当に作ってよかったです！<br>まだ遊んでおられない方には、今でも新鮮さを感じることができる一本かも<br>しれませんので、普通のアクションゲームに飽きた人にはよければぜひ！</span></span><br>→　これは今リメイクしてSteamとかで出してもいけるのでは？<br>とちょっと思っています。でも腱鞘炎になる人が増えそうなのが……。<br><br><br><span style="font-size: 150%"><B>●シルフドラグーンゼロ</B> </span><a class="red" target="_blank" href="https://web.archive.org/web/20250619065909/https://furige.herokuapp.com/2023/comment/11345">https://furige.herokuapp.com/2023/comment/11345 (ｱｰｶｲﾌﾞ)</a><br><span style="color: #2962ff">　<span style="font-size: 80%"><B>私のコメント</B>：まさかこのゲームにもコメントをいただけるなんて！　ありがとうございます！<br>変なやりこみプレイに対してもクリア後のコメントがあるとちょっとうれしいですよね。</span></span><br>→　変なプレイにも反応があるとうれしいですよね！<br>今後もチャンスがあったら入れていきたいです。<br><br><br><span style="font-size: 150%"><B>●片道勇者</B></span> <a class="red" target="_blank" href="https://web.archive.org/web/20250619070049/https://furige.herokuapp.com/2023/comment/10843">https://furige.herokuapp.com/2023/comment/10843 (ｱｰｶｲﾌﾞ)</a><br><span style="color: #2962ff">　<span style="font-size: 80%"><B>私のコメント</B>：『闇』（様々な時間制限）に追われながらも、その範囲でやれることを何とかこなしつつ、<br>持てるものを選びながら進んでいく……それは人生も同じだと思います。<br>とても長い時間遊んでくださったというコメントがたくさんあって、作者として感謝の限りです！<br>遊んでくださった皆さま、本当にありがとうございます！　<br>2023年12月時点ではまだ開発中ですが、有料作品の『片道勇者2』もいずれ<br>リリースされていると思いますので、もし興味がおありでしたらそちらもぜひ！　ゼヌーラ！</span></span><br>→　とても長い時間遊んだ、というコメントが特に目立つ一作でした。<br>うれしい！　『片道勇者2』も全力を尽くします！<br><br><br><span style="font-size: 150%"><B>●プラネットハウル</B></span> <a class="red" target="_blank" href="https://web.archive.org/web/20250619071128/https://furige.herokuapp.com/2023/comment/11261">https://furige.herokuapp.com/2023/comment/11261 (ｱｰｶｲﾌﾞ)</a><br><span style="color: #2962ff">　<span style="font-size: 80%"><B>私のコメント</B>：コメントありがとうございます！　こんな突き放したコンセプトのゲーム、楽しんでもらえるかなあ？<br>と心配でしたが、変な操作ばかりでもしっかり最後まで遊んでくださって、<br>なおかつ、まだ覚えていてくださる方がいらっしゃったことが非常にうれしいです！<br>PERYKARN氏によるアツいSFストーリーも必見！<br>でも私はケモナーというほどケモノ好きじゃないつもりなんですよ！　本当なんです信じて！</span></span><br>→　動物とケモ耳キャラがもっと上位に来てるところから派生して<br>獣人キャラも好きなだけでケモノ好き度合いはほどほどなんですよ信じて！<br><br><br><B>【ありがとうフリゲ20XX！】</B><br>『フリゲ20XX』は、毎年のフリーゲームを知るにあたって<br>すばらしい場でしたし、私のゲームも評価してもらえるときがあって、<br>非常に思い出深いイベントでした。<br><br>フリーゲームって、注目している場が違ったり、<br>オススメしてくれる人がいないと面白い作品が出てても<br>全然気付けないので、こういう投票の場で知ることができるのは<br>とても貴重だったように思います。<br><br>また、ウディコン作品も上位で紹介してもらえることがあって、<br>そういった面でも助けになっていてありがたかったです！　<br><br>色んな作品にコメントを投稿してくださった皆さま、ならびに<br>これまで長いことフリゲ20XXを開催してくださった運営の皆さま、<br><br>　「面白い」と言ってもらえるゲームを今後も作りたいなあ、<br>という気持ちを思い出させてもらえました。<br>いただいたコメントを胸に、これからも前進していきたいと思います！<br><br><HR><span style="font-size:large;"><B>●自作ゲームマガジン発売！</B></span><br><br>続いてはこちらもフリーゲームの話題！<br>今の3分ゲーコンテストの主催の方より、<br>『自作ゲームマガジン』という自作ゲームの雑誌が作られました！<br><br><span style="font-size: 80%"><B>※コラム寄稿しただけなのに私の名前が大きく載ってて恥ずかしい！</B></span><br><img src="../../image/2024/20240120A.png" border="1" style="max-width:520px;" loading="lazy"><br><br>私もこの活動を応援したかったので、自作ゲーム開発を始める人に向けて、<br>私の「最初の挫折と、ゲーム開発の第一歩の思い出」のお話を<br>コラムとして寄稿させていただきました。<br><br>どこかで話をした内容の「完全版」みたいな内容なので、<br>私の本などを読まれた方は部分的にご存じの内容です。<br><br>他にも話題に取り上げるべきフリーゲーム情報が載っていて、<br>電子版なら500円と非常にお安いので、<br>フリーゲームの話題が気になる方はよければぜひ！<br><br><B><a class="red" target="_blank" href="https://yareyare760-game.wixsite.com/home/magazin"><span style="font-size: 150%">【自作ゲームマガジン紹介ページへ】</span></a></B> <a class="red" target="_blank" href="https://web.archive.org/web/20241114102032/https://yareyare760-game.wixsite.com/home/magazin">(ｱｰｶｲﾌﾞ)(/a)<br><br>フリーゲームは伝統工芸的ポジションになってるのかも、<br>みたいな話は皆さまとのお話の中にも出ましたが、<br>こういう歴史と繋ぐまとめ情報媒体はコンパクトサイズであっても<br>「続くこと」を期待したいものだと思います。<br><br>わがままな希望ではありますが、1年に1回でもこういうのが続いてくれるとうれしいですね！<br><br><br><B>【ウディコンを本に残すことも考えてみる？】</B><br><br>そういえば「歴史に残す」と言えば、私がいなくなっちゃうと<br>ウディコンのサイトもなくなっちゃってウディコンがあった証拠が消滅しちゃうので、<br>いずれ記念として、作品紹介やコメントなどを「書籍」の形で<br>残してみたりするのもいいのかもしれません。<br><br>もはや今となっては、サーバーにデータを置いてあるよりも、<br>ショップさんに本のデータを置いてもらう方が情報として<br>長生きさせることができそうな気がします。<br>私のやることがなくなったら、そういう記念本もちょっと考えてみたいと思います。<br>AmazonさんちのKindleに出したりするのも慣れてますしね！<br><br><HR><span style="font-size:large;"><B>●SteamでAI生成画像などが利用可能に！？</B></span><br><br>私の記事を継続して読んでくださっている方向けに、いちおうのご連絡です！<br><br>以前、「Steamでは、画像生成AIで作られた画像が、買った素材集に<br>こっそり混ざってるだけでゲームがリジェクト（拒否）されるから恐い！」<br>みたいなことを申しましたが、先日Steamのルールが変わり、<br>AI生成物も使用できるようになりました。<br><br><a class="red" target="_blank" href="https://store.steampowered.com/news/group/4145017/view/3862463747997849618">https://store.steampowered.com/news/group/4145017/view/3862463747997849618</a><br><br>この発表の大事な点をおおまかに整理すると、以下のようになると思います。<br><br><br><span style="color: #d50000"><B>●ゲーム提出時にAIに関するアンケートが求められ、<br>開発者はゲームの開発および実行においてどのように<br>AIが使用されているかの説明が要求される（アート/コード/サウンド）。<br><br>●AI使用は「事前生成」と「ライブ生成」のそれぞれでカテゴリー分けされる。<br>「事前生成」は普通のゲーム通りに審査される。<br>「ライブ生成」だと、変な内容が出ないようにどう対策を講じているのかまで書く必要あり。<br><br>●これらの内容は今後も再検討される可能性あり。</B></span><br><br><br>という雰囲気！<br>「素材にAI素材がこっそり混じってたりしないかあ」とビクビクしなくてよくなったのは朗報です！<br><br>が、AI生成画像などをガッツリ使うかと言われれば、<br>まだまだ権利的な話題において風当たりが強いので、<br>今のところはほとんどの画像生成AIは使いにくいままだなあと思っています。<br><br>CC0や許諾ありのオプトイン素材だけで学習されている<br>「きれいなモデル」なら権利的に問題なくなるので、そういうのがあれば、<br>それに自分の絵を学習させたりして遠慮なく使えて最高なんですけどね！<br>そういうのも徐々に出始めているみたいなので、今後に期待しています。<br><br><br><br><br><HR><span style="font-size:large;"><B>●Steamの片道勇者、Steam Deckに対応！</B></span><br><a class="red" target="_blank" href="https://store.steampowered.com/app/266210/"><strong>Steamの『片道勇者』</strong></a>が『Steam Deck』という携帯ゲーム機に対応しました！<br><br><span style="font-size: 80%"><strong>↓Steam Deck開発機！　ちなみに左上のは整形外科でもらったロキソニン(痛み止め)テープ</strong></span><br><img src="../../image/2024/20240120B.jpg" border="1" style="max-width:520px;" loading="lazy"><br><br>つい最近、Steam片道勇者の起動ランチャーをなくしたおかげか、<br>「Steamさんちの審査でDeck上で『プレイ可能』になったけどどうするー？」<br>とご連絡をいただいたので、慌ててDeck対応の作業をしていました。<br><br>このSteam DeckはSteamのゲームを遊べる携帯ゲーム機です。<br>Windowsのゲームがある程度動くエミュレーター環境で動作しているようで、<br>Deck対応に向けて私もそこそこ『片道勇者』の修正作業が必要でした。<br><br>●<B>フォントの問題</B>：「Arial」と「MS Gothic」は入ってたが「Arial Black」は入ってなかった。<br>→　この2つは「名前だけ同じ似たフォント」かもしれません。<br>ほんのちょっとだけ横幅が違う程度の差がありました。<br>→　【×】ウディタのサンプルゲームでも指定している「Arial Black」は<br>Steam Deckには入っておらず、代替フォントを入れました。<br>Windowsフォントも全部入っているわけではなさそうです。<br>→　【×】また、「ＭＳ ゴシック」と日本語で指定したフォント名は<br>Steam Deckでは読み込めないようでした。<br><br>●<B>サウンド問題</B>：MIDI音源は再生できない。<br>→　Steam DeckではMIDI形式以外の音源を用意する必要がありました。<br><br>●<B>ボタン表記の問題</B>：ボタン表記は、ABYXLRボタン表記にしたほうが評価が高くなる。<br>→　たとえばキーボード用のまま「Zキー:決定」になっているとか、<br>Deckボタンのどれか分からないボタン表記「①：決定」などの<br>ままだと評価が下がるようです。<br>また、「F4:画面サイズ変更」といった、Deck上では操作がめんどい<br>キー表記が残ってても評価が下がります。<br>こういう画面サイズ変更機能などは、できればオプション内に<br>入れちゃった方がいいでしょうね。<br><br><br>といった感じの課題が発生していました。<br><br>結局、Steam　Deck対応状況を「最高評価」にするには<br>すぐ対応できない課題が多すぎたので、<br>黄色の「いちおうプレイ可能」扱いのままでの公開となっています。<br><br>プレイ体験的には大きな問題はないと思いますので、<br>Steam Deckをお持ちの方で<br>「『片道勇者（プラス）』を寝転びながら遊びたい！」<br>という方はよければぜひどうぞ！<br><br><span style="font-size:x-large;"><a class="red" target="_blank" href="https://store.steampowered.com/app/266210/"><strong>Steam『片道勇者』ストアページへ</strong></a></span><br><br><HR><br>という感じで変わらずサポートで忙しいままですが、やれる限り全力で進めています！<br><br>そして自由な時間ができ次第どんどん『片道勇者2』を進めたい！<br>まもなくシレン6も出ますから、片付けておかねばならないことは<br>しっかりやっておきたいですね！<br>やりたいことはいっぱいです！　うおおおお！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2024-01-20 (土)</font>　()<span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2024-01-20','フリーゲーム関係×2  ＆  『片道勇者』SteamDeck対応', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/devlog/001.html'>開発日誌</a></span></div></div><br><br><br>
+<a id='2024-01-01'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2024-01-01','2024年！　新年あけまして！', this)" style='cursor:pointer;'>2024-01-01 (月)&nbsp;&nbsp;&nbsp;2024年！　新年あけまして！</span><span style='float:right;'><a href='#bottom' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER>　あけましておめでとうございます！<br>　ということで2024年、令和6年となりました！<br><br><hr size="1" /><br><strong><span style="font-size:x-large;">●新年あけましたイラスト！</span></strong><br><span style="font-size: 80%">※今年の年賀イラストはシルフェイドシリーズよりスケイル（人化＆元） 謎の和装</span><br><img src="../../image/2024/20240101.jpg" style="max-width:500px;" loading="lazy"><br><br><br><br><strong><span style="font-size:x-large;">●今年の抱負</span></strong><br>ここ最近、事故なども含めていろいろと体を壊しているので、<br>今年はさらに注意して生活していきたいです。<br>リアルも大変になっているとはいえ、<br>その範囲でうまいこと『片道勇者2』の開発も進めたいですね！<br>ウディタのバグ修正は去年より減ると思いますので、<br>その分の時間をあてられるはずです！<br><br><br>他には現状そんな大きな予定はありませんが、介護も含め、<br>生活の中で急に大変な状況が出てくるかもしれない状況です。<br>いろいろな心構えをしながら、やれることを進めていきます！<br>　<br>それではみなさん、今年も一年、よろしくお願いいたします！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2024-01-01 (月)</font>　()<span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2024-01-01','2024年！　新年あけまして！', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/etc/001.html'>その他</a></span></div></div>
+<div class='article_pos'>2024年01月</div>
+<div class='nav'><a href='02.html'>次の月へ</a> | <span style='color:#ccc'>前の月へ</span></div>
+<a id='bottom'></a>
+
+<BR><BR>
+<div align="right"><a href="#top" class="g">▲一番上へ戻る</a></div>
+<BR>
+<CENTER>
+<HR>
+Copyright © SmokingWOLF / Silver Second
+<HR>
+</CENTER>
+
+</div>
+<div id='sidebar'>
+<div style='font-weight:bold;'>開発日誌</div>
+<div><a class='sidebar_link' href='../../archive/top/index.html'>トップへ</a></div>
+<div><B><a class='sidebar_link' href='../../index.html'>全記事一覧</a></B></div>
+<hr>
+<div style='font-weight:bold;'>【最新記事】</div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-14'>●06/14 サイト修正＋開発日誌をFC2から移転！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-31'>●05/31 ウディコン歴史資料館設立！+ ウディタ修正 + GitHubのサイト作り</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-17'>●05/17 ウディタ3.6へ！バグ修正再び！ + 私がいなくなった後に備えて</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-03'>●05/03 再び出てくるウディタ3.5のバグ！ 修正の毎日！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/04.html#2025-04-19'>●04/19 ウディタ3.5落ち着いた！？ ＆シル幻20周年！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/04.html#2025-04-05'>●04/05 さよならマイPC、それでも続くウディタ修正の日々</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/03.html#2025-03-22'>●03/22 ウディタ3.5開発開始からもうすぐ7ヶ月</a></div>
+<hr>
+<div style='font-weight:bold;'>【カテゴリ】</div>
+<div><a class='sidebar_link' href='../../category/woditor/001.html'>ウディタ&nbsp;<span class='sym'>(30)</span></a></div>
+<div><a class='sidebar_link' href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(6)</span></a></div>
+<div><a class='sidebar_link' href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../category/owh2dev/001.html'>片道勇者2&nbsp;<span class='sym'>(2)</span></a></div>
+<hr>
+<div style='font-weight:bold;'>【月別】</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2025-btn' onclick="toggleYear('y2025')">2025&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2025' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2025/06.html'>06月&nbsp;<span class='sym'>(1)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2024-btn' onclick="toggleYear('y2024')">2024&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2024' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2024/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/01.html'>01月&nbsp;<span class='sym'>(2)</span></a></div>
+</div>
+</div>
+
+</body>
+</html>

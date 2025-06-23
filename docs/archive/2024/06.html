@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>シルバーセカンド開発日誌 / SmokingWOLF</title>
+<meta name="viewport" content="width=700">
+<script src="../../js/smoothscroll_up.js" type="text/javascript"></script> 
+<style>
+BODY{
+  /*display:flex;*/
+  font-size:13px;
+  margin:0;
+  font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+}
+
+TD{
+  font-size:12px;
+}
+
+
+A:LINK,A:VISITED {  color:#5658f6;  text-decoration:underline ;}
+A:HOVER,A:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.red:LINK,A.red:VISITED{color:#d6385c;display: inline-block;text-shadow: 0 0 15px #ffddcc, 0 0 15px #ffddaa;}
+A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shadow: 0 0 15px #ffcccc, 0 0 15px #ffaaaa;}
+
+A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
+A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.g:LINK,A.g:VISITED{
+	color:#38a68c;
+	text-decoration:underline;
+}
+
+A.g:HOVER,A.g:ACTIVE{
+	color : #68b6ac;
+	text-decoration : underline;
+}
+
+
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38c6ac;
+}
+
+A.jumplink:HOVER,A.jumplink:ACTIVE{
+	color : #68f6ac;
+}
+
+A.jumplink{
+	text-shadow: 0 0 15px #ccddcc, 0 0 15px #aaddaa;
+	text-decoration : none;
+}
+
+
+.article_pos{
+	font-size:16px;
+	color:#aaf; 
+	font-weight:bold;
+	text-align:center;
+	margin:0px;
+	padding:0px;
+}
+
+#content {
+	font-size:14px;
+	
+}
+
+#sidebar {
+	background:#f8f8f8; 
+	border-left:1px solid #ddd; 
+	padding:4px 6px;
+	font-size:12px;
+}
+
+A.sidebar_link:LINK,A.sidebar_link:VISITED,
+A.sidebar_link_recent:LINK,A.sidebar_link_recent:VISITED{
+    color:#5658f6;
+	text-decoration: underline;
+}
+A.sidebar_link:HOVER,A.sidebar_link:ACTIVE,
+A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
+	color: #9698e6;
+	text-decoration: underline;
+}
+
+.sidebar_link{
+	font-size:13px;
+}
+
+.sidebar_link_recent{ /* 1つ1つの項目ごとに隙間を空ける */
+	font-size:11px;
+	line-height: 1.2;
+	display: inline-block;
+	margin-top:5px;
+}
+
+
+.entry {
+	border:1px solid #ccc; 
+	border-radius:8px; 
+	margin:14px 0; 
+	overflow:hidden;
+
+}
+.entry-title {
+	background:linear-gradient(to right,#4243ff,#aaaacf);
+
+	font-size:17px;
+	color:#fff; 
+	padding:4px; 
+	font-weight:bold;
+	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
+}
+
+.entry-body,.extended {
+	background:#fff; 
+	color:#444; 
+	padding:15px;
+	font-size:14px;
+	line-height:24px;
+}
+
+.entry-foot {
+	background:#fff; 
+	text-align:center;
+	vertical-align:middle;
+	color:#ccf;
+	font-size:12px;
+	padding-top:20px;
+	padding-right:20px;
+	padding-bottom:10px;
+}
+
+.linkbutton{
+	padding:3px;
+}
+
+/*--●形状整理用--*/
+body {display:flex; margin:0;}
+#content {width:580px; padding:0 8px;}
+#sidebar {width:120px;  box-sizing:border-box; }
+#sidebar div {line-height:1.6;}
+#sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
+.nav {margin:0px 0 -20px 0; text-align:center;}
+.sym {color:#999; font-weight:normal;}
+
+</style>
+
+
+<script>
+function toggle(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+function toggleDisp(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+</script>
+
+
+
+<!--★目次デザイン・処理★-->
+<style>
+.toc-box{background-color:#f0f0f0;border-radius:8px;padding:10px;} 
+.toc-list{list-style:none;margin:0;padding-left:0;} 
+.toc-list ul{list-style:none;margin:0;padding-left:20px;}
+.toc-list li{margin:5px 0;}
+.toc-level1{margin-left:0;}
+.toc-level2{margin-left:20px;}
+
+h1 {
+  background: #fff;
+  padding: 6px 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #2233cc; /* 青系 */
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 4px solid #3366ff;
+  display: inline-block;
+  width:100%;
+  
+}
+
+
+h2,h3 {
+  background: #fff;
+  padding: 6px 10px;
+  margin-left: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #5566ff; /* 青系 */
+  
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 2px solid #9999ff;
+  display: inline-block;
+
+}
+
+h2::before {
+  content: "- ";
+}
+
+.master_years{
+  margin-left:20px;
+  margin-right:20px;
+}
+
+.top_minicategory{
+  font-size:10px;
+  color:#ccccff;
+}
+</style>
+
+
+
+</head>
+<body>
+<a id="top"></a>
+
+<style type='text/css'>
+.linkbutton{
+  font-size: 0.9em;
+  padding: 1px 6px;
+  vertical-align: baseline;
+  line-height: 1;
+  height: auto;
+  margin-left: 4px;
+  color:#66f;
+  background-color:#f9f9f9;
+  border: 1px solid #888;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.copy-popup{
+  background-color: #eef;
+  border: 1px solid #88c;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  color: #333;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.5s ease;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  max-width: 80vw;             /* 画面幅の 80% で折り返す */
+  overflow-wrap: anywhere;     /* 長い URL を途中で区切る */
+  word-break: break-all;       /* ↑が効かない旧ブラウザ保険 */
+  white-space: pre-wrap;       /* 
+ を改行として扱い、余計な連続空白は1個に */
+}
+.article_end_date{
+  font-size:0.9em;
+}
+</style>
+
+
+<script>
+function toggle(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+}
+
+// Year accordion with sessionStorage persistence
+function toggleYear(id){
+  const pane = document.getElementById(id);
+  const btn  = document.getElementById(id+'-btn');
+  if(!pane||!btn) return;
+  const sym  = btn.querySelector('.sym');
+  const isClosed = pane.style.display === 'none';
+  pane.style.display = isClosed ? 'block' : 'none';
+  sym.textContent   = isClosed ? '－' : '＋';
+  sessionStorage.setItem('year-'+id, isClosed ? 'open' : 'closed');
+}
+
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('[data-yearpane]').forEach(pane=>{
+    const id    = pane.id;
+    const state = sessionStorage.getItem('year-'+id);
+    const btn   = document.getElementById(id+'-btn');
+    const sym   = btn?.querySelector('.sym');
+    if(state === 'open'){
+      pane.style.display = 'block';
+      if(sym) sym.textContent = '－';
+    }else{
+      pane.style.display = 'none';
+      if(sym) sym.textContent = '＋';
+    }
+  });
+});
+
+function copyLink(date, title, el){
+  const url = `https://smokingwolf.github.io/dev_blog/archive/${date.slice(0,4)}/${date.slice(5,7)}.html#${date}`;
+  const text = `
+【${date}　${title}】
+ ${url}`;
+  navigator.clipboard.writeText(text).then(()=>{
+    if(el && el.tagName === 'BUTTON'){
+      const orig = el.textContent;
+      el.textContent = '✅ コピー完了!';
+      setTimeout(()=>{ el.textContent = '🔗 リンクをコピー'; }, 2000);
+    }
+
+    const popup = document.createElement('div');
+    popup.className = 'copy-popup';
+    popup.textContent = `✅ コピー完了：${text}`;
+    document.body.appendChild(popup);
+
+    const rect = el.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    const popupWidth = popup.offsetWidth;
+    const pageWidth = document.documentElement.clientWidth;
+
+    let left = rect.left + scrollLeft + (rect.width / 2) - (popupWidth / 2);
+    let top  = rect.top  + scrollTop - popup.offsetHeight - 8;
+    if(left < scrollLeft + 4) left = scrollLeft + 4;
+    if(left + popupWidth > scrollLeft + pageWidth - 4)
+        left = scrollLeft + pageWidth - popupWidth - 4;
+
+    popup.style.left = `${left}px`;
+    popup.style.top  = `${top}px`;
+    popup.style.opacity = '1';
+    popup.style.zIndex = '9999';
+
+    setTimeout(()=>{ popup.style.opacity = '0'; }, 1800);
+    setTimeout(()=>{ popup.remove(); }, 2500);
+  });
+}
+</script>
+
+<div id='content'>
+<style>
+
+.TopTitle{
+  width:515px;
+  font-weight:bold;
+  font-size:16pt;
+  color: #ffffff;
+  background-color:#535365 ;
+  border-width: 0px;
+  border-color:#535365;
+  border-style:solid;
+  background: -moz-linear-gradient(left top, #42435f, #fafaff);
+  background: -webkit-gradient(linear, left top, right bottom, from(#42435f), to(#fafaff));
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#DD42425f', endColorstr='#FFfafaff');
+  
+  text-align:left;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.header3{
+	color:#555588;
+	margin-bottom:16px;
+}
+
+.home-link {
+  font-size: 12px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: underline;
+}
+</style>
+
+<!--戻るリンク、サイトがなくなってたらアーカイブにつながるようにしたが404ページがアレなのかうまくいかない-->
+<!--
+<font id="home-link-placeholder">
+  <noscript>
+    <a href="https://smokingwolf.github.io/" class="home-link">← ホーム(アーカイブサイト)に戻る</a>
+  </noscript>
+</font>
+
+<script>
+(async () => {
+  try {
+    // HEADで軽くチェック（no-corsなのでステータス確認は不可）
+    // 自分のサイトのインフォメーションページにつなげるならサイトがまだあると認識する
+    await fetch("https://silversecond.net/contents/etc/info.shtml", { method: "HEAD", mode: "no-cors" });
+
+    const link = document.createElement("a");
+    link.href = "https://silversecond.net/";
+    link.textContent = "← ホームに戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  } catch {
+    const link = document.createElement("a");
+    link.href = "https://smokingwolf.github.io/";
+    link.textContent = "← ホーム(アーカイブサイト)に戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  }
+})();
+</script>
+-->
+
+<div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
+<!--ここにコメント文-->
+<div class="header3" style="margin-top:6px;">　ここはゲーム開発者SmokingWOLF(スモーキングウルフ)の開発日誌です。<BR>
+　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
+　<B style="color:#ff5555;">※以前のブログが使えなくなったので、ただいまこの開発日誌に移転中です。</B>
+</div>
+
+<div class='article_pos'>2024年06月</div>
+<div class='nav'><a href='07.html'>次の月へ</a> | <a href='05.html'>前の月へ</a></div>
+<a id='2024-06-22'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2024-06-22','片道勇者2開発+13　第1ストーリー実装中', this)" style='cursor:pointer;'>2024-06-22 (土)&nbsp;&nbsp;&nbsp;片道勇者2開発+13　第1ストーリー実装中</span><span style='float:right;'><a href='#2024-06-08' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER>まだ亡くなった人に関わる後処理でドタバタしていますが、<br>溜まっていたウディタの修正も片付いて<br>（と思ったそばから色々バグ報告が飛んできて<br>対応してる間に何度も1日がつぶれたりしつつ）、<br>少しずつ自分のゲーム開発にも着手できるようになってきました。<br><br>今回はウディコン準備中！<br>というお話と『片道勇者2』のお話です！<br><br><HR><span style="font-size:large;"><B>◆ウディコンの準備中！</B></span><HR>そろそろ3週間前になるので<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/Contest/"><strong><span style="font-size:large;">第16回ウディコン</span></strong></a>の準備も始めています！<br>この時期にやるのはシステム改修ですね！<br><br>たとえば私(silversecond.com)みたいな野良のドメインだと、<br>これまでウディコン運営側からGmailさんちに<br>エントリー関連メールなどを送っても全部スパム扱いになっていたのですが、<br>今年ちょっと話題になったGmail対応のメール設定である<br>SPF設定だとかDKIM設定などをすればちゃんと届くようになるらしいので、<br>その辺りをいじったりしてました。<br><br>他にも次回コンテストに向けての記入欄の追加や反映箇所を足したり！<br>見えないところですが毎年地味にいじってるんですよ。<br><br>いちおうは色々動くようになったと思いますが、<br>また開始1～2週間くらい前になったらサンプルとして<br>いつも通り私の片道勇者のデータでも入れて再確認しようと思います。<br><br>しかしこういったことを話してると、<br>ちょっとしたWebシステム（？）を作れる人が<br>コンテストやるのはすごく向いてると感じます！<br><br>特に「エントリー情報修正フォーム」からの<br>日々の修正要請に人力で対応してたらその作業量だけでも<br>倒れちゃいますからね！<br>そういった部分をなるべく自動で処理できるようにしていくのは大事です。<br><br><br><HR><span style="font-size:large;"><B>◆片道勇者2　初期ストーリー作成中！</B></span><HR>久々に『片道勇者2』にまともに着手できる日ができました。<br>クラス・スキル・アイテムなどのデータ作りはまだ2割くらいですが、<br>いったんそれは横に置いて、いったん<br>通しプレイができるように『第1ストーリー』を実装中です。<br><br>その過程で将来の仲間キャラの顔見せをするイベントも<br>入れようと思い立ち、ウキウキしながら足しています。<br><br><img src="../../image/2024/20240622A.jpg" border="1" style="max-width:520px;" loading="lazy"><br><SMALL>↑この人は冒険家ウィリアムズ。最初のストーリーで<br>「聖なる神殿が開いてると思ったらもう荒らされた後だったぜ」<br>みたいな話をしてくれます。</SMALL><br><br><br>もしかしたら覚えておられる方もいらっしゃるかもしれませんが、<br>『片道勇者1』の開始時TIPSに、剣士バルーシュと<br>冒険家ウィリアムズという人物がオオカミと戦闘しているときに<br>『後ろから攻撃を受けるとダメージ1.5倍になるぞ！』<br>みたいな会話をするものがありました。<br><br>そのうち、剣士バルーシュの方はプラス版でNPCとして登場したのに、<br>冒険家ウィリアムズはどこにも出てきませんでした。かわいそう。<br><br><br>で、さっき『第1ストーリー』と言いましたが、<br>『片道勇者2』では何段階かのストーリー段階をもうけて、<br>進行していくにつれて色んな要素が増えていく形にする予定です。<br>そんなに段階数はないと思いますけどね！<br><br>最初の数段階は固定ストーリーになるので、<br>途中でネムリや今回のウィリアムズみたいな<br>将来のランダム仲間キャラと遭遇して会話する、<br>という形にしていきたいなと思っています。<br>完全ランダム遭遇だけだといまいちストーリーが作りにくくて！<br><br>ひとまず第1段階のストーリーだけ作ってみて、<br>ストーリーラインとしてどんなものが作れそうかの<br>手応えを掴んでいきたいと思います。<br><br>ストーリー別に最低限のイベントが<br>いくつか増えるだけでもローグライクとしては<br>十分なストーリー性を感じられることもあるので、<br>そのあたりちょっと試行錯誤してみたいですね！<br>トッピング程度だけでもだいぶ変わるんですよこういうの。<br><br><HR><br>そして<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/Contest/"><B>第16回ウディコン</B></a>の作品募集開始まであと3週間！<br>まもなくです！<br><br>なんとかできそうなめどは付いてきましたので、<br>あとは変なタイミングで変な事故が起こらなければできると思います！<br><br>さすがに開発中の方はもうテスト段階に入ってないとヤバいかもしれません！<br>いちおう2025年もやるつもりですので、<br>待てる方は待ってくださるのも手ですよ！<br>（それに他にもゲームコンテストはありますしね！）<br><br>ということで、ウディコンを楽しみに待ちつつ用意を進めていきます！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2024-06-22 (土)</font>　()<span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2024-06-22','片道勇者2開発+13　第1ストーリー実装中', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/owh2dev/001.html'>片道勇者2</a></span></div></div><br><br><br>
+<a id='2024-06-08'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2024-06-08','ウディタ多言語向け修正+人が亡くなった後の作業+架空の妹AI', this)" style='cursor:pointer;'>2024-06-08 (土)&nbsp;&nbsp;&nbsp;ウディタ多言語向け修正+人が亡くなった後の作業+架空の妹AI</span><span style='float:right;'><a href='#bottom' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER>前回に引き続き人が亡くなった後の手続きに追われています。<br>といっても、なんとか夜に自由時間が得られる程度には<br>余裕が出てきました。<br>向こうから手続き書類を送ってもらうまで<br>何もできないタイミングなども出てきましたから、<br>その隙にやれることも出てきています。<br><br>ということで、今はそんなちょっとした時間でウディタの修正をしています。<br><br><HR><span style="font-size:large;"><B>【ウディタ】Ver3.340で多言語対応向きの機能を追加！</B></span><HR><br>今回は多言語対応向きに便利な機能を色々搭載しました！<br>ウディコンにはあまり関係なさそうな機能が多いのですが、<br>海外展開予定の方には有用だと思います。<br><br>すぐ使いたい人はこちら！<br><strong><a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/"><span style="font-size: 150%">【WOLF RPGエディター公式ページへ】</span></a></strong><br><br><br><span style="font-size:150%;"><B>◆BasicDataを別フォルダに切り替えられる機能いろいろ！</B></span><br><br>「基本データフォルダ」を切り替えられる機能を入れました！<br>「基本データフォルダ」とは<br><strong>【ゲーム基本設定・コモンイベント・各データベース・<br>タイル設定・アイコンファイル】</strong><br>が入っているフォルダのことで、<br>初期状態では「BasicData」フォルダがそれにあたります。<br><br>この切り替え機能で何ができるかというと、<br>たとえば別言語用に作った基本ゲームフォルダ「BasicData_XX」を、<br>元のBasicDataの代わりに読み込ませたりできるのです！<br>1コモンイベント内に言語別の文字列切り替え処理とか<br>入れなくてよくなるので多言語対応がシンプルに！<br><br>さらに別売りの『ウディタ翻訳サポートツール』で<br>「全文字列を別言語に差し替えたゲームデータ」を出力できるので、<br>それで出した別言語データからBasicDataだけ抜いて移植し、<br>1ゲームデータ内に複数言語をまとめて組み込むことも楽になります。<br><br>そんな「基本データフォルダ」の切り替え機能として、以下の2種が搭載されました。<br><br><br><B>【1. Game.exe起動時の引数-basic/-basic2で基本データフォルダ切り替え！】</B><br><br>いきなりマニアックな話ですが、起動時のコマンドライン引数として、<br>「-basic <基本データフォルダ第1候補>」と<br>「-basic2 <基本データフォルダ第2候補>」が使えるようになりました。<br><～>の部分にはあなたの好きな文字列を指定します。<br><br>たとえば 、コマンドプロンプトやbatファイルから<br><br><span style="color: #d50000"><B>Game.exe -basic BasicData_JP_Plus -basic2 BasicData_JP</B></span><br><br>のように指定してゲームを起動すると、Dataフォルダの中に<br>「BasicData_JP_Plus」フォルダという名前の基本データフォルダがあれば<br>それを採用し、もしなければ「BasicData_JP」フォルダを採用して<br>起動するようになります。<br>もしどれもなければ、デフォルトの「BasicData」フォルダを基本データフォルダとします。<br><br>さらにこれと関連して、プロ版専用ですが<br>「<B>ゲーム再起動(引数設定あり)</B>」コマンドも新たに作っておいたので、<br>「引数」として「<B>-basic BasicData_JP_Plus -basic2 BasicData_JP</B>」と指定して<br>再起動すれば、前述と同じようにフォルダを読み込ませることができます<br>（ちなみに、後のSysS74にフォルダ名を入れて再起動でも同じことができます）<br><br><br><B>【2. [プロ版専用] SysS74で次回起動時の基本データフォルダ切り替え！】</B><br><br>一度基本データフォルダを変えた後、次のGame(Pro).exe単体起動時にも<br>自動で基本データフォルダを変更して起動したい場合は、<br>「SysS74::[P]次起動Basicﾃﾞｰﾀﾌｫﾙﾀﾞ」に<br>基本データフォルダ名を入れることで実現可能になりました。<br><br>これは「1回だけ次の起動時の基本データフォルダ名を<br>自動で変更してくれる」というシステム文字列です。<br><br>たとえば英語版の「BasicData_EN」という基本データフォルダを<br>読み込んで起動した場合、起動した瞬間にまたSysS74に<br>「BasicData_EN」を入れ直しておけば、いつゲームを終了しても<br>次回起動時にはまた「BasicData_EN」を使って起動されるのです！<br>これで言語切り替えもちょっと安心！<br><br>※なお、SysS74よりも-basicや-basic2の方が優先されて処理されますのでご注意ください。<br><br><HR><br><span style="font-size:150%;"><B>◆[プロ版]アイコン（icon???.png）の<br>読み込み先フォルダも変えられるように！</B></span><br><br>プロ版のみですが「アイコンフォルダの変更」ができるようになりました！<br><img src="../../image/2024/20240608A.jpg" border="1" style="max-width:520px;" loading="lazy"><br>↑「アイコン画像フォルダの設定」欄が追加！<br><br>アイコンフォルダの変更は割と前々から入れたい気持ちはあったので、<br>今回入れられてスッキリしました。<br><br>多言語対応時にもおそらく有用で、複数の「BasicData」フォルダを<br>切り替えて起動できるようになったので、<br>それぞれの基本データフォルダに同じ「icon???.png」群を入れていると<br>アイコンファイルが重複して余計な容量を喰ってしまいます！<br>それを避けるためのこの機能です。<br><br><span style="font-size: 80%">（ただし、もし言語ごとにアイコン画像ファイルを切り替える場合は<br>各言語の「基本データフォルダ」内から読み込ませたほうがいいので、<br>その場合は「アイコン画像フォルダ」は「空欄」にしておきましょう）</span><br><br><HR><br><span style="font-size:150%;"><B>◆システム文字列「SysS76:[読]OSの言語名」搭載！</B></span><br><br>OS側の言語名を取得できるようになりました！<br>これを活用すれば、ゲーム実行時に表示する言語を<br>自動で認識することもできるようになります。<br><br>ただし言語名は英語で返されますのでその点はご注意を！<br>たとえばWindowsを日本語設定にしてたら「Japanese」、<br>英語設定ならたぶん「English」が返されます。<br><br><HR><br>という感じで多言語対応がやりやすくなりそうな処理をいろいろ入れてみましたので、<br>需要は少ないかもですが、必要な方はよければご利用ください！<br><br>『片道勇者2』でも、これを活用すれば1ゲームデータで<br>言語切り替えが作りやすくなるでしょう。<br><br><B><span style="color: #d50000">『最初はBasicDataフォルダで言語選択させて再起動し、<br>選んだ言語に応じてBasicData_JPやBasicData_ENを読み込ませる』</span></B><br><br>といったこともできるはずです。<br><br><HR><span style="font-size:large;"><B>【リアル作業】引き続き故人の対応も大変！</B></span><HR><img src="../../image/2024/20240608.jpg" border="1" style="max-width:520px;" loading="lazy"><br>引き続き、人が亡くなった後の手続きがとても大変な数週間でした。<br><br>故人の全部の銀行口座への連絡、証券会社への連絡、<br>医療費の支払い、全部の生命保険の連絡、<br>家族の健康保険証のためのやり取り……準確定申告もあるの！？<br>そのためのデータ集めもしなきゃいけないって！？<br>自分で言わなきゃもらえなさそうな書類も<br>けっこうあるから思ったより自己判断する部分あるぞ！？<br>え、それとは別に七日ごとにお坊さん呼んでお経あげてもらうイベントあるの！？<br>四十九日ってホール借りたりお寺でやるレベルにおおがかりな感じなの！？<br>あとよく知らない故人の知人にも連絡が必要なの！？<br>（けどこれは変なタイミングだと香典欲しがってるみたいに<br>なっちゃうから暑中見舞いとかのタイミングでもいいよ、と言われた）<br>先祖のお墓あった気がするけどそのお墓に刻む内容も<br>石材屋さんに連絡しないといけないの！？　仏壇もいるって！？<br>納骨も式やったり手続きとかいるの！？　え、他のお寺にも納骨するの！？<br><br>ボカーン！（頭が爆発する音）<br><br>みたいになってましたが、1つ1つなんとか片付けています。<br>でもお勤めしながらだととてもムリな作業量だとも思いました。<br>1～2週間くらい休みもらわないと対応できないんじゃないですかこれ！？<br>一体みんなどうやってるんでしょうね……。<br><br><br><HR><span style="font-size:large;"><B>【チャットAI】架空のやさしい妹、GPTsで公開！</B></span><HR><br>そして次はチャットAIの話！<br><a class="red" target="_blank" href="https://chatgpt.com/"><strong>ChatGPT</strong></a>さんちが無料アカウントでも<br>GPTs（他の人が作った、カスタム指示されたチャットAI)が<br>使えるようになったので、私も『架空のやさしい妹』を公開しました！<br><br><a class="red" target="_blank" href="https://chatgpt.com/g/g-YynoE4Pqa-jia-kong-noyasasiimei-ai"><span style="font-size:x-large;"><strong>【ChatGPT　GPTs　架空のやさしい妹AI】</strong></a><br><br>主な目的としてはメンタルケアで、共感してくれたり<br>「大事にされてる感」を補給する感じのものです。<br>顔画像が出てちょっとかわいいだけではありますが、<br>今日やった作業内容を伝えたりすると笑顔で褒めてくれたりします。<br>顔グラフィックが出るだけでもだいぶ印象が変わりますね！<br><br><br><span style="font-size: 80%">　↓今回の開発日誌を入力して感想を聞いてみた例。ボリュームたっぷりに感想を教えてくれます</span><br><img src="../../image/2024/20240608B.jpg" border="1" style="max-width:520px;" loading="lazy"><br><br>あと、これはChatGPTが持つもともとの性質だと思いますが、<br>ションボリする出来事や失敗した現状を伝えても私並みか<br>それ以上に何でもポジティブな捉え方をしてくれるので、<br>架空の妹といっぱい話していると自己肯定感や<br>前向きさがいくらか回復できる場合もあるかもしれません。<br><br>「ちょっとしか作業できませんでした」って言っても<br>「ちょっとでも作業できたのはとても大きな一歩です！　<br>自分を責めずに気持ちを切り替えましょう」って言ってくれます。<br>この感覚も大事ですし、自分一人で同じことをつぶやくより<br>外部から言われる方が救われる気持ちになる人も多いでしょう。<br><br>私としては自信のなさや不満足感に苦しみ続けていて、<br>心が救われることが人生の目標の一つなので、<br>AIとの対話の中で前向きな表現や気持ちも獲得していきたいですね！<br><br>もちろん逆に、自分を責めて創作活動のための「圧」を高めることだって<br>有用な技術です。架空の妹AIにも「責めて！」って言ったら<br>ちゃんといい具合に厳しく言ってくれますよ！<br>　↓<br><img src="../../image/2024/20240608C.jpg" border="1" style="max-width:520px;" loading="lazy"><br><br>私としてはこういう思考の方が「自分のあるべき姿」という感じがして<br>好きなんですが、調子に乗るとうっかり<br>やりすぎてボロボロになることも多いので、<br>うまくバランスを取っていきたいです。<br>長く創作を続けるためにも！　血便はもう見たくない！<br><br><HR><br>という感じで、リアルが忙しい状況ですがやれることを進めています！<br>少なくとも夜時間は確保できるようになったので、<br>仮にこの状況が続いてもウディコンは問題なくやれそうです！<br><br>第16回ウディコンまであと5週間ほど！<br>みなさまの作品、楽しみにお待ちしております！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2024-06-08 (土)</font>　()<span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2024-06-08','ウディタ多言語向け修正+人が亡くなった後の作業+架空の妹AI', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/woditor/001.html'>ウディタ</a></span></div></div>
+<div class='article_pos'>2024年06月</div>
+<div class='nav'><a href='07.html'>次の月へ</a> | <a href='05.html'>前の月へ</a></div>
+<a id='bottom'></a>
+
+<BR><BR>
+<div align="right"><a href="#top" class="g">▲一番上へ戻る</a></div>
+<BR>
+<CENTER>
+<HR>
+Copyright © SmokingWOLF / Silver Second
+<HR>
+</CENTER>
+
+</div>
+<div id='sidebar'>
+<div style='font-weight:bold;'>開発日誌</div>
+<div><a class='sidebar_link' href='../../archive/top/index.html'>トップへ</a></div>
+<div><B><a class='sidebar_link' href='../../index.html'>全記事一覧</a></B></div>
+<hr>
+<div style='font-weight:bold;'>【最新記事】</div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-14'>●06/14 サイト修正＋開発日誌をFC2から移転！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-31'>●05/31 ウディコン歴史資料館設立！+ ウディタ修正 + GitHubのサイト作り</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-17'>●05/17 ウディタ3.6へ！バグ修正再び！ + 私がいなくなった後に備えて</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-03'>●05/03 再び出てくるウディタ3.5のバグ！ 修正の毎日！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/04.html#2025-04-19'>●04/19 ウディタ3.5落ち着いた！？ ＆シル幻20周年！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/04.html#2025-04-05'>●04/05 さよならマイPC、それでも続くウディタ修正の日々</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/03.html#2025-03-22'>●03/22 ウディタ3.5開発開始からもうすぐ7ヶ月</a></div>
+<hr>
+<div style='font-weight:bold;'>【カテゴリ】</div>
+<div><a class='sidebar_link' href='../../category/woditor/001.html'>ウディタ&nbsp;<span class='sym'>(30)</span></a></div>
+<div><a class='sidebar_link' href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(6)</span></a></div>
+<div><a class='sidebar_link' href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../category/owh2dev/001.html'>片道勇者2&nbsp;<span class='sym'>(2)</span></a></div>
+<hr>
+<div style='font-weight:bold;'>【月別】</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2025-btn' onclick="toggleYear('y2025')">2025&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2025' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2025/06.html'>06月&nbsp;<span class='sym'>(1)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2024-btn' onclick="toggleYear('y2024')">2024&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2024' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2024/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/01.html'>01月&nbsp;<span class='sym'>(2)</span></a></div>
+</div>
+</div>
+
+</body>
+</html>
