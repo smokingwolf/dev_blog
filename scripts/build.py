@@ -599,11 +599,11 @@ def build():
             entry_html = '<br><br><br>\n'.join(blocks)
             sidebar = render_sidebar(months_sorted, cat_counts, page_dir, root, month_counts, cat_dir_map, recent_entries)
             total_pages = (len(es_sorted) + 9) // 10
-            pos_text = f"{cat or 'uncategorized'} {page_num}/{total_pages}"
+            pos_text = f"{cat or 'uncategorized'}　{page_num}/{total_pages}"
             rel_root = os.path.relpath(root, page_dir)
             if page_num != total_pages and total_pages > 1:
                 last_link = f"{rel_root}/category/{safe}/{total_pages:03d}.html"
-                pos_html = f"{html.escape(cat or 'uncategorized')} {page_num}/<a href='{last_link}'>{total_pages}</a>"
+                pos_html = f"{html.escape(cat or 'uncategorized')}　{page_num}/<a href='{last_link}'>{total_pages}</a>"
             else:
                 pos_html = None
             body_html = render_body(
