@@ -227,7 +227,8 @@ BODY:
 
 　そしてこちらはウディタ3.5の感想記事！　テンション高い内容&ウルファールのイラストまでありがとうございます！　
 
-<B><a class="red" target="_blank" href="https://home-or-away.com/archives/6991">【ウディタver3.5（ベータ）公開おめでとうございます記事 (あきら様より)】</a></B>
+<B><a class="red" target="_blank" href="https://home-or-away.com/archives/6991">【ウディタver3.5（ベータ）公開おめでとうございます記事 (あきら様より)】</a></B> <a class="red" target="_blank" href="https://web.archive.org/web/20250512203216/https://home-or-away.com/archives/6991">(ｱｰｶｲﾌﾞ)(/a)
+
 
 　プロ版にはレイヤー5まで使えたりフォントの暗号化ができたりしますのでさらなる上級者の方はよければぜひ！（ただしウディコン審査中はプロ版が使えないのでご注意を！）
 
@@ -237,14 +238,14 @@ BODY:
 
 　これまで書いてきた新機能紹介の記事が8回分もあるので、もし細かく見ていきたい方はこちらもどうぞ！
 
-<a class="red" target="_blank" href="https://sils.fc2.net/blog-entry-822.html">その1(セキュリティ関連や始まり)</a>
-<a class="red" target="_blank" href="https://sils.fc2.net/blog-entry-823.html">その2(空Ev作成/フォント暗号化)</a>
-<a class="red" target="_blank" href="https://sils.fc2.net/blog-entry-825.html">その3(経路探索/キャラレイヤー強化)</a>
-<a class="red" target="_blank" href="https://sils.fc2.net/blog-entry-825.html">その4(ピクチャリンク/DBソート/特殊文字入力)　</a>
-<a class="red" target="_blank" href="https://sils.fc2.net/blog-entry-826.html">その5(自動移動/パン/オートタイルアニメ速度)</a>
-<a class="red" target="_blank" href="https://sils.fc2.net/blog-entry-827.html">その6(XY配列/TXT入出力[Git用])　</a>
-<a class="red" target="_blank" href="https://sils.fc2.net/blog-entry-828.html">その7(タブウィンドウ/正規表現/ゲーム内画像生成/レイヤー5搭載)</a>
-<a class="red" target="_blank" href="https://sils.fc2.net/blog-entry-831.html">その8(BGSチャンネル機能･エフェクトディレイ･コマンド折りたたみ)</a>
+<a class="blue" target="_blank" href="../../archive/2024/09.html#2024-09-20">その1(セキュリティ関連や始まり)</a>
+<a class="blue" target="_blank" href="../../archive/2024/10.html#2024-10-05">その2(空Ev作成/フォント暗号化)</a>
+<a class="blue" target="_blank" href="../../archive/2024/10.html#2024-10-19">その3(経路探索/キャラレイヤー強化)</a>
+<a class="blue" target="_blank" href="../../archive/2024/11.html#2024-11-02">その4(ピクチャリンク/DBソート/特殊文字入力)　</a>
+<a class="blue" target="_blank" href="../../archive/2024/11.html#2024-11-16">その5(自動移動/パン/オートタイルアニメ速度)</a>
+<a class="blue" target="_blank" href="../../archive/2024/11.html#2024-11-30">その6(XY配列/TXT入出力[Git用])　</a>
+<a class="blue" target="_blank" href="../../archive/2024/12.html#2024-12-14">その7(タブウィンドウ/正規表現/ゲーム内画像生成/レイヤー5搭載)</a>
+<a class="blue" target="_blank" href="../../archive/2025/01.html#2025-01-11">その8(BGSチャンネル機能･エフェクトディレイ･コマンド折りたたみ)</a>
 
 <HR>
 <span style="font-size:120%;"><B>【引き続きバグ修正がんばります！】</B></span>
@@ -3423,7 +3424,7 @@ EXTENDED BODY:
 
 -----
 --------
-TITLE: サイト修正＋開発日誌、新天地へ
+TITLE: サイト修正＋開発日誌をFC2から移転！
 CATEGORY: 開発日誌
 DATE: 2025-06-14 08:00:00
 -----
@@ -3442,7 +3443,7 @@ BODY:
 <img src="../../image/2025/20250614.jpg" border="1" style="max-width:520px;" loading="lazy">
 
 　というのも実はうちのサイト、1998年頃からやってたのもあってフレーム要素を使いまくりであんまりよろしくなかったので、これの撤廃は前々からやりたいと思っていたんですよね！
-　なにより<span style="color: #d50000"><B>フレーム機能は、現在の標準仕様であるHTML5ではすでに公式には廃止</B></span>されており、いつ動かなくなっても文句が言えない状態だったのです！
+　なにより<span style="color: #d50000"><B>＜frameset＞によるフレーム機能は、すでに今の標準仕様の何個か前のHTML5の時点ですでに公式には廃止</B></span>されており、いつ動かなくなっても文句が言えない状態だったのです！
 　本当はどこかの時点で1週間でも時間を取ってやるべきだったのですが、他が忙しくてここまでのびのびになってしまっていました。
 
 　でも前回の<B><a class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/">『ウディコン歴史資料館』</a></B>のGitHubアーカイブ化にはじまり、私のサイトや作品のアーカイブ化も視野に入れ始めたので、ようやく今になって修正し始めているというわけですね！
