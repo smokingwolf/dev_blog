@@ -482,5 +482,38 @@ Copyright © SmokingWOLF / Silver Second
 </div>
 </div>
 
+
+<script>
+// ダブルリンク処理（JSがオンでリンク先が存在するならそこへ、なければアーカイブ側へ飛ぶ）
+window.addEventListener('DOMContentLoaded', () => {
+  const link = document.getElementById('double-link');
+  if (!link) {
+    console.error('リンクが見つかりませんでした！');
+    return;
+  }
+  const primaryUrl = link.dataset.primary;
+
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    fetch(primaryUrl, { method: 'GET' })
+      .then(res => {
+        const url = res.url || '';
+        if (!res.ok || url.includes('404.html') || res.status === 404) {
+          console.warn('【404または失敗】アーカイブに飛びます');
+          window.location.href = link.href;
+        } else {
+          console.warn('【OK】本家へ接続成功！');
+          window.location.href = primaryUrl;
+        }
+      })
+      .catch(() => {
+        console.warn('【通信エラー】アーカイブに飛びます');
+        window.location.href = link.href;
+      });
+  });
+});
+</script>
+
 </body>
 </html>
