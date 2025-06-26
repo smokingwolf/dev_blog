@@ -3577,7 +3577,7 @@ EXTENDED BODY:
 --------
 TITLE: ウディコン準備中！+ 開発日誌も移転作業中
 CATEGORY: ウディタ
-DATE: 2025-06-26 00:00:00
+DATE: 2025-06-28 00:00:00
 -----
 BODY:
 　ということでいよいよ<a class="blue" target="_blank" data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 150%"><B>第17回ウディコン</B></span></a>開催まで<span style="font-size: 150%"><B>あと2週間</B></span>となりました！！
