@@ -3564,7 +3564,7 @@ BODY:
 　AIは、「一貫性を持たせてとんでもないこだわりを貫いたり、こだわってるつもりがないのに無意識の癖が出ちゃうようなものを生み出し続けるのはまだまだ難しい」（自称）みたいなので、そういった情熱を楽しむコンテンツであれば、まだしばらくは人間製のものが楽しまれそうですよ！
 
 　そして私にとって直近のゲーム開発イベントといえばやっぱりこれ！
-　<a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 150%"><B>第17回ウディコン！</B></span></span></a>　開催まであと<span style="color: #d50000"><span style="font-size: 150%">30日</span></span>を切りました！！
+　<a data-primary="https://silversecond.com/WolfRPGEditor/Contest1/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 150%"><B>第17回ウディコン！</B></span></span></a>　開催まであと<span style="color: #d50000"><span style="font-size: 150%">30日</span></span>を切りました！！
 　そろそろ一通り完成してテストに入りたい頃だと思いますが、参加予定の皆さまはいかがでしょうか！
 　2026年の第18回もほぼ確実に開催予定ですので、あまりに辛そうでしたら次回に回すこともご検討ください！　体を壊したら身も蓋もありませんからね！
 
