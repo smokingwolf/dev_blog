@@ -3150,7 +3150,7 @@ BODY:
 　というのも、私の公式サイトやウディタサイト、ウディコンサイトのサーバーやドメインは、レンタルサーバーだったり自分用ドメインをお金を払って使わせてもらっていたりして、要するにこれら全部<span style="font-size: 150%"><span style="color: #d50000"><B>『借り物』</B></span></span>なんですよ！
 　で、今はそれらの使用期間を定期的に延長して使っているのですが、もし私に何かあると1年後には全部消滅しちゃうわけです！
 
-　まあ私個人の作ったものがネット上から消えること自体は、別にそれはそれでもいいと思っているとはいえ、<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/Contest/"><B>ウディコン</B></a>に関してはどう考えてもみんなで作り上げた公共物なので、結果発表くらいはアーカイブとして残したいと思います。
+　まあ私個人の作ったものがネット上から消えること自体は、別にそれはそれでもいいと思っているとはいえ、<a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><B>ウディコン</B></a>に関してはどう考えてもみんなで作り上げた公共物なので、結果発表くらいはアーカイブとして残したいと思います。
 　私もコンテストパークのページが消えちゃって、賞をいただいた歴史が消えて少し悲しんでいましたからね！！　それに、参加された方にとっては普通に経歴の証明にも使えるはずですし。
 
 　あと私の公式サイトや作品紹介などに関しても、私がいなくなった後にお参りできる先やゲームをダウンロードできるリンク先まとめみたいなのがあったほうが便利でしょう。そこはウディコン結果を残すことに比べたら「ついで」のオプション任務くらいの気持ちで優先度は低いんですけどね。
@@ -3368,7 +3368,7 @@ BODY:
  　特にウディコンのアーカイブ化は私が急にいなくなったときに備えて早めにやっておきたかったですからね！　これでひとまず、第16回までのウディコンの履歴は当面消えずに残り続けるはずです。そしてこれからは1回分ずつ足せばいいので気楽です！
   
 　もちろん、ウディコンはこれからも続けていきます！
-　今年も<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/Contest/"><B><span style="font-size: 150%">第17回ウディコン</span></B></a>がもうあと40日くらいに迫ってきていますからね！　ヤバい！　ウディコンのコンテストシステムの調整もしないといけない！！　やることいっぱいですががんばります！
+　今年も<a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><B><span style="font-size: 150%">第17回ウディコン</span></B></a>がもうあと40日くらいに迫ってきていますからね！　ヤバい！　ウディコンのコンテストシステムの調整もしないといけない！！　やることいっぱいですががんばります！
 　でも本当はもっとゲーム作りをしたい！！　それをモチベーションに少しでも急いでいきます！
 　
 　
@@ -3564,7 +3564,7 @@ BODY:
 　AIは、「一貫性を持たせてとんでもないこだわりを貫いたり、こだわってるつもりがないのに無意識の癖が出ちゃうようなものを生み出し続けるのはまだまだ難しい」（自称）みたいなので、そういった情熱を楽しむコンテンツであれば、まだしばらくは人間製のものが楽しまれそうですよ！
 
 　そして私にとって直近のゲーム開発イベントといえばやっぱりこれ！
-　<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/Contest/"><span style="font-size: 150%"><B>第17回ウディコン！</B></span></span></a>　開催まであと<span style="color: #d50000"><span style="font-size: 150%">30日</span></span>を切りました！！
+　<a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 150%"><B>第17回ウディコン！</B></span></span></a>　開催まであと<span style="color: #d50000"><span style="font-size: 150%">30日</span></span>を切りました！！
 　そろそろ一通り完成してテストに入りたい頃だと思いますが、参加予定の皆さまはいかがでしょうか！
 　2026年の第18回もほぼ確実に開催予定ですので、あまりに辛そうでしたら次回に回すこともご検討ください！　体を壊したら身も蓋もありませんからね！
 
