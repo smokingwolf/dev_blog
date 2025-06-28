@@ -126,6 +126,9 @@ def get_cat_dir(cat: str, mapping: dict[str, str]) -> str:
         return mapping[cat]
     return cat.replace('/', '_').replace(' ', '_') or 'uncategorized'
 
+def is_running_on_github():
+    return os.getenv('GITHUB_ACTIONS') == 'true'
+
 
 # =============================
 # HTML fragments
@@ -301,10 +304,13 @@ def render_entry_block(entry: dict, anchor_id: str, next_anchor: str | None,
     link = f"https://smokingwolf.github.io/dev_blog/archive/{year}/{month}.html#{anchor_id}"
     enc_url = urllib.parse.quote(link, safe='')
     enc_title = urllib.parse.quote(entry['title'], safe='')
-    clap_html = (
-        #f"<a href=\"//clap.fc2.com/post/smokingwolf/?url={enc_url}&title={enc_title}\" target=\"_blank\" title=\"web拍手 by FC2\">"
-        #f"<img src=\"//clap.fc2.com/images/button/white/smokingwolf?url={enc_url}&lang=ja\" alt=\"web拍手 by FC2\" style=\"border:none;\" /></a>"
-    )
+    if is_running_on_github():
+        clap_html = (
+            f"<a href=\"//clap.fc2.com/post/smokingwolf/?url={enc_url}&title={enc_title}\" target=\"_blank\" title=\"web拍手 by FC2\">"
+            f"<img src=\"//clap.fc2.com/images/button/white/smokingwolf?url={enc_url}&lang=ja\" alt=\"web拍手 by FC2\" style=\"border:none;\" /></a>"
+        )
+    else:
+        clap_html = "(Local)"
     cat_html = ""
     categories: list[str] = entry.get("categories") or []
     cat_dirs: list[str] = entry.get("cat_dirs") or []
