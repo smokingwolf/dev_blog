@@ -496,15 +496,18 @@ window.addEventListener('DOMContentLoaded', () => {
         const url = res.url || '';
         if (!res.ok || url.includes('404.html') || res.status === 404) {
           console.warn('【404または失敗】アーカイブに飛びます');
-          window.location.href = link.href;
+          //window.location.href = link.href;
+          window.open(targetUrl, '_blank');
         } else {
           console.warn('【OK】本家へ接続成功！');
-          window.location.href = primaryUrl;
+          //window.location.href = primaryUrl;
+          window.open(primaryUrl, '_blank');
         }
       })
       .catch(() => {
         console.warn('【通信エラー】アーカイブに飛びます');
-        window.location.href = link.href;
+        //window.location.href = link.href;
+        window.open(link.href, '_blank');
       });
   });
 });
