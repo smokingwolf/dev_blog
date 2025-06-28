@@ -185,7 +185,7 @@ h1 {
   background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
   border-radius: 4px;
   border-left: 4px solid #3366ff;
-  display: inline-block;
+  display: block;
   width:100%;
   
 }
@@ -202,7 +202,7 @@ h2,h3 {
   background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
   border-radius: 4px;
   border-left: 2px solid #9999ff;
-  display: inline-block;
+  display: -block;
 
 }
 
