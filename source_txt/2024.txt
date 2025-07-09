@@ -2749,7 +2749,7 @@ K-Shin07さまが、ウディタのゲーム開発者側でできる
 セキュリティ対策の記事を書かれていたのでご紹介です！
 
 【ウディタでのゲーム開発者が行えるセキュリティ対策】
-<a class="red" target="_blank" href="https://ci-en.net/creator/16060/article/1111345">https://ci-en.net/creator/16060/article/1111345</a> <a class="red" target="_blank" href="https://web.archive.org/web/20240828080748/https://ci-en.net/creator/16060/article/1111345">(ｱｰｶｲﾌﾞ)(/a)
+<a class="red" target="_blank" href="https://ci-en.net/creator/16060/article/1111345">https://ci-en.net/creator/16060/article/1111345</a> <a class="red" target="_blank" href="https://web.archive.org/web/20240828080748/https://ci-en.net/creator/16060/article/1111345">(ｱｰｶｲﾌﾞ)</a>
 
 「チェックサムによる改ざん検知」「不正なゲーム実行を阻止」など、
 ゲーム内からでもできる実用的なテクニックが挙げられています！
@@ -2894,7 +2894,7 @@ BODY:
 という感じであっちこっち行ったり少し楽しみも確保しつつマイペースに進めております！
 
 ここからしばらくは、ウディタのバグ修正しつつ
-<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/Contest/"><B><span style="font-size: 150%">第16回ウディコン</span></B></a>が始まるまでは
+<a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><B><span style="font-size: 150%">第16回ウディコン</span></B></a>が始まるまでは
 『片道勇者2』開発に集中していきたいです！
 ウディコンの準備もがんばります！　今年もお楽しみに！</CENTER>
 -----
@@ -3102,7 +3102,7 @@ BODY:
 この状況はしばらく続きそうです！　
 
 でもウディコン前にはだいぶ落ち着くはずなので、
-<B><a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/Contest/">第16回ウディコン</a></B>は問題なく開催可能だと思います。
+<B><a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/">第16回ウディコン</a></B>は問題なく開催可能だと思います。
 お楽しみに！
 
 
@@ -3407,7 +3407,7 @@ BODY:
 今回はウディコン準備中！
 というお話と『片道勇者2』のお話です！
 
-<HR><span style="font-size:large;"><B>◆ウディコンの準備中！</B></span><HR>そろそろ3週間前になるので<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/Contest/"><strong><span style="font-size:large;">第16回ウディコン</span></strong></a>の準備も始めています！
+<HR><span style="font-size:large;"><B>◆ウディコンの準備中！</B></span><HR>そろそろ3週間前になるので<a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><strong><span style="font-size:large;">第16回ウディコン</span></strong></a>の準備も始めています！
 この時期にやるのはシステム改修ですね！
 
 たとえば私(silversecond.com)みたいな野良のドメインだと、
@@ -3480,7 +3480,7 @@ SPF設定だとかDKIM設定などをすればちゃんと届くようになる�
 トッピング程度だけでもだいぶ変わるんですよこういうの。
 
 <HR>
-そして<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/Contest/"><B>第16回ウディコン</B></a>の作品募集開始まであと3週間！
+そして<a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><B>第16回ウディコン</B></a>の作品募集開始まであと3週間！
 まもなくです！
 
 なんとかできそうなめどは付いてきましたので、
@@ -3523,7 +3523,7 @@ BODY:
 
 （ただここ数ヶ月のウディタ作業が時給300円を切ってるので
 もう少し修正を効率化しないと餓死しそうで厳しい！
-<a class="blue" target="_blank" href="https://silversecond.booth.pm/items/4455722">ご支援</a>もいつでも受付中です！）
+<a class="red" target="_blank" href="https://silversecond.booth.pm/items/4455722">ご支援</a>もいつでも受付中です！）
 
 
 今回はウディコン準備やウディタ修正ばかりやっていたので、
@@ -3534,7 +3534,7 @@ BODY:
 <img src="../../image/2024/20240706.jpg" border="1" style="max-width:400px;" loading="lazy">
 <span style="font-size: 80%">↑毎年1枚はバナーや告知用に使うためのウルファールイラスト作ってます。</span>
 
-<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/Contest/"><span style="font-size: 200%"><B>【ウディコン公式ページ】</B></span></a>
+<a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 200%"><B>【ウディコン公式ページ】</B></span></a>
 
 ということで第16回ウディコンまであと1週間になりました！
 みなさま奥ゆかしいのでX(Twitter)などでもまだ全然情報が出なかったりしますが、
@@ -3571,7 +3571,7 @@ BODY:
 <CENTER><HR><span style="font-size:large;"><B>【第16回ウディコン、審査開始！】</B></span><HR>
 ということで第16回ウディコンのエントリー期間が終了し、本日から審査期間開始です！
 
-<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/Contest/"><span style="font-size: 150%"><strong>【（第16回）ウディコン公式ページへ】</strong></span></a>
+<a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 150%"><strong>【（第16回）ウディコン公式ページへ】</strong></span></a>
 <img src="../../image/2024/20240721.jpg" border="1" style="max-width:520px;" loading="lazy">
 
 今回エントリーされた作品数は全部で<span style="font-size: 150%">【71】</span>作品！
@@ -3619,7 +3619,7 @@ BODY:
 <span style="color:#CC0000">※普通に作品数から計算したら8/13あたりでしたがお盆に審査できないのは勿体ないので一週間延長しました。結果発表は8/24(土)あたりになると思います。</span>
 
 
-<strong><a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/Contest/"><span style="font-size: 150%">【（第16回）ウディコン公式ページへ】</span></a></strong>
+<strong><a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 150%">【（第16回）ウディコン公式ページへ】</span></a></strong>
 
 それでは皆さま、今年もウディコン作品で熱い夏をお楽しみください！</CENTER>
 -----
@@ -4147,7 +4147,7 @@ BODY:
 
 この記事では上位4位までの作品と、個人的ピックアップをご紹介します！
 
-<a class="blue" target="_blank" href="https://www.silversecond.com/WolfRPGEditor/Contest/"><span style="font-size: 200%"><B>【第16回ウディコンページ】</B></span></a>
+<a data-primary="https://www.silversecond.com/WolfRPGEditor/Contest/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 200%"><B>【第16回ウディコンページ】</B></span></a>
 
 <img src="../../image/2024/20240825.jpg" border="1" style="max-width:520px;" loading="lazy">
 
@@ -4361,11 +4361,11 @@ BODY:
 気になる方はよければぜひ！
 「どんな遊び方でもちゃんと楽しめる」ようにするのにも、
 裏には大変な苦労と試行錯誤があります！
-→◆<a class="red" target="_blank" href="https://yuumekou.net/post-2283/"><B>放浪者セレナ制作秘話（システム・バランス担当ver）</B> <a class="red" target="_blank" href="https://web.archive.org/web/20250325061851/https://yuumekou.net/post-2283/">(ｱｰｶｲﾌﾞ)(/a)</a>
+→◆<a class="red" target="_blank" href="https://yuumekou.net/post-2283/"><B>放浪者セレナ制作秘話（システム・バランス担当ver）</a></B>　<a class="red" target="_blank" href="https://web.archive.org/web/20250325061851/https://yuumekou.net/post-2283/">(ｱｰｶｲﾌﾞ)</a>
 
 (追記)さらにシナリオ・グラフィック・UI担当の方の
 制作話も語られていました！　こちらにもしっかりと意図があります！
-→◆<a class="red" target="_blank" href="https://north.undo.jp/blog/post/game3/game_09/"><B>放浪者セレナ制作話　ソロー版</B></a> <a class="red" target="_blank" href="https://web.archive.org/web/20240913001530/https://north.undo.jp/blog/post/game3/game_09/">(ｱｰｶｲﾌﾞ)(/a)
+→◆<a class="red" target="_blank" href="https://north.undo.jp/blog/post/game3/game_09/"><B>放浪者セレナ制作話　ソロー版</B></a>　<a class="red" target="_blank" href="https://web.archive.org/web/20240913001530/https://north.undo.jp/blog/post/game3/game_09/">(ｱｰｶｲﾌﾞ)</a>
 
 <HR><span style="font-size:large;"><B>◆ピックアップ紹介！</B></span><HR>そしてこちらは順位にかかわらず、今回の個人的お気に入り作品をご紹介します！
 
@@ -4460,7 +4460,7 @@ BODY:
 たとえば新しいゲームに触れてみたい人は「斬新さ」部門を、
 キャラクターや記憶に残る物語を楽しみたい人は「物語性」部門がおすすめです！
 
-<a class="blue" target="_blank" href="https://www.silversecond.com/WolfRPGEditor/Contest/"><span style="font-size: 200%"><B>【ウディコンページへ】</B></span></a>
+<a data-primary="https://www.silversecond.com/WolfRPGEditor/Contest/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 200%"><B>【ウディコンページへ】</B></span></a>
 
 <HR><span style="font-size:large;"><B>◆次回、第17回について</B></span><HR>
 ウディコンは来年2025年の『第17回』も開催予定で、すでにスケジュールも決定済みです！
@@ -5917,7 +5917,7 @@ BODY:
 　この調子だと公開時期がほぼクリスマスになったりするかもしれませんが、どうか気長にお待ちください！　まだ故人の都合で、リアルの用事もいろいろ発生してしまっているものでして。
 
 
-　また、<B><a class="blue" target="_blank" href="https://silversecond.booth.pm/items/4455722">BOOTH</a></B>などでご支援くださっている方、本当にありがとうございます！
+　また、<B><a class="red" target="_blank" href="https://silversecond.booth.pm/items/4455722">BOOTH</a></B>などでご支援くださっている方、本当にありがとうございます！
 　いよいよウディタプロ版の売上げも停滞しつつあり、ウディタプロ版や関連するBOOTH売上に対する作業時給がこの3ヶ月間ずっと200円前後になっているので、もうこれが最後の大規模更新のチャンスだと思って色んなものを体中から出しながらも色々追加しておりました！
 　が、みなさんのご支援のおかげでもう一踏ん張りがんばれております！　本当に助かります！
 
@@ -6046,7 +6046,7 @@ BODY:
 　もちろんここまで作った機能にも大量のバグが出ておりまして「ギョワアア！」って叫びながら直しております！
 
 
-　そして引き続き、チップや<B><a class="blue" target="_blank" href="https://silversecond.booth.pm/items/4455722">BOOTH</a></B>などからご支援くださっている方、本当にありがとうございます！　リソース的にはもう限界をややオーバーしちゃってましたが、おかげさまでもう一踏ん張りがんばれております！　本当に助かります！
+　そして引き続き、チップや<B><a class="red" target="_blank" href="https://silversecond.booth.pm/items/4455722">BOOTH</a></B>などからご支援くださっている方、本当にありがとうございます！　リソース的にはもう限界をややオーバーしちゃってましたが、おかげさまでもう一踏ん張りがんばれております！　本当に助かります！
 　
 　ウディタ3.5のリリースは運がよければ今年中、やっぱりダメそうなら来年始め頃になると思いますが、気長にお待ちいただけますと幸いです。当面の最終大規模更新と思って全力を尽くします！
 
@@ -6114,7 +6114,7 @@ BODY:
 <HR>
 <span style="font-size:120%;"><B>【第16回ウディコンは何とか無事にできました！】</B></span>
 
-　上述のことがありながらも、なんとか<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/Contest/"><B>第16回ウディコン</B></a>は開催できました！
+　上述のことがありながらも、なんとか<a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><B>第16回ウディコン</B></a>は開催できました！
 
 　今年もとんでもないクオリティの作品がバンバン届いたり、SNSでもおそらく過去一番にウディコンの話題が共有されていたりして、開催してよかったと感じます。
 <img src="../../image/2024/20240825.jpg" border="1" style="max-width:520px;" loading="lazy">
