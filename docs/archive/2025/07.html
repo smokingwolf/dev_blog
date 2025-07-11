@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>シルバーセカンド開発日誌 / SmokingWOLF</title>
+<meta name="viewport" content="width=700">
+<script src="../../js/smoothscroll_up.js" type="text/javascript"></script> 
+<style>
+html {
+  /* スマホ時は1.2倍フォントで表示 */
+  -webkit-text-size-adjust: 120%;
+  -ms-text-size-adjust: 120%;
+}
+
+BODY{
+  /*display:flex;*/
+  font-size:13px;
+  margin:0;
+  font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+}
+
+TD{
+  font-size:12px;
+}
+
+
+A:LINK,A:VISITED {  color:#5658f6;  text-decoration:underline ;}
+A:HOVER,A:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.red:LINK,A.red:VISITED{color:#d6385c;display: inline-block;text-shadow: 0 0 15px #ffddcc, 0 0 15px #ffddaa;}
+A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shadow: 0 0 15px #ffcccc, 0 0 15px #ffaaaa;}
+
+A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
+A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.g:LINK,A.g:VISITED{
+	color:#38a68c;
+	text-decoration:underline;
+}
+
+A.g:HOVER,A.g:ACTIVE{
+	color : #68b6ac;
+	text-decoration : underline;
+}
+
+
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38c6ac;
+}
+
+A.jumplink:HOVER,A.jumplink:ACTIVE{
+	color : #68f6ac;
+}
+
+A.jumplink{
+	text-shadow: 0 0 15px #ccddcc, 0 0 15px #aaddaa;
+	text-decoration : none;
+}
+
+
+.article_pos{
+	font-size:16px;
+	color:#aaf; 
+	font-weight:bold;
+	text-align:center;
+	margin:0px;
+	padding:0px;
+}
+
+#content {
+	font-size:14px;
+	
+}
+
+#sidebar {
+	background:#f8f8f8; 
+	border-left:1px solid #ddd; 
+	padding:4px 6px;
+	font-size:12px;
+}
+
+A.sidebar_link:LINK,A.sidebar_link:VISITED,
+A.sidebar_link_recent:LINK,A.sidebar_link_recent:VISITED{
+    color:#5658f6;
+	text-decoration: underline;
+}
+A.sidebar_link:HOVER,A.sidebar_link:ACTIVE,
+A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
+	color: #9698e6;
+	text-decoration: underline;
+}
+
+.sidebar_link{
+	font-size:13px;
+}
+
+.sidebar_link_recent{ /* 1つ1つの項目ごとに隙間を空ける */
+	font-size:11px;
+	line-height: 1.2;
+	display: inline-block;
+	margin-top:5px;
+}
+
+
+.entry {
+	border:1px solid #ccc; 
+	border-radius:8px; 
+	margin:14px 0; 
+	overflow:hidden;
+
+}
+.entry-title {
+	background:linear-gradient(to right,#4243ff,#aaaacf);
+
+	font-size:17px;
+	color:#fff; 
+	padding:4px; 
+	font-weight:bold;
+	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
+}
+
+.entry-body,.extended {
+	background:#fff; 
+	color:#444; 
+	padding:15px;
+	font-size:14px;
+	line-height:1.6em;
+}
+
+.entry-foot {
+	background:#fff; 
+	text-align:center;
+	vertical-align:middle;
+	color:#ccf;
+	font-size:12px;
+	padding-top:20px;
+	padding-right:20px;
+	padding-bottom:10px;
+}
+
+.linkbutton{
+	padding:3px;
+}
+
+/*--●形状整理用--*/
+body {display:flex; margin:0;}
+#content {width:580px; padding:0 8px;
+	font-size:14px;}
+#sidebar {width:120px;  box-sizing:border-box; }
+#sidebar div {line-height:1.6;}
+#sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
+.nav {margin:0px 0 -20px 0; text-align:center;}
+.sym {color:#999; font-weight:normal;}
+
+</style>
+
+
+<script>
+function toggle(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+function toggleDisp(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+</script>
+
+
+
+<!--★目次デザイン・処理★-->
+<style>
+.toc-box{background-color:#f0f0f0;border-radius:8px;padding:10px;} 
+.toc-list{list-style:none;margin:0;padding-left:0;} 
+.toc-list ul{list-style:none;margin:0;padding-left:20px;}
+.toc-list li{margin:5px 0;}
+.toc-level1{margin-left:0;}
+.toc-level2{margin-left:20px;}
+
+h1 {
+  background: #fff;
+  padding: 6px 10px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #2233cc; /* 青系 */
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 4px solid #3366ff;
+  display: block;
+  width:100%;
+  
+}
+
+
+h2,h3 {
+  background: #fff;
+  padding: 6px 10px;
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #5566ff; /* 青系 */
+  
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 2px solid #9999ff;
+  display: -block;
+
+}
+
+h2::before {
+  content: "- ";
+}
+
+.master_years{
+  margin-left:20px;
+  margin-right:20px;
+}
+
+.top_minicategory{
+  font-size:10px;
+  color:#ccccff;
+}
+</style>
+
+
+
+</head>
+<body>
+<a id="top"></a>
+
+<style type='text/css'>
+.linkbutton{
+  font-size: 0.9em;
+  padding: 1px 6px;
+  vertical-align: baseline;
+  line-height: 1;
+  height: auto;
+  margin-left: 4px;
+  color:#66f;
+  background-color:#f9f9f9;
+  border: 1px solid #888;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.copy-popup{
+  background-color: #eef;
+  border: 1px solid #88c;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  color: #333;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.5s ease;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  max-width: 80vw;             /* 画面幅の 80% で折り返す */
+  overflow-wrap: anywhere;     /* 長い URL を途中で区切る */
+  word-break: break-all;       /* ↑が効かない旧ブラウザ保険 */
+  white-space: pre-wrap;       /* 
+ を改行として扱い、余計な連続空白は1個に */
+}
+.article_end_date{
+  font-size:0.9em;
+}
+</style>
+
+
+<script>
+function toggle(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+}
+
+// Year accordion with sessionStorage persistence
+function toggleYear(id){
+  const pane = document.getElementById(id);
+  const btn  = document.getElementById(id+'-btn');
+  if(!pane||!btn) return;
+  const sym  = btn.querySelector('.sym');
+  const isClosed = pane.style.display === 'none';
+  pane.style.display = isClosed ? 'block' : 'none';
+  sym.textContent   = isClosed ? '－' : '＋';
+  sessionStorage.setItem('year-'+id, isClosed ? 'open' : 'closed');
+}
+
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('[data-yearpane]').forEach(pane=>{
+    const id    = pane.id;
+    const state = sessionStorage.getItem('year-'+id);
+    const btn   = document.getElementById(id+'-btn');
+    const sym   = btn?.querySelector('.sym');
+    if(state === 'open'){
+      pane.style.display = 'block';
+      if(sym) sym.textContent = '－';
+    }else{
+      pane.style.display = 'none';
+      if(sym) sym.textContent = '＋';
+    }
+  });
+});
+
+function copyLink(date, title, el){
+  const url = `https://smokingwolf.github.io/dev_blog/archive/${date.slice(0,4)}/${date.slice(5,7)}.html#${date}`;
+  const text = `
+【${date}　${title}】
+ ${url}`;
+  navigator.clipboard.writeText(text).then(()=>{
+    if(el && el.tagName === 'BUTTON'){
+      const orig = el.textContent;
+      el.textContent = '✅ コピー完了!';
+      setTimeout(()=>{ el.textContent = '🔗 リンクをコピー'; }, 2000);
+    }
+
+    const popup = document.createElement('div');
+    popup.className = 'copy-popup';
+    popup.textContent = `✅ コピー完了：${text}`;
+    document.body.appendChild(popup);
+
+    const rect = el.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    const popupWidth = popup.offsetWidth;
+    const pageWidth = document.documentElement.clientWidth;
+
+    let left = rect.left + scrollLeft + (rect.width / 2) - (popupWidth / 2);
+    let top  = rect.top  + scrollTop - popup.offsetHeight - 8;
+    if(left < scrollLeft + 4) left = scrollLeft + 4;
+    if(left + popupWidth > scrollLeft + pageWidth - 4)
+        left = scrollLeft + pageWidth - popupWidth - 4;
+
+    popup.style.left = `${left}px`;
+    popup.style.top  = `${top}px`;
+    popup.style.opacity = '1';
+    popup.style.zIndex = '9999';
+
+    setTimeout(()=>{ popup.style.opacity = '0'; }, 1800);
+    setTimeout(()=>{ popup.remove(); }, 2500);
+  });
+}
+</script>
+
+<div id='content'>
+<style>
+
+.TopTitle{
+  width:515px;
+  font-weight:bold;
+  font-size:16pt;
+  color: #ffffff;
+  background-color:#535365 ;
+  border-width: 0px;
+  border-color:#535365;
+  border-style:solid;
+  background: -moz-linear-gradient(left top, #42435f, #fafaff);
+  background: -webkit-gradient(linear, left top, right bottom, from(#42435f), to(#fafaff));
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#DD42425f', endColorstr='#FFfafaff');
+  
+  text-align:left;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.header3{
+	color:#555588;
+	margin-bottom:16px;
+}
+
+.home-link {
+  font-size: 12px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: underline;
+}
+</style>
+
+<!--戻るリンク、サイトがなくなってたらアーカイブにつながるようにしたが404ページがアレなのかうまくいかない-->
+<!--
+<font id="home-link-placeholder">
+  <noscript>
+    <a href="https://smokingwolf.github.io/" class="home-link">← ホーム(アーカイブサイト)に戻る</a>
+  </noscript>
+</font>
+
+<script>
+(async () => {
+  try {
+    // HEADで軽くチェック（no-corsなのでステータス確認は不可）
+    // 自分のサイトのインフォメーションページにつなげるならサイトがまだあると認識する
+    await fetch("https://silversecond.net/contents/etc/info.shtml", { method: "HEAD", mode: "no-cors" });
+
+    const link = document.createElement("a");
+    link.href = "https://silversecond.net/";
+    link.textContent = "← ホームに戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  } catch {
+    const link = document.createElement("a");
+    link.href = "https://smokingwolf.github.io/";
+    link.textContent = "← ホーム(アーカイブサイト)に戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  }
+})();
+</script>
+-->
+
+<div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
+<!--ここにコメント文-->
+<div class="header3" style="margin-top:6px;">　ここはゲーム開発者SmokingWOLF(スモーキングウルフ)の開発日誌です。<BR>
+　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
+　<B style="color:#ff5555;">※以前のブログが使えなくなったので、ただいまこの開発日誌に移転中です。</B>
+</div>
+
+<div class='article_pos'>2025年07月</div>
+<div class='nav'><span style='color:#ccc'>次の月へ</span> | <a href='06.html'>前の月へ</a></div>
+<a id='2025-07-12'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2025-07-12','ウディコン直前！ サイト＆ウディタ修正＋シェパード捜査録！', this)" style='cursor:pointer;'>2025-07-12 (土)&nbsp;&nbsp;&nbsp;ウディコン直前！ サイト＆ウディタ修正＋シェパード捜査録！</span><span style='float:right;'><a href='#bottom' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'>　いよいよ<a class="blue" target="_blank" data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 150%"><B>第17回ウディコン</B></span></a>開催日が明日に迫りました！　開催に備えて準備中です！<br>　今回は第17回ウディコン始まりますぞー！　という告知と、相変わらず自サイトの調整やウディタ修正やってましたというお知らせです。<br>　ここ1ヶ月のウディタ修正内容も簡単に載せてます！<br><br><div class="toc-box"><ul class="toc-list"><li class="toc-level1"><a class="g"  target="_top" href="#2025-07-12-1">◆第17回ウディコン、いよいよ開催！</a></li><li class="toc-level1"><a class="g"  target="_top" href="#2025-07-12-2">◆自サイトの調整作業！</a></li><ul><li class="toc-level2"><a class="g"  target="_top" href="#2025-07-12-3">- 作品一覧ページをちょっとおしゃれにしたい！</a></li><li class="toc-level2"><a class="g"  target="_top" href="#2025-07-12-4">- レンタルサーバーが消えたらそのサイトへのリンクを消したい…え、できるの！？</a></li><li class="toc-level2"><a class="g"  target="_top" href="#2025-07-12-5">- まさかの掘り出し物が！　シェパード捜査録！</a></li></ul><li class="toc-level1"><a class="g"  target="_top" href="#2025-07-12-6">◆ここ1ヶ月のウディタの重要修正のご報告</a></li><li class="toc-level1"><a class="g"  target="_top" href="#2025-07-12-7">◆それではウディコン、お楽しみに！</a></li></ul></div><br><a id="2025-07-12-1"></a><h1>◆第17回ウディコン、いよいよ開催！</h1><br>　第17回ウディコン告知イラストも準備完了！　イラストには「開催中！」と書いてしまいましたがこの記事を書いてる時点ではまだ始まってないです！<br><img src="../../image/2025/20250712.jpg" border="1" style="max-width:520px;" loading="lazy"><br>　すでにX上では作品参加を予定されている方からのポストも増えつつあるようで期待が高まります！<br><br>　『作品数もそろそろ規模が落ちていくのかなーどうかなー』と毎年思っているんですが、今年はどうなるでしょうね！<br>　去年までは作品数の半分にもおよぶリピート参加者の皆さまのおかげで、投稿数自体は維持されていた感じがあります。<br>　結局はフリーゲームに興味がある人がどれだけいらっしゃるのか、そして（他にいいツールはいっぱいあるのに！）ウディタを使ってくださる方がどのくらいいらっしゃるのか！　ということになるでしょうか。<br><br>　ウディコンにご応募される方は、そこそこの人に遊ばれる場として、あるいは力を試す場として、はたまたたくさんの反応をもらえる場として、それぞれの目的に応じて使っていただければいいと思っています。<br>　そして遊んでくださる側の方には、いつも通り市販ゲームでは楽しめないDIY感や尖り感、あふれるほどの情熱を味わっていただけるでしょう！<br>　今年も面白いゲームが来たらいいなー、と私もワクワクしながらお待ちしております！<br><br><br><a id="2025-07-12-2"></a><h1>◆自サイトの調整作業！</h1><br><a id="2025-07-12-3"></a><h2>作品一覧ページをちょっとおしゃれにしたい！</h2><br>　そして自サイトの調整作業も進めていました！<br>　いずれサイトをGitHub上にアーカイブ化するにあたって、この機会に作品一覧ページなどをきれいにしようと頑張っております！<br><br>　たとえば、以下は私のサイトの<a class="blue" target="_blank" href="https://silversecond.net/contents/game/"><B>作品一覧ページの最新版</B></a>の模様です！<br>　<img src="../../image/2025/20250712A.jpg" border="1" style="max-width:520px;" loading="lazy"><br><br>　現代はSNSでの告知が中心で、サイトそのものはたくさんの人に見られる時代ではなくなってきていますが、この際ちょっとオシャレにしていきたいですね！<br><br>　サイト作りも、最近はチャットAIに質問したり、ラフを見せて「こんなの作りたいんだけどどうすればいい？」って聞くだけで作りたいデザインのコードをパッと作ってくれたりするので、脳内イメージを簡単に形にできちゃう時代が来てしまったと感じます。<br>　とはいえこれらはあくまで資料整理作業ですので、いろいろ有効活用しつつ素早く進めていきたいですね。そして浮いた時間を開発に時間を回す！　そのためのチャットAIです！<br><br><br><a id="2025-07-12-4"></a><h2>レンタルサーバーが消えたらそのサイトへのリンクを消したい…え、できるの！？</h2><br>　バックアップ用のアーカイブページをいじっているとき、<B>「ここはバックアップサイトで、運営中のサイトはこっちだよー」</B>という感じに自サイトへのリンクを載せたいと思ったのですが、<br><br><span style="color: #2196f3"><B>「うっかりsilversecond.comへのリンクを載せたまま自分が急死して自レンタルサーバーがなくなった場合、そのドメインが業者に取られて変なサイトに繋がるようになるのもイヤだし、どうしようかな……」</B></span><br><br>　と悩んでいました。<br>　で、そのことで色々聞いてみたら、なんと<br><br><span style="color: #f44336"><B><span style="font-size: 150%">『JavaScriptで別サーバーの特定ファイルがあるかチェックして、サイトが生きてるか判定する』</span></B></span><br><br>　という手段があると教えられたんですよ！<br>　JavaScriptでそんなことまでできるの！？　と驚いてしまいました。私はJavaScriptのことを何もしらない……。<br><span style="color: #a0a0a0">（ただ、別サーバーからのアクセスって基本的に自動ではじくようになってるので、.htaccessファイルをいじって<B>『自サーバーのCORS (クロスオリジンリソース共有：別ドメインからのアクセスを受け付ける仕組み) を許可する』</B>といった追加の作業も必要でした。もし挑戦される方はご注意を！）</span><br><br>　で、なんやかんや色々やった末に、ほぼ「リンク先のサイトが消えたらリンクも消える」という仕組みを作ることができたんですよ！<br><img src="../../image/2025/20250712B.jpg" border="1" style="max-width:520px;" loading="lazy"><br>　これを活用していけば、レンタルサーバーのサイトがなくなっても勝手にアーカイブページ側の（運営中ページへの）リンクが消去されていくので安全です！<br><br>　他にも<B>『運営中サイトのリンクAがなかったらアーカイブサイトのリンクBにつなぐよう予約しておく』</B>みたいなこともできると思うので、これは死後を見すえた運用をするにあたって便利な技術だと思います！<br>　こういうのも今後どんどん活用していきたいですね！<br>　いやまあ私はすぐに亡くなる予定はないんですけども、後から全部いじるのは大変ですから、今から少しずつやっておきたいところです！<br><br><br><br><a id="2025-07-12-5"></a><h2>まさかの掘り出し物が！　シェパード捜査録！</h2><br>　それと、サイトいじりにあたって過去のデータを漁ってたら<B>『シェパード捜査録』</B>という昔のゲームを録画できる環境が作れそうなことに気付いたので、プレイ動画を作ろうかなと検討中です！<br><img src="../../image/2025/20250712C.jpg" border="1" style="max-width:520px;" loading="lazy"><br><br>　『シェパード捜査録』はご依頼をいただいて作ったゲームでして、ゲームそのものはドコモFOMA用のiアプリで、現状は遊べない（配布もできない）ことや、すでにクライアントの問い合わせ先が消滅していて「同じ内容のゲームを作っていいか」と問い合わせることもできない状態でした。<br><br>　が！　そもそも最後には無料ゲームとして公開されていた作品なので、<B>『プレイ動画の配信』</B>はまったく問題ないと思います！<br>　せっかくなのでラジオ感覚に低コストで見られるように、合成音声ボイスや効果音などを入れたプレイ映像を作ろうかなと考えております（そう、FOMA携帯で遊んだ場合は流れるのはBGMだけで効果音は出なかったのです！　うちの機種だけかな？）<br><br>　休憩時間にでもちょっとずつ編集を進めつつ、いずれ公開予定です！<br>　ウディコン終わった頃などの、ネタがない時期に出せるとよさそうですね。<br><br><br><a id="2025-07-12-6"></a><h1>◆ここ1ヶ月のウディタの重要修正のご報告</h1><br>　そしてウディタの修正も引き続き行っております！　危険な内容も結構ありましたね！<br>　ここ1ヶ月のウディタの修正で、大事なところだけさらっとご紹介しておきます！<br><br><br><span style="color: #f44336"><B>●『文字列操作』の隠しコードを新規追加！</B></span><br><span style="font-size: 80%">　- <B>&lt;&lt;GET_XY_LIST&gt;&gt;</B>：番号呼び出しのXY配列の一覧を得る。1行1つで列挙されます。<br>　- <B>&lt;&lt;GET_XYN_LIST&gt;&gt;</B>：名前呼び出しのXY配列の一覧を得る。1行1つで列挙されます。</span><br><span style="color: #2196f3">　→　最初からみなさん欲しかったであろう「XY配列の一覧を得る機能」が今ごろ追加されました！　やっぱりあると便利！</span><br><br><br><span style="color: #f44336"><B>●【データベース/不具合】ごく一部の環境で保存時にデータベースの内容がリセットされてしまう致命的バグ修正</B></span><br><span style="color: #2196f3">　→　だいぶヤバい問題です！　ひとまずご報告してくださった方の分はこの現象が起きなくなるようにできましたが、まだ起きるという方はご報告いただけると助かります。</span><br><br><br><span style="color: #f44336"><B>●XY配列の「名前」として末尾に「＜S＞」(半角)を指定できないように</B></span><br><span style="color: #2196f3">　→　いずれ「文字列XY配列」用のマーカーとして使うかもしれなくなったので末尾＜S＞を使えないようにしました</span><br><br><br><span style="color: #f44336"><B>●【チップ処理/調整】「マップチップの上書き」処理を最適化！</B></span><br><span style="color: #2196f3">　→　1フレーム中に超いっぱいチップを書き換えても、最大で1マップ分の処理負荷しかかからなくなります（これまでは書き換えた面積分だけ無限に処理が重くなってました）</span><br><br><br><span style="color: #f44336"><B>●【セーブ・ロード処理】セーブロード時の自動メモリ解放機能をなくして、ついでにメモリエラーがすぐ起きるようになってしまっていた問題も直しました</B></span><br><span style="color: #2196f3">　→　現状のウディタは、メモリを自動解放すると「メモリの断片化」というのが起きてだんだん使えるメモリが減っていく問題があったので、もう自動解放はせず、メモリあふれせずに使えるセーブデータ数の限界設定を利用者の皆さまに任せる方針に変更しました。<br>　セーブ時にメモリエラーが出るようなら、セーブデータ数を1～3個のみに制限するなどで対応してみてください。</span><br><br><br><span style="color: #f44336"><B>●【セーブ・ロード処理】<span style="font-size: 150%">存在しないデータをロードしただけでクラッシュするバグがいつの間にか出てたのを修正</B></span><br><span style="color: #2196f3">　→　ギャアアアなんてこったぁぁぁ！！　って言いながら直してました。ここ最近セーブロード処理の根幹をいじることが多くて危険なバグも増えていると思いますので、何かお気づきでしたらいつでもご報告ください！</span><br><br><br><span style="color: #f44336"><B>●【ピクチャ】「マイナスの」ピクチャ番号にて、「ゲーム基本設定」の「ピクチャ拡大縮小方法の描画方法」の「なめらか＆ぼんやり」が反映されないことがあったバグ修正</B></span><br><span style="color: #2196f3">　→　ピクチャをマイナスにすると勝手にガタガタになる問題！　Ver3.5から起きていたようですのでこの修正で見え方が変わる場合があります、ご注意ください。</span><br><br><br>　という感じでした！　上記のどれかで困っておられる方はウディコン直前ですがアップデートをよろしくお願いいたします！<br><br><br><br><a id="2025-07-12-7"></a><h1>◆それではウディコン、お楽しみに！</h1><br>　以上、色々やりつつでしたが、何を置いても第17回ウディコンが<B>7/13</B>より開催です！　お楽しみに！<br><br><a class="blue" target="_blank" data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 150%"><B>【ウディコン公式ページ】</B></span></a><br><br>　ウディコンの作品公開は<span style="font-size: 150%"><B>【7/13(日)の0時】</B></span>頃から始まります！　ちょっと悪い子は0時直後から遊ばれてもかまいませんが、良い子は朝起きてからやりましょうね！<br>　ちなみにウディコン期間中は（みんなウディコン作品を遊ばれるので）私のゲームがほぼ完全に売れなくなっちゃうので、<a class="red" target="_blank" href="https://silversecond.booth.pm/items/4455722"><B>ご支援</B></a>はいつでも募集中です！　いつもご支援くださっている皆さまには本当に感謝の限りです、生活の助けになります！<br><br>　ではここから8月までのウディコン運営、がんばっていきます！　うおおおー！！</div><div class='entry-foot'>　<font class='article_end_date'>2025-07-12 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2025%2F07.html%232025-07-12&title=%E3%82%A6%E3%83%87%E3%82%A3%E3%82%B3%E3%83%B3%E7%9B%B4%E5%89%8D%EF%BC%81%20%E3%82%B5%E3%82%A4%E3%83%88%EF%BC%86%E3%82%A6%E3%83%87%E3%82%A3%E3%82%BF%E4%BF%AE%E6%AD%A3%EF%BC%8B%E3%82%B7%E3%82%A7%E3%83%91%E3%83%BC%E3%83%89%E6%8D%9C%E6%9F%BB%E9%8C%B2%EF%BC%81" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2025%2F07.html%232025-07-12&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2025-07-12','ウディコン直前！ サイト＆ウディタ修正＋シェパード捜査録！', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/ウディコン/001.html'>ウディコン</a>, <a href='../../category/woditor/001.html'>ウディタ</a>, <a href='../../category/etc/001.html'>その他</a></span></div></div>
+<div class='article_pos'>2025年07月</div>
+<div class='nav'><span style='color:#ccc'>次の月へ</span> | <a href='06.html'>前の月へ</a></div>
+<a id='bottom'></a>
+
+<BR><BR>
+<div align="right"><a href="#top" class="g">▲一番上へ戻る</a></div>
+<BR>
+<CENTER>
+<HR>
+Copyright © SmokingWOLF / Silver Second
+<HR>
+</CENTER>
+
+</div>
+<div id='sidebar'>
+<div style='font-weight:bold;'>開発日誌</div>
+<div><a class='sidebar_link' href='../../archive/top/index.html'>トップへ</a></div>
+<div><B><a class='sidebar_link' href='../../index.html'>全記事一覧</a></B></div>
+<hr>
+<div style='font-weight:bold;'>【最新記事】</div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-12'>●07/12 ウディコン直前！ サイト＆ウディタ修正＋シェパード捜査録！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-28'>●06/28 ウディコン準備中！+ 開発日誌も移転作業中</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-14'>●06/14 サイト修正＋開発日誌をFC2から移転！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-31'>●05/31 ウディコン歴史資料館設立！+ ウディタ修正 + GitHubのサイト作り</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-17'>●05/17 ウディタ3.6へ！バグ修正再び！ + 私がいなくなった後に備えて</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-03'>●05/03 再び出てくるウディタ3.5のバグ！ 修正の毎日！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/04.html#2025-04-19'>●04/19 ウディタ3.5落ち着いた！？ ＆シル幻20周年！</a></div>
+<hr>
+<div style='font-weight:bold;'>【カテゴリ】</div>
+<div><a class='sidebar_link' href='../../category/woditor/001.html'>ウディタ&nbsp;<span class='sym'>(32)</span></a></div>
+<div><a class='sidebar_link' href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(6)</span></a></div>
+<div><a class='sidebar_link' href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../category/owh2dev/001.html'>片道勇者2&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../category/ウディコン/001.html'>ウディコン&nbsp;<span class='sym'>(1)</span></a></div>
+<hr>
+<div style='font-weight:bold;'>【月別】</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2025-btn' onclick="toggleYear('y2025')">2025&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2025' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2025/07.html'>07月&nbsp;<span class='sym'>(1)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2024-btn' onclick="toggleYear('y2024')">2024&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2024' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2024/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/01.html'>01月&nbsp;<span class='sym'>(2)</span></a></div>
+</div>
+</div>
+
+
+<script>
+// ダブルリンク処理（JSがオンでリンク先が存在するならそこへ、なければアーカイブ側へ飛ぶ）
+window.addEventListener('DOMContentLoaded', () => {
+  const link = document.getElementById('double-link');
+  if (!link) {
+    console.error('リンクが見つかりませんでした！');
+    return;
+  }
+  const primaryUrl = link.dataset.primary;
+
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    fetch(primaryUrl, { method: 'GET' })
+      .then(res => {
+        const url = res.url || '';
+        if (!res.ok || url.includes('404.html') || res.status === 404) {
+          console.warn('【404または失敗】アーカイブに飛びます');
+          //window.location.href = link.href;
+          window.open(targetUrl, '_blank');
+        } else {
+          console.warn('【OK】本家へ接続成功！');
+          //window.location.href = primaryUrl;
+          window.open(primaryUrl, '_blank');
+        }
+      })
+      .catch(() => {
+        console.warn('【通信エラー】アーカイブに飛びます');
+        //window.location.href = link.href;
+        window.open(link.href, '_blank');
+      });
+  });
+});
+</script>
+
+</body>
+</html>
