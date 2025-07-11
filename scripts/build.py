@@ -20,6 +20,7 @@ LATEST_POST_COUNT = 7
 #   BODY内の {{FINAL_LETTER_TEXT_SECRET}} で表示可能です。
 secret_text = os.environ.get("FINAL_LETTER_TEXT_SECRET", "[NO SECRET]")
 
+
 # =============================
 # Utility helpers
 # =============================
@@ -457,7 +458,20 @@ def assemble_full_page(title: str, body_html: str, header_tpl: str, footer_tpl: 
 def build():
     all_entries = [e for e in parse_entries() if e.get('date')]
     now_jst = datetime.now(JST)
-    entries = [e for e in all_entries if e['date'] <= now_jst]
+    
+    # 環境変数から実行環境を判定、GitHub上で実行されたときとそれ以外で処理分岐
+    # (日付が未来なら生成HTMLから無視する処理など)
+    is_github = os.environ.get('GITHUB_ACTIONS') == 'true'
+
+    if is_github:
+        # GitHubなら日付判定する
+        entries = [e for e in all_entries if e['date'] <= now_jst]
+    else:
+        # ローカルなら全部出す
+        entries = all_entries
+    
+    #entries = [e for e in all_entries if e['date'] <= now_jst]
+    
     entries.sort(key=lambda e: e['date'])  # oldest → newest
 
     # Load shared header & footer (required)
