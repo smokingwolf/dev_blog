@@ -1215,7 +1215,7 @@ BODY:
 　
 　そんな状況なので、今回も2週間分の修正点を貼り付けるだけの記事です！　難しかったものや印象深かった修正点は赤文字にしています。
 
-<CENTER><a class="red" onclick="toggle('ext-12345-20250405')" target="_top" href="javascript:void(0);">&#9660;大量のウディタ修正内容を見てみる&#9660;</a></CENTER><div id="ext-12345-20250405" style="display:none;" class="extended">
+<CENTER><a class="red" onclick="toggle('ext-12345-20250308')" target="_top" href="javascript:void(0);">&#9660;大量のウディタ修正内容を見てみる&#9660;</a></CENTER><div id="ext-12345-20250308" style="display:none;" class="extended">
 <HR>
 <span style="font-size:120%;"><B>【Ver3.556 の更新履歴　2025/03/07】</B></span>
 
@@ -3657,7 +3657,7 @@ EXTENDED BODY:
 -----
 --------
 TITLE: ウディコン直前！ サイト＆ウディタ修正＋シェパード捜査録！
-CATEGORY: ウディコン,ウディタ,その他
+CATEGORY: ウディタ,その他
 DATE: 2025-07-12 00:00:00
 -----
 BODY:
@@ -3755,7 +3755,7 @@ BODY:
 
 
 <span style="color: #f44336"><B>●【セーブ・ロード処理】セーブロード時の自動メモリ解放機能をなくして、ついでにメモリエラーがすぐ起きるようになってしまっていた問題も直しました</B></span>
-<span style="color: #2196f3">　→　現状のウディタは、メモリを自動解放すると「メモリの断片化」というのが起きてだんだん使えるメモリが減っていく問題があったので、もう自動解放はせず、メモリあふれせずに使えるセーブデータ数の限界設定を利用者の皆さまに任せる方針に変更しました。
+<span style="color: #2196f3">　→　最近のウディタは、メモリを自動解放すると「メモリの断片化」というのが起きてだんだん使えるメモリが減っていく問題があったので、もう3.5以前のように自動解放はせず、メモリあふれせずに使えるセーブデータ数の限界設定を利用者の皆さまに任せる方針に変更しました。
 　セーブ時にメモリエラーが出るようなら、セーブデータ数を1～3個のみに制限するなどで対応してみてください。</span>
 
 
@@ -3780,6 +3780,146 @@ BODY:
 　ちなみにウディコン期間中は（みんなウディコン作品を遊ばれるので）私のゲームがほぼ完全に売れなくなっちゃうので、<a class="red" target="_blank" href="https://silversecond.booth.pm/items/4455722"><B>ご支援</B></a>はいつでも募集中です！　いつもご支援くださっている皆さまには本当に感謝の限りです、生活の助けになります！
 
 　ではここから8月までのウディコン運営、がんばっていきます！　うおおおー！！
+-----
+EXTENDED BODY:
+
+-----
+--------
+TITLE: 過去のインタビューまとめ（3本）！
+CATEGORY: その他
+DATE: 2025-01-02 00:00:00
+-----
+BODY:
+　シルバーセカンド公式サイトのコンテンツ整理につき、『インタビュー一覧』をイラスト・テキスト作品集からはずしたので、こっそりこちらに掲載させていただきます！
+　気になる方はよければぜひ！
+
+<HR>
+<a class="red"  target="_top" href="https://www.moguragames.com/smokingwolfinterview/"><B><span style="font-size:18px;">【2015-11-7】もぐらゲームス様より</span>
+『ゲームの半分はフリーゲームとして作り続けたい』
+ 開発者SmokingWolf氏インタビュー（前/後編のうちの前編へ）</B></a>
+ (※もしなくなっていた場合は<a class="red" target="_blank" href="https://web.archive.org/web/20240526192230/https://www.moguragames.com/smokingwolfinterview/"><B>インターネットアーカイブ</B></a>より見られます)
+
+→　16年以上にわたるゲーム開発との出会いから商売やらいろいろなお話！　レジェンドオブレストールから片道勇者、有料作品、ウディタの話までインタビューしていただきました！
+
+<HR>
+<a class="red"  target="_top" href="https://web.archive.org/web/20160718211534/http://blog.playism.jp/smoking-wolf/"><B><span style="font-size:18px;">【2015-09-15】PLAYISM 様より</span> 
+『ゲームの半分はフリーゲームとして作り続けたい』
+ シル幻、ウディタ、そして片道勇者を生んだ
+SmokingWOLF氏インタビュー</B> (サイトが消えていたのでアーカイブページへ)</a>
+
+→　こちらもゲーム開発の最初からウディタの誕生などいろいろなことについて聞いてくださっています。
+　夢は1秒でも長く自由なゲーム開発を続けることです！
+
+
+<HR>
+<a class="red"  target="_top" href="http://reviewers.s602.xrea.com/interview/006smokingwolf.html"><B><span style="font-size:18px;">【2011-7-3】赤松弥太郎 様より</span>
+『「ゲーム開発」は私にとって「呼吸」と同じです』
+ 開発者SmokingWolf氏インタビュー（前/後編のうちの前編へ）</B></a>
+ (※もしなくなっていた場合は<a class="red" target="_blank" href="https://web.archive.org/web/20150828232339/http://reviewers.s602.xrea.com/interview/006smokingwolf.html"><B>インターネットアーカイブ</B></a>より見られます)
+
+→　ゲーム開発の始まりから、初めて遊んだアマチュアゲームで衝撃を受けた話、シルフェイド見聞録の話……などなどいろいろな質問をしていただきました！
+-----
+EXTENDED BODY:
+
+-----
+--------
+TITLE: 第17回ウディコン審査期間開始！ ＆ 規約の補足
+CATEGORY: ウディタ
+DATE: 2025-07-26 00:00:00
+-----
+BODY:
+　ということでウディコン開催から2週間！　先週から審査期間が始まっております！
+
+<a class="blue" target="_blank" data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 200%"><B>【ウディコン公式サイトへ】</B></span>
+<img src="../../image/2025/20250726.jpg" border="2" style="height:280px;border-radius:10px;" loading="lazy"></a>
+
+
+<div class="toc-box"><ul class="toc-list"><li class="toc-level1"><a class="g"  target="_top" href="#2025-07-26-1">◆第17回ウディコン審査期間、開始！</a></li><li class="toc-level1"><a class="g"  target="_top" href="#2025-07-26-2">◆今年のウディコンはどんな感じ？　Xの応援ご紹介！</a></li><li class="toc-level1"><a class="g"  target="_top" href="#2025-07-26-3">◆規約の補足【内容のパロディがひどくてもエントリー禁止にならないの？】</a></li></ul></div>
+<a id="2025-07-26-1"></a><h1>◆第17回ウディコン審査期間、開始！</h1>
+　先週から第17回ウディコンの審査期間が始まりました！　今回はお盆休みを挟んで1ヶ月間の審査期間をご用意しております！
+
+　一般審査について説明させていただきますと、「熱中度」「斬新さ」「物語性」「画像/音声」「遊びやすさ」「その他」の6部門に1～10点の点を付けます！
+　点の付け方の目安は書いてありますのでそれに沿ってくださると他の人とも指標が合いやすいと思います！
+
+　<span style="color: #808080"><span style="font-size: 80%">↓これはウディコン歴史資料館の投票見本ページ。得点ごとに、点の付け方の目安が書いてあります。</span></span>
+<img src="../../image/2025/20250726A.png" border="1" style="height:300px;" loading="lazy">
+
+　一般審査はいつでも途中セーブ可能、途中再開可能ですので、よければ徐々に審査していっていただけますと幸いです！
+　4作品以上審査すると得点に反映されます。
+
+　なお1点と10点ばっかり入ってるみたいな「得点操作を疑う極端な投票をしている」と自動判定された投票は得点計算に反映されなくなってしまいますのでご注意を！
+　といっても、アウトになるのは極端さ上位の方の5％くらいで、95％の方には影響ありません。その判定も一律、自動で行われるようになっています。
+　
+
+
+<a id="2025-07-26-2"></a><h1>◆今年のウディコンはどんな感じ？　Xの応援ご紹介！</h1>
+　今年のウディコンも「よくできてる～！！」「うおおおあの作者さまだー！！」などテンション上がったり「こんなんアリなのか！？」「ああーこういうゲーム遊びたいと思ってた！」などの感情が湧いたりと全体的にワクワクできる内容だと思います！
+
+　当然ながらリピート参加してくださってる方はだんだん腕が上がっている方が多くて、成長を見るのも楽しみです！　同じ作家さんの成果物の差分を見られるので「こういううまくなり方があるのか！」と思ったところは私も吸収していきたいです！
+
+　そして以下はイラストや応援動画のご紹介！
+　皆さまからの応援のお気持ちとそれを形にされた熱意、本当にありがとうございます！
+<span style="font-size: 80%"><span style="color: #808080">（審査中なので、特定作品の名前が載ってるものは紹介は控えていますが、そうと分からないイラストや全作品紹介は取り上げさせていただいております！）</span></span>
+
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">私がゲーム制作に使用しているウディタのコンテストが今日開催とのことで応援イラスト<br><br>エラーを打ち砕いて完成させたゲームはみんなすごい<a class="red" hash&amp;ref_src=twsrc%5Etfw"" target="_top" href="https://twitter.com/hashtag/%E3%82%A6%E3%83%87%E3%82%A3%E3%82%B3%E3%83%B3?src=">#ウディコン</a> <a class="red"  target="_top" href="https://t.co/qtIhHrCB6r">pic.twitter.com/qtIhHrCB6r</a></p>&mdash; あじるのふ (@ajirunofu) <a class="red"  target="_top" href="https://twitter.com/ajirunofu/status/1944049117887340969?ref_src=twsrc%5Etfw">July 12, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">この混沌とした感じよ。<br>ウディコン、たまんねぇな！<a class="red" hash&amp;ref_src=twsrc%5Etfw"" target="_top" href="https://twitter.com/hashtag/%E3%82%A6%E3%83%87%E3%82%A3%E3%82%B3%E3%83%B3?src=">#ウディコン</a> <a class="red"  target="_top" href="https://t.co/hCBDzVZj95">pic.twitter.com/hCBDzVZj95</a></p>&mdash; スカイどんぶり (@sky_DONBURI) <a class="red"  target="_top" href="https://twitter.com/sky_DONBURI/status/1946791635356111142?ref_src=twsrc%5Etfw">July 20, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">動画投稿。ウディコン実況初めます！<br>前年に続いてにぎやかし作品紹介をしました。<br>とっても楽しみ。<a class="red" hash&amp;ref_src=twsrc%5Etfw"" target="_top" href="https://twitter.com/hashtag/%E3%82%A6%E3%83%87%E3%82%A3%E3%82%B3%E3%83%B3?src=">#ウディコン</a> <a class="red" hash&amp;ref_src=twsrc%5Etfw"" target="_top" href="https://twitter.com/hashtag/%E3%82%A6%E3%83%87%E3%82%A3%E3%82%B3%E3%83%B317?src=">#ウディコン17</a><br><br>フリーゲームのお祭り、爆開催！【第17回WOLF RPGエディターコンテスト】ウディコン実況 #0【作品紹介】 <a class="red"  target="_top" href="https://t.co/RIrrCROrxh">https://t.co/RIrrCROrxh</a> <a class="red"  target="_top" href="https://twitter.com/YouTube?ref_src=twsrc%5Etfw">@YouTube</a>より</p>&mdash; 九乃頭虫（ここのずむし） (@kuzu_musisan) <a class="red"  target="_top" href="https://twitter.com/kuzu_musisan/status/1946915733591798150?ref_src=twsrc%5Etfw">July 20, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr"><a class="red" hash&amp;ref_src=twsrc%5Etfw"" target="_top" href="https://twitter.com/hashtag/%E3%82%A6%E3%83%87%E3%82%A3%E3%82%B3%E3%83%B3?src=">#ウディコン</a> <br>今年は賑やかしとして参加させていただきます！ <a class="red"  target="_top" href="https://t.co/BtoGRVaa7P">pic.twitter.com/BtoGRVaa7P</a></p>&mdash; ルクコ@絵を描くところ (@rukuko695) <a class="red"  target="_top" href="https://twitter.com/rukuko695/status/1946910342065623430?ref_src=twsrc%5Etfw">July 20, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+　これ以外にもたくさんの応援、ご支援、本当にありがとうございます！
+　いつも大変なウディコン運営ですが、皆さまのお声がとても励みになっています！
+
+
+
+<a id="2025-07-26-3"></a><h1>◆規約の補足【内容のパロディがひどくてもエントリー禁止にならないの？】</h1>
+　そして今回は追加で規約のお話！
+　「内容のパロディが過ぎる作品があるけどエントリー禁止にならないの？」という話題！
+
+　まず二次創作については規約上、『ネタ元のキャラ名と見た目が一致する』『ネタ元の作品名が出ている』など100％明確と分かる問題があるか、あるいは『ロゴやタイトルなどが明らかにパロディである』など知名度を利用しようとしているアンフェアな場合は、エントリー停止措置をとらせていただくことになっています。
+
+　ですが、ゲームの『内容』部分のパロディについては
+<span style="color: #f44336"><span style="font-size: 150%"><B>「露骨なパロディはエントリー禁止にはしないけどグレーゾーンだから避けてね！！」</B></span></span>
+　という言及だけにとどめています。
+
+　これは内容面において作者さまが萎縮(いしゅく)せずに創作できるようにするためのルールで、突き詰めればどんなゲームだって何かの模倣になっちゃうので<span style="font-size: 150%"><B><span style="color: #f44336">『どこからセーフでどこからアウトなんだよ！』</span></B></span>ってのが極めて説明しにくいからですね！　分野別への言及も無数に出てきちゃいますし。
+
+　ですがガバガバのまま放置してるつもりはなく、露骨なパロディをしてる作品は一般審査時に自然とネガティブ評価を受けやすくなるので、それが実質的な<B>『制裁』</B>になると考えています。
+　「斬新さ」が非常に低くなるのはよくあることで、悪質度が高いと「熱中度」「その他」部門でも低得点を付けられる頻度が明らかに増加します。まあ元作品の影が常時チラ付いていたらそんな気持ちにもなりますよね。
+
+　そのため、明らかに商標権や著作権を侵害しているなどの明確な問題がない限りは、『内容』のパロディについてはいったん一律でエントリーは通して、良くなさそうな場合の得点への影響は皆さんのご意志にお任せする、という判断で運用しています。
+
+　運営側としては、あいまいにセーフ・アウトの線引きをすると確認作業の面でも心理面でもあまりに負担が大きすぎるのと、先にも言った通り、作り手の皆さまの『萎縮』を招くので、『内容』面のパロディや二次創作に関しては100%アウトな証拠がない限りはエントリー停止措置は基本的にしないつもりです。
+　持続的な運営のため、この点については皆さまに評価をあおぐ形でラクをさせていただいてしまいますが、どうかご協力よろしくお願いいたします。
+　もちろんフレーバー程度の模倣なら全然いいと思いますので厳しくしすぎる必要はありませんからね！？　これまで通り、自然な気持ちでの評価をお願いいたします。
+
+
+<B>【その他の問題　模倣は追い切れない / ルールで裁くのが難しい】</B>
+
+　そしてまた、『ゲーム』の模倣でしたら私にもいくらか知識があるのでまだ対応できたとしても、『別ジャンルのマイナーすぎる元ネタ再現』だったらそうと知らずみなさんに許容されちゃったりもするので、それも難しい問題なんですよね。
+　それも含めて私一人では公平な対応ができないので、それも『内容』の模倣度にかかわらずエントリー停止にしない理由の一つになっています。
+　たとえば「これと完全に一致します！」とか言われて架空の作品を挙げられてしまっても、私が知らなければ本当だと信じてしまってエントリー停止にしちゃうかもしれませんからね！
+
+　当然、もしパロディの悪質度が増していった場合はルールを増やさなければなりませんが、皆さまの善意で回せる限りはそれで回した方が、より円滑な運営ができます。そしてまた、作品をご応募される皆さまにとっても安心できる状態が維持できるはずです。
+　私だって倫理ガチガチなコンテストや、少しでもパロディ判定されたらエントリー禁止になるコンテストなんて怖くて目指したくないですからね！
+
+
+　という感じで、コンテストをやるようになっていっぱい調べれば調べるほど、『模倣』の問題は難しいと感じさせられます。
+　現実的には多くの場合、創造性の発展が阻害されるのでかなり甘めに判定されるケースが多く、仮に裁判沙汰になっても『模倣』で罰するべきかどうかの判断はかなり慎重に、ゆるめに行われるようです。
+　これはウディコンでの判断と同じく、まさに<span style="color: #f44336"><B>『ヘタに法的に罰してしまうと以後の創作の自由が制限されてしまうから』</B></span>ですね。
+
+　だから将来、<B>『ボールを投げてモンスターを捕まえるゲーム』</B>が法的に二度と作れないというわけではないのです！　でも実際は怒られやすかったり、遊び手の人に「いやこれダメでしょ！　ヤベぇ！」と言われちゃうラインではありますよね。
+　法的には許されても遊び手側には許されないこともあるので、そこがまた『模倣』の難しいところです。
+
+<HR>
+　ということで、色々見えないところで悩んだり勉強することになったりもしていますが、ここからも引き続きウディコン運営、がんばっていきます！
+
+　ひとまずは審査期間ですね！
+　ウディタも修正しつつ、ウディコン対応もしつつ、やれる範囲で遊ばせていただきます！
+　ここに来てウディタの修正も割と頻繁になってきています！　ぼちぼち直していきまーす！
 -----
 EXTENDED BODY:
 
