@@ -3667,8 +3667,8 @@ BODY:
 
 <div class="toc-box"><ul class="toc-list"><li class="toc-level1"><a class="g"  target="_top" href="#2025-07-12-1">◆第17回ウディコン、いよいよ開催！</a></li><li class="toc-level1"><a class="g"  target="_top" href="#2025-07-12-2">◆自サイトの調整作業！</a></li><ul><li class="toc-level2"><a class="g"  target="_top" href="#2025-07-12-3">- 作品一覧ページをちょっとおしゃれにしたい！</a></li><li class="toc-level2"><a class="g"  target="_top" href="#2025-07-12-4">- レンタルサーバーが消えたらそのサイトへのリンクを消したい…え、できるの！？</a></li><li class="toc-level2"><a class="g"  target="_top" href="#2025-07-12-5">- まさかの掘り出し物が！　シェパード捜査録！</a></li></ul><li class="toc-level1"><a class="g"  target="_top" href="#2025-07-12-6">◆ここ1ヶ月のウディタの重要修正のご報告</a></li><li class="toc-level1"><a class="g"  target="_top" href="#2025-07-12-7">◆それではウディコン、お楽しみに！</a></li></ul></div>
 <a id="2025-07-12-1"></a><h1>◆第17回ウディコン、いよいよ開催！</h1>
-　第17回ウディコン告知イラストも準備完了！　イラストには「開催中！」と書いてしまいましたがこの記事を書いてる時点ではまだ始まってないです！
-<img src="../../image/2025/20250712.jpg" border="1" style="max-width:520px;" loading="lazy">
+　第17回ウディコン告知イラストも準備完了！
+<img src="../../image/2025/20250712.jpg" border="1" style="height:400px;max-width:520px;" loading="lazy">
 　すでにX上では作品参加を予定されている方からのポストも増えつつあるようで期待が高まります！
 
 　『作品数もそろそろ規模が落ちていくのかなーどうかなー』と毎年思っているんですが、今年はどうなるでしょうね！
@@ -3863,6 +3863,7 @@ BODY:
 
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">私がゲーム制作に使用しているウディタのコンテストが今日開催とのことで応援イラスト<br><br>エラーを打ち砕いて完成させたゲームはみんなすごい<a class="red" hash&amp;ref_src=twsrc%5Etfw"" target="_top" href="https://twitter.com/hashtag/%E3%82%A6%E3%83%87%E3%82%A3%E3%82%B3%E3%83%B3?src=">#ウディコン</a> <a class="red"  target="_top" href="https://t.co/qtIhHrCB6r">pic.twitter.com/qtIhHrCB6r</a></p>&mdash; あじるのふ (@ajirunofu) <a class="red"  target="_top" href="https://twitter.com/ajirunofu/status/1944049117887340969?ref_src=twsrc%5Etfw">July 12, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">『お祭り？』<br>『ちょっと見ていこうよ』<br> <a class="red" hash&amp;ref_src=twsrc%5Etfw"" target="_top" href="https://twitter.com/hashtag/%E3%82%A6%E3%83%87%E3%82%A3%E3%82%B3%E3%83%B3?src=">#ウディコン</a><br><br>やりたい演出処理が全部できたぞ！<br>勝手にウディコン応援！<br><br>★お借りした素材★<br>ハンナ様<br>へんぷく様<br>尾羽つばさ様<br>NoName様<br>ビデオテープ様<br>pochi様<br>ぴぽ様<br><br>改めてウディタ規格キャラ素材の層がぶ厚いですわぞ！ <a class="red"  target="_top" href="https://t.co/n7embbgBjI">pic.twitter.com/n7embbgBjI</a></p>&mdash; farmer (@farmer0919) <a class="red"  target="_top" href="https://twitter.com/farmer0919/status/1946189613330292824?ref_src=twsrc%5Etfw">July 18, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">この混沌とした感じよ。<br>ウディコン、たまんねぇな！<a class="red" hash&amp;ref_src=twsrc%5Etfw"" target="_top" href="https://twitter.com/hashtag/%E3%82%A6%E3%83%87%E3%82%A3%E3%82%B3%E3%83%B3?src=">#ウディコン</a> <a class="red"  target="_top" href="https://t.co/hCBDzVZj95">pic.twitter.com/hCBDzVZj95</a></p>&mdash; スカイどんぶり (@sky_DONBURI) <a class="red"  target="_top" href="https://twitter.com/sky_DONBURI/status/1946791635356111142?ref_src=twsrc%5Etfw">July 20, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
