@@ -17,6 +17,7 @@ BODY{
   font-size:13px;
   margin:0;
   font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+  color:#558;
 }
 
 TD{
