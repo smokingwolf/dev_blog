@@ -3828,7 +3828,7 @@ CATEGORY: ウディタ
 DATE: 2025-07-26 00:00:00
 -----
 BODY:
-　ということでウディコン開催から2週間！　先週から審査期間が始まっております！
+　ということでウディコン開催から2週間！　先週から審査期間が始まっております！ 
 
 <a class="double-link blue" target="_blank" data-primary="https://silversecond.com/WolfRPGEditor/Contest/" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 200%"><B>【ウディコン公式サイトへ】</B></span>
 <img src="../../image/2025/20250726.jpg" border="2" style="height:280px;border-radius:10px;" loading="lazy" height="552"></a>
