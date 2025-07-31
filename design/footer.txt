@@ -1,8 +1,6 @@
 
 
-
 <script>
-// ダブルリンク処理
 window.addEventListener('DOMContentLoaded', () => {
   const links = document.querySelectorAll('a.double-link');
 
@@ -10,12 +8,14 @@ window.addEventListener('DOMContentLoaded', () => {
     const primaryUrl = link.dataset.primary;
     if (!primaryUrl) return;
 
-    fetch(primaryUrl, { method: 'GET' })
+    const testUrl = primaryUrl + '?t=' + Date.now(); // キャッシュ無効化！
+
+    fetch(testUrl, { method: 'GET', cache: 'no-store' })
       .then(res => {
         const url = res.url || '';
         if (!res.ok || url.includes('404.html') || res.status === 404) {
           console.warn('【404または失敗】そのままアーカイブを使います:', link.href);
-          // 何もしない（hrefはアーカイブのまま）
+          // そのまま
         } else {
           console.warn('【OK】hrefを本家に書き換えます:', primaryUrl);
           link.href = primaryUrl;
