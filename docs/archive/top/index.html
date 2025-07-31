@@ -526,36 +526,33 @@ Copyright © SmokingWOLF / Silver Second
 
 
 <script>
-// ダブルリンク処理（すべての .double-link に適用！）
+// ダブルリンク処理
 window.addEventListener('DOMContentLoaded', () => {
   const links = document.querySelectorAll('a.double-link');
 
   links.forEach(link => {
     const primaryUrl = link.dataset.primary;
-    const fallbackUrl = link.href;
+    if (!primaryUrl) return;
 
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-
-      fetch(primaryUrl, { method: 'GET' })
-        .then(res => {
-          const url = res.url || '';
-          if (!res.ok || url.includes('404.html') || res.status === 404) {
-            console.warn('【404または失敗】アーカイブに飛びます');
-            window.open(fallbackUrl, '_blank');
-          } else {
-            console.warn('【OK】本家へ接続成功！');
-            window.open(primaryUrl, '_blank');
-          }
-        })
-        .catch(() => {
-          console.warn('【通信エラー】アーカイブに飛びます');
-          window.open(fallbackUrl, '_blank');
-        });
-    });
+    fetch(primaryUrl, { method: 'GET' })
+      .then(res => {
+        const url = res.url || '';
+        if (!res.ok || url.includes('404.html') || res.status === 404) {
+          console.warn('【404または失敗】そのままアーカイブを使います:', link.href);
+          // 何もしない（hrefはアーカイブのまま）
+        } else {
+          console.warn('【OK】hrefを本家に書き換えます:', primaryUrl);
+          link.href = primaryUrl;
+        }
+      })
+      .catch(() => {
+        console.warn('【通信エラー】そのままアーカイブを使います:', link.href);
+        // エラー時もhrefはそのまま
+      });
   });
 });
 </script>
+
 
 
 </body>
