@@ -9,7 +9,7 @@ BODY:
 　今年のイラストは巳年（みどし・ヘビ年）ということで特に誰でもないキャラクター！
 　去年に引き続いてスケイル（竜っぽいキャラ、たまにうなぎ扱いされる）でもいい気がしましたがさすがに2連続はね！
 
-<img src="../../image/2025/20250101.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2025/20250101.jpg" border="1" style="max-width:520px;" loading="lazy" height="520">
 
 　
 
@@ -51,7 +51,7 @@ BODY:
 <HR><span style="font-size:large;"><B>●年末に生放送やりました！</B></span><HR>
 　年末に2024年を振り返る生放送をやりました！　去年も1年いろいろ事件も面白いこともありましたし、時代の変化も色々感じられましたね！
 
-<a class="red" target="_blank" href="https://youtube.com/live/oCWEhI3Gng0">【シルバーセカンド26周年！　Xで1年を振り返る生放送！】<img src="../../image/2025/20250101A.jpg" border="1" style="max-width:520px;" loading="lazy"></a>
+<a class="red" target="_blank" href="https://youtube.com/live/oCWEhI3Gng0">【シルバーセカンド26周年！　Xで1年を振り返る生放送！】<img src="../../image/2025/20250101A.jpg" border="1" style="max-width:520px;" loading="lazy" height="288"></a>
 
 　少しAI話、ゲーム開発話、少し介護話、少しウディコン話、ウディタ話、などが話のテーマだったと思いますので、そういったのが気になる方はよければお正月の時間つぶしにでもぜひ！
 
@@ -73,7 +73,7 @@ BODY:
 　新機能は目次だけご覧になればだいたい分かるとは思いますが、それぞれ詳しく見ていきましょう！
 
 <HR><span style="font-size:large;"><B>●BGSの多チャンネル化！</B></span><HR>
-<img src="../../image/2025/20250111A.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2025/20250111A.jpg" border="1" style="max-width:520px;" loading="lazy" height="294">
 　なんとウディタ3.5ではBGSにチャンネル機能が付きます！
 　以下の映像で再生見本を流しておりますので気になる方はぜひ！
 
@@ -88,7 +88,7 @@ BODY:
 <HR><span style="font-size:large;"><B>●ピクチャエフェクトにディレイ設定可！</B></span><HR>
 　エフェクトの「ピクチャ」にディレイが設定可能になります！
 　つまり座標を元のピクチャから+10する、みたいなのをディレイを付けて未来の分まで設定しほうだいになるってことですね！
-<img src="../../image/2025/20250111C.png" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2025/20250111C.png" border="1" style="max-width:520px;" loading="lazy" height="294">
 
 　これによって、ディレイだけで大量のエフェクト予約などして気軽に動かしたりもできますし、そっちのほうがピクチャ本体を動かすより処理が軽いと思いますので、色んな意味でさらに無理ができると思います！　私もピクチャエフェクトで色々制御することが多いので、これは私も欲しかったやつです！
 
@@ -143,7 +143,7 @@ BODY:
 　「CharaChip/Chicken.png」を横6、縦4パターンで分割し、8フレームごとにアニメーションします。
 　アイコンとしてアニメーションさせた上にルビを付けることも可能です！
 　見本はこちら↓
-　<img src="../../image/2025/20250111B.png" border="1" style="max-width:520px;" loading="lazy">　→　<img src="../../image/2025/20250111B.gif" border="1" style="max-width:520px;" loading="lazy">
+　<img src="../../image/2025/20250111B.png" border="1" style="max-width:520px;" loading="lazy" height="64">　→　<img src="../../image/2025/20250111B.gif" border="1" style="max-width:520px;" loading="lazy" height="101">
 
 
 <HR>
@@ -273,7 +273,7 @@ BODY:
 　が、今でも<span style="font-size: 150%"><B><span style="color: #d50000">毎日平均7件</span></B></span>くらいのペースでバグが出続けており一般公開どころではありません！！　この2週間ですら新たに<span style="color: #d50000"><span style="font-size: 150%"><B>100個以上</B></span></span>も修正点が発生しています！
 　本当に朝から晩まで一生懸命バグを直し続けて他に何もできない生活が20日くらい続いているので大変です！
 
-<img src="../../image/2025/20250208.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2025/20250208.jpg" border="1" style="max-width:520px;" loading="lazy" height="292">
 
 　どうしてこんなもの作っちゃったんだ感もありますが、今は元気だし夜もちゃんと寝てるので20日くらい超全力作業してもまだ平気です！　さすがに心は少し疲れてきたかもしれませんね！
 
@@ -792,7 +792,7 @@ BODY:
 　修正点はこの2週間で81個！　1日平均5個以上！　ってやっぱり多いですよ！！
 　なおこっそりベータ公開した1/18からだと全部で修正点が260個以上になりました！　たくさんのご報告、ありがとうございます！！　ヴォオオオ！！
 
-<img src="../../image/2025/20250222.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2025/20250222.jpg" border="1" style="max-width:520px;" loading="lazy" height="292">
 
 　本当に何も新ネタがないので、今回もこの2週間の更新履歴紹介です！
 
@@ -1112,7 +1112,7 @@ BODY:
 <span style="color: #d50000"><B>●【エディターオプション/新機能】ウィンドウ倍率に「アイコン」を追加。
 　メインウィンドウ上部のアイコンのサイズを「自動サイズ」「100%固定」「150%固定」「200%固定」に切りかえできます。</B></span>
 <span style="color: #42a5f5">→　アイコンが小さすぎて選びにくいんですけど！　という人もこれでいくらか安心です！</span>
-<img src="../../image/2025/20250222A.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2025/20250222A.jpg" border="1" style="max-width:520px;" loading="lazy" height="299">
 
 
 ●【エフェクト/調整】「キャラ」のエフェクトの「ピクチャリンク」の連動選択肢の中の、「XY拡大連動」を「XYｽﾞｰﾑ連動」に名称変更しました。
@@ -1204,11 +1204,11 @@ DATE: 2025-03-08 08:11:40
 -----
 BODY:
 　ということでベータ期間のバグ報告が少なくなってきたので<span style="color: #d50000"><span style="font-size: 150%"><B>『ウディタ3.5』を3/1に正式公開</B></span></span>しました！
-　すでに<a data-primary="https://silversecond.com/WolfRPGEditor/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor/"><span style="font-size: 150%"><B>『ウディタ公式サイト』</B></span></a>のダウンロードページで公開中ですので気になる方はぜひ！
+　すでに<a class="double-link blue" data-primary="https://silversecond.com/WolfRPGEditor/" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor/"><span style="font-size: 150%"><B>『ウディタ公式サイト』</B></span></a>のダウンロードページで公開中ですので気になる方はぜひ！
 　
 　が、そしたら新たな使い手の方が大量にいらっしゃって新たなバグ報告を送ってくださったり、Microsoft Defenderに急にGame.exeがウィルス扱いされてしまって私がEXE作ったそばから消されまくる（ということは他の皆さんの元でも当然消される）ので消されずに済むパターンを見つけようと泣きながらがんばってたりと大変なことがありました。
 
-<img src="../../image/2025/20250308.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2025/20250308.jpg" border="1" style="max-width:520px;" loading="lazy" height="292">
 
 　とはいえ修正点の個数自体は減ってきていて、2週間でだいたい70個超えくらいだと思います、って全然減ってないじゃないですか！　1日5個以上は修正点が発生しています！
 　朝から晩まで対応する日々で他のことが一切できないのがつらい！　開発予算もとい口座残高がひたすらマイナスになっていきますが、引き続き落ち着くまでがんばります！　ご支援くださってる皆さま、いつも本当にありがとうございます！
@@ -1654,10 +1654,10 @@ CATEGORY: ウディタ
 DATE: 2025-03-22 08:34:11
 -----
 BODY:
-　<a data-primary="https://silversecond.com/WolfRPGEditor/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor/"><span style="font-size: 150%"><B>ウディタ3.5正式版</B></span></a>を公開してから20日くらい、3.5開発開始(去年8月末)からもうすぐ7ヶ月くらいになろうとしています！ 時間使いすぎ！
+　<a class="double-link blue" data-primary="https://silversecond.com/WolfRPGEditor/" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor/"><span style="font-size: 150%"><B>ウディタ3.5正式版</B></span></a>を公開してから20日くらい、3.5開発開始(去年8月末)からもうすぐ7ヶ月くらいになろうとしています！ 時間使いすぎ！
 　数はだいぶ減りましたがまだほぼ毎日ウディタ3.5のバグが出てきています！　修正点は2週間で40個超、1日平均約3個くらいでしょうか。うーんまだ多い！
 　
-<img src="../../image/2025/20250322.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2025/20250322.jpg" border="1" style="max-width:520px;" loading="lazy" height="292">
 
 　ちなみに私は現在くしゃみ連射マシンと化しているのでこのシーズンはまったりモードです！　その体調で朝から晩まで動ける時間に作業して、ちょうど日々のバグを安定して片付けられるくらいの感じになっています。
 　他に何もできていないのは変わりませんが、どのみちこの季節はあまり進まないのでちょうどいい課題量だと思います！　ベータ公開、正式リリースしたそれぞれのタイミングもちょうどいい具合でしたね。
@@ -1696,7 +1696,7 @@ BODY:
 
 <HR><span style="font-size:large;"><B>【新機能　他ツールの作業時間も計測可能に！】</B></span><HR>
 ●【メインウィンドウ/新機能】「テスト」「絵」「文」の各作業時間がタイトルバーに表示される機能を追加！
-<img src="../../image/2025/20250322A.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2025/20250322A.jpg" border="1" style="max-width:520px;" loading="lazy" height="244">
 　→ 「テスト」「絵」「文」に指定したアプリが前面になっているとき、各項目に時間が加算されるようになります！
 
 　→　各項目のアプリEXE名は「Editor.ini」内の[EditTimeCount]項目内で設定できます（一般的と思われるソフトはすでに入力済です）。
@@ -2072,7 +2072,7 @@ BODY:
 
 　そしてみなさまからのご支援、いつも本当に助けになっています！　ウディタプロ版では生活できるだけのお金が入らないのになんでもかんでも高すぎるー！！
 
-<img src="../../image/2025/20250322B.jpg" border="1" style="max-width:370px;" loading="lazy">
+<img src="../../image/2025/20250322B.jpg" border="1" style="max-width:370px;" loading="lazy" height="266">
 
 　そんな値上げに負けずに安心して生活できる体制を整えていくのが当面の目標！　
 　今の私のように「（素材集め能力も含めて）1人でもゲームを完成させられるスキルを持てている」というのは、困った状況になるほどすばらしいアドバンテージだと感じます。これは1人でゲームを作り始めた人の強みですよね。
@@ -2095,7 +2095,7 @@ BODY:
 
 <HR><span style="font-size:large;"><B>◆さよならマイPC</B></span><HR>
 　私だけでなくパソコンまでもがここまでの旅で耐えきれなくなったのか、ついに愛機が故障してしまいました。
-<img src="../../image/2025/20250405.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2025/20250405.jpg" border="1" style="max-width:520px;" loading="lazy" height="293">
 
 　<B>なぜか3つに分身したエラー画面</B>が出たり、その後セーフモードでもUSB起動ドライブ使っても起動後数十秒でダウンしまくるようになったりして「これはGPU周りがおかしいのでは？」といった推測は出ましたが、結局BIOSをいじりまくってもまともな起動までたどり着けず、最終的にSSDを抜いて眠りにつかせることになりました（ちなみに私がいつも使うのはノートPCです、生き残ったまま引退できた旧マシンがあればイベント展示用や古い環境の検証用に使えますからね！）
 
@@ -2181,7 +2181,7 @@ BODY:
 　拡大縮小回転したとき、ドット絵の「透明部分」と
 　「不透明部分」の境界色として、画像によっては100%時に
 　見えない色が表示されてしまうことがある現象が改善されます。</B></span>
-<img src="../../image/2025/20250405B.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2025/20250405B.jpg" border="1" style="max-width:520px;" loading="lazy" height="297">
 <span style="color: #2196f3">→　下の「変換」系エフェクトのバグ修正のついでに、自動でこの問題も解決されました。
 　ずっと前から気になってた境界部分の見え方が直りますよみなさん！！　これ手動で画像を全部直そうと思うとけっこう大変なんですよね。
 
@@ -2355,7 +2355,7 @@ BODY:
 
 <HR><span style="font-size:large;"><B>◆『シルフェイド幻想譚』4/16でなんと20周年！</B></span><HR>　去年まちがえて20周年してしまいましたが、今年の4/16こそ真なる『シルフェイド幻想譚』、<span style="font-size: 150%"><B>20周年</B></span>となります！（2005年の4/16がオンライン公開日）　いやー長い時間がたちましたね！
 
-<img src="../../image/2025/20250419.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2025/20250419.jpg" border="1" style="max-width:520px;" loading="lazy" height="303">
 
 　ちなみに『シルフェイド幻想譚』、今はeasy RPGプレイヤーによる<span style="font-size: 150%"><span style="color: #d50000"><B>ブラウザ版</B></span></span>がありまして、スマホからでも気軽にプレイ可能となっております！　触ってみたい方はよければぜひ！
 　「あの頃の世界」が好きだった人も、「これから冒険する人」も、この機会にぜひ触れてみてください！
@@ -2468,7 +2468,7 @@ BODY:
 
 　などなど私が使う新機能の一部範囲だけでも「オホーッ！」って感じだったので、ウディタ3.5はおすすめですよ！　よければぜひ！
 
-<strong>　→ <a data-primary="https://silversecond.com/WolfRPGEditor/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor/"><span style="font-size: 150%">【ウディタ公式ページへ】</span></a></strong>
+<strong>　→ <a class="double-link blue" data-primary="https://silversecond.com/WolfRPGEditor/" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor/"><span style="font-size: 150%">【ウディタ公式ページへ】</span></a></strong>
 
 <HR>
 　ということで、やれることをやり、休みが必要なところでは休みつつ、引き続きマイペースにがんばっていきます！
@@ -2488,7 +2488,7 @@ BODY:
 
 <HR><span style="font-size:large;"><B>◆ウディタ3.5バグの修正履歴</B></span><HR>
 　が、ほんの少しあいた隙間時間にChatGPT(o3)にウディタの修正履歴を渡してどれだけのペースで作業してきたかのグラフを作ってもらいました！　いやー「エディター更新履歴.txt」を渡すだけで作れるからすごい。
-　<img src="../../image/2025/20250503A.jpg" border="1" style="max-width:520px;" loading="lazy">
+　<img src="../../image/2025/20250503A.jpg" border="1" style="max-width:520px;" loading="lazy" height="214">
 
 　オレンジの線がその日1日の修正数。
 　青い線がその平均を取ってなめらかにした線です。青い線の「修正点数」を見ればその日周辺で毎日何個ずつ修正してたか分かります！
@@ -2934,7 +2934,7 @@ BODY:
 
 　ちなみに「超ハイテンションで！」「絵文字いっぱい使っていいですよ！」とか言うとすごいテンション高い感じになってより私好みになることが最近分かりました。
 
-<img src="../../image/2025/20250503B.png" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2025/20250503B.png" border="1" style="max-width:520px;" loading="lazy" height="680">
 
 　面白いんですがたびたび情報量ゼロになることだけが難点です（↑みたいにときどき無限ループに入って同じ文字を何百文字も出し続けようとしたりする）。チャットAI使いもこれからいっぱい必要なスキルになるでしょうから上手になりたいですね！
 
@@ -2974,7 +2974,7 @@ BODY:
 → タスク（作業）を「登録」、「完了」できるだけでなく、項目内に「マーカー」をセットすればその項目をダブルクリックするだけでその作業位置を開くことができるため「ブックマーク」としての活用も可能です！</B></span>
 （たとえば、マーカーを付けておけば「特定のマップのEvの特定ページの指定行」や「ユーザDBの特定タイプの特定データの特定項目」を一瞬で開くことができます）
 
-<img src="../../image/2025/20250517A.png" border="1" style="max-width:320px;" loading="lazy">
+<img src="../../image/2025/20250517A.png" border="1" style="max-width:320px;" loading="lazy" height="421">
 
 →「マーカー」の入力時は、「現在開いている箇所」が登録されます。
  　たとえば「MapEv」マーカーボタンを押すと、現在開いているマップイベントの「マップ・イベントID・ページ・行数」が「＜Map1 Ev7 P1 0＞」という文字列としてマーカー登録されます。
@@ -3127,7 +3127,7 @@ BODY:
 ●【動作指定/調整】メニューバーの「移動コマンド挿入」「方向転換コマンド」が<span style="font-size: 150%"><span style="color: #d50000"><B>ウディタVer1からずっと機能していなかった</B></span></span>ので削除
 <span style="color: #2196f3">　→　何があったかというと、メニュー欄は作っていたのに選んでも何も入力されないままでした。つまり形だけ作って未実装だったわけです！
 　いくらなんでも17年間もかくれんぼに成功する未実装要素があるとは思いませんでした。君たちがかくれんぼナンバーワンだ……！（そういいながら削除）</span>
-<img src="../../image/2025/20250517B.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2025/20250517B.jpg" border="1" style="max-width:520px;" loading="lazy" height="412">
 </div>
 <HR>
 　という感じでした！
@@ -3150,7 +3150,7 @@ BODY:
 　というのも、私の公式サイトやウディタサイト、ウディコンサイトのサーバーやドメインは、レンタルサーバーだったり自分用ドメインをお金を払って使わせてもらっていたりして、要するにこれら全部<span style="font-size: 150%"><span style="color: #d50000"><B>『借り物』</B></span></span>なんですよ！
 　で、今はそれらの使用期間を定期的に延長して使っているのですが、もし私に何かあると1年後には全部消滅しちゃうわけです！
 
-　まあ私個人の作ったものがネット上から消えること自体は、別にそれはそれでもいいと思っているとはいえ、<a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><B>ウディコン</B></a>に関してはどう考えてもみんなで作り上げた公共物なので、結果発表くらいはアーカイブとして残したいと思います。
+　まあ私個人の作ったものがネット上から消えること自体は、別にそれはそれでもいいと思っているとはいえ、<a class="double-link blue" data-primary="https://silversecond.com/WolfRPGEditor/Contest/" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><B>ウディコン</B></a>に関してはどう考えてもみんなで作り上げた公共物なので、結果発表くらいはアーカイブとして残したいと思います。
 　私もコンテストパークのページが消えちゃって、賞をいただいた歴史が消えて少し悲しんでいましたからね！！　それに、参加された方にとっては普通に経歴の証明にも使えるはずですし。
 
 　あと私の公式サイトや作品紹介などに関しても、私がいなくなった後にお参りできる先やゲームをダウンロードできるリンク先まとめみたいなのがあったほうが便利でしょう。そこはウディコン結果を残すことに比べたら「ついで」のオプション任務くらいの気持ちで優先度は低いんですけどね。
@@ -3200,7 +3200,7 @@ BODY:
 
 <span style="font-size:large;"><B>『ウディコン歴史資料館』</B></span>
 　<B><a class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/">https://smokingwolf.github.io/wolf_rpg_editor_contest/
-<img src="../../image/2025/20250531A.jpg" border="1" style="max-width:420px;" loading="lazy"></a></B>
+<img src="../../image/2025/20250531A.jpg" border="1" style="max-width:420px;" loading="lazy" height="444"></a></B>
 
 　このページ、一見ウディコン公式と似た雰囲気ですが、これまでの「結果発表のバックアップ」だけでなく、「エントリー体験コーナー」や「投票体験コーナー」などもご用意させていただいております。エントリーの事前イメージトレーニングもできるかも？
 
@@ -3368,7 +3368,7 @@ BODY:
  　特にウディコンのアーカイブ化は私が急にいなくなったときに備えて早めにやっておきたかったですからね！　これでひとまず、第16回までのウディコンの履歴は当面消えずに残り続けるはずです。そしてこれからは1回分ずつ足せばいいので気楽です！
   
 　もちろん、ウディコンはこれからも続けていきます！
-　今年も<a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><B><span style="font-size: 150%">第17回ウディコン</span></B></a>がもうあと40日くらいに迫ってきていますからね！　ヤバい！　ウディコンのコンテストシステムの調整もしないといけない！！　やることいっぱいですががんばります！
+　今年も<a class="double-link blue" data-primary="https://silversecond.com/WolfRPGEditor/Contest/" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><B><span style="font-size: 150%">第17回ウディコン</span></B></a>がもうあと40日くらいに迫ってきていますからね！　ヤバい！　ウディコンのコンテストシステムの調整もしないといけない！！　やることいっぱいですががんばります！
 　でも本当はもっとゲーム作りをしたい！！　それをモチベーションに少しでも急いでいきます！
 　
 　
@@ -3443,7 +3443,7 @@ BODY:
 <span style="color: #42a5f5"><span style="font-size: 80%">　※フレームって何？：複数のHTMLファイルを、分割したフレーム内にそれぞれ出すことで1つのように見せて表示するページ。メニュー部分だけ分離させたりして便利だった。</span></span>
 
 　以下のような、＜frameset＞というタグを使って区切られたページ（左）があったのですが、このフレームをなくして1つのページに統合する作業を行っていました。びっくりするほど手間がかかっていました。
-<img src="../../image/2025/20250614.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2025/20250614.jpg" border="1" style="max-width:520px;" loading="lazy" height="196">
 
 　というのも実はうちのサイト、1998年頃からやってたのもあってフレーム要素を使いまくりであんまりよろしくなかったので、これの撤廃は前々からやりたいと思っていたんですよね！
 　なにより<span style="color: #d50000"><B>＜frameset＞によるフレーム機能は、すでに今の標準仕様では公式には廃止</B></span>されており、いつ動かなくなっても文句が言えない状態だったのです！
@@ -3468,7 +3468,7 @@ BODY:
 　さらに言うと、<B><span style="color: #d50000">「特定のドメインのURLから見た場合だけ、先頭1ページだけ抜け道的に誰でも見られる状態だった（たぶんアクセス制限漏れ）」</span></B>せいで、余計に条件を特定する難しさが発生していたのです。なんてこった！
 　
 <span style="color: #808080"><span style="font-size: 80%">※こんなアクセス制限ページが出るようになってました</span></span>
-<img src="../../image/2025/20250614A.png" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2025/20250614A.png" border="1" style="max-width:520px;" loading="lazy" height="267">
 
 　なにかの間違いではないかとも思いましたが、FC2ブログの「設定」内をよく見ると「<B>プライベート</B>」モードになってて、しかもそこが選択不能になってて「<B>公開設定は変更できません</B>」と書いてありました。
 
@@ -3564,7 +3564,7 @@ BODY:
 　AIは、「一貫性を持たせてとんでもないこだわりを貫いたり、こだわってるつもりがないのに無意識の癖が出ちゃうようなものを生み出し続けるのはまだまだ難しい」（自称）みたいなので、そういった情熱を楽しむコンテンツであれば、まだしばらくは人間製のものが楽しまれそうですよ！
 
 　そして私にとって直近のゲーム開発イベントといえばやっぱりこれ！
-　<a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 150%"><B>第17回ウディコン！</B></span></span></a>　開催まであと<span style="color: #d50000"><span style="font-size: 150%">30日</span></span>を切りました！！
+　<a class="double-link blue" data-primary="https://silversecond.com/WolfRPGEditor/Contest/" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 150%"><B>第17回ウディコン！</B></span></span></a>　開催まであと<span style="color: #d50000"><span style="font-size: 150%">30日</span></span>を切りました！！
 　そろそろ一通り完成してテストに入りたい頃だと思いますが、参加予定の皆さまはいかがでしょうか！
 　2026年の第18回もほぼ確実に開催予定ですので、あまりに辛そうでしたら次回に回すこともご検討ください！　体を壊したら身も蓋もありませんからね！
 
@@ -3587,13 +3587,13 @@ BODY:
 <a id="2025-06-28-1"></a><h1>◆いつものようにウディコン準備！</h1>
 　今回は、いつものようにウディコンのシステム改修＆エントリーテストをおこなったり、ウディコン告知絵の準備をし始めたりしておりました！
 
-<img src="../../image/2025/20250628.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2025/20250628.jpg" border="1" style="max-width:520px;" loading="lazy" height="392">
 
 　今回のウディコンシステムの変更点ですが、ウディコンの作品エントリー内容として<span style="color: #f44336"><B>『SNSへの感想の可否』</B></span>が設定できるようになりました！
 　つまり、<B>「ネタバレなしならOK！」</B>みたいな標準的な指定から、<B>「ネタバレ･考察しまくってもいいから話題に挙げて～！」「画面写真なしならいいよ！」</B>といった気持ちを簡単に反映できるようになります！
 　遊ばれる側も明快になるのでうれしいはず！
 　↓
-<img src="../../image/2025/20250628A.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2025/20250628A.jpg" border="1" style="max-width:520px;" loading="lazy" height="214">
 <span style="color: #808080"><span style="font-size: 80%">『片道勇者』が見本エントリーしているいつもの光景！</span></span>
 
 　それ以外は割といつも通り、エントリーされた作品を遊んで、プレイヤーの皆さんが一般審査をしてくださるという流れはそのままです！
@@ -3618,7 +3618,7 @@ BODY:
 　↓
 <span style="color: #808080"><span style="font-size: 80%">2003年8月3日に最初に開発日誌に投稿した落書き！
 まだゲームに登場させるか分からなかった頃の「リクレール」というキャラのラフデザインです。最終版よりちょっと大人かも。</span></span>
-<img src="../../image/2025/20250628B.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2025/20250628B.jpg" border="1" style="max-width:520px;" loading="lazy" height="302">
 
 　しかもその開発日誌、<B>「22年間、毎月一度以上は必ず更新していた」</B>ようで、書いてなかったのは<B><span style="font-size: 150%">たったひと月だけ</span></B>！
 　そのひと月以外はずっと毎月何かしら書き続けていたわけで、「われながら持続力がすごい！」と自分でも驚いています。
@@ -3668,7 +3668,7 @@ BODY:
 <div class="toc-box"><ul class="toc-list"><li class="toc-level1"><a class="g"  target="_top" href="#2025-07-12-1">◆第17回ウディコン、いよいよ開催！</a></li><li class="toc-level1"><a class="g"  target="_top" href="#2025-07-12-2">◆自サイトの調整作業！</a></li><ul><li class="toc-level2"><a class="g"  target="_top" href="#2025-07-12-3">- 作品一覧ページをちょっとおしゃれにしたい！</a></li><li class="toc-level2"><a class="g"  target="_top" href="#2025-07-12-4">- レンタルサーバーが消えたらそのサイトへのリンクを消したい…え、できるの！？</a></li><li class="toc-level2"><a class="g"  target="_top" href="#2025-07-12-5">- まさかの掘り出し物が！　シェパード捜査録！</a></li></ul><li class="toc-level1"><a class="g"  target="_top" href="#2025-07-12-6">◆ここ1ヶ月のウディタの重要修正のご報告</a></li><li class="toc-level1"><a class="g"  target="_top" href="#2025-07-12-7">◆それではウディコン、お楽しみに！</a></li></ul></div>
 <a id="2025-07-12-1"></a><h1>◆第17回ウディコン、いよいよ開催！</h1>
 　第17回ウディコン告知イラストも準備完了！
-<img src="../../image/2025/20250712.jpg" border="1" style="height:400px;max-width:520px;" loading="lazy">
+<img src="../../image/2025/20250712.jpg" border="1" style="height:400px;max-width:520px;" loading="lazy" height="463">
 　すでにX上では作品参加を予定されている方からのポストも増えつつあるようで期待が高まります！
 
 　『作品数もそろそろ規模が落ちていくのかなーどうかなー』と毎年思っているんですが、今年はどうなるでしょうね！
@@ -3686,7 +3686,7 @@ BODY:
 　いずれサイトをGitHub上にアーカイブ化するにあたって、この機会に作品一覧ページなどをきれいにしようと頑張っております！
 
 　たとえば、以下は私のサイトの<a class="blue" target="_blank" href="https://silversecond.net/contents/game/"><B>作品一覧ページの最新版</B></a>の模様です！
-　<img src="../../image/2025/20250712A.jpg" border="1" style="max-width:520px;" loading="lazy">
+　<img src="../../image/2025/20250712A.jpg" border="1" style="max-width:520px;" loading="lazy" height="493">
 
 　現代はSNSでの告知が中心で、サイトそのものはたくさんの人に見られる時代ではなくなってきていますが、この際ちょっとオシャレにしていきたいですね！
 
@@ -3709,7 +3709,7 @@ BODY:
 <span style="color: #a0a0a0">（ただ、別サーバーからのアクセスって基本的に自動ではじくようになってるので、.htaccessファイルをいじって<B>『自サーバーのCORS (クロスオリジンリソース共有：別ドメインからのアクセスを受け付ける仕組み) を許可する』</B>といった追加の作業も必要でした。もし挑戦される方はご注意を！）</span>
 
 　で、なんやかんや色々やった末に、ほぼ「リンク先のサイトが消えたらリンクも消える」という仕組みを作ることができたんですよ！
-<img src="../../image/2025/20250712B.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2025/20250712B.jpg" border="1" style="max-width:520px;" loading="lazy" height="600">
 　これを活用していけば、レンタルサーバーのサイトがなくなっても勝手にアーカイブページ側の（運営中ページへの）リンクが消去されていくので安全です！
 
 　他にも<B>『運営中サイトのリンクAがなかったらアーカイブサイトのリンクBにつなぐよう予約しておく』</B>みたいなこともできると思うので、これは死後を見すえた運用をするにあたって便利な技術だと思います！
@@ -3720,7 +3720,7 @@ BODY:
 
 <a id="2025-07-12-5"></a><h2>まさかの掘り出し物が！　シェパード捜査録！</h2>
 　それと、サイトいじりにあたって過去のデータを漁ってたら<B>『シェパード捜査録』</B>という昔のゲームを録画できる環境が作れそうなことに気付いたので、プレイ動画を作ろうかなと検討中です！
-<img src="../../image/2025/20250712C.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2025/20250712C.jpg" border="1" style="max-width:520px;" loading="lazy" height="392">
 
 　『シェパード捜査録』はご依頼をいただいて作ったゲームでして、ゲームそのものはドコモFOMA用のiアプリで、現状は遊べない（配布もできない）ことや、すでにクライアントの問い合わせ先が消滅していて「同じ内容のゲームを作っていいか」と問い合わせることもできない状態でした。
 
@@ -3831,7 +3831,7 @@ BODY:
 　ということでウディコン開催から2週間！　先週から審査期間が始まっております！
 
 <a class="blue" target="_blank" data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 200%"><B>【ウディコン公式サイトへ】</B></span>
-<img src="../../image/2025/20250726.jpg" border="2" style="height:280px;border-radius:10px;" loading="lazy"></a>
+<img src="../../image/2025/20250726.jpg" border="2" style="height:280px;border-radius:10px;" loading="lazy" height="552"></a>
 
 
 <div class="toc-box"><ul class="toc-list"><li class="toc-level1"><a class="g"  target="_top" href="#2025-07-26-1">◆第17回ウディコン審査期間、開始！</a></li><li class="toc-level1"><a class="g"  target="_top" href="#2025-07-26-2">◆今年のウディコンはどんな感じ？　Xの応援ご紹介！</a></li><li class="toc-level1"><a class="g"  target="_top" href="#2025-07-26-3">◆規約の補足【内容のパロディがひどくてもエントリー禁止にならないの？】</a></li></ul></div>
@@ -3842,7 +3842,7 @@ BODY:
 　点の付け方の目安は書いてありますのでそれに沿ってくださると他の人とも指標が合いやすいと思います！
 
 　<span style="color: #808080"><span style="font-size: 80%">↓これはウディコン歴史資料館の投票見本ページ。得点ごとに、点の付け方の目安が書いてあります。</span></span>
-<img src="../../image/2025/20250726A.png" border="1" style="height:300px;" loading="lazy">
+<img src="../../image/2025/20250726A.png" border="1" style="height:300px;" loading="lazy" height="435">
 
 　一般審査はいつでも途中セーブ可能、途中再開可能ですので、よければ徐々に審査していっていただけますと幸いです！
 　4作品以上審査すると得点に反映されます。
