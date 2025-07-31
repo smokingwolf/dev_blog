@@ -3,7 +3,7 @@ CATEGORY: 開発日誌
 DATE: 2025-01-01 00:00:33
 -----
 BODY:
-　あけましておめでとうございます！　2025年、令和7年となりました！ 
+　あけましておめでとうございます！　2025年、令和7年となりました！
 
 <HR><span style="font-size:large;"><B>●新年あけましたイラスト！</B></span><HR>
 　今年のイラストは巳年（みどし・ヘビ年）ということで特に誰でもないキャラクター！
@@ -3580,7 +3580,7 @@ CATEGORY: ウディタ
 DATE: 2025-06-28 00:00:00
 -----
 BODY:
-　ということでいよいよ<a class="blue" target="_blank" data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 150%"><B>第17回ウディコン</B></span></a>開催まで<span style="font-size: 150%"><B>あと2週間</B></span>となりました！！
+　ということでいよいよ<a class="blue" target="_blank" data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 150%"><B>第17回ウディコン</B></span></a>開催まで<span style="font-size: 150%"><B>あと2週間</B></span>となりました！！
 　ただいま開催の準備を進めております！
 
 <div class="toc-box"><ul class="toc-list"><li class="toc-level1"><a class="g"  target="_top" href="#2025-06-28-1">◆いつものようにウディコン準備！</a></li><ul><li class="toc-level2"><a class="g"  target="_top" href="#2025-06-28-2">- 「感想投稿の可否」はウディコン関係なくても書いておくと喜ばれそう！</a></li></ul><li class="toc-level1"><a class="g"  target="_top" href="#2025-06-28-3">◆開発日誌の移転作業･サイト調整も続行中！</a></li></ul></div>
@@ -3661,7 +3661,7 @@ CATEGORY: ウディタ,その他
 DATE: 2025-07-12 00:00:00
 -----
 BODY:
-　いよいよ<a class="blue" target="_blank" data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 150%"><B>第17回ウディコン</B></span></a>開催日が明日に迫りました！　開催に備えて準備中です！
+　いよいよ<a class="blue" target="_blank" data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 150%"><B>第17回ウディコン</B></span></a>開催日が明日に迫りました！　開催に備えて準備中です！
 　今回は第17回ウディコン始まりますぞー！　という告知と、相変わらず自サイトの調整やウディタ修正やってましたというお知らせです。
 　ここ1ヶ月のウディタ修正内容も簡単に載せてます！
 
@@ -3774,7 +3774,7 @@ BODY:
 <a id="2025-07-12-7"></a><h1>◆それではウディコン、お楽しみに！</h1>
 　以上、色々やりつつでしたが、何を置いても第17回ウディコンが<B>7/13</B>より開催です！　お楽しみに！
 
-<a class="blue" target="_blank" data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 150%"><B>【ウディコン公式ページ】</B></span></a>
+<a class="blue" target="_blank" data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 150%"><B>【ウディコン公式ページ】</B></span></a>
 
 　ウディコンの作品公開は<span style="font-size: 150%"><B>【7/13(日)の0時】</B></span>頃から始まります！　ちょっと悪い子は0時直後から遊ばれてもかまいませんが、良い子は朝起きてからやりましょうね！
 　ちなみにウディコン期間中は（みんなウディコン作品を遊ばれるので）私のゲームがほぼ完全に売れなくなっちゃうので、<a class="red" target="_blank" href="https://silversecond.booth.pm/items/4455722"><B>ご支援</B></a>はいつでも募集中です！　いつもご支援くださっている皆さまには本当に感謝の限りです、生活の助けになります！
@@ -3830,7 +3830,7 @@ DATE: 2025-07-26 00:00:00
 BODY:
 　ということでウディコン開催から2週間！　先週から審査期間が始まっております！
 
-<a class="blue" target="_blank" data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 200%"><B>【ウディコン公式サイトへ】</B></span>
+<a class="blue" target="_blank" data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 200%"><B>【ウディコン公式サイトへ】</B></span>
 <img src="../../image/2025/20250726.jpg" border="2" style="height:280px;border-radius:10px;" loading="lazy" height="552"></a>
 
 
