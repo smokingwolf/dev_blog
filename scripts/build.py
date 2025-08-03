@@ -369,7 +369,7 @@ def render_sidebar(all_months: list[tuple[str, str]],
 
     # Heading & top link
     lines.append("<div style='font-weight:bold;'>開発日誌</div>")
-    lines.append(f"<div><a class='sidebar_link' href='{rel_root}/archive/top/index.html'>トップへ</a></div>")
+    lines.append(f"<div><a class='sidebar_link' href='{rel_root}/archive/top/index.html'>日誌トップへ</a></div>")
     lines.append(f"<div><B><a class='sidebar_link' href='{rel_root}/index.html'>全記事一覧</a></B></div>")
     if recent_entries:
         lines.append("<hr>")
