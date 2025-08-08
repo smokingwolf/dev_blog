@@ -22,10 +22,6 @@ BODY:
 　もうあとからあとから入れたい機能が周りのコメントなどから気付かされて無限に追加オーダーされているのでどんどん遅れております！　
 　が、それでもさすがに1月中には公開したいので全力を尽くします！
 　
-　なおすでに実装済みや実装が確定しているのはこちらにまとめてあります！
-→　<a class="double-link blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/ReleaseLogNew_3.50.html"><span style="font-size: 150%"><B>●ウディタ3.5更新予定内容 </B></span></a>
-　（そのうち消すと思いますので数年後に見た人はリンク切れしてるかも）
-　
 　最新の手元の作業としては『条件分岐やループの折りたたみ・展開機能』に挑戦中です！　あまりにも改造しなきゃいけない内容が複雑で、分岐が壊れてめちゃめちゃなことになっちゃうとか、まだまだバグまみれです。
 　でもこれは私もそこそこ使うかもしれないので、こういったイベントコマンド操作周りはじっくり改良していきたいところです！　私の開発するゲームでは、作業の80%以上はイベントコマンドいじりになりますからね！
 
@@ -175,7 +171,7 @@ CATEGORY: ウディタ
 DATE: 2025-01-25 08:04:26
 -----
 BODY:
-　ということで1/18からこっそりウディタ3.5を公開中です！　<a class="double-link blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/BBS/log/107.html">ウディタ公式サイトのバグ報告スレッド</a>で！　
+　ということで1/18からこっそりウディタ3.5を公開中です！　ウディタ公式サイトのバグ報告スレッドで！
 　Ver3.500で公開され、今はVer3.509になっています。毎日平均10点以上も直し続けて1/24までの修正点が80個近くになるほど大量のバグが発生しているので、表だっての公開はまだ控えております！　まだベータな感じですが気になる方はよければお試しください！　今も必死で修正中です！
 
 　そんな中、さっそく新機能を使ってすごいものを作っておられる方もいらっしゃるので、Xからご紹介させていただきます！　みなさま本当にありがとうございます！
@@ -187,7 +183,7 @@ BODY:
 
 　こちらで投稿されている映像のようにオーバーレイ合成やクリッピングマスクっぽいこともできるようになりました！(しかもXY配列4つ使ってそのままピクチャ表示することもできます！）
 　画像のアルファ値やRGB値をXY配列に読み書きする機能を使えば、画像合成回りの自由度がかなり上がります！　
-　<a class="double-link blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/Help/04ev_string_specialcode.html#IMG5"><B>隠しコード「&lt;&lt;LOAD_IMAGE_TO_XY/A=?/R=?/G=?/B=?&gt;&gt;(ファイル名)」</B></a>を使えば、画像ファイルの2次元データを4つのXY配列（ARGB分）に読み込むことができますので、あとは計算次第でなんでもできますよ！
+　<a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/tool_wolf_rpg_editor/help/04ev_string_specialcode.html#IMG5"><B>隠しコード「&lt;&lt;LOAD_IMAGE_TO_XY/A=?/R=?/G=?/B=?&gt;&gt;(ファイル名)」</B></a>を使えば、画像ファイルの2次元データを4つのXY配列（ARGB分）に読み込むことができますので、あとは計算次第でなんでもできますよ！
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">ウディタ3.5、XY配列の「画像⇔ARBG値」の変換機能のお陰で、スクリーンとかオーバーレイとか画像合成周りが実現できる…うれしい！ <a class="double-link red"  target="_top" href="https://t.co/NKr0s14zTN">pic.twitter.com/NKr0s14zTN</a></p>&mdash; そーま@健全用 (@yudusoma) <a class="double-link red"  target="_top" href="https://twitter.com/yudusoma/status/1881224050040852672?ref_src=twsrc%5Etfw">January 20, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <HR>
@@ -1204,7 +1200,7 @@ DATE: 2025-03-08 08:11:40
 -----
 BODY:
 　ということでベータ期間のバグ報告が少なくなってきたので<span style="color: #d50000"><span style="font-size: 150%"><B>『ウディタ3.5』を3/1に正式公開</B></span></span>しました！
-　すでに<a data-primary="https://silversecond.com/WolfRPGEditor/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor/"><span style="font-size: 150%"><B>『ウディタ公式サイト』</B></span></a>のダウンロードページで公開中ですので気になる方はぜひ！
+　すでに<a data-primary="https://silversecond.com/WolfRPGEditor/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/tool_wolf_rpg_editor/"><span style="font-size: 150%"><B>『ウディタ公式サイト』</B></span></a>のダウンロードページで公開中ですので気になる方はぜひ！
 　
 　が、そしたら新たな使い手の方が大量にいらっしゃって新たなバグ報告を送ってくださったり、Microsoft Defenderに急にGame.exeがウィルス扱いされてしまって私がEXE作ったそばから消されまくる（ということは他の皆さんの元でも当然消される）ので消されずに済むパターンを見つけようと泣きながらがんばってたりと大変なことがありました。
 
@@ -1654,7 +1650,7 @@ CATEGORY: ウディタ
 DATE: 2025-03-22 08:34:11
 -----
 BODY:
-　<a data-primary="https://silversecond.com/WolfRPGEditor/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor/"><span style="font-size: 150%"><B>ウディタ3.5正式版</B></span></a>を公開してから20日くらい、3.5開発開始(去年8月末)からもうすぐ7ヶ月くらいになろうとしています！ 時間使いすぎ！
+　<a data-primary="https://silversecond.com/WolfRPGEditor/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/tool_wolf_rpg_editor/"><span style="font-size: 150%"><B>ウディタ3.5正式版</B></span></a>を公開してから20日くらい、3.5開発開始(去年8月末)からもうすぐ7ヶ月くらいになろうとしています！ 時間使いすぎ！
 　数はだいぶ減りましたがまだほぼ毎日ウディタ3.5のバグが出てきています！　修正点は2週間で40個超、1日平均約3個くらいでしょうか。うーんまだ多い！
 　
 <img src="../../image/2025/20250322.jpg" border="1" style="max-width:520px;" loading="lazy" height="292">
@@ -2361,7 +2357,7 @@ BODY:
 　「あの頃の世界」が好きだった人も、「これから冒険する人」も、この機会にぜひ触れてみてください！
 
 →■『シルフェイド幻想譚』公式ページ 
-　<a class="double-link blue" target="_blank" href="https://silversecond.net/contents/game/silfade_gensou/"><B>https://silversecond.net/contents/game/silfade_gensou/</B></a>
+　<a data-primary="https://silversecond.net/contents/game/silfade_gensou/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/game_silfade_gensoutan/"><B>https://silversecond.net/contents/game/silfade_gensou/</B></a>
 <span style="color: #2196f3"><span style="font-size: 80%">　※4/17にスマホプレイ時の画面最大化時にバーチャルパッドが消える現象を修正しています！</span></span>
 　
 　シル幻は今でも遊べる品質だと言ってくださる方もいらっしゃったり、いろんな思い出を語ってくださったりして、本当に感謝の限りです！
@@ -2468,7 +2464,7 @@ BODY:
 
 　などなど私が使う新機能の一部範囲だけでも「オホーッ！」って感じだったので、ウディタ3.5はおすすめですよ！　よければぜひ！
 
-<strong>　→ <a data-primary="https://silversecond.com/WolfRPGEditor/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor/"><span style="font-size: 150%">【ウディタ公式ページへ】</span></a></strong>
+<strong>　→ <a data-primary="https://silversecond.com/WolfRPGEditor/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/tool_wolf_rpg_editor/"><span style="font-size: 150%">【ウディタ公式ページへ】</span></a></strong>
 
 <HR>
 　ということで、やれることをやり、休みが必要なところでは休みつつ、引き続きマイペースにがんばっていきます！
@@ -3452,7 +3448,7 @@ BODY:
 　でも前回の<B><a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/">『ウディコン歴史資料館』</a></B>のGitHubアーカイブ化にはじまり、私のサイトや作品のアーカイブ化も視野に入れ始めたので、ようやく今になって修正し始めているというわけですね！
 　まあゲーム紹介ページってあまり多くの人に見られないといえば見られないんですけども。
 
-　でもなぜか<a class="double-link blue" target="_blank" href="https://silversecond.net/contents/game/silfade_gensou/"><B>『シルフェイド幻想譚』</B></a>ページみたいに、1日50人くらいいらっしゃるゲーム紹介ページもあります。これはブラウザで遊べるものが置いてあるからかも？　来てくださる皆さま、本当にありがとうございます！
+　でもなぜか<a data-primary="https://silversecond.net/contents/game/silfade_gensou/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/game_silfade_gensoutan/"><B>『シルフェイド幻想譚』</B></a>ページみたいに、1日50人くらいいらっしゃるゲーム紹介ページもあります。これはブラウザで遊べるものが置いてあるからかも？　来てくださる皆さま、本当にありがとうございます！
 
 
 
@@ -3685,7 +3681,7 @@ BODY:
 　そして自サイトの調整作業も進めていました！
 　いずれサイトをGitHub上にアーカイブ化するにあたって、この機会に作品一覧ページなどをきれいにしようと頑張っております！
 
-　たとえば、以下は私のサイトの<a class="double-link blue" target="_blank" href="https://silversecond.net/contents/game/"><B>作品一覧ページの最新版</B></a>の模様です！
+　たとえば、以下は私のサイトの<a data-primary="https://silversecond.net/contents/game/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/"><B>作品一覧ページの最新版</B></a>の模様です！
 　<img src="../../image/2025/20250712A.jpg" border="1" style="max-width:520px;" loading="lazy" height="493">
 
 　現代はSNSでの告知が中心で、サイトそのものはたくさんの人に見られる時代ではなくなってきていますが、この際ちょっとオシャレにしていきたいですね！
@@ -3828,7 +3824,7 @@ CATEGORY: ウディタ
 DATE: 2025-07-26 00:00:00
 -----
 BODY:
-　ということでウディコン開催から2週間！　先週から審査期間が始まっております！ 
+　ということでウディコン開催から2週間！　先週から審査期間が始まっております！
 
 <a class="double-link blue" target="_blank" data-primary="https://silversecond.com/WolfRPGEditor/Contest/" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 200%"><B>【ウディコン公式サイトへ】</B></span>
 <img src="../../image/2025/20250726.jpg" border="2" style="height:280px;border-radius:10px;" loading="lazy" height="552"></a>
@@ -3921,6 +3917,140 @@ BODY:
 　ひとまずは審査期間ですね！
 　ウディタも修正しつつ、ウディコン対応もしつつ、やれる範囲で遊ばせていただきます！
 　ここに来てウディタの修正も割と頻繁になってきています！　ぼちぼち直していきまーす！
+-----
+EXTENDED BODY:
+
+-----
+--------
+TITLE: シルバーセカンド思い出の部屋を開設！＋ 来年よりウディコン規約追加
+CATEGORY: その他,ウディコン
+DATE: 2025-08-09 00:00:00
+-----
+BODY:
+　「ウディタのバグがここに来て重いよぉぉぉぉ！」と叫びながら空いた時間で少しウディコン作品を遊ばせていただいたり自分のアーカイブサイト作りを進めていたウルフです！
+　今回はアーカイブサイトの第一段階がいったん完成したのでそのお知らせと、ウディコンに来年追加される規約のお話です！
+
+<div class="toc-box"><ul class="toc-list"><li class="toc-level1"><a class="double-link g"  target="_top" href="#2025-08-09-1">◆アーカイブサイト『シルバーセカンド思い出の部屋』開設！</a></li><ul><li class="toc-level2"><a class="double-link g"  target="_top" href="#2025-08-09-2">- 思い出の部屋、開設！</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2025-08-09-3">- 【シルフェイド学院物語だけ外部入手手段がない！】</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2025-08-09-4">- 【まだ開発日誌の移行が終わってない！】</a></li></ul><li class="toc-level1"><a class="double-link g"  target="_top" href="#2025-08-09-5">◆ウディコン規約に2026年から適用！　文章のリアルタイム生成は禁止に</a></li></ul></div>
+<a id="2025-08-09-1"></a><h1>◆アーカイブサイト『シルバーセカンド思い出の部屋』開設！</h1>
+<a id="2025-08-09-2"></a><h2>思い出の部屋、開設！</h2>
+　このたび、私のゲーム紹介ページやゲームデータやイラストやテキストコンテンツを長く残すためのサイト、<B>『シルバーセカンド思い出の部屋』</B>を開設しました！
+　もしかしたらアーカイブの方から来てこれを読んでくださっている方もいらっしゃるかもしれませんね！
+　<span style="color:#99f">（ちなみにこの『開発日誌』は、「運営中のサイト」からも「アーカイブページ」からもリンクされていますので、そういう文脈でお読みください）</span>
+
+　<a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/"><span style="font-size: 150%"><B>『シルバーセカンド思い出の部屋』へ</B></span>
+<img src="../../image/2025/20250809.jpg" border="2" style="height:300px;border-radius:8px;margin-left:25px;" loading="lazy" height="634"></a>
+　
+　↑のアーカイブサイトは、『GitHub Pages』という、GitHub（コード保存サイト）のサイト公開機能で作ったものです！
+　仮に今のレンタルサーバーへの支払いが止まって「運営中のメインサイト」が消滅しても、こちらの「アーカイブサイト」の方だけは数十年以上ものあいだ生き残ってくれる見込みです！
+　アーカイブサイトは私が生きた証を残していく場所として、これからもいっぱい新しい内容を刻んでいきたいですね！
+
+　あとせっかくなので、私が急にいなくなってもいいように、アーカイブページの<a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/#final">「最後に」</a>として私の人生の振り返りや皆さんへの感謝の言葉や独り言も入れておきました！
+　私はまだまだ人生の途中ですが、こういった内容を書いておけば、私のここまでの歩みと、これからの目指すべき生き方を思い出すのにも役に立つでしょう。
+
+
+　本当はGitHub側をメインのホームページにして、掲示板などの「動的機能」だけをレンタルサーバー側で処理するという手段もあるんです！　これからサイト作られる方にはそれもおすすめだと思います！
+　ただ、自サイトのトップページや、ウディタ公式のトップページって掲示板やカウンターやニュース機能などの動的要素だらけなので、結局、私が生きている間はサイトの入口はレンタルサーバー側に置いてある方が都合がいいんですよね。
+　なのでアーカイブサイトは「きれいに成果物を保管するだけ」にして、生きてる間はレンタルサーバー側でわちゃわちゃやればいいと思っております！
+
+　ちなみに『ウディコン』のアーカイブはすでに<a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><B>『ウディコン歴史資料館』</B></a>として設立済みです！
+　ウディコンに参加された方は、今後滅多なことで賞歴がネット上から消えることはありません、ご安心ください！　作品紹介も結果発表のコメントも、全部そのままGitHub内に残っていますよ！
+
+
+<a id="2025-08-09-3"></a><h2>【シルフェイド学院物語だけ外部入手手段がない！】</h2>
+　そして自分の作ったゲームを色々アーカイブしていて思いましたが、『シルフェイド学院物語』だけは私がいなくなった後にダウンロード/購入可能な場所がないので、近いうちにどっかの外部ショップに置いておこうと思いました！
+　DLsiteさんに置くならオンライン系の機能をなくさないといけなさそうなので、その対応が少し大変です。がんばります。
+　ついでに一部の顔画像などをリファインしたり、システム上の便利機能の追加（ウィンドウサイズをドラッグで伸ばせるようにするとか仮想全画面化できるようにするとか）なども行ったりしてリローンチできたらよさそうですね！
+
+　ちなみにシル学、最新のウディタでそのまま動けばいいんですが、前に挑戦したときはちゃんと動かなくて面倒くさくて挫折しちゃったんですよね。
+　まだシル学開発時は挙動を維持する意識が十分ではなかったようです。なので、色々と面倒くさいことをしなければならなさそうです。
+
+　さすがに『片道勇者』以降になると最新のウディタに差し替えても大部分は動くんですけどね！
+　これからの作品は全部、最新のウディタに差し替えても動くようにしておきたいです。
+
+
+<a id="2025-08-09-4"></a><h2>【まだ開発日誌の移行が終わってない！】</h2>
+　そしてこの<B>『開発日誌』</B>の記事移行はこれからやっていきます！
+　アーカイブサイト側には先走って「2003年分からの記事があります」みたいに書いてありますが、現時点ではまだ2024年と2025年の記事しかありませんので！
+
+　この記事移行さえ終われば現時点のアーカイブ作業はいったん全完了です！
+　開発日誌はリンクの修正やらなにやらで調整すべき量がすさまじいので、時間とやる気のあるタイミングで進めていきます！
+
+
+　しかし、これだけのアーカイブ作業が今のうちにできてよかったです。
+　もしこれら全部の準備を何もしないまま、仮に「あと1ヶ月の命です」なんて言われてしまったとしたら、たった1ヶ月ではとてもこれだけのアーカイブ作業をやりきれなかったでしょう。
+　何よりそういう状態では、きっとやろうとする元気もなくなってしまっているでしょうからね！
+　なので、元気なうちに色々と準備ができて本当によかったです！
+
+　もちろん、私の人生はまだ半分くらい残ってると思いますので、これからもいっぱい色んなものを作ってアーカイブに載せていきますよ！　がんばるぞー！
+
+
+
+<a id="2025-08-09-5"></a><h1>◆ウディコン規約に2026年から適用！　文章のリアルタイム生成は禁止に</h1>
+　そして次はウディコンのお話！
+　「AIで文章のリアルタイム生成をしている作品があったけどこれいいの？」とのご報告をいただきました！
+
+　現時点のルールでは制約する内容がないのと、リアルタイム生成ってネットに繋げてテキストをダウンロードする形式で、外部プログラムを利用してるわけでもないため、<span style="font-size: 150%"><B>今年はOK</B></span>としています！（いずれ来るとは思っていたので一回は見てみたかったという気持ちもあります）
+
+　が、リアルタイム生成にはいろいろ問題があるので、<span style="color: #f44336"><B>来年からは禁止</B></span>となります！
+　厳密には「生成されたテキスト内容を<span style="color: #f44336"><B>作者が確認した場合のみ使用OK</B></span>」というルールを追加するつもりです。
+
+　要するに<span style="font-size: 150%"><B><span style="color: #f44336">「作者が確認してない生成内容はゲームに使えないよ」</span></B></span>（=リアルタイム生成はできないよ）というルールが付くわけですね！
+
+
+　というのも、このルールがないとどうなるかって、以下のような問題が発生します！
+　
+<span style="font-size: 150%"><B>●出力された内容制御の困難性・倫理的な問題の可能性【一番大きな点！】</B></span>
+　ウディコンは小学生以上対象なのですが、文章生成AIによって小学生向けでないセクシーすぎる内容やグログロな内容が出力されてしまうとエントリー禁止になります！
+　なのでこの問題点だけでも、<B>「必ず作者がチェックを行ってください」</B>というルールは必要です。
+<span style="color: #bbdefb">　→　逆に言うと作者さまがちゃんと生成文をチェックした上でゲーム内に使用するのであれば、（非リアルタイムで）生成された文章が定期的に届くような仕組みを作っても構いません。</span>
+
+
+<span style="font-size: 150%"><B>●サービス側の仕様変更・停止リスク</B></span>
+　サービス側の仕様変更や停止リスク！　これが第二の大きな問題ですね！
+　たとえばAI側のAPIの仕様変更で動かなくなるとか、そうでなくとも通常は文章生成に（作者様の）お金が消費されていくので、いずれ処理が止まってゲームが後から遊べなくなる懸念を考えると、ちょっとご遠慮願いたいですよね。
+　仮に「1位になったゲーム」がサービス終了でまったく動かなかったらだいぶションボリなので、ここはリアルタイム生成を禁止する大きな理由になると思います。
+
+
+<span style="font-size: 150%"><B>●創作性・物語性の評価が難しくなる点</B></span>
+　文章生成AIが作った部分に関して、「物語性を評価するにあたって作者の意志が介在してない部分はどう見ればいいのさ！」という評価面の問題もあります。
+　審査する側になるとモヤモヤ感を持つ人が絶対に増える部分なので、これも問題としてしっかり挙げておくべき点です。
+
+　といっても実はこの点に関しては、私個人としてはそこまでウェイトの大きい問題ではないつもりです。
+　実は私も（パソコン内だけで動く）言語モデルを使って少しゲームを試作していたのですが、ゲームとして成立させる仕組み作りがかなり難しいと感じたので、その辺りの採り入れ方や仕組み作りがうまいのであれば、技術的に高く評価しちゃっていいんじゃないかなと思う部分もあるのです。
+　なによりゲームの物語性として見れば、「プレイヤーにとって心に残る内容だったか」が大事な点ですから、生成AIをうまく使えば、従来の既存作品を超えた、<span style="color: #f44336"><B>プレイヤー一人一人のナラティブな（遊んだ人ごとに違う）物語がより簡単に作れちゃう</B></span>と思うんですよね！
+
+　ウディコンだとたまたま都合が合わなくて、次回から文章生成AIのリアルタイム生成は使えなくなるのですが、ウディコン外で、ウディタによるそういった作品が出てくれることに関しては応援する立場です。
+　応答中の内容をストリームで見られるシステム文字列『SysS 22：[読]ダウンロード中ファイル内容(※リアルタイム受信機能)』もウディタに追加しておきましたから、より高速な応答が必要でしたらぜひ使ってください。
+
+
+
+　そしてここまで書いて思いましたが、そもそも第18回、2026年からの規約には、
+
+<span style="font-size: 150%"><span style="color: #f44336"><B>『通信ができない状態でも主なゲーム体験がプレイできる作品であること』</B></span></span>
+<span style="color: #f44336"><span style="font-size: 80%">（『オンラインランキング』みたいな、通信ができなくてもゲーム自体が動作する通信機能がある分にはOKです）</span></span>
+
+　というルールも必要そうな気がしますね！
+　抜けてたのでそれも2026年分から入れておこうと思います！
+
+　とにかく、リアルタイムでの文章AIの使用は禁止となりますので、次回からご了承ください！
+　一方で、普通にチャットAIに相談して作った文章を、しっかり確認した上でゲームに取り入れたりするのは引き続き問題ありません。
+
+　ただし自分で文章を書いたときと同じく、「それを採用する」と決めた責任はちゃんと発生します！
+　チャットAIが作った文章だからとじっくり見ずに取り入れまくって、規約に違反した内容が入ったままだったりすると当然エントリー停止になりますので、そこはご注意を。
+
+　これはあなたが、メールを書くのに文章生成機能を使ったりするときと同じです。
+　受け取った人はあなた自身が書いた内容だと認識しますので、仮に使うにしても、しっかり確認した上で、自己判断で取り入れてくださいね。
+
+<HR>
+　ということで今回も引き続きウディタ対応やらウディコン対応やら何やら続けております！
+　実はいま体調が絶不調なので、体にも気をつけながらがんばります。
+
+　ウディコンも一般審査の締め切りまで10日を切りました！
+　これからお盆休みですから、もしかしたら遊んでくださる方も増えるかもしれません！　
+　暑くて出られない日の余暇にでも、もしよければぜひ<a class="double-link blue" target="_blank" data-primary="https://silversecond.com/WolfRPGEditor/Contest/" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><B>ウディコン作品</B></a>、見ていっていただければ幸いです！
+
+　審査締め切りのラストスパートも間近！
+　一般審査、お待ちしておりまーす！
 -----
 EXTENDED BODY:
 
