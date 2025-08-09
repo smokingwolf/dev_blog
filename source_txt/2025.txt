@@ -3930,9 +3930,9 @@ BODY:
 　「ウディタのバグがここに来て重いよぉぉぉぉ！」と叫びながら空いた時間で少しウディコン作品を遊ばせていただいたり自分のアーカイブサイト作りを進めていたウルフです！
 　今回はアーカイブサイトの第一段階がいったん完成したのでそのお知らせと、ウディコンに来年追加される規約のお話です！
 
-<div class="toc-box"><ul class="toc-list"><li class="toc-level1"><a class="double-link g"  target="_top" href="#2025-08-09-1">◆アーカイブサイト『シルバーセカンド思い出の部屋』開設！</a></li><ul><li class="toc-level2"><a class="double-link g"  target="_top" href="#2025-08-09-2">- 思い出の部屋、開設！</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2025-08-09-3">- 【シルフェイド学院物語だけ外部入手手段がない！】</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2025-08-09-4">- 【まだ開発日誌の移行が終わってない！】</a></li></ul><li class="toc-level1"><a class="double-link g"  target="_top" href="#2025-08-09-5">◆ウディコン規約に2026年から適用！　文章のリアルタイム生成は禁止に</a></li></ul></div>
+<div class="toc-box"><ul class="toc-list"><li class="toc-level1"><a class="double-link g"  target="_top" href="#2025-08-09-1">◆アーカイブサイト『シルバーセカンド思い出の部屋』開設！</a></li><ul><li class="toc-level2"><a class="double-link g"  target="_top" href="#2025-08-09-2">- 【思い出の部屋、開設！】</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2025-08-09-3">- 【シルフェイド学院物語だけ外部入手手段がない！】</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2025-08-09-4">- 【まだ開発日誌の移行が終わってない！】</a></li></ul><li class="toc-level1"><a class="double-link g"  target="_top" href="#2025-08-09-5">◆ウディコン規約に2026年から適用！　文章のリアルタイム生成は禁止に</a></li></ul></div>
 <a id="2025-08-09-1"></a><h1>◆アーカイブサイト『シルバーセカンド思い出の部屋』開設！</h1>
-<a id="2025-08-09-2"></a><h2>思い出の部屋、開設！</h2>
+<a id="2025-08-09-2"></a><h2>【思い出の部屋、開設！】</h2>
 　このたび、私のゲーム紹介ページやゲームデータやイラストやテキストコンテンツを長く残すためのサイト、<B>『シルバーセカンド思い出の部屋』</B>を開設しました！
 　もしかしたらアーカイブの方から来てこれを読んでくださっている方もいらっしゃるかもしれませんね！
 　<span style="color:#99f">（ちなみにこの『開発日誌』は、「運営中のサイト」からも「アーカイブページ」からもリンクされていますので、そういう文脈でお読みください）</span>
@@ -3999,6 +3999,7 @@ BODY:
 
 　というのも、このルールがないとどうなるかって、以下のような問題が発生します！
 　
+　
 <span style="font-size: 150%"><B>●出力された内容制御の困難性・倫理的な問題の可能性【一番大きな点！】</B></span>
 　ウディコンは小学生以上対象なのですが、文章生成AIによって小学生向けでないセクシーすぎる内容やグログロな内容が出力されてしまうとエントリー禁止になります！
 　なのでこの問題点だけでも、<B>「必ず作者がチェックを行ってください」</B>というルールは必要です。
@@ -4027,7 +4028,7 @@ BODY:
 　そしてここまで書いて思いましたが、そもそも第18回、2026年からの規約には、
 
 <span style="font-size: 150%"><span style="color: #f44336"><B>『通信ができない状態でも主なゲーム体験がプレイできる作品であること』</B></span></span>
-<span style="color: #f44336"><span style="font-size: 80%">（『オンラインランキング』みたいな、通信ができなくてもゲーム自体が動作する通信機能がある分にはOKです）</span></span>
+<span style="color: #f44336"><span style="font-size: 80%">（『オンラインランキング』みたいな、通信ができなくてもゲーム自体が動作する機能がある分にはOKです）</span></span>
 
 　というルールも必要そうな気がしますね！
 　抜けてたのでそれも2026年分から入れておこうと思います！
