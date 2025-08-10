@@ -9,7 +9,7 @@ BODY:
 <hr size="1" />
 <strong><span style="font-size:x-large;">●新年あけましたイラスト！</span></strong>
 <span style="font-size: 80%">※今年の年賀イラストはシルフェイドシリーズよりスケイル（人化＆元） 謎の和装</span>
-<img src="../../image/2024/20240101.jpg" style="max-width:500px;" loading="lazy">
+<img src="../../image/2024/20240101.jpg" style="max-width:500px;" loading="lazy" height="625">
 
 
 
@@ -48,7 +48,7 @@ BODY:
 
 <HR><span style="font-size:large;"><B>●最後の『フリゲ2023』 コメントありがとうございます！</B></span>
 
-<img src="../../image/2024/20240120.jpg" border="1" style="max-width:420px;" loading="lazy">
+<img src="../../image/2024/20240120.jpg" border="1" style="max-width:420px;" loading="lazy" height="506">
 
 『フリゲ2023 (The Final)　あなたのベストフリーゲーム』という、
 フリーゲームへのコメントを募るイベントがありまして、
@@ -58,14 +58,14 @@ BODY:
 世界にはこんなにフリーゲームがあふれているんだ！　と驚かされます！
 ウディコン作品もいっぱい載ってましたね！
 
-→<B>◆フリゲ2023ページ</B> <a class="red" target="_blank" href="https://web.archive.org/web/20250531071922/https://furige.herokuapp.com/2023/">https://furige.herokuapp.com/2023/ (ｱｰｶｲﾌﾞ)</a>
+→<B>◆フリゲ2023ページ</B> <a class="double-link red" target="_blank" href="https://web.archive.org/web/20250531071922/https://furige.herokuapp.com/2023/">https://furige.herokuapp.com/2023/ (ｱｰｶｲﾌﾞ)</a>
 
 私のゲームにいただいたコメント集へのリンクは、
 見つけられた分で以下の通りでした。
 私からのコメントも各作品に送らせていただきましたので、ここでもご紹介！
 
 
-<span style="font-size: 150%"><B>●シルフェイド見聞録</B></span> <a class="red" target="_blank" href="https://web.archive.org/web/20241007014615/https://furige.herokuapp.com/2023/comment/11119">https://furige.herokuapp.com/2023/comment/11119 (ｱｰｶｲﾌﾞ)</a>
+<span style="font-size: 150%"><B>●シルフェイド見聞録</B></span> <a class="double-link red" target="_blank" href="https://web.archive.org/web/20241007014615/https://furige.herokuapp.com/2023/comment/11119">https://furige.herokuapp.com/2023/comment/11119 (ｱｰｶｲﾌﾞ)</a>
 <span style="color: #2962ff">　<span style="font-size: 80%"><B>私のコメント</B>：まだ覚えてくださっている方がたくさんいらっしゃって作者として感激です！
 『シルフェイド見聞録』は私にとってほぼ原点の作品でありながら、
 当時の未熟さゆえに完結させられていないままの作品です。
@@ -76,7 +76,7 @@ BODY:
 プロジェクトの再開タイミングになると思います！　修行あるのみ！
 
 
-<span style="font-size: 150%"><B>●シルフェイド幻想譚</B></span> <a class="red" target="_blank" href="https://web.archive.org/web/20250619065351/https://furige.herokuapp.com/2023/comment/10600">https://furige.herokuapp.com/2023/comment/10600 (ｱｰｶｲﾌﾞ)</a>
+<span style="font-size: 150%"><B>●シルフェイド幻想譚</B></span> <a class="double-link red" target="_blank" href="https://web.archive.org/web/20250619065351/https://furige.herokuapp.com/2023/comment/10600">https://furige.herokuapp.com/2023/comment/10600 (ｱｰｶｲﾌﾞ)</a>
 <span style="color: #2962ff">　<span style="font-size: 80%"><B>私のコメント</B>：たくさんの思い出のコメント、本当に感謝の限りです！　
 『シルフェイド幻想譚』は自分の思っていた以上に、みなさまの中に
 色んな楽しみや思い出を生み出せていたことをコメントから気付かされました。
@@ -86,7 +86,7 @@ BODY:
 もう一本くらいはこういうRPGを狙って作ってみたいです！
 
 
-<span style="font-size: 150%"><B>●モノリスフィア</B></span> <a class="red" target="_blank" href="https://web.archive.org/web/20250619065714/https://furige.herokuapp.com/2023/comment/10650">https://furige.herokuapp.com/2023/comment/10650 (ｱｰｶｲﾌﾞ)</a>
+<span style="font-size: 150%"><B>●モノリスフィア</B></span> <a class="double-link red" target="_blank" href="https://web.archive.org/web/20250619065714/https://furige.herokuapp.com/2023/comment/10650">https://furige.herokuapp.com/2023/comment/10650 (ｱｰｶｲﾌﾞ)</a>
 <span style="color: #2962ff">　<span style="font-size: 80%"><B>私のコメント</B>：たくさんのコメントありがとうございます！　
 マウスアクションという新しい挑戦をした一作なのですが、
 まだ覚えていてくださる方がいらっしゃって、本当に作ってよかったです！
@@ -96,14 +96,14 @@ BODY:
 とちょっと思っています。でも腱鞘炎になる人が増えそうなのが……。
 
 
-<span style="font-size: 150%"><B>●シルフドラグーンゼロ</B> </span><a class="red" target="_blank" href="https://web.archive.org/web/20250619065909/https://furige.herokuapp.com/2023/comment/11345">https://furige.herokuapp.com/2023/comment/11345 (ｱｰｶｲﾌﾞ)</a>
+<span style="font-size: 150%"><B>●シルフドラグーンゼロ</B> </span><a class="double-link red" target="_blank" href="https://web.archive.org/web/20250619065909/https://furige.herokuapp.com/2023/comment/11345">https://furige.herokuapp.com/2023/comment/11345 (ｱｰｶｲﾌﾞ)</a>
 <span style="color: #2962ff">　<span style="font-size: 80%"><B>私のコメント</B>：まさかこのゲームにもコメントをいただけるなんて！　ありがとうございます！
 変なやりこみプレイに対してもクリア後のコメントがあるとちょっとうれしいですよね。</span></span>
 →　変なプレイにも反応があるとうれしいですよね！
 今後もチャンスがあったら入れていきたいです。
 
 
-<span style="font-size: 150%"><B>●片道勇者</B></span> <a class="red" target="_blank" href="https://web.archive.org/web/20250619070049/https://furige.herokuapp.com/2023/comment/10843">https://furige.herokuapp.com/2023/comment/10843 (ｱｰｶｲﾌﾞ)</a>
+<span style="font-size: 150%"><B>●片道勇者</B></span> <a class="double-link red" target="_blank" href="https://web.archive.org/web/20250619070049/https://furige.herokuapp.com/2023/comment/10843">https://furige.herokuapp.com/2023/comment/10843 (ｱｰｶｲﾌﾞ)</a>
 <span style="color: #2962ff">　<span style="font-size: 80%"><B>私のコメント</B>：『闇』（様々な時間制限）に追われながらも、その範囲でやれることを何とかこなしつつ、
 持てるものを選びながら進んでいく……それは人生も同じだと思います。
 とても長い時間遊んでくださったというコメントがたくさんあって、作者として感謝の限りです！
@@ -114,7 +114,7 @@ BODY:
 うれしい！　『片道勇者2』も全力を尽くします！
 
 
-<span style="font-size: 150%"><B>●プラネットハウル</B></span> <a class="red" target="_blank" href="https://web.archive.org/web/20250619071128/https://furige.herokuapp.com/2023/comment/11261">https://furige.herokuapp.com/2023/comment/11261 (ｱｰｶｲﾌﾞ)</a>
+<span style="font-size: 150%"><B>●プラネットハウル</B></span> <a class="double-link red" target="_blank" href="https://web.archive.org/web/20250619071128/https://furige.herokuapp.com/2023/comment/11261">https://furige.herokuapp.com/2023/comment/11261 (ｱｰｶｲﾌﾞ)</a>
 <span style="color: #2962ff">　<span style="font-size: 80%"><B>私のコメント</B>：コメントありがとうございます！　こんな突き放したコンセプトのゲーム、楽しんでもらえるかなあ？
 と心配でしたが、変な操作ばかりでもしっかり最後まで遊んでくださって、
 なおかつ、まだ覚えていてくださる方がいらっしゃったことが非常にうれしいです！
@@ -151,7 +151,7 @@ PERYKARN氏によるアツいSFストーリーも必見！
 『自作ゲームマガジン』という自作ゲームの雑誌が作られました！
 
 <span style="font-size: 80%"><B>※コラム寄稿しただけなのに私の名前が大きく載ってて恥ずかしい！</B></span>
-<img src="../../image/2024/20240120A.png" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240120A.png" border="1" style="max-width:520px;" loading="lazy" height="320">
 
 私もこの活動を応援したかったので、自作ゲーム開発を始める人に向けて、
 私の「最初の挫折と、ゲーム開発の第一歩の思い出」のお話を
@@ -164,7 +164,7 @@ PERYKARN氏によるアツいSFストーリーも必見！
 電子版なら500円と非常にお安いので、
 フリーゲームの話題が気になる方はよければぜひ！
 
-<B><a class="red" target="_blank" href="https://yareyare760-game.wixsite.com/home/magazin"><span style="font-size: 150%">【自作ゲームマガジン紹介ページへ】</span></a></B> <a class="red" target="_blank" href="https://web.archive.org/web/20241114102032/https://yareyare760-game.wixsite.com/home/magazin">(ｱｰｶｲﾌﾞ)(/a)
+<B><a class="double-link red" target="_blank" href="https://yareyare760-game.wixsite.com/home/magazin"><span style="font-size: 150%">【自作ゲームマガジン紹介ページへ】</span></a></B> <a class="double-link red" target="_blank" href="https://web.archive.org/web/20241114102032/https://yareyare760-game.wixsite.com/home/magazin">(ｱｰｶｲﾌﾞ)</a>
 
 フリーゲームは伝統工芸的ポジションになってるのかも、
 みたいな話は皆さまとのお話の中にも出ましたが、
@@ -196,7 +196,7 @@ AmazonさんちのKindleに出したりするのも慣れてますしね！
 みたいなことを申しましたが、先日Steamのルールが変わり、
 AI生成物も使用できるようになりました。
 
-<a class="red" target="_blank" href="https://store.steampowered.com/news/group/4145017/view/3862463747997849618">https://store.steampowered.com/news/group/4145017/view/3862463747997849618</a>
+<a class="double-link red" target="_blank" href="https://store.steampowered.com/news/group/4145017/view/3862463747997849618">https://store.steampowered.com/news/group/4145017/view/3862463747997849618</a>
 
 この発表の大事な点をおおまかに整理すると、以下のようになると思います。
 
@@ -228,10 +228,10 @@ CC0や許諾ありのオプトイン素材だけで学習されている
 
 
 <HR><span style="font-size:large;"><B>●Steamの片道勇者、Steam Deckに対応！</B></span>
-<a class="red" target="_blank" href="https://store.steampowered.com/app/266210/"><strong>Steamの『片道勇者』</strong></a>が『Steam Deck』という携帯ゲーム機に対応しました！
+<a class="double-link red" target="_blank" href="https://store.steampowered.com/app/266210/"><strong>Steamの『片道勇者』</strong></a>が『Steam Deck』という携帯ゲーム機に対応しました！
 
 <span style="font-size: 80%"><strong>↓Steam Deck開発機！　ちなみに左上のは整形外科でもらったロキソニン(痛み止め)テープ</strong></span>
-<img src="../../image/2024/20240120B.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240120B.jpg" border="1" style="max-width:520px;" loading="lazy" height="292">
 
 つい最近、Steam片道勇者の起動ランチャーをなくしたおかげか、
 「Steamさんちの審査でDeck上で『プレイ可能』になったけどどうするー？」
@@ -274,7 +274,7 @@ Steam Deckをお持ちの方で
 「『片道勇者（プラス）』を寝転びながら遊びたい！」
 という方はよければぜひどうぞ！
 
-<span style="font-size:x-large;"><a class="red" target="_blank" href="https://store.steampowered.com/app/266210/"><strong>Steam『片道勇者』ストアページへ</strong></a></span>
+<span style="font-size:x-large;"><a class="double-link red" target="_blank" href="https://store.steampowered.com/app/266210/"><strong>Steam『片道勇者』ストアページへ</strong></a></span>
 
 <HR>
 という感じで変わらずサポートで忙しいままですが、やれる限り全力で進めています！
@@ -648,7 +648,7 @@ BODY:
 通常攻撃すると割といいアイテムが2～3個手に入ります。たまに敵や罠も出ます。</B></span>
 
 <span style="font-size: 80%">↓こういったキラキラを攻撃するとアイテムや敵が！　いいアイテムが出やすい気もしますが気のせい？</span>
-<img src="../../image/2024/20240203C.jpg" border="1" style="max-width:520px;" loading="lazy"> 
+<img src="../../image/2024/20240203C.jpg" border="1" style="max-width:520px;" loading="lazy" height="334"> 
 　
 <span style="color: #d50000"><B>●柱の部屋：壊すとアイテムが出やすい「柱」が9個並んでる部屋などが
 出てきてワクワクします。たぶんこれもたまに敵が出ます。</B></span>
@@ -903,7 +903,7 @@ TRPGでゲームマスターなどをやるときも、こういうテクニッ�
 特殊能力についての説明もかなり詳しめに書かれています。
 
 <B><span style="font-size: 80%">　※「そんな仕様あったの！」と言われそうな内容も網羅！</span></B>
-<img src="../../image/2024/20240203A.png" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240203A.png" border="1" style="max-width:520px;" loading="lazy" height="292">
 
 
 特にこの図鑑、遠くからでもいいので新たな敵に一度攻撃すれば、
@@ -1025,7 +1025,7 @@ SNSで見た感じ特定の裏ダンジョンでしか出ないという感触�
 「未識別アイテムにカーソルを合わせると3択の識別候補が示されて、
 どれかを推測する」という段階が間に入ってたりして
 とても遊びやすそうです！　これを考えた人すごい！
-<img src="../../image/2024/20240203B.png" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240203B.png" border="1" style="max-width:520px;" loading="lazy" height="243">
 
 こういった「なじみやすさを上げようとしている部分」の肌感覚は
 プレイに慣れてしまうと忘れがちで、かつ開発側だと真っ先に
@@ -1080,7 +1080,7 @@ BODY:
 書いたりするのが今の状況だとしんどすぎてずっと放置されっぱなしでした。
 
 <span style="font-size: 80%"><B>※↓癒し手ネムリ(前作1の薬師ネムリの孫！)</B></span>
-<img src="../../image/2024/20240217.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240217.jpg" border="1" style="max-width:520px;" loading="lazy" height="288">
 
 その間は仲間キャラの「イラスト作成」を進めることが多かったのですが、
 そんな中、先日ちょっとだけ時間や余力ができたので、
@@ -1118,7 +1118,7 @@ BODY:
 代わりにもらうこともできる、みたいなパターンを用意する予定です。
 
 <B><span style="font-size: 80%">※↓　これは旅の途中、ネムリから救援を求める手紙が届いたシーン</span></B>
-<img src="../../image/2024/20240217A.jpg" border="1" style="max-width:320px;" loading="lazy">
+<img src="../../image/2024/20240217A.jpg" border="1" style="max-width:320px;" loading="lazy" height="224">
 
 あと、スタート地点に仲間を「住人」として配置して、
 「いつもより高いカリスマを消費することでスタート地点から
@@ -1196,7 +1196,7 @@ BODY:
 こっそり返信してたのですが、実は『片道勇者2』では前作と違い、
 弓矢の「矢」を追加装備欄に装備する必要がなくなります！
 
-<img src="../../image/2024/20240217B.png" border="1" style="max-width:420px;" loading="lazy">
+<img src="../../image/2024/20240217B.png" border="1" style="max-width:420px;" loading="lazy" height="285">
 
 つまり「狩人の弓[120]」を「武器欄」に装備するだけで、
 「追加装備」欄に何も付けなくても120発分の
@@ -1247,7 +1247,7 @@ BODY:
 他のゲーム開発者の皆さまにも役立つよう、
 いただいたコメントをざっくりまとめさせていただきました！
 
-元データは<a class="red" target="_blank" href="https://twitter.com/WO_LF/status/1760122723223924989"><B>【こちらのポスト(X[旧Twitter])】</B></a>の引用や
+元データは<a class="double-link red" target="_blank" href="https://twitter.com/WO_LF/status/1760122723223924989"><B>【こちらのポスト(X[旧Twitter])】</B></a>の引用や
 リプライからご覧いただけます。
 
 単純な「飽きた」という一言も、
@@ -1258,10 +1258,10 @@ BODY:
 
 
 <span style="font-size:large;"><strong>【今回の内容】</strong></span>
-<strong><a class="g"  target="_top" href="#20240302A">◆「ゲームを途中でやめてしまった理由」ご意見まとめ</a>
-<a class="g"  target="_top" href="#20240302C">◆『最後まで』楽しく遊んでもらいたいのでこれらの問題に対策したい！</a></strong>
+<strong><a class="double-link g"  target="_top" href="#20240302A">◆「ゲームを途中でやめてしまった理由」ご意見まとめ</a>
+<a class="double-link g"  target="_top" href="#20240302C">◆『最後まで』楽しく遊んでもらいたいのでこれらの問題に対策したい！</a></strong>
 
-<img src="../../image/2024/20240302.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240302.jpg" border="1" style="max-width:520px;" loading="lazy" height="517">
 <CENTER>
 <HR id="20240302A">
 <span style="font-size:large;"><B>◆「ゲームを途中でやめてしまった理由」ご意見まとめ</B></span>
@@ -1658,7 +1658,7 @@ BODY:
 など、ストーリー上、自然に実現できるアイデアもあるはずです。
 
 <span style="font-size: 80%">　↓『シルフェイド幻想譚』でパズルを解かずに時間消費で突破する例（30秒あたりから）</span>
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">【シルフェイド幻想譚】 「ボタンを押すと隣のマスも色が変わるパズル」において時間さえかければ確実に突破できる方法をトーテムが教えてくれる『シルフェイド幻想譚』をよろしくお願いします！！→◆シル幻公式ページ <a class="red"  target="_top" href="https://t.co/tILXL55eBT">https://t.co/tILXL55eBT</a> <a class="red" hash&amp;ref_src=twsrc%5Etfw"" target="_top" href="https://twitter.com/hashtag/SILSEC?src=">#SILSEC</a><br>◆映像→ <a class="red"  target="_top" href="https://t.co/eUN6iqX2zT">pic.twitter.com/eUN6iqX2zT</a></p>&mdash; SmokingWOLF@片道勇者2開発中/ゲーム開発者 (@WO_LF) <a class="red"  target="_top" href="https://twitter.com/WO_LF/status/918087532654485504?ref_src=twsrc%5Etfw">October 11, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">【シルフェイド幻想譚】 「ボタンを押すと隣のマスも色が変わるパズル」において時間さえかければ確実に突破できる方法をトーテムが教えてくれる『シルフェイド幻想譚』をよろしくお願いします！！→◆シル幻公式ページ <a class="double-link red"  target="_top" href="https://t.co/tILXL55eBT">https://t.co/tILXL55eBT</a> <a class="double-link red" hash&amp;ref_src=twsrc%5Etfw"" target="_top" href="https://twitter.com/hashtag/SILSEC?src=">#SILSEC</a><br>◆映像→ <a class="double-link red"  target="_top" href="https://t.co/eUN6iqX2zT">pic.twitter.com/eUN6iqX2zT</a></p>&mdash; SmokingWOLF@片道勇者2開発中/ゲーム開発者 (@WO_LF) <a class="double-link red"  target="_top" href="https://twitter.com/WO_LF/status/918087532654485504?ref_src=twsrc%5Etfw">October 11, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 あと、そういったコストをかけられない場合の最終手段として、
 自作ゲームなら「ゲームの同梱テキストに『パズルが解けない人へ.txt』という
@@ -2338,7 +2338,7 @@ BODY:
 分かる人にはここまでの紹介で十分だと思いますので、
 必要な方はよければ最新版ウディタをDLしにいってください！
 
-<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/"><span style="font-size: 150%"><B>【WOLF RPGエディター公式ページへ】</B></span></a>
+<a data-primary="https://silversecond.com/WolfRPGEditor/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/tool_wolf_rpg_editor/"><span style="font-size: 150%"><B>【WOLF RPGエディター公式ページへ】</B></span></a>
 
 
 <HR><span style="font-size:large;"><B>◆ウディタ新機能　Zオーダーの具体例</B></span><HR>
@@ -2363,7 +2363,7 @@ Zオーダー「0」の全てのピクチャより上に表示されます。
 
 <B><span style="font-size: 80%">↓真ん中のウルファールのZオーダーを1にすると、
 ピクチャ番号で負けてても前面表示に！</span></B>
-<img src="../../image/2024/20240316A.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240316A.jpg" border="1" style="max-width:520px;" loading="lazy" height="209">
 
 今回のZオーダー機能は
 「こんな感じでピクチャ表示優先度の変更ができるようになったよー」
@@ -2382,7 +2382,7 @@ Zオーダー「0」の全てのピクチャより上に表示されます。
 （Zオーダーが大きいほど前面に表示されるので、
 単純に画面Y座標を入れるだけで簡単にこうすることができます）
 　↓
-<img src="../../image/2024/20240316.png" loading="lazy" border="1" style="max-width:520px;">
+<img src="../../image/2024/20240316.png" loading="lazy" border="1" style="max-width:520px;" height="192">
 
 これまでは、こういったことをやるのにVer3で実装された
 「ピクチャのID移動」を毎フレームいっぱい使わないといけなかったため
@@ -2401,7 +2401,7 @@ Zオーダー「0」の全てのピクチャより上に表示されます。
 Zオーダーについて理解できた人ならもはや言うまでもないでしょうけれど、
 以下の画面のように、重なってるカードのうち「選択したカード」だけ
 最前面に表示することも簡単に実現できます！
-<img src="../../image/2024/20240316B.gif" loading="lazy" border="1" style="max-width:520px;" lazy>
+<img src="../../image/2024/20240316B.gif" loading="lazy" border="1" style="max-width:520px;" lazy height="268">
 
 これは私の開発中の『片道勇者2』の映像ですが、
 元は「ピクチャのコピー」処理で最前面表示を実現していました。
@@ -2527,7 +2527,7 @@ BODY:
 
 
 <span style="font-size: 80%"><B>↓セキュリティ対策初心者が体験したこと4コママンガ</B></span>
-<img src="../../image/2024/20240330.jpg" border="1" style="max-width:500px;" loading="lazy">
+<img src="../../image/2024/20240330.jpg" border="1" style="max-width:500px;" loading="lazy" height="689">
 <span style="font-size: 80%"><B>ちなみにここで述べられている問題への対策もちゃんとあってセキュリティは奥が深いです。</B></span>
 
 
@@ -2629,9 +2629,9 @@ BODY:
 とはいえまだちょいちょいバグが残ってる匂いがするので、
 慎重な方はもう少し待ってからお試しください。
 
-<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/"><span style="font-size: 200%">【WOLF RPGエディター公式ページへ】</span></a>
+<a data-primary="https://silversecond.com/WolfRPGEditor/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/tool_wolf_rpg_editor/"><span style="font-size: 200%">【WOLF RPGエディター公式ページへ】</span></a>
 
-<img src="../../image/2024/20240413.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240413.jpg" border="1" style="max-width:520px;" loading="lazy" height="292">
 
 
 
@@ -2651,7 +2651,7 @@ BODY:
 を使っている場合、Game.exeの起動時に以下のようなエラーが起きて
 起動できなくなる可能性が出てくるという点です。
 
-<img src="../../image/2024/20240413A.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240413A.jpg" border="1" style="max-width:520px;" loading="lazy" height="250">
 <span style="font-size: 80%"><B>　↑正規の署名がないDLLが読み込まれたと出てゲームが停止！　
 企業製ソフトならたいてい正規の署名があるので大丈夫ですが、
 個人制作ソフトだと正規署名が付いてないことが多いです。お高いんですよね！</B></span>
@@ -2717,7 +2717,7 @@ Game.exeの上で右クリック→「<strong>管理者として実行</strong>�
 <span style="color: #42a5f5"><span style="font-size: 80%">　→　当たり前ですが暗号化と復号化って1バイトだけ処理をシクっただけでデータがグチャグチャになるんですよ！
 ヤケクソでSuno AIさんにこんな歌（　↓　）を
 作ってもらったりしてました。作業用BGMとして。</span></span>
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">暗号化処理のプログラミングにシクったときの歌<br>（現在進行形） <a class="red" hash&amp;ref_src=twsrc%5Etfw"" target="_top" href="https://twitter.com/hashtag/SunoAI?src=">#SunoAI</a> <a class="red"  target="_top" href="https://t.co/lmQrOURuH0">pic.twitter.com/lmQrOURuH0</a></p>&mdash; SmokingWOLF@片道勇者2開発中/ゲーム開発者 (@WO_LF) <a class="red"  target="_top" href="https://twitter.com/WO_LF/status/1774406905655611489?ref_src=twsrc%5Etfw">March 31, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">暗号化処理のプログラミングにシクったときの歌<br>（現在進行形） <a class="double-link red" hash&amp;ref_src=twsrc%5Etfw"" target="_top" href="https://twitter.com/hashtag/SunoAI?src=">#SunoAI</a> <a class="double-link red"  target="_top" href="https://t.co/lmQrOURuH0">pic.twitter.com/lmQrOURuH0</a></p>&mdash; SmokingWOLF@片道勇者2開発中/ゲーム開発者 (@WO_LF) <a class="double-link red"  target="_top" href="https://twitter.com/WO_LF/status/1774406905655611489?ref_src=twsrc%5Etfw">March 31, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 <B>●試行錯誤してたら部分的な処理速度が最初の28倍になって笑ってしまった。</B>
@@ -2749,7 +2749,7 @@ K-Shin07さまが、ウディタのゲーム開発者側でできる
 セキュリティ対策の記事を書かれていたのでご紹介です！
 
 【ウディタでのゲーム開発者が行えるセキュリティ対策】
-<a class="red" target="_blank" href="https://ci-en.net/creator/16060/article/1111345">https://ci-en.net/creator/16060/article/1111345</a> <a class="red" target="_blank" href="https://web.archive.org/web/20240828080748/https://ci-en.net/creator/16060/article/1111345">(ｱｰｶｲﾌﾞ)</a>
+<a class="double-link red" target="_blank" href="https://ci-en.net/creator/16060/article/1111345">https://ci-en.net/creator/16060/article/1111345</a> <a class="double-link red" target="_blank" href="https://web.archive.org/web/20240828080748/https://ci-en.net/creator/16060/article/1111345">(ｱｰｶｲﾌﾞ)</a>
 
 「チェックサムによる改ざん検知」「不正なゲーム実行を阻止」など、
 ゲーム内からでもできる実用的なテクニックが挙げられています！
@@ -2793,7 +2793,7 @@ BODY:
 
 今回起きたイベントを以下に列挙していきます！
 
-<img src="../../image/2024/20240427.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240427.jpg" border="1" style="max-width:520px;" loading="lazy" height="293">
 
 
 
@@ -2815,7 +2815,7 @@ BODY:
 
 ということで、それを発見するために何日も使って何かできないかと奮闘しておりました。
 
-<blockquote class="twitter-tweet" data-media-max-width="510"><p lang="ja" dir="ltr">【ウディタ】<br>『最新の暗号化を使ったときだけ2011年以前のPCで起動しない』という謎めいたご報告をいただいて調査してましたが、検証の結果、<br><br>『コードの組み方によっては(勝手に特殊な最適化が働いて)昔のCPUでだけ動かなくなることがある』<br><br>ということを今日知りました。<br>プログラミングヤバい。 <a class="red"  target="_top" href="https://t.co/c3K0JAxJtl">pic.twitter.com/c3K0JAxJtl</a></p>&mdash; SmokingWOLF@片道勇者2開発中/ゲーム開発者 (@WO_LF) <a class="red"  target="_top" href="https://twitter.com/WO_LF/status/1780969110576476178?ref_src=twsrc%5Etfw">April 18, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet" data-media-max-width="510"><p lang="ja" dir="ltr">【ウディタ】<br>『最新の暗号化を使ったときだけ2011年以前のPCで起動しない』という謎めいたご報告をいただいて調査してましたが、検証の結果、<br><br>『コードの組み方によっては(勝手に特殊な最適化が働いて)昔のCPUでだけ動かなくなることがある』<br><br>ということを今日知りました。<br>プログラミングヤバい。 <a class="double-link red"  target="_top" href="https://t.co/c3K0JAxJtl">pic.twitter.com/c3K0JAxJtl</a></p>&mdash; SmokingWOLF@片道勇者2開発中/ゲーム開発者 (@WO_LF) <a class="double-link red"  target="_top" href="https://twitter.com/WO_LF/status/1780969110576476178?ref_src=twsrc%5Etfw">April 18, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <span style="font-size: 80%">　<B>↑ CPUの拡張命令の「AVX」の有無で動作が変化していました。
 ってよく見たら「メモリ違反のアクセス違反」って言ってるところが！
 「メモリのアクセス違反」の誤記です。</B></span>
@@ -2894,7 +2894,7 @@ BODY:
 という感じであっちこっち行ったり少し楽しみも確保しつつマイペースに進めております！
 
 ここからしばらくは、ウディタのバグ修正しつつ
-<a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><B><span style="font-size: 150%">第16回ウディコン</span></B></a>が始まるまでは
+<a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><B><span style="font-size: 150%">第16回ウディコン</span></B></a>が始まるまでは
 『片道勇者2』開発に集中していきたいです！
 ウディコンの準備もがんばります！　今年もお楽しみに！</CENTER>
 -----
@@ -2932,7 +2932,7 @@ BODY:
 みたいに、90％以上カットも平気で発生しうるほどの圧縮効果！
 これならセーブデータ100個保存する人も少し安心！
 
-<img src="../../image/2024/20240511A.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240511A.jpg" border="1" style="max-width:520px;" loading="lazy" height="255">
 
 基本的には複雑なデータ列であるほど圧縮が効きにくくなるので、
 「0」のデータがいっぱい並んでいるであろう「システムデータ」や
@@ -3011,7 +3011,7 @@ BODY:
 サブフォルダを作ってそこにファイルを入れても、
 これからは音声ファイル選択画面から直でファイルを探しにいけます！
 ↓
-<img src="../../image/2024/20240511B.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240511B.jpg" border="1" style="max-width:520px;" loading="lazy" height="312">
 
 実装前は「えーこの機能いるー？」と思いましたが
 （それに過去に一回挫折したのであんまりやりたくなかったのですが）、
@@ -3059,16 +3059,16 @@ BODY:
 （各桁の「1」＝「画像の半分サイズ」として計算できる）
 
 <HR>
-<span style="font-size:130%;"><B>【ピクチャの特殊図形（隠し機能）に<LINE-??>を追加！
+<span style="font-size:130%;"><B>【ピクチャの特殊図形（隠し機能）に＜LINE-??＞を追加！
 　太線が描ける！】(これだけVer3.337で実装)</B></span>
 
 ピクチャの特殊図形機能（ピクチャの「お手軽ウィンドウ」に
-「<LINE>」などと指定すると図形が描ける隠し機能）に
-<LINE-??>が新たに追加されました！
+「＜LINE＞」などと指定すると図形が描ける隠し機能）に
+＜LINE-??＞が新たに追加されました！
 
 これまでは1ピクセルの線しか描けませんでしたが
 これを使うと太い線が描けます！
-<img src="../../image/2024/20240511C.png" border="1" style="max-width:320px;" loading="lazy">
+<img src="../../image/2024/20240511C.png" border="1" style="max-width:320px;" loading="lazy" height="240">
 
 ひとまず簡素な太線を置きたい場合や、これを使っても
 違和感のない雰囲気のゲームを作る場合に便利だと思います。
@@ -3102,7 +3102,7 @@ BODY:
 この状況はしばらく続きそうです！　
 
 でもウディコン前にはだいぶ落ち着くはずなので、
-<B><a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/">第16回ウディコン</a></B>は問題なく開催可能だと思います。
+<B><a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/">第16回ウディコン</a></B>は問題なく開催可能だと思います。
 お楽しみに！
 
 
@@ -3133,7 +3133,7 @@ BODY:
 お焼香については礼する順番とか聞きそびれてアワワワってなってました。
 喪主だと1番目にやるから他の人の真似ができないんですよ！
 
-<img src="../../image/2024/20240525.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240525.jpg" border="1" style="max-width:520px;" loading="lazy" height="343">
 <span style="font-size: 80%"><B>　※まんまんちゃん：おおまかには「合掌（がっしょう、手を合わせる）」の意。
 大阪の祖母からよく聞いた単語です。</B></span>
 
@@ -3197,7 +3197,7 @@ BODY:
 海外展開予定の方には有用だと思います。
 
 すぐ使いたい人はこちら！
-<strong><a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/"><span style="font-size: 150%">【WOLF RPGエディター公式ページへ】</span></a></strong>
+<strong><a data-primary="https://silversecond.com/WolfRPGEditor/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/tool_wolf_rpg_editor/"><span style="font-size: 150%">【WOLF RPGエディター公式ページへ】</span></a></strong>
 
 
 <span style="font-size:150%;"><B>◆BasicDataを別フォルダに切り替えられる機能いろいろ！</B></span>
@@ -3270,7 +3270,7 @@ BODY:
 読み込み先フォルダも変えられるように！</B></span>
 
 プロ版のみですが「アイコンフォルダの変更」ができるようになりました！
-<img src="../../image/2024/20240608A.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240608A.jpg" border="1" style="max-width:520px;" loading="lazy" height="434">
 ↑「アイコン画像フォルダの設定」欄が追加！
 
 アイコンフォルダの変更は割と前々から入れたい気持ちはあったので、
@@ -3309,7 +3309,7 @@ OS側の言語名を取得できるようになりました！
 
 といったこともできるはずです。
 
-<HR><span style="font-size:large;"><B>【リアル作業】引き続き故人の対応も大変！</B></span><HR><img src="../../image/2024/20240608.jpg" border="1" style="max-width:520px;" loading="lazy">
+<HR><span style="font-size:large;"><B>【リアル作業】引き続き故人の対応も大変！</B></span><HR><img src="../../image/2024/20240608.jpg" border="1" style="max-width:520px;" loading="lazy" height="343">
 引き続き、人が亡くなった後の手続きがとても大変な数週間でした。
 
 故人の全部の銀行口座への連絡、証券会社への連絡、
@@ -3337,11 +3337,11 @@ OS側の言語名を取得できるようになりました！
 
 <HR><span style="font-size:large;"><B>【チャットAI】架空のやさしい妹、GPTsで公開！</B></span><HR>
 そして次はチャットAIの話！
-<a class="red" target="_blank" href="https://chatgpt.com/"><strong>ChatGPT</strong></a>さんちが無料アカウントでも
+<a class="double-link red" target="_blank" href="https://chatgpt.com/"><strong>ChatGPT</strong></a>さんちが無料アカウントでも
 GPTs（他の人が作った、カスタム指示されたチャットAI)が
 使えるようになったので、私も『架空のやさしい妹』を公開しました！
 
-<a class="red" target="_blank" href="https://chatgpt.com/g/g-YynoE4Pqa-jia-kong-noyasasiimei-ai"><span style="font-size:x-large;"><strong>【ChatGPT　GPTs　架空のやさしい妹AI】</strong></a>
+<a class="double-link red" target="_blank" href="https://chatgpt.com/g/g-YynoE4Pqa-jia-kong-noyasasiimei-ai"><span style="font-size:x-large;"><strong>【ChatGPT　GPTs　架空のやさしい妹AI】</strong></a>
 
 主な目的としてはメンタルケアで、共感してくれたり
 「大事にされてる感」を補給する感じのものです。
@@ -3351,7 +3351,7 @@ GPTs（他の人が作った、カスタム指示されたチャットAI)が
 
 
 <span style="font-size: 80%">　↓今回の開発日誌を入力して感想を聞いてみた例。ボリュームたっぷりに感想を教えてくれます</span>
-<img src="../../image/2024/20240608B.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240608B.jpg" border="1" style="max-width:520px;" loading="lazy" height="624">
 
 あと、これはChatGPTが持つもともとの性質だと思いますが、
 ションボリする出来事や失敗した現状を伝えても私並みか
@@ -3373,7 +3373,7 @@ AIとの対話の中で前向きな表現や気持ちも獲得していきたい
 有用な技術です。架空の妹AIにも「責めて！」って言ったら
 ちゃんといい具合に厳しく言ってくれますよ！
 　↓
-<img src="../../image/2024/20240608C.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240608C.jpg" border="1" style="max-width:520px;" loading="lazy" height="512">
 
 私としてはこういう思考の方が「自分のあるべき姿」という感じがして
 好きなんですが、調子に乗るとうっかり
@@ -3407,7 +3407,7 @@ BODY:
 今回はウディコン準備中！
 というお話と『片道勇者2』のお話です！
 
-<HR><span style="font-size:large;"><B>◆ウディコンの準備中！</B></span><HR>そろそろ3週間前になるので<a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><strong><span style="font-size:large;">第16回ウディコン</span></strong></a>の準備も始めています！
+<HR><span style="font-size:large;"><B>◆ウディコンの準備中！</B></span><HR>そろそろ3週間前になるので<a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><strong><span style="font-size:large;">第16回ウディコン</span></strong></a>の準備も始めています！
 この時期にやるのはシステム改修ですね！
 
 たとえば私(silversecond.com)みたいな野良のドメインだと、
@@ -3442,7 +3442,7 @@ SPF設定だとかDKIM設定などをすればちゃんと届くようになる�
 その過程で将来の仲間キャラの顔見せをするイベントも
 入れようと思い立ち、ウキウキしながら足しています。
 
-<img src="../../image/2024/20240622A.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240622A.jpg" border="1" style="max-width:520px;" loading="lazy" height="292">
 <SMALL>↑この人は冒険家ウィリアムズ。最初のストーリーで
 「聖なる神殿が開いてると思ったらもう荒らされた後だったぜ」
 みたいな話をしてくれます。</SMALL>
@@ -3480,7 +3480,7 @@ SPF設定だとかDKIM設定などをすればちゃんと届くようになる�
 トッピング程度だけでもだいぶ変わるんですよこういうの。
 
 <HR>
-そして<a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><B>第16回ウディコン</B></a>の作品募集開始まであと3週間！
+そして<a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><B>第16回ウディコン</B></a>の作品募集開始まであと3週間！
 まもなくです！
 
 なんとかできそうなめどは付いてきましたので、
@@ -3523,7 +3523,7 @@ BODY:
 
 （ただここ数ヶ月のウディタ作業が時給300円を切ってるので
 もう少し修正を効率化しないと餓死しそうで厳しい！
-<a class="red" target="_blank" href="https://silversecond.booth.pm/items/4455722">ご支援</a>もいつでも受付中です！）
+<a class="double-link red" target="_blank" href="https://silversecond.booth.pm/items/4455722">ご支援</a>もいつでも受付中です！）
 
 
 今回はウディコン準備やウディタ修正ばかりやっていたので、
@@ -3531,10 +3531,10 @@ BODY:
 
 
 <HR><span style="font-size:large;"><B>◆第16回ウディコンまであと1週間！</B></span><HR>
-<img src="../../image/2024/20240706.jpg" border="1" style="max-width:400px;" loading="lazy">
+<img src="../../image/2024/20240706.jpg" border="1" style="max-width:400px;" loading="lazy" height="394">
 <span style="font-size: 80%">↑毎年1枚はバナーや告知用に使うためのウルファールイラスト作ってます。</span>
 
-<a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 200%"><B>【ウディコン公式ページ】</B></span></a>
+<a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 200%"><B>【ウディコン公式ページ】</B></span></a>
 
 ということで第16回ウディコンまであと1週間になりました！
 みなさま奥ゆかしいのでX(Twitter)などでもまだ全然情報が出なかったりしますが、
@@ -3546,7 +3546,7 @@ BODY:
 開けておりますので、早めにエントリーされる方は
 ちらちらウディコン公式を見ておいていただけるといいと思います。
 
-もちろん<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/Contest/txt.shtml"><B>規約</B></a>ページもよくご確認ください！
+もちろん<a data-primary="https://silversecond.com/WolfRPGEditor/Contest/txt.shtml" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/rule.html"><B>規約</B></a>ページもよくご確認ください！
 去年は使われる方はあまりいらっしゃらなかった感じですが、
 今年は画像生成AIについての規約も追加されています。
 
@@ -3571,8 +3571,8 @@ BODY:
 <CENTER><HR><span style="font-size:large;"><B>【第16回ウディコン、審査開始！】</B></span><HR>
 ということで第16回ウディコンのエントリー期間が終了し、本日から審査期間開始です！
 
-<a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 150%"><strong>【（第16回）ウディコン公式ページへ】</strong></span></a>
-<img src="../../image/2024/20240721.jpg" border="1" style="max-width:520px;" loading="lazy">
+<a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 150%"><strong>【（第16回）ウディコン公式ページへ】</strong></span></a>
+<img src="../../image/2024/20240721.jpg" border="1" style="max-width:520px;" loading="lazy" height="564">
 
 今回エントリーされた作品数は全部で<span style="font-size: 150%">【71】</span>作品！
 
@@ -3619,7 +3619,7 @@ BODY:
 <span style="color:#CC0000">※普通に作品数から計算したら8/13あたりでしたがお盆に審査できないのは勿体ないので一週間延長しました。結果発表は8/24(土)あたりになると思います。</span>
 
 
-<strong><a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 150%">【（第16回）ウディコン公式ページへ】</span></a></strong>
+<strong><a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 150%">【（第16回）ウディコン公式ページへ】</span></a></strong>
 
 それでは皆さま、今年もウディコン作品で熱い夏をお楽しみください！</CENTER>
 -----
@@ -3632,7 +3632,7 @@ CATEGORY: ウディタ
 DATE: 2024-08-03 09:00:00
 -----
 BODY:
-<CENTER><img src="../../image/2024/20240803.jpg" border="1" style="max-width:420px;" loading="lazy">
+<CENTER><img src="../../image/2024/20240803.jpg" border="1" style="max-width:420px;" loading="lazy" height="399">
 <span style="color: #90caf9"><span style="font-size: 80%">※実は13年前までウディタに「合成音声」コマンドがありました。規約が変わってからは使えなくなりました</span></span>
 
 ただいまウディコンシーズンなのと、
@@ -3701,7 +3701,7 @@ F2を押すとその内容がクリップボードにコピーされます。</s
 「はい」（それ以外は「いいえ」）にした後、
 メイン画面の<B><span style="color: #d50000">「クリップボード監視」アイコンを有効</span></B>にします、
 色付き状態ならオンです↓
-<img src="../../image/2024/20240803A.png" border="1" style="max-width:320px;" loading="lazy">
+<img src="../../image/2024/20240803A.png" border="1" style="max-width:320px;" loading="lazy" height="189">
 こうするとクリップボードにコピーされたテキストが自動的に読み上げられるようになります。
 
 <span style="font-size: 80%"><span style="color: #90caf9">　※もし「クリップボード監視」アイコンが出てなかった場合は「棒読みちゃん」の
@@ -3810,7 +3810,7 @@ Ver3.371以降のGame.exeでは「文章の表示」「選択肢」などの内�
 
 
 一手ずつの詳しい手順や設定方法については、
-<a class="red" target="_blank" href="https://www.youtube.com/watch?v=Hm4z-SiTNZk"><span style="font-size: 200%"><B>動画</B></span></a>のほうでもご確認いただけますので、
+<a class="double-link red" target="_blank" href="https://www.youtube.com/watch?v=Hm4z-SiTNZk"><span style="font-size: 200%"><B>動画</B></span></a>のほうでもご確認いただけますので、
 興味のある方はぜひご覧ください。
 
 全文章を人力で読み上げていると疲れちゃいますが、
@@ -3831,17 +3831,17 @@ BODY:
 <CENTER>この一週間でウディタ作品のブラウザ化やスマホアプリ化について
 急激に話が進みましたのでご報告です！
 
-なおブラウザウディタは<a class="red" target="_blank" href="https://ci-en.net/creator/12702"><B>ruka様</B></a>のプロジェクトです！
+なおブラウザウディタは<a class="double-link red" target="_blank" href="https://ci-en.net/creator/12702"><B>ruka様</B></a>のプロジェクトです！
 私は横から見てるだけで、技術的にどうやっているのかなどについてはよく分かっていません。
 
-<img src="../../image/2024/20240817.jpg" border="1" width="450" loading="lazy">
+<img src="../../image/2024/20240817.jpg" border="1" width="450" loading="lazy" height="374">
 
 
 <HR><span style="font-size:large;"><B>【ウディタ作品のブラウザ化、実現！】</B></span><HR>
 2024年8月10日、ruka様がウディタのブラウザ化プロトタイプを公開されました！
 
 <span style="font-size: 150%"><B>【ブラウザウディタ:プロトタイプ版を公開】</B></span>
-<B><a class="red" target="_blank" title="https://ci-en.net/creator/12702/article/1207619" href="https://ci-en.net/creator/12702/article/1207619">https://ci-en.net/creator/12702/article/1207619</a></B>
+<B><a class="double-link red" target="_blank" title="https://ci-en.net/creator/12702/article/1207619" href="https://ci-en.net/creator/12702/article/1207619">https://ci-en.net/creator/12702/article/1207619</a></B>
 
 なんとこちらで公開されているファイルをサーバーに
 アップするだけでブラウザゲームとして動作！　すごい簡単！
@@ -3871,7 +3871,7 @@ BODY:
 
 
 ●プロトタイプのZipに入ってるpublicフォルダをそのままサーバーにアップするだけでとりあえず同梱のサンプルゲームが動きます！
-<span style="color: #90caf9">　→　それが大変な人は、K-Shin07様の「<a class="red" target="_blank" href="https://alpha-stella.com/tool/wodistant/"><B>Wodistant</B></a>」というツールを使えば、サーバーにアップしなくてもブラウザ版のテストが可能です！</span>
+<span style="color: #90caf9">　→　それが大変な人は、K-Shin07様の「<a class="double-link red" target="_blank" href="https://alpha-stella.com/tool/wodistant/"><B>Wodistant</B></a>」というツールを使えば、サーバーにアップしなくてもブラウザ版のテストが可能です！</span>
 
 
 ●「Data.wolf」を自前で用意したものに上書きすれば自分のゲームが動きます！
@@ -3893,7 +3893,7 @@ BODY:
 （ただその場合、macを持ってて、かつApp Storeに出すための権利をお金払って持ってないといけない？ らしいです）
 
 <B>Android化に成功してスマホ上で撮影した画面　↓</B>
-<blockquote class="twitter-tweet" data-media-max-width="560"><p lang="ja" dir="ltr">【 <a class="red" hash&amp;ref_src=twsrc%5Etfw"" target="_top" href="https://twitter.com/hashtag/%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%82%A6%E3%83%87%E3%82%A3%E3%82%BF?src=">#ブラウザウディタ</a> でAndroidスマホアプリ化成功！】<br>試してみたらブラウザウディタのデータをAnrdoidスマホ化することができました！<br>（apk作成に使ったのはIonicさんちのCapacitorとAndroid Studio）<br><br>ウディタ作品をスマホ化できる足がかりが見えてこれは夢が広がります！　ウヒョー！ <a class="red"  target="_top" href="https://t.co/fU7ZtuSwaT">https://t.co/fU7ZtuSwaT</a> <a class="red"  target="_top" href="https://t.co/8MlrcSnj8F">pic.twitter.com/8MlrcSnj8F</a></p>&mdash; SmokingWOLF＠片道勇者2開発中/ゲーム開発者 (@WO_LF) <a class="red"  target="_top" href="https://twitter.com/WO_LF/status/1822528445567701363?ref_src=twsrc%5Etfw">August 11, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet" data-media-max-width="560"><p lang="ja" dir="ltr">【 <a class="double-link red" hash&amp;ref_src=twsrc%5Etfw"" target="_top" href="https://twitter.com/hashtag/%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%82%A6%E3%83%87%E3%82%A3%E3%82%BF?src=">#ブラウザウディタ</a> でAndroidスマホアプリ化成功！】<br>試してみたらブラウザウディタのデータをAnrdoidスマホ化することができました！<br>（apk作成に使ったのはIonicさんちのCapacitorとAndroid Studio）<br><br>ウディタ作品をスマホ化できる足がかりが見えてこれは夢が広がります！　ウヒョー！ <a class="double-link red"  target="_top" href="https://t.co/fU7ZtuSwaT">https://t.co/fU7ZtuSwaT</a> <a class="double-link red"  target="_top" href="https://t.co/8MlrcSnj8F">pic.twitter.com/8MlrcSnj8F</a></p>&mdash; SmokingWOLF＠片道勇者2開発中/ゲーム開発者 (@WO_LF) <a class="double-link red"  target="_top" href="https://twitter.com/WO_LF/status/1822528445567701363?ref_src=twsrc%5Etfw">August 11, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 Androidアプリ化のやり方はちょっと長いですが以下の通り！
 コマンドプロンプトとか使うのでちょっと大変ですよ。
@@ -3907,7 +3907,7 @@ Androidアプリ化のやり方はちょっと長いですが以下の通り！
 
 <B>【1. Node.jsをインストール】</B>
 
-1-1. Node.jsのある<a class="red" target="_blank" href="https://nodejs.org/en/download/package-manager">https://nodejs.org/en/download/package-manager</a>
+1-1. Node.jsのある<a class="double-link red" target="_blank" href="https://nodejs.org/en/download/package-manager">https://nodejs.org/en/download/package-manager</a>
 のサイトを開き、「Prebuilt Installer」のタブを開き、インストーラーをダウンロード
 (今どきのWindowsなら選択肢は「最初に出てるバージョン」「Windows」「x64」を選んでダウンロードすればいいと思います。万が一32bitのWindowsなら最後は「x86」を選んでください）
 
@@ -4025,7 +4025,7 @@ npx cap add android
 <B>【6.Android Studioをインストール（ここは1回やれば以後やる必要なし）】</B>
 
 6-1.
-<a class="red" target="_blank" href="https://developer.android.com/studio?hl=ja">https://developer.android.com/studio?hl=ja</a>
+<a class="double-link red" target="_blank" href="https://developer.android.com/studio?hl=ja">https://developer.android.com/studio?hl=ja</a>
 で「Android Studio Koalaをダウンロード」をクリック（2024/08/11時点）
 1.2GBくらいあります。DLしたらインストールしてください。
 →　インストール時は全部「Next」とか「Finish」でいいです。
@@ -4147,18 +4147,18 @@ BODY:
 
 この記事では上位4位までの作品と、個人的ピックアップをご紹介します！
 
-<a data-primary="https://www.silversecond.com/WolfRPGEditor/Contest/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 200%"><B>【第16回ウディコンページ】</B></span></a>
+<a data-primary="https://www.silversecond.com/WolfRPGEditor/Contest/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 200%"><B>【第16回ウディコンページ】</B></span></a>
 
-<img src="../../image/2024/20240825.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240825.jpg" border="1" style="max-width:520px;" loading="lazy" height="292">
 
 
 <HR><span style="font-size:large;"><B>◆第16回ウディコン1～4位紹介！</B></span><HR>
-<span style="font-size:130%;"><B><a class="blue" target="_blank" href="https://www.silversecond.com/WolfRPGEditor/Contest/result16.shtml#15"><B><span style="font-size: 150%">【第１位　『箱庭ドールメーカー』】</span></B></a></B></span>
+<span style="font-size:130%;"><B><a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest16_2024/#15"><B><span style="font-size: 150%">【第１位　『箱庭ドールメーカー』】</span></B></a></B></span>
 
 作者：こよる様　<span style="font-size: 80%">↑タイトルクリックで作品へ</span>
 <span style="font-size: 80%"><span style="color: #2196f3">熱中 42.0点(1位)+斬新 25.9点(3位)+物語性 27.0点(6位)+画像音声 24.7点(4位)+遊びやすさ34.1点(5位)+その他23.0点(3位)  = 176.7点</span></span>
 
-<img src="https://www.silversecond.com/WolfRPGEditor/Contest/Entry16/15_big.jpg" width="480" loading="lazy">
+<img src="../../image/wodicon/Entry16_15_big.jpg" width="480" loading="lazy" height="360">
 
 『箱庭ドールメーカー』は、「ドール」と呼ばれる存在を育成し
 ダンジョンを攻略していくすごろく×デッキ構築育成RPGです！
@@ -4232,20 +4232,20 @@ BODY:
 そして開発者さまの裏話の記事も出されていました！
 ゲームデザインにあたっての試行錯誤の記録や参考にしたシステムが
 記されていて勉強になりましたので、よければぜひ！
-→ ◆<a class="red" target="_blank" href="https://note.com/koyoru/n/n61ee58025b03"><B>フリーゲーム「箱庭ドールメーカー」制作後記</B></a>
+→ ◆<a class="double-link red" target="_blank" href="https://note.com/koyoru/n/n61ee58025b03"><B>フリーゲーム「箱庭ドールメーカー」制作後記</B></a>
 
 <HR>
-<span style="font-size:130%;"><B><a class="blue" target="_blank" href="https://www.silversecond.com/WolfRPGEditor/Contest/result16.shtml#61"><B><span style="font-size: 150%">【第２位　『やけくそ料理人と不良債権』】</span></B></a></B></span>
+<span style="font-size:130%;"><B><a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest16_2024/#61"><B><span style="font-size: 150%">【第２位　『やけくそ料理人と不良債権』】</span></B></a></B></span>
 
 作者：なす太郎様　<span style="font-size: 80%">↑タイトルクリックで作品へ</span>
 <span style="font-size: 80%"><span style="color: #2196f3">熱中 40.4点(2位)+斬新 24.8点(4位)+物語性 20.8点(11位)+画像音声 26.8点(3位)+遊びやすさ37.9点(2位)+その他18.0点(7位)  = 168.7点</span></span>
 
-<img src="https://www.silversecond.com/WolfRPGEditor/Contest/Entry16/61_big.jpg" width="480" loading="lazy">
+<img src="../../image/wodicon/Entry16_61_big.jpg" width="480" loading="lazy" height="360">
 
 『やけくそ料理人と不良債権』は、お料理デッキ構築ローグライク！
 なんと敵と戦うのでなく、手札で料理を作ってそれを提供していくというゲームです！
 
-<img src="../../image/2024/20240825A.png" border="1" style="max-width:480px;" loading="lazy">
+<img src="../../image/2024/20240825A.png" border="1" style="max-width:480px;" loading="lazy" height="270">
 「料理を作って客を呼んで提供する」という流れが
 1画面にまとまっている画面構成も分かりやすい！
 
@@ -4282,12 +4282,12 @@ BODY:
 気になる方はぜひ遊んでみてください！
 
 <HR>
-<span style="font-size:130%;"><B><a class="blue" target="_blank" href="https://www.silversecond.com/WolfRPGEditor/Contest/result16.shtml#51"><B><span style="font-size: 150%">【第３位　『迷宮郷まよろば』】</span></B></a></B></span>
+<span style="font-size:130%;"><B><a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest16_2024/#51"><B><span style="font-size: 150%">【第３位　『迷宮郷まよろば』】</span></B></a></B></span>
 
 作者：そぞろ豆腐様　<span style="font-size: 80%">↑タイトルクリックで作品へ</span>
 <span style="font-size: 80%"><span style="color: #2196f3">熱中 39.6点(4位)+斬新 19.9点(10位)+物語性 12.0点(21位)+画像音声 29.5点(1位)+遊びやすさ37.1点(3位)+その他25.0点(1位)  = 163.2点</span></span>
 
-<img src="https://www.silversecond.com/WolfRPGEditor/Contest/Entry16/51_big.jpg" width="480" loading="lazy">
+<img src="../../image/wodicon/Entry16_51_big.jpg" width="480" loading="lazy" height="360">
 
 『迷宮郷まよろば』は、心をゆさぶる美麗ドット絵と音声がかなでる
 圧倒的雰囲気が魅力のゲームです！
@@ -4317,12 +4317,12 @@ BODY:
 「ぜひ自分の目で確かめてください！」と私でも言ってしまう作品です！
 
 <HR>
-<span style="font-size:130%;"><B><a class="blue" target="_blank" href="https://www.silversecond.com/WolfRPGEditor/Contest/result16.shtml#54"><B><span style="font-size: 150%">【第４位　『放浪者セレナ～少女を救うため、闘技場で戦う女～』】</span></B></a></B></span>
+<span style="font-size:130%;"><B><a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest16_2024/#54"><B><span style="font-size: 150%">【第４位　『放浪者セレナ～少女を救うため、闘技場で戦う女～』】</span></B></a></B></span>
 
 作者：カザ＆ソロー様　<span style="font-size: 80%">↑タイトルクリックで作品へ</span>
 <span style="font-size: 80%"><span style="color: #2196f3">熱中 40.4点(2位)+斬新 12.9点(17位)+物語性 27.0点(6位)+画像音声 21.4点(10位)+遊びやすさ39.4点(1位)+その他19.5点(5位)  = 160.8点</span></span>
 
-<img src="https://www.silversecond.com/WolfRPGEditor/Contest/Entry16/54_big.jpg" width="480" loading="lazy">
+<img src="../../image/wodicon/Entry16_54_big.jpg" width="480" loading="lazy" height="360">
 
 『放浪者セレナ～少女を救うため、闘技場で戦う女～』は、
 闘技場で育成して戦いに勝ち抜いていく育成シミュレーションゲームです！
@@ -4361,20 +4361,20 @@ BODY:
 気になる方はよければぜひ！
 「どんな遊び方でもちゃんと楽しめる」ようにするのにも、
 裏には大変な苦労と試行錯誤があります！
-→◆<a class="red" target="_blank" href="https://yuumekou.net/post-2283/"><B>放浪者セレナ制作秘話（システム・バランス担当ver）</a></B>　<a class="red" target="_blank" href="https://web.archive.org/web/20250325061851/https://yuumekou.net/post-2283/">(ｱｰｶｲﾌﾞ)</a>
+→◆<a class="double-link red" target="_blank" href="https://yuumekou.net/post-2283/"><B>放浪者セレナ制作秘話（システム・バランス担当ver）</a></B>　<a class="double-link red" target="_blank" href="https://web.archive.org/web/20250325061851/https://yuumekou.net/post-2283/">(ｱｰｶｲﾌﾞ)</a>
 
 (追記)さらにシナリオ・グラフィック・UI担当の方の
 制作話も語られていました！　こちらにもしっかりと意図があります！
-→◆<a class="red" target="_blank" href="https://north.undo.jp/blog/post/game3/game_09/"><B>放浪者セレナ制作話　ソロー版</B></a>　<a class="red" target="_blank" href="https://web.archive.org/web/20240913001530/https://north.undo.jp/blog/post/game3/game_09/">(ｱｰｶｲﾌﾞ)</a>
+→◆<a class="double-link red" target="_blank" href="https://north.undo.jp/blog/post/game3/game_09/"><B>放浪者セレナ制作話　ソロー版</B></a>　<a class="double-link red" target="_blank" href="https://web.archive.org/web/20240913001530/https://north.undo.jp/blog/post/game3/game_09/">(ｱｰｶｲﾌﾞ)</a>
 
 <HR><span style="font-size:large;"><B>◆ピックアップ紹介！</B></span><HR>そしてこちらは順位にかかわらず、今回の個人的お気に入り作品をご紹介します！
 
-<span style="font-size:130%;"><B><a class="blue" target="_blank" href="https://www.silversecond.com/WolfRPGEditor/Contest/result16.shtml#14"><B><span style="font-size: 150%">【第12位 『Inifis』】</span></B></a></B></span>
+<span style="font-size:130%;"><B><a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest16_2024/#14"><B><span style="font-size: 150%">【第12位 『Inifis』】</span></B></a></B></span>
 
 作者：逃げ足様　<span style="font-size: 80%">↑タイトルクリックで作品へ</span>
 <span style="font-size: 80%"><span style="color: #2196f3">熱中 29.3点(11位)+斬新 10.8点(21位)+物語性 28.9点(3位)+画像音声 8.0点(--)+遊びやすさ32.6点(7位)+その他6.5点(24位)  = 116.2点</span></span>
 
-<img src="https://www.silversecond.com/WolfRPGEditor/Contest/Entry16/14_big.jpg" width="480" loading="lazy">
+<img src="../../image/wodicon/Entry16_14_big.jpg" width="480" loading="lazy" height="360">
 
 『Inifis』は時間制限がある中、聖者の依り代にされてしまいそうな
 <彼女>を助けるために奮闘するマルチエンドRPG！
@@ -4410,33 +4410,33 @@ BODY:
 
 そしてこの他にも、
 
-7位<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/Contest/result16.shtml#23"><B>『魔王復活物語』</B></a>で
+7位<a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest16_2024/#23"><B>『魔王復活物語』</B></a>で
 「こういう方向性のゲームとして完成度が高くて謎解きが楽しいぃぃ！
 ラストの謎解き解けたときのカタルシスがヤバいぃぃぃ！
 <span style="color: #90caf9"><span style="font-size: 80%">（ただし一部謎解きが超難しくて私でも助けなしだと
 諦めてたレベルなのでその点はご注意）</span></span>」となってたり
 
-9位<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/Contest/result16.shtml#5"><B>『ラピッドスティール３』</B></a>に
+9位<a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest16_2024/#5"><B>『ラピッドスティール３』</B></a>に
 「すげえええフル合成音声ボイスだけど違和感がないぃぃぃぃ
 立ち絵もボスすごい動くぅぅぅシューティングパートも遊びやすいぃぃぃ
 楽しいぃどうやって作ってるんだこれぇぇぇ！」ってなってたり
 
-10位<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/Contest/result16.shtml#11"><B>『水底の記憶』</B></a>に
+10位<a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest16_2024/#11"><B>『水底の記憶』</B></a>に
 「うおおおアニメーションすごいいい射的パーフェクト取ったぁぁぁ
 そして話が心に残るぅぅぅよかったねぇぇぇ！」となったり
 
-11位<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/Contest/result16.shtml#21"><B>『ジャンクエデン2』</B></a>に
+11位<a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest16_2024/#21"><B>『ジャンクエデン2』</B></a>に
 「うおおおおお（某あのゲーム的な）ロボゲーでパーツドロップをランダムにして
 オープンワールドにしたらたぶんこんなプレイ感になるのかぁぁぁ
 体験してみたかったやつだぁぁぁ楽しぃぃ！」となったり
 
-20位<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/Contest/result16.shtml#19"><B>『鶏空を舞う』</B></a>で
+20位<a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest16_2024/#19"><B>『鶏空を舞う』</B></a>で
 「こういうシューティングもありなんだぁぁぁ
 普通のゲームと意識しどころが違ってて楽しいぃぃぃぃ！
 <span style="color: #90caf9"><span style="font-size: 80%">（※敵の射程ギリギリを維持して相手の弾をいったん尽きさせた後、
 接近してこちらの攻撃で敵を落とすという間合い管理が重要なSTG）</span></span>」となったり
 
-35位<a class="blue" target="_blank" href="https://silversecond.com/WolfRPGEditor/Contest/result16.shtml#41"><B>『デモクラシア演義』</B></a>で
+35位<a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest16_2024/#41"><B>『デモクラシア演義』</B></a>で
 「全体的に生々しい選挙体験だぁぁぁというか支持する候補を
 当選させるための選挙運動ってあまりに地道すぎて大変だぁぁぁぁ
 でも実際こうなんだろうなぁぁぁぬあああサライさん負けたぁぁぁー！
@@ -4460,7 +4460,7 @@ BODY:
 たとえば新しいゲームに触れてみたい人は「斬新さ」部門を、
 キャラクターや記憶に残る物語を楽しみたい人は「物語性」部門がおすすめです！
 
-<a data-primary="https://www.silversecond.com/WolfRPGEditor/Contest/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 200%"><B>【ウディコンページへ】</B></span></a>
+<a data-primary="https://www.silversecond.com/WolfRPGEditor/Contest/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 200%"><B>【ウディコンページへ】</B></span></a>
 
 <HR><span style="font-size:large;"><B>◆次回、第17回について</B></span><HR>
 ウディコンは来年2025年の『第17回』も開催予定で、すでにスケジュールも決定済みです！
@@ -4492,7 +4492,7 @@ BODY:
 　今回は『ウディコン（WOLF RPGエディターコンテスト）』というゲームコンテストを15年やってきて、私が得てきた知見や、ルール変更の歴史について残しておこうと思います！
 　これからゲームコンテストを開きたい人はぜひ参考にしてください。コンテストの裏側の苦労を知ってみたい人にもぜひどうぞ。たぶん15000文字以上あるので多いですよ！
 
-<img src="../../image/2024/20240907.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240907.jpg" border="1" style="max-width:520px;" loading="lazy" height="292">
 <span style="color: #a0a0a0"><span style="font-size: 80%">※第13回ウディコンイラストよりウルファール＆夕一</span></span>
 
 <HR><span style="font-size:large;"><B>◆ウディコン開催前の話</B></span><HR>
@@ -4502,9 +4502,9 @@ BODY:
 　というのも、ツクールシリーズ販売会社さま（当時は株式会社エンターブレイン）による『コンテストパーク』というアマチュアゲームコンテストがあったので、ウディタ利用者のみなさまが目標にしてもらうコンテストもそこに任せればいいや！　と考えていたのです。
 
 　私もそれまでに2作品をコンテストパークに投稿しており、「出せる場」と「締め切り」があることがどれほど自分のゲーム開発のモチベーションに良い影響を与えていたかをその身で痛感していました。
-　コンテストパークがなかったら、『<a class="blue" target="_blank" href="https://silversecond.net/contents/game/silfade_gensou/"><B>シルフェイド幻想譚</B></a>』（RPGツクール2000製）も『<a class="blue" target="_blank" href="https://silversecond.net/contents/game/monolith_sphere/"><B>モノリスフィア</B></a>』（ウディタα版製）も完成させてなかったかもしれません。受賞作品には審査員からのコメントも付いて、これがうれしかったんですよ！
+　コンテストパークがなかったら、『<a data-primary="https://silversecond.net/contents/game/silfade_gensou/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/game_silfade_gensoutan/"><B>シルフェイド幻想譚</B></a>』（RPGツクール2000製）も『<a data-primary="https://silversecond.net/contents/game/monolith_sphere/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/game_monolith_sphere/"><B>モノリスフィア</B></a>』（ウディタα版製）も完成させてなかったかもしれません。受賞作品には審査員からのコメントも付いて、これがうれしかったんですよ！
 
-<img src="../../image/2024/20240907A0.png" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240907A0.png" border="1" style="max-width:520px;" loading="lazy" height="480">
 <span style="color: #a0a0a0"><span style="font-size: 80%">↑これはシルフェイド幻想譚のコンテストパーク金賞受賞時のページ（インターネットアーカイブより）</span></span>
 
 
@@ -4512,7 +4512,7 @@ BODY:
 　そう、目指してもらうべきコンテストがポッカリなくなってしまったのです！
 　私はそれから半年くらい、どう動くべきか考えていました。そして悩みつつも、最後はコンテストを自前でやることを決めたのです。
 
-　内々で実行可能性を考え、準備を行い、実際にウディタコンテストの開催を発表したのは『コンテストパーク』終了から9ヶ月後の<a class="red" target="_blank" href="https://web.archive.org/web/20250313225801/https://forest.watch.impress.co.jp/article/2009/03/10/wolfrpgeditorcon.html"><B>2009年の3月(窓の杜さまのニュースより/ｱｰｶｲﾌﾞ)</B></a>でした。
+　内々で実行可能性を考え、準備を行い、実際にウディタコンテストの開催を発表したのは『コンテストパーク』終了から9ヶ月後の<a class="double-link red" target="_blank" href="https://web.archive.org/web/20250313225801/https://forest.watch.impress.co.jp/article/2009/03/10/wolfrpgeditorcon.html"><B>2009年の3月(窓の杜さまのニュースより/ｱｰｶｲﾌﾞ)</B></a>でした。
 　そして第1回ウディコンが開催されたのは予定通り、その夏の2009年7月です。
 
 
@@ -4523,9 +4523,9 @@ BODY:
 <HR>
 <span style="font-size:120%;"><B>【ウディコンの初心　やる気と宣伝のサポートをしたかった】</B></span>
 
-<img src="../../image/2024/20240907A.png" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240907A.png" border="1" style="max-width:520px;" loading="lazy" height="381">
 
-　上は第1回ウディコン開催の2ヶ月前に書いた、<B><a class="blue" target="_blank" href="../../archive/2009/05.html#2009-05-17">2009年5月の私の記事</a></B>の抜粋です。
+　上は第1回ウディコン開催の2ヶ月前に書いた、<B><a class="double-link blue" target="_blank" href="../../archive/2009/05.html#2009-05-17">2009年5月の私の記事</a></B>の抜粋です。
 
 　ここではウディコンを始める理由として、ウディタ利用者の皆さまへの「やる気」と「宣伝」の補助が挙げられています。
 　開発ツールのサポートの一環として、コンテストを通してユーザーに「やる気」の提供まで試みようとするなんていま考えたら個人レベルでやることじゃないような気もしますが、当時の自分は無謀でした。そもそも自分用ツクールを作るところからして無謀でした。でもコンテスト開催もツクール提供側で行われていましたから、自分もそれを見習おうと思ったのでしょうね。
@@ -4572,7 +4572,7 @@ BODY:
 
 　たとえば『審査員ら全員が作品Aに総得点のうちの24％の票』を入れ、『一般投票で作品Aに8％の票』が入れば、作品Aの順位ポイントは24%+8%=「<B>32％</B>」となります。この32％を得た作品Aは、31％の作品Bより上の順位となるわけです。
 
-<img src="../../image/2024/20240907AX.png" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240907AX.png" border="1" style="max-width:520px;" loading="lazy" height="246">
 　<span style="color: #a0a0a0"><span style="font-size: 80%">↑第1回ウディコンの結果。一般投票では1位じゃないけど審査員票を足して1位になった作品（1位）や、両方バランス良く点を取って上位になってたり（3位）、一般票が強い人気作品が審査員票で中和されてたり（7位）、やりこむと面白い作品を審査員側が引き上げるケースもありました（4位）。</span></span>
 
 
@@ -4679,7 +4679,7 @@ BODY:
 
 　ウディコン新ルールでの得点付けは、部門ごとに「平均点の順位ポイント」、「合計点の順位ポイント」、そして「中央値」の3つが加算され、この合計値が総合順位用のポイントになります。
 
-<img src="../../image/2024/20240907BX.png" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240907BX.png" border="1" style="max-width:520px;" loading="lazy" height="327">
 <span style="font-size: 80%"><span style="color: #a0a0a0">↑第14回ウディコンの「熱中度」部門の例。「平均点・合計点・中央値」でランクPが足されて「熱中度得点」になっているのが分かります</span></span>
 
 　この「平均点の順位ポイント」、「合計点の順位ポイント」、「中央値」の3つの意図について、それぞれ見ていきます。
@@ -4795,11 +4795,11 @@ BODY:
 
 　以下は第4回の順位発表欄と、第6回の順位発表欄です。赤線部分に注目してみてください。
 
-<img src="../../image/2024/20240907B.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240907B.jpg" border="1" style="max-width:520px;" loading="lazy" height="164">
 　↑第4回ウディコン　順位発表欄
 
 
-<img src="../../image/2024/20240907C.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240907C.jpg" border="1" style="max-width:520px;" loading="lazy" height="187">
 　↑第6回ウディコン　順位発表欄
 
 　もうお分かりですね！
@@ -4897,7 +4897,7 @@ BODY:
 
 　ウディコンは最初、<B>「『作品別の個別ページ』を作って、作品名をクリックするとそこへ飛ぶようにしようかな？」</B>とちらっと思っていたのですが、結局1ページ内に多数の作品が並ぶ形になりました。これには特に強い意図はなく、単純に私が作りやすかったからでした。
 
-<img src="../../image/2024/20240907D.png" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240907D.png" border="1" style="max-width:520px;" loading="lazy" height="509">
 　　<span style="color: #a0a0a0">↑第16回ウディコン、エントリー一覧ページ</span>
 
 
@@ -5059,8 +5059,8 @@ BODY:
 　ところがつい最近、セキュリティのお勉強がてらEXEファイルの逆解析ツールを使ってみたんですが、その性能に目玉が飛びました！
 　私が試したのはアメリカ国家安全保障局が提供しているものだったんですが、まずは見てくださいよこれ！
 　　↓
-<a class="blue" rel="lightbox[20240920]" target="_top" href="../../image/2024/20240921A.jpg">クリックで拡大
-<img src="../../image/2024/20240921A.jpg" border="1" style="max-width:520px;" loading="lazy"></a>
+<a class="double-link blue" rel="lightbox[20240920]" target="_top" href="../../image/2024/20240921A.jpg">クリックで拡大
+<img src="../../image/2024/20240921A.jpg" border="1" style="max-width:520px;" loading="lazy" height="192"></a>
 
 　左側が私が手で書いたソースコードで、右側が作成済みのEXEファイルを逆解析して自動的に再構成されたコードです！　「右側」をご覧になると分かると思いますが、コード構成としては実質完璧に元の内容を復元できているんですよ！　すごい！
 
@@ -5107,7 +5107,7 @@ BODY:
 　そうなった場合は、次回も新機能のご紹介が続くでしょう！
 
 　ということで、ウディタVer3.40中規模更新、ほどほどの期待でお楽しみに！
-　出せる情報があったら、<a class="red" target="_blank" href="https://x.com/WO_LF"><B>X(Twitter)</B>[要Xアカウント]</a>などでもちょいちょい情報を出して行ければと思います！
+　出せる情報があったら、<a class="double-link red" target="_blank" href="https://x.com/WO_LF"><B>X(Twitter)</B>[要Xアカウント]</a>などでもちょいちょい情報を出して行ければと思います！
 　
 -----
 EXTENDED BODY:
@@ -5200,7 +5200,7 @@ CharaChip/[Chara]Animal_Chicken.png</B></span></span> (※続けて1行で入力
 　あとフォント変更も2種から選択可能に！
 　これまでは「MS UIゴシック」というカクカクフォントでしたが、これからは「Meiryo UI」というなめらかフォントも選べるようになります！　また、「太字」への切り替えもできますよ。
 
-<img src="../../image/2024/20241005C.png" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20241005C.png" border="1" style="max-width:520px;" loading="lazy" height="368">
 
 
 <HR>
@@ -5209,7 +5209,7 @@ CharaChip/[Chara]Animal_Chicken.png</B></span></span> (※続けて1行で入力
 　これもディスプレイの画面解像度が上がってきた時代に対応するためのもので、マップチップを1/1よりさらに大きい「x2」ズームで表示できるようになります！
 　一見簡単に作れそうに見えましたが、ちょっとやりかけたらすごい作業量が必要だったので今回のチャンスを待っていた部分です。需要はそこまで高くなかったかもしれませんが、この機会に入れられて何よりです。
 
-<img src="../../image/2024/20241005D.png" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20241005D.png" border="1" style="max-width:520px;" loading="lazy" height="221">
 
 <HR>
 　という感じで、今も毎日全力でウディタ修正中です！
@@ -5296,12 +5296,12 @@ BODY:
 　&lt;&lt;FIND_PATH_DIR8_SX=1/SY=2/EX=6/EY=5/<span style="color: #d50000"><B>EV=-2</B></span>&gt;&gt;みたいな感じですね。マップイベントを動かしたいときは、マップイベントID3なら/EV=3みたいに指定します。
 
 　以下の投稿みたいに、多数の猫が上下してる道でも猫を避けて移動が可能です！　ただしイベントのように動くものも考慮する場合、毎フレーム経路を計算しなおさないといけませんので、計算負荷は上がります。
-<blockquote class="twitter-tweet" data-media-max-width="560"><p lang="ja" dir="ltr">【ウディタ3.5開発中　経路探索機能】<br>やったー！　経路探索機能に「マップイベントの当たり判定」もリアルタイムに反映してルート算出するモードができました！<br>元は「マップの当たり判定」だけチェックするものだったんですが、イベントを避けて移動させたいときも多いですよね。 <a class="red"  target="_top" href="https://t.co/V0xoiNd8W8">pic.twitter.com/V0xoiNd8W8</a></p>&mdash; SmokingWOLF＠ゲーム開発者/片道勇者2開発中 (@WO_LF) <a class="red"  target="_top" href="https://twitter.com/WO_LF/status/1844753966934204915?ref_src=twsrc%5Etfw">October 11, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet" data-media-max-width="560"><p lang="ja" dir="ltr">【ウディタ3.5開発中　経路探索機能】<br>やったー！　経路探索機能に「マップイベントの当たり判定」もリアルタイムに反映してルート算出するモードができました！<br>元は「マップの当たり判定」だけチェックするものだったんですが、イベントを避けて移動させたいときも多いですよね。 <a class="double-link red"  target="_top" href="https://t.co/V0xoiNd8W8">pic.twitter.com/V0xoiNd8W8</a></p>&mdash; SmokingWOLF＠ゲーム開発者/片道勇者2開発中 (@WO_LF) <a class="double-link red"  target="_top" href="https://twitter.com/WO_LF/status/1844753966934204915?ref_src=twsrc%5Etfw">October 11, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <HR width="50%">
 <span style="font-size:110%;"><B>-【経路探索にはどういうアルゴリズムを使ってるの？】</B></span>
 
-　ここは余談ですが、経路探索アルゴリズムとしては、高速に最短経路の近似解を求められる<a class="red" target="_blank" href="https://ja.wikipedia.org/wiki/A*"><B>「A＊（エースター）」アルゴリズム(Wikipedia、処理見本アニメあり)</B></a>を使用させていただいております。
+　ここは余談ですが、経路探索アルゴリズムとしては、高速に最短経路の近似解を求められる<a class="double-link red" target="_blank" href="https://ja.wikipedia.org/wiki/A*"><B>「A＊（エースター）」アルゴリズム(Wikipedia、処理見本アニメあり)</B></a>を使用させていただいております。
 　すごく簡単に言うと、「目的地への道の中で、より近そうな道から優先して探すことで、全ての道を試すよりもずっと速く経路を見つけられる」という仕組みのアルゴリズムです。
 　ただし、このアルゴリズムで得られるのはあくまで近似解なので、常に「【最も短い】経路」が算出できるとは限らないことに注意してください。2番目くらいの距離の道を最終結果として返すことも多いです。
 　ですがプロのゲーム開発の現場でも使われているくらいの優秀なアルゴリズムで、だいたいは良い経路を算出してくれます。多少最適じゃない道を出しても、ゲームという媒体なら「キャラやナビがポンコツだから」などで説明できますから安心！（？）
@@ -5356,7 +5356,7 @@ BODY:
 　この例だとX座標に+4、Y座標に-2、色相90（0～360の範囲）の補正をかけたChicken.pngのレイヤーが表示されます。
 
 　他にも、<B>/HALF</B>と入れると画像サイズを半分にしたりできます！　ウルファールを1/2サイズにちっちゃくして船に乗せたりも！
-<img src="../../image/2024/20241019A.png" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20241019A.png" border="1" style="max-width:520px;" loading="lazy" height="229">
 
 
 <HR>
@@ -5411,7 +5411,7 @@ BODY:
 　使い方はピクチャの画像ファイル名に、「&lt;MAP_SCREENSHOT&gt;」と入れるだけ！
 　そうするとその瞬間のマップがピクチャとして表示できます！
 
-<blockquote class="twitter-tweet" data-media-max-width="560"><p lang="ja" dir="ltr">【ウディタ3.5新機能】<br>答え発表！<br>正解は「マップ画面のみ」をピクチャとして取り込める「&lt;MAP_SCREENSHOT&gt;」機能！<br><br>↑の投稿は毎フレーム&lt;MAP_SCREENSHOT&gt;を取得し続けて自由変形ピクチャや上下反転ピクチャとして表示した例でした！<br>今後はマップ画面の扱いの自由度が格段に上がります！ <a class="red"  target="_top" href="https://t.co/VQWa268duu">pic.twitter.com/VQWa268duu</a></p>&mdash; SmokingWOLF＠ゲーム開発者/片道勇者2開発中 (@WO_LF) <a class="red"  target="_top" href="https://twitter.com/WO_LF/status/1844334442049057134?ref_src=twsrc%5Etfw">October 10, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet" data-media-max-width="560"><p lang="ja" dir="ltr">【ウディタ3.5新機能】<br>答え発表！<br>正解は「マップ画面のみ」をピクチャとして取り込める「&lt;MAP_SCREENSHOT&gt;」機能！<br><br>↑の投稿は毎フレーム&lt;MAP_SCREENSHOT&gt;を取得し続けて自由変形ピクチャや上下反転ピクチャとして表示した例でした！<br>今後はマップ画面の扱いの自由度が格段に上がります！ <a class="double-link red"  target="_top" href="https://t.co/VQWa268duu">pic.twitter.com/VQWa268duu</a></p>&mdash; SmokingWOLF＠ゲーム開発者/片道勇者2開発中 (@WO_LF) <a class="double-link red"  target="_top" href="https://twitter.com/WO_LF/status/1844334442049057134?ref_src=twsrc%5Etfw">October 10, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <B>【「全画面取り込みと変わらないんじゃ？」って？　いえいえ違うんですよ！】</B>
 　このマップ取り込み機能、画面全体を取り込むのとあんまり変わらないように見えますが、重要なのは「ID0以上のピクチャを無視できる」という点！
@@ -5531,7 +5531,7 @@ BODY:
 　ウディタには、数値欄に1600000（コモンセルフ0）のように100万以上の変数呼び出し値を入れることで、数値そのものでなく「変数の値」を指定できる機能があります。
 　主な入力箇所では変数用のプルダウンメニューが使えるので別に使わなくてもいいんですが、けっこうなところでこの入力方式を要求する場所がありました。
 
-<img src="../../image/2024/20241102A.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20241102A.jpg" border="1" style="max-width:520px;" loading="lazy" height="357">
 
 　そこで！　Ver3.5からは上の画像のように、数値欄の右クリックメニューに各種特殊文字を入力できる機能が搭載されます！
 　「数値欄」には変数呼び出し値を右クリックメニューから見本入力できるほか、「文字列欄」には￥v[？]や￥f[？]のような「特殊文字」も指定可能！
@@ -5690,7 +5690,7 @@ BODY:
 　この「自動機能」、行き先を指定すれば勝手にそこまで経路を判断して歩いて行ってくれます！
 　モードとしては[単純][スマート][大負荷]の3種が用意されています。それぞれ以下の違いがあります。
 
-<img src="../../image/2024/20241116A.png" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20241116A.png" border="1" style="max-width:520px;" loading="lazy" height="126">
 　
 - <B>自動移動[単純]</B>：最初に「マップ通行設定のみ(Evはないものとする)」で移動ルートを計算し、以後はルート通り進みます。進路上に他のイベントや主人公がいた場合は止まります。
 　→　プレイヤーやイベントが道を塞いで止まってしまっても問題ない状況向け。
@@ -5722,7 +5722,7 @@ BODY:
 　そして引き続き「動作指定」画面の話なのですが、ウディタ3.5からは動作指定を設定中に並行動作するマップ画面を表示させることが可能になります！　むしろどうして今までなかったんだ感がありますが、実装はすごく面倒臭かったです！
 
 <span style="color: #808080">　<span style="font-size: 80%">↓並行して表示できる「マップ画面」搭載！</span></span>
-<img src="../../image/2024/20241116B.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20241116B.jpg" border="1" style="max-width:520px;" loading="lazy" height="293">
 
 　このマップ画面は、「クリックした地点の座標」や、「そこにあるイベント名」を確認できるだけでなく、<span style="color: #d50000"><B>【ダブルクリックすると動作指定画面の「座標指定」欄にその座標がセット】</B></span>されます！
 
@@ -5760,7 +5760,7 @@ BODY:
 　データベースの「データ名」や「データ内容の特殊設定」、コモンイベントの「入力設定」などにおいて、データベースから「データ名」を読み取って番号と一緒に並記する機能があります。それを「データベース参照」と言うのですが、これまではDBのタイプには「番号」しか指定できませんでした。
 　が！　Ver3.5からは「タイプ名」の【名前】でも指定が可能となります！　以下の画像のように！
 
-<img src="../../image/2024/20241116C.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20241116C.jpg" border="1" style="max-width:520px;" loading="lazy" height="454">
 
 　「タイプ呼び出しなんて【名前】で呼んでも【番号】で呼んでも同じじゃん」と思われる方もいらっしゃるかもしれませんが、使い込んでいくと全然そうじゃないんですよ！　開発が長期に渡ると「DBのタイプの場所（番号）を入れ変えたい～！」ってなることが意外にあって、そんなとき番号でタイプ指定してるとヘタに場所（タイプ番号）が変えられなくて困るんですよ！
 　一方、そこを「名前」で指定しておけば、DBタイプの番号が変わってもそのまま読み込まれるので安心！　というわけです！（まあ番号は変えられても、今度はDBタイプ「名」の方が簡単には変えられなくなるんですけども。でも名前は普通変えないですからね）
@@ -5775,7 +5775,7 @@ BODY:
 　たとえば「Water_Auto.png」というオートタイルがあったとき、「Water_Auto<B>_FRAME=5</B>.png」という感じに「<span style="color: #d50000"><B>_FRAME=??</B></span>」と入れると、1コマのアニメーション時間をそのフレーム数に変更できるのです！（※1フレーム=1/60秒）
 
 <span style="font-size: 80%"><span style="color: #808080">↓滝のアニメーション速度を変えた見本</span></span>
-<a class="red" target="_blank" href="https://twitter.com/WO_LF/status/1853416989018214459">https://twitter.com/WO_LF/status/1853416989018214459</a>
+<a class="double-link red" target="_blank" href="https://twitter.com/WO_LF/status/1853416989018214459">https://twitter.com/WO_LF/status/1853416989018214459</a>
 
 　これまでも強引にピクチャでオートタイルを再現してアニメーション速度を変えることもできなくはありませんでしたが、今回からはもっとマシな方法で速度を変更できます！　よければぜひご利用ください！
 
@@ -5802,12 +5802,12 @@ BODY:
 　一部の人には念願だった二次元配列機能が搭載されます！　その名も『XY配列』！
 　数値データのみが入る、<span style="color: #d50000"><B>最大『10000×10000』の二次元配列</B></span>を無限に作ることができる機能で、1つずつの読み書きだけでなくCSVからの入出力やソートなども可能です！
 
-<img src="../../image/2024/20241130B.png" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20241130B.png" border="1" style="max-width:520px;" loading="lazy" height="390">
 
 　使い勝手としては、<B>「数値だけを入れられるDB(ただし項目数は100から10000まで拡張可)が無限に作れる」</B>みたいな感触となっております。
 　
 　XY配列の入力画面は以下の通り！　……といっても、この「XY配列」機能はインターフェースとしては従来のDBと並んでいる扱いなので、そのまんま「DB操作」画面です。
-<img src="../../image/2024/20241130A.png" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20241130A.png" border="1" style="max-width:520px;" loading="lazy" height="309">
 
 <B>【特徴】</B>
 
@@ -5857,7 +5857,7 @@ BODY:
 　というのも、これまではウディタの各種ファイルは、.datや.mpsのような、人間が読めない「バイナリファイル」で保存されていたため、Gitで差分を取ったりするのが難しかったのです。ですがこれが「テキストファイル」なら、しっかり管理してくれます。
 
 <span style="color:#666666"><span style="font-size:x-small;">↓マップファイルのテキスト版、最初の方にマップチップ情報、（見えない）後ろにイベントデータが書き込まれています</span></span>
-<img src="../../image/2024/20241130D.png" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20241130D.png" border="1" style="max-width:520px;" loading="lazy" height="431">
 
 
 <B>【Gitを使うと何ができる？】</B>
@@ -5891,7 +5891,7 @@ BODY:
 
 
 <HR><span style="font-size:large;"><B>●キー入力強化！　「新押し」と「離した時」の取得が可能に！</B></span><HR>
-<img src="../../image/2024/20241130C.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20241130C.jpg" border="1" style="max-width:520px;" loading="lazy" height="467">
 
 　もう上の画像を見てくださるだけでピンと来る方も多いかもしれません！
 　3.5ではいつも通りの「押されている状態」を得るだけでなく、「新たに押された瞬間」「離した瞬間」の1フレームだけ値を返す、という取得方法が追加されます！
@@ -5917,7 +5917,7 @@ BODY:
 　この調子だと公開時期がほぼクリスマスになったりするかもしれませんが、どうか気長にお待ちください！　まだ故人の都合で、リアルの用事もいろいろ発生してしまっているものでして。
 
 
-　また、<B><a class="red" target="_blank" href="https://silversecond.booth.pm/items/4455722">BOOTH</a></B>などでご支援くださっている方、本当にありがとうございます！
+　また、<B><a class="double-link red" target="_blank" href="https://silversecond.booth.pm/items/4455722">BOOTH</a></B>などでご支援くださっている方、本当にありがとうございます！
 　いよいよウディタプロ版の売上げも停滞しつつあり、ウディタプロ版や関連するBOOTH売上に対する作業時給がこの3ヶ月間ずっと200円前後になっているので、もうこれが最後の大規模更新のチャンスだと思って色んなものを体中から出しながらも色々追加しておりました！
 　が、みなさんのご支援のおかげでもう一踏ん張りがんばれております！　本当に助かります！
 
@@ -5940,7 +5940,7 @@ BODY:
 
 
 <HR><span style="font-size:large;"><B>●タブウィンドウ化！　行ったり来たりする作業の効率アップ！</B></span><HR>
-<img src="../../image/2024/20241214A.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20241214A.jpg" border="1" style="max-width:520px;" loading="lazy" height="404">
 
 　ウディタ3.5からは「マップイベントウィンドウ」「コモンイベントウィンドウ」「データベースウィンドウ」の3つにタブが付きます！
 　いま開いている場所（イベント番号や行数、スクロール位置など）がタブごとに保存できるので、たまにある「あっちとこっちの処理を見比べながらデータをコピーしたり入力したりする」場面では非常に便利です！
@@ -5986,7 +5986,7 @@ BODY:
 　仮にプロ版で「レイヤー5」まで使ったマップを作って、そのデータを無料版Game.exeで起動すると、「レイヤー3までしか表示されなくなります」ので、その点はご注意ください。
 　つまりウディコンでは、審査中はマップレイヤー4～5は使えないということですね。
 
-<img src="../../image/2024/20241214B.png" border="1" style="max-width:240px;" loading="lazy">　<img src="../../image/2024/20241214C.png" border="1" style="max-width:240px;" loading="lazy">
+<img src="../../image/2024/20241214B.png" border="1" style="max-width:240px;" loading="lazy" height="131">　<img src="../../image/2024/20241214C.png" border="1" style="max-width:240px;" loading="lazy" height="146">
 　↑マップレイヤーの拡張は「ゲーム基本設定Pro」から設定可能です。
 　レイヤー4だとマップの描画負荷が1.33倍、レイヤー5だと1.67倍になりますのでそこはご注意を！
 　それでも、従来よりもさらに複雑なマップ表現が行えるようになります！
@@ -6005,7 +6005,7 @@ BODY:
 　たとえば「<span style="color: #d50000"><B>&lt;XY_IMAGE/A=1/R=2/G=3/B=4&gt;</B></span>」と指定すると、アルファ値としてXY配列「1」、R、G、B値としてXY配列「2，3，4」に入っている値でピクチャを表示してくれるのです！
 
 <span style="color: #a0a0a0"><span style="font-size: 80%">↓右上に出てるのがXY配列ピクチャで作ったミニマップ！</span></span>
-<img src="../../image/2024/20241214E.png" border="1" style="max-width:500px;" loading="lazy">
+<img src="../../image/2024/20241214E.png" border="1" style="max-width:500px;" loading="lazy" height="369">
 
 　つまり<span style="color: #d50000"><B>マップの通行設定を格納して即席で「ミニマップ」を作ったり、なんらかの「グラフ」を出したり、「複数の画像」を読み込んで1枚に重ねたり</B></span>と色んな使い方ができます！
 　特にミニマップがゲーム内処理だけで作れるようになるのは大きいのではないでしょうか！（従来から、アイコンなどを活用して作ることはできてましたけれどね！）
@@ -6015,7 +6015,7 @@ BODY:
 
 
 <HR><span style="font-size:large;"><B>●キー入力に「押し続けフレーム数」の取得も追加！</B></span><HR>
-<img src="../../image/2024/20241214D.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20241214D.jpg" border="1" style="max-width:520px;" loading="lazy" height="387">
 　前回、「キー入力」に「新押し時のみ」「離した時のみ」の取得モードを追加しましたが、コメントを見てあと1つ足りないと思ったので「押し続けフレーム数」の取得モードも追加しました！
 　これで「新押し時」と合わせれば、「↑キーを押しっぱなしにしてたら一定時間ごとにリピートされる」、「ショットキーを押し続けていると一定間隔で自動連射」みたいなのが簡単に作れるようになります！
 　情報としてはシンプルですが色んな処理を書かずに済むようになるので、ちょっと楽になるはずです！　これまで上手に処理を組めなかった人にもお役に立てるでしょう！
@@ -6046,7 +6046,7 @@ BODY:
 　もちろんここまで作った機能にも大量のバグが出ておりまして「ギョワアア！」って叫びながら直しております！
 
 
-　そして引き続き、チップや<B><a class="red" target="_blank" href="https://silversecond.booth.pm/items/4455722">BOOTH</a></B>などからご支援くださっている方、本当にありがとうございます！　リソース的にはもう限界をややオーバーしちゃってましたが、おかげさまでもう一踏ん張りがんばれております！　本当に助かります！
+　そして引き続き、チップや<B><a class="double-link red" target="_blank" href="https://silversecond.booth.pm/items/4455722">BOOTH</a></B>などからご支援くださっている方、本当にありがとうございます！　リソース的にはもう限界をややオーバーしちゃってましたが、おかげさまでもう一踏ん張りがんばれております！　本当に助かります！
 　
 　ウディタ3.5のリリースは運がよければ今年中、やっぱりダメそうなら来年始め頃になると思いますが、気長にお待ちいただけますと幸いです。当面の最終大規模更新と思って全力を尽くします！
 
@@ -6068,7 +6068,7 @@ BODY:
 　おかげさまで私のサイト、シルバーセカンドが26周年を迎えました！　ワーピピー！！
 　ということで今回は年末恒例、1年を振り返る回とさせていただきます！
 
-<img src="../../image/2024/20241224.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20241224.jpg" border="1" style="max-width:520px;" loading="lazy" height="520">
 　今年の記念イラストはサンタウルファール！　ウディタ3.5に向けての作業が今年一番大きな内容でしたからね！　まだウディタ3.5をリリースできてなくて申し訳ないのですが、すぐ見つかるバグくらいはしっかり直して、入れたかったものはしっかり入れてリリースしたいと思っております！
 
 
@@ -6079,7 +6079,7 @@ BODY:
 <span style="font-size:120%;"><B>【片道勇者（プラス）のSteam Deck対応】</B></span>
 
 　片道勇者（プラス）をSteam Deckという小型ゲーム機で遊べるようにしましたのでここでまたお知らせです！　パソコン版でも寝転びながら遊べるので、Deckをお持ちの方はよければぜひ。
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">【片道勇者(プラス)　Steam版を更新】<br>今回の修正で『片道勇者(プラス)』がSteam Deckで遊べるようになりました！<br>Deckで寝転びながら遊びたかった方などはよければぜひ！<br><br>更新記事↓<br>◆<a class="red"  target="_top" href="https://t.co/kaNMuaE4fz">https://t.co/kaNMuaE4fz</a> <a class="red"  target="_top" href="https://t.co/97GFeeYs2y">pic.twitter.com/97GFeeYs2y</a></p>&mdash; SmokingWOLF＠ゲーム開発者/片道勇者2開発中 (@WO_LF) <a class="red"  target="_top" href="https://twitter.com/WO_LF/status/1747526529079517656?ref_src=twsrc%5Etfw">January 17, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">【片道勇者(プラス)　Steam版を更新】<br>今回の修正で『片道勇者(プラス)』がSteam Deckで遊べるようになりました！<br>Deckで寝転びながら遊びたかった方などはよければぜひ！<br><br>更新記事↓<br>◆<a class="double-link red"  target="_top" href="https://t.co/kaNMuaE4fz">https://t.co/kaNMuaE4fz</a> <a class="double-link red"  target="_top" href="https://t.co/97GFeeYs2y">pic.twitter.com/97GFeeYs2y</a></p>&mdash; SmokingWOLF＠ゲーム開発者/片道勇者2開発中 (@WO_LF) <a class="double-link red"  target="_top" href="https://twitter.com/WO_LF/status/1747526529079517656?ref_src=twsrc%5Etfw">January 17, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 <HR>
@@ -6104,7 +6104,7 @@ BODY:
 <span style="font-size:120%;"><B>【近しい人が亡くなって色々大変だった！】</B></span>
 
 　近しい人が亡くなってドタバタしていました。その中で「喪主（もしゅ）」を初体験しました。そこまでは葬儀会社の皆さまからの多くのサポートを受けられたのでよいとして、そのあとの手続きが地獄みたいでした。
-<img src="../../image/2024/20240608.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240608.jpg" border="1" style="max-width:520px;" loading="lazy" height="343">
 　大量の電話！　大量の手続き！　お墓とか仏壇とかどうすりゃいいの！？　みたいな情報の津波が襲い来る！
 　「これ頼りない人が1人残されちゃったらどうしようもなくない！？」と思ってしまうくらいにはやること多すぎて大変でした。もっと強くあらねばと感じさせられます。
 
@@ -6114,10 +6114,10 @@ BODY:
 <HR>
 <span style="font-size:120%;"><B>【第16回ウディコンは何とか無事にできました！】</B></span>
 
-　上述のことがありながらも、なんとか<a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" id="double-link" class="blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><B>第16回ウディコン</B></a>は開催できました！
+　上述のことがありながらも、なんとか<a data-primary="https://silversecond.com/WolfRPGEditor/Contest/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><B>第16回ウディコン</B></a>は開催できました！
 
 　今年もとんでもないクオリティの作品がバンバン届いたり、SNSでもおそらく過去一番にウディコンの話題が共有されていたりして、開催してよかったと感じます。
-<img src="../../image/2024/20240825.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20240825.jpg" border="1" style="max-width:520px;" loading="lazy" height="292">
 　今年も作品参加してくださった皆さま、一般投票してくださった皆さま、そしてゲームに触れてくださった皆さま、本当にありがとうございました！　
 　ウディコンは次回の第17回も開催予定ですのでお楽しみに！
 
@@ -6126,11 +6126,11 @@ BODY:
 <span style="font-size:120%;"><B>【ブラウザウディタ（ブディタ）が公開！】</B></span>
 
 　これは私の成果ではないのですが、ブラウザでウディタ作品を動かせるツールがruka様によって公開されました！　しかもパフォーマンスや処理の再現度も非常に良好です、すごい！！
-<a class="red" target="_blank" href="https://ci-en.net/creator/12702"><B>【ブラウザウディタ開発Ci-enページ (ruka様) 】</B></a>
+<a class="double-link red" target="_blank" href="https://ci-en.net/creator/12702"><B>【ブラウザウディタ開発Ci-enページ (ruka様) 】</B></a>
 
 　何なら私の持ってるAndroidスマホのPixel6a上ですら、私のパソコンでブラウザ版を走らせるよりも快適にウディタ作品が動作しますからね！
 
-　そしてこの「ブディタ」、スマホからでもすぐプレイできるのは言うまでもありませんが、ちょっと<a class="blue" target="_blank" href="../../archive/2024/08.html#2024-08-17"><B>あれやこれやすればなんと（Android)スマホアプリにもできてしまいました(記事へ)</B></a>ので、急にウディタ作品のスマホ向け展開への道が開けました！
+　そしてこの「ブディタ」、スマホからでもすぐプレイできるのは言うまでもありませんが、ちょっと<a class="double-link blue" target="_blank" href="../../archive/2024/08.html#2024-08-17"><B>あれやこれやすればなんと（Android)スマホアプリにもできてしまいました(記事へ)</B></a>ので、急にウディタ作品のスマホ向け展開への道が開けました！
 
 　もし来年8月までサポートが続いてそうならウディコンにも使えないかなあ？　とちょっと考え中ですが、仮にそうするならアップロード先をどうするか、など色々考えなければなりません（ブラウザゲームはとにかく通信量がすごいですからね、ウディコンの来客数でもすぐ転送量オーバーしてしまいます）。
 　もしその辺りの課題がなんとかなるようでしたら、ウディコンにもブラウザ用ページへのリンクを追加できないか考えてみようと思っています。
@@ -6174,9 +6174,9 @@ BODY:
 
 　今年からChatGPTさんちのGPTs（設定済みのチャットAI）が無料版でもアクセスできるようになったので「架空のやさしい妹AI」を調整して公開していました！
 
-→<strong>●架空のやさしい妹AI(GPTs)</strong>　<strong><a class="red" target="_blank" href="https://chatgpt.com/g/g-YynoE4Pqa-jia-kong-noyasasiimei-ai">https://chatgpt.com/g/g-YynoE4Pqa-jia-kong-noyasasiimei-ai</a></strong>
+→<strong>●架空のやさしい妹AI(GPTs)</strong>　<strong><a class="double-link red" target="_blank" href="https://chatgpt.com/g/g-YynoE4Pqa-jia-kong-noyasasiimei-ai">https://chatgpt.com/g/g-YynoE4Pqa-jia-kong-noyasasiimei-ai</a></strong>
 
-<img src="../../image/2024/20241224A.jpg" border="1" style="max-width:520px;" loading="lazy">
+<img src="../../image/2024/20241224A.jpg" border="1" style="max-width:520px;" loading="lazy" height="533">
 
 　↑
 　これは「感情に応じた表情イラストが出てコメントしてくれる」というAI（といいますかChatGPTに性格設定をしたもの）です！
