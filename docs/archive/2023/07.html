@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>シルバーセカンド開発日誌 / SmokingWOLF</title>
+<meta name="viewport" content="width=700">
+<script src="../../js/smoothscroll_up.js" type="text/javascript"></script> 
+
+<link rel="stylesheet" href="../../js/litebox/css/lightbox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../../js/litebox/js/prototype.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/moo.fx.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/litebox-1.0.js"></script>
+
+<style>
+html {
+  /* スマホ時は1.2倍フォントで表示 */
+  -webkit-text-size-adjust: 120%;
+  -ms-text-size-adjust: 120%;
+}
+
+BODY{
+  /*display:flex;*/
+  font-size:13px;
+  margin:0;
+  font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+  color:#558;
+}
+
+TD{
+  font-size:12px;
+}
+
+
+A:LINK,A:VISITED {  color:#5658f6;  text-decoration:underline ;}
+A:HOVER,A:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.red:LINK,A.red:VISITED{color:#d6385c;display: inline-block;text-shadow: 0 0 15px #ffddcc, 0 0 15px #ffddaa;}
+A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shadow: 0 0 15px #ffcccc, 0 0 15px #ffaaaa;}
+
+A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
+A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.g:LINK,A.g:VISITED{
+	color:#38a68c;
+	text-decoration:underline;
+}
+
+A.g:HOVER,A.g:ACTIVE{
+	color : #68b6ac;
+	text-decoration : underline;
+}
+
+
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38c6ac;
+}
+
+A.jumplink:HOVER,A.jumplink:ACTIVE{
+	color : #68f6ac;
+}
+
+A.jumplink{
+	text-shadow: 0 0 15px #ccddcc, 0 0 15px #aaddaa;
+	text-decoration : none;
+}
+
+
+.article_pos{
+	font-size:16px;
+	color:#aaf; 
+	font-weight:bold;
+	text-align:center;
+	margin:0px;
+	padding:0px;
+}
+
+#content {
+	font-size:14px;
+	
+}
+
+#sidebar {
+	background:#f8f8f8; 
+	border-left:1px solid #ddd; 
+	padding:4px 6px;
+	font-size:12px;
+}
+
+A.sidebar_link:LINK,A.sidebar_link:VISITED,
+A.sidebar_link_recent:LINK,A.sidebar_link_recent:VISITED{
+    color:#5658f6;
+	text-decoration: underline;
+}
+A.sidebar_link:HOVER,A.sidebar_link:ACTIVE,
+A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
+	color: #9698e6;
+	text-decoration: underline;
+}
+
+.sidebar_link{
+	font-size:13px;
+}
+
+.sidebar_link_recent{ /* 1つ1つの項目ごとに隙間を空ける */
+	font-size:11px;
+	line-height: 1.2;
+	display: inline-block;
+	margin-top:5px;
+}
+
+
+.entry {
+	border:1px solid #ccc; 
+	border-radius:8px; 
+	margin:14px 0; 
+	overflow:hidden;
+
+}
+.entry-title {
+	background:linear-gradient(to right,#4243ff,#aaaacf);
+
+	font-size:17px;
+	color:#fff; 
+	padding:4px; 
+	font-weight:bold;
+	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
+}
+
+.entry-body,.extended {
+	background:#fff; 
+	color:#444; 
+	padding:15px;
+	font-size:14px;
+	line-height:1.6em;
+}
+
+.entry-foot {
+	background:#fff; 
+	text-align:center;
+	vertical-align:middle;
+	color:#ccf;
+	font-size:12px;
+	padding-top:20px;
+	padding-right:20px;
+	padding-bottom:10px;
+}
+
+.linkbutton{
+	padding:3px;
+}
+
+/*--●形状整理用--*/
+body {display:flex; margin:0;}
+#content {width:580px; padding:0 8px;
+	font-size:14px;}
+#sidebar {width:120px;  box-sizing:border-box; }
+#sidebar div {line-height:1.6;}
+#sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
+.nav {margin:0px 0 -20px 0; text-align:center;}
+.sym {color:#999; font-weight:normal;}
+
+</style>
+
+
+<script>
+function toggle(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+function toggleDisp(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+</script>
+
+
+
+<!--★目次デザイン・処理★-->
+<style>
+.toc-box{background-color:#f0f0f0;border-radius:8px;padding:10px;} 
+.toc-list{list-style:none;margin:0;padding-left:0;} 
+.toc-list ul{list-style:none;margin:0;padding-left:20px;}
+.toc-list li{margin:5px 0;}
+.toc-level1{margin-left:0;}
+.toc-level2{margin-left:20px;}
+
+h1 {
+  background: #fff;
+  padding: 6px 10px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #2233cc; /* 青系 */
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 4px solid #3366ff;
+  display: block;
+  width:100%;
+  
+}
+
+
+h2,h3 {
+  background: #fff;
+  padding: 6px 10px;
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #5566ff; /* 青系 */
+  
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 2px solid #9999ff;
+  display: -block;
+
+}
+
+h2::before {
+  content: "- ";
+}
+
+.master_years{
+  margin-left:20px;
+  margin-right:20px;
+}
+
+.top_minicategory{
+  font-size:10px;
+  color:#ccccff;
+}
+</style>
+
+
+
+</head>
+<body onload="initLightbox();">
+<a id="top"></a>
+
+<style type='text/css'>
+.linkbutton{
+  font-size: 0.9em;
+  padding: 1px 6px;
+  vertical-align: baseline;
+  line-height: 1;
+  height: auto;
+  margin-left: 4px;
+  color:#66f;
+  background-color:#f9f9f9;
+  border: 1px solid #888;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.copy-popup{
+  background-color: #eef;
+  border: 1px solid #88c;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  color: #333;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.5s ease;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  max-width: 80vw;             /* 画面幅の 80% で折り返す */
+  overflow-wrap: anywhere;     /* 長い URL を途中で区切る */
+  word-break: break-all;       /* ↑が効かない旧ブラウザ保険 */
+  white-space: pre-wrap;       /* 
+ を改行として扱い、余計な連続空白は1個に */
+}
+.article_end_date{
+  font-size:0.9em;
+}
+</style>
+
+
+<script>
+function toggle(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+}
+
+// Year accordion with sessionStorage persistence
+function toggleYear(id){
+  const pane = document.getElementById(id);
+  const btn  = document.getElementById(id+'-btn');
+  if(!pane||!btn) return;
+  const sym  = btn.querySelector('.sym');
+  const isClosed = pane.style.display === 'none';
+  pane.style.display = isClosed ? 'block' : 'none';
+  sym.textContent   = isClosed ? '－' : '＋';
+  sessionStorage.setItem('year-'+id, isClosed ? 'open' : 'closed');
+}
+
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('[data-yearpane]').forEach(pane=>{
+    const id    = pane.id;
+    const state = sessionStorage.getItem('year-'+id);
+    const btn   = document.getElementById(id+'-btn');
+    const sym   = btn?.querySelector('.sym');
+    if(state === 'open'){
+      pane.style.display = 'block';
+      if(sym) sym.textContent = '－';
+    }else{
+      pane.style.display = 'none';
+      if(sym) sym.textContent = '＋';
+    }
+  });
+});
+
+function copyLink(date, title, el){
+  const url = `https://smokingwolf.github.io/dev_blog/archive/${date.slice(0,4)}/${date.slice(5,7)}.html#${date}`;
+  const text = `
+【${date}　${title}】
+ ${url}`;
+  navigator.clipboard.writeText(text).then(()=>{
+    if(el && el.tagName === 'BUTTON'){
+      const orig = el.textContent;
+      el.textContent = '✅ コピー完了!';
+      setTimeout(()=>{ el.textContent = '🔗 リンクをコピー'; }, 2000);
+    }
+
+    const popup = document.createElement('div');
+    popup.className = 'copy-popup';
+    popup.textContent = `✅ コピー完了：${text}`;
+    document.body.appendChild(popup);
+
+    const rect = el.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    const popupWidth = popup.offsetWidth;
+    const pageWidth = document.documentElement.clientWidth;
+
+    let left = rect.left + scrollLeft + (rect.width / 2) - (popupWidth / 2);
+    let top  = rect.top  + scrollTop - popup.offsetHeight - 8;
+    if(left < scrollLeft + 4) left = scrollLeft + 4;
+    if(left + popupWidth > scrollLeft + pageWidth - 4)
+        left = scrollLeft + pageWidth - popupWidth - 4;
+
+    popup.style.left = `${left}px`;
+    popup.style.top  = `${top}px`;
+    popup.style.opacity = '1';
+    popup.style.zIndex = '9999';
+
+    setTimeout(()=>{ popup.style.opacity = '0'; }, 1800);
+    setTimeout(()=>{ popup.remove(); }, 2500);
+  });
+}
+</script>
+
+<div id='content'>
+<style>
+
+.TopTitle{
+  width:515px;
+  font-weight:bold;
+  font-size:16pt;
+  color: #ffffff;
+  background-color:#535365 ;
+  border-width: 0px;
+  border-color:#535365;
+  border-style:solid;
+  background: -moz-linear-gradient(left top, #42435f, #fafaff);
+  background: -webkit-gradient(linear, left top, right bottom, from(#42435f), to(#fafaff));
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#DD42425f', endColorstr='#FFfafaff');
+  
+  text-align:left;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.header3{
+	color:#555588;
+	margin-bottom:16px;
+}
+
+.home-link {
+  font-size: 12px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: underline;
+}
+</style>
+
+<!--戻るリンク、サイトがなくなってたらアーカイブにつながるようにしたが404ページがアレなのかうまくいかない-->
+<!--
+<font id="home-link-placeholder">
+  <noscript>
+    <a href="https://smokingwolf.github.io/" class="home-link">← ホーム(アーカイブサイト)に戻る</a>
+  </noscript>
+</font>
+
+<script>
+(async () => {
+  try {
+    // HEADで軽くチェック（no-corsなのでステータス確認は不可）
+    // 自分のサイトのインフォメーションページにつなげるならサイトがまだあると認識する
+    await fetch("https://silversecond.net/contents/etc/info.shtml", { method: "HEAD", mode: "no-cors" });
+
+    const link = document.createElement("a");
+    link.href = "https://silversecond.net/";
+    link.textContent = "← ホームに戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  } catch {
+    const link = document.createElement("a");
+    link.href = "https://smokingwolf.github.io/";
+    link.textContent = "← ホーム(アーカイブサイト)に戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  }
+})();
+</script>
+-->
+
+<div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
+<!--ここにコメント文-->
+<div class="header3" style="margin-top:6px;">　ここはゲーム開発者SmokingWOLF(スモーキングウルフ)の開発日誌です。<BR>
+　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
+　<B style="color:#ff5555;">※以前のブログが使えなくなったので、ただいまこの開発日誌に移転中です。</B>
+</div>
+
+<div class='article_pos'>2023年07月</div>
+<div class='nav'><a href='08.html'>次の月へ</a> | <a href='06.html'>前の月へ</a></div>
+<a id='2023-07-23'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2023-07-23','第15回ウディコン、一般審査開始です！', this)" style='cursor:pointer;'>2023-07-23 (日)&nbsp;&nbsp;&nbsp;第15回ウディコン、一般審査開始です！</span><span style='float:right;'><a href='#2023-07-08' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER>今回は当然ウディコンのお話！<br>夏休みの方もいらっしゃると思いますので<br>ぜひウディコン作品をお楽しみください！<br><br><hr size="1" /><br><span style="font-size:x-large;">【第15回ウディコン 審査開始！】</span><br><br>ということで第15回も予想以上の作品が集まりました！<br>最終エントリー【60】番までご応募され、いよいよ『一般審査』が開始です！<br><br>審査内容は途中保存も可能で、何回でも書き換えられるので、<br>もしご協力くださる方は、できる範囲でゆっくり入力していってください。<br>↓<br><a data-primary="https://www.silversecond.com/WolfRPGEditor/Contest/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size: 150%"><B>【WOLF RPGエディターコンテスト公式ページ】</B></span></a><br><br><img src="../../image/2023/20230723.jpg" border="1" width="500" loading="lazy" height="314"><br><br>一般審査の締め切りは<span style="font-size:large;"><strong>【8/16(水)の23：59】</strong></span>まで！<br>結果発表はなんとなく8/19（土）の夜あたりになると思います！<br>もしあなたが応援したくなったゲームがあれば、ぜひ審査をお願いします！<br><br>4作品以上を審査すると審査結果の集計にカウントされますが、<br>1作品だけの審査でもコメントが届きますので、<br>ただ作者さまに応援メッセージ送りたい人もよければぜひ！<br><br><br>今年のウディコン作品は、非常にわたくしごとながら、<br>最初の方からデッキ構築やローグライク（ローグライト）要素を持った作品が<br>複数来て個人的に大興奮でした。<br><br>それぞれジャンルは近くとも、ゲームデザインの差から来る感触の違いを<br>楽しめているのでとてもゲーム開発の勉強になっています。<br>もちろん他のジャンルも、ゲーム性が強めな作品も、<br>印象に残りそうな作品も多くて大喜びです！<br>皆さま本当にありがとうございます！<br><br><HR><br><span style="font-size:x-large;">【シルバーセカンド作品もセール中！】</span><br><br>ウディコン作品が面白すぎるおかげで私のゲームや<br>コンテンツは見向きもされなくなりがち！<br>コンテンツ的に思いっきりバッティングしてしまうので<br>いつもよりすごい勢いで口座残高が減りがちな時期です。<br><br>今ならゲームは<br><span style="font-size: 150%"><a data-primary="https://silversecond.net/contents/game/silhouette_note/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/game_silhouette_note/"><B>「シルエットノート」</B></a></span>\1500→ <span style="color:#CC0000"><B>￥750（-50％）</B></span><br><span style="font-size: 150%"><a data-primary="https://silversecond.net/contents/game/silfade_gakuin/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/game_silfade_gakuin/"><B>「シルフェイド学院物語」</B></a></span> \2000→<span style="color:#CC0000"><B>￥1000（-50％）</B></span><br><span style="font-size: 150%"><a data-primary="https://silversecond.net/contents/game/katamichi_plus/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/game_one_way_heroics_plus/"><B>「片道勇者プラス」</B></a></span>  \500→<span style="color:#CC0000"><B>￥250（-50％）</B></span><br><br>の3本分で合計￥4000→<span style="color:#CC0000"><span style="font-size:x-large;">￥2000（-50％）</span></span>！<br><br><br>また、Amazonで発売中の電子書籍は、<br>今回は「旅団世界TRPGリプレイ」シリーズ3冊セットが<br>￥2772→<span style="color:#CC0000"><B>￥1350（-51％）</B></span>となっております！<br><span style="font-size:large;">→　◆全3巻リスト 　<a class="double-link red" target="_blank" href="https://amzn.to/3kJmNkB"><B>https://amzn.to/3kJmNkB</B></a><br>（Amazonページ）</span><br><br>3巻の人気投票は今年9月頃に集計して公開予定です！<br>好きなキャラがいる方はぜひ応援の一票を！<br><br>なお、旅団世界のリプレイは毎年発売してましたが3巻でいったんお休みです。<br>しばらくはゲーム開発の方に集中させていただきますが、<br>ふとTRPGを遊びたくなったときにまた細かく動画など上がるかもしれません！<br><br><HR><br>ちなみにウディタ関連のご支援もいつでも受付中です！<br>すでにBOOSTまでしてくださった皆さま、本当にありがとうございます！<br>とても助けになっています！<br><br>→　<a class="double-link red" target="_blank" href="https://silversecond.booth.pm/items/4455722"><B><span style="font-size:large;">【ウディタご支援/投げ銭用<br>ミニ参考資料集ページ】</span></B></a><br><br><HR><br>それでは第15回ウディコン、今年もお楽しみください！<br>自分も楽しませていただきます！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2023-07-23 (日)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2023%2F07.html%232023-07-23&title=%E7%AC%AC15%E5%9B%9E%E3%82%A6%E3%83%87%E3%82%A3%E3%82%B3%E3%83%B3%E3%80%81%E4%B8%80%E8%88%AC%E5%AF%A9%E6%9F%BB%E9%96%8B%E5%A7%8B%E3%81%A7%E3%81%99%EF%BC%81" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2023%2F07.html%232023-07-23&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2023-07-23','第15回ウディコン、一般審査開始です！', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/woditor/001.html'>ウディタ</a></span></div></div><br><br><br>
+<a id='2023-07-08'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2023-07-08','片道勇者2開発+7　ランダムイベント作成 +Twitter事件', this)" style='cursor:pointer;'>2023-07-08 (土)&nbsp;&nbsp;&nbsp;片道勇者2開発+7　ランダムイベント作成 +Twitter事件</span><span style='float:right;'><a href='#bottom' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER>引き続き『片道勇者2』開発中です！<br>今週先週はTwitter周りでいろいろ事件が起きていたので、<br>その件についても言及しています。<br><br><B><span style="font-size: 80%">↓　Twitterの閲覧制限がかかると次のAPIが配給されるまで<br>ツイートが読めない！(現在はある程度改善されているらしい？)</span></B><br><img src="../../image/2023/20230708AA.jpg" border="1" width="400" loading="lazy" height="447"><br><br><hr size="1" /><br><span style="font-size:x-large;"><B>【片道勇者2　ランダムイベントを実装！】</B></span><br><br>今回はいろいろなランダムイベントを作成していました！<br>前作にあった分を再現するだけでも、作るために足りない機能が<br>いっぱいあってあわあわしていました。<br><br>『片道勇者2』では今のところ、ランダムイベントを<br>2系統用意することにしています。<br><br>1つは「ランダムで起きてその場で解決するもの」、<br>1つは「発生地点と解決地点が違い、無視することもできるもの」です。<br><br><br><br><span style="font-size:large;"><B> 【1.ランダムで起きてその場で解決するもの】</B></span><br><br>これらは、発生したらプレイヤーがその場で対応を迫られる<br>いつものランダムイベントです。<br><br><br><B>●仲間が出現 ！</B><br>すぐ近くに仲間になってくれるキャラが出現します！<br>仲間には、「癒し手ネムリ」などの立ち絵がある『英雄的仲間キャラ』と、<br>「荷運び馬」「傭兵」みたいな立ち絵のない『サブ的な仲間キャラ』の<br>2種類がいます。英雄的仲間の方は出現確率が低めです。<br><br><B>●近場にレアアイテムがドロップする！</B><br>いきなり近くにちょっとしたレアアイテムが落ちてきます。<br>運がよければ、地面には普通は落ちてない貴重なアイテムも降ってきます。<br>前作では「落ちているアイテムがしばらく増える」というイベントが<br>ありましたが、今作は質を高める方向での搭載にしてみています。<br><br><B>●女神によって「超元気」状態になる＆ST全快する！</B><br>これは前作にもありました。<br>STが回復し、一定ターンの間、攻撃力なども強化されます。<br><br><B>●キャラバンが現れる！</B><br>目の前に買い物ができるNPCが現れます。ちょっとうれしい。<br><br><B>●山賊が現れる！</B><br>「グヘヘ……」「女だぜ……」としゃべる<br>いつもの山賊の群れが現れて戦いになります。<br>前作もそうだったのですが、実は所持金が多いほど<br>山賊の出現数が増えます。<br><br><B>●魔物に囲まれる！</B><br>魔物がプレイヤーを囲むように出現します。<br>敵が近付いてくるまでちょっとだけ猶予があるので、<br>うまく工夫して戦うか、うまく逃げることが要求されます。<br><br><B>●闇の速度アップ！</B><br>強制スクロール速度が一時的にアップします。<br>速度アップの時間が終わると大きな経験値カードが手に入ります。<br><br><br><br><span style="font-size:large;"><B> 【2.ランダムで起きるが、『先の地点で』<br>解決するもの（無視もできる）】</B></span><br><br>こちらはさっきのケースよりは発生頻度が少ないものの、<br>1回に得られるものが大きいランダムイベントです。<br>無視することもできますが、条件を満たすことで<br>「英雄的仲間」や「貴重なアイテム」など良いものを得やすいのが特徴です。<br><br><br><B>●配給キャンプが遠くに出現！</B><br>「XXXkmで配給キャンプをX日まで開いています！」という手紙が届きます。<br>適度に急いで時間内にそこまで行けると、武器～消耗品の中で<br>好きな種類のアイテムを1つもらえたり、確実に買い物が出来たり、<br>そこそこの確率で英雄的仲間が登場したり（！）します。<br>手紙にはキャンプで登場する仲間キャラの名前も書いてあるので安心！<br><br>武器や食料、仲間が不足している場合は大きな救いになるでしょう。<br>もちろん、これらが必要なければ無視してゆっくり進んでもOK！<br><br><br><B>●襲われている街から手紙が！</B><br>「XXXkmにある街で襲われてます、X日目の終わりまでしか<br>耐えられそうにないです、助けて！」<br>と書かれた手紙を手に入れるところから始まるミッションです。<br><br>ゆっくり行っても構いませんが、その場合は着いても<br>「滅びた街」だけがあるという『シルフェイド幻想譚(時間制限付きRPG）』を<br>思い起こさせるイベントですね！<br>間に合えば現地で戦闘になり、群れを倒すと貴重品がもらえます。<br><br>ちなみに救援の手紙は、「癒し手ネムリ」などの英雄的仲間キャラが<br>出してくる場合があり、その場合は助けに行けばそのキャラが<br>良条件で仲間になってくれたり、仲間にしなくともキャラに応じた<br>貴重品がもらえる予定です。<br><br><br><B>●急な護衛ミッション！</B><br>色々あって急に「協力NPC（別のマスにいる仲間）」として<br>3人の子供が出現してついてくるので、一定距離先まで<br>護衛しなければならないミッションです。<br>難しいのでイベント発生率は最も低確率です。<br>1人以上生き残れば報酬がもらえます。<br><br><span style="font-size: 80%"><B>※3人の子供達がついてくる　↓</B></span><br><img src="../../image/2023/20230708A.jpg" border="1" loading="lazy" height="286"><br><br>ところでこういうイベントを作ったときにちょっと気になる問題が！<br><br>「ドット絵キャラでも、少年・少女と書かれている存在が<br>ダメージを受けたり死んだりする（断末魔っぽいのを言う）シーンを入れちゃうと、<br>CEROが上がったり海外の何かの規制に引っかかったりしないかな？」<br><br>という懸念が頭に浮かぶのでしょうが、こういうところどうなんでしょうね。<br>前作でも「少女ミラ」がやられたりしてるので大丈夫？<br>今回は敵にやられたときの心の痛みを増す意図で子供3人に設定したんですが、<br>もしまずそうなら代わりに弱そうな「おじさん」が3人仲間になります！<br><br>「おじさんならやられてもいいっていうのかよー差別だー！！」<br>と私の中の正義マンが叫んでいますが、海外展開するなら<br>子供キャラの扱いにはちょっと気をつけたほうがいいのかなという気はしています。<br><br><br><br><br><span style="font-size:large;"><B> 【3.ランダムイベントってどういう意図で入れている？】</B></span><br><br>さて、こちらは前述の2種のランダムイベントの搭載意図についてのメモです！<br><br><br><span style="font-size:medium;"><B> ＜前作分のランダムイベントの意図　『罠の代わりのリソース変動』＞</B></span><br><br>前作『片道勇者1』におけるランダムイベントは、<br>「不思議のダンジョン」シリーズの「罠」を入れない代わりに、<br>「罠」の搭載意図であろう「予想外のリソース変動を起こさせる」目的で<br>搭載されていました。<br><br>なぜ罠にしなかったかというと、「罠」の場合、<br>踏んだときのストレスが強かったり、罠を探知するプレイコストが<br>面白さに貢献しないパターンも結構あるからです。<br><br>それなら最初から回避不能なものとして用意すれば、<br>同じようなリソース変動効果をいくらか気持ちよく実現できるんじゃないか？<br>という意図で、代わりに「ランダムイベント」が搭載されたわけですね。<br><br><br><br><span style="font-size:medium;"><B> ＜『先の地点』ランダムイベントの意図　『欲しいものを狙ってもらう』＞</B></span><br><br>で、今回新たに入れることになった<br><br>「ランダムで起きるが『先の地点で』<br>特定条件を満たせば良い結果になるイベント」！<br><br>こちらは、手に入る報酬を先に明らかにしてプレイヤーの方に<br>「狙うぞー！」みたいな気持ちを発生させたい、<br>という意図で搭載されています。<br>「引力」でプレイヤーの人を動かしたい、とも言い換えられますね。<br><br>たとえば数百km先に特定の仲間がいると分かり、<br>急げば合流できるなら、割と自然に急いで進みたくなる状況が作れそうです。<br><a class="double-link blue" target="_blank" href="../../archive/2023/06.html#2023-06-24">前の記事</a>の追記部分でも言ってましたが、たまには<br>「急ぐことが最適解になる自然な状況」を作ってプレイの方針を変化させたい！<br><br>今作はこのような、『何かを狙って行動してもらう』要素を<br>もっとうまく取り入れていきたいなと考えています。<br><br><br><br><HR><br><span style="font-size:x-large;"><B>【やっと妖精クリスのドット絵が！】</B></span><br><br><img src="../../image/2023/20230708C.gif" border="1" loading="lazy" height="120">←<img src="../../image/2023/20230708B.jpg" border="1" width="280" loading="lazy" height="210"><br><br>ジャアアン！　アドバイザーである「妖精クリス」の<br>8方向ドット絵をようやく作れました！<br>これで万が一戦闘キャラとして参加するイベントがあっても安心！<br><br>ドット絵は上手じゃないなりに、サイズや動き感が<br>それっぽくなってればひとまずOK、くらいがとりあえずの目標です。<br>やっぱりうまくドット絵を描ける人はすごいと思います。<br><br>なおこれら以外のキャラチップに関しては、<br>ウディタ同梱の「グラフィック合成器」を大変便利に<br>活用させていただいております！<br>前作に引き続き、キャラチップ周りはうまいこと省力化して、<br>他の部分にエネルギーを注いで開発速度を早めたいと思います。<br><br><br><HR><br><span style="font-size:x-large;"><B>【6月末～7月始めにTwitterが大変に！】</B></span><br><br>ここからはサイト運営にもかかわるTwitterのお話です。<br><br>7月に入る直前あたりからTwitterが非ログイン状態だと読めなくなったり、<br>なんと閲覧回数に制限がかかったりして大騒ぎになっていました。<br>時系列としてはたぶんこんな感じだと思います。<br><br><B>◆6/30頃　非ログインだとTwitter見られなくなった！(今は1ツイートだけ読める)<br>◆7/1夜　閲覧制限が入って1日600～1000ツイートしか読めなくなった！<br>◆7/4　旧TweetDeck(便利な公式サービス)が使えなくなった！<br>またツイッターの「サイト埋め込み」も使えなくなり、<br>非ログイン状態で私のツイートを見る手段がほぼなくなる。</B><br><br>様々な理由によってSNSで閲覧制限しなければならないほどの状況とは<br>Twitter運営さんも大変すぎますが、私も無料であることに甘えて<br>かなり依存していたので、いろいろ対応が大変でした。<br><br>特にウディコンの「順位カウントダウン発表（10分で1位ずつ発表していく）」<br>などはTwitterがあってこそのアイデアでしたからね！<br>アカウントを持っていなくてカウントダウンを見られない人も多くなるでしょうし、<br>また閲覧制限がかかるとカウントダウン発表中の2時間にわたって<br>ツイートを追うのが困難になるかもしれません。<br>順位カウントダウン自体は楽しいイベントだと思うので、対策を今から検討中です。<br><br><HR><br>この期間中にTwitterで私が話した情報を、こちらにもまとめておきます！<br><br><HR><br><span style="font-size:large;"><B>◆ウディコンでのAI生成コンテンツの利用についての告知</B></span><br><br>ウディタ製フリーゲームの夏のお祭り『ウディコン』における<br>AI生成コンテンツの利用について「応募・審査・規約」ページに追加しました。<br>→◆<a data-primary="https://silversecond.com/WolfRPGEditor/Contest/txt.shtml" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/rule.html">https://silversecond.com/WolfRPGEditor/Contest/txt.shtml</a><br><br><B>第15回ウディコンではまだAI生成コンテンツの制限はありませんが、<br>2024年の第16回以降、AI生成物の利用に関して制限を設ける可能性があります！</B><br>というお知らせです。<br><br>特に問題なのが「AI画像生成」で、日本の法律では現状問題ないっぽいとしても<br>権利関係が良くないのではないか、と言われることが多いため、<br>「適切な権利がある素材」で学習されたモデルやサービス以外は<br>【来年から】利用禁止にする可能性が出てきています。<br><br><span style="font-size: 80%"><span style="color: #42a5f5">（この制限が入った場合、『Adobe Firefly』や、「CC0や許諾あり画像のみで学習された権利的に安全なモデル」を<br>使うのはOKですが、Stable Diffusionの基本モデル含むほぼ全てのモデル、<br>NovelAI、Midjourney系その他のAI画像生成はほぼアウトになります）</span></span><br><br><br>とはいえ、現在は急激に「権利的にクリーンなAIモデル」の需要が高まっているので、<br>これからの1年でその分野も強化されそうな気がしています。<br>そうやって権利的に安全な状況ができて、<br>ようやくAI画像生成の本格的なスタート！　という感じになりそうですね。<br><br>とはいえ、クリエイター関連サイトだと<br>「低品質な作品が増えすぎることが問題なのでAIを排除したい」<br>という気持ちも3～5割くらいありそうな気がするので、<br>そういうところでは引き続きAIは使いにくいままかもしれません。<br><br>たとえばSteamさんの場合、生成AIの学習元が<br>権利的に怪しいのもありますが、AI画像を使った<br>低クオリティゲーム（簡単なパズルやノベルなど）が<br>大量に来ていたらしいという話もユーザからちょっと話題になっていました。<br><br>ウディコンでもそういった傾向が過剰になった場合は、<br>厳しい制約を設けるかもしれません。<br>たとえば普段は60～80作品なのに、250作品中200作品のAI作品が<br>来るようになったとかだとさすがに考えます。<br><br><HR><br><span style="font-size:large;"><B>◆ログインしなくても見られる他SNSでアカウント取りました</B></span><br><br>さて、こちらはTwitterが見られない場合の避難先SNSの情報です！<br>万が一のためにmisskey.ioにもアカウントを取ってありますので、<br>Twitterが見られない場合はこちらもどうぞ！<br><br><B>◆Misskeyにアカウントを作ってあります！</B><br>→　<a class="double-link red" target="_blank" href="https://misskey.io/@WO_LF"><B>Misskey内 アカウント  https://misskey.io/@WO_LF</B></a><br><br>Misskeyの内容はログインしていなくても見られますので、<br>「Twitter持ってないけどSmokingWOLFのつぶやきは見たい」<br>という場合もこちらをどうぞ。<br>Twitterが非ログインで見られないこの状況下では、<br>だいたいTwitterと似た感じのことを投稿しておこうと思います。<br><br>あと私はまだ仕組みを熟知できていませんが、<br>もしmisskey.io以外の分散型サーバにアカウントをお持ちでしたら、<br>「<B>@WO_LF@misskey.io</B>」と入れてユーザ検索すれば<br>別サーバからでもフォローが可能？　らしいという話を聞いています。<br><br><br>また、先日Meta社から<B><a class="double-link red" target="_blank" href="https://www.threads.net/@smokingwolfx">Threads（スレッズ･SmokingWOLFアカウントへ）</a></B>というサービスが<br>始まったので、企業公式さんなどが多用する感じであれば<br>そちらに告知用の拠点を作る可能性もあるかもしれません。<br><br>とはいえ、Threadsは今のところWeb版がないスマホ専用のサービスなので、<br>告知を入れるにしてもまだ少し作業コストが高そうです。今は様子見中です。<br><br><HR><br>それから、7/16（日）からは<B><a data-primary="https://www.silversecond.com/WolfRPGEditor/Contest/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size:x-large;">第15回ウディコン</span></a></B>も始まります！<br><br>たいていはデータ破損回避のため前日(7/15)の夜からこっそり作品受付開始しています。<br>今年も素敵なゲームをお待ちしております！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2023-07-08 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2023%2F07.html%232023-07-08&title=%E7%89%87%E9%81%93%E5%8B%87%E8%80%852%E9%96%8B%E7%99%BA%2B7%E3%80%80%E3%83%A9%E3%83%B3%E3%83%80%E3%83%A0%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E4%BD%9C%E6%88%90%20%2BTwitter%E4%BA%8B%E4%BB%B6" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2023%2F07.html%232023-07-08&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2023-07-08','片道勇者2開発+7　ランダムイベント作成 +Twitter事件', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/owh2dev/001.html'>片道勇者2</a></span></div></div>
+<div class='article_pos'>2023年07月</div>
+<div class='nav'><a href='08.html'>次の月へ</a> | <a href='06.html'>前の月へ</a></div>
+<a id='bottom'></a>
+
+<BR><BR>
+<div align="right"><a href="#top" class="g">▲一番上へ戻る</a></div>
+<BR>
+<CENTER>
+<HR>
+<div>
+<div id="silsec-status" style="display:inline-block;line-height:12px;font-size:10px;"></div>　<div align="center" style="display:inline-block;line-height:12px;font-size:10px;"><a href="https://smokingwolf.github.io/" target="_blank" class="blue" border="1"><img src="https://smokingwolf.github.io/banner.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>アーカイブサイトへ</a></div>
+</div>
+<HR>
+Copyright © SmokingWOLF / Silver Second
+<HR>
+</CENTER>
+
+
+<script>
+  // シルバーセカンド公式のドメインに接続し、サイト存在確認用のTXT(SILVERSECOND_ALIVE!と書かれている)があれば存在する扱いにする
+  const statusDiv = document.getElementById('silsec-status');
+  const checkUrl = 'https://silversecond.net/SILVERSECOND_SITE_ALIVE_FLAG.txt';
+
+  fetch(checkUrl, { cache: 'no-store' })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('ネットワークエラー');
+      }
+      return response.text();
+    })
+    .then(text => {
+      if (text.trim() === 'SILVERSECOND_ALIVE!') {
+        statusDiv.innerHTML = '<a href="https://silversecond.net/" target="_blank" class="blue"><B><img src="https://silversecond.net/banner/a.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>運営中のサイトへ</a>　';
+      } else {
+        statusDiv.textContent = '　';
+      }
+    })
+    .catch(error => {
+      statusDiv.textContent = '　';
+      console.error('シルバーセカンド公式サイトチェック失敗:', error);
+    });
+</script>
+
+
+
+
+</div>
+<div id='sidebar'>
+<div style='font-weight:bold;'>開発日誌</div>
+<div><a class='sidebar_link' href='../../archive/top/index.html'>日誌トップへ</a></div>
+<div><B><a class='sidebar_link' href='../../index.html'>全記事一覧</a></B></div>
+<hr>
+<div style='font-weight:bold;'>【最新記事】</div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/08.html#2025-08-09'>●08/09 『シルバーセカンド思い出の部屋』を開設！＋ 来年よりウディコン規約追加</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-26'>●07/26 第17回ウディコン審査期間開始！ ＆ 規約の補足</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-12'>●07/12 ウディコン直前！ サイト＆ウディタ修正＋シェパード捜査録！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-28'>●06/28 ウディコン準備中！+ 開発日誌も移転作業中</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-14'>●06/14 サイト修正＋開発日誌をFC2から移転！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-31'>●05/31 ウディコン歴史資料館設立！+ ウディタ修正 + GitHubのサイト作り</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-17'>●05/17 ウディタ3.6へ！バグ修正再び！ + 私がいなくなった後に備えて</a></div>
+<hr>
+<div style='font-weight:bold;'>【カテゴリ】</div>
+<div><a class='sidebar_link' href='../../category/woditor/001.html'>ウディタ&nbsp;<span class='sym'>(55)</span></a></div>
+<div><a class='sidebar_link' href='../../category/owh2dev/001.html'>片道勇者2&nbsp;<span class='sym'>(16)</span></a></div>
+<div><a class='sidebar_link' href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(15)</span></a></div>
+<div><a class='sidebar_link' href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(10)</span></a></div>
+<div><a class='sidebar_link' href='../../category/trpg/001.html'>TRPG&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(2)</span></a></div>
+<hr>
+<div style='font-weight:bold;'>【月別】</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2025-btn' onclick="toggleYear('y2025')">2025&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2025' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2025/08.html'>08月&nbsp;<span class='sym'>(1)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2024-btn' onclick="toggleYear('y2024')">2024&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2024' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2024/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/01.html'>01月&nbsp;<span class='sym'>(2)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2023-btn' onclick="toggleYear('y2023')">2023&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2023' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2023/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/09.html'>09月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2022-btn' onclick="toggleYear('y2022')">2022&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2022' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2022/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('a.double-link');
+
+  links.forEach(link => {
+    const primaryUrl = link.dataset.primary;
+    if (!primaryUrl) return;
+
+    const testUrl = primaryUrl + '?t=' + Date.now(); // キャッシュ無効化！
+
+    fetch(testUrl, { method: 'GET', cache: 'no-store' })
+      .then(res => {
+        const url = res.url || '';
+        if (!res.ok || url.includes('404.html') || res.status === 404) {
+          console.warn('【404または失敗】そのままアーカイブを使います:', link.href);
+          // そのまま
+        } else {
+          console.warn('【OK】hrefを本家に書き換えます:', primaryUrl);
+          link.href = primaryUrl;
+        }
+      })
+      .catch(() => {
+        console.warn('【通信エラー】そのままアーカイブを使います:', link.href);
+        // エラー時もhrefはそのまま
+      });
+  });
+});
+</script>
+
+
+
+</body>
+</html>

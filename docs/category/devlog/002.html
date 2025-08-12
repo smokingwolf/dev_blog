@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>シルバーセカンド開発日誌 / SmokingWOLF</title>
+<meta name="viewport" content="width=700">
+<script src="../../js/smoothscroll_up.js" type="text/javascript"></script> 
+
+<link rel="stylesheet" href="../../js/litebox/css/lightbox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../../js/litebox/js/prototype.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/moo.fx.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/litebox-1.0.js"></script>
+
+<style>
+html {
+  /* スマホ時は1.2倍フォントで表示 */
+  -webkit-text-size-adjust: 120%;
+  -ms-text-size-adjust: 120%;
+}
+
+BODY{
+  /*display:flex;*/
+  font-size:13px;
+  margin:0;
+  font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+  color:#558;
+}
+
+TD{
+  font-size:12px;
+}
+
+
+A:LINK,A:VISITED {  color:#5658f6;  text-decoration:underline ;}
+A:HOVER,A:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.red:LINK,A.red:VISITED{color:#d6385c;display: inline-block;text-shadow: 0 0 15px #ffddcc, 0 0 15px #ffddaa;}
+A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shadow: 0 0 15px #ffcccc, 0 0 15px #ffaaaa;}
+
+A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
+A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.g:LINK,A.g:VISITED{
+	color:#38a68c;
+	text-decoration:underline;
+}
+
+A.g:HOVER,A.g:ACTIVE{
+	color : #68b6ac;
+	text-decoration : underline;
+}
+
+
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38c6ac;
+}
+
+A.jumplink:HOVER,A.jumplink:ACTIVE{
+	color : #68f6ac;
+}
+
+A.jumplink{
+	text-shadow: 0 0 15px #ccddcc, 0 0 15px #aaddaa;
+	text-decoration : none;
+}
+
+
+.article_pos{
+	font-size:16px;
+	color:#aaf; 
+	font-weight:bold;
+	text-align:center;
+	margin:0px;
+	padding:0px;
+}
+
+#content {
+	font-size:14px;
+	
+}
+
+#sidebar {
+	background:#f8f8f8; 
+	border-left:1px solid #ddd; 
+	padding:4px 6px;
+	font-size:12px;
+}
+
+A.sidebar_link:LINK,A.sidebar_link:VISITED,
+A.sidebar_link_recent:LINK,A.sidebar_link_recent:VISITED{
+    color:#5658f6;
+	text-decoration: underline;
+}
+A.sidebar_link:HOVER,A.sidebar_link:ACTIVE,
+A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
+	color: #9698e6;
+	text-decoration: underline;
+}
+
+.sidebar_link{
+	font-size:13px;
+}
+
+.sidebar_link_recent{ /* 1つ1つの項目ごとに隙間を空ける */
+	font-size:11px;
+	line-height: 1.2;
+	display: inline-block;
+	margin-top:5px;
+}
+
+
+.entry {
+	border:1px solid #ccc; 
+	border-radius:8px; 
+	margin:14px 0; 
+	overflow:hidden;
+
+}
+.entry-title {
+	background:linear-gradient(to right,#4243ff,#aaaacf);
+
+	font-size:17px;
+	color:#fff; 
+	padding:4px; 
+	font-weight:bold;
+	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
+}
+
+.entry-body,.extended {
+	background:#fff; 
+	color:#444; 
+	padding:15px;
+	font-size:14px;
+	line-height:1.6em;
+}
+
+.entry-foot {
+	background:#fff; 
+	text-align:center;
+	vertical-align:middle;
+	color:#ccf;
+	font-size:12px;
+	padding-top:20px;
+	padding-right:20px;
+	padding-bottom:10px;
+}
+
+.linkbutton{
+	padding:3px;
+}
+
+/*--●形状整理用--*/
+body {display:flex; margin:0;}
+#content {width:580px; padding:0 8px;
+	font-size:14px;}
+#sidebar {width:120px;  box-sizing:border-box; }
+#sidebar div {line-height:1.6;}
+#sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
+.nav {margin:0px 0 -20px 0; text-align:center;}
+.sym {color:#999; font-weight:normal;}
+
+</style>
+
+
+<script>
+function toggle(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+function toggleDisp(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+</script>
+
+
+
+<!--★目次デザイン・処理★-->
+<style>
+.toc-box{background-color:#f0f0f0;border-radius:8px;padding:10px;} 
+.toc-list{list-style:none;margin:0;padding-left:0;} 
+.toc-list ul{list-style:none;margin:0;padding-left:20px;}
+.toc-list li{margin:5px 0;}
+.toc-level1{margin-left:0;}
+.toc-level2{margin-left:20px;}
+
+h1 {
+  background: #fff;
+  padding: 6px 10px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #2233cc; /* 青系 */
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 4px solid #3366ff;
+  display: block;
+  width:100%;
+  
+}
+
+
+h2,h3 {
+  background: #fff;
+  padding: 6px 10px;
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #5566ff; /* 青系 */
+  
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 2px solid #9999ff;
+  display: -block;
+
+}
+
+h2::before {
+  content: "- ";
+}
+
+.master_years{
+  margin-left:20px;
+  margin-right:20px;
+}
+
+.top_minicategory{
+  font-size:10px;
+  color:#ccccff;
+}
+</style>
+
+
+
+</head>
+<body onload="initLightbox();">
+<a id="top"></a>
+
+<style type='text/css'>
+.linkbutton{
+  font-size: 0.9em;
+  padding: 1px 6px;
+  vertical-align: baseline;
+  line-height: 1;
+  height: auto;
+  margin-left: 4px;
+  color:#66f;
+  background-color:#f9f9f9;
+  border: 1px solid #888;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.copy-popup{
+  background-color: #eef;
+  border: 1px solid #88c;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  color: #333;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.5s ease;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  max-width: 80vw;             /* 画面幅の 80% で折り返す */
+  overflow-wrap: anywhere;     /* 長い URL を途中で区切る */
+  word-break: break-all;       /* ↑が効かない旧ブラウザ保険 */
+  white-space: pre-wrap;       /* 
+ を改行として扱い、余計な連続空白は1個に */
+}
+.article_end_date{
+  font-size:0.9em;
+}
+</style>
+
+
+<script>
+function toggle(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+}
+
+// Year accordion with sessionStorage persistence
+function toggleYear(id){
+  const pane = document.getElementById(id);
+  const btn  = document.getElementById(id+'-btn');
+  if(!pane||!btn) return;
+  const sym  = btn.querySelector('.sym');
+  const isClosed = pane.style.display === 'none';
+  pane.style.display = isClosed ? 'block' : 'none';
+  sym.textContent   = isClosed ? '－' : '＋';
+  sessionStorage.setItem('year-'+id, isClosed ? 'open' : 'closed');
+}
+
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('[data-yearpane]').forEach(pane=>{
+    const id    = pane.id;
+    const state = sessionStorage.getItem('year-'+id);
+    const btn   = document.getElementById(id+'-btn');
+    const sym   = btn?.querySelector('.sym');
+    if(state === 'open'){
+      pane.style.display = 'block';
+      if(sym) sym.textContent = '－';
+    }else{
+      pane.style.display = 'none';
+      if(sym) sym.textContent = '＋';
+    }
+  });
+});
+
+function copyLink(date, title, el){
+  const url = `https://smokingwolf.github.io/dev_blog/archive/${date.slice(0,4)}/${date.slice(5,7)}.html#${date}`;
+  const text = `
+【${date}　${title}】
+ ${url}`;
+  navigator.clipboard.writeText(text).then(()=>{
+    if(el && el.tagName === 'BUTTON'){
+      const orig = el.textContent;
+      el.textContent = '✅ コピー完了!';
+      setTimeout(()=>{ el.textContent = '🔗 リンクをコピー'; }, 2000);
+    }
+
+    const popup = document.createElement('div');
+    popup.className = 'copy-popup';
+    popup.textContent = `✅ コピー完了：${text}`;
+    document.body.appendChild(popup);
+
+    const rect = el.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    const popupWidth = popup.offsetWidth;
+    const pageWidth = document.documentElement.clientWidth;
+
+    let left = rect.left + scrollLeft + (rect.width / 2) - (popupWidth / 2);
+    let top  = rect.top  + scrollTop - popup.offsetHeight - 8;
+    if(left < scrollLeft + 4) left = scrollLeft + 4;
+    if(left + popupWidth > scrollLeft + pageWidth - 4)
+        left = scrollLeft + pageWidth - popupWidth - 4;
+
+    popup.style.left = `${left}px`;
+    popup.style.top  = `${top}px`;
+    popup.style.opacity = '1';
+    popup.style.zIndex = '9999';
+
+    setTimeout(()=>{ popup.style.opacity = '0'; }, 1800);
+    setTimeout(()=>{ popup.remove(); }, 2500);
+  });
+}
+</script>
+
+<div id='content'>
+<style>
+
+.TopTitle{
+  width:515px;
+  font-weight:bold;
+  font-size:16pt;
+  color: #ffffff;
+  background-color:#535365 ;
+  border-width: 0px;
+  border-color:#535365;
+  border-style:solid;
+  background: -moz-linear-gradient(left top, #42435f, #fafaff);
+  background: -webkit-gradient(linear, left top, right bottom, from(#42435f), to(#fafaff));
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#DD42425f', endColorstr='#FFfafaff');
+  
+  text-align:left;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.header3{
+	color:#555588;
+	margin-bottom:16px;
+}
+
+.home-link {
+  font-size: 12px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: underline;
+}
+</style>
+
+<!--戻るリンク、サイトがなくなってたらアーカイブにつながるようにしたが404ページがアレなのかうまくいかない-->
+<!--
+<font id="home-link-placeholder">
+  <noscript>
+    <a href="https://smokingwolf.github.io/" class="home-link">← ホーム(アーカイブサイト)に戻る</a>
+  </noscript>
+</font>
+
+<script>
+(async () => {
+  try {
+    // HEADで軽くチェック（no-corsなのでステータス確認は不可）
+    // 自分のサイトのインフォメーションページにつなげるならサイトがまだあると認識する
+    await fetch("https://silversecond.net/contents/etc/info.shtml", { method: "HEAD", mode: "no-cors" });
+
+    const link = document.createElement("a");
+    link.href = "https://silversecond.net/";
+    link.textContent = "← ホームに戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  } catch {
+    const link = document.createElement("a");
+    link.href = "https://smokingwolf.github.io/";
+    link.textContent = "← ホーム(アーカイブサイト)に戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  }
+})();
+</script>
+-->
+
+<div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
+<!--ここにコメント文-->
+<div class="header3" style="margin-top:6px;">　ここはゲーム開発者SmokingWOLF(スモーキングウルフ)の開発日誌です。<BR>
+　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
+　<B style="color:#ff5555;">※以前のブログが使えなくなったので、ただいまこの開発日誌に移転中です。</B>
+</div>
+
+<div class='article_pos'>開発日誌　2/2</div>
+<div class='nav'><a href='001.html'>次のページ</a> | <span style='color:#ccc'>前のページ</span></div>
+<a id='2022-12-24'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2022-12-24','シルバーセカンド24周年！', this)" style='cursor:pointer;'>2022-12-24 (土)&nbsp;&nbsp;&nbsp;シルバーセカンド24周年！</span><span style='float:right;'><a href='#2022-09-17' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【シルバーセカンド『24』周年！】</strong></span><br><br>ということで、本サイト「シルバーセカンド」は<br>2022年12月24日をもって24周年をむかえました！<br><br>ここまで長いこと続けられたのも皆さまのお声と手に支えられたおかげです！<br>いつも本当にありがとうございます！<br><br><img src="../../image/2022/20221224.jpg" border="1" width="550" loading="lazy" height="550"><br><strong><span style="font-size:x-small;">今回はサンタ風ウルファール（←）と、旅団世界リプレイより天使っ子＆パピオリア氏（→）！</span></strong><br><br><hr size="1" /><br><strong><span style="font-size:large;">【2022年の成果】</span></strong><br><br>2022年の成果は以下の通り！<br><br><br><span style="font-size:large;"><strong>●ウディタ大規模修正　＆　プロ版発売！</strong></span><br><br><img src="../../image/2022/20221122top.jpg" width="350" loading="lazy" height="130"><br><br>構想が固まった今年の6月から、ウディタの修正をガッツリ始めていました！<br><br>「いやこれ全部いじるとか無理でしょ！」と思ってたUnicode周りの修正が<br>なんだかんだでうまくいったり、マップ編集周りのオーバーホールができたり、<br>挑戦してみてよかったと思える大規模修正でした。<br><br>といっても、Unicode周りに関してはこれまでの処理と併存させながら<br>うまく動かすための仕様をずっと構想してきたおかげもあると思います。<br>全部うまく動かしながら最小の修正でやる方法を練るのに<br>ずっと何年もかけてモヤモヤ考えてたんですよ！<br><br>それも含めてどこかで1回はやらねばならないことだらけでしたし、<br>今後の自分の開発や世界展開の効率もアップしますから、<br>このタイミングでまとめて修正がやれたのは本当によかったです！<br><br><br><br><span style="font-size:large;"><strong>●旅団世界TRPGリプレイ3巻発売！</strong></span><br><br><img src="../../image/2022/20220806.jpg" width="250" loading="lazy" height="356"> <img src="../../image/2022/20220806A.jpg" width="250" loading="lazy" height="250"><br>今年の8月に<a class="double-link red" target="_blank" href="https://www.amazon.co.jp/gp/product/B0B7P8MM2B?storeType=ebooks&amp;linkCode=li3&amp;tag=sitesw-22&amp;linkId=19f1d910822714b4b0db9c1f786ec504&amp;language=ja_JP&amp;ref_=as_li_ss_il"><strong>旅団世界TRPGリプレイ3巻『夏の旅団と神秘のカード』</strong></a>が発売されました！<br><br>おかげさまで初期目標だった3巻を達成できたので<br>ここからは不定期でやっていく予定です。<br>前日譚リプレイ動画もありますので、どんなことをやってるのかが<br>気になる方は、よければぜひごらんください。<br><iframe width="460" height="225" src="https://www.youtube.com/embed/vHI5hz1L15s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br><br><br><br><br><span style="font-size:large;"><strong>●シルフェイド幻想譚がスマホでプレイ可能に！</strong></span><br><img src="../../image/2022/20220212E.jpg" border="1" width="350" loading="lazy" height="264"><br>記事→ <a class="double-link blue" target="_blank" href="../../archive/2022/02.html#2022-02-12"><strong>2022年2月12日の開発日誌</strong></a><br><br>『シルフェイド幻想譚』がゲームアツマールさんにて、<br>なんと【スマートフォンで】遊べるようになりました！<br>ゲームアツマールではRPGツクール2000のShiftキーが使えなくなるので<br>作業としてはそれを修正するのが主でした。<br><br>実際にはブラウザゲームとして動作するのですが、<br>私のAndroidスマートフォン（Pixel4）ではなめらかに動作して<br>なかなかいい感じでした。<br>とはいえ、移動方向が完全な十字方向なので<br>キーボードやパッドで遊ぶ方が遊びやすいのは確かです。<br>スマートフォンのRPGの操作性について考えさせられます。<br><br>そしてなんと超最近、12月20日に悲しいお知らせが！<br>『ゲームアツマール』さんが2023年の6月28日に<br>サービス終了してしまうです。そんなー！<br><br>といっても収益化が明らかに難しそうで、<br>ビジネス的に大変そうだったのも分かります。<br>スマートフォンでひととき遊べるようになっただけでも<br>幸せな夢が見られたので、非常にありがたかったです。<br><br><br><br><span style="font-size:large;"><strong>●画像生成AIが出たので色々検証してみた！</strong></span><br><br>今年の8月に突如一般化した画像生成AI！<br>私も最初のStable Diffusionでイーリスのファンアートを<br>作ってみる動画とか作っていましたが、それからたった数ヶ月で、<br>もうそんなレベルを通り越して最初から<br>高品質の絵が出せる時代になってしまいました。すごい。<br><br><span style="font-size:x-small;"><strong>【イーリスのファンアートを作る動画】</strong></span><br><iframe width="500" height="285" src="https://www.youtube.com/embed/gYwH5s8yrAY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br><br>ついには私が想定するより何十倍も速いペースで<br>「画風の再現」までできるようになってしまったので、<br>使える人はもううまく取り入れて効率化されている感じもします。<br><br>私のゲーム用の立ち絵などには（フォーマットが厳しいので）今すぐは<br>使えなさそうですが、最初から使う前提でお膳立てすれば<br>AIで自分画風のを出してキャラクター量産などもできるかもしれません。<br>生きている間に作れるものが増える可能性が広がったので、夢がふくらみます。<br><br><font color="#88a">（2025年追記：ただこの記事の時点では大きな問題になっていませんでしたが、<br>　生成AIの性能の進歩に伴い、このあと「学習に使用された画像の権利」が<br>　問題視されるようになっていき、2023年以降では創作物に<br>　画像生成AIを使用するのは避けた方がよい状況となっています）</font><br><br><br><hr size="1" /><br><span style="font-size:large;"><strong>【今年の振り返りと来年の目標】</strong></span><br><br>今年は去年の不調っぷりに比べれば比較的体調よく過ごせた1年でした。<br>それでもしんどい時間が数年前よりは増えているかもしれないので、<br>今後も注意深く生活していきたいですね。<br><br>そしてAI周りで面白いものがどんどん出てきたので、<br>自分の能力拡張に使えるよう今後うまく取り入れていきたいとも感じた1年でした。<br><br>自然言語AIのChatGPTなどを使ってみた感じ、プログラムについて質問したり<br>アイデアを広げるのにすごい便利だったりするので<br>使いこなせると大きな助けになりそうです。<br>スマートウォッチやスマホに内蔵される会話AIなども近いうちに出そう！<br>うまくAIと会話する技術もきっと身につけていった方がよさそうです。<br>上手かつ正確に質問するのも、やはり高い技術が必要になるんですよね。<br><br>そしてまた、半年以上ウディタ修正に費やしていたので<br>今は頭が完全にプログラミング脳になっていますが、<br>来年はゲーム開発脳に切り替えて『片道勇者2』開発も<br>バリバリやっていきたいと思います！<br>Unicode対応で海外展開の土台はできたのでそれも狙っていきたいですね！<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【最後に】</strong></span><br><br>2022年も本当にたくさんの人にお世話になりました！<br>いつも色んな人の助けをいただいていますが、今年は特に、<br>ウディタの修正やバグ検証にご協力くださった皆さまや、<br>ご支援くださったみなさまには本当に大きなお力をいただいました。<br><br>みなさまのおかげで、自分は今もゲーム開発を続けることができています。<br>来年も引き続き、できる範囲で全力で各種開発を続けていきたいと思います。<br><br>次回の開発日誌は2023年1月1日の元旦に更新予定です！<br>それでは皆さま、お体にはくれぐれも気をつけて、どうかよいお年を！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2022-12-24 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F12.html%232022-12-24&title=%E3%82%B7%E3%83%AB%E3%83%90%E3%83%BC%E3%82%BB%E3%82%AB%E3%83%B3%E3%83%8924%E5%91%A8%E5%B9%B4%EF%BC%81" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F12.html%232022-12-24&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2022-12-24','シルバーセカンド24周年！', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/devlog/001.html'>開発日誌</a></span></div></div><br><br><br>
+<a id='2022-09-17'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2022-09-17','画像生成AIをゲーム開発に活かしたい！', this)" style='cursor:pointer;'>2022-09-17 (土)&nbsp;&nbsp;&nbsp;画像生成AIをゲーム開発に活かしたい！</span><span style='float:right;'><a href='#2022-04-01' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【画像生成AIをゲーム開発に活かしたい！】</strong></span><br><br>今回の開発日誌は最近流行している「画像生成AI」について！<br>私も【Mid Journey】という画像生成AIのお安いサブスクコースに入ってみたり、<br>開発しながら【Stable Diffusion】という画像生成AIを回しまくっていました。<br><br>で、その中で私の仕事における実用面もはかっていたので、今回は<br><br><span style="color:#CC0000"><span style="font-size:large;"><strong>「ゲーム開発」の各素材作りにおいて<br>画像生成AIがどのくらい使えそうだったか</strong></span></span><br><br>という所見をおおざっぱにまとめておきたいと思います！<br><br>ただし私は画像生成AIで各素材を作る上でのガチ勢ではないので、<br>「初心者がちょっと触れたときにどう思うか」<br>くらいの内容だと思ってください。<br>私が無理だと言っても、プロなら実現できるかもしれません。<br><br><br>なお、今回の件とは別に、妖精イーリスのファンアートをAI画像生成を使って<br>1枚作るまでの動画をアップしましたのでよければそちらもご覧ください。<br>実写からだんだん理想に近付いていくイーリス絵にご注目！<br><br><strong><span style="font-size:x-small;">【Stable Diffusion】AI画像生成を使って妖精イーリスのファンアートを作る！【片道勇者】</span></strong><br><iframe width="520" height="300" src="https://www.youtube-nocookie.com/embed/gYwH5s8yrAY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br><br><br><hr size="1" /><br><span style="font-size:x-large;"><strong>【総合】</strong></span><br><br>最初に、ゲーム開発に使うにあたって<br>「現時点の」画像生成AI全般に言えそうなことを列挙します。<br><br><br><strong>◆画像生成AIはキーワード（プロンプト）を入力して作りたいものを指示する</strong><br>→　このキーワードの指示方法が画像生成AIのうまさの70～80％を占めると思います。<br>　（あとの20～30％は後述する画像入力）<br><br><br><strong>◎何でもいいので「とにかくそれっぽいもの」が欲しいときはとても有用</strong><br>→　当然ながら、こだわりがなければないほどAIが出したものにOKを出しやすいです。<br>→　「すでに頭の中にあるイメージ」に合わせる場合はその分だけ苦労が発生します。<br><br><br><strong>◎「画風や雰囲気」を統一させないつもりなら、なお使いやすい</strong><br>→　ただ、全ての画像の画風が違うところまで行くと、もうネタゲーになると思います。<br><br><br><strong>▲同じ人物・物体を「同じデザイン・画風のまま別の形で出す」のは非常に困難。<br>▲つまり「アニメーションするキャラチップや表情差分」を作ることは難しい。</strong><br>→　1枚1枚がほぼ一期一会なので、「差分」や「アニメーション」が欲しい場合、期待通りの<br>パターンをAIで作るのは非常に低確率になるか、非常にうまい指示が必要です。<br>→　「無地のTシャツ」しか着てないキャラなどは再現しやすいです。<br>→　自力で描き加えて表情差分などを作る前提ならだいぶ生成画像の許容度が上がります。<br><br><br><strong>●出力画像に対してトレースや加筆・修正しても怒られない</strong><br>→　お絵かき能力がある人には単純に「品質の高いラフ画」「下書き」として使えます。<br><br><br><strong>◆「AIへの『入力画像』としてラフ画を入れる」方法で、作りたいものの<br>「構図」や「ポーズ」「カラー」をある程度指示できる。</strong><br>→　AIへの入力として「画像」が指定できる機能（Stable Diffusionなら「img2img」機能）が<br>あるならば、「キーワード」に加えて「ラフ画」などを入力として指定することで<br>出力画像の方向性を指示できます。<br>この記事内ではこの形で画像入力機能を使うことを以後、「ラフ画入力」と呼ぶことにします。<br>↓<br><strong><span style="font-size:x-small;">【見本】ものすごいザツなラフから、座っている緑ポニーテール妖精をAIに作ってもらったケース</span></strong><br><img src="../../image/2022/20220917.jpg" border="1" loading="lazy" height="321"><br>画像生成時の設定にもよりますが、元絵の方向性にかなり近いものが出せます。<br>ポーズや色を指示したい場合に特に有用！<br><br><hr size="1" /><br><span style="font-size:x-large;"><strong>【AI画像生成による、各素材作りの有用度】</strong></span><br><br>ここからは、<span style="color:#CC0000"><span style="font-size:large;"><strong>「キャラクター顔画像」「モンスター画像」「背景画像」<br>「雰囲気画像」「キャラを含む1枚絵」「ドット絵」</strong></span></span>に対して、<br>それぞれ主観でAI画像生成の有用度を述べていきます。<br><br>出力している画像は全て「Stable Diffusion」で作ったものです。<br>他のAIだと同じキーワードでももっと高品質で出せることもあるので、<br>AIごとの得意分野を見極める必要もありそうです。<br><br><hr size="1" /><br><strong><span style="font-size:large;">【キャラクター顔画像】<br>有用度　★★★☆☆</span>　要工夫、修正力があれば有利</strong><br><br><span style="color:#CC0000">◎画風を統一させるつもりがないネタゲーなら無思考に使える<br><br>▲希望するデザインで作るのはちょっと大変<br><br>▲他に作った顔と画風を一致させる場合は、入力文の工夫や試行回数が必要か<br><br>×人間の手はなかなかうまく描けない（技術の進歩で解消される可能性大）<br><br>×「服装差分」「表情差分」が欲しい場合、画像生成AIで作るのは地獄<br><br>◆「ラフ画入力」するとポーズや顔、カラーを期待通りに出しやすい</span><br><br><strong><span style="font-size:x-small;">＜顔絵を以下の入力で4回出力してみたケース＞<br>金髪の女性騎士、顔のアップ、かわいいアニメ風、銀の鎧、pixiv風<br>blond haired lady knight  , face angle,  cute anime style , silver armor, pixiv style</span></strong><br><img src="../../image/2022/20220917B.jpg" border="1" loading="lazy" height="463"><br><br>顔絵は「1キャラ1枚だけしか立ち絵がない」「こだわりが少ない」条件ならば、<br>AIで生成した画像だけでもけっこう使えそうな印象です。<br><br>ただ、おそらく「画風を一致させる」のに結構な運や指示技術や試行回数がいるので、<br>「色んなキャラの顔画像を作る場合」は、出てきた画像を修正できる技術がないと<br>雰囲気を統一させるのに苦労するかもしれません。<br><br>また、生成キーワードに「表情（例：笑顔[smile]）」を足しただけで<br>「髪型」や「服装」まで変わったりするので<br>表情差分をAIだけで作るのは試行回数的に地獄を見そうです。<br>一部のAIに搭載されているインペインティング（部分描き直し）機能などを<br>駆使すればうまく行くのかもしれませんが、それは試していません。<br><br>お絵かきできる人なら、「顔を自分で描き直す」などで<br>自分の画風っぽくしたり、新たに表情差分を作ったりできるため、<br>素材の統一感を出しやすくバリエーションも増やしやすいと思います。<br>結局、お絵かきできる人の方がAI使用前提でも作れるものの自由度が高い！<br><br>また、「AIは『人間の手』がうまく描けない」ことが多いので、<br>もし「手」が含まれる立ち絵なら、手も自身で描いてあげられると強そうです。<br>といっても、イラスト描く人にとっても一番難しい気がするんですけどね、手！<br><br><strong>＜表情差分はいける？＞</strong><br>なお「表情差分」に関してだけは、1枚の顔イラストを変形させて<br>表情を変えた差分を作れるAIも生まれているので、<br>そういうのを利用することで作れるかもしれません。<br><br>実際に試してないので名前は挙げませんが、<br>「イラスト 表情を変える AI」などで検索すると色々出てきます。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【アイテム画像・モンスター画像】<br>有用度　★★★★☆</strong></span>　AIだけでも割といける<br><br><span style="color:#CC0000">●キャラ画像とほぼ同条件。画風統一させるキーワードを作れれば量産できそう<br><br>▲モンスターの場合、キーワードだけだと思ったより全身が出せないこともある<br><br>◆アイテムでもモンスターでも、「ラフ画像入力」を活かして作れば<br>期待する形状・ポーズ・色で出しやすくなる<br><br>▲（ドットでない）「アイコン画像」などもこれと同様だが、小さいアイコンだと<br>複数画像のサイズ合わせが難しい可能性がある</span><br><br><span style="font-size:x-small;"><strong>＜赤いポーションの絵を以下の入力で4回出力してみたケース＞<br>赤いポーション、アイテム画像、ファンタジー、ゲーム素材、高精細<br> red potion , item graphic, fantasy , game asset , highly detailed</strong></span><br><img src="../../image/2022/20220917H.jpg" border="1" loading="lazy" height="330"><br><br><span style="font-size:x-small;"><strong>＜モンスター絵を以下の入力で4回出力してみたケース＞<br>JRPG、ビデオゲーム、棍棒を持った小さい灰色ゴブリン、正面(?)、ゲーム素材、ファンタジー、全身図、遠目に<br>JRPG, video game, a small gray goblin with a club, face up,  game assets, fantasy,  full body portrait, long shot</strong></span><br><img src="../../image/2022/20220917G.jpg" border="1" loading="lazy" height="480"><br><br>アイテム画像やモンスター画像もキャラ画像とほぼ同じ条件です。<br>やはり「画風を統一」することが問題になってくると思いますが、<br>キャラの顔よりは画風統一の制約が少しゆるそうなので、まだラクな気がします。<br><br>ただモンスターの場合、AIにもよるのかもしれませんが、<br>「遠目に出して」「全身図」とか指定しても、<br>キーワードだけで生成すると意外に全身が画像内におさまらない印象があります。<br><br>その場合も、「ラフ画像入力」を使えば画像内にもおさめやすくなる感触でした。<br>ポーズや色も指定しやすいのでいい感じです。<br>↓<br><span style="font-size:x-small;"><strong>実例、左が入力に使ったラフ画像、右がAIから出てきた画像の1つ。<br>ポーズは期待と違ったが色や形状や棍棒の位置などは似せてくれている。</strong></span><br><img src="../../image/2022/20220917I.jpg" border="1" loading="lazy" height="232"><br>これは塗りがシンプルな出力画像ですが、キーワードを調整すれば<br>ある程度は任意の画風に変えられます。<br><br><hr size="1" /><br><strong><span style="font-size:large;">【背景画像】<br>有用度　★★★★★</span>　AIだけでもほぼ完璧</strong><br><br><span style="color:#CC0000">●「なんとなくファンタジー風のXX」みたいなおおざっぱな要望にほぼ応えられる<br><br>●シード（乱数の種）を一致させれば時間差分も作れることもある<br><br>●画風のワードが決まれば、あとは背景を指示するだけで欲しい背景を作りやすい<br><br>▲独特な世界設定を細かく表現するのは大変だが、下地は作れる。</span><br><br><br><strong><span style="font-size:x-small;">＜背景絵を以下の入力で4回出力してみたケース＞<br>美しい白い城、高精細、かわいいアニメ風、品の良い（空気感？）、ダイナミックライト、ファンタジー<br>beautiful white castle. Highly detailed, cute anime style, Atmospheric, Highly detailed, dinamic light, fantasy</span></strong><br><img src="../../image/2022/20220917A.jpg" border="1" loading="lazy" height="131"><br><br>なんとなくですが、おそらく多くの画像生成AIで、<br>「おおよそ欲しい背景画像」が高品質で出せそうな気がしています。<br>良質な背景画像素材は貴重なので、ゲーム開発において非常に助かります。<br><br>また、指示内容の調整である程度のチューンも可能！<br>多くのAIは、画風を指定するワードさえうまく決まれば、<br>数枚ほど出した時点でかなりいい背景画像を出してくれると思います。<br>「とりあえずなんでもいいからファンタジーっぽい街の背景が欲しい！」<br>といった要望なら問題なくいけるはず！<br><br>乱数のシード（種）を合わせて時間帯を指すキーワードを追加すれば、<br>運次第で朝・昼・夜バージョンなどの背景差分を作れることもあります。<br>（ただし時間帯指定の効果が薄かったり、時間帯指定をしただけで<br>背景が微妙に変わってしまうこともあるので工夫は必要かも）<br><br>一方で、<br>「独特な世界設定が頭の中にガチガチにあってそれに合わせて調整する」<br>という必要がある場合、その独特さの分だけおそらく大変になります。<br>というのも、入力文に細かいパーツ指示を入れても、<br>それが学習データにない場合、反映されなかったり、変な出方をすることが多いので、<br>独特の世界観の背景を作るのはちょっと大変かもしれません。<br>ある程度のお絵かき技能があって絵の修正ができる人なら<br>そういう面での調整もしやすいと思います。<br><br>ただそもそも、「何でもいいから酒場の背景が欲しいのに手元にないよー！」<br>という状況になる場面の方が多いと思うので、その点がカバーできるだけでも<br>十分以上に役に立つはずです。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【（キャラが登場しない）雰囲気イラスト】<br>★★★★☆</strong></span>　<strong>AIだけでも結構いける</strong><br><br><span style="color:#CC0000">●通常時と画風が違っていてもいいイメージイラストは作りやすい。<br>（古代の壁画みたいに描く、そのシーンだけ絵画風にする、など）<br><br>●「1回しか出てこない存在」「1回しかその画風で描かれない存在」の絵は出しやすい<br><br>◆デザインや画風の統一が必要になると前述「キャラ顔画像」と同じくらいの難易度になる</span><br><br><strong><span style="font-size:x-small;">＜雰囲気イラストを以下の入力で4回出力してみたケース＞<br>数千人ものゴブリン軍団、叙事詩、映画風、映画ポスター風、ダイナミックライト、灰色トーン<br>Thousands of Goblin Legions, epic, cinematic, movie poster like , dinamic light, gray tone</span></strong><br><img src="../../image/2022/20220917C.jpg" border="1" loading="lazy" height="389"><br><br>特定のゲーム内キャラが登場しない雰囲気イラスト、<br>たとえば上のように「（硬派そうな絵柄の）モンスター軍団が攻めてきた風景」<br>みたいなのを作るだけなら割と容易です！<br>とりあえずキーワードに「映画風」とか入れて作ると硬派そうな絵ができます。<br>コンセプトアート作りや世界設定解説シーンなどに使えるかも？<br><br>上の画像は「ゴブリン軍団」という指定で作りましたが、<br>さっき出した単体のゴブリンとは全然雰囲気が違うので、<br>ゲーム内で一緒に使うとツッコミを受けるかもしれません。<br><br><hr size="1" /><br><strong><span style="font-size:large;">【キャラが登場する1枚絵】<br>★☆☆☆☆　要工夫+絵スキル</span></strong><br><br><span style="color:#CC0000">×特定のデザインでキャラを出すのが非常に困難なので、まずそこでつまずくかも<br><br>▲複数人が同時に期待通り登場する絵を作るのはもっと難しい<br>　→　1人ずつ個別に作って合成する、などの手順が必要になるかも</span><br><br><span style="font-size:x-small;"><strong>＜1枚絵を以下の入力で4回出力してみたケース＞<br>金髪の女騎士が小さな緑髪妖精を指さす・かわいいアニメ風<br>The blond haired lady knight points her finger at the green-haired small  fairy.  cute anime style </strong></span><br><img src="../../image/2022/20220917D.jpg" border="1" loading="lazy" height="389"><br><br>特定のキャラクターが映っている場面を<br>期待通りのポーズで作るのはかなり難しい印象です。<br>上のように「小さい緑髪妖精が女騎士に指をさされているシーン」<br>と指示したつもりでも、全然期待通りに作ってくれません。<br>「さっきの顔画像で作った金髪騎士はどこへ！？」となってしまいます。<br><br>なので「ラフ画入力」を駆使して、1体ずつ作りたいポーズの絵をAIで作って<br>最後に1枚に合成するのが基本戦略になりそうなのですが、それをやっても<br>「AIで出したキャラの服装などのデザインが元となかなか一致させられない」<br>という課題が出てきます。やっぱり、どの画像も一期一会になりますからね。<br><br>正直、AIでの1枚絵作りに関しては、ライトに使う場合は<br>「構図を参考にする」くらいの期待度で見た方がいいのかもしれません。<br>絵を修正する能力がないと、AIを回し続けるだけで<br>ものすごい時間を使ってしまいそうな気がします。<br><br>なお、「キャラ立ち絵」とほぼ同じ理由で、<br>お絵かきできる人なら各所を望むように書き換えることはできますが、<br>1枚絵なら「手」を修正する技術がさらに高確率で必要になるかもしれません。<br>早くイラストの手も上手に出力して欲しい！<br><br><hr size="1" /><br><strong><span style="font-size:large;">【ドット絵】<br>有用度　★☆☆☆☆</span>　限定的/困難　</strong><br><br><span style="color:#CC0000">●RPG風の「マップ絵」を出すならかろうじてアリかもしれない<br>（直接マップチップとして出すのは難しいか役に立ちにくい印象）<br><br>×アニメーション差分や、方向差分が必要な「キャラチップ」を作るのは非常に困難<br><br>×ドット絵として出てきても複数枚でのサイズ・雰囲気を統一させるのが困難な場合が多い</span><br><br><br>基本的に、「統一されたフォーマットのもの」が大量に必要なドット絵は、<br>現段階のAIで作るにはちょっと向いていない印象です。<br>まず、以下はマップ絵を作ってみたケースです。<br><br><br><span style="font-size:x-small;"><strong>＜マップ絵を以下入力で4回出力してみたケース＞<br>ドット絵、見下ろし型ビデオゲーム、大地と海と山とファンタジー建物、16ビット<br>pixel art,  top down video game, ground ,sea , mountains and fantasy building, 16 bit, </strong></span><br><img src="../../image/2022/20220917E.jpg" border="1" loading="lazy" height="389"><br><br>ドット絵を作るにあたってまだいくらかうまく行きそうなケースとして、<br>上記のような「ドット絵で描かれたマップ」を作ってもらう場合は、<br>1枚のアートとしていいのが出てくることがあります。<br><br>「マップタイルを直接出すよりは1枚の完成済みマップとして<br>出したのを分解してタイル化する方がラクそう……？」<br>と個人的にぼんやり思っていますが、うまくできる人なら違う意見になるのかもしれません。<br>さらにこれを「同じフォーマット・雰囲気で大量に作れるか」となると、<br>また難しい問題になってくるでしょう。<br><br><br><span style="font-size:x-small;"><strong>＜キャラクターチップを以下入力で4回出力してみたケース＞<br>スプライトシート、キャラクターチップ、ゲーム素材、4方向キャラ、16ビット風、JRPG<br>sprite sheet, character chip, game assets, 4 directions character, 16 bit , JRPG</strong></span><br><img src="../../image/2022/20220917F.jpg" border="1" loading="lazy" height="389"><br><br>そしてやや絶望的に感じているのが<br>「アニメーション差分」「方向差分」などが必要なキャラチップ！<br>これをAIに作ってもらうのはよほどの忍耐と工夫と豪運が必要に思われます。<br>4方向キャラクターチップを作ってもらおうとした上の画像を見ても分かるように、<br><br><strong>●似たようなのが並んでるけどうまくアニメーションしてない！＆方向違いじゃない！<br>●向きが違うのはなんとか出せたけどデザインも変わってる！<br>●別々の出力画像として出したけどサイズが全然違う！</strong><br><br>ということが頻発するので、AIでのキャラチップ作りは<br>ほぼ期待しないほうがいいかもしれません。<br>私の工夫が足りないだけで、すごいAIプロンプター（入力文作成者）や<br>ラフ画入力マスターなら出せるのかもしれませんが、<br>とにかく何らかの大きな工夫が必要になりそうです。<br><br><hr size="1" /><br>という感触でした。<br>他にも色々素材の種類はありますがひとまずこれだけで！<br><br><hr size="1" /><br><span style="font-size:x-large;"><strong>【まとめ】</strong></span><br><br>今のところ、画像生成AIをゲーム開発に使う際は<br><br><span style="color:#CC0000"><strong>●「背景画像」作りに使うことが一番多くなりそう<br>●「アイテム画像」や「モンスター画像」もAI単体でもかなり使えるかも<br>●固定デザインで出力しづらい「キャラ絵」はうまい使い方を見つけられれば使えそう？　<br>●「コンセプトアート（雰囲気画像）」はAIに下絵を作ってもらうと楽そう！<br>●「キャラ1枚絵」には、AIにポーズ見本を作ってもらう程度なら使えそう。<br>●「ドット絵」の量産はたぶん困難そう、AIで作った1マップだけ使う形ならいける……？</strong></span><br><br>という感触でした。あくまで初心者AIユーザ目線で！<br><br>私の場合は、AIがそれっぽいところまで作ってくれたら<br>あとは自力で書き換えて理想通りに作るつもりなので、<br>一定以上に絵が描ける人ならば「サポート」の形で便利に使える場面も多そうです。<br><br>特に私の場合、<strong>「落書き以下のラフ画から自然なポーズを<br>何かしら描いてくれる」</strong>だけでも非常に役に立ちます。<br>私程度のお絵かきスキルだと、それらしい「ポーズ」の下地を<br>バランス良く描くだけでも何十分もかかる上に、それをしても<br>結局使えるものにならないことさえ多々ありますからね！<br>その工程だけでも参考資料にできたりするのは非常に大きいです。<br><br>ゲーム開発は幸いにして、「人間が作らなきゃダメ！」といった<br>製造過程での評価があんまりない業界なので、<br>もし一般的にも使われる雰囲気がでてきそうなら、<br>うまいこと画像生成AIを活用していきたいと思います。<br>そして得られた時間で、ゲームをより面白くしていくことに時間を投入したいですね！<br><br><font color="#88a">（2025年追記：この時点では画像生成AIの性能が低いのもあって<br>　まだあまり大きな問題になっていませんでしたが、<br>　2023年以降、画像生成AIの多くは無断で収集したイラストなどから<br>　学習されているケースが問題視され、<br>　創作物への使用は避けた方がよい状況となっています）</font><br><br><hr size="1" /><br>なお、私が使ったことがある画像生成AI、『Mid Journey』と『Stable Diffusion』のサイトはこちらです。<br>『Stable Diffusion』の方はブラウザから試せるのでお手軽です。<br><br><span style="font-size:large;"><strong>【Mid Journey】</strong></span>　要Discordアカウント<br><strong>https://www.midjourney.com/</strong><br>専用のDiscordサーバに入って、コマンドを入力して生成します。<br>ただしお試しは公開の場となります。<br><br><br><span style="font-size:large;"><strong>【Stable Diffusion】</strong></span>　要メールアドレスかGoogle、Discordアカウント<br><strong>https://beta.dreamstudio.ai/ </strong><br>DreamStudioと言うページに飛びますが使用AIはStable Diffusionです。<br>アカウントを作りさえすればブラウザの専用ページ上でデフォルトサイズの画像を<br>200回くらいお試し画像作成できます。上よりお手軽。<br><br>また、Stable Diffusionはプログラムも無料公開されており、<br>特定のGPU（グラフィック処理チップ）が入ってれば自分のパソコン上でも動かせますし、<br>なくてもGoogleの『Colaboratory』という、<br>ブラウザからプログラムを実行できるサービスに入れて使うこともできます。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【おまけ　AI画像生成への入力フリー素材】</strong></span><br><br>上の方で出た動画の中でもお話をしましたが、<br>以下の妖精イーリスの立ち絵だけ<br><span style="color:#CC0000"><strong>「このキャラの無償のファンアートを作る目的に限り」</strong></span><br><strong>「画像生成AIへの入力」</strong>として自由にお使いいただけます！<br><br>【透過PNG】 右クリックや長押しメニューなどから保存できます<br><img src="../../image/2022/20220917_iris.png" border="1" loading="lazy" height="630"><br><br>ファンアートと呼べるかもはや怪しい<br><span style="color:#CC0000">「<strong>イーリスをAIで再現しようとしてみた（再現率20％）</strong>」</span><br>みたいなものをAIで作って公開しても全然構いませんので、<br>無償用途である限りはご自由にお使いください。上半身だけ使うなどでもOK！<br><br>上記画像を利用した作成画像のそばに「妖精イーリス」という単語さえ入ってれば、<br>どのような内容であれファンアートに含む＝AI利用OK、とします。<br>（当然ながら、公序良俗に反するとか、誰かを傷つける内容に使うのはダメですよ！）</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2022-09-17 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F09.html%232022-09-17&title=%E7%94%BB%E5%83%8F%E7%94%9F%E6%88%90AI%E3%82%92%E3%82%B2%E3%83%BC%E3%83%A0%E9%96%8B%E7%99%BA%E3%81%AB%E6%B4%BB%E3%81%8B%E3%81%97%E3%81%9F%E3%81%84%EF%BC%81" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F09.html%232022-09-17&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2022-09-17','画像生成AIをゲーム開発に活かしたい！', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/devlog/001.html'>開発日誌</a></span></div></div><br><br><br>
+<a id='2022-04-01'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2022-04-01','強制横スクロール系Vtuber爆誕！', this)" style='cursor:pointer;'>2022-04-01 (金)&nbsp;&nbsp;&nbsp;強制横スクロール系Vtuber爆誕！</span><span style='float:right;'><a href='#2022-02-12' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【強制横スクロール系Vtuber爆誕！】</strong></span><br><br>ということで、今年のエイプリルネタは<br><span style="font-size:large;"><strong>「強制横スクロール系Vtuber、スモーキングウルフ爆誕！」</strong></span><br>です！　何もないのもさみしいのでご用意させていただきました。<br><br>今回は短い紹介動画があります！<br><br><iframe width="520" height="295" src="https://www.youtube.com/embed/sN0t8Qj3Yc8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br><br><hr size="1" /><br><a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/event/2022_april/2022_april.html"><span style="font-size:large;"><strong>【2022年エイプリルページへ】</strong></span></a><br><br><hr size="1" /><br>今回のVtuber化はネタ動画でしたが、生配信自体は実は私も何回かやったことがあります。<br>定期的な配信などもやってみたい気持ちはあるものの、やっぱり用意が大変！<br>実際にやってみて、日々コンテンツ提供し続けられるVtuberの方や、<br>それを支える裏方の人々のすごさを思い知ります。<br><br>特に、配信をやっていく上で難しいことの一つが「持続させる」こと！<br>最初の数回はいいんですが、次第に語ることもなくなっていくので、<br>バーチャルに限らず、ずっと面白い内容を配信され続けている方々は<br>とんでもないことを実現されていると思います。<br><br>うまいことやっておられる方々はたくさんの見えない工夫をされていると思いますので、<br>動画に限らず、面白いことをハイペースで提供していける体制やシステム作りも<br>チャンスがあったら学んでいきたいですね。<br>ひとまずは自分のゲーム作りですけれども！<br><br><br>それでは、今日からの新年度もよろしくお願いいたします！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2022-04-01 (金)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F04.html%232022-04-01&title=%E5%BC%B7%E5%88%B6%E6%A8%AA%E3%82%B9%E3%82%AF%E3%83%AD%E3%83%BC%E3%83%AB%E7%B3%BBVtuber%E7%88%86%E8%AA%95%EF%BC%81" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F04.html%232022-04-01&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2022-04-01','強制横スクロール系Vtuber爆誕！', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/devlog/001.html'>開発日誌</a></span></div></div><br><br><br>
+<a id='2022-02-12'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2022-02-12','シルフェイド幻想譚がスマホ(ゲームアツマール)でプレイ可能に！', this)" style='cursor:pointer;'>2022-02-12 (土)&nbsp;&nbsp;&nbsp;シルフェイド幻想譚がスマホ(ゲームアツマール)でプレイ可能に！</span><span style='float:right;'><a href='#2022-01-01' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【シルフェイド幻想譚がスマホでプレイ可能に！】</strong></span><br><br>『シルフェイド幻想譚』がゲームアツマールさんにて、<br>なんと【スマートフォンで】遊べるようになりました！<br>（正確にはブラウザで遊べます）<br><br><strong><s><!--https://web.archive.org/web/20230626084144/https://game.nicovideo.jp/atsumaru/games/gm24416-->シル幻をスマホで遊べるページへ[ゲームアツマール]</s> (閉鎖済み)</strong><br><img src="../../image/2022/20220212.jpg" border="2" width="400" loading="lazy" height="300"></a><br><strong><span style="font-size:x-small;">※セーブデータの保存はニコニコにログインしてる方が安全です<br>※スマホの人は、ページを開いたら「パッド」を押して仮想パッドを開いてください。</span></strong><br><br>で、開発面で何をやったかというと、ゲームアツマールだと「Shift」キーが使えないので<br>Shiftキーを使ってるところを全部置き換えて「決定」と「キャンセル」だけで<br>遊べるように全体を大改造していました。<br><br>たとえば戦闘中に「WILL」コマンドが出るようになっています。<br>久々にRPGツクール2000をいじるとすごい大変でした。<br>いじりながらテストプレイしたい……文字列ピクチャ作りたい……！<br>（ツクール2000は画像で文字を作らねばならない。アイテムも説明も全部画像です）<br><br><img src="../../image/2022/20220212E.jpg" border="2" width="400" loading="lazy" height="301"><br><span style="font-size:x-small;"><strong>滅多に説明されないWILLの仕様が常に明示化されました</strong></span><br><br>他にもメニューシステム全般とか宿システムとか<br>ダッシュ機能などいっぱいいじってました。<br><br>意外と「Shift」でなく「決定キー」でのダッシュもいけることが分かりましたが、<br>決定キーだとキー押してからダッシュ状態に切り替わるときの<br>タイミング制御が大変でした。<br>普通に作ると決定キーを押した瞬間の制御が別イベントに吸われるせいで<br>キーを押しても会話が始まらなくなるようになっちゃって<br>色々工夫しなきゃいけなかったんですよ。<br>久々に自分のツール以外で作ったので仕様を把握するのが面白いです。<br>（といいつつウディタでも仕様をしょっちゅう忘れているんですが）<br><br>で、すごかったのがゲームアツマールさん側！<br>RPGツクール2000上でしっかり動いていれば、<br>ファイルをZipでアップロードするだけで<br>ブラウザ上でも問題なく動かせるようになるのですからすごい！<br>謎の技術力！<br><br>MIDI音声も、何か別フォーマットに変換されているのか、<br>あるいは特殊な再生方法があるのか分かりませんが、<br>しっかり再生されていて感動します。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【テストプレイしていて】</strong></span><br><br>今回は2周くらいテストプレイしていましたが<br>クロウで遊ぶときはタンスより素手の方が楽かなと思って<br>途中から素手になってました。筋力99生命99素手プレイは頑丈で強い！<br>（「結界」持ちの敵が出てくることを知ってるというのと、<br>タンスの重さで色々持てるからというのもありますが）<br><br>あと某トカゲ人の仲間を連れていこうとしたら肝心なところで回復してなかったので、<br>出会うたびにLIFEとFORCEを回復するように仕様変更しておきました。<br><br><br>そして2周目はスケイルの初周ハードモードで遊んだのですがこれがアツい！<br>「始めから」を選んで「キャンセル」を押しながら待ってると<br>初周からハードモードが選べるのですが、<br>スケイルを選んでいたのもあってあまりにも簡単に死ぬ！<br><br>死亡回数の制限はノーマルと変わらないのでガンガン死ねるのですが、<br>WILLが3回になってしまうのと敵がいい具合に強くて<br>一手一手が重くなっててアツいです。<br><br>ハードだと敏捷レベルも重要になるので「ハヤブサの腕輪」も使うようになったり、<br>あるいはフェザーも活躍チャンスが増えたりして、<br>考え所が増えてて面白いなーと感じられるました。<br>相当にRPG慣れしている人は最初からハードモードでもいいかもしれません。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【スマホでの操作感は？】</strong></span><br><br>ちなみにスマートフォンでの仮想パッドでの操作感ですが、<br>十字キーでの操作ミスがたまに発生しがちな以外は、<br>キーやメニューの反応なども快適でいい感じに遊べました。<br><br>ちなみにダッシュはPC版の「切り替え」だとやりにくかったので、<br>スマホ版のデフォルトは「決定押しっぱなし」ダッシュになっています。<br>イマイチだった場合は設定から切り替えてください。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【スマホプレイでの裏技】</strong></span><br><br>非公式な使い方だとは思いますが、スマートフォンの「Chrome」であれば<br><br>「設定」→「ユーザ補助機能」　の　「強制的にズームを有効にする」<br><br>をオンにすると強引にズームして画面を大きくできます！<br>パッド部分も少し大きくできるので、私の場合は操作ミスが減ってやりやすくなりました。<br>十字キーの操作ミスが発生しがちな場合は、よければぜひお試しください。<br><br><hr size="1" /><br>そんなわけで<s><strong>スマホでも遊べるようになった『シルフェイド幻想譚』</strong></s>（ゲームアツマール閉鎖）、よければぜひ触れてみてください！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2022-02-12 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F02.html%232022-02-12&title=%E3%82%B7%E3%83%AB%E3%83%95%E3%82%A7%E3%82%A4%E3%83%89%E5%B9%BB%E6%83%B3%E8%AD%9A%E3%81%8C%E3%82%B9%E3%83%9E%E3%83%9B%28%E3%82%B2%E3%83%BC%E3%83%A0%E3%82%A2%E3%83%84%E3%83%9E%E3%83%BC%E3%83%AB%29%E3%81%A7%E3%83%97%E3%83%AC%E3%82%A4%E5%8F%AF%E8%83%BD%E3%81%AB%EF%BC%81" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F02.html%232022-02-12&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2022-02-12','シルフェイド幻想譚がスマホ(ゲームアツマール)でプレイ可能に！', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/devlog/001.html'>開発日誌</a></span></div></div><br><br><br>
+<a id='2022-01-01'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2022-01-01','2022年あけまして！', this)" style='cursor:pointer;'>2022-01-01 (土)&nbsp;&nbsp;&nbsp;2022年あけまして！</span><span style='float:right;'><a href='#bottom' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【2022年あけまして！】</strong></span><br><br>おかげさまで無事、2022年をむかえることができました！<br>あけましておめでとうございます！<br><br>今年はトラ年！<br><img src="../../image/2022/20220101.jpg" border="1" loading="lazy" height="520"><br><br><hr size="1" /><br>ということで年始からいくつかご連絡！<br><br><br><span style="font-size:large;"><strong>【生放送しました】</strong></span><br>去年末のコンテンツですがお正月おヒマな人向け！　2時間半くらい！<br>去年12/24に、23周年記念として2021年を振り返った放送をしました。<br>ただし私の生声が出ます、ご注意を！<br><br><a class="double-link red"  target="_top" href="https://youtu.be/T7RTOKFfvdg">Youtube配信ページ<br><img src="../../image/2021/20211224E.jpg" border="2" loading="lazy" height="225"></a><br><br><hr size="1" /><br><span style="font-size:large;"><strong>【フリゲ2021でランクインしました！】</strong></span><br>うわあああお邪魔してすみませんすみませんという感じだったんですが、<br>フリゲ2021というランキングで『シルフェイド幻想譚』に<br>24票をいただいてトップ10くらいに入っていました！<br><br><a class="double-link red" target="_blank" href="https://furige.herokuapp.com/2021/"><span style="font-size:large;"><strong>『フリゲ2021』 https://furige.herokuapp.com/2021/　</strong></span></a> <a class="double-link red" target="_blank" href="https://web.archive.org/web/20250327194429/https://furige.herokuapp.com/2021/#8590">(ｱｰｶｲﾌﾞ)</a><br><br>幸いにして（同率10位なので）誰かを押し出すことはなかったようでホッとしました。<br>投票してくださった皆さま、コメントくださった皆さま、誠にありがとうございました！<br>ウディコン作品もいっぱい入っててすばらしい！<br>票が色んなゲームに散ってるのがとてもいいランキングだと思います。<br>というのと同時に、今でもこういうフリーゲーム応援的なご活動を<br>続けておられることには本当に頭が下がります。<br><br><hr size="1" /><br>引き続き健康に気を付けて、2022年もゲーム開発を最大限進めていきたいと思います！<br>今年も1年、よろしくお願いいたします！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2022-01-01 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F01.html%232022-01-01&title=2022%E5%B9%B4%E3%81%82%E3%81%91%E3%81%BE%E3%81%97%E3%81%A6%EF%BC%81" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F01.html%232022-01-01&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2022-01-01','2022年あけまして！', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/devlog/001.html'>開発日誌</a></span></div></div>
+<div class='article_pos'>開発日誌　2/2</div>
+<div class='nav'><a href='001.html'>次のページ</a> | <span style='color:#ccc'>前のページ</span></div>
+<a id='bottom'></a>
+
+<BR><BR>
+<div align="right"><a href="#top" class="g">▲一番上へ戻る</a></div>
+<BR>
+<CENTER>
+<HR>
+<div>
+<div id="silsec-status" style="display:inline-block;line-height:12px;font-size:10px;"></div>　<div align="center" style="display:inline-block;line-height:12px;font-size:10px;"><a href="https://smokingwolf.github.io/" target="_blank" class="blue" border="1"><img src="https://smokingwolf.github.io/banner.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>アーカイブサイトへ</a></div>
+</div>
+<HR>
+Copyright © SmokingWOLF / Silver Second
+<HR>
+</CENTER>
+
+
+<script>
+  // シルバーセカンド公式のドメインに接続し、サイト存在確認用のTXT(SILVERSECOND_ALIVE!と書かれている)があれば存在する扱いにする
+  const statusDiv = document.getElementById('silsec-status');
+  const checkUrl = 'https://silversecond.net/SILVERSECOND_SITE_ALIVE_FLAG.txt';
+
+  fetch(checkUrl, { cache: 'no-store' })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('ネットワークエラー');
+      }
+      return response.text();
+    })
+    .then(text => {
+      if (text.trim() === 'SILVERSECOND_ALIVE!') {
+        statusDiv.innerHTML = '<a href="https://silversecond.net/" target="_blank" class="blue"><B><img src="https://silversecond.net/banner/a.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>運営中のサイトへ</a>　';
+      } else {
+        statusDiv.textContent = '　';
+      }
+    })
+    .catch(error => {
+      statusDiv.textContent = '　';
+      console.error('シルバーセカンド公式サイトチェック失敗:', error);
+    });
+</script>
+
+
+
+
+</div>
+<div id='sidebar'>
+<div style='font-weight:bold;'>開発日誌</div>
+<div><a class='sidebar_link' href='../../archive/top/index.html'>日誌トップへ</a></div>
+<div><B><a class='sidebar_link' href='../../index.html'>全記事一覧</a></B></div>
+<hr>
+<div style='font-weight:bold;'>【最新記事】</div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/08.html#2025-08-09'>●08/09 『シルバーセカンド思い出の部屋』を開設！＋ 来年よりウディコン規約追加</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-26'>●07/26 第17回ウディコン審査期間開始！ ＆ 規約の補足</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-12'>●07/12 ウディコン直前！ サイト＆ウディタ修正＋シェパード捜査録！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-28'>●06/28 ウディコン準備中！+ 開発日誌も移転作業中</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-14'>●06/14 サイト修正＋開発日誌をFC2から移転！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-31'>●05/31 ウディコン歴史資料館設立！+ ウディタ修正 + GitHubのサイト作り</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-17'>●05/17 ウディタ3.6へ！バグ修正再び！ + 私がいなくなった後に備えて</a></div>
+<hr>
+<div style='font-weight:bold;'>【カテゴリ】</div>
+<div><a class='sidebar_link' href='../../category/woditor/001.html'>ウディタ&nbsp;<span class='sym'>(55)</span></a></div>
+<div><a class='sidebar_link' href='../../category/owh2dev/001.html'>片道勇者2&nbsp;<span class='sym'>(16)</span></a></div>
+<div><a class='sidebar_link' href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(15)</span></a></div>
+<div><a class='sidebar_link' href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(10)</span></a></div>
+<div><a class='sidebar_link' href='../../category/trpg/001.html'>TRPG&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(2)</span></a></div>
+<hr>
+<div style='font-weight:bold;'>【月別】</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2025-btn' onclick="toggleYear('y2025')">2025&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2025' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2025/08.html'>08月&nbsp;<span class='sym'>(1)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2024-btn' onclick="toggleYear('y2024')">2024&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2024' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2024/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/01.html'>01月&nbsp;<span class='sym'>(2)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2023-btn' onclick="toggleYear('y2023')">2023&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2023' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2023/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/09.html'>09月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2022-btn' onclick="toggleYear('y2022')">2022&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2022' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2022/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('a.double-link');
+
+  links.forEach(link => {
+    const primaryUrl = link.dataset.primary;
+    if (!primaryUrl) return;
+
+    const testUrl = primaryUrl + '?t=' + Date.now(); // キャッシュ無効化！
+
+    fetch(testUrl, { method: 'GET', cache: 'no-store' })
+      .then(res => {
+        const url = res.url || '';
+        if (!res.ok || url.includes('404.html') || res.status === 404) {
+          console.warn('【404または失敗】そのままアーカイブを使います:', link.href);
+          // そのまま
+        } else {
+          console.warn('【OK】hrefを本家に書き換えます:', primaryUrl);
+          link.href = primaryUrl;
+        }
+      })
+      .catch(() => {
+        console.warn('【通信エラー】そのままアーカイブを使います:', link.href);
+        // エラー時もhrefはそのまま
+      });
+  });
+});
+</script>
+
+
+
+</body>
+</html>

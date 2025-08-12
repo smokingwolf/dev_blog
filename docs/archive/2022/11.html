@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>シルバーセカンド開発日誌 / SmokingWOLF</title>
+<meta name="viewport" content="width=700">
+<script src="../../js/smoothscroll_up.js" type="text/javascript"></script> 
+
+<link rel="stylesheet" href="../../js/litebox/css/lightbox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../../js/litebox/js/prototype.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/moo.fx.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/litebox-1.0.js"></script>
+
+<style>
+html {
+  /* スマホ時は1.2倍フォントで表示 */
+  -webkit-text-size-adjust: 120%;
+  -ms-text-size-adjust: 120%;
+}
+
+BODY{
+  /*display:flex;*/
+  font-size:13px;
+  margin:0;
+  font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+  color:#558;
+}
+
+TD{
+  font-size:12px;
+}
+
+
+A:LINK,A:VISITED {  color:#5658f6;  text-decoration:underline ;}
+A:HOVER,A:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.red:LINK,A.red:VISITED{color:#d6385c;display: inline-block;text-shadow: 0 0 15px #ffddcc, 0 0 15px #ffddaa;}
+A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shadow: 0 0 15px #ffcccc, 0 0 15px #ffaaaa;}
+
+A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
+A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.g:LINK,A.g:VISITED{
+	color:#38a68c;
+	text-decoration:underline;
+}
+
+A.g:HOVER,A.g:ACTIVE{
+	color : #68b6ac;
+	text-decoration : underline;
+}
+
+
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38c6ac;
+}
+
+A.jumplink:HOVER,A.jumplink:ACTIVE{
+	color : #68f6ac;
+}
+
+A.jumplink{
+	text-shadow: 0 0 15px #ccddcc, 0 0 15px #aaddaa;
+	text-decoration : none;
+}
+
+
+.article_pos{
+	font-size:16px;
+	color:#aaf; 
+	font-weight:bold;
+	text-align:center;
+	margin:0px;
+	padding:0px;
+}
+
+#content {
+	font-size:14px;
+	
+}
+
+#sidebar {
+	background:#f8f8f8; 
+	border-left:1px solid #ddd; 
+	padding:4px 6px;
+	font-size:12px;
+}
+
+A.sidebar_link:LINK,A.sidebar_link:VISITED,
+A.sidebar_link_recent:LINK,A.sidebar_link_recent:VISITED{
+    color:#5658f6;
+	text-decoration: underline;
+}
+A.sidebar_link:HOVER,A.sidebar_link:ACTIVE,
+A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
+	color: #9698e6;
+	text-decoration: underline;
+}
+
+.sidebar_link{
+	font-size:13px;
+}
+
+.sidebar_link_recent{ /* 1つ1つの項目ごとに隙間を空ける */
+	font-size:11px;
+	line-height: 1.2;
+	display: inline-block;
+	margin-top:5px;
+}
+
+
+.entry {
+	border:1px solid #ccc; 
+	border-radius:8px; 
+	margin:14px 0; 
+	overflow:hidden;
+
+}
+.entry-title {
+	background:linear-gradient(to right,#4243ff,#aaaacf);
+
+	font-size:17px;
+	color:#fff; 
+	padding:4px; 
+	font-weight:bold;
+	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
+}
+
+.entry-body,.extended {
+	background:#fff; 
+	color:#444; 
+	padding:15px;
+	font-size:14px;
+	line-height:1.6em;
+}
+
+.entry-foot {
+	background:#fff; 
+	text-align:center;
+	vertical-align:middle;
+	color:#ccf;
+	font-size:12px;
+	padding-top:20px;
+	padding-right:20px;
+	padding-bottom:10px;
+}
+
+.linkbutton{
+	padding:3px;
+}
+
+/*--●形状整理用--*/
+body {display:flex; margin:0;}
+#content {width:580px; padding:0 8px;
+	font-size:14px;}
+#sidebar {width:120px;  box-sizing:border-box; }
+#sidebar div {line-height:1.6;}
+#sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
+.nav {margin:0px 0 -20px 0; text-align:center;}
+.sym {color:#999; font-weight:normal;}
+
+</style>
+
+
+<script>
+function toggle(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+function toggleDisp(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+</script>
+
+
+
+<!--★目次デザイン・処理★-->
+<style>
+.toc-box{background-color:#f0f0f0;border-radius:8px;padding:10px;} 
+.toc-list{list-style:none;margin:0;padding-left:0;} 
+.toc-list ul{list-style:none;margin:0;padding-left:20px;}
+.toc-list li{margin:5px 0;}
+.toc-level1{margin-left:0;}
+.toc-level2{margin-left:20px;}
+
+h1 {
+  background: #fff;
+  padding: 6px 10px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #2233cc; /* 青系 */
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 4px solid #3366ff;
+  display: block;
+  width:100%;
+  
+}
+
+
+h2,h3 {
+  background: #fff;
+  padding: 6px 10px;
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #5566ff; /* 青系 */
+  
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 2px solid #9999ff;
+  display: -block;
+
+}
+
+h2::before {
+  content: "- ";
+}
+
+.master_years{
+  margin-left:20px;
+  margin-right:20px;
+}
+
+.top_minicategory{
+  font-size:10px;
+  color:#ccccff;
+}
+</style>
+
+
+
+</head>
+<body onload="initLightbox();">
+<a id="top"></a>
+
+<style type='text/css'>
+.linkbutton{
+  font-size: 0.9em;
+  padding: 1px 6px;
+  vertical-align: baseline;
+  line-height: 1;
+  height: auto;
+  margin-left: 4px;
+  color:#66f;
+  background-color:#f9f9f9;
+  border: 1px solid #888;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.copy-popup{
+  background-color: #eef;
+  border: 1px solid #88c;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  color: #333;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.5s ease;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  max-width: 80vw;             /* 画面幅の 80% で折り返す */
+  overflow-wrap: anywhere;     /* 長い URL を途中で区切る */
+  word-break: break-all;       /* ↑が効かない旧ブラウザ保険 */
+  white-space: pre-wrap;       /* 
+ を改行として扱い、余計な連続空白は1個に */
+}
+.article_end_date{
+  font-size:0.9em;
+}
+</style>
+
+
+<script>
+function toggle(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+}
+
+// Year accordion with sessionStorage persistence
+function toggleYear(id){
+  const pane = document.getElementById(id);
+  const btn  = document.getElementById(id+'-btn');
+  if(!pane||!btn) return;
+  const sym  = btn.querySelector('.sym');
+  const isClosed = pane.style.display === 'none';
+  pane.style.display = isClosed ? 'block' : 'none';
+  sym.textContent   = isClosed ? '－' : '＋';
+  sessionStorage.setItem('year-'+id, isClosed ? 'open' : 'closed');
+}
+
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('[data-yearpane]').forEach(pane=>{
+    const id    = pane.id;
+    const state = sessionStorage.getItem('year-'+id);
+    const btn   = document.getElementById(id+'-btn');
+    const sym   = btn?.querySelector('.sym');
+    if(state === 'open'){
+      pane.style.display = 'block';
+      if(sym) sym.textContent = '－';
+    }else{
+      pane.style.display = 'none';
+      if(sym) sym.textContent = '＋';
+    }
+  });
+});
+
+function copyLink(date, title, el){
+  const url = `https://smokingwolf.github.io/dev_blog/archive/${date.slice(0,4)}/${date.slice(5,7)}.html#${date}`;
+  const text = `
+【${date}　${title}】
+ ${url}`;
+  navigator.clipboard.writeText(text).then(()=>{
+    if(el && el.tagName === 'BUTTON'){
+      const orig = el.textContent;
+      el.textContent = '✅ コピー完了!';
+      setTimeout(()=>{ el.textContent = '🔗 リンクをコピー'; }, 2000);
+    }
+
+    const popup = document.createElement('div');
+    popup.className = 'copy-popup';
+    popup.textContent = `✅ コピー完了：${text}`;
+    document.body.appendChild(popup);
+
+    const rect = el.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    const popupWidth = popup.offsetWidth;
+    const pageWidth = document.documentElement.clientWidth;
+
+    let left = rect.left + scrollLeft + (rect.width / 2) - (popupWidth / 2);
+    let top  = rect.top  + scrollTop - popup.offsetHeight - 8;
+    if(left < scrollLeft + 4) left = scrollLeft + 4;
+    if(left + popupWidth > scrollLeft + pageWidth - 4)
+        left = scrollLeft + pageWidth - popupWidth - 4;
+
+    popup.style.left = `${left}px`;
+    popup.style.top  = `${top}px`;
+    popup.style.opacity = '1';
+    popup.style.zIndex = '9999';
+
+    setTimeout(()=>{ popup.style.opacity = '0'; }, 1800);
+    setTimeout(()=>{ popup.remove(); }, 2500);
+  });
+}
+</script>
+
+<div id='content'>
+<style>
+
+.TopTitle{
+  width:515px;
+  font-weight:bold;
+  font-size:16pt;
+  color: #ffffff;
+  background-color:#535365 ;
+  border-width: 0px;
+  border-color:#535365;
+  border-style:solid;
+  background: -moz-linear-gradient(left top, #42435f, #fafaff);
+  background: -webkit-gradient(linear, left top, right bottom, from(#42435f), to(#fafaff));
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#DD42425f', endColorstr='#FFfafaff');
+  
+  text-align:left;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.header3{
+	color:#555588;
+	margin-bottom:16px;
+}
+
+.home-link {
+  font-size: 12px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: underline;
+}
+</style>
+
+<!--戻るリンク、サイトがなくなってたらアーカイブにつながるようにしたが404ページがアレなのかうまくいかない-->
+<!--
+<font id="home-link-placeholder">
+  <noscript>
+    <a href="https://smokingwolf.github.io/" class="home-link">← ホーム(アーカイブサイト)に戻る</a>
+  </noscript>
+</font>
+
+<script>
+(async () => {
+  try {
+    // HEADで軽くチェック（no-corsなのでステータス確認は不可）
+    // 自分のサイトのインフォメーションページにつなげるならサイトがまだあると認識する
+    await fetch("https://silversecond.net/contents/etc/info.shtml", { method: "HEAD", mode: "no-cors" });
+
+    const link = document.createElement("a");
+    link.href = "https://silversecond.net/";
+    link.textContent = "← ホームに戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  } catch {
+    const link = document.createElement("a");
+    link.href = "https://smokingwolf.github.io/";
+    link.textContent = "← ホーム(アーカイブサイト)に戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  }
+})();
+</script>
+-->
+
+<div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
+<!--ここにコメント文-->
+<div class="header3" style="margin-top:6px;">　ここはゲーム開発者SmokingWOLF(スモーキングウルフ)の開発日誌です。<BR>
+　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
+　<B style="color:#ff5555;">※以前のブログが使えなくなったので、ただいまこの開発日誌に移転中です。</B>
+</div>
+
+<div class='article_pos'>2022年11月</div>
+<div class='nav'><a href='12.html'>次の月へ</a> | <a href='10.html'>前の月へ</a></div>
+<a id='2022-11-26'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2022-11-26','ウディタ3＆プロ版、公開！', this)" style='cursor:pointer;'>2022-11-26 (土)&nbsp;&nbsp;&nbsp;ウディタ3＆プロ版、公開！</span><span style='float:right;'><a href='#2022-11-12' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【WOLF RPGエディター3＆プロ版　公開！】</strong></span><br><br><img src="../../image/2022/20221122top.jpg" width="70%" loading="lazy" height="140"><br><br>ということでついにウディタのバージョン3が公開されました！<br>半年くらいずっといじりまくっていたおかげで新機能も潜在的なバグもたっぷりです。<br><br><span style="font-size:large;"><a class="double-link blue" target="_blank" href="https://www.silversecond.com/WolfRPGEditor/"><strong>【ウディタ3のダウンロード！（公式サイトへ）】</strong></a><br><br><a class="double-link red" target="_blank" href="https://silversecond.booth.pm/items/4302198"><strong>【プロ版販売ページへ！(BOOTH)】</strong></a></span><br><br>SNS上でのご感想も皆さまありがとうございます！<br>以下のようなご感想が特に目に入りました。<br><br><br><span style="font-size:large;"><strong>◆まだウディタ更新されてたの！？</strong></span><br><br>私もそう思いました！<br>開発が始まった頃は10年くらいで更新をやめているかと思いましたが、<br>なんだかんだで開発開始から15年以上？経った今までも普通に使えてしまっています。<br>今も使ってくださっているみなさま、本当にありがとうございます。<br><br><br><span style="font-size:large;"><strong>◆超はやくなってる！！</strong></span><br><br>比較動画をアップしてくださった方もいらっしゃいましたが<br>前の5～10倍くらいに速くなってるケースもあって予想以上でした。<br>最新のプログラム環境（Visual Studio 2022）が強すぎる！<br><br>最初からこの速さだと処理最適化をしようとはなかなか思えなかったでしょうから、<br>これまで2003年の古くて重い環境でガッツリ最適化処理を<br>作ってこられたのは運がよかったと思います。<br>重力環境だからこそできた修行！<br><br>ただ懸念もありまして、従来のVer2では「ギリギリ処理落ちしない」くらいなら<br>Switchなどにも移植が可能で、それがいい基準になっていたのですが、<br>この環境だと数ミリ秒くらいのイベント処理でも他プラットフォームに移植すると<br>動作がおもおもになってしまう可能性が高いので、<br>移植まで視野に入れておられる方はくれぐれもご注意ください。<br>ウディタ3だけは速くなりましたが、他プラットフォームの速度は従来のままです。<br><br>直近で『ドラゴノーカ』というゲームに関わった中でのざっくりした私のイメージですが、<br>デバッグ文の「ValWatch機能（副作用でコモンイベントの加速を停止できる）」を使った状態で<br>イベント処理時間10～12ms以下くらい、描画時間4ms以内くらいが<br>一つの限界動作目安になるかもしれません。<br><br>**【おまけ】**（2022/11/28追記）<br>　とあるスジから「10000枚くらいの（とても小さい）静止状態の自由変形ピクチャが画面内にあるとSwitchだと10fpsくらいに落ちちゃいますよ！」という情報をいただきました。<br>　「そんなに置かないよ！？」とは思いますがピクチャはいくら小さくても存在するだけで一定の計算量を消費するので、その点はご注意ください。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【プロ版も発売しました！】</strong></span><br><br>最近はウディタに時間をかけるほど私が痩せ細っていってしまう事情から<br>なるべく最小限しかいじらないようにしようと思ってたんですが、<br>このままだと維持の面で厳しくなりそうだったので有料版も販売させていただきました。<br><br>プロ版は、無料版には入れていない「もともと私専用の機能」を多数搭載している、<br>本当にプロの人しか喜ばなさそうな機能しか入ってないバージョンです！<br>これまでしっかり作ってきたデータをよりしっかり守りたいとか、<br>無料版の範囲以外の画面サイズで作れる、<br>ダウンロード機能の強化など、すでに作ってる人は喜ばれるかもしれませんが<br>あんまり触ったことのない人には数点くらいしか使う要素がないかもしれない一本です。<br><br>そして評判も固まってない中でプロ版を<br>もう買ってくださった方もいらっしゃって、本当にありがとうございます！<br>一番需要がありそうだったウディコンにも使えないですし<br>けっこうお高いですし、本当にガチの人しか使わなさそうなバージョンだというのに<br>手に取ってくださって感謝の限りです。本当に需要がほそいので！！<br><br>収益としては、「私が(一方的にでも)知ってる方が買ってくださっていそうな感じかな」<br>くらいの雰囲気ですが、これまで無だったのに比べるとあまりに大きな進歩なので、<br>これまでよりはウディタの修正に時間をかけられると思います！<br><br>とはいえ、ウディタ修正に使った半年近くの生活をカバーする分を目標とすると<br>ちょっと足りなさそうなので、生活効率的にはこれ一本だと<br>たぶん飢えていきそうな見込みです。<br>もともとゲーム開発の余力でやってきたのでそこは全く大丈夫なのですが、<br>今回分のバグ修正が落ち付いたら、強化されたウディタ3で<br>急いで自分のゲーム開発に戻ろうと思います。<br>その過程で、必要に応じて開発に便利な機能も増えるかもしれません。<br><br>また、プロ版を買ってくださっただけでなく、BOOSTまで入れてくださった方も<br>本当にありがとうございます、生きる助けになります！<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【公開してみてどうだった？】</strong></span><br><br>相変わらず公開前夜は緊張であまり寝られませんね！<br>昔よりは落ち着いてリリースを待てるようになったのですが、それでも<br>リリース直後は普段の7割くらいのパワーしか出せないと思った方がよさそうでした。<br>それでも、致命的なミスをして100歩後退してしまうようなことがなくてよかったです。<br><br>そしてもはや期待通り当然のようにバグがいっぱい出ましたが、<br>私の知らない部分が問題になって大慌てになってました。<br>それはこれ！<br>↓<br><br><strong><span style="font-size:large;">【高DPI対応】</span></strong><br>「高DPI」って何？　って私も思ったのですが、<br>要するに「すごく高い解像度」の画面のことっぽいです。<br><br>で、本件の『対応』とは具体的には、<br><strong>「アプリの表示スケール（拡大率）をWindows側で<br>100％以外にしたときのレイアウトをくっきり調整するための対応」</strong><br>のことっぽいようで、ウディタではVer3になってからスケール125％以上などにしていると<br>レイアウトが崩れる問題が出てしまいました。<br>↓<br><img src="../../image/2022/20221126A.jpg" border="1" loading="lazy" height="292"><br><span style="font-size:x-small;">スケール150％の画面。2.29は古すぎるプログラム環境だったからか<br>自動拡大してくれてたけど3.00はそうじゃないんだ……。</span><br><br><br>旧版のVer2.29は勝手に「高DPI非対応」モードになってたらしいので<br>スケールが125％以上でもWindows側で自動で拡大してくれてましたが、<br>今回はそうじゃなかったので、うまいことレイアウトされなくなっていたようです。<br><br>「それじゃあこっちもとりあえず『高DPI非対応』にしよう！」　と色々設定すると<br>なぜか起動時にすぐクラッシュするしその直し方もよく分からなかったりで、<br>しょうがないので直接なおす方向でがんばりました。<br><br><img src="../../image/2022/20221126B.jpg" border="1" loading="lazy" height="244"><br><span style="font-size:x-small;"><strong>スケール150％、最新のVer3.07で対応！</strong></span><br><br>Ver3.07の修正で、スケール125％以上にしても<br>ツールバーなどの「大きさ」だけはそれっぽくなったと思います。<br>（アイコンは超ガビガビですけど作ってるヒマなかったから<br>ペイントで拡大しただけなの……そのうち清書します）<br><br>他にも、最低限の場所から色々と調整中です。<br><br><hr size="1" /><br>他にもゲーム中の挙動がおかしくなっているとか、<br>クラッシュ系のバグなどもちょくちょく出ていてご迷惑をおかけしております。<br>クラッシュ系のバグは再現可能なデータがあれば高確率で直せますので、<br>何かあればご連絡いただけると助かります。<br><br>引き続き、ウディタ3の修正に一生懸命の期間が続きそうです。<br>今もウディタを使ってくださっている皆さま、いつも本当にありがとうございます！<br><br><hr size="1" /><br><br><span style="font-size:large;"><strong>【おまけ　Ci-enさんちに登録しました】</strong></span><br><br>あまり大きな声では言えないんですがCi-enさんちに登録させていただきました。<br>なんで大きな声で言えないかっていうと所属枠が全年齢じゃないからです！！<br>（私が作ってるものの性質上そうなってしまいました。流血はあるし体は切り取るし……）<br><br><a class="double-link red" target="_blank" href="https://ci-en.dlsite.com/creator/15966"><span style="font-size:large;"><strong>【SmokingWOLF の Ci-enページ】</strong></span></a><br>※Ci-enにログインしてない人には18歳年齢確認ページが出ますが、内容はこの記事の時点だと全年齢です。後になると大人向け絵などがあるかもしれないので注意！<br><br>こちらだと、フォローしてくださると記事の更新があったときに<br>メールで通知してくれる機能があるらしいので見逃しが少なくなります！<br>もしすでにアカウントお持ちの方はよければぜひ！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2022-11-26 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F11.html%232022-11-26&title=%E3%82%A6%E3%83%87%E3%82%A3%E3%82%BF3%EF%BC%86%E3%83%97%E3%83%AD%E7%89%88%E3%80%81%E5%85%AC%E9%96%8B%EF%BC%81" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F11.html%232022-11-26&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2022-11-26','ウディタ3＆プロ版、公開！', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/woditor/001.html'>ウディタ</a></span></div></div><br><br><br>
+<a id='2022-11-12'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2022-11-12','ウディタ大規模アプデ内容予告7 仕上げ中', this)" style='cursor:pointer;'>2022-11-12 (土)&nbsp;&nbsp;&nbsp;ウディタ大規模アプデ内容予告7 仕上げ中</span><span style='float:right;'><a href='#bottom' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【ウディタ大規模アプデ内容予告7 仕上げ中】</strong></span><br><br>前回言ってたUnicode化は本当にエディターの隅から隅まで<br>全部いじってなんとか済ませました！！<br><br>で、そこからはリリースに向けてここ1週間くらいずっとバグ修正や機能修正をしていました。<br>ネタがないので今回はその「1週間」でいじった修正点の数々をご紹介します！<br>小さいのも含めれば全部で130個以上！　1日18個！<br>1個数時間かかる難易度のバグ修正から10分で終わる微調整まで様々ですが、<br>リリース前はこんな勢いでいじっているんですよ。<br><br><img src="../../image/2022/20221112.jpg" border="1" width="450" loading="lazy" height="450"><br><CENTER><br><table width="95%"><TR><TD align="left"><span style="color:#3366FF"><span style="font-size:x-small;">●Game：右上・右下基準のピクチャだけ移動時にX座標がずれて表示されてしまうバグ修正<br>●Game：Ver2.29モードにしたら変数操作+の「位置」処理でエラー出ないように修正<br>●Game：Ver2.29モードにしてもタイル関係の処理がずれてたバグ修正<br>●Game：デバッグウィンドウが文字化けする現象を修正<br>●Game：古すぎるData.wolfを開こうとしたときのエラーでメッセージボックスが文字化けする現象を修正<br>●Editor：DB画面で一個消してOK押すとクラッシュするバグ修正<br>●Game：最初にクリップボード情報が読み込まれそうになったときに確認メッセージが出るよう修正<br>●Game：セーブデータを読み込み中、変なところでユニコード済みフラグが1になってしまいSJISのままになってしまう場所があるバグを修正<br>●Game：【DB操作】「50バイト超の『データ名』で名前呼び出し」をするとエラーが発生するバグを修正<br>●EditorPro：「プロ機能」を編集してＯＫ押しても更新されないバグを修正<br>●Editor：タイルセット設定の最下部のラインが2つ抜けてるバグ修正<br>●Editor：遠景として設定したのと別の画像が出てしまうバグ修正<br>●Editor：Ver3への初期コンバート時、CSVも変換するように修正<br>●Editor：Ver3への初期コンバート時、「Ver2.29にバージョン調整を切り替えるか」質問を追加<br>●Editor：タイル設定にて、基本タイルがないときもスクロールできてしまうバグ修正<br>●Editor/Game：文字列操作の「ファイル読み込み」に文字コードを選べる機能を追加。<br>　　　　旧バージョンから移行した「文字列操作」コマンドは全部文字コード「自動判別」になります。<br>●Editor：DB操作にてDBタイプ番号の「名前」にチェック付けてプルダウンから選ぶとクラッシュする現象に対応<br>●Editor：コモンイベントの名前の色コードが右端に見えてしまうのを修正<br>●Editor：コンバートしたTXT・CSVファイルに全部BOMを付けるように変更<br>●Game：&lt;&lt;GET_FILENAME_FROM_PICTURE&gt;&gt;をピクチャ0枚のときに使うとクラッシュするバグを修正<br>●GamePro： マップエフェクトで全然関係ないエフェクトが起動してしまう謎の問題を修正<br>●Game：コモンイベントが自身を呼び出し続けると265回でクラッシュするバグを修正。<br>●Game：システム変数143：[読]処理可能ｺﾏﾝﾄﾞ[通常0/プロ版1]　を追加　　<br>●Editor：ゲームデータ作成時にタイトルの処理がおかしくなるバグを修正<br>●Game：10年前くらいのVer1.X時代のセーブデータが読めない問題にいくらか対応（昔のものを正しく判別できないので完璧ではありませんが読込成功率はアップ）<br>●Editor：ピクチャファイル入力欄に見えないスピンボックス分だけ入力ボックスの右側が欠けて見えていたので、目立ちにくくなるよう修正<br>●Editor：エディターオプションを変更しても反映されないことがあるバグを修正。<br>●Editor：コンバート時の動作バージョンVer2.29切り替え提案の文章を気付きやすい場所・内容で出るよう変更<br>●Editor：エディターオプションの遠景の設定を修正。<br>　　　1枚だけ表示する 　ループ表示する　表示しない　から選べるように。<br>●Editor：【変数操作+】「その他」の「現在のマップのタイルセット番号」がイベント欄で正しく表示されないバグ修正<br>●Game：【変数操作+】「マップ外」のイベントIDを取得すると-1でなく0が返されるバグ修正。<br>　　　　　その他、Ver2の挙動を再現するよう修正。<br>●GamePro：sysS57：クリップボード　で得た日本語が文字化けして読めないバグを修正<br>●GamePro：プロ機能で「ゲージ画像だけ」を設定した時、ゲージが表示されてないバグを修正<br>●Game：回数10万回以上にするとキャラ・ピクチャのシェイク速度が２倍になるバグ修正（正確には数値が動いていないせいで半分しか動いていなかった）<br>●Game　ピクチャエラーだけフルアドレスが出ているのを修正。もとい、緑帯メッセージに絶対アドレスが入っていた場合はEXEまでのアドレスを消して表示するように。<br>●Game　文字列ピクチャを移動したあとに数フレームかけて消去すると座標ズレが起きるバグ修正<br>●Editor：背景がないときエラーが無限に出る現象を修正<br>●Editor：「コモンセルフ使用状況」の項目のずれっぽいのを修正<br>●Editor：コモンイベント入力コマンドで入力欄などがずれているのをたぶん修正<br>●Game：&lt;Base64でﾌｧｲﾙ読込&gt;でバイナリファイルを文字列変数に読み込んだ際に文字列変数の最後に必ず改行が入っている現象を修正。<br>●Game：「フォルダの作成/ファイルコピー/削除」で﻿ファイル名に日本語を使うと正常に処理できないバグを修正<br>●Editor/Pro：マップに変更を加えた後、プロテクト画面とゲーム設定画面、エディターオプションに入ろうとする前にマップ変更を保存するか聞くように変更（保存しない場合は再起動時にデータが消える）<br>●Editor　条件(変数)の『4変数を連動』を解除した状態で、2つ目以降の条件にチェックを入れてコモンセルフを選択しようとするとコンボボックスの一覧にコモンセルフが表示されないバグを修正<br>●Editor：コンバート時の最初の質問のはい・いいえが逆になってるバグ修正、はい・いいえの入れ替え時に変更し忘れ<br>●Editor：コンバート時の最初の質問でキャンセルすると終了できないバグ修正<br>●Editor：多重起動できるようになってしまっているのを修正<br>●EditorPro：基本設定Proのファンクションキー設定をOFFにしても次開くとONになってしまうバグを修正<br>●GamePro：プロテクト入れただけでセーブ→再起動するとクラッシュするバグを修正<br>●Editor：イベント制御コマンド欄のラベル名の「可」が消えているのを修正<br>●Editor：DB操作コマンドを入力するときに数値がゼロになるバグを修正<br>●Editor：再起動時の内部処理で、「前のプロセスが終了するまで次の起動を待つ処理」が機能してなかったので作り直し。<br>●GamePro：「ファイル削除」に「./」が含まれているとエラーを出すように修正<br>●Editor：CSVファイルをタイル設定にドラッグ＆ドロップしたときの座標判定がおかしいバグ修正<br>●Editor：Editor.iniがない場合でもサンプルデータと同じ各ウィンドウ座標の初期値を入れるよう修正。<br>●Editor：Dataフォルダが存在しないときは、起動時に空の状態のゲームデータをDataフォルダに作れる処理を作成。これでEditor単体でゲームが作り始められます。<br>●GamePro：プロ版をちょっと使ったり使わなかったりしたときにセーブデータがクラッシュする不具合がまだ残ってたので修正<br>●Game：画面サイズを3倍にするとアイコンのY軸に倍率かかってないバグを修正<br>●Game：キャラ重ねレイヤーは同じサイズにしてくれというエラーが出るように<br>●Game：最新版のGuruGuruSMF4.dll を使うとPC環境によってはGame.exeが起動しない現象に対応。4.0.6のGuruGuruを使用することでいったん解決。<br>●Game　他の別名のゲームを開いているときでも多重起動ができなくなっているバグを修正<br>●GamePro：プロ版使用、かつゲーム設定プロ版で指定できるタイトルバー部分が空だと起動制限に引っかかっていたバグ修正<br>●Game：画面サイズの最小値を100×100ピクセルに設定。<br>●Editor：「ゲーム基本設定」にて画面サイズの最小サイズを100未満にしようとすると100に戻される処理を追加。<br>●GamePro：プロ版で画面サイズ自由設定した後に通常のGame.exeで起動したときに画面サイズが基準画面サイズにならないバグ修正（本来はどれか一番近い解像度が選ばれます） <br>●Game：文字列操作の裏技に&lt;&lt;GET_MAPEVENT_NAME_FROM_ID&gt;&gt;と&lt;&lt;GET_COMMONEVENT_ID_FROM_NAME&gt;&gt;を追加。<br>　　　　ID→名前取得を&lt;&lt;GET_MAPEVENT_ID_FROM_NAME&gt;&gt;に変更<br>●Editor：コマンド入力の「チップ処理」で最新版挙動でも2.29以前用の注意メッセージが最初に表示されるバグ修正<br>●Editor：コマンド入力の「場所移動」で右上の注意書きが全部表示されていないミスを修正<br>●Game/Editor：システム変数　Sys119：基本画面倍率[1-3]　を追加<br>●Editor/Game：変数操作+の「その他」に「現在マップのマップイベント数」を追加<br>●Editor：文字列操作　「に↓のファイル内容読込」&lt;UTF-8&gt;を「修正」しようとしたとき、修正画面で「自動文字コード判別」が選ばれてしまうバグ修正<br>●Editor：データベースエディタの「ファイルの出力」時、【～】が高速点滅している現象を修正<br>●EditorPro：プロ版コマンドの「ファイル削除」を選んだとき、上の入力欄が「Data/」から始まっていたら「Save/」に切り替わる処理を追加<br>●マップ縮小表示時に元画面外のイベントが表示されなかったのを修正<br>●EditorPro：画面サイズの限界に制限が付いてなかった不具合を修正<br>●Editor：【マップイベントウィンドウ】開いているイベントの座標に「精密」表示を追加。また、半歩上・半歩左による座標補正も加味した座標を表示するよう修正。<br>●Editor：プロ版かどうか判定するシステム変数がSys142じゃなくてSys143だったミス修正<br>●Game：横幅に合わせてF9の変数表示の列数が変わるよう修正（F8とF7は縦に超細い画面だと今はどうにもならなさそう）<br>●GamePro：プロ版でマップのズームをゼロにするとクラッシュするバグ修正<br>●Game：マップのズームの拡大率0～マイナスは仕様外なのでマップのズームは最低1％以上になるように修正<br>　　（ズームマイナス時と同等の表現ができる機能の搭載を検討対象に。マップ+EV部分だけ取得できるスクショ機能とか作るの難しいけどいつか欲しいですね）<br>●EditorPro：ゲームデータ作成時アイコン以外のファイルや存在しないファイルを設定したときにエラーが出るよう修正<br>●EditorPro：ゲームデータ作成時のアイコンは32x32を強く推奨と記載<br>●Editor：何も入力せずにMAPを新規作成したらエディターが落ちるバグ修正<br>●Editor：「マップ設定画面」で「マップ200x200以上は（エディタで）表示できない」という表記を削除<br>●Editor：マップエディタ上で出るマップチップ一覧の縦軸を伸ばしても描画更新されないバグ修正<br>●Editor：「エフェクト」の「間隔」表記が全部出てないのを修正<br>●Editor：「キー入力の許可」欄の各パーツの文字幅を調整<br>●Editor：「自動キー入力」欄で「マウス」の「位置」をクリックして「マウス」以外に切り替えると「X」表記だけ残るバグ修正<br>●Editor：「変数呼び出し値一覧」表記にカッコが1個多いミスを修正<br>●Editor：ゲームデータ作成時、「フォルダ別暗号化」をしたときにアクセス制限がかかって止まる状況があるのを修正<br>●Editor：エフェクト→マップ→ズームの拡大率欄の名前を「拡大率」→「拡%/1-」にして1以上と分かるように変更。<br>●Editor：各コマンド入力タブに灰色部分が発生していたのを修正<br>●EditorPro：「起動後」にプロテクトキー変更しても再起動しないバグを修正<br>●Editor：無料版で旧コモンを読み込むと文字化けする現象を修正。<br>●Editor：旧バージョンの外部ファイルや非UnicodeのCSVを読み込んだとき、言語について言及する処理を追加<br>●Editor：他にコモンが存在するデータで、未編集の真っ白のコモンイベントでキャンセルを押して閉じると「CommonEvent.datファイルがありません」みたいな警告文が出る現象に対応<br>●Game：ソフトウェアモードにおいて何か表示→エフェクトを連打するとスプライトが無限に増えるバグ修正<br>●GamePro：スクリーンショットに限り、3Dモードでも表示→エフェクトを連打するとスプライトが無限に増えるバグ修正<br>●Game：ピクチャエフェクトの変換系をかけたあとに「変換系のみ全解除」をするとスプライトが無限に増えるバグ修正<br>●Editor：マニュアルを開く　を　オンラインマニュアルを開く　に変更。<br>●Editor：入力済みの文字列操作をスペースキーで編集しようとするとエディターが落ちるバグ修正<br>●Editor：特定内容のイベントの挿入処理が入っているとアサートエラーが出る現象を修正 + そのコマンドを「修正」時にもエラーが出る現象を修正<br>●Editor：いつの間にか起動時のゲージが30％くらいで終わるようになってたので長さを調整<br>●EditorPro：ゲームデータの作成時にアサートエラーが出るのを修正<br>●Editor：ファイル選択画面でダブルクリックしたときのおかしな挙動を修正<br>●Editor：パーティ画像欄の「読込」でタイルセットが選べてしまう問題を修正<br>●Editor：マップエディターのイベント選択時の赤▽が出てなかったのを修正<br>●EditorPro：デバッグ用のランタイムライブラリが入ったまま（アサートエラーが出る）だったのを修正<br>●Editor：コンバート時、320x240の画面サイズを移行したなら画面倍率2倍フラグを立てる処理を追加<br>●Ediotr：コンバート時テキストデータを拡張子「.mps」にしているとエラーのメッセージボックスがダイアログの裏に出てしまって気付きにくい問題を修正<br>●Editor：コモンイベントの挿入コマンドを編集しようとすると引数の値が初期化されるバグ修正<br>●Game：9180007～8の主人公のピクセル補正XYが取得できないバグを修正<br>●Game：9100007～8によるイベントのピクセル補正XY代入が主人公と違う挙動になっていたバグ修正<br>●Game：セーブデータが保存できなかったときにエラーが出るように修正<br>●Editor：変数操作+・条件(変数）・条件（文字列)でコモンセルフ変数の名前を変えても更新されない現象を修正<br>●Editor：イベントコマンド入力ウィンドウの切り替え時にもコモンセルフ変数名更新処理を追加<br>●Editor：ピクセル移動は主人公だけがピクセル移動するのが前提でイベント側には使わないこと前提なので「ピクセル移動（α版）」という記載に変更<br>●Game：テストプレイ時のみ画像読み込み時のメモリ解放をしていなかったバグを修正<br>●Game：Sys30:プレイ時間（ミリ秒）が　同じフレーム中でもちゃんと数値増えるように　+　同フレーム中なら1000超えするように変更（同フレーム中での引き算で面倒臭くならないように）<br>●Game：「動作指定」内の変数は、動作指定開始前に全変換して格納するよう修正、コモンセルフも使用可能に<br>●Editor：コモンイベント時、「動作指定」でコモンセルフ変数を選んで修正すると対象キャラ欄がおかしくなるバグ修正<br>●Editor：「Sys119：基本画面倍率[1-3]」の名前が「[読]タイルサイズ」になってるミス修正<br>●Game：ピクセル補正値が1以上になっているイベントが「動作完了までウェイト」オンの動作指定でジャンプすると動作が進まなくなるバグ修正<br>●GamePro： JPGスクリーンショット機能の保存品質を調整<br>●GamePro：マップズームアウト機能周りのバグの影響でプロ版でゲームが起動できなくなるバグを修正<br>●Game：通常ピクチャの角度が0以外の時になぜか2ピクセル下に表示されてしまうバグを修正<br>●Game：4択の条件分岐へのコモンイベント最適化処理が未実装だったのを修正<br>●Game：8択など想定外の数の条件分岐があるとゲーム起動時の最適化でクラッシュする問題に対応<br>●Editor：「DB操作」で上部または下部の「変数」にチェックを入れて100万以上の値を入れても次に開いた時チェックが外れているバグを修正<br>●Editor：「DB操作」で存在しないタイプ番号を指定し、データ名や項目に空欄の「名前」を指定して入力しようとするとクラッシュするバグ修正（Ver2.29から存在）<br>●GamePro：スクリーンショットを撮り直してピクチャ表示し直しても画像が更新されない問題を修正。スクリーンショットを撮った時点で全ピクチャの中味を最新画像に更新する仕様に。<br>●Game：「ゲーム基本設定」の『文字列表示(文字列ピクチャ)微調整』で『横方向の字詰め(ﾋﾟｸｾﾙ)』を0以外にしているゲームをVer3.00に持ってくると文字幅がズレるバグを修正。<br>　　中味がUTF-8になって3バイトになってたので字詰めも2→3バイト分になっているバグでした。<br>●Game：未UTF-8化のバージョンをGame.exeだけ差し替えて実行したとき、ゲーム基本設定のバージョン調整が「最新」だった場合は自動で「Ver2.29」として処理するよう修正<br><br></span></span></TD></TR></TABLE></CENTER><br>よく見れば急に実装された新機能も混ざっています。<br><br>たとえば、<br><strong><span style="color:#CC0000">「Ver3のエディタにUTF-8文字コード化するコンバート機能は付けたけど<br>プレイヤーさん側のセーブフォルダ内にあるデータはコンバートできないわけで、<br>そこにはSJIS文字コードのも混ざってるから結局ファイル読み込みするなら<br>文字コード自動判別機能を作らなきゃいけないじゃないかー！！」</span></strong><br>といって泣きながら「文字列操作」の「ファイル読込」機能に<br>「文字コード自動判別機能」を付けたりしてました。<br>でもUTF-8とマルチバイト文字の確実な判別ってね！<br>Googleさんにもできないんですよ！！<br><br>あと他の新機能、個人的な一押しは<br>「<strong><span style="color:#CC0000">DataフォルダがなくてもEditor.exeを実行すれば空データを作ってくれる機能</span></strong>」<br>ですね！　面倒臭いときはDataフォルダ消してEditor起動すればとりあえずなにかができます！<br>ファイルをEXE内に内蔵したり出したりできる方法を学んだのでこれから色々できます。<br><br>ひとまず今月中の公開を目指して引き続き全力で修正していきますので<br>公開をお楽しみに！　あと2週間以内には出したいです。</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2022-11-12 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F11.html%232022-11-12&title=%E3%82%A6%E3%83%87%E3%82%A3%E3%82%BF%E5%A4%A7%E8%A6%8F%E6%A8%A1%E3%82%A2%E3%83%97%E3%83%87%E5%86%85%E5%AE%B9%E4%BA%88%E5%91%8A7%20%E4%BB%95%E4%B8%8A%E3%81%92%E4%B8%AD" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F11.html%232022-11-12&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2022-11-12','ウディタ大規模アプデ内容予告7 仕上げ中', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/woditor/001.html'>ウディタ</a></span></div></div>
+<div class='article_pos'>2022年11月</div>
+<div class='nav'><a href='12.html'>次の月へ</a> | <a href='10.html'>前の月へ</a></div>
+<a id='bottom'></a>
+
+<BR><BR>
+<div align="right"><a href="#top" class="g">▲一番上へ戻る</a></div>
+<BR>
+<CENTER>
+<HR>
+<div>
+<div id="silsec-status" style="display:inline-block;line-height:12px;font-size:10px;"></div>　<div align="center" style="display:inline-block;line-height:12px;font-size:10px;"><a href="https://smokingwolf.github.io/" target="_blank" class="blue" border="1"><img src="https://smokingwolf.github.io/banner.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>アーカイブサイトへ</a></div>
+</div>
+<HR>
+Copyright © SmokingWOLF / Silver Second
+<HR>
+</CENTER>
+
+
+<script>
+  // シルバーセカンド公式のドメインに接続し、サイト存在確認用のTXT(SILVERSECOND_ALIVE!と書かれている)があれば存在する扱いにする
+  const statusDiv = document.getElementById('silsec-status');
+  const checkUrl = 'https://silversecond.net/SILVERSECOND_SITE_ALIVE_FLAG.txt';
+
+  fetch(checkUrl, { cache: 'no-store' })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('ネットワークエラー');
+      }
+      return response.text();
+    })
+    .then(text => {
+      if (text.trim() === 'SILVERSECOND_ALIVE!') {
+        statusDiv.innerHTML = '<a href="https://silversecond.net/" target="_blank" class="blue"><B><img src="https://silversecond.net/banner/a.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>運営中のサイトへ</a>　';
+      } else {
+        statusDiv.textContent = '　';
+      }
+    })
+    .catch(error => {
+      statusDiv.textContent = '　';
+      console.error('シルバーセカンド公式サイトチェック失敗:', error);
+    });
+</script>
+
+
+
+
+</div>
+<div id='sidebar'>
+<div style='font-weight:bold;'>開発日誌</div>
+<div><a class='sidebar_link' href='../../archive/top/index.html'>日誌トップへ</a></div>
+<div><B><a class='sidebar_link' href='../../index.html'>全記事一覧</a></B></div>
+<hr>
+<div style='font-weight:bold;'>【最新記事】</div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/08.html#2025-08-09'>●08/09 『シルバーセカンド思い出の部屋』を開設！＋ 来年よりウディコン規約追加</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-26'>●07/26 第17回ウディコン審査期間開始！ ＆ 規約の補足</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-12'>●07/12 ウディコン直前！ サイト＆ウディタ修正＋シェパード捜査録！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-28'>●06/28 ウディコン準備中！+ 開発日誌も移転作業中</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-14'>●06/14 サイト修正＋開発日誌をFC2から移転！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-31'>●05/31 ウディコン歴史資料館設立！+ ウディタ修正 + GitHubのサイト作り</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-17'>●05/17 ウディタ3.6へ！バグ修正再び！ + 私がいなくなった後に備えて</a></div>
+<hr>
+<div style='font-weight:bold;'>【カテゴリ】</div>
+<div><a class='sidebar_link' href='../../category/woditor/001.html'>ウディタ&nbsp;<span class='sym'>(55)</span></a></div>
+<div><a class='sidebar_link' href='../../category/owh2dev/001.html'>片道勇者2&nbsp;<span class='sym'>(16)</span></a></div>
+<div><a class='sidebar_link' href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(15)</span></a></div>
+<div><a class='sidebar_link' href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(10)</span></a></div>
+<div><a class='sidebar_link' href='../../category/trpg/001.html'>TRPG&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(2)</span></a></div>
+<hr>
+<div style='font-weight:bold;'>【月別】</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2025-btn' onclick="toggleYear('y2025')">2025&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2025' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2025/08.html'>08月&nbsp;<span class='sym'>(1)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2024-btn' onclick="toggleYear('y2024')">2024&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2024' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2024/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/01.html'>01月&nbsp;<span class='sym'>(2)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2023-btn' onclick="toggleYear('y2023')">2023&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2023' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2023/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/09.html'>09月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2022-btn' onclick="toggleYear('y2022')">2022&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2022' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2022/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('a.double-link');
+
+  links.forEach(link => {
+    const primaryUrl = link.dataset.primary;
+    if (!primaryUrl) return;
+
+    const testUrl = primaryUrl + '?t=' + Date.now(); // キャッシュ無効化！
+
+    fetch(testUrl, { method: 'GET', cache: 'no-store' })
+      .then(res => {
+        const url = res.url || '';
+        if (!res.ok || url.includes('404.html') || res.status === 404) {
+          console.warn('【404または失敗】そのままアーカイブを使います:', link.href);
+          // そのまま
+        } else {
+          console.warn('【OK】hrefを本家に書き換えます:', primaryUrl);
+          link.href = primaryUrl;
+        }
+      })
+      .catch(() => {
+        console.warn('【通信エラー】そのままアーカイブを使います:', link.href);
+        // エラー時もhrefはそのまま
+      });
+  });
+});
+</script>
+
+
+
+</body>
+</html>

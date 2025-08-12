@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>シルバーセカンド開発日誌 / SmokingWOLF</title>
+<meta name="viewport" content="width=700">
+<script src="../../js/smoothscroll_up.js" type="text/javascript"></script> 
+
+<link rel="stylesheet" href="../../js/litebox/css/lightbox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../../js/litebox/js/prototype.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/moo.fx.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/litebox-1.0.js"></script>
+
+<style>
+html {
+  /* スマホ時は1.2倍フォントで表示 */
+  -webkit-text-size-adjust: 120%;
+  -ms-text-size-adjust: 120%;
+}
+
+BODY{
+  /*display:flex;*/
+  font-size:13px;
+  margin:0;
+  font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+  color:#558;
+}
+
+TD{
+  font-size:12px;
+}
+
+
+A:LINK,A:VISITED {  color:#5658f6;  text-decoration:underline ;}
+A:HOVER,A:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.red:LINK,A.red:VISITED{color:#d6385c;display: inline-block;text-shadow: 0 0 15px #ffddcc, 0 0 15px #ffddaa;}
+A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shadow: 0 0 15px #ffcccc, 0 0 15px #ffaaaa;}
+
+A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
+A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.g:LINK,A.g:VISITED{
+	color:#38a68c;
+	text-decoration:underline;
+}
+
+A.g:HOVER,A.g:ACTIVE{
+	color : #68b6ac;
+	text-decoration : underline;
+}
+
+
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38c6ac;
+}
+
+A.jumplink:HOVER,A.jumplink:ACTIVE{
+	color : #68f6ac;
+}
+
+A.jumplink{
+	text-shadow: 0 0 15px #ccddcc, 0 0 15px #aaddaa;
+	text-decoration : none;
+}
+
+
+.article_pos{
+	font-size:16px;
+	color:#aaf; 
+	font-weight:bold;
+	text-align:center;
+	margin:0px;
+	padding:0px;
+}
+
+#content {
+	font-size:14px;
+	
+}
+
+#sidebar {
+	background:#f8f8f8; 
+	border-left:1px solid #ddd; 
+	padding:4px 6px;
+	font-size:12px;
+}
+
+A.sidebar_link:LINK,A.sidebar_link:VISITED,
+A.sidebar_link_recent:LINK,A.sidebar_link_recent:VISITED{
+    color:#5658f6;
+	text-decoration: underline;
+}
+A.sidebar_link:HOVER,A.sidebar_link:ACTIVE,
+A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
+	color: #9698e6;
+	text-decoration: underline;
+}
+
+.sidebar_link{
+	font-size:13px;
+}
+
+.sidebar_link_recent{ /* 1つ1つの項目ごとに隙間を空ける */
+	font-size:11px;
+	line-height: 1.2;
+	display: inline-block;
+	margin-top:5px;
+}
+
+
+.entry {
+	border:1px solid #ccc; 
+	border-radius:8px; 
+	margin:14px 0; 
+	overflow:hidden;
+
+}
+.entry-title {
+	background:linear-gradient(to right,#4243ff,#aaaacf);
+
+	font-size:17px;
+	color:#fff; 
+	padding:4px; 
+	font-weight:bold;
+	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
+}
+
+.entry-body,.extended {
+	background:#fff; 
+	color:#444; 
+	padding:15px;
+	font-size:14px;
+	line-height:1.6em;
+}
+
+.entry-foot {
+	background:#fff; 
+	text-align:center;
+	vertical-align:middle;
+	color:#ccf;
+	font-size:12px;
+	padding-top:20px;
+	padding-right:20px;
+	padding-bottom:10px;
+}
+
+.linkbutton{
+	padding:3px;
+}
+
+/*--●形状整理用--*/
+body {display:flex; margin:0;}
+#content {width:580px; padding:0 8px;
+	font-size:14px;}
+#sidebar {width:120px;  box-sizing:border-box; }
+#sidebar div {line-height:1.6;}
+#sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
+.nav {margin:0px 0 -20px 0; text-align:center;}
+.sym {color:#999; font-weight:normal;}
+
+</style>
+
+
+<script>
+function toggle(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+function toggleDisp(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+</script>
+
+
+
+<!--★目次デザイン・処理★-->
+<style>
+.toc-box{background-color:#f0f0f0;border-radius:8px;padding:10px;} 
+.toc-list{list-style:none;margin:0;padding-left:0;} 
+.toc-list ul{list-style:none;margin:0;padding-left:20px;}
+.toc-list li{margin:5px 0;}
+.toc-level1{margin-left:0;}
+.toc-level2{margin-left:20px;}
+
+h1 {
+  background: #fff;
+  padding: 6px 10px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #2233cc; /* 青系 */
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 4px solid #3366ff;
+  display: block;
+  width:100%;
+  
+}
+
+
+h2,h3 {
+  background: #fff;
+  padding: 6px 10px;
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #5566ff; /* 青系 */
+  
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 2px solid #9999ff;
+  display: -block;
+
+}
+
+h2::before {
+  content: "- ";
+}
+
+.master_years{
+  margin-left:20px;
+  margin-right:20px;
+}
+
+.top_minicategory{
+  font-size:10px;
+  color:#ccccff;
+}
+</style>
+
+
+
+</head>
+<body onload="initLightbox();">
+<a id="top"></a>
+
+<style type='text/css'>
+.linkbutton{
+  font-size: 0.9em;
+  padding: 1px 6px;
+  vertical-align: baseline;
+  line-height: 1;
+  height: auto;
+  margin-left: 4px;
+  color:#66f;
+  background-color:#f9f9f9;
+  border: 1px solid #888;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.copy-popup{
+  background-color: #eef;
+  border: 1px solid #88c;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  color: #333;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.5s ease;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  max-width: 80vw;             /* 画面幅の 80% で折り返す */
+  overflow-wrap: anywhere;     /* 長い URL を途中で区切る */
+  word-break: break-all;       /* ↑が効かない旧ブラウザ保険 */
+  white-space: pre-wrap;       /* 
+ を改行として扱い、余計な連続空白は1個に */
+}
+.article_end_date{
+  font-size:0.9em;
+}
+</style>
+
+
+<script>
+function toggle(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+}
+
+// Year accordion with sessionStorage persistence
+function toggleYear(id){
+  const pane = document.getElementById(id);
+  const btn  = document.getElementById(id+'-btn');
+  if(!pane||!btn) return;
+  const sym  = btn.querySelector('.sym');
+  const isClosed = pane.style.display === 'none';
+  pane.style.display = isClosed ? 'block' : 'none';
+  sym.textContent   = isClosed ? '－' : '＋';
+  sessionStorage.setItem('year-'+id, isClosed ? 'open' : 'closed');
+}
+
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('[data-yearpane]').forEach(pane=>{
+    const id    = pane.id;
+    const state = sessionStorage.getItem('year-'+id);
+    const btn   = document.getElementById(id+'-btn');
+    const sym   = btn?.querySelector('.sym');
+    if(state === 'open'){
+      pane.style.display = 'block';
+      if(sym) sym.textContent = '－';
+    }else{
+      pane.style.display = 'none';
+      if(sym) sym.textContent = '＋';
+    }
+  });
+});
+
+function copyLink(date, title, el){
+  const url = `https://smokingwolf.github.io/dev_blog/archive/${date.slice(0,4)}/${date.slice(5,7)}.html#${date}`;
+  const text = `
+【${date}　${title}】
+ ${url}`;
+  navigator.clipboard.writeText(text).then(()=>{
+    if(el && el.tagName === 'BUTTON'){
+      const orig = el.textContent;
+      el.textContent = '✅ コピー完了!';
+      setTimeout(()=>{ el.textContent = '🔗 リンクをコピー'; }, 2000);
+    }
+
+    const popup = document.createElement('div');
+    popup.className = 'copy-popup';
+    popup.textContent = `✅ コピー完了：${text}`;
+    document.body.appendChild(popup);
+
+    const rect = el.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    const popupWidth = popup.offsetWidth;
+    const pageWidth = document.documentElement.clientWidth;
+
+    let left = rect.left + scrollLeft + (rect.width / 2) - (popupWidth / 2);
+    let top  = rect.top  + scrollTop - popup.offsetHeight - 8;
+    if(left < scrollLeft + 4) left = scrollLeft + 4;
+    if(left + popupWidth > scrollLeft + pageWidth - 4)
+        left = scrollLeft + pageWidth - popupWidth - 4;
+
+    popup.style.left = `${left}px`;
+    popup.style.top  = `${top}px`;
+    popup.style.opacity = '1';
+    popup.style.zIndex = '9999';
+
+    setTimeout(()=>{ popup.style.opacity = '0'; }, 1800);
+    setTimeout(()=>{ popup.remove(); }, 2500);
+  });
+}
+</script>
+
+<div id='content'>
+<style>
+
+.TopTitle{
+  width:515px;
+  font-weight:bold;
+  font-size:16pt;
+  color: #ffffff;
+  background-color:#535365 ;
+  border-width: 0px;
+  border-color:#535365;
+  border-style:solid;
+  background: -moz-linear-gradient(left top, #42435f, #fafaff);
+  background: -webkit-gradient(linear, left top, right bottom, from(#42435f), to(#fafaff));
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#DD42425f', endColorstr='#FFfafaff');
+  
+  text-align:left;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.header3{
+	color:#555588;
+	margin-bottom:16px;
+}
+
+.home-link {
+  font-size: 12px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: underline;
+}
+</style>
+
+<!--戻るリンク、サイトがなくなってたらアーカイブにつながるようにしたが404ページがアレなのかうまくいかない-->
+<!--
+<font id="home-link-placeholder">
+  <noscript>
+    <a href="https://smokingwolf.github.io/" class="home-link">← ホーム(アーカイブサイト)に戻る</a>
+  </noscript>
+</font>
+
+<script>
+(async () => {
+  try {
+    // HEADで軽くチェック（no-corsなのでステータス確認は不可）
+    // 自分のサイトのインフォメーションページにつなげるならサイトがまだあると認識する
+    await fetch("https://silversecond.net/contents/etc/info.shtml", { method: "HEAD", mode: "no-cors" });
+
+    const link = document.createElement("a");
+    link.href = "https://silversecond.net/";
+    link.textContent = "← ホームに戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  } catch {
+    const link = document.createElement("a");
+    link.href = "https://smokingwolf.github.io/";
+    link.textContent = "← ホーム(アーカイブサイト)に戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  }
+})();
+</script>
+-->
+
+<div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
+<!--ここにコメント文-->
+<div class="header3" style="margin-top:6px;">　ここはゲーム開発者SmokingWOLF(スモーキングウルフ)の開発日誌です。<BR>
+　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
+　<B style="color:#ff5555;">※以前のブログが使えなくなったので、ただいまこの開発日誌に移転中です。</B>
+</div>
+
+<div class='article_pos'>ウディタ　6/6</div>
+<div class='nav'><a href='005.html'>次のページ</a> | <span style='color:#ccc'>前のページ</span></div>
+<a id='2022-06-25'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2022-06-25','ウディタ大規模アプデの機能 1', this)" style='cursor:pointer;'>2022-06-25 (土)&nbsp;&nbsp;&nbsp;ウディタ大規模アプデの機能 1</span><span style='float:right;'><a href='#2022-06-11' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【ウディタ大規模アップデートで搭載される機能 1】</strong></span><br><br>ここしばらくは9～10月公開予定の大規模アップデートに備えて<br>ウディタの修正作業を続けています。<br>ということで大規模アップデートで搭載予定の機能の一部をご紹介！<br><br><hr size="1" /><br><span style="font-size:large;"><strong>●コモンイベントの入力が4つから5つに増加！</strong></span><br><br><img src="../../image/2022/20220625B.png" border="1" width="520" loading="lazy" height="270"><br><br>なぜか最初から5つめが使われていなくて、<br>数値変数4つ、文字列変数4つだったのですが、<br>『片道勇者2』でいよいよ足りなくなったので今さら5つずつに拡張されます！<br><br><hr size="1" /><br><span style="font-size:large;"><strong>●POST送信機能の実装</strong></span><br><br><img src="../../image/2022/20220625A.png" border="1" width="520" loading="lazy" height="270"><br><br>ごく一部の人にだけ念願のPOST機能を搭載！<br>ほとんどの人には何を言ってるのか分からない機能！<br><br>従来はGET方式<span style="color:#3366FF">(https://～～/aaa.cgi?code=12345&name=uhoho というURLを開くと<br>「aaa.cgi」というサーバプログラムにクエリ部分「code=12345&name=uhoho」の<br>情報を送ることができる）</span>でデータを送ることができましたが、<br>こっちはもっと直接的にデータを送ることができる処理です。<br><br>具体的に何ができるようになるかというと、<br>通常10KB未満しか送れないGET方式に比べると<br>ほぼ送信量無制限でサーバにデータが送信できます！<br>とはいっても通常は最大1MB以内くらいが望ましいはずです。<br><br>これによって、PHPなどでサーバ側のプログラムを組める方なら、<br>下のBase64変換機能と合わせて<br>ゲーム内からTwitterにスクリーンショットを送信できたりします。<br><br>この辺のサポートは、きっとコモンイベントとサーバプログラムを<br>セットで作ってくださる方を待つしかないでしょうね。<br>自分でサーバプログラムを設置するのも結構ハードル高いですが、<br>この辺の組み合わせが使えると<br>ランキング機能やリプレイ機能やスクリーンショット共有などなど夢が無限に広がります！<br>まあランキングくらいならGET方式でもできないことはなかったんですけども、<br>POST形式だとセキュリティ的にいたずらしにくくなるのが一つの大きな利点です。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>●文字列操作：バイナリファイルをBase64で読み取る機能。</strong></span><br><br>普通の方は「そもそもまずBase64ってなに！？」と思われるはずです。<br>Base64というのは、本来人間が文字として読めないデータである<br>バイナリファイル（EXEとかJPGとか）のデータを、<br>0～9、a～z、A～Z、+、/の合計64種の文字だけで表される情報に<br>変換するフォーマットです。<br><br>で、次回のウディタに搭載されるのは、バイナリファイルを読み込んで<br>Base64に変換しウディタ内で扱える「文字列変数」として得る機能！<br><br>これができると何が嬉しいかというと、<br>たとえば、実は「メール」って本来は文字以外を送ることができないんですが、<br>画像などのバイナリファイルを「Base64」に変換してメールの後ろ部分に書き込むことで、<br>0～9、a～z、A～Z、+、/の文字だけで「画像の添付」を実現させているのです！<br><br>他にもこんな風に、ネット上でのデータのやり取りで<br>Base64変換が使われることはとても多いです。<br>Twitterに画像を送りたいときもBase64化した画像データを送りますしね。<br>といいますか、主にそのためだけにこの機能を実装したんですけれども！<br><br>そんなわけで、「文字列操作」に<br>「Base64でファイルを読み込み」する機能を搭載予定です。<br>これは一般公開版で使えますのでご安心を。<br><br><br><strong>【実は出力機能もあるけど……】</strong><br>一方で、Base64文字列を「バイナリファイルとして出力」する機能も<br>作るだけ作っています。<br><br>ですが、Base64をバイナリとして出せるということは、<br>実はウィルス入りバイナリファイルとか作り放題になって危なすぎるので、<br>そちらは検討中の「ウディタプロ版（有料ライセンス版）」<br>のみに搭載予定です。<br>（かつ、EXE形式やその他ウィルスに使われそうな私が思いつく形式のファイルは<br>直接Game.exeからは作れないようにします）<br><br>バイナリファイルを作れる機能の使い方なんて<br>今の私だとそんなに思いつかないのですが、<br>知り合いが出してくれたアイデアとして、<br>「Base64読み書きを活かして画像の末尾にデータを入れたり（して交換）できるかも」<br>という発想がありました。<br>キャラ絵の画像にデータをまとめられるなら、<br>渡すデータがコンパクトにできていいですね。<br>（といっても、本当にできるかは分かりませんよ！）<br><br><hr size="1" /><br><span style="font-size:large;"><strong>●DB操作　　データ新規挿入・データコピー・抜き取り処理を実装</strong></span><br><br>これまでありそうでなかったデータの挿入・コピー・抜き取りができます。<br>これでデータの並び変えなどが非常に簡単になります！<br>プログラミングでいう「構造体」単位で抜き差しできるので超便利！<br>（これまでは1データ抜けるたびにそれ以後の全データを<br>1項目ずつ上にコピーしなきゃいけなかったので操作量が凄くなりがちだった）<br><br><img src="../../image/2022/20220625.jpg" border="1" loading="lazy" height="254"><br><br><hr size="1" /><br>などなどマニアックな機能から普段使いしたい機能まで色々搭載予定です！<br>これらもほんの一部ですので、続報にご期待ください。</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2022-06-25 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F06.html%232022-06-25&title=%E3%82%A6%E3%83%87%E3%82%A3%E3%82%BF%E5%A4%A7%E8%A6%8F%E6%A8%A1%E3%82%A2%E3%83%97%E3%83%87%E3%81%AE%E6%A9%9F%E8%83%BD%201" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F06.html%232022-06-25&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2022-06-25','ウディタ大規模アプデの機能 1', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/woditor/001.html'>ウディタ</a></span></div></div><br><br><br>
+<a id='2022-06-11'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2022-06-11','ウディタの今後の予定', this)" style='cursor:pointer;'>2022-06-11 (土)&nbsp;&nbsp;&nbsp;ウディタの今後の予定</span><span style='float:right;'><a href='#2022-03-26' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【ウディタの今後の予定】</strong></span><br><br>今年はウディタを色々展開していきたいと思っておりますので<br>抱負を述べていきます！<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【今年中に大規模アップデートしたい！】</strong></span><br><br>今も公開されているウディタを更新している裏で、<br>実は『片道勇者2』用に色々と新機能をテストしておりまして、<br>一通りまともに動くようになってきたので今年中にまとめて公開予定です。<br>後述するプレミア機能と合わせて公開したいと考えていて、<br>年内には何とかやりたいですね。<br><br>どんな機能があるかは徐々にお知らせしていきますが、<br>とりあえずもう情報が出ている部分として、<br>文字列まわりがけっこうパワーアップしたり、<br>イベント処理と描画の負荷がまた何割か軽くなりそうです！<br><br><img src="../../image/2022/20220611.jpg" border="1" loading="lazy" height="211"><br>↑<br>「文字列」に関しては、すでにときどき載せられている<br>『片道勇者2』のスクリーンショットを見ると分かるかもしれません。<br>文字列ピクチャが斜めにできたり、文字のフチの色を変えられたり、<br>フチを太くできるようになってて、表現力がいくらか上がっています。<br><br><hr size="1" /><br><span style="font-size:large;"><strong><strong>【ウディタのマネタイズも検討したい！】</strong></strong></span><br><br>今のところウディタでの収益化がほとんどできてなくて持続性がヤバいので、<br>せめてサポートに回した日の生活費やサーバ維持費くらいは<br>安定して得られるくらいのマネタイズをしたいと考えています。<br>（以前は解説本も出してもらっていて、かすかな印税をいただいていたのですが、<br>もう絶版になったっぽくて印税も来なくなったので……）<br><br>今のところのマネタイズ案としては、<br>うっかりヤバいことにも使われうる「危険な処理」が解放された、<br>「プレミアム版ウディタ」を有料販売する案などを検討しています。<br>もちろん通常の機能追加は引き続き一般公開版でやりますのでご安心ください。<br><br>「危険な処理」というのはたとえば、一般公開されているウディタでは、<br>故意・過失を問わずネット接続機能を連射してサーバアタックにつながらないよう、<br>「短時間で連続してネット接続すると一定の待ち時間が発生する」<br>というリミッター機能が付いています。<br><br>作者用のウディタではそのリミッターを解除して使っているのですが、<br>たとえばそのリミッター解除したものをプレミアム版とするわけですね。<br><br>他にも、イタズラに使われると激マズな<br>「指定したURLをブラウザで開く」機能などを使えるようにしたり、<br>「画面サイズの自由指定」ができるようにする機能を<br>入れたりすることも検討しています。<br>（もしかしたらスマホ用に縦持ちゲームも作れる？　今はまだ分かりませんが）<br><br>さらにおまけで、「タイトルバーの表示」（と各ファンクションキー機能のオンオフ）を<br>自由に設定できたりすると、ウディタ臭を減らせて喜ばれるかもしれません。<br><br>とにかくそういった機能のあるプレミアム版ウディタを出すことを、<br>収益化案の一つとして検討中です。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【第14回ウディコン、いつも通り開催！】</strong></span><br><br>これはもういつも通り、<a data-primary="https://www.silversecond.com/WolfRPGEditor/Contest/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size:large;"><strong>ウディコン</strong></span></a>今年も開催です！　開催まで残り35日くらい！<br><br>さすがにそろそろ作品数や投票者数の規模が落ちていくとは<br>考えていますが、ゲームコンテストのマイナーリーグ枠の一つとして、<br>やれる限り、面白い限りはやり続けていきたいと考えております！<br><br>ウディコンは毎年驚くようなアイデアを見つけられるのが魅力！<br>さらに開発する側の人には、プロの作品からでは見えにくい、<br>問題になりやすい箇所や、あるいは自分の持っている強みを<br>お互いに学ぶことができるのもいい点だと思います。<br>横に並んでいるので、同じ条件で比較し合えるのが強い！<br><br>ユーザ対応だって他の作者さまのを参考にできますし、<br>コメントも普通に公開するよりはいっぱい届くらしいので、<br>これだけ学べる場はなかなかないんじゃないかと<br>ちょっと誇れる気がしています。ぜひうまく使ってください。<br><br><hr size="1" /><br>という感じで、今年はウディタにも大きめの動きがあるかもしれません。<br><br>ウディタのサポート自体は今もずっと続けていますし、<br>ブラウザ化プロジェクトやSwitch移植プロジェクトも動いていますので、<br>ウディタもまだまだ活躍していきますよ！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2022-06-11 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F06.html%232022-06-11&title=%E3%82%A6%E3%83%87%E3%82%A3%E3%82%BF%E3%81%AE%E4%BB%8A%E5%BE%8C%E3%81%AE%E4%BA%88%E5%AE%9A" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F06.html%232022-06-11&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2022-06-11','ウディタの今後の予定', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/woditor/001.html'>ウディタ</a></span></div></div><br><br><br>
+<a id='2022-03-26'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2022-03-26','ウディタにアナログスティック＆タッチ機能搭載中', this)" style='cursor:pointer;'>2022-03-26 (土)&nbsp;&nbsp;&nbsp;ウディタにアナログスティック＆タッチ機能搭載中</span><span style='float:right;'><a href='#2022-03-12' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【ウディタにアナログスティック＆タッチ機能搭載中】</strong></span><br><br>ウディタ製のゲームがブラウザ化できるかもしれないということで、<br>ただいまウディタへの「タッチ操作」実装のついでに「キー入力」周りの強化中です！<br><br>「タッチ操作」はWindowsタブレット（対応してるか不明）で遊んだり<br>ブラウザやスマホに展開しないと使わなさそうな機能なので<br>重要度はほどほどだと思います。<br>どちらかというと今回の目玉はゲームパッドの<br>アナログスティック対応＆（POV）十字キー対応！<br><br><iframe width="520" height="300" src="https://www.youtube.com/embed/Ad-CC-oyCm0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br><br>RPGだとアナログスティックをそこまで使わないかもしれませんが、<br>Steam展開やゲーム機移植などを最終目標にされていて<br>特にアクション性のあるゲームを作られる方なら、<br>この機能があるとうれしい場面があると思います。<br>特に右スティックが使えるようになるのが大きい！<br>パッドの十字キーもショートカットとして使えるでしょう。<br><br>今のところPC上では上記動画のように動いていますが、その他だとまだまだこれからです。<br><br><br><hr size="1" /><br><span style="font-size:large;"><strong>【おまけ　エラー表示の強化】</strong></span><br><br>ウディタの緑帯エラーはエラー発生地点が表示されるのですが、<br>今回それに強化を加え、次バージョンから<br><br><span style="color:#CC0000"><span style="font-size:large;"><strong>『エラー箇所までのイベント実行経路を表示する機能』</strong></span></span><br><br>が追加されます！<br>プログラミングだと「スタックトレース」と呼ばれている機能のようです。<br><br><img src="../../image/2022/20220326.jpg" border="1" loading="lazy" height="216"><br><br>熟練者ほど同じコモンイベントをうまく流用するため、<br>エラー地点の表示だけだと「どの経路から呼ばれた処理が原因になっているか」が<br>特定しづらいことが多くなってしまいがちなのですが、<br>この機能を入れたおかげでデバッグ効率が格段に向上しました。<br><br>いま私が作っている『片道勇者2』はコモンイベントがかなり巨大化していたため、<br>エラーが起きたときの調査で猛烈に効率が下がってたので大助かりでした。<br>このデバッグ機能は、巨大化したシステムほど有用になると思います。<br><br><hr size="1" /><br>今回の新機能、特に入力周りがブラウザ側と連携できそうか<br>いまチェック中ですので、いけそうだと分かった頃に一般公開されると思います。<br>もう少々お待ちください。</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2022-03-26 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F03.html%232022-03-26&title=%E3%82%A6%E3%83%87%E3%82%A3%E3%82%BF%E3%81%AB%E3%82%A2%E3%83%8A%E3%83%AD%E3%82%B0%E3%82%B9%E3%83%86%E3%82%A3%E3%83%83%E3%82%AF%EF%BC%86%E3%82%BF%E3%83%83%E3%83%81%E6%A9%9F%E8%83%BD%E6%90%AD%E8%BC%89%E4%B8%AD" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F03.html%232022-03-26&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2022-03-26','ウディタにアナログスティック＆タッチ機能搭載中', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/woditor/001.html'>ウディタ</a></span></div></div><br><br><br>
+<a id='2022-03-12'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2022-03-12','ウディタ作品、ブラウザ展開への道！', this)" style='cursor:pointer;'>2022-03-12 (土)&nbsp;&nbsp;&nbsp;ウディタ作品、ブラウザ展開への道！</span><span style='float:right;'><a href='#2022-01-15' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【ウディタ作品、ブラウザ展開への道！】</strong></span><br><br>ということでついに情報公開！<br>なんとウディタ製のゲームが『ブラウザ』や『スマホ』へ<br>展開できるかもしれない話が出てきました！<br><br>今回出てきたもの、その名も <span style="font-size:large;"><strong>『Woditor Web Player』</strong></span> （たぶん仮名）！<br>その作者さまは、ウディタ公式にある『tkool2WOLF』や<br>『グラフィック合成器』を作られた　<a class="double-link red" target="_blank" title="Rikka様(ci-enページ)" href="https://ci-en.net/creator/12702">Rikka様(Ci-enページ)</a> <a class="double-link red" target="_blank" href="https://web.archive.org/web/20220319201815/https://ci-en.net/creator/12702">(ｱｰｶｲﾌﾞ)</a>です！<br>私だと技術的に乗り越えるのが困難だった話なので本当に感謝の限りです！<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【とりあえず動いているところが見たい】</strong></span><br><br>ただいま、「ゲームアツマール」というブラウザゲームアップロードサイトに<br>ウディタのサンプルゲームがアップされています！<br>スマートフォンでも遊べます。<br>↓<br><S>「ウディタをブラウザで動かすやつ」デモ</S> <br>(ゲームアツマールはサービス終了しました)<br><br>動作に関しては、「PC」や「最近のそこそこのスマホ」でしたら軽快に動く感じで、<br>「古めのスマホ・性能低めのスマホ」だとキツい、という感じだそうです。<br><br>私が持っている「Pixel4a」というスマートフォンだと、<br>サンプルゲームだけでなく、試しに動かしてくださった『片道勇者』も<br>ほぼ困らない速度で動作することを確認済みです。<br>常に重い処理してると思ったのにすごい！<br>とはいえ、さすがに処理量が多い『片道勇者』の方は、<br>NPCが多く出現したときなどに<br>まれに少しの処理落ちを感じるくらいの重さはあります。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【仕様について】</strong></span><br><br>『Woditor Web Player』の仕様について、<br>端から見ていて知った情報をいくつか紹介させていただきます！<br><br><br><span style="font-size:large;"><strong>●ゲームデータはそんなにいじらずアップできるかも！？</strong></span><br><br>ゲームアツマール用のカスタマイズをまったくしないなら、<br>ゲームデータそのものはあまりいじらなくてもいいっぽい？<br>というニュアンスの話を聞いたような気がします！　間違ってたらすみません！<br><br>もちろん、そのゲームデータをツールでアレコレする作業や、<br>実行環境を整える作業などは必要になると思います。<br><br><br><span style="font-size:large;"><strong>●暗号化ファイルのままアップロードできる！</strong></span><br><br>重要！　生データのまま配布しちゃいけない素材があった場合でも、<br>ウディタ本体による暗号化がされた状態のままでアップロードできるので安心です。<br><br><br><span style="font-size:large;"><strong>●MIDIもいちおうそのままで再生可能！</strong></span>（楽器の音はちょっと変わります）<br><br>MIDIファイルは、OGG形式などに変換せずともいちおうそのまま再生可能です！<br>ただし音源は権利的に安全な、ちょっと違う音源のもので再生されるので、<br>やれるならOGGに変換したほうが元の音を再現できます。<br>気になる人は変換した方がいいようですが、<br>そういうコストをかけたくない人はそのままアップできる選択肢があるのが強い！<br><br><br><span style="font-size:large;"><strong>●画面のパッド機能はHTMLで書かれていて改造もできる！？</strong></span><br><br>HTMLをいじればオーバーレイのボタンをカスタムすることもできる、らしい！<br>という話を耳にしています。実際、『片道勇者』用に試しにCTRLキーを入れてもらえました。<br>つまり普段使わないキーを使って遊ぶゲームも安心！<br><br>もちろん、キーを使わないゲームならこのHTMLオーバーレイボタンを取っ払って<br>マウス専用ゲームにもできると思います。<br><br><br><span style="font-size:large;"><strong>●アツマールでのセーブ周りがちょっと大変、らしい！</strong></span><br><br>「PCなら数百KB、大きくても数MBくらいもう誤差でしょ！」と、<br>容量のことをあまり考えずに作った私のセーブフォーマットのせいで、<br>アツマールにアップするゲームのセーブ容量が<br>キツいことになってしまっているそうです。<br><br>なのでセーブデータのサイズを大幅に減らせる工夫を<br>すでに色々してくださっているのですが、それでもまだちょっとサイズが大きい！<br>そもそもアツマールさんちに入るセーブ容量がすごく小さい！<br>（公式資料によると一般ユーザが使えるのは90ブロック=90KBくらいのようです。<br>サンプルのセーブが35KBで35ブロックくらい使う！）<br><br>最悪、「ゲーム作者さま側で自作セーブデータ機能を作った方が軽い」、<br>なんて状況も出てくると思いますので、<br>ウディタリアンのDIY精神に頼らせていただく部分も出てくるかもしれません。<br>（例えば1本道RPGなら、「主人公らのパラメータ・アイテム」と<br>「保存しておくべきフラグ」だけを保存するようにすれば<br>1セーブが数KB以内におさまるかも？）<br><br>いい感じの自作セーブコモンイベントを作ってくださる方にも期待！<br>とにかくこのセーブデータ周りは、アツマールへのアップにあたっては<br>特にチューンが必要になる予感がします。<br><br>いちおう、ブラウザ側のローカルストレージにセーブする方法があるらしくて、<br>それを使えば数MBのデータでも保存できるみたいですが、<br>こっちはブラウザのキャッシュを消すとなくなってしまうようです。<br>どのみち、セーブ周りは色々と苦労がありそうです。<br><br><br><br><span style="font-size:large;"><strong>●ブラウザ化さえできればスマートフォンにも出せるらしい！</strong></span><br><br>『RPGツクール』のMVやMZなどでスマートフォンアプリ化を実現する方法と同じく、<br>一度HTMLで動くゲームにできればなんやかんやして<br>スマートフォンアプリにできるそうです！<br><br>そこまでやる方がどのくらいいらっしゃるかは不明ですが、<br>このプロジェクトがうまくいけば展開の限界値が<br>大幅に伸びるのはまちがいなさそうです、これはうれしい！<br><br><br><hr size="1" /><br><span style="font-size:large;"><strong>【今後の話　本体への複数タッチ判定機能の搭載】</strong></span><br><br>で、これはウディタ本体側の話なのですが、<br>ブラウザ展開、特にスマホに展開するにあたって、<br>『複数タッチ位置取得機能』が必要になってくるかもしれないので<br>ウディタ本体への搭載を検討しています。<br><br>今のブラウザ版で「オーバーレイ（HTML側）のボタンをはずした」場合、<br>おそらく「タッチした箇所」をゲーム内の「マウス左クリック」として<br>認識してくれそうな雰囲気なのですが、複数の同時タッチは処理できないはずです。<br>そもそもウディタ本体の方が「2点同時タッチ」の受け付けに対応していませんからね！<br><br>ですが「X点同時タッチ判定」機能が搭載されれば、スマートフォン用に、<br>ゲーム内に自前で「タッチ式の方向キー＆ボタン」機能を作れたりするわけです。<br>完全自作ウディタリアン的には、HTMLをいじってキー機能を搭載するよりも<br>ゲーム側に搭載してしまった方が分かりやすい状況もあるかもしれません。<br><br>もちろん、処理の都合などで実現できない可能性もかすかにあるので、<br>この辺はあまり期待せずにお待ちください！<br>ブラウザ側と連携して実装する必要がある話ですからね。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【よければご支援を！】</strong></span><br><br>そしてこのプロジェクトなのですが、貴重な時間を使って<br>開発してくださっているRikka様の方で支援を募っておられます！<br>ブラウザ化プロジェクト応援のために、よければぜひご支援をお願いします！<br>↓<br><a class="double-link red" target="_blank" href="https://ci-en.net/creator/12702"><span style="font-size:large;"><strong>【Rikka様　Ci-enページ】</strong></span></a><br><br>（資金の支援プランに参加されると追加課金なしで<br>「ブラウザ化ツールの完全機能版をもらえる」以外にも、<br>フォローしておくだけでも新情報が入ってきて便利！）<br><br><br><br>Rikka様によると、<br>「まだまだ開発中で、一般利用もテスト配布もまだ先になりそうです」<br>とのことですが、ウディタのブラウザ・スマホ展開への第一歩は動き出しました！<br>今後もお楽しみに！<br><br>最新情報は↑のCi-enページが一番早いと思いますので、<br>気になる方はぜひフォローを！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2022-03-12 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F03.html%232022-03-12&title=%E3%82%A6%E3%83%87%E3%82%A3%E3%82%BF%E4%BD%9C%E5%93%81%E3%80%81%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E5%B1%95%E9%96%8B%E3%81%B8%E3%81%AE%E9%81%93%EF%BC%81" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F03.html%232022-03-12&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2022-03-12','ウディタ作品、ブラウザ展開への道！', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/woditor/001.html'>ウディタ</a></span></div></div><br><br><br>
+<a id='2022-01-15'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2022-01-15','ウディタVer2.281公開！', this)" style='cursor:pointer;'>2022-01-15 (土)&nbsp;&nbsp;&nbsp;ウディタVer2.281公開！</span><span style='float:right;'><a href='#bottom' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【ウディタVer2.281公開！】</strong></span><br><br>ということでタイルセットの「48×48対応」が目玉のウディタVer2.281を公開しました！<br><br><img src="../../image/2022/20220115.jpg" border="1" loading="lazy" height="315"><br><br><a class="double-link blue" target="_blank" href="https://www.silversecond.com/WolfRPGEditor/"><span style="font-size:large;"><strong>ウディタ公式サイトへ<br>https://www.silversecond.com/WolfRPGEditor/</strong></span></a><br><br>最近のRPGツクール向けに作られたマップチップ素材などは48サイズなので<br>それらも使うことができるようになります。<br>（といっても有料素材は規約上、「ツクール以外では使用禁止」のものも多いため注意！）<br><br><br>他にも<br><br><span style="font-size:large;"><strong>●ピクチャ消去の速度がめちゃめちゃ高速になったり、<br><br>●ゲーム前にゲームパッドを挿しても反映されなかったのが<br>ゲーム中でも反映されるようになったり、<br><br>●F4キーでボーダーレス画面最大化（※）</strong></span>できるようになったりしました。<br>（※タイトルバーが表示されない仮想フルスクリーン、<br>解像度を切り替える形の全画面化よりも切り替えが早くて安定性が高い）<br><br>他はまずそうなバグの優先修正だけですが、割と色々乗せの修正ですので、<br>ウディタをご利用の方は可能そうならぜひアップデートをお試しください。<br><br><br>あとエディタ側で文字入力するとカーソルが飛ぶ問題がご報告されていたのですが、<br><a class="double-link red" target="_blank" href="https://web.archive.org/web/20220123191357/https://forest.watch.impress.co.jp/docs/news/1378596.html"><strong>どうやらWindows側のバグ</strong>（窓の杜さんの記事/ｱｰｶｲﾌﾞ）</a>だったようです。<br>「直せない問題のためにどれだけ調査の時間を使ったと思ってるんだあぁぁヌオオオ！」<br>と叫ぶのもソフトウェア開発者の悲しい宿命。<br>それ以上に土台の部分で大変お世話になっていますしね！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2022-01-15 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F01.html%232022-01-15&title=%E3%82%A6%E3%83%87%E3%82%A3%E3%82%BFVer2.281%E5%85%AC%E9%96%8B%EF%BC%81" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F01.html%232022-01-15&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2022-01-15','ウディタVer2.281公開！', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/woditor/001.html'>ウディタ</a></span></div></div>
+<div class='article_pos'>ウディタ　6/6</div>
+<div class='nav'><a href='005.html'>次のページ</a> | <span style='color:#ccc'>前のページ</span></div>
+<a id='bottom'></a>
+
+<BR><BR>
+<div align="right"><a href="#top" class="g">▲一番上へ戻る</a></div>
+<BR>
+<CENTER>
+<HR>
+<div>
+<div id="silsec-status" style="display:inline-block;line-height:12px;font-size:10px;"></div>　<div align="center" style="display:inline-block;line-height:12px;font-size:10px;"><a href="https://smokingwolf.github.io/" target="_blank" class="blue" border="1"><img src="https://smokingwolf.github.io/banner.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>アーカイブサイトへ</a></div>
+</div>
+<HR>
+Copyright © SmokingWOLF / Silver Second
+<HR>
+</CENTER>
+
+
+<script>
+  // シルバーセカンド公式のドメインに接続し、サイト存在確認用のTXT(SILVERSECOND_ALIVE!と書かれている)があれば存在する扱いにする
+  const statusDiv = document.getElementById('silsec-status');
+  const checkUrl = 'https://silversecond.net/SILVERSECOND_SITE_ALIVE_FLAG.txt';
+
+  fetch(checkUrl, { cache: 'no-store' })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('ネットワークエラー');
+      }
+      return response.text();
+    })
+    .then(text => {
+      if (text.trim() === 'SILVERSECOND_ALIVE!') {
+        statusDiv.innerHTML = '<a href="https://silversecond.net/" target="_blank" class="blue"><B><img src="https://silversecond.net/banner/a.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>運営中のサイトへ</a>　';
+      } else {
+        statusDiv.textContent = '　';
+      }
+    })
+    .catch(error => {
+      statusDiv.textContent = '　';
+      console.error('シルバーセカンド公式サイトチェック失敗:', error);
+    });
+</script>
+
+
+
+
+</div>
+<div id='sidebar'>
+<div style='font-weight:bold;'>開発日誌</div>
+<div><a class='sidebar_link' href='../../archive/top/index.html'>日誌トップへ</a></div>
+<div><B><a class='sidebar_link' href='../../index.html'>全記事一覧</a></B></div>
+<hr>
+<div style='font-weight:bold;'>【最新記事】</div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/08.html#2025-08-09'>●08/09 『シルバーセカンド思い出の部屋』を開設！＋ 来年よりウディコン規約追加</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-26'>●07/26 第17回ウディコン審査期間開始！ ＆ 規約の補足</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-12'>●07/12 ウディコン直前！ サイト＆ウディタ修正＋シェパード捜査録！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-28'>●06/28 ウディコン準備中！+ 開発日誌も移転作業中</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-14'>●06/14 サイト修正＋開発日誌をFC2から移転！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-31'>●05/31 ウディコン歴史資料館設立！+ ウディタ修正 + GitHubのサイト作り</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-17'>●05/17 ウディタ3.6へ！バグ修正再び！ + 私がいなくなった後に備えて</a></div>
+<hr>
+<div style='font-weight:bold;'>【カテゴリ】</div>
+<div><a class='sidebar_link' href='../../category/woditor/001.html'>ウディタ&nbsp;<span class='sym'>(55)</span></a></div>
+<div><a class='sidebar_link' href='../../category/owh2dev/001.html'>片道勇者2&nbsp;<span class='sym'>(16)</span></a></div>
+<div><a class='sidebar_link' href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(15)</span></a></div>
+<div><a class='sidebar_link' href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(10)</span></a></div>
+<div><a class='sidebar_link' href='../../category/trpg/001.html'>TRPG&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(2)</span></a></div>
+<hr>
+<div style='font-weight:bold;'>【月別】</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2025-btn' onclick="toggleYear('y2025')">2025&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2025' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2025/08.html'>08月&nbsp;<span class='sym'>(1)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2024-btn' onclick="toggleYear('y2024')">2024&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2024' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2024/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/01.html'>01月&nbsp;<span class='sym'>(2)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2023-btn' onclick="toggleYear('y2023')">2023&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2023' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2023/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/09.html'>09月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2022-btn' onclick="toggleYear('y2022')">2022&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2022' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2022/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('a.double-link');
+
+  links.forEach(link => {
+    const primaryUrl = link.dataset.primary;
+    if (!primaryUrl) return;
+
+    const testUrl = primaryUrl + '?t=' + Date.now(); // キャッシュ無効化！
+
+    fetch(testUrl, { method: 'GET', cache: 'no-store' })
+      .then(res => {
+        const url = res.url || '';
+        if (!res.ok || url.includes('404.html') || res.status === 404) {
+          console.warn('【404または失敗】そのままアーカイブを使います:', link.href);
+          // そのまま
+        } else {
+          console.warn('【OK】hrefを本家に書き換えます:', primaryUrl);
+          link.href = primaryUrl;
+        }
+      })
+      .catch(() => {
+        console.warn('【通信エラー】そのままアーカイブを使います:', link.href);
+        // エラー時もhrefはそのまま
+      });
+  });
+});
+</script>
+
+
+
+</body>
+</html>

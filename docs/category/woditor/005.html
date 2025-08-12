@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>シルバーセカンド開発日誌 / SmokingWOLF</title>
+<meta name="viewport" content="width=700">
+<script src="../../js/smoothscroll_up.js" type="text/javascript"></script> 
+
+<link rel="stylesheet" href="../../js/litebox/css/lightbox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../../js/litebox/js/prototype.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/moo.fx.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/litebox-1.0.js"></script>
+
+<style>
+html {
+  /* スマホ時は1.2倍フォントで表示 */
+  -webkit-text-size-adjust: 120%;
+  -ms-text-size-adjust: 120%;
+}
+
+BODY{
+  /*display:flex;*/
+  font-size:13px;
+  margin:0;
+  font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+  color:#558;
+}
+
+TD{
+  font-size:12px;
+}
+
+
+A:LINK,A:VISITED {  color:#5658f6;  text-decoration:underline ;}
+A:HOVER,A:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.red:LINK,A.red:VISITED{color:#d6385c;display: inline-block;text-shadow: 0 0 15px #ffddcc, 0 0 15px #ffddaa;}
+A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shadow: 0 0 15px #ffcccc, 0 0 15px #ffaaaa;}
+
+A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
+A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.g:LINK,A.g:VISITED{
+	color:#38a68c;
+	text-decoration:underline;
+}
+
+A.g:HOVER,A.g:ACTIVE{
+	color : #68b6ac;
+	text-decoration : underline;
+}
+
+
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38c6ac;
+}
+
+A.jumplink:HOVER,A.jumplink:ACTIVE{
+	color : #68f6ac;
+}
+
+A.jumplink{
+	text-shadow: 0 0 15px #ccddcc, 0 0 15px #aaddaa;
+	text-decoration : none;
+}
+
+
+.article_pos{
+	font-size:16px;
+	color:#aaf; 
+	font-weight:bold;
+	text-align:center;
+	margin:0px;
+	padding:0px;
+}
+
+#content {
+	font-size:14px;
+	
+}
+
+#sidebar {
+	background:#f8f8f8; 
+	border-left:1px solid #ddd; 
+	padding:4px 6px;
+	font-size:12px;
+}
+
+A.sidebar_link:LINK,A.sidebar_link:VISITED,
+A.sidebar_link_recent:LINK,A.sidebar_link_recent:VISITED{
+    color:#5658f6;
+	text-decoration: underline;
+}
+A.sidebar_link:HOVER,A.sidebar_link:ACTIVE,
+A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
+	color: #9698e6;
+	text-decoration: underline;
+}
+
+.sidebar_link{
+	font-size:13px;
+}
+
+.sidebar_link_recent{ /* 1つ1つの項目ごとに隙間を空ける */
+	font-size:11px;
+	line-height: 1.2;
+	display: inline-block;
+	margin-top:5px;
+}
+
+
+.entry {
+	border:1px solid #ccc; 
+	border-radius:8px; 
+	margin:14px 0; 
+	overflow:hidden;
+
+}
+.entry-title {
+	background:linear-gradient(to right,#4243ff,#aaaacf);
+
+	font-size:17px;
+	color:#fff; 
+	padding:4px; 
+	font-weight:bold;
+	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
+}
+
+.entry-body,.extended {
+	background:#fff; 
+	color:#444; 
+	padding:15px;
+	font-size:14px;
+	line-height:1.6em;
+}
+
+.entry-foot {
+	background:#fff; 
+	text-align:center;
+	vertical-align:middle;
+	color:#ccf;
+	font-size:12px;
+	padding-top:20px;
+	padding-right:20px;
+	padding-bottom:10px;
+}
+
+.linkbutton{
+	padding:3px;
+}
+
+/*--●形状整理用--*/
+body {display:flex; margin:0;}
+#content {width:580px; padding:0 8px;
+	font-size:14px;}
+#sidebar {width:120px;  box-sizing:border-box; }
+#sidebar div {line-height:1.6;}
+#sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
+.nav {margin:0px 0 -20px 0; text-align:center;}
+.sym {color:#999; font-weight:normal;}
+
+</style>
+
+
+<script>
+function toggle(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+function toggleDisp(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+</script>
+
+
+
+<!--★目次デザイン・処理★-->
+<style>
+.toc-box{background-color:#f0f0f0;border-radius:8px;padding:10px;} 
+.toc-list{list-style:none;margin:0;padding-left:0;} 
+.toc-list ul{list-style:none;margin:0;padding-left:20px;}
+.toc-list li{margin:5px 0;}
+.toc-level1{margin-left:0;}
+.toc-level2{margin-left:20px;}
+
+h1 {
+  background: #fff;
+  padding: 6px 10px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #2233cc; /* 青系 */
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 4px solid #3366ff;
+  display: block;
+  width:100%;
+  
+}
+
+
+h2,h3 {
+  background: #fff;
+  padding: 6px 10px;
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #5566ff; /* 青系 */
+  
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 2px solid #9999ff;
+  display: -block;
+
+}
+
+h2::before {
+  content: "- ";
+}
+
+.master_years{
+  margin-left:20px;
+  margin-right:20px;
+}
+
+.top_minicategory{
+  font-size:10px;
+  color:#ccccff;
+}
+</style>
+
+
+
+</head>
+<body onload="initLightbox();">
+<a id="top"></a>
+
+<style type='text/css'>
+.linkbutton{
+  font-size: 0.9em;
+  padding: 1px 6px;
+  vertical-align: baseline;
+  line-height: 1;
+  height: auto;
+  margin-left: 4px;
+  color:#66f;
+  background-color:#f9f9f9;
+  border: 1px solid #888;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.copy-popup{
+  background-color: #eef;
+  border: 1px solid #88c;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  color: #333;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.5s ease;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  max-width: 80vw;             /* 画面幅の 80% で折り返す */
+  overflow-wrap: anywhere;     /* 長い URL を途中で区切る */
+  word-break: break-all;       /* ↑が効かない旧ブラウザ保険 */
+  white-space: pre-wrap;       /* 
+ を改行として扱い、余計な連続空白は1個に */
+}
+.article_end_date{
+  font-size:0.9em;
+}
+</style>
+
+
+<script>
+function toggle(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+}
+
+// Year accordion with sessionStorage persistence
+function toggleYear(id){
+  const pane = document.getElementById(id);
+  const btn  = document.getElementById(id+'-btn');
+  if(!pane||!btn) return;
+  const sym  = btn.querySelector('.sym');
+  const isClosed = pane.style.display === 'none';
+  pane.style.display = isClosed ? 'block' : 'none';
+  sym.textContent   = isClosed ? '－' : '＋';
+  sessionStorage.setItem('year-'+id, isClosed ? 'open' : 'closed');
+}
+
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('[data-yearpane]').forEach(pane=>{
+    const id    = pane.id;
+    const state = sessionStorage.getItem('year-'+id);
+    const btn   = document.getElementById(id+'-btn');
+    const sym   = btn?.querySelector('.sym');
+    if(state === 'open'){
+      pane.style.display = 'block';
+      if(sym) sym.textContent = '－';
+    }else{
+      pane.style.display = 'none';
+      if(sym) sym.textContent = '＋';
+    }
+  });
+});
+
+function copyLink(date, title, el){
+  const url = `https://smokingwolf.github.io/dev_blog/archive/${date.slice(0,4)}/${date.slice(5,7)}.html#${date}`;
+  const text = `
+【${date}　${title}】
+ ${url}`;
+  navigator.clipboard.writeText(text).then(()=>{
+    if(el && el.tagName === 'BUTTON'){
+      const orig = el.textContent;
+      el.textContent = '✅ コピー完了!';
+      setTimeout(()=>{ el.textContent = '🔗 リンクをコピー'; }, 2000);
+    }
+
+    const popup = document.createElement('div');
+    popup.className = 'copy-popup';
+    popup.textContent = `✅ コピー完了：${text}`;
+    document.body.appendChild(popup);
+
+    const rect = el.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    const popupWidth = popup.offsetWidth;
+    const pageWidth = document.documentElement.clientWidth;
+
+    let left = rect.left + scrollLeft + (rect.width / 2) - (popupWidth / 2);
+    let top  = rect.top  + scrollTop - popup.offsetHeight - 8;
+    if(left < scrollLeft + 4) left = scrollLeft + 4;
+    if(left + popupWidth > scrollLeft + pageWidth - 4)
+        left = scrollLeft + pageWidth - popupWidth - 4;
+
+    popup.style.left = `${left}px`;
+    popup.style.top  = `${top}px`;
+    popup.style.opacity = '1';
+    popup.style.zIndex = '9999';
+
+    setTimeout(()=>{ popup.style.opacity = '0'; }, 1800);
+    setTimeout(()=>{ popup.remove(); }, 2500);
+  });
+}
+</script>
+
+<div id='content'>
+<style>
+
+.TopTitle{
+  width:515px;
+  font-weight:bold;
+  font-size:16pt;
+  color: #ffffff;
+  background-color:#535365 ;
+  border-width: 0px;
+  border-color:#535365;
+  border-style:solid;
+  background: -moz-linear-gradient(left top, #42435f, #fafaff);
+  background: -webkit-gradient(linear, left top, right bottom, from(#42435f), to(#fafaff));
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#DD42425f', endColorstr='#FFfafaff');
+  
+  text-align:left;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.header3{
+	color:#555588;
+	margin-bottom:16px;
+}
+
+.home-link {
+  font-size: 12px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: underline;
+}
+</style>
+
+<!--戻るリンク、サイトがなくなってたらアーカイブにつながるようにしたが404ページがアレなのかうまくいかない-->
+<!--
+<font id="home-link-placeholder">
+  <noscript>
+    <a href="https://smokingwolf.github.io/" class="home-link">← ホーム(アーカイブサイト)に戻る</a>
+  </noscript>
+</font>
+
+<script>
+(async () => {
+  try {
+    // HEADで軽くチェック（no-corsなのでステータス確認は不可）
+    // 自分のサイトのインフォメーションページにつなげるならサイトがまだあると認識する
+    await fetch("https://silversecond.net/contents/etc/info.shtml", { method: "HEAD", mode: "no-cors" });
+
+    const link = document.createElement("a");
+    link.href = "https://silversecond.net/";
+    link.textContent = "← ホームに戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  } catch {
+    const link = document.createElement("a");
+    link.href = "https://smokingwolf.github.io/";
+    link.textContent = "← ホーム(アーカイブサイト)に戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  }
+})();
+</script>
+-->
+
+<div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
+<!--ここにコメント文-->
+<div class="header3" style="margin-top:6px;">　ここはゲーム開発者SmokingWOLF(スモーキングウルフ)の開発日誌です。<BR>
+　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
+　<B style="color:#ff5555;">※以前のブログが使えなくなったので、ただいまこの開発日誌に移転中です。</B>
+</div>
+
+<div class='article_pos'>ウディタ　5/<a href='../../category/woditor/006.html'>6</a></div>
+<div class='nav'><a href='004.html'>次のページ</a> | <a href='006.html'>前のページ</a></div>
+<a id='2022-12-10'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2022-12-10','ウディタ3修正づくしの2週間', this)" style='cursor:pointer;'>2022-12-10 (土)&nbsp;&nbsp;&nbsp;ウディタ3修正づくしの2週間</span><span style='float:right;'><a href='#2022-11-26' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【ウディタ3修正づくしの2週間】</strong></span><br><br>ということで、この2週間はずっとウディタVer3のサポートをしていました！<br><br>今もほぼ毎日バグ報告が届いていますが、<br>私が全然気付かなかった問題をご指摘してくださるのはとても助かっています。<br>皆さま本当にありがとうございます！　ご報告してくださる積極性がすばらしい！<br><br>私なんてバグ見つけても自力で回避できる問題ならあまり報告しない派ですが、<br>開発側としてはバグは早く見つかった方がいいですからねホント！<br><br>おかげさまで普通に使う分にはかなり安定度が高まったと思います。<br>今回はネタもないのでVer3.101までに修正した内容のまとめ紹介！<br><br><br><span style="font-size:large;"><strong>【新機能】</strong></span><br>直しているついでに入れられそうと思った新機能や、<br>Ver3.00の修正に対して致命的に抜けていると感じた機能を搭載しました。<br><br>＜Game＞<br>●【変数操作+】「位置」指定の画面外エラーを完全に止める裏技を追加<br>→　Game.exeと同じ場所に、中味は空でいいので「Game_PosErrorStop.txt」という<br>ファイルを作るとエラー表示を抑制できます。<br><br>●【ピクチャ】PictureWatch機能について、ディレイ指定されたピクチャが<br>　「実際に処理されるタイミング」にもデバッグ文として表示される機能を追加<br><br>●【DB操作】 CSV保存で存在しないフォルダを指定した場合、<br>自動でフォルダが生成されるよう修正<br><br>●【文字列操作】「をﾌｧｲﾙ↓に出力」コマンドに<br>「UTF-8/BOM有[基本]」「UTF-8/BOMなし」のオプションを追加。<br>出力するUTF-8テキストにBOMの有無を設定します。<br>（なお、過去に入力されたコマンドは「UTF-8/BOMなし」になっています）<br>→　CSV出力する場合は「BOM有」にしないとExcelで読めません。<br>といいますか、もっぱらCSVで出力する人用に実装しました。<br>私も『片道勇者』のリプレイで使ってるのでないと困る！<br><br>●【エフェクト】「キャラ」エフェクトに「移動アニメ強制」コマンドを追加。<br>ONにするとキャラを強制的に「移動アニメ」状態にできます。<br>→　主に「～T.png」や「～TX.png」の画像が設定されたキャラの<br>ピクセル移動中の移動アニメ切り替え用に用意されました。<br>基本システムVer3.10で「～T.png」や「～TX.png」キャラのピクセル移動にも対応しています。<br><br><br><br>＜Editor＞<br>●【データベース画面】DBウィンドウでCtrl押しながらタイプ切り替えでデータ維持できるように<br><br>●【マップ編集】マップ編集画面の全体化状態・画面倍率状態が記憶されるように<br><br>●【マップ編集】マップ選択ウィンドウの初期位置・サイズが記憶されるように<br>→　このあたりのマップ関連ウィンドウの一部も記憶が抜けてました。<br><br>●【タイルセット設定画面】「最後に選んでいたタイルセット番号」が最初に出るよう修正<br>→　実は昔から最終選択番号を記憶するための変数が入ってたのに<br>うまく機能していませんでした。どうして……<br><br>●【新規データ作成】Editor起動時、Dataフォルダがないときに出てくる<br>新規データ選択画面の正式版を追加。<br><img src="../../image/2022/20221210.jpg" border="1" loading="lazy" height="417"><br>→　Ver3.0X台では仮版だったのでメッセージボックスで質問が出て<br>「はい・いいえ・キャンセル」から選ぶ形でしたが、3.1で正式版になりました。<br><br><br><br><br><span style="font-size:large;"><strong>【バグ修正】</strong></span><br><br>もしVer3.0X台で何かお困りだった場合は以下をご参照ください。<br>もしかしたら修正されているかもしれませんので、その場合は最新版を導入してください。<br>なかった場合はご連絡いただけると助かります！<br>（でも簡単に再現できたり、原因箇所が分かりやすいデータがない場合は、<br>作業優先度が下がったり、再現しやすいデータを待ったりする場合がありますのでご容赦ください。<br>クラッシュ系は原因が分かりにくくてもデバッガですぐ捕まえられることが多いので、クラッシュ再現できるデータは大歓迎です）<br><br><br><span style="font-size:x-small;"><strong>＜Gameのバグ修正＞</strong><br><br>●【エフェクト】 ピクチャに「角度」を指定している状態だと、<br>　ピクチャエフェクトの「ズーム」が正常に機能しなくなっていたバグを修正<br><br>●【変数操作+】 ルビ付きの文字列ピクチャに対して「ピクチャ」の<br>　「画像サイズ（横）」を取得するとルビなしと違う値が出るバグ修正<br><br>●【変数操作+】画面外を指定して出るエラーは「テストプレイ時」のみ<br>　「最初の1回だけ」出るように修正(Ver3.02まで)。<br><br>●【ピクチャ】ファイル名末尾に_LOOPを付けた動画がループ再生されないバグを修正<br><br>●【変数操作+】 「位置」指定の画面外エラーを止める裏技を作っておきました。<br>　1. Game.exeのある場所で右クリック→新規作成→テキストドキュメント　でテキストを作成。<br>　2. 1のファイルを「Game_PosErrorStop.txt」に名前変更し、Game.exeと同じ場所に置く。<br>　3. この状態でテストプレイすると、「変数操作+」の「位置」エラーを最初から抑制できます。<br><br>●【動作指定】キャラの「動作指定」時のマップセルフ変数の読み込み先が<br>　間違っていたバグを修正<br><br>●【エフェクト】ゲーム基本設定で移動幅を「1マス」に設定している状態で<br>　ピクセル移動をすると当たり判定がおかしくなるバグを修正<br><br>●【特殊文字】ルビ\r[X,Y]の表示速度が変則的になっていた現象の修正を試みました。<br><br>●【キャラの上下描画判定】ループ際の挙動などに問題があったため処理全体を作り直しました。<br>もし大きな問題が出ていた場合はいったんVer3.05をご利用ください。<br>※なおプロ版で「ループ有り」マップ、かつ「ズームアウト」すると相変わらず<br>　マップイベント表示の動作が極めて不安定になりますのでご注意ください。<br><br>●【マップチップ】▲チップの裏側のキャラチップがスクロールのたびに<br>チップに隠れたり表示されたりする現象を修正。<br><br>●【エフェクト】ピクチャ番号がマイナスのピクチャに対して、エフェクトの「色調変更」で<br>　RGB値を99以下にしたとき反映されていなかったバグを修正。<br>　前の仕様で作っていた方もおられると思いますので、その場合は「ゲーム基本設定」の<br>　「Game.exe動作バージョン調整」を「旧Ver3.00以前の挙動」に変えると<br>　前の挙動のままにできます。<br><br>●【変数操作+】エフェクトの「ピクセル移動」を使用して移動させた場合、<br>　キャラの「移動中？」取得が機能していなかったのを修正。<br>　±1ピクセル以上移動できた場合に1を返します。<br><br>●【イベント制御】 「キャラ動作指定」で「パターン1～5」を実行しても<br>　反映まで15フレームほど遅れるバグを修正。<br>　すでにこれに合わせて作っていた方もおられると思いますので、<br>　前の挙動のままにしたい方は「旧Ver3.00以前の挙動」に変更してください。<br><br>●【システム変数】 「Sys26：選択肢ｳｨﾝﾄﾞｳ X余白」の選択肢余白を入れた分だけ<br>選択肢ウィンドウが右にずれていってしまうバグを修正。<br><br>●【エフェクト】 主人公の『重ねキャラチップ変更』で変更した状態でセーブすると<br>ロード時にクラッシュするバグ修正<br><br>●【エフェクト】スクロールできない画面端が映るようにマップエフェクトのシェイクをすると<br>画面外が映るタイミングで全てのマップチップが消えて真っ暗になる現象を修正<br><br>●【Game.exe】条件は不明ですが高確率で致命的なクラッシュを引き起こす要因が<br>見つかったので修正してみました。<br><br>●【システム文字列・プロ版】 ゲーム内から初回「SysS57：[P]クリップボード内容」に代入しても<br>　読み取り文字列が&lt;&lt;StartClipBoard&gt;&gt;のまま変わらないバグを修正<br><br>●【システム文字列・プロ版】 「SysS57：[P]クリップボード内容」の文字列が<br>　Unicodeになっていなかったバグを修正。<br><br>●【エフェクト】 マップの端で「マップ」エフェクトすると<br>瞬間的にマップ画面が黒くなることがあるバグを修正<br><br>●【変数操作+】 ピクチャの「マウス重なってる？」の判定が内部的に<br>1フレーム前のピクチャ座標を使用していたのを修正。<br><br>●【DB操作】 CSV保存で存在しないフォルダを指定した場合、自動でフォルダが生成されるよう修正。<br><br>●【データベース】データベース内に「×NoData」が多数ある状況でゲームを起動すると、<br>　まれにクラッシュする可能性があるバグを修正<br><br>●【デバッグ文】PictureWatch機能について、ディレイ指定されたピクチャが<br>「実際に処理されるタイミング」にもデバッグ文として表示される機能を追加<br><br>●【プロ版機能（プロ版）】PNGスクリーンショットの撮影処理が透過PNGになっていたバグを修正。<br>　いつものPrintScreenで撮れるものと同じにしておきました。<br><br>●【システム変数】マップ拡大率100％以外の状況で「Sys122:Map&Evｽﾞｰﾑ時なめらか化(1=YES)」に<br>1を入れるとタイルの隙間が見えてしまうバグを修正。<br>ただ隙間の黒い空間はなくなっても隣のチップの色が映り込んでしまうので、<br>この機能自体は実用的ではない気がしました。「α版」と付けておきます。<br><br>●【システム変数】Sys122:Map&Evｽﾞｰﾑ時なめらか化(1=YES)　の名前を<br>Sys122:Map&Evｽﾞｰﾑ時なめらか(1=YES)[α版]　に変更<br><br>●【デバッグ文】Ver3.082のデバッグ文の修正でデバッグウィンドウを出しながらの<br>ピクチャ処理時にクラッシュすることがあるバグが出ていたのを修正<br><br>●【PNGファイル読込】一部の昔のツールで軽量化したPNG画像を<br>読み込んだ際に起きる不具合が修正されました。<br>　（ライブラリ作者様に対応していただきました、ありがとうございます！）<br><br>●【マップイベント】マップイベントとしてタイル画像を設定したとき、<br>　指定した画像と違うものが表示されることがあるバグを修正<br><br>●【文字列操作】 裏技の&lt;&lt;GET_STRING_WIDTH_COUNT&gt;&gt;の<br>全角英数字と全角記号が1バイトとして認識されるバグを修正<br><br>●【文字列操作】 裏技の&lt;&lt;GET_STRING_WIDTH_COUNT&gt;&gt;で<br>    Tab文字コードをカウントさせるとクラッシュするバグを修正。<br>Tabコードのようにカウントできない文字は0として処理されます。<br><br>●【文字列操作】「↓のﾌｧｲﾙをBase64で読込」を繰り返すと<br>メモリ溢れする可能性があったバグを修正<br><br>●【文字列操作】 裏技の&lt;&lt;GET_STRING_WIDTH_COUNT&gt;&gt;において<br>　全角記号￠がまだ半角（1）分として認識されるのを修正<br><br>●【起動時】使用したGame.exeのバージョンがEditorのバージョンより<br>　古い場合に出る初期エラーメッセージが文字化けしていたのを修正<br>　<br>●【ゲーム基本設定】 使用フォントをすべて空欄に設定した状態でセーブ＆ロードすると、<br>デフォルトフォントがMeiryoからMSゴシックに変わるバグを修正<br><br>●【暗号化データ】暗号化データ使用時に強引にテストプレイすると出てくる<br>Log.txtにてメモリリークが検出されるのを修正<br>（ライブラリ作者様に対応していただきました、ありがとうございます！）<br><br>●【フォント】ロード時に特定のフォントがMeiryoに変わってしまうことがあるバグを修正<br><br><br><br><strong>＜Editorの修正＞</strong><br><br>●【エフェクト】エフェクトコマンド入力欄、「画面のスクロール」内の「上」が<br>見えなくなっているのを修正<br><br>●【コマンド入力ウィンドウ】コマンド順を並べ替えている場合、イベント挿入などの<br>　コマンドウィンドウを開いた時になぜか常に文章の表示が最初に出てきて<br>　1番目のコマンド内容と混ざった表示になってしまうバグ修正<br><br>●【マップエディタ】 マップが選ばれていない状態でテストプレイを開始しようとすると<br>　マップファイル保存ダイアログが表示されてしまう現象を修正<br><br>●【翻訳DLL】「Editor.lang.dll」がうまく読み込まれなくなっていたバグを修正<br><br>●【マップエディタ】タイルサイズが正しくないときのエラー文の選択肢表記の中の<br>　「ゲーム解像度を変更する」表記を「タイルサイズを変更する」に修正<br><br>●【マップの基本設定】ファイル名の欄で、マップのファイル名の末尾がmかpかsだと<br>　その文字だけ表示されなくなっていたバグ修正。<br><br>●【表示スケール】表示スケールが100％以外のときのレイアウト崩れや座標ズレの修正を試みました。<br>　対象は「起動時バナー」「ツールバーアイコン（1.5倍、2倍に変化。ただし今は画像ガビガビ）」<br>「場所移動先の選択画面ズレ」「画像選択画面のクリック位置ズレ」<br>「タイル選択時のクリック位置ズレ」です(Ver3.070)<br><br>●【場所移動】移動先を選択する画面で環境によってマップが枠外にはみ出ていることがあるバグを修正(Ver3.070)<br>　→ Ver3.071追加　マップの端が選びにくくなっていたのを修正<br><br>●【タイルセット設定画面】「最後に選んでいたタイルセット番号」が最初に出るよう修正<br>　（前回「OK」で終了していた場合のみ）<br><br>●【データベース】データベースのメモ欄が15行以上になった場合だけ縦スクロールバーが<br>　表示されるよう修正（メモ欄の横幅が広く使えるので、<br>Ver3から必要ないときはスクロールバーが非表示になります）<br><br>●【コモンイベント編集時】 起動直後、コモンイベント編集時に0番以外のコモンイベントに<br>　切り替えてイベントコマンド入力【変数操作+】を開いたとき、<br>　コモンセルフ変数名がコモンイベント0のコモン変数名になっているバグを修正。<br><br>●【複数指定画面】コモンイベントの複数コピー画面などで「-1」を入力すると<br>クラッシュするバグを修正<br><br>●【コンバート】コンバート後のデータでエディタがクラッシュする可能性がある要因を修正。<br><br>●【イベントエディタ(プロ版)】 WoditorEvCOMMAND_START ～の文字列によるコード貼り付け処理の<br>　文字コードがSJISになっていたのをUnicodeに修正。<br>（ハートマークなどが入りませんでした）<br><br>●【起動処理(プロ版)】Editor.iniにプロテクトキーが記述されているのに<br>Game.datに暗号化がかかってない場合、起動時にメッセージが出るよう修正。<br>一部の基本ファイルだけにプロテクトがかかってしまう問題をさけるためです。<br><br>●【エディターメイン部(プロ版)】起動時とマップ・マップイベントが編集された状態だと<br>　タイトルバーの『WOLF RPGエディター PRO』の"PRO"表記が消えるバグを修正<br><br>●【コモンイベントウィンドウ】変数の数を多くするとコモンイベントエディタ上で<br>　コモンイベントを切り替えたときに時間がかかるようになってしまっていたのを修正<br><br>●【ゲームデータ作成】 コピー対象外とするデフォルト拡張子に.clipと.lnkを追加。<br><br>●【場所移動】「移動先を見ながら選択」画面でスクロールするとチラ付く問題を修正<br><br>●【マップ選択】「マップ選択」ウィンドウの位置が、前回終了時と同じ場所・サイズで配置されるよう修正<br><br>●【マップ編集ウィンドウ】前回終了時のマップウィンドウの最大化状態を記憶するよう修正<br><br>●【マップ編集ウィンドウ】前回終了時のマップの表示倍率を記憶するよう修正<br><br>●【エディターメイン部】ツールバーアイコンを少しだけ調整<br><br>●【タイルセット設定】表示スケールが100％以外のときのタイルセット設定で<br>下部の表示がおかしくなったり通行設定が表示されなくなるバグを修正<br><br>●【データベース設定】タイプ設定で文字列の項目を挿入・削除した場合、元々格納されていた<br>文字列内容がずれてしまうバグを修正（数値では起きませんでした）。<br><br>●【複数データ選択】 コモンイベント複数コピーなどデータ範囲を指定する画面で<br>自動的に数値補正が入る処理を削除しました。<br><br>●【画像選択】 マップイベントの画像選択画面などで、画像がないところをダブルクリックしても<br>「OK」されてしまうバグを修正。<br><br>●【マップ選択】 大きいマップがスクロールされた状態で別の小さいマップへ<br>マップを切り替えたとき、前マップのチップが残ることがあるバグ修正<br><br>●【データベース】データを削除したときなどにデータがスクロール中央に来なくなっているバグを修正<br><br>●【マップチップ選択】 タイル画像の外を選択すると変な選択のしかたになってしまうバグを修正<br><br>●【エディターオプション】「旧ファイル読込言語」の言語の順序が、<br>実読み込み時に出てくる言語と違っていたのを修正<br><br>●【データベース】データ消去時のスクロール挙動をVer3.08以前と同じようになるよう修正<br><br>●【データベース】Ctrlを押しながらタイプを切り替えた際、<br>　同じデータ番号を選んだままタイプ変更できるよう修正<br><br>●【DB特殊設定(プロ版)】テーマカラーをパーフェクトダークにしたまま<br>　DBの特殊設定を開くと文字が黒のままで一部読めなくなるバグを修正<br><br>●【ピクチャ】 自由変形時、コマンド一覧で基準座標が「中央上」と出ていたのを「中央」に修正<br><br>●【総合】プロ版と無料版を切り替えたときにエディター起動中の警告が出る現象を修正<br><br>●【起動時】新規データを作成するとクラッシュするバグ<br><br>●【条件(変数)】 コマンド入力欄のセルフ変数の表示が初回のみ異なる現象を修正<br><br>●【キー入力】 コマンド入力欄のセルフ変数の表示が初回のみ異なる現象を修正<br><br><br><br>＜基本システムの修正＞<br>●Ver3.09　システム画面の「変更を保存して終了」時の音が2重になっていたのを修正<br>　[コモン132/66行にあった決定音を削除]<br><br>●Ver3.10　ピクセル移動処理の「待機アニメON/OFF」を<br>全てエフェクト「移動アニメ強制 ON/OFF」に変更<br> [コモン39/「Ver3.10でエフェクトに変更↓」で検索可]<br></span><br><br><br>以上です！　まとめるとけっこう多い！<br>こんな感じで、引き続きいただいたバグの修正続行中です。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【おまけ】</strong></span><br><br><span style="font-size:large;"><strong>12/24にシルバーセカンドは24周年を迎えます！</strong></span><br><br>余裕がなくて今年は生配信などやっていませんでしたが、<br>私が元気そうなら今年12/24に1年を振り返る生放送をやりたいと考えております！<br>今年は半分以上ウディタの修正ばっかりだったので<br>その話ばかりになるかもしれませんが！<br><br>Youtubeチャンネルも持ってますので、<br>もしよければチャンネル登録お待ちしております！<br>登録しておくと配信予約を入れたときなどに通知されるそうです。<br>↓<br><a class="double-link red" target="_blank" href="https://www.youtube.com/@SilSecCh/video"><span style="font-size:large;"><strong>【SmokingWOLF　Youtubeチャンネル】</strong></span></a></CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2022-12-10 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F12.html%232022-12-10&title=%E3%82%A6%E3%83%87%E3%82%A3%E3%82%BF3%E4%BF%AE%E6%AD%A3%E3%81%A5%E3%81%8F%E3%81%97%E3%81%AE2%E9%80%B1%E9%96%93" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F12.html%232022-12-10&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2022-12-10','ウディタ3修正づくしの2週間', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/woditor/001.html'>ウディタ</a></span></div></div><br><br><br>
+<a id='2022-11-26'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2022-11-26','ウディタ3＆プロ版、公開！', this)" style='cursor:pointer;'>2022-11-26 (土)&nbsp;&nbsp;&nbsp;ウディタ3＆プロ版、公開！</span><span style='float:right;'><a href='#2022-11-12' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【WOLF RPGエディター3＆プロ版　公開！】</strong></span><br><br><img src="../../image/2022/20221122top.jpg" width="70%" loading="lazy" height="140"><br><br>ということでついにウディタのバージョン3が公開されました！<br>半年くらいずっといじりまくっていたおかげで新機能も潜在的なバグもたっぷりです。<br><br><span style="font-size:large;"><a class="double-link blue" target="_blank" href="https://www.silversecond.com/WolfRPGEditor/"><strong>【ウディタ3のダウンロード！（公式サイトへ）】</strong></a><br><br><a class="double-link red" target="_blank" href="https://silversecond.booth.pm/items/4302198"><strong>【プロ版販売ページへ！(BOOTH)】</strong></a></span><br><br>SNS上でのご感想も皆さまありがとうございます！<br>以下のようなご感想が特に目に入りました。<br><br><br><span style="font-size:large;"><strong>◆まだウディタ更新されてたの！？</strong></span><br><br>私もそう思いました！<br>開発が始まった頃は10年くらいで更新をやめているかと思いましたが、<br>なんだかんだで開発開始から15年以上？経った今までも普通に使えてしまっています。<br>今も使ってくださっているみなさま、本当にありがとうございます。<br><br><br><span style="font-size:large;"><strong>◆超はやくなってる！！</strong></span><br><br>比較動画をアップしてくださった方もいらっしゃいましたが<br>前の5～10倍くらいに速くなってるケースもあって予想以上でした。<br>最新のプログラム環境（Visual Studio 2022）が強すぎる！<br><br>最初からこの速さだと処理最適化をしようとはなかなか思えなかったでしょうから、<br>これまで2003年の古くて重い環境でガッツリ最適化処理を<br>作ってこられたのは運がよかったと思います。<br>重力環境だからこそできた修行！<br><br>ただ懸念もありまして、従来のVer2では「ギリギリ処理落ちしない」くらいなら<br>Switchなどにも移植が可能で、それがいい基準になっていたのですが、<br>この環境だと数ミリ秒くらいのイベント処理でも他プラットフォームに移植すると<br>動作がおもおもになってしまう可能性が高いので、<br>移植まで視野に入れておられる方はくれぐれもご注意ください。<br>ウディタ3だけは速くなりましたが、他プラットフォームの速度は従来のままです。<br><br>直近で『ドラゴノーカ』というゲームに関わった中でのざっくりした私のイメージですが、<br>デバッグ文の「ValWatch機能（副作用でコモンイベントの加速を停止できる）」を使った状態で<br>イベント処理時間10～12ms以下くらい、描画時間4ms以内くらいが<br>一つの限界動作目安になるかもしれません。<br><br>**【おまけ】**（2022/11/28追記）<br>　とあるスジから「10000枚くらいの（とても小さい）静止状態の自由変形ピクチャが画面内にあるとSwitchだと10fpsくらいに落ちちゃいますよ！」という情報をいただきました。<br>　「そんなに置かないよ！？」とは思いますがピクチャはいくら小さくても存在するだけで一定の計算量を消費するので、その点はご注意ください。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【プロ版も発売しました！】</strong></span><br><br>最近はウディタに時間をかけるほど私が痩せ細っていってしまう事情から<br>なるべく最小限しかいじらないようにしようと思ってたんですが、<br>このままだと維持の面で厳しくなりそうだったので有料版も販売させていただきました。<br><br>プロ版は、無料版には入れていない「もともと私専用の機能」を多数搭載している、<br>本当にプロの人しか喜ばなさそうな機能しか入ってないバージョンです！<br>これまでしっかり作ってきたデータをよりしっかり守りたいとか、<br>無料版の範囲以外の画面サイズで作れる、<br>ダウンロード機能の強化など、すでに作ってる人は喜ばれるかもしれませんが<br>あんまり触ったことのない人には数点くらいしか使う要素がないかもしれない一本です。<br><br>そして評判も固まってない中でプロ版を<br>もう買ってくださった方もいらっしゃって、本当にありがとうございます！<br>一番需要がありそうだったウディコンにも使えないですし<br>けっこうお高いですし、本当にガチの人しか使わなさそうなバージョンだというのに<br>手に取ってくださって感謝の限りです。本当に需要がほそいので！！<br><br>収益としては、「私が(一方的にでも)知ってる方が買ってくださっていそうな感じかな」<br>くらいの雰囲気ですが、これまで無だったのに比べるとあまりに大きな進歩なので、<br>これまでよりはウディタの修正に時間をかけられると思います！<br><br>とはいえ、ウディタ修正に使った半年近くの生活をカバーする分を目標とすると<br>ちょっと足りなさそうなので、生活効率的にはこれ一本だと<br>たぶん飢えていきそうな見込みです。<br>もともとゲーム開発の余力でやってきたのでそこは全く大丈夫なのですが、<br>今回分のバグ修正が落ち付いたら、強化されたウディタ3で<br>急いで自分のゲーム開発に戻ろうと思います。<br>その過程で、必要に応じて開発に便利な機能も増えるかもしれません。<br><br>また、プロ版を買ってくださっただけでなく、BOOSTまで入れてくださった方も<br>本当にありがとうございます、生きる助けになります！<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【公開してみてどうだった？】</strong></span><br><br>相変わらず公開前夜は緊張であまり寝られませんね！<br>昔よりは落ち着いてリリースを待てるようになったのですが、それでも<br>リリース直後は普段の7割くらいのパワーしか出せないと思った方がよさそうでした。<br>それでも、致命的なミスをして100歩後退してしまうようなことがなくてよかったです。<br><br>そしてもはや期待通り当然のようにバグがいっぱい出ましたが、<br>私の知らない部分が問題になって大慌てになってました。<br>それはこれ！<br>↓<br><br><strong><span style="font-size:large;">【高DPI対応】</span></strong><br>「高DPI」って何？　って私も思ったのですが、<br>要するに「すごく高い解像度」の画面のことっぽいです。<br><br>で、本件の『対応』とは具体的には、<br><strong>「アプリの表示スケール（拡大率）をWindows側で<br>100％以外にしたときのレイアウトをくっきり調整するための対応」</strong><br>のことっぽいようで、ウディタではVer3になってからスケール125％以上などにしていると<br>レイアウトが崩れる問題が出てしまいました。<br>↓<br><img src="../../image/2022/20221126A.jpg" border="1" loading="lazy" height="292"><br><span style="font-size:x-small;">スケール150％の画面。2.29は古すぎるプログラム環境だったからか<br>自動拡大してくれてたけど3.00はそうじゃないんだ……。</span><br><br><br>旧版のVer2.29は勝手に「高DPI非対応」モードになってたらしいので<br>スケールが125％以上でもWindows側で自動で拡大してくれてましたが、<br>今回はそうじゃなかったので、うまいことレイアウトされなくなっていたようです。<br><br>「それじゃあこっちもとりあえず『高DPI非対応』にしよう！」　と色々設定すると<br>なぜか起動時にすぐクラッシュするしその直し方もよく分からなかったりで、<br>しょうがないので直接なおす方向でがんばりました。<br><br><img src="../../image/2022/20221126B.jpg" border="1" loading="lazy" height="244"><br><span style="font-size:x-small;"><strong>スケール150％、最新のVer3.07で対応！</strong></span><br><br>Ver3.07の修正で、スケール125％以上にしても<br>ツールバーなどの「大きさ」だけはそれっぽくなったと思います。<br>（アイコンは超ガビガビですけど作ってるヒマなかったから<br>ペイントで拡大しただけなの……そのうち清書します）<br><br>他にも、最低限の場所から色々と調整中です。<br><br><hr size="1" /><br>他にもゲーム中の挙動がおかしくなっているとか、<br>クラッシュ系のバグなどもちょくちょく出ていてご迷惑をおかけしております。<br>クラッシュ系のバグは再現可能なデータがあれば高確率で直せますので、<br>何かあればご連絡いただけると助かります。<br><br>引き続き、ウディタ3の修正に一生懸命の期間が続きそうです。<br>今もウディタを使ってくださっている皆さま、いつも本当にありがとうございます！<br><br><hr size="1" /><br><br><span style="font-size:large;"><strong>【おまけ　Ci-enさんちに登録しました】</strong></span><br><br>あまり大きな声では言えないんですがCi-enさんちに登録させていただきました。<br>なんで大きな声で言えないかっていうと所属枠が全年齢じゃないからです！！<br>（私が作ってるものの性質上そうなってしまいました。流血はあるし体は切り取るし……）<br><br><a class="double-link red" target="_blank" href="https://ci-en.dlsite.com/creator/15966"><span style="font-size:large;"><strong>【SmokingWOLF の Ci-enページ】</strong></span></a><br>※Ci-enにログインしてない人には18歳年齢確認ページが出ますが、内容はこの記事の時点だと全年齢です。後になると大人向け絵などがあるかもしれないので注意！<br><br>こちらだと、フォローしてくださると記事の更新があったときに<br>メールで通知してくれる機能があるらしいので見逃しが少なくなります！<br>もしすでにアカウントお持ちの方はよければぜひ！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2022-11-26 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F11.html%232022-11-26&title=%E3%82%A6%E3%83%87%E3%82%A3%E3%82%BF3%EF%BC%86%E3%83%97%E3%83%AD%E7%89%88%E3%80%81%E5%85%AC%E9%96%8B%EF%BC%81" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F11.html%232022-11-26&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2022-11-26','ウディタ3＆プロ版、公開！', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/woditor/001.html'>ウディタ</a></span></div></div><br><br><br>
+<a id='2022-11-12'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2022-11-12','ウディタ大規模アプデ内容予告7 仕上げ中', this)" style='cursor:pointer;'>2022-11-12 (土)&nbsp;&nbsp;&nbsp;ウディタ大規模アプデ内容予告7 仕上げ中</span><span style='float:right;'><a href='#2022-10-29' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【ウディタ大規模アプデ内容予告7 仕上げ中】</strong></span><br><br>前回言ってたUnicode化は本当にエディターの隅から隅まで<br>全部いじってなんとか済ませました！！<br><br>で、そこからはリリースに向けてここ1週間くらいずっとバグ修正や機能修正をしていました。<br>ネタがないので今回はその「1週間」でいじった修正点の数々をご紹介します！<br>小さいのも含めれば全部で130個以上！　1日18個！<br>1個数時間かかる難易度のバグ修正から10分で終わる微調整まで様々ですが、<br>リリース前はこんな勢いでいじっているんですよ。<br><br><img src="../../image/2022/20221112.jpg" border="1" width="450" loading="lazy" height="450"><br><CENTER><br><table width="95%"><TR><TD align="left"><span style="color:#3366FF"><span style="font-size:x-small;">●Game：右上・右下基準のピクチャだけ移動時にX座標がずれて表示されてしまうバグ修正<br>●Game：Ver2.29モードにしたら変数操作+の「位置」処理でエラー出ないように修正<br>●Game：Ver2.29モードにしてもタイル関係の処理がずれてたバグ修正<br>●Game：デバッグウィンドウが文字化けする現象を修正<br>●Game：古すぎるData.wolfを開こうとしたときのエラーでメッセージボックスが文字化けする現象を修正<br>●Editor：DB画面で一個消してOK押すとクラッシュするバグ修正<br>●Game：最初にクリップボード情報が読み込まれそうになったときに確認メッセージが出るよう修正<br>●Game：セーブデータを読み込み中、変なところでユニコード済みフラグが1になってしまいSJISのままになってしまう場所があるバグを修正<br>●Game：【DB操作】「50バイト超の『データ名』で名前呼び出し」をするとエラーが発生するバグを修正<br>●EditorPro：「プロ機能」を編集してＯＫ押しても更新されないバグを修正<br>●Editor：タイルセット設定の最下部のラインが2つ抜けてるバグ修正<br>●Editor：遠景として設定したのと別の画像が出てしまうバグ修正<br>●Editor：Ver3への初期コンバート時、CSVも変換するように修正<br>●Editor：Ver3への初期コンバート時、「Ver2.29にバージョン調整を切り替えるか」質問を追加<br>●Editor：タイル設定にて、基本タイルがないときもスクロールできてしまうバグ修正<br>●Editor/Game：文字列操作の「ファイル読み込み」に文字コードを選べる機能を追加。<br>　　　　旧バージョンから移行した「文字列操作」コマンドは全部文字コード「自動判別」になります。<br>●Editor：DB操作にてDBタイプ番号の「名前」にチェック付けてプルダウンから選ぶとクラッシュする現象に対応<br>●Editor：コモンイベントの名前の色コードが右端に見えてしまうのを修正<br>●Editor：コンバートしたTXT・CSVファイルに全部BOMを付けるように変更<br>●Game：&lt;&lt;GET_FILENAME_FROM_PICTURE&gt;&gt;をピクチャ0枚のときに使うとクラッシュするバグを修正<br>●GamePro： マップエフェクトで全然関係ないエフェクトが起動してしまう謎の問題を修正<br>●Game：コモンイベントが自身を呼び出し続けると265回でクラッシュするバグを修正。<br>●Game：システム変数143：[読]処理可能ｺﾏﾝﾄﾞ[通常0/プロ版1]　を追加　　<br>●Editor：ゲームデータ作成時にタイトルの処理がおかしくなるバグを修正<br>●Game：10年前くらいのVer1.X時代のセーブデータが読めない問題にいくらか対応（昔のものを正しく判別できないので完璧ではありませんが読込成功率はアップ）<br>●Editor：ピクチャファイル入力欄に見えないスピンボックス分だけ入力ボックスの右側が欠けて見えていたので、目立ちにくくなるよう修正<br>●Editor：エディターオプションを変更しても反映されないことがあるバグを修正。<br>●Editor：コンバート時の動作バージョンVer2.29切り替え提案の文章を気付きやすい場所・内容で出るよう変更<br>●Editor：エディターオプションの遠景の設定を修正。<br>　　　1枚だけ表示する 　ループ表示する　表示しない　から選べるように。<br>●Editor：【変数操作+】「その他」の「現在のマップのタイルセット番号」がイベント欄で正しく表示されないバグ修正<br>●Game：【変数操作+】「マップ外」のイベントIDを取得すると-1でなく0が返されるバグ修正。<br>　　　　　その他、Ver2の挙動を再現するよう修正。<br>●GamePro：sysS57：クリップボード　で得た日本語が文字化けして読めないバグを修正<br>●GamePro：プロ機能で「ゲージ画像だけ」を設定した時、ゲージが表示されてないバグを修正<br>●Game：回数10万回以上にするとキャラ・ピクチャのシェイク速度が２倍になるバグ修正（正確には数値が動いていないせいで半分しか動いていなかった）<br>●Game　ピクチャエラーだけフルアドレスが出ているのを修正。もとい、緑帯メッセージに絶対アドレスが入っていた場合はEXEまでのアドレスを消して表示するように。<br>●Game　文字列ピクチャを移動したあとに数フレームかけて消去すると座標ズレが起きるバグ修正<br>●Editor：背景がないときエラーが無限に出る現象を修正<br>●Editor：「コモンセルフ使用状況」の項目のずれっぽいのを修正<br>●Editor：コモンイベント入力コマンドで入力欄などがずれているのをたぶん修正<br>●Game：&lt;Base64でﾌｧｲﾙ読込&gt;でバイナリファイルを文字列変数に読み込んだ際に文字列変数の最後に必ず改行が入っている現象を修正。<br>●Game：「フォルダの作成/ファイルコピー/削除」で﻿ファイル名に日本語を使うと正常に処理できないバグを修正<br>●Editor/Pro：マップに変更を加えた後、プロテクト画面とゲーム設定画面、エディターオプションに入ろうとする前にマップ変更を保存するか聞くように変更（保存しない場合は再起動時にデータが消える）<br>●Editor　条件(変数)の『4変数を連動』を解除した状態で、2つ目以降の条件にチェックを入れてコモンセルフを選択しようとするとコンボボックスの一覧にコモンセルフが表示されないバグを修正<br>●Editor：コンバート時の最初の質問のはい・いいえが逆になってるバグ修正、はい・いいえの入れ替え時に変更し忘れ<br>●Editor：コンバート時の最初の質問でキャンセルすると終了できないバグ修正<br>●Editor：多重起動できるようになってしまっているのを修正<br>●EditorPro：基本設定Proのファンクションキー設定をOFFにしても次開くとONになってしまうバグを修正<br>●GamePro：プロテクト入れただけでセーブ→再起動するとクラッシュするバグを修正<br>●Editor：イベント制御コマンド欄のラベル名の「可」が消えているのを修正<br>●Editor：DB操作コマンドを入力するときに数値がゼロになるバグを修正<br>●Editor：再起動時の内部処理で、「前のプロセスが終了するまで次の起動を待つ処理」が機能してなかったので作り直し。<br>●GamePro：「ファイル削除」に「./」が含まれているとエラーを出すように修正<br>●Editor：CSVファイルをタイル設定にドラッグ＆ドロップしたときの座標判定がおかしいバグ修正<br>●Editor：Editor.iniがない場合でもサンプルデータと同じ各ウィンドウ座標の初期値を入れるよう修正。<br>●Editor：Dataフォルダが存在しないときは、起動時に空の状態のゲームデータをDataフォルダに作れる処理を作成。これでEditor単体でゲームが作り始められます。<br>●GamePro：プロ版をちょっと使ったり使わなかったりしたときにセーブデータがクラッシュする不具合がまだ残ってたので修正<br>●Game：画面サイズを3倍にするとアイコンのY軸に倍率かかってないバグを修正<br>●Game：キャラ重ねレイヤーは同じサイズにしてくれというエラーが出るように<br>●Game：最新版のGuruGuruSMF4.dll を使うとPC環境によってはGame.exeが起動しない現象に対応。4.0.6のGuruGuruを使用することでいったん解決。<br>●Game　他の別名のゲームを開いているときでも多重起動ができなくなっているバグを修正<br>●GamePro：プロ版使用、かつゲーム設定プロ版で指定できるタイトルバー部分が空だと起動制限に引っかかっていたバグ修正<br>●Game：画面サイズの最小値を100×100ピクセルに設定。<br>●Editor：「ゲーム基本設定」にて画面サイズの最小サイズを100未満にしようとすると100に戻される処理を追加。<br>●GamePro：プロ版で画面サイズ自由設定した後に通常のGame.exeで起動したときに画面サイズが基準画面サイズにならないバグ修正（本来はどれか一番近い解像度が選ばれます） <br>●Game：文字列操作の裏技に&lt;&lt;GET_MAPEVENT_NAME_FROM_ID&gt;&gt;と&lt;&lt;GET_COMMONEVENT_ID_FROM_NAME&gt;&gt;を追加。<br>　　　　ID→名前取得を&lt;&lt;GET_MAPEVENT_ID_FROM_NAME&gt;&gt;に変更<br>●Editor：コマンド入力の「チップ処理」で最新版挙動でも2.29以前用の注意メッセージが最初に表示されるバグ修正<br>●Editor：コマンド入力の「場所移動」で右上の注意書きが全部表示されていないミスを修正<br>●Game/Editor：システム変数　Sys119：基本画面倍率[1-3]　を追加<br>●Editor/Game：変数操作+の「その他」に「現在マップのマップイベント数」を追加<br>●Editor：文字列操作　「に↓のファイル内容読込」&lt;UTF-8&gt;を「修正」しようとしたとき、修正画面で「自動文字コード判別」が選ばれてしまうバグ修正<br>●Editor：データベースエディタの「ファイルの出力」時、【～】が高速点滅している現象を修正<br>●EditorPro：プロ版コマンドの「ファイル削除」を選んだとき、上の入力欄が「Data/」から始まっていたら「Save/」に切り替わる処理を追加<br>●マップ縮小表示時に元画面外のイベントが表示されなかったのを修正<br>●EditorPro：画面サイズの限界に制限が付いてなかった不具合を修正<br>●Editor：【マップイベントウィンドウ】開いているイベントの座標に「精密」表示を追加。また、半歩上・半歩左による座標補正も加味した座標を表示するよう修正。<br>●Editor：プロ版かどうか判定するシステム変数がSys142じゃなくてSys143だったミス修正<br>●Game：横幅に合わせてF9の変数表示の列数が変わるよう修正（F8とF7は縦に超細い画面だと今はどうにもならなさそう）<br>●GamePro：プロ版でマップのズームをゼロにするとクラッシュするバグ修正<br>●Game：マップのズームの拡大率0～マイナスは仕様外なのでマップのズームは最低1％以上になるように修正<br>　　（ズームマイナス時と同等の表現ができる機能の搭載を検討対象に。マップ+EV部分だけ取得できるスクショ機能とか作るの難しいけどいつか欲しいですね）<br>●EditorPro：ゲームデータ作成時アイコン以外のファイルや存在しないファイルを設定したときにエラーが出るよう修正<br>●EditorPro：ゲームデータ作成時のアイコンは32x32を強く推奨と記載<br>●Editor：何も入力せずにMAPを新規作成したらエディターが落ちるバグ修正<br>●Editor：「マップ設定画面」で「マップ200x200以上は（エディタで）表示できない」という表記を削除<br>●Editor：マップエディタ上で出るマップチップ一覧の縦軸を伸ばしても描画更新されないバグ修正<br>●Editor：「エフェクト」の「間隔」表記が全部出てないのを修正<br>●Editor：「キー入力の許可」欄の各パーツの文字幅を調整<br>●Editor：「自動キー入力」欄で「マウス」の「位置」をクリックして「マウス」以外に切り替えると「X」表記だけ残るバグ修正<br>●Editor：「変数呼び出し値一覧」表記にカッコが1個多いミスを修正<br>●Editor：ゲームデータ作成時、「フォルダ別暗号化」をしたときにアクセス制限がかかって止まる状況があるのを修正<br>●Editor：エフェクト→マップ→ズームの拡大率欄の名前を「拡大率」→「拡%/1-」にして1以上と分かるように変更。<br>●Editor：各コマンド入力タブに灰色部分が発生していたのを修正<br>●EditorPro：「起動後」にプロテクトキー変更しても再起動しないバグを修正<br>●Editor：無料版で旧コモンを読み込むと文字化けする現象を修正。<br>●Editor：旧バージョンの外部ファイルや非UnicodeのCSVを読み込んだとき、言語について言及する処理を追加<br>●Editor：他にコモンが存在するデータで、未編集の真っ白のコモンイベントでキャンセルを押して閉じると「CommonEvent.datファイルがありません」みたいな警告文が出る現象に対応<br>●Game：ソフトウェアモードにおいて何か表示→エフェクトを連打するとスプライトが無限に増えるバグ修正<br>●GamePro：スクリーンショットに限り、3Dモードでも表示→エフェクトを連打するとスプライトが無限に増えるバグ修正<br>●Game：ピクチャエフェクトの変換系をかけたあとに「変換系のみ全解除」をするとスプライトが無限に増えるバグ修正<br>●Editor：マニュアルを開く　を　オンラインマニュアルを開く　に変更。<br>●Editor：入力済みの文字列操作をスペースキーで編集しようとするとエディターが落ちるバグ修正<br>●Editor：特定内容のイベントの挿入処理が入っているとアサートエラーが出る現象を修正 + そのコマンドを「修正」時にもエラーが出る現象を修正<br>●Editor：いつの間にか起動時のゲージが30％くらいで終わるようになってたので長さを調整<br>●EditorPro：ゲームデータの作成時にアサートエラーが出るのを修正<br>●Editor：ファイル選択画面でダブルクリックしたときのおかしな挙動を修正<br>●Editor：パーティ画像欄の「読込」でタイルセットが選べてしまう問題を修正<br>●Editor：マップエディターのイベント選択時の赤▽が出てなかったのを修正<br>●EditorPro：デバッグ用のランタイムライブラリが入ったまま（アサートエラーが出る）だったのを修正<br>●Editor：コンバート時、320x240の画面サイズを移行したなら画面倍率2倍フラグを立てる処理を追加<br>●Ediotr：コンバート時テキストデータを拡張子「.mps」にしているとエラーのメッセージボックスがダイアログの裏に出てしまって気付きにくい問題を修正<br>●Editor：コモンイベントの挿入コマンドを編集しようとすると引数の値が初期化されるバグ修正<br>●Game：9180007～8の主人公のピクセル補正XYが取得できないバグを修正<br>●Game：9100007～8によるイベントのピクセル補正XY代入が主人公と違う挙動になっていたバグ修正<br>●Game：セーブデータが保存できなかったときにエラーが出るように修正<br>●Editor：変数操作+・条件(変数）・条件（文字列)でコモンセルフ変数の名前を変えても更新されない現象を修正<br>●Editor：イベントコマンド入力ウィンドウの切り替え時にもコモンセルフ変数名更新処理を追加<br>●Editor：ピクセル移動は主人公だけがピクセル移動するのが前提でイベント側には使わないこと前提なので「ピクセル移動（α版）」という記載に変更<br>●Game：テストプレイ時のみ画像読み込み時のメモリ解放をしていなかったバグを修正<br>●Game：Sys30:プレイ時間（ミリ秒）が　同じフレーム中でもちゃんと数値増えるように　+　同フレーム中なら1000超えするように変更（同フレーム中での引き算で面倒臭くならないように）<br>●Game：「動作指定」内の変数は、動作指定開始前に全変換して格納するよう修正、コモンセルフも使用可能に<br>●Editor：コモンイベント時、「動作指定」でコモンセルフ変数を選んで修正すると対象キャラ欄がおかしくなるバグ修正<br>●Editor：「Sys119：基本画面倍率[1-3]」の名前が「[読]タイルサイズ」になってるミス修正<br>●Game：ピクセル補正値が1以上になっているイベントが「動作完了までウェイト」オンの動作指定でジャンプすると動作が進まなくなるバグ修正<br>●GamePro： JPGスクリーンショット機能の保存品質を調整<br>●GamePro：マップズームアウト機能周りのバグの影響でプロ版でゲームが起動できなくなるバグを修正<br>●Game：通常ピクチャの角度が0以外の時になぜか2ピクセル下に表示されてしまうバグを修正<br>●Game：4択の条件分岐へのコモンイベント最適化処理が未実装だったのを修正<br>●Game：8択など想定外の数の条件分岐があるとゲーム起動時の最適化でクラッシュする問題に対応<br>●Editor：「DB操作」で上部または下部の「変数」にチェックを入れて100万以上の値を入れても次に開いた時チェックが外れているバグを修正<br>●Editor：「DB操作」で存在しないタイプ番号を指定し、データ名や項目に空欄の「名前」を指定して入力しようとするとクラッシュするバグ修正（Ver2.29から存在）<br>●GamePro：スクリーンショットを撮り直してピクチャ表示し直しても画像が更新されない問題を修正。スクリーンショットを撮った時点で全ピクチャの中味を最新画像に更新する仕様に。<br>●Game：「ゲーム基本設定」の『文字列表示(文字列ピクチャ)微調整』で『横方向の字詰め(ﾋﾟｸｾﾙ)』を0以外にしているゲームをVer3.00に持ってくると文字幅がズレるバグを修正。<br>　　中味がUTF-8になって3バイトになってたので字詰めも2→3バイト分になっているバグでした。<br>●Game：未UTF-8化のバージョンをGame.exeだけ差し替えて実行したとき、ゲーム基本設定のバージョン調整が「最新」だった場合は自動で「Ver2.29」として処理するよう修正<br><br></span></span></TD></TR></TABLE></CENTER><br>よく見れば急に実装された新機能も混ざっています。<br><br>たとえば、<br><strong><span style="color:#CC0000">「Ver3のエディタにUTF-8文字コード化するコンバート機能は付けたけど<br>プレイヤーさん側のセーブフォルダ内にあるデータはコンバートできないわけで、<br>そこにはSJIS文字コードのも混ざってるから結局ファイル読み込みするなら<br>文字コード自動判別機能を作らなきゃいけないじゃないかー！！」</span></strong><br>といって泣きながら「文字列操作」の「ファイル読込」機能に<br>「文字コード自動判別機能」を付けたりしてました。<br>でもUTF-8とマルチバイト文字の確実な判別ってね！<br>Googleさんにもできないんですよ！！<br><br>あと他の新機能、個人的な一押しは<br>「<strong><span style="color:#CC0000">DataフォルダがなくてもEditor.exeを実行すれば空データを作ってくれる機能</span></strong>」<br>ですね！　面倒臭いときはDataフォルダ消してEditor起動すればとりあえずなにかができます！<br>ファイルをEXE内に内蔵したり出したりできる方法を学んだのでこれから色々できます。<br><br>ひとまず今月中の公開を目指して引き続き全力で修正していきますので<br>公開をお楽しみに！　あと2週間以内には出したいです。</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2022-11-12 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F11.html%232022-11-12&title=%E3%82%A6%E3%83%87%E3%82%A3%E3%82%BF%E5%A4%A7%E8%A6%8F%E6%A8%A1%E3%82%A2%E3%83%97%E3%83%87%E5%86%85%E5%AE%B9%E4%BA%88%E5%91%8A7%20%E4%BB%95%E4%B8%8A%E3%81%92%E4%B8%AD" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F11.html%232022-11-12&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2022-11-12','ウディタ大規模アプデ内容予告7 仕上げ中', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/woditor/001.html'>ウディタ</a></span></div></div><br><br><br>
+<a id='2022-10-29'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2022-10-29','ウディタ大規模アプデ内容予告6 Unicode化', this)" style='cursor:pointer;'>2022-10-29 (土)&nbsp;&nbsp;&nbsp;ウディタ大規模アプデ内容予告6 Unicode化</span><span style='float:right;'><a href='#2022-10-15' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【ウディタ大規模アプデ内容予告 6　Unicode化】</strong></span><br><br>ということでウディタの大規模アップデート作業、今は超地味で超コストが高いものの<br>いちおう世界展開にも影響する部分、『Unicode化』を進めています！<br><br><img src="../../image/2022/20221029.jpg" border="1" width="400" loading="lazy" height="400"><br><br>「Unicodeってなに！？」　と思われるかもしれませんが、<br>もともとウディタの内部は地域ごとに作られた「マルチバイト文字」というので動いていまして、<br>日本ならマルチバイトの『シフトJIS（SJISとも言います）』と呼ばれる文字コードで動いていました。<br><br>これは海外だともちろん違う文字コードになっており、中国語の簡体字なら「GB2312」、<br>繁体字なら「BIG5」とか色々あるため、文字コード1個しか指定できなかった<br>これまでのウディタでは、同じゲーム画面内では<br>2つ以上の言語が同時に表示できないようになっていたのです。<br><br>さらに言うとWOLF RPGエディターは「シフトJIS」用のエディタ + ゲーム動作アプリなので、<br>海外言語のOSでゲームやエディタを開くと部分的に文字化けします。<br>さらにはエディタで中国語の文字なども入れることができなかったので、<br>海外展開されている最先鋭の人たちは移植の際にお困りになりがちでした（私も）。<br><br>ということで今回、大規模更新のついでにGame.exeやEditor.exe内で扱うコードを<br>世界で使える文字コードである「Unicode」にしてしまおう！<br>というのが大きな目標の一つとなりました。<br>大部分の皆さんへの恩恵が地味すぎる割にコストが莫大な部分ですが、<br>ここを逃すと一生見て見ぬフリを続けそうだったので！！<br><br>あと私が裏でどれだけローカライズ関係で言語周りのお問い合わせを<br>これまでヒィヒィいいながらサポートしなければならなかったかを考えれば、<br>私にとってはむしろここで苦労する方が人生の総コストで見れば安上がりです！<br><br>そんなわけでVer3からは、ゲーム部分は「UTF-8」、<br>エディタ部分は「ワイド文字（たぶんUTF-16？　でもファイルはゲーム用に全てUTF-8です）」<br>で動くようになります。いまそのための修正を行っています。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【Unicode化でどんな面がよくなるの？】</strong></span><br><br>ではUnicode化で皆さんにどんな恩恵があるかというと、以下のような点です。<br><br><br><span style="font-size:large;"><strong>●変わった記号が使えるようになる。</strong></span><br><br>↓タイトルバーにも♥が使用可能！　メッセージ内に記号も使用可能！（フォントに入ってるもののみ）<br>要するに、フォントに入っている文字なら何でも使えるようになります。<br><img src="../../image/2022/20221029A.png" border="1" width="75%" loading="lazy" height="323"><br>あまり見ない媚び媚びウルファール。<br><br><br><span style="font-size:large;"><strong>●1ゲームデータ内で言語切り替えが可能になる。</strong></span><br><br>かなりうまく作らないといけませんが、<br>文字列のほとんどをDB内に書いておけばCSVファイル読み込みで言語を変えたり、<br>言語別のマップを作っておいて切り替えられるようにしておけば<br>1ゲーム内で言語の切り替えをさせることも可能です。<br><br><br><span style="font-size:large;"><strong>●海外展開するときなどに、エディタ上から直接<br>中国語などを入れられるようになる。</strong></span><br><br>これまでは日本語OSで起動すると、文章欄には「日本語」しか入れられなかったので、<br>中国語簡体字へのローカライズが困難でした。<br><br>ですがこれからはどんな文字でも入るので、<br>ただでさえ少ない対象人数の中のさらに何％だよって話になりますが、<br>現在の海外展開先の主流の一つである「中国語」へのローカライズもラクになります！<br><br><br><span style="font-size:large;"><strong>●海外のOSでもエディタが文字化けせずに使える。<br>かつゲーム内で確実に海外語の文字が出せる。</strong></span><br><br>私にとって地味に大きい部分です。海外の人からの連絡で<br>「これこれこうしたいんだけど文字がうまく出せないんです！」<br>というお問い合わせが殺到することがたぶんなくなります。<br>またロシア語など、これまでゲーム内で表示すらできなかった言語も入れられるようになります。<br><br>だいぶ昔、ドイツの方に「ウディタは海外言語に対応してないのごめんね」って言ったら<br>（SmokingWOLFなので）「タバコの吸いすぎで死んじゃえ！」って<br>お返事をいただいてしまったり、台湾の方からのお問い合わせで<br>うまく文字が出せなくて何度も泣きそうになったりなど<br>色んな経験をしてきましたが、これからは多少安心です。<br><br><br><span style="font-size:large;"><strong>●別言語のセーブデータと共存しやすい。</strong></span><br>文字コード自体はどの言語でも共通になるので、<br>セーブデータの共存がしやすくなります。<br><br>とはいえ、アイテム名やプレイヤー名が、<br>選択中のフォントに対応してない言語のものだと<br>ゲーム内で表示しようとしても文字化けしてしまいます！<br><br>【全言語対応フォント】などを入れてるならいいんですけれど、<br>なかなか数がないんですよね。<br>可能なら、「オンラインプレイヤー表示」の部分などには<br>全言語対応のフォントを入れたいところです。<br><br>あと私にとっては、『片道勇者2』のオンラインプレイヤーの処理を<br>言語別にいちいち分けなくてよくなるので助かります。<br>（『片道勇者(プラス)』では日本語と英語で接続先もサーバプログラムも変えていました）<br><br><br><span style="font-size:large;"><strong>●ファイルが日本語のままでも海外で動作する！(？)</strong></span><br><br>これは全言語を試せてないので確定したことが言えませんが、<br>ロケール（OS言語）を「中国語の繁体字」にした状態でも、<br>暗号化された「あああ.txt」ファイル（日本語ファイル）を<br>ゲーム内から読み込めるようになっていることが確認できたので、<br>日本語ファイル名が混ざっていても海外OSで普通にゲームが動作すると思われます。<br><br>ファイル名は本来は「英数字のみ」が推奨で、<br>これまではそうしておかないと海外版が安定動作しなかったんですが、<br>これからは日本語ファイルが混ざっていてもそのまま出せるかもしれません。<br>それでも英数字以外のファイル名はあんまり推奨しませんが！<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【ゲーム開発者がUnicode化でやるべきことはある？】</strong></span><br><br>Unicodeに変わるにあたってユーザの方が何をすればいいかですが、<br>基本的には何もしなくても問題ないようにするつもりです。<br>メリットをあんまり感じにくいUnicode化で大きいご負担をおかけするのもアレなので<br>低負担で移行できるサポートをご用意します。<br><br><br><span style="font-size:large;"><strong>●Ver3のエディタを起動したとき、一通りのファイルを<br>全変換できるコンバート画面が開くように！</strong></span><br><br><img src="../../image/2022/20221029B.png" boder="1" width="95%" loading="lazy" height="259"><br><br>Ver2以前のゲームデータをVer3のエディタで開いたら<br>最初にコンバート画面が表示されます。<br>ここで文字コードを全変換します。<br><br>ファイルの変換対象は「コモンイベントやDBなどの基本データ」、<br>「Dataフォルダ内の全.mps（マップ）ファイル」、<br>「Dataフォルダ内の全.txtファイル」です。<br><br><span style="color:#CC0000"><span style="font-size:x-small;"><strong>※ただし、txt拡張子以外のファイルはスルーされてしまうので、<br>もし.logなどの他の拡張子のテキストファイルが使われてるなら<br>自力でUTF-8型に変換していただく必要がございます。<br>Windowsの「メモ帳」で名前を付けて保存し直すと文字コードを選び直せます。</strong></span></span><br><br>いちおう安全のために全部まとめて変換しているものの、<br>実はtxtファイル以外は、Ver2のままのデータを<br>Ver3用に変換せずともそのまま読み込むことができます。<br>（.datファイルは、内部にUTF-8済みかどうかのフラグを持っているので自動で区別されます）<br><br><br><br><span style="font-size:large;"><strong>●Game.exeを差し替えるだけでも動作するように。</strong></span><br><br>Ver3のGame.exeは過去のゲームデータでも動作します！<br>旧データも読むようにしたので、Game.exeを差し替えれば、<br>Ver2のゲームデータでもそのままプレイ可能です。<br><br><span style="color:#CC0000"><strong>ただしDXライブラリの更新でウディタの暗号化アルゴリズムが<br>Ver2.255(2021/2/27)で根本的に変わってしまったので、<br>それより前に暗号化されたゲームは読めません。</strong></span><br><br>作者さまの場合は、Ver3のEditor.exeで<br>ゲームデータを開き直して作り直してくだされば大丈夫です。<br><br><br>また、Game.exeで昔のデータを開いたときの挙動ですが、<br>「文字列操作」コマンドのファイル入出力で出せるtxtファイルも、<br>【Ver2の旧データだと認識されると、前のSJIS文字コードのまま読み書き】し、<br>【「Ver3に変換済み」なら「全てのtxtファイルをUTF-8で入出力」】します。<br><br>一方、「DB操作」で出せるCSVファイルは新旧にかかわらず「UTF-8」型で出力されるようになります。<br>ただ読み込み自体は、SJIS版と新しいUTF-8版を自動判別して<br>どちらもゲーム内で読める文字として読み込めるようになっているので安心です。<br>（Excelで保存されたものなら、CSVファイル内のフラグを認識して<br>UTF-8版とSJIS版の文字コードを区別できます）<br><br>と複雑なことを言っていますが、要するに<br>「Ver3のGame.exeは、古いゲームデータでもファイル入出力はなるべく<br>これまで通り動作するように読み書きされるようになっています」<br>ということです。<br>Ver2.255(2021/2/27)で暗号化された去年以降のゲームなら、<br>Game.exeだけ差し替えしてもたぶん動くと思います。<br><br><br><span style="font-size:large;"><strong>●過去のセーブデータもちゃんと使用可能。</strong></span><br><br>Ver2時点のセーブデータもしっかり読めるようにしておきました。<br>Ver2のセーブだと認識されると、内部文字コードを<br>自動でUTF-8に変換して読み込みます。<br><br>要するにこちらも利用者の方はほぼ何も気にせず使えるということです！<br>私は気にするところがいっぱいですが！<br>プレイヤーの方が100時間以上遊んだセーブデータなどもあるわけで、<br>今後もちゃんとそのまま使いたいですものね。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【今後】</strong></span><br><br>ゲーム側は前々からUTF-8化するための準備を内部に仕込んであったので<br>だいぶラクにUnicode化できました。あとはバグ探しのみです。<br><br>が、問題はエディタ側！<br><br>エディタ側はほぼ全体にわたって、すみからすみまでオーバーホールが必要な状況です。<br>Unicodeモードにしただけでコンパイルエラーが4000件も出る！<br>が、それはもう解決して、起動できるところまでは行けました。<br><br>というのも今回の作業においてはプログラミングソフトの<br>「Visual Studio 2022」のサポート機能がすごい優秀で、<br>構文エラーや型エラーがすごい勢いで直せていて<br>非常に高効率で作業できているので、<br>ここでもプログラミング環境を最新にした効果が出ています。<br><br>Visual Studio 2003でやってたら2ヶ月でも終わらなさそうなのが<br>ほんの数日でコンパイル成功までいけましたからね！　最低10倍速！<br>こんなソフトがタダで使えるようにしてくれているMicrosoftさんに感謝です。<br><br>ですが「コンパイル時に引っかかるバグ」ならまだいいんですよ！<br>そこで引っかからない隠れバグがいったい何百件隠れているか、想像も付きません。<br>ここからはその辺を修正しながら進めていくことになると思います。<br><br>そして、最後にいくつか新機能を付けたら一旦Ver3.00としての修正を完了し、<br>一般公開して、しばらくここまでの変更で増えたであろうバグの修正に<br>集中する感じでやっていこうと考えております。<br>また、各種非公開機能やプレミアムな機能が使える「ウディタ3プロ版」も<br>アーリーアクセスで同時販売予定です。</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2022-10-29 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F10.html%232022-10-29&title=%E3%82%A6%E3%83%87%E3%82%A3%E3%82%BF%E5%A4%A7%E8%A6%8F%E6%A8%A1%E3%82%A2%E3%83%97%E3%83%87%E5%86%85%E5%AE%B9%E4%BA%88%E5%91%8A6%20Unicode%E5%8C%96" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F10.html%232022-10-29&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2022-10-29','ウディタ大規模アプデ内容予告6 Unicode化', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/woditor/001.html'>ウディタ</a></span></div></div><br><br><br>
+<a id='2022-10-15'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2022-10-15','ウディタ大規模アプデの機能 5 ﾋﾟｸﾁｬ&Game.exe', this)" style='cursor:pointer;'>2022-10-15 (土)&nbsp;&nbsp;&nbsp;ウディタ大規模アプデの機能 5 ﾋﾟｸﾁｬ&amp;Game.exe</span><span style='float:right;'><a href='#2022-10-01' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【ウディタ大規模アップデートで搭載される機能 5】</strong></span><br><br>引き続き大規模アップデートの機能紹介！<br>今回も紹介動画を作ったのでぜひご覧ください。6分ほどです。<br><br><iframe width="520" height="300" src="https://www.youtube.com/embed/i-Z0vdoiIYE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br><br>この動画内で紹介されている新機能や強化内容は以下の通り！<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【ピクチャ機能をいろいろ強化！】</strong></span><br><br><br><span style="font-size:large;"><strong>●【ピクチャ】 ピクチャへの画面取得機能を実装。</strong></span><br><br>「[1]ファイル読み込み」のファイル名、または<br>「[2]文字列読み込み時」の文字列変数内に<br><span style="color:#CC0000"><strong>&lt;SCREENSHOT&gt;</strong></span>と入れると、<br>「その時点で表示されている画面」をピクチャとして利用できるようになります。<br>なお、このピクチャ内容はセーブできず、ロード時には消えてしまうため、<br>一時的なエフェクトとして使うことを考えてみてください。<br><br>また動画内では言い忘れていましたが、<br>この&lt;SCREENSHOT&gt;ピクチャ指定で「表示」をするたび、<br>&lt;SCREENSHOT&gt;ですでに表示中の他の全ピクチャの画像も更新されます。<br>つまり、ゲーム内では&lt;SCREENSHOT&gt;は共有の画像であり、<br>最新の1枚しか保存していません。この点はあらかじめご了承ください。<br><br><span style="font-size:x-small;"><span style="color:#3399FF"><strong>※なおプロ版ウディタでは<br>「緑帯なしでスクリーンショットを画像ファイルとして取得できる」<br>機能が搭載される予定です。</strong></span></span><br><br><br><span style="font-size:large;"><strong>●【ピクチャ】 部分切り出し表示機能を実装。</strong></span><br><br>[1]ファイル読み込みまたは[2]文字列読み込み時に<br>「<span style="color:#CC0000"><strong>&lt;CUT=X10-150-Y40-300&gt;Picture/AAA.jpg</strong></span>」と指定すると、<br>画像「AAA.jpg」から、X座標10～150ピクセル、<br>Y座標40～300ピクセルの範囲だけ切り出して表示することができます。<br><br><br><strong>●【ピクチャ】表示する基準位置として「中央上」と「中央下」を新たに実装。</strong><br><br>ピクチャ周りに新しい基準座標を入れるのは超面倒だったので<br>億劫に思ってましたが、あれば私も絶対使うので、とうとう入れさせていただきました。<br><br><br><strong>●【変数操作+】「ピクチャ番号X」の「マウスカーソル重なってる？(1=YES)」機能において、<br>角度の付いたピクチャでも重なり判定をほぼ正確に取れるよう修正。</strong><br><br>斜めになったカードをマウスで選択するときも安心です。<br>といいますか、まさに『片道勇者2』でその用途で必要になったので搭載しました。<br><br><br><strong>●【ピクチャ】通常ピクチャの「角度」を0以外にした場合でも<br>縦横の拡大率が異なる状態を維持できるように修正。</strong><br><br>なお、文字列ピクチャは今回の修正ですでに<br>縦横の長さが異なる場合の角度変更が可能です。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【Game.exeの基本性能向上】</strong></span><br><br><strong>●【イベント処理速度】 アルゴリズム改善とプログラム環境の更新により、<br>コモンイベント内のイベントコマンド処理が大幅に高速化されました。</strong><br><br>組み方にもよりますが、一般的な処理ならば<br>コモンイベント内で平均で<span style="color:#CC0000"><strong>従来の2～4倍</strong></span>の速度で<br>イベント処理が行えるようになるようです。<br>『ドラゴノーカ』というゲームのSwitch移植時に最適化をがんばった分で最大2倍、<br>VisualStudioを2003から2022に変えた分で素で2倍くらいになっているようです。<br><br><br>特に、コモンイベント内での「ループと基本的な変数操作」が段違いに速くなりました！<br>↓<br><span style="font-size:medium;"><strong>【高速化実例】</strong></span><br>コモンイベント内で3万回ループに「Cself0 = 0」を10個入れた、<br>だいたい30数万回のコマンド処理を毎フレーム実行したときのイベント処理時間が、<br>ウディタ開発者の環境で<br><br><span style="font-size:large;"><strong>Ver2.294　約36ms　→　Ver3.00　約1.5ms　（20倍以上）</strong></span><br><br>にまで削減できました。<br>C++ソースコード上では関数1個も読んでない<br>最適化済みループを実行しているとはいえ速すぎる！<br>（コンパイル環境変えただけで元の10倍！）<br><br>とにかく、コモンイベント内での「変数操作」や「ループ」の処理が<br>もしかしたらほぼ「無」近くの負荷になっているかもなので、<br>うまく作ればシミュレーター系のゲームも動かしやすくなると思います。<br><br><br><br><strong>●【描画速度】 <span style="color:#CC0000"><strong>描画速度が平均2倍</strong></span>ほどになりました。</strong><br><br>他の人の環境だとどうなるか分かりませんが、<br>これもコンパイル環境の更新によって<br>従来のおおよそ半分程度の描画時間になっているようです。<br><br><br><strong>●【ゲーム起動】ゲームの起動を高速化しました。</strong><br><br>作者の環境にて、Data.wolf暗号化したサンプルゲームの初期起動時間が、<br><span style="color:#CC0000"><strong>従来　2.6秒　→　最新版　1.5秒</strong></span>　　くらいに早くなりました。<br><br>実はプロ版ウディタに、起動時の真っ暗画面の時点で画像とローディングゲージを<br>表示するおまけ機能を入れようかなと思っていたのですがほぼいらないかも……。<br>いちおう、入れるだけ入れる予定です。<br><br><hr size="1" /><br>という感じで、実用的な強化や、より便利になる強化が複数おこなわれています！<br><br>特に「ピクチャの切り出し機能」は、DBなどにファイル名として直接、<br>「<strong>&lt;CUT/X40-140/Y50-150&gt;Picture/Face1.png</strong>」<br>と入れるようにするだけでピクチャ処理時に<br>勝手に顔画像が一部切り出しして表示されるので、<br>従来のコモンイベント処理をほぼいじらずとも採用できるのが強力です。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【残りの作業】</strong></span><br>ここからは仕上げ段階に入りますが、<br>いまだにまともに入れていないUnicode対応だけで<br>一ヶ月くらいかかりそうな予感がしているので、<br>あと一報、二報くらいしたらネタ切れになるかもしれません。<br>（いちおう、マスク機能などのご紹介もまだ残っています）<br><br>Unicode対応は地味で見せ所もない作業ですが、<br>今やっておくと海外展開など含めてあとあとずっとラクができる部分なので、<br>がんばれるだけがんばっていきます。<br>特にこれからも円安が続くようだと、海外にゲームを<br>輸出していくことも重要になっていきますしね！<br><br>そんなわけで、ここからも引き続きやれるペースで進めていきます！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2022-10-15 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F10.html%232022-10-15&title=%E3%82%A6%E3%83%87%E3%82%A3%E3%82%BF%E5%A4%A7%E8%A6%8F%E6%A8%A1%E3%82%A2%E3%83%97%E3%83%87%E3%81%AE%E6%A9%9F%E8%83%BD%205%20%EF%BE%8B%EF%BE%9F%EF%BD%B8%EF%BE%81%EF%BD%AC%26Game.exe" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F10.html%232022-10-15&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2022-10-15','ウディタ大規模アプデの機能 5 ﾋﾟｸﾁｬ&Game.exe', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/woditor/001.html'>ウディタ</a></span></div></div><br><br><br>
+<a id='2022-10-01'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2022-10-01','ウディタ大規模アプデの機能 4', this)" style='cursor:pointer;'>2022-10-01 (土)&nbsp;&nbsp;&nbsp;ウディタ大規模アプデの機能 4</span><span style='float:right;'><a href='#2022-09-03' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【ウディタ大規模アップデートで搭載される機能 4】</strong></span><br><br>引き続き大規模アップデートの機能紹介！<br><br><br><span style="font-size:large;"><strong>【ピクチャエフェクトに「変換」系エフェクトを追加！】</strong></span><br><br>エフェクトの「ピクチャ」に「変換」系処理を追加しました。<br><br>この件は動画を作りましたのでこちらを見れば一目瞭然です！（2分の映像です）<br>↓<br><iframe width="520" height="300" src="https://www.youtube.com/embed/fwlklTk3Fic" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br><br>これらは一瞬で不可逆な変換を行うもので、一度かけた「変換」エフェクトは<br>そのピクチャが消去されるまで持続します。<br>つまり、何度も「ぼかし」エフェクトを重ねたりすることができます。<br>使えるのは今のところ以下の通りです。<br><br><span style="font-size:large;"><strong>- 変換/色相彩度明度</strong></span><br>　ピクチャの色の方向性・鮮やかさ・明るさを変化させます。<br><br><span style="font-size:large;"><strong>- 変換/モノトーン</strong></span><br>ピクチャを指定した色相のモノトーンに変化させます。<br><br><span style="font-size:large;"><strong>- 変換/ぼかし</strong></span><br>ピクチャをぼかします、一度にぼかせる量には限界があります。<br><br><span style="font-size:large;"><strong>- 変換/階調反転</strong></span><br>ピクチャの色を反転します。2回やると元の色に戻ります<br><br>※マニアックですが「レベル補正」(指定範囲A1～A2の明るさ範囲を<br>指定範囲B1～B2の明るさ範囲に変換）もあったほうが<br>色々できるので入れようかなと考え中です。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>●エフェクト機能がいっぱい増加！</strong></span><br>上の分もエフェクトの追加ですが、その他にも便利そうなエフェクト機能が<br>いっぱい追加されました。<br><br><span style="font-size:large;"><strong>【ピクチャのエフェクト】</strong></span><br><br><strong>- 描画座標シフト2(角度・拡大率反映</strong>)<br>　→　拡大率や角度の影響を受ける「前」のXY座標をシフトさせます。<br>　　　ウディタ作者は、カードを複数のピクチャを重ねて作るときに便利でした。<br>　（文字や下地などを全て「同じ座標」の「中央」座標で重ねて出した後、<br>これでシフトさせて文字や絵などの位置合わせをすれば<br>回転・拡大しても1枚のカードとして動くように見えます）<br><br><strong>- 不透明度補正[±]<br>- 角度補正[±]<br>- 拡大率補正[±]</strong><br>このあたりは書いてある通りです。<br>いつも通り、縦横の拡大率が違うと角度補正は効きません。<br><br><strong>- エフェクト全解除</strong><br>ピクチャエフェクトを全解除できます（解除できるもののみ）。<br>まとめて消せるのがなかったので便利になります。<br><br><strong>- ピクチャのコピー</strong><br>パラメータや読み込んだ画像が全く同じピクチャを別IDにコピーします。<br>「カーソルを合わせたときだけ最前線に表示したい」ときなどに便利。<br><br><strong>- ピクチャのID移動</strong><br>指定したピクチャのIDを切り替えられます。<br>凝り始めるとこのコマンドと似た処理が求められる場面は多く、<br>従来のウディタでも「消去→別IDで表示」を一瞬で行うことで実現はできましたが、<br>これからはこのコマンド1つで実行できます。<br>処理を簡単化、軽量化するのに役立つと思います。<br><br><br><br><span style="font-size:large;"><strong>【キャラのエフェクト】</strong></span><br><br><strong>- 不透明度補正[±]<br>- ｷｬﾗﾁｯﾌﾟを変更<br>- 高さ変更<br>- 強制パターン上書[0:ﾅｼ]</strong><br>　キャラチップを「指定したパターン番号」の画像にして停止させます。パターン値はピクチャと同じ分け方です。<br><strong>- 重ねｷｬﾗﾁｯﾌﾟを変更</strong><br>以前も紹介しましたが元のキャラチップに最大5枚分、別のキャラチップを重ねられます（つまり全6レイヤーで着せ替えが可能です）。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【エディタ周りの修正・改善】</strong></span><br><br>●イベント編集ウィンドウの検索窓に「置換」機能が追加！<br>●マップイベントウィンドウに「検索」機能と「行数」機能が追加！<br><img src="../../image/2022/20221001.png" border="1" width="520" loading="lazy" height="295"><br>なぜかマップイベント側に付いてなかった検索機能を付けたり、<br>ついでに「あればいいのに」とたまに思うことが多い機能の<br>代表である「置換」機能を搭載しました。<br><br><br>●【マップ/コモンイベントウィンドウ】<br>検索ウィンドウの履歴文字列を10個まで保存するようになりました。<br>従来は特に履歴が保存されたりしておらず無意味でした。<br><br>なんだか履歴が保存できそうな検索欄の入力欄でしたが、<br>あれ自分でちゃんと実装しないと履歴が入らないんですよ。<br><br><br>●【コモンイベントウィンドウ】コモンイベント編集時、Ctrl+Rの<br>「直前のイベントに戻る」で前のイベントに戻ったとき、<br>「行数」も最後の位置に戻るように修正。<br>実質的にワンボタンで2つの場所を見比べながら作業ができます。<br><br><br>●【ゲームデータ作成】今後は暗号化バージョンが選択可能になります。<br>今は「Ver2.25～2.29」と「Ver3.00」だけに限られますが、<br>ゲームデータの暗号化バージョンを選べるようになります。<br>オンラインアップデートをする際、新旧の暗号化ファイルが混ざるとクラッシュするので、<br>古い暗号化方式のままにしたいときに利用できます。<br>（暗号化処理は定期的に新しいものを追加しています）<br><br>●【ゲーム基本設定】 「MIDIの再生方式」に<br>「MIDI音源を使わない[GuruguruSMF.dllも不要に]」を追加しました。<br>これを選択していると、ゲームデータの作成時にも<br>GuruguruSMF.dllがコピーされなくなり、<br>起動時に「GuruguruSMF.dllがないよ」という警告が出なくなります。<br>さすがに今の時代になるとMIDIを使わない方もいらっしゃいますからね！<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【ゲーム側の改善点】</strong></span><br><br>●【座標取得】イベントコマンドで得られる「主人公」の座標が正確になるよう修正しました。<br>　たとえば【変数操作+】による「主人公」の「画面X・Y座標」などです。<br>　おそらくスクロール値も正確になっていると思われます。<br>　<br>→　従来は「1フレーム前の座標値」が取得されていたため、主人公のキャラチップにピクチャを重ねようとしてもどうやっても1フレーム分ズレる現象がありました。<br>　これは従来、「イベント後に主人公のキー入力や位置情報が更新されていたため」で、キー入力と位置情報を分離し、イベント前に位置情報だけ更新する形にしました。<br><br>→　処理順が変わった都合上、キー入力による「主人公」の移動が動き始めの1フレームだけ遅れることになるので、1フレームしか猶予のない逃走ゲームなどはVer3.00への更新によってクリア不能になる場合がございます。<br>　過去の挙動に戻したい場合は、「ゲーム基本設定」の「Game.exe 動作バージョン調整」で「Ver2.29時点の挙動で動作」に切り替えることで対応できます。<br><br><br>●【エフェクト】キャラ・ピクチャのシェイク回数として10万回以上を指定すると「無限回」になるよう修正<br>正直ここまでの数値を入れるときは無限にしたいときの方が多いので、無限回になるようにしました。<br><br>●【エラー】 緑帯エラーの表示中にF12リセット、あるいは<br>F11更新（まだF11はクラッシュしやすいです！）できるように修正。<br>緑帯ループに入ったときにリセットできなくて面倒臭かったので！<br><br>●【ピクチャ表示一覧】テストプレイ中、「Shift押しながらF7」を押すことで<br>「マウスカーソルが重なっているピクチャ」だけを<br>「ピクチャ表示一覧」に表示できるよう修正。<br><br>たくさんのピクチャがあっても、指示したところだけの情報を得やすくなります。<br>ついでに、最後まで見ないと終われなかったのを<br>「Ctrlキー」を押せば途中でも中断できるよう修正。<br><br><br><hr size="1" /><br><br>今回ご紹介するのは以上の通り！<br>他にもまだ色々ありますが徐々にご紹介していきます。<br><br>リリース時期ですが、色々やってみた感じ、下手すると残る作業の中で<br>一番大きい「Unicode対応」だけで1ヶ月くらいかかるかもしれない可能性が<br>出ているので、10月中のリリースは怪しい感じです。<br>（直す場所が最低でも4000箇所以上あります）<br><br>どうしても今年中が難しくなりそうなら<br>「Game.exeとEditor.exeの一部」だけの<br>半端なUnicode対応で一旦区切ることも予定しています。<br>文字コード周りは徐々に変えるということができないので、<br>できればこの機会に重要箇所だけでも一気にやってしまいたいと考えています。<br><br><span style="font-size:x-small;">（なお半端なUnicode対応にするとどうなるかというと、<br>「エディタで中国語を入れてもイベントコマンド欄の中国語だけ文字化けする」感じになります。<br>ただ、文字化けするだけで入力自体はできるようになるので、従来よりは一歩進みます。<br>なんせ従来だと中国語の入力すらできませんでしたからね！）</span><br><br>という感じで、引き続きやれる速度で作業を進めていきます！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2022-10-01 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F10.html%232022-10-01&title=%E3%82%A6%E3%83%87%E3%82%A3%E3%82%BF%E5%A4%A7%E8%A6%8F%E6%A8%A1%E3%82%A2%E3%83%97%E3%83%87%E3%81%AE%E6%A9%9F%E8%83%BD%204" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F10.html%232022-10-01&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2022-10-01','ウディタ大規模アプデの機能 4', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/woditor/001.html'>ウディタ</a></span></div></div><br><br><br>
+<a id='2022-09-03'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2022-09-03','ウディタ大規模アプデの機能 3', this)" style='cursor:pointer;'>2022-09-03 (土)&nbsp;&nbsp;&nbsp;ウディタ大規模アプデの機能 3</span><span style='float:right;'><a href='#2022-08-21' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【ウディタ大規模アップデートで搭載される機能 3】</strong></span><br><br>引き続き大規模アップデートの機能紹介！<br>最近はRPG向けの基本機能でありながらおざなりになっていた、<br>タイルセットやマップ周りのオーバーホールを行っていました。<br><br>動画での紹介を見たい方はこちら！<br>↓<br><iframe width="520" height="300" src="https://www.youtube.com/embed/7bUmzgMqIrc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br><br><hr size="1" /><br><span style="font-size:large;"><strong>●マップ編集画面が強化！</strong></span><br><br>マップエディタの基本処理をほぼまるっと作り直しました！<br>これによって、だいぶ性能限界が上がりました。<br>あと使いやすさもアップさせています。<br><br><strong>- ほぼ無限サイズのマップでも編集可能に！</strong><br>→　従来は長辺500マス以上あたりになるとマップが表示されなくなってしまい、<br>事実上それ以上のサイズが編集不能だったという不具合を抱えていましたが、<br>Ver3からそれが解消されます。1000x1000マスのマップでもしっかり編集可能！<br>　（メモリの問題でクラッシュしない程度の制限はかけるかもしれません）<br><br><strong>- マップが大きくても処理速度が重くならない！</strong><br>→　これまでは大きいマップほど何か触るたびに重かったりしたと思いますが<br>これからはサイズにかかわらず編集負荷が一定になります。<br><br><strong>- 「一手戻る」が超速に！　+　Ctrl+Zでも戻せるように</strong><br>→　大きいマップだと押しても4～5秒くらい待たないと一手戻せなかったのが、<br>今はもうほぼ一瞬で戻せます！　快適！　Ctrl+Zでも戻せるようになります。<br><br><strong>-  EditorGraphic.datが不要に！</strong><br>→　ほぼどうでもいいことですが外部においていた画像をEditor.exe内に内蔵できました。<br><br><br><strong>- 「チップ選択ウィンドウ」でホイール押しながらドラッグでスクロール可能に！</strong><br>　いちいちホイール回転とかスクロールバーさわらなくても<br>　肌感覚で高速スクロールできてだいぶチップ選択がスムーズになります。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>●タイルセット画面が強化！</strong></span><br><br><strong>- レスポンス向上</strong><br>大きいマップチップだと、クリックしながら<br>ザーっと横移動したとき選択したチップの隙間ができるくらいには<br>レスポンスが悪かったので、高速化できる処理を加えてみました。<br>たぶん反応頻度が数倍くらい速くなったと思います。<br><br><strong>- オートタイル15→23個に増加</strong><br>さすがに私も足りなかったのでオートタイルを追加しました。<br><br><strong>- 32pxと48pxサイズ表示切り替え機能追加</strong><br>タイル一覧の表示サイズを32pxと48pxに<br>切り替えできるようになりました。<br><br><strong>- タグ番号のコピー＆ペースト機能追加</strong><br>タグ番号の編集時、Ctrl+右クリックでタグ番号コピー、<br>Ctrl+左クリックで貼り付けできるようになりました。<br>55番タグ（「00」から10回クリックしないといけない）を<br>大量に設定しようとすると泣きそうでした。<br><br><strong>- タイル画像別の通行設定をCSVで読み書きできる。</strong><br>オートタイルなら1タイル分、基本タイルセットなら8×縦列分、保存できます<br>CSVで入出力できますが内部値で保存されており、<br>人間が読んで直感的に分かる値にはなってないのでお気をつけください。<br><br>法則性が分かれば自分で計算できるかもしれませんし、<br>基本チップの通行設定の番号リストを作っておけば<br>それを貼り付けて設定することはできると思います。<br><br><br><strong>- タイル画像を「読込」したときに前述のCSVも同時に読み込める</strong><br><img src="../../image/2022/20220903.jpg" border="1" height="400" loading="lazy"><br>タイル画像を通行設定付きで配布したい人に朗報！<br>前述の通行設定CSVは、「同じファイル名のタイル画像を読み込むとき」に<br>自動で読み込むか聞いてくれます！　便利。<br><br><br><strong>- タイル部の操作追加</strong><br>　→ ホイール回転でスクロール可能に<br>　→ 中クリック押しの上下ドラッグでスクロール可能に<br><br>タイル設定画面のタイル部分を操作してるときに<br>「なんでこの操作ないんだよぉぉぉ！！」ってなったので入れました。<br>実装されるのが遅すぎた感がありますがだいぶテンポ良くなります。<br><br><br><strong>- 「タイル表示部分」に通行設定CSVをドラッグするとそこに通行設定を読込可！</strong><br>「パーツ画像＆パーツの通行設定CSVで公開」みたいな配布方法も可！<br><img src="../../image/2022/20220903A.jpg" border="1" height="400" loading="lazy"><br><br>ドラッグ＆ドロップするだけで一定範囲の通行設定ができるので<br>3～4行分のパーツ単位でマップを配っている人にとっても、<br>CSVと一緒に配布すれば通行設定のデフォルト値が簡単に設定できて安心！<br>（試しに買ってみたタイル画像集がそういうパーツ配布型でしたが、<br>当然ながらバラだと通行設定データは作れないのでこれ↑ができると嬉しいかも？）<br><br><br><strong>- 縦32000ピクセルまでのチップが使用可能に！</strong><br>環境によって限界値は変わるかもしれませんが<br>ツール側としては高さ30000ピクセルのPNGファイルを<br>読み込んで表示することができました。<br>画像編集ツールによっては最大が30000ピクセルだったりするみたいなので、<br>事実上のほぼ無制限とみていい気がします。<br><br>なお、なぜ30000pxまでの画像しか作れないのに<br>推定の限界値が32000だと分かったかというというと、<br>16サイズのタイルの限界が高さ16000までだったからです。<br>（内部的に2倍して表示しているため、それで32000を超えられる）<br><br><hr size="1" /><br><strong><span style="font-size:large;">【課題！】</span></strong><br><br><strong>●マップ編集時、1/8モードかつチップ量が画面内に多いとスクロールが重い！</strong><br>→　ほとんどの処理は軽くなるのですがスクロールだけが重いです。<br>この辺りはもっと最適化しないといけなさそうです。</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2022-09-03 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F09.html%232022-09-03&title=%E3%82%A6%E3%83%87%E3%82%A3%E3%82%BF%E5%A4%A7%E8%A6%8F%E6%A8%A1%E3%82%A2%E3%83%97%E3%83%87%E3%81%AE%E6%A9%9F%E8%83%BD%203" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F09.html%232022-09-03&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2022-09-03','ウディタ大規模アプデの機能 3', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/woditor/001.html'>ウディタ</a></span></div></div><br><br><br>
+<a id='2022-08-21'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2022-08-21','第14回ウディコン　結果発表！', this)" style='cursor:pointer;'>2022-08-21 (日)&nbsp;&nbsp;&nbsp;第14回ウディコン　結果発表！</span><span style='float:right;'><a href='#2022-07-24' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【第14回ウディコン、結果発表！】</strong></span><br><br>ということで毎年の夏のお楽しみ、「WOLF RPGエディターコンテスト」も<br>8/21をもってとうとう結果発表＆閉幕となりました！<br><br><a data-primary="http://www.silversecond.com/WolfRPGEditor/Contest/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size:large;"><strong>【WOLF RPGエディターコンテスト　公式サイト】</strong></span><br><img src="../../image/etc/woditor_banner.png" loading="lazy" height="60"></a><br><br>今回もいつも通り上位3作品の作品と、個人的ピックアップをご紹介します！<br><HR><br><a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest14_2022/#51"><strong><span style="font-size:large;">【第１位　『脳筋魔法使いは進学したい』】</span></strong>　なす太郎 様</a><br><br><img src="../../image/wodicon/Entry14_51.jpg" border="2" loading="lazy" height="240"><br><br>総合1位は、ローグライトなダイスゲーム、『脳筋魔法使いは進学したい』！<br>熱中度1位！　斬新さ・遊びやすさ・その他部門で2位を獲得した作品です！<br><br>本作は戦闘中に振ったダイス（サイコロ）を各スキルに割り振って戦い、<br>スキルや魔法をうまく選んで進んで行くノンフィールド進行のゲーム！<br>チュートリアルをやっておいたほうがいい程度の複雑さはありますが、<br>状況に合わせたスキル・魔法のうまい取り方が分かってくると<br>夢中で何度も挑戦したくなってしまう一作です。<br><br>ゲーム中は右クリックで各アイコンなどの説明が見られてとても親切！<br>色んなスキルを得て1ターンにたくさんアクションできるとどんどん楽しくなってくる！<br><br>ちなみにこのゲーム、ダイス運のなさは「魔法」や<br>「スキルの取り方」でカバーすることができ、<br><br>●小さい出目が出たときでも使えるスキルを取っておいて、<br>ダイス目の大小にかかわらずある程度戦えるようにする。<br>●魔法で出目を補正する。MPは毎戦闘ごとに全回復。<br>●（そこそこ貴重な）エクストラダイスを使って振り足しする<br><br>といったことができるので、リソースを上手に使えるようになると<br>ダイス目の悪さの影響をだんだん減らすことができます。<br>もちろん、消費リソースを使うのは最小限にしておかないと、<br>最後あたりで足りなくなっちゃうわけですが！<br><br>そのあたりもうまいことコントロールしながら進むのが楽しい一作！<br>1位になったのも納得の面白さです！<br><br><hr size="1" /><br><a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest14_2022/#17"><strong><span style="font-size:large;">【第２位　『雲間からレグルス』】</span></strong>　SEPTET 様</a><br><br><img src="../../image/wodicon/Entry14_17.jpg" border="2" loading="lazy" height="240"><br><br>総合2位は、レベルを上げ下げしながら宇宙を駆けるRPG&ADV『雲間からレグルス』！<br>いろいろな星を旅する、全体的にやわらかい雰囲気のRPGです！<br>物語性1位！　その他部門で2位！　熱中度と斬新さで3位を得た作品です。<br><br>この世界では「レベル」の概念が世界設定に深く関わっており、<br>たとえば「人間」は最高レベルが「20」までしか上がらないのですが、<br>他の種族はもっと最高レベルが高かったりします。<br><br>ところが主人公ルグが拾った星の子レオは、<br>そんな人間のレベル上限を無視してレベル操作ができる力の持ち主！<br>ルグとレオは色んな人の問題を解決しながらいろいろな星を巡るのですが、<br>話が進むたびにとんでもない事実が明らかになり……！？<br>文化が違う様々な星を渡るのもSFらしさがあり、<br>そういうのが好きな人にも楽しめそうな内容です。<br><br>またこの作品、「レベル上げ作業」というものは基本的になく、<br>ほぼ街の探索だけで総レベル限界を上げられるのが遊びやすい！<br>また、パーティーメンバーのレベルの上げ下げも、<br>そのときどきのレベル限界値までの範囲なら自由！<br><br>戦闘はもっぱらイベント戦だけで進みますが、<br>敵も「レベルが一定以下/以上の対象だけにダメージを与える」といった<br>「レベル数」が条件の技を使ってきたりするので、<br>そのあたりでレベルの上げ下げを活かすゲーム性になっています。<br><br>とはいえ、本作が一番皆さんの心を引きつけたのは「物語性」でしょう！<br>好きになれるキャラクターたち、レベルの概念を深く印象づけるゲームシステム、<br>そして優しさあり切なさありのお話が胸を打つ、すばらしい一作です！<br><br><hr size="1" /><br><a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest14_2022/#71"><strong><span style="font-size:large;">【第３位　『メトロノームファイト』】</span></strong>　二六千里 様</a><br><br><img src="../../image/wodicon/Entry14_71.jpg" border="2" loading="lazy" height="180"><br><br>総合3位は、４つ打ちパズルチック戦闘ゲーム『メトロノームファイト』！<br>斬新さとその他部門で1位！　画像音声で5位を獲得した作品です！<br><br>本作はリズムに合わせてコマンドを入力して進めていくバトルシステムで、<br>敵の行動に合わせてアタックやガードの量を調整したり、<br>敵の行動を遅らせたりするプッシュをしたり、使用回数を回復させたりと、<br>敵を観察しながらリズムに合わせて最適なコマンド入力が求められるゲーム！<br><br>リアルタイムで敵の情報と自分の残りコマンド数を見て<br>適した敵ターゲットを選びつつコマンドをリズムよく入力するというのを<br>同時にやるのがかなり大変なのですが、<br>慣れていくほどに理想の対応が取れるようになってきて、<br>少しずつ対応できるようになってくのがこのゲームの魅力です。<br><br>難易度はかなりゲーマー向きな印象でしたが、だからこそなのか<br>プレイヤー側のHPが1以下にならない無敵化の「アンデッドオプション」まで搭載！<br>難しさを自覚していることが伝わる思い切ったサポートが用意されています。<br>失敗を恐れずリズムゲーム部分を楽しむという遊び方ができるため、<br>この機能は本作品を3位のポジションに押し上げた一因を担っていると思います。<br>といいますか私もアンデッドオプションに頼らせていただいております！<br>とてもありがたい！<br><br>また、上の紹介画像からは分かりませんが<br>キャラクターたちがとてもかわいい！　見た目も中味もみんな魅力的！<br>かつ会話パートの演出も凝っていて楽しいので、これらも一見の価値ありです。<br><br>斬新さで評価を得た今作。<br>新しい感触のゲームに挑戦してみたい人はぜひ遊んでみてください。<br><br><hr size="1" /><br>これら紹介させていただいた上位3位は、熱中度、物語性、斬新さと<br>それぞれ異なる評価で頂点を取ったすばらしいゲームです！<br><br>さらに今年はトップ層に限らず、エントリー作品は<br>ほとんどがそれぞれ面白く仕上げられており、順位が付いているものは<br>どれもこれも触れれば「おおー！」と言えるものばかり！<br><br>さらには順位外のゲームもしっかり面白い部分があって、<br>今年は隅から隅まで注目に値する作品群でした。<br><br>結果発表ページには部門別順位や一般投票コメントなども掲載されていますので、<br>それらも参考にしつつ、気になる作品があればぜひ触ってみてください！<br>たとえば新しいゲームに触れてみたい人は「斬新さ」部門を、<br>キャラクターや物語の良さを楽しみたい人は「物語性」部門がおすすめです。<br><br><HR><br>おまけ紹介！<br>今回、個人的に印象に残ったゲームとして、<br>『畑から始める魔法薬学入門』をピックアップさせていただきます！<br><br><a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest14_2022/#69"><strong><span style="font-size:large;">【個人的ピックアップ　『畑から始める魔法薬学入門』】</span></strong>　abon 様</a><br><br><img src="../../image/wodicon/Entry14_69.jpg" border="2" loading="lazy" height="239"><br><br>『畑から始める魔法薬学入門』は調合＆栽培＆採取をしながら進めていくRPG！<br>細かいところで「おーなるほど！」と叫んだ回数が<br>たぶん一番多かったので今回ピックアップさせていただきます。<br><br>前置きとして、遊ぶ上で気になる点やもっとよくできそうな部分はあるのですが、<br>そのあたりは実装技術の向上によって自然と解決されていきそうな点ばかりだったので、<br>今回はこの作品を遊んでいて、センスのよさを感じて<br>私の口から出た「おおー！」と思ったポイントを重点的にご紹介！　<br><br><br><span style="font-size:large;"><strong>●オープニングのテンポがいい</strong></span><br><br>オープニングはデモシーンの後に操作させながら教えるチュートリアルが入るのですが、<br>1シーンごとのボリュームが適切な上に場所移動のたびにパッパッと必要な場所にすぐ移って、<br>オープニングメッセージを読むのがしんどくなってくることがある私でも<br>「なにこれ自分の期待を超えるスピードでテンポいい！　ありがてぇ！」と叫んでいました。<br><br>もちろんこの作品だけでなく、今回は他にもテンポのいいオープニングのゲームが<br>多かった気がします。その配慮が非常にありがたい！<br>私の開発でも「オープニングで悪い意味で詰め込みすぎて失敗したかも」と思ったことは<br>何度かあったので、うまくオープニングを作ってるゲームには敬意を感じます。<br><br><br><span style="font-size:large;"><strong>●近付くと調べられる対象が光るシステム</strong></span><br><br>探せば過去に別のゲームでも搭載されている機能だとは思いますが、<br>これ、実際に使ってみると「最初から調べられるポイントが全部見えてる」のでも、<br>「全部決定キーで調べてみないと分からない」というのでもないのが絶妙！<br><br>「【数マス内まで近付くと】調べられる箇所が分かる」というのが超ナイスな塩梅で、<br>遠くに何か見えたとき「あれは収集物かな？」と思って近付いてみて<br>それが当たってるときの喜びが感じられたりするので、<br>「最初から全部調べられるポイントが見えてる」のに比べると<br>しっかり探索感があるんですよこれが！<br>それでいて、「調べられる対象か分からない」からと<br>いちいち1つずつ決定キーで全部調べる必要もない親切さも同居している！<br><br>このシステムは「収集システム」と「1歩ごとに時間を消費するシステム」との<br>組み合わせが逸品だと思ったので、私もマネたいと思った部分です。<br>3Dのゲームだと近付いたらターゲットのマークが出ることが多いのですが、<br>2Dのゲームで似たようなことをやる発想は私にもあまりなかったんですよ。<br><br><br><br><span style="font-size:large;"><strong>●色んな要素のまとめ方がうまい</strong></span><br><br>このゲーム、調合・栽培・収集・依頼・戦闘と色んな要素があるのですが、<br>私が想像していた以上にバランス良くまとまっているのに感心していました。<br><br>だいたいこれだけ要素が入っていたら<br>どれかはひたすら稼ぎプレイできる部分が出たり強力すぎるものがでたり、<br>逆に完全に死に要素が出てくるものだという印象があるのですが、<br>本作はそれぞれが適度につながっていてバランス的にも<br>重すぎたり軽すぎたりしないくらいの感触で<br>「巧い！」とつぶやいていました。<br><br>また、搭載されている要素の中で感心したのが「依頼」の立ち位置！<br>「依頼をこなして得たポイントで拠点の発展ができる」というのが<br>「あまり見ない依頼の使い方でうまいなー！」とプレイしながら感じていました。<br><br>「依頼」ってこういうゲームだと「素材をお金（あれば名声）に変換する作業」に<br>なりがちで仕方なくやらなきゃいけない感じの立ち位置になることも多いのですが、<br>本作のように「拠点を発展させて基本効率を上げられる」という使い方になっていると<br>また違った動機付けになっていて新鮮でした。<br>欲しくない機能は強化しなくてもいいわけで、やらなくてもいい自由もあります。<br><br>また「栽培」要素も広い牧場が広がってるのではなく3×3マスの土が6セット分だけという<br>最小限の畑だけ用意されており、初見はその小ささに驚きましたが、<br>いざ使ってみるとゲーム規模に合ったよく考えられたサイズだという印象になりました。<br>私だと畑をこんな小さく作れなかったでしょうから目からウロコでした。<br><br>もちろん「調合」もストーリーの壁としてたびたび立ちはだかるので、<br>普段から適度に栽培したり素材収集している方がスムーズです。<br><br>本作に搭載されてる各要素は、ロールプレイ的な面も含めて<br>私も好きな「ロマン」を含有している要素なのですが、<br>私の場合、作り手側として「まとまらなくなりそう」という理由で取り入れるのを<br>早々に諦めてしまって、以後あまり検討にいれないようにしていた経験があるので、<br>個人開発規模としてうまくまとめられているなーと感心しながら遊んでいました。<br><br>本作は各要素を、「入れたいからとりあえず突っ込んだ」じゃなくて、<br>それぞれよく考えられた末に導入されているというのが分かる造りだったのが<br>すばらしいと感じます。<br><br><br><span style="font-size:large;"><strong>●未知の中で最適解を選び続けたくなる時間制や制限</strong></span><br><br>本作は「1日の時間」が決まっていて歩数で時間消費するシステムで<br>夜中になると強制帰還させられてしまうので、初探索などの「未知の状況下」において<br>「まずは最適な動きを心がけよう」と考える動機付けになっているのが好みでした。<br><span style="color:#9999AA"><span style="font-size:x-small;">（ただ総日数制限はないっぽいので、分かると時間を無駄にできるゆるいプレイになっちゃうかも）</span></span><br><br>「1日に収集できるアイテムの数に制限がある」という要素も、<br>ダンジョンの入り口あたりにあるいつでも取れそうなものを<br>取るか取らないか悩みながら進んだりできるので、<br>「無思考に目に付いた素材を取っておけばいい」という感じに<br>なりにくいのも「いい！」と思った点です。<br>一方で、栽培での行動制限がなかったのはありがたかったですね。<br><br>他の作品でも、こういう1回で全部できない調整が入っているゲームを見るたびに<br>「ああー全部できないのいいー！　考えて選ぶのいいー！」<br>と思いながら遊んでいます。<br><br>「（ゆるいバランスでも）次の最適行動を考え続けた方がお得になる」<br>という調整、自分のゲームにもなるべく入れたいと思っているものなので、<br>そういう部分が考慮されているのが見えると個人的に喜びます。<br><br><hr size="1" /><br>という感じで私の琴線に触れる部分が多かった一作でして、<br>自分の中で忘れかけていた「ロマン」を詰め込んだゲームも<br>一回くらい作ってみたい気持ちにさせられました。<br>うまく面白くまとめるのは非常にセンスが求められそうですが！！<br><br>商業ゲームでもこれだけ色んな要素を入れて<br>上手に回っているゲームってあまり思いつかないので、<br>こういったロマンを詰め込んだ作品こそ、<br>思い切って挑戦できるインディー/フリーゲームならでは、<br>なのかもしれません。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【次回第15回について】</strong></span><br><br>さて、ウディコンは来年2023年の『第15回』も開催予定です！<br>すでにスケジュールも決定済みです！<br>第15回ということで一つの区切りとなりそうですし、<br>今年の秋頃にはウディタの大規模アップデートもすると思いますので、<br>その辺りで強化されたゲームにも期待できるかもしれませんね。<br><br>それでは、第14回ウディコンに関わってくださった全ての関係者の皆さま、<br>今年も本当にありがとうございました！<br>よければ来年もぜひ見ていただけますと幸いです！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2022-08-21 (日)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F08.html%232022-08-21&title=%E7%AC%AC14%E5%9B%9E%E3%82%A6%E3%83%87%E3%82%A3%E3%82%B3%E3%83%B3%E3%80%80%E7%B5%90%E6%9E%9C%E7%99%BA%E8%A1%A8%EF%BC%81" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F08.html%232022-08-21&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2022-08-21','第14回ウディコン　結果発表！', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/woditor/001.html'>ウディタ</a></span></div></div><br><br><br>
+<a id='2022-07-24'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2022-07-24','第14回ウディコン審査期間開始！', this)" style='cursor:pointer;'>2022-07-24 (日)&nbsp;&nbsp;&nbsp;第14回ウディコン審査期間開始！</span><span style='float:right;'><a href='#2022-07-09' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【第14回ウディコン審査期間開始！】</strong></span><br><br>ということで第14回も予想以上の作品が集まりました！<br>最終エントリー【75】番までご応募され、いよいよ『一般審査開始』となりました！<br><br>審査内容は途中保存も可能で、何回でも書き換えられるので、<br>もしご協力くださる方はできる範囲でゆっくり入力していってください。<br>↓<br><a data-primary="https://www.silversecond.com/WolfRPGEditor/Contest/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size:large;"><strong>【WOLF RPGエディターコンテスト公式ページ】</strong></span></a><br><br><img src="../../image/2022/20220724.jpg" border="1" loading="lazy" height="547"><br><br>そしてもしあなたが応援したくなったゲームがあれば、ぜひ審査もお願いします！<br>一般審査の締め切りは<span style="color:#CC0000"><span style="font-size:large;"><strong>【8/17(水)の23：59】まで</strong></span></span>！<br>（結果発表はなんとなく8/21（日）の夜あたり？）<br><br><span style="color:#CC0000"><span style="font-size:large;"><strong>4作品以上</strong></span></span>を審査すると審査結果の集計にカウントされますが、<br>1作品だけの審査でもコメントが届きますので、<br>ただ作者さまに応援メッセージ送りたい人もよければぜひ！<br><br><br>さすがに巣ごもり期間も減ってきたので落ち着くかと思いましたが<br>作る側の勢いがいつまでも減らないのは最近の<br>ゲーム開発への勢いが増していることを示しているのでしょうか。<br>ゲームクリエイターになりたい子供達も増えているらしいと聞きますので、<br>作る側の勢いは盛り上がっているのかもしれませんね。<br><br>他にいいツールがたくさんある中で恐縮ですが、<br>ウディタも何かしらの一助になれているのでしたら幸いです。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【ウディタの開発環境を更新……できるか！？】</strong></span><br><br>ご利用されている方々にはあまり関係ない話なのですが、<br>ウディタの開発に使っている古い開発ツールを今のOS下で動かすのも<br>だんだんしんどくなってきたので、開発環境をそろそろ更新しようかと考えています。<br><br>というのも、ウディタはこれまで『Visual Studio .NET 2003』というツールで<br>作られていたのですが、Windows10あたりから正常動作する部分が<br>減ってきていており、これまではそれでも使い続けていたのですが<br>さすがに無理がでてきたのでそろそろ最新版のエディタに移行しようかなと考え始めています。<br><br>ただ10年前に、同ツールのバージョン2008への移行に挑戦したものの<br>大量のよく分からないエラーに折れた経緯があります。<br>移行できるなら移行しようとは思っていたのですが、<br>当時の自分では技術的にダメだったわけですね。<br>Game.exeはまだ何とかなるんですがEditor.exeがどうにもならなかった！<br><br>今はVisual Studio Community 2022（なんと無料！）への移行を試しているところで、<br>前よりは前進しているもののやっぱりすぐには直し方が分からない問題が発生していて<br>ウギョーと言いながらなんとか解決できないか色々試しているところです。<br>開発ツールも昔よりも理解しやすさが増していたり親切になっている部分が増えていますし、<br>自分自身の理解度も上がっているので、意外となんとかなるかもしれません。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【シルバーセカンド作品もセール中！】</strong></span><br><br>ウディコン作品が面白すぎるおかげで<br>私のゲームやコンテンツは見向きもされなくなりがちな時期ですが、<br>だからこその夏セールも開催中です！<br><br>今ならゲームは<br><span style="font-size:large;"><a data-primary="https://silversecond.net/contents/game/silhouette_note/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/game_silhouette_note/"><strong>「シルエットノート」</strong></a><br><a data-primary="https://silversecond.net/contents/game/silfade_gakuin/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/game_silfade_gakuin/"><strong>「シルフェイド学院物語」</strong></a><br><a data-primary="https://silversecond.net/contents/game/katamichi_plus/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/game_one_way_heroics_plus/"><strong>「片道勇者プラス」</strong></a></span><br>の3本分で合計￥4000→￥2000（-50％）！<br><br><br>Amazonで発売中の電子書籍のセールは、今回は<br>「旅団世界TRPGリプレイ」シリーズ2冊セットが<br>￥1884→<span style="font-size:large;"><span style="color:#CC0000"><strong>￥942（-50％）</strong></span></span>となっております！<br><span style="font-size:large;">→　◆全2巻リスト 　<a class="double-link red" target="_blank" href="https://amzn.to/3kJmNkB"><strong>https://amzn.to/3kJmNkB</strong></a> （Amazonページ）</span><br><br><br>たぶん9月、奇跡が起きれば8月末頃に<br>旅団世界TRPGリプレイ3巻発売予定ですので気になる方はぜひ！<br>今回は出せそうなら<span style="color:#CC0000"><span style="font-size:large;"><strong>3巻前日譚のリプレイ動画</strong></span></span>もアップ予定です！<br>ご期待ください。</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2022-07-24 (日)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F07.html%232022-07-24&title=%E7%AC%AC14%E5%9B%9E%E3%82%A6%E3%83%87%E3%82%A3%E3%82%B3%E3%83%B3%E5%AF%A9%E6%9F%BB%E6%9C%9F%E9%96%93%E9%96%8B%E5%A7%8B%EF%BC%81" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F07.html%232022-07-24&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2022-07-24','第14回ウディコン審査期間開始！', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/woditor/001.html'>ウディタ</a></span></div></div><br><br><br>
+<a id='2022-07-09'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2022-07-09','ウディタ大規模アプデ機能紹介 2', this)" style='cursor:pointer;'>2022-07-09 (土)&nbsp;&nbsp;&nbsp;ウディタ大規模アプデ機能紹介 2</span><span style='float:right;'><a href='#bottom' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【ウディタ大規模アップデートで搭載される機能 2】</strong></span><br><br>いよいよウディコン開催まで約1週間前となりました！<br>今回は引き続き、2022年秋頃に公開予定の<br>ウディタ大規模アップデートの機能紹介です！<br><br><hr size="1" /><br><span style="font-size:large;"><strong>●重ねキャラチップ機能を搭載！</strong></span><br><br><img src="../../image/2022/20220709.jpg" border="1" loading="lazy" height="346"><br><br>キャラエフェクト「重ねキャラチップを変更」コマンドを使うことで、<br>基本キャラチップの上に最大5枚分のキャラチップを<br>重ねることができるようになります。<br><br>何ができるかというと、<br>・キャラチップへの「着せ替え」や「髪型変更」みたいなカスタマイズ<br>・頭上に「クエストあり↓」みたいな吹き出しを出す<br>などができるわけですね！<br><br>ちなみに仕様としては、<br>「同じ座標に同じパターン・同じ向きのキャラチップを重ねて表示する」だけなので、<br>チップサイズがちょっとくらい違ってもうまく重ねやすい一方、<br>馬に乗せたりすることはできないと思います。<br>（キャラの高さが変わらないならトロッコに入れたりするくらいはできるかも）<br><br>キャラチップレイヤー機能に関しては動画も作っておきましたので、<br>気になる方はこちらもどうぞ！<br><br><iframe width="500" height="295" src="https://www.youtube.com/embed/Ahi4t3us910" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br><br><hr size="1" /><br><span style="font-size:large;"><strong>●テストプレイのF7でShift押しながらにすると<br>マウスカーソル上のピクチャ一覧だけ出せる！</strong></span><br><br>もともとデバッグ用として、テストプレイ中にF7を押すと<br>「ピクチャの情報一覧」が表示される機能があるのですが、<br>大量にピクチャがあるときに探すのが大変すぎるので、<br><br>「マウスカーソルを合わせてShiftを押しながらF7を押すと<br>そのカーソル上にあるピクチャだけピックアップして表示してくれる」<br><br>という追加機能を搭載しました。<br>これで必要なピクチャだけをチェックしやすくなったので、<br>『片道勇者2』でも非常にはかどっています。<br><br>ついでにF7画面中に「Ctrlキー」を押すと、ピクチャ一覧表示から<br>一瞬で抜けられるようになります。<br>これまでは最後まで見ないといけなかったのが面倒臭かった！<br><br>みたいに、デバッグ機能にも色々便利機能が搭載されます。<br>ピクチャ一覧確認機能はもうちょっと根本的な使いやすさアップも<br>考えたいところですが、今のところはやれる範囲で調整していきます。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>●半分隠し機能ですが「ピクチャ・変数の監視機能」が搭載！</strong></span><br><br>マニアックですが超便利なデバッグ機能が搭載されます。<br>変数とピクチャを監視する機能で、指定した番号の変数やピクチャが変化すると<br>どの行で変化したかをデバッグウィンドウに表示してくれます。<br><br><br><strong>【ピクチャ監視機能の例】</strong><br><br>たとえばデバッグ文機能で「PictureWatch:ON=15000」と入れると<br>それ以後ピクチャ15000番の監視を始め、以後ピクチャ処理や<br>ピクチャエフェクトが実行されるたびに<br>デバッグウィンドウに<br><br><span style="color:#CC0000"># PictureWatch=> 15000 ＜New＞ <span style="color:#33CCFF">(※新規表示）</span><br> -->[ｺﾓﾝ696/28行]</span><br><br>といった感じで表示してくれます。<br>（<>内にはNew/Move/Delete/Delay Reset/Effectが入ります、<br>それぞれ新規表示/移動/削除/ディレイリセット/ピクチャエフェクト、ですね）<br><br>この監視機能は、ピクチャが予期せぬ挙動をしたときに<br>原因を調査するのに非常に役立ちます。<br><br>たとえばピクチャが期待通り表示されない場合などは、<br>だいたいどこかの範囲指定に引っかかってたりして勝手に消去されたりしてますから、<br>そういうときにこの機能を使えばバッチリ検知してくれます。<br><br><br><br><strong>【変数監視機能の例】</strong><br><br>これもピクチャ監視機能と同様で、<br>ValWatch:ON=2000009<br>というコマンドを「デバッグ文」として入れておけば、<br>特定の変数が変化したときにデバッグウィンドウに<br>「変化した後の値」と、「イベント番号と行数」を表示してくれます。<br><br><span style="color:#CC0000"># ValWatch=>  2000009 = 4　　<span style="color:#3366FF">※通常変数9に4が格納された</span><br>     -->[MapEv14/4行]</span><br><br>変数が期待通りの数値になってくれないときにこの機能を使って探せば、<br>バグ探しが従来の5倍以上早くなりますよ。誇張抜きで！<br><br><hr size="1" /><br><br>といった感じで開発の幅が広がったり<br>デバッグ効率化の機能も盛りだくさんです！<br>大規模アップデートでは他にもたくさん新機能が予定されていますので<br>これからもちょっとずつお知らせしていきます。<br><br>そして<a data-primary="https://www.silversecond.com/WolfRPGEditor/Contest/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size:large;"><strong>ウディコン</strong></span></a>もいよいよ来週<span style="font-size:x-large;"><strong>7/17（日）</strong></span>より開催です！<br>みなさまの作品、しっかり準備してお待ちしております！<br>あとそろそろ夏セールも開催予定です！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2022-07-09 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F07.html%232022-07-09&title=%E3%82%A6%E3%83%87%E3%82%A3%E3%82%BF%E5%A4%A7%E8%A6%8F%E6%A8%A1%E3%82%A2%E3%83%97%E3%83%87%E6%A9%9F%E8%83%BD%E7%B4%B9%E4%BB%8B%202" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F07.html%232022-07-09&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2022-07-09','ウディタ大規模アプデ機能紹介 2', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/woditor/001.html'>ウディタ</a></span></div></div>
+<div class='article_pos'>ウディタ　5/<a href='../../category/woditor/006.html'>6</a></div>
+<div class='nav'><a href='004.html'>次のページ</a> | <a href='006.html'>前のページ</a></div>
+<a id='bottom'></a>
+
+<BR><BR>
+<div align="right"><a href="#top" class="g">▲一番上へ戻る</a></div>
+<BR>
+<CENTER>
+<HR>
+<div>
+<div id="silsec-status" style="display:inline-block;line-height:12px;font-size:10px;"></div>　<div align="center" style="display:inline-block;line-height:12px;font-size:10px;"><a href="https://smokingwolf.github.io/" target="_blank" class="blue" border="1"><img src="https://smokingwolf.github.io/banner.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>アーカイブサイトへ</a></div>
+</div>
+<HR>
+Copyright © SmokingWOLF / Silver Second
+<HR>
+</CENTER>
+
+
+<script>
+  // シルバーセカンド公式のドメインに接続し、サイト存在確認用のTXT(SILVERSECOND_ALIVE!と書かれている)があれば存在する扱いにする
+  const statusDiv = document.getElementById('silsec-status');
+  const checkUrl = 'https://silversecond.net/SILVERSECOND_SITE_ALIVE_FLAG.txt';
+
+  fetch(checkUrl, { cache: 'no-store' })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('ネットワークエラー');
+      }
+      return response.text();
+    })
+    .then(text => {
+      if (text.trim() === 'SILVERSECOND_ALIVE!') {
+        statusDiv.innerHTML = '<a href="https://silversecond.net/" target="_blank" class="blue"><B><img src="https://silversecond.net/banner/a.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>運営中のサイトへ</a>　';
+      } else {
+        statusDiv.textContent = '　';
+      }
+    })
+    .catch(error => {
+      statusDiv.textContent = '　';
+      console.error('シルバーセカンド公式サイトチェック失敗:', error);
+    });
+</script>
+
+
+
+
+</div>
+<div id='sidebar'>
+<div style='font-weight:bold;'>開発日誌</div>
+<div><a class='sidebar_link' href='../../archive/top/index.html'>日誌トップへ</a></div>
+<div><B><a class='sidebar_link' href='../../index.html'>全記事一覧</a></B></div>
+<hr>
+<div style='font-weight:bold;'>【最新記事】</div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/08.html#2025-08-09'>●08/09 『シルバーセカンド思い出の部屋』を開設！＋ 来年よりウディコン規約追加</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-26'>●07/26 第17回ウディコン審査期間開始！ ＆ 規約の補足</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-12'>●07/12 ウディコン直前！ サイト＆ウディタ修正＋シェパード捜査録！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-28'>●06/28 ウディコン準備中！+ 開発日誌も移転作業中</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-14'>●06/14 サイト修正＋開発日誌をFC2から移転！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-31'>●05/31 ウディコン歴史資料館設立！+ ウディタ修正 + GitHubのサイト作り</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-17'>●05/17 ウディタ3.6へ！バグ修正再び！ + 私がいなくなった後に備えて</a></div>
+<hr>
+<div style='font-weight:bold;'>【カテゴリ】</div>
+<div><a class='sidebar_link' href='../../category/woditor/001.html'>ウディタ&nbsp;<span class='sym'>(55)</span></a></div>
+<div><a class='sidebar_link' href='../../category/owh2dev/001.html'>片道勇者2&nbsp;<span class='sym'>(16)</span></a></div>
+<div><a class='sidebar_link' href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(15)</span></a></div>
+<div><a class='sidebar_link' href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(10)</span></a></div>
+<div><a class='sidebar_link' href='../../category/trpg/001.html'>TRPG&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(2)</span></a></div>
+<hr>
+<div style='font-weight:bold;'>【月別】</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2025-btn' onclick="toggleYear('y2025')">2025&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2025' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2025/08.html'>08月&nbsp;<span class='sym'>(1)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2024-btn' onclick="toggleYear('y2024')">2024&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2024' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2024/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/01.html'>01月&nbsp;<span class='sym'>(2)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2023-btn' onclick="toggleYear('y2023')">2023&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2023' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2023/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/09.html'>09月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2022-btn' onclick="toggleYear('y2022')">2022&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2022' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2022/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('a.double-link');
+
+  links.forEach(link => {
+    const primaryUrl = link.dataset.primary;
+    if (!primaryUrl) return;
+
+    const testUrl = primaryUrl + '?t=' + Date.now(); // キャッシュ無効化！
+
+    fetch(testUrl, { method: 'GET', cache: 'no-store' })
+      .then(res => {
+        const url = res.url || '';
+        if (!res.ok || url.includes('404.html') || res.status === 404) {
+          console.warn('【404または失敗】そのままアーカイブを使います:', link.href);
+          // そのまま
+        } else {
+          console.warn('【OK】hrefを本家に書き換えます:', primaryUrl);
+          link.href = primaryUrl;
+        }
+      })
+      .catch(() => {
+        console.warn('【通信エラー】そのままアーカイブを使います:', link.href);
+        // エラー時もhrefはそのまま
+      });
+  });
+});
+</script>
+
+
+
+</body>
+</html>
