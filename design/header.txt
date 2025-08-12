@@ -5,6 +5,12 @@
 <title>シルバーセカンド開発日誌 / SmokingWOLF</title>
 <meta name="viewport" content="width=700">
 <script src="../../js/smoothscroll_up.js" type="text/javascript"></script> 
+
+<link rel="stylesheet" href="../../js/litebox/css/lightbox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../../js/litebox/js/prototype.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/moo.fx.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/litebox-1.0.js"></script>
+
 <style>
 html {
   /* スマホ時は1.2倍フォントで表示 */
@@ -226,5 +232,5 @@ h2::before {
 
 
 </head>
-<body>
+<body onload="initLightbox();">
 <a id="top"></a>
