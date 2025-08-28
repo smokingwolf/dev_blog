@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>シルバーセカンド開発日誌 / SmokingWOLF</title>
+<meta name="viewport" content="width=720">
+<script src="../../js/smoothscroll_up.js" type="text/javascript"></script> 
+
+<link rel="stylesheet" href="../../js/litebox/css/lightbox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../../js/litebox/js/prototype.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/moo.fx.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/litebox-1.0.js"></script>
+
+<style>
+html {
+  /* スマホ時は1.2倍フォントで表示 */
+  -webkit-text-size-adjust: 120%;
+  -ms-text-size-adjust: 120%;
+}
+
+BODY{
+  /*display:flex;*/
+  font-size:13px;
+  margin:0;
+  font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+  color:#558;
+}
+
+TD{
+  font-size:12px;
+}
+
+
+A:LINK,A:VISITED {  color:#5658f6;  text-decoration:underline ;}
+A:HOVER,A:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.red:LINK,A.red:VISITED{color:#d6385c;display: inline-block;text-shadow: 0 0 15px #ffddcc, 0 0 15px #ffddaa;}
+A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shadow: 0 0 15px #ffcccc, 0 0 15px #ffaaaa;}
+
+A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
+A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.g:LINK,A.g:VISITED{
+	color:#38a68c;
+	text-decoration:underline;
+}
+
+A.g:HOVER,A.g:ACTIVE{
+	color : #68b6ac;
+	text-decoration : underline;
+}
+
+
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38c6ac;
+}
+
+A.jumplink:HOVER,A.jumplink:ACTIVE{
+	color : #68f6ac;
+}
+
+A.jumplink{
+	text-shadow: 0 0 15px #ccddcc, 0 0 15px #aaddaa;
+	text-decoration : none;
+}
+
+
+.article_pos{
+	font-size:16px;
+	color:#aaf; 
+	font-weight:bold;
+	text-align:center;
+	margin:0px;
+	padding:0px;
+}
+
+#content {
+	font-size:14px;
+	
+}
+
+#sidebar {
+	background:#f8f8f8; 
+	border-left:1px solid #ddd; 
+	padding:4px 6px;
+	font-size:12px;
+}
+
+A.sidebar_link:LINK,A.sidebar_link:VISITED,
+A.sidebar_link_recent:LINK,A.sidebar_link_recent:VISITED{
+    color:#5658f6;
+	text-decoration: underline;
+}
+A.sidebar_link:HOVER,A.sidebar_link:ACTIVE,
+A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
+	color: #9698e6;
+	text-decoration: underline;
+}
+
+.sidebar_link{
+	font-size:13px;
+}
+
+.sidebar_link_recent{ /* 1つ1つの項目ごとに隙間を空ける */
+	font-size:11px;
+	line-height: 1.2;
+	display: inline-block;
+	margin-top:5px;
+}
+
+
+.entry {
+	border:1px solid #ccc; 
+	border-radius:8px; 
+	margin:14px 0; 
+	overflow:hidden;
+
+}
+.entry-title {
+	background:linear-gradient(to right,#4243ff,#aaaacf);
+
+	font-size:17px;
+	color:#fff; 
+	padding:4px; 
+	font-weight:bold;
+	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
+}
+
+.entry-body,.extended {
+	background:#fff; 
+	color:#444; 
+	padding:15px;
+	font-size:14px;
+	line-height:1.6em;
+}
+
+.entry-foot {
+	background:#fff; 
+	text-align:center;
+	vertical-align:middle;
+	color:#ccf;
+	font-size:12px;
+	padding-top:20px;
+	padding-right:20px;
+	padding-bottom:10px;
+}
+
+.linkbutton{
+	padding:3px;
+}
+
+/*--●形状整理用--*/
+body {display:flex; margin:0;}
+#content {width:600px; padding:0 8px;
+	font-size:14px;}
+#sidebar {width:120px;  box-sizing:border-box; }
+#sidebar div {line-height:1.6;}
+#sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
+.nav {margin:0px 0 -20px 0; text-align:center;}
+.sym {color:#999; font-weight:normal;}
+
+</style>
+
+
+<script>
+function toggle(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+function toggleDisp(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+</script>
+
+
+
+<!--★目次デザイン・処理★-->
+<style>
+.toc-box{background-color:#f0f0f0;border-radius:8px;padding:10px;} 
+.toc-list{list-style:none;margin:0;padding-left:0;} 
+.toc-list ul{list-style:none;margin:0;padding-left:20px;}
+.toc-list li{margin:5px 0;}
+.toc-level1{margin-left:0;}
+.toc-level2{margin-left:20px;}
+
+h1 {
+  background: #fff;
+  padding: 6px 10px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #2233cc; /* 青系 */
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 4px solid #3366ff;
+  display: block;
+  width:100%;
+  
+}
+
+
+h2,h3 {
+  background: #fff;
+  padding: 6px 10px;
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #5566ff; /* 青系 */
+  
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 2px solid #9999ff;
+  display: -block;
+
+}
+
+h2::before {
+  content: "- ";
+}
+
+.master_years{
+  margin-left:20px;
+  margin-right:20px;
+}
+
+.top_minicategory{
+  font-size:10px;
+  color:#ccccff;
+}
+</style>
+
+
+
+</head>
+<body onload="initLightbox();">
+<a id="top"></a>
+
+<style type='text/css'>
+.linkbutton{
+  font-size: 0.9em;
+  padding: 1px 6px;
+  vertical-align: baseline;
+  line-height: 1;
+  height: auto;
+  margin-left: 4px;
+  color:#66f;
+  background-color:#f9f9f9;
+  border: 1px solid #888;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.copy-popup{
+  background-color: #eef;
+  border: 1px solid #88c;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  color: #333;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.5s ease;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  max-width: 80vw;             /* 画面幅の 80% で折り返す */
+  overflow-wrap: anywhere;     /* 長い URL を途中で区切る */
+  word-break: break-all;       /* ↑が効かない旧ブラウザ保険 */
+  white-space: pre-wrap;       /* 
+ を改行として扱い、余計な連続空白は1個に */
+}
+.article_end_date{
+  font-size:0.9em;
+}
+</style>
+
+
+<script>
+function toggle(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+}
+
+// Year accordion with sessionStorage persistence
+function toggleYear(id){
+  const pane = document.getElementById(id);
+  const btn  = document.getElementById(id+'-btn');
+  if(!pane||!btn) return;
+  const sym  = btn.querySelector('.sym');
+  const isClosed = pane.style.display === 'none';
+  pane.style.display = isClosed ? 'block' : 'none';
+  sym.textContent   = isClosed ? '－' : '＋';
+  sessionStorage.setItem('year-'+id, isClosed ? 'open' : 'closed');
+}
+
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('[data-yearpane]').forEach(pane=>{
+    const id    = pane.id;
+    const state = sessionStorage.getItem('year-'+id);
+    const btn   = document.getElementById(id+'-btn');
+    const sym   = btn?.querySelector('.sym');
+    if(state === 'open'){
+      pane.style.display = 'block';
+      if(sym) sym.textContent = '－';
+    }else{
+      pane.style.display = 'none';
+      if(sym) sym.textContent = '＋';
+    }
+  });
+});
+
+function copyLink(date, title, el){
+  const url = `https://smokingwolf.github.io/dev_blog/archive/${date.slice(0,4)}/${date.slice(5,7)}.html#${date}`;
+  const text = `
+【${date}　${title}】
+ ${url}`;
+  navigator.clipboard.writeText(text).then(()=>{
+    if(el && el.tagName === 'BUTTON'){
+      const orig = el.textContent;
+      el.textContent = '✅ コピー完了!';
+      setTimeout(()=>{ el.textContent = '🔗 リンクをコピー'; }, 2000);
+    }
+
+    const popup = document.createElement('div');
+    popup.className = 'copy-popup';
+    popup.textContent = `✅ コピー完了：${text}`;
+    document.body.appendChild(popup);
+
+    const rect = el.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    const popupWidth = popup.offsetWidth;
+    const pageWidth = document.documentElement.clientWidth;
+
+    let left = rect.left + scrollLeft + (rect.width / 2) - (popupWidth / 2);
+    let top  = rect.top  + scrollTop - popup.offsetHeight - 8;
+    if(left < scrollLeft + 4) left = scrollLeft + 4;
+    if(left + popupWidth > scrollLeft + pageWidth - 4)
+        left = scrollLeft + pageWidth - popupWidth - 4;
+
+    popup.style.left = `${left}px`;
+    popup.style.top  = `${top}px`;
+    popup.style.opacity = '1';
+    popup.style.zIndex = '9999';
+
+    setTimeout(()=>{ popup.style.opacity = '0'; }, 1800);
+    setTimeout(()=>{ popup.remove(); }, 2500);
+  });
+}
+</script>
+
+<div id='content'>
+<style>
+
+.TopTitle{
+  width:515px;
+  font-weight:bold;
+  font-size:16pt;
+  color: #ffffff;
+  background-color:#535365 ;
+  border-width: 0px;
+  border-color:#535365;
+  border-style:solid;
+  background: -moz-linear-gradient(left top, #42435f, #fafaff);
+  background: -webkit-gradient(linear, left top, right bottom, from(#42435f), to(#fafaff));
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#DD42425f', endColorstr='#FFfafaff');
+  
+  text-align:left;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.header3{
+	color:#555588;
+	margin-bottom:16px;
+}
+
+.home-link {
+  font-size: 12px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: underline;
+}
+</style>
+
+<!--戻るリンク、サイトがなくなってたらアーカイブにつながるようにしたが404ページがアレなのかうまくいかない-->
+<!--
+<font id="home-link-placeholder">
+  <noscript>
+    <a href="https://smokingwolf.github.io/" class="home-link">← ホーム(アーカイブサイト)に戻る</a>
+  </noscript>
+</font>
+
+<script>
+(async () => {
+  try {
+    // HEADで軽くチェック（no-corsなのでステータス確認は不可）
+    // 自分のサイトのインフォメーションページにつなげるならサイトがまだあると認識する
+    await fetch("https://silversecond.net/contents/etc/info.shtml", { method: "HEAD", mode: "no-cors" });
+
+    const link = document.createElement("a");
+    link.href = "https://silversecond.net/";
+    link.textContent = "← ホームに戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  } catch {
+    const link = document.createElement("a");
+    link.href = "https://smokingwolf.github.io/";
+    link.textContent = "← ホーム(アーカイブサイト)に戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  }
+})();
+</script>
+-->
+
+<div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
+<!--ここにコメント文-->
+<div class="header3" style="margin-top:6px;">　ここはゲーム開発者SmokingWOLF(スモーキングウルフ)の開発日誌です。<BR>
+　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
+　<B style="color:#ff5555;">※以前のブログが使えなくなったので、ただいまこの開発日誌に移転中です。</B>
+</div>
+
+<div class='article_pos'>TRPG　1/1</div>
+<div class='nav'><span style='color:#ccc'>次のページ</span> | <span style='color:#ccc'>前のページ</span></div>
+<a id='2023-09-16'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2023-09-16','旅団世界TRPGリプレイ3巻 人気投票結果！ ＆ 1～3巻紹介', this)" style='cursor:pointer;'>2023-09-16 (土)&nbsp;&nbsp;&nbsp;旅団世界TRPGリプレイ3巻 人気投票結果！ ＆ 1～3巻紹介</span><span style='float:right;'><a href='#2022-08-06' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER>ということで私の出す中でも読み物系のコンテンツ、<br>『<B>旅団世界TRPGリプレイ</B>』の3巻の人気投票結果が出ましたので、<br>今回は旅団世界TRPGシリーズの記事です！<br><br>なお最近のアルバートの動向だけ気になる人向けに、<br>リプレイ3巻からアルバートの印象的なシーンを抜粋して映像化！<br>アルバートはこの世界でも元気にやっております！<br><br><iframe width="520" height="295" src="https://www.youtube.com/embed/LvOP3pnpLHA?si=BSf6ibs8LKEhCw-n" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><br><br><br><HR><br><span style="font-size:x-large;"><B>【◆旅団世界TRPGリプレイ3巻、<br>人気投票結果発表！】</B></span><br><br>みなさまのご投票、ならびに各キャラへの熱意ある応援コメント、<br>本当にありがとうございます！<br><br>以下ページより、いただいたコメント入りの<br>人気投票結果をご覧いただけます！<br><span style="font-size: 80%">（いちおうネタバレ注意ですがアルバートのよそでの評判を見られたりします）</span><br><br><a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/trpg/ryodan_sekai_trpg/vote_page/00_Result_HTML/Replay03_BT8R0PLQZX.html"><span style="font-size: 200%"><B>【3巻人気投票結果発表ページ】　</B></span></a><br><img src="../../image/2023/20230916B.jpg" boder="1" style="max-width:200px;" loading="lazy" height="200">　<img src="../../image/2023/20230916A.jpg" boder="1" style="max-width:200px;" loading="lazy" height="200"><br><B>ネコビトのキャシール　と　銃使いアルバート</B><br><br>人気投票、上位4位はプレイヤーキャラクターたちが占めていましたが、<br>NPCの中ではネコビトのアマチュアアイドル『キャシール』と、<br>銃使い『アルバート』が並んでNPC中トップの5位でした！<br><br>キャシールは主にサイコロの出目のせいでおもしろ不憫キャラとして、<br>アルバートはプレイヤーキャラたちに同行する中で<br>世間知らずっぽさを見せたり、戦闘で活躍する姿がよかったようです。<br><br>たくさんのご投票と応援コメント、本当にありがとうございました！<br><br><HR><br><span style="font-size:x-large;"><B>【◆1～3巻のご紹介！】</B></span><br>しばらく新刊は出なさそうなのでこれまでの全巻のまとめを、<br>これまであまりオープンにされていなかったセクシー挿絵と一緒にご紹介！<br><br><br><br><span style="font-size:130%;"><B>【第1巻『緑の旅団と黒ヤギの悪魔』】</B></span><br><img src="../../image/2023/20230916C1.png" boder="1" style="max-width:270px;" loading="lazy" height="376"><img src="../../image/2023/20230916D1.jpg" boder="1" style="max-width:270px;" loading="lazy" height="382"><br>1巻はリゼット（表紙の右にいる金髪ケモ耳騎士）たちの始まりの物語！<br>彼らはグリーンタイド旅団という旅団に新規加入するのですが、<br>歓迎会で開かれた模擬戦でクリティカルを出して<br>団長ギリアムをうっかり殺害！<br>その妻テレサが新たな旅団長になるところから始まってしまう物語です！<br><br>この巻では、旧作キャラとして<br>『<a data-primary="https://www.silversecond.net/contents/game/TRPG/katamichi_trpg/Replay00.shtml" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/trpg/katamichi_trpg/Replay00.shtml"><B>(自家製)片道勇者TRPGリプレイ</B></a>』で登場した<br>テレサとギリアムのみ登場しています。<br>いつのまにかできた二人の娘、<br>ティセ（表紙中央で馬車から顔を出してる下側の少女）も<br>新たに参戦し、物語に関わってきます！<br>果たして彼らは街に潜む悪魔に立ち向かうことができるのか！？<br><br>→　<span style="font-size:large;"><a class="double-link red" target="_blank" href="https://amzn.to/3Pi1EeX"><B><span style="font-size: 100%">【第1巻『緑の旅団と黒ヤギの悪魔』　Amazon販売ページへ】</span></B></a></span><br><br><br><HR><br><span style="font-size:130%;"><B>【第2巻『白の旅団と終末の闇』】</B></span><br><img src="../../image/2023/20230916C2.png" boder="1" style="max-width:270px;" loading="lazy" height="376"><img src="../../image/2023/20230916D2.jpg" boder="1" style="max-width:270px;" loading="lazy" height="380"><br>自分たちで新たに『ホワイトドーン旅団』を設立したリゼットたち！<br>そこで新人募集の面接が行われるのですが、<br>その中には薬師ネムリがいました。<br><br>ホワイトドーン旅団は南の島、シールダルク島にて<br>『旅団大会』に参加するのですが、その途中<br>『闇』なる存在が現れつつあることが明らかに！<br><br>そんな中、ネムリは何やら『闇』について知っているようで、<br>驚くべき情報を語り出します。<br>その身には、『闇の肉』なるものが埋め込まれた手術痕が……！（↑挿絵）<br><br>『片道勇者』風に、『闇』との戦いのストーリーが<br>繰り広げられる第2巻『白の旅団と終末の闇』！<br>『<a data-primary="https://www.silversecond.net/contents/game/TRPG/katamichi_trpg/Replay00.shtml" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/trpg/katamichi_trpg/Replay00.shtml"><B>(自家製)片道勇者TRPGリプレイ</B></a>』で登場したプレイヤーキャラクターっぽい人たちも<br>ほんのり交えて、闇と戦う物語が繰り広げられます！<br><br>→　<span style="font-size:large;"><a class="double-link red" target="_blank" href="https://amzn.to/3Ltm83l"><B><span style="font-size: 100%">【第2巻『白の旅団と終末の闇』　Amazon販売ページへ】</span></B></a></span><br><br><br><HR><br><span style="font-size:130%;"><B>【第3巻『夏の旅団と神秘のカード』】</B></span><br><img src="../../image/2023/20230916C3.png" boder="1" style="max-width:270px;" loading="lazy" height="376"><img src="../../image/2023/20230916D3_doujin_in_world.jpg" boder="1" style="max-width:270px;" title="※作中に登場するコメディシーンです" loading="lazy" height="362"><br><br><br>新たな旅団員、獣人の少年パピオリアが加入した『ホワイトドーン旅団』。<br>だが加入早々、リゼットらホワイトドーン旅団は<br>想像以上に過酷な大規模ミッションに参加させられることに！<br>何とかその任務を終え、途中で天使の少女を拾って<br>クロスロードの街に無事帰還したリゼットたちだったが、<br>街では知らぬ間に不思議な出来事が起きるようになっていた。<br><br>『マイト＆ドラゴンズ』というトレーディングカードゲームが<br>引き金となって起きる様々な事件、依頼、そして陰謀。<br><br>ホワイトドーン旅団はこの夏休みの中で異変を究明すべく、<br>あるいはそれぞれの欲求や好奇心に従って行動を開始！<br><br>いつの間にか明らかにリゼット団長っぽい見た目の人の<br>セクシー写真集が販売されていたり（↑挿絵）、<br>人類を消滅させかねないカードを手に入れるべくカードゲームに参加したり、<br>天使の少女のためにアイドル展開活動したりと、<br>ホワイトドーン旅団は各々の目的で調査や挑戦の時間を過ごします！<br><br>→　<span style="font-size:large;"><a class="double-link red" target="_blank" href="https://amzn.to/48ebAyR"><B><span style="font-size: 100%">【第3巻『夏の旅団と神秘のカード』　Amazon販売ページへ】</span></B></a></span><br><br><br><HR><br><span style="font-size:150%;"><B>【動画作品『見習いたちの旅団講習』】</B></span><br><br><a class="double-link red" target="_blank" href="https://www.youtube.com/watch?v=vHI5hz1L15s">『見習いたちの旅団講習』前半動画</a>　→　<a class="double-link red" target="_blank" href="https://www.youtube.com/watch?v=LPukuIT4jXY">後半動画はこちら</a><br><iframe width="520" height="295" src="https://www.youtube.com/embed/vHI5hz1L15s?si=5cofm6ZQzKPD4ceH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><br><span style="font-size: 80%">(↑ライブ配信向けにちょっとゆっくりめなので2倍速視聴推奨！　当時のチャットも見られます)</span><br><br><br>こちらの『見習いたちの旅団講習』動画は2巻と3巻の間にあった物語です！<br>新プレイヤーキャラであるパピオリアが初登場した回！<br>旅団員ライセンスをもらいに試験を受けに来た<br>クバ、ティセ、パピオリアの3人でしたが、<br>そこで起きたのは背筋も凍るような事件でした！　というシナリオです！<br><br>このあとすぐ3巻のお話に繋がるので、<br>初めての方でもこの動画だけご覧になっていれば、<br>パピオリアさん視点で3巻をしっかり楽しめます！<br><br>もちろんご覧にならなくても楽しめます！<br>本も動画も、興味を持った順でご覧ください！<br><br><HR><br>そして2023年9月現在、1～3巻が半額セール中で<br>全品<span style="font-size: 200%"><B><span style="color: #d50000">￥450</span></B></span>となっておりますので、<br>気になる方はよければこの機会にぜひ！<br><br>→　<a class="double-link red" target="_blank" href="https://amzn.to/48j08Ss"><span style="font-size: 150%"><B>【旅団世界シリーズ ページ(Amazon)】</B></span></a><br><br><HR><br><span style="font-size:large;"><B>【今後について】</B></span><br><br>『旅団世界TRPGリプレイ』シリーズは、電子書籍としては<br>ひとまず3巻でいったん休憩で、今後は動画などで<br>すそ野を広げる方向に進めたり、不定期に刊行する形に移ります。<br><br>今は生活のこともあって『片道勇者2』の開発を中心に進めますけれども、<br>今後も私の中に急に湧いたTRPG欲の分だけ<br>旅団世界コンテンツが増えていく予定です！<br>期待は薄めで、気長にお待ちください！<br><br>そして『旅団世界TRPGリプレイ』のレビューや人気投票を<br>入れてくださった皆さま、いつも本当にありがとうございます！<br>プレイヤーも私も大喜びです！<br><br>私はデジタルゲームも好きですがTRPGも好きなのと、<br>(好き勝手にやれる)お話作りの非常にいい練習になっているので、<br>今後もときどき遊んでいきたいですね！<br>私が遊ぶ分はだいたいリプレイになりますので、気になる人はお楽しみに！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2023-09-16 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2023%2F09.html%232023-09-16&title=%E6%97%85%E5%9B%A3%E4%B8%96%E7%95%8CTRPG%E3%83%AA%E3%83%97%E3%83%AC%E3%82%A43%E5%B7%BB%20%E4%BA%BA%E6%B0%97%E6%8A%95%E7%A5%A8%E7%B5%90%E6%9E%9C%EF%BC%81%20%EF%BC%86%201%EF%BD%9E3%E5%B7%BB%E7%B4%B9%E4%BB%8B" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2023%2F09.html%232023-09-16&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2023-09-16','旅団世界TRPGリプレイ3巻 人気投票結果！ ＆ 1～3巻紹介', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/trpg/001.html'>TRPG</a></span></div></div><br><br><br>
+<a id='2022-08-06'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2022-08-06','旅団世界リプレイ3巻 8/27発売!', this)" style='cursor:pointer;'>2022-08-06 (土)&nbsp;&nbsp;&nbsp;旅団世界リプレイ3巻 8/27発売!</span><span style='float:right;'><a href='#2022-05-14' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【旅団世界TRPGリプレイ3巻 8/27発売!】</strong></span><br><br>ということで旅団世界TRPGリプレイ3巻 『夏の旅団と神秘のカード』、<br><span style="font-size:x-large;"><strong>8/27（土）</strong></span>についに発売されました！<br><br><a class="double-link red" target="_blank" href="https://www.amazon.co.jp/gp/product/B0B7P8MM2B?storeType=ebooks&linkCode=li3&tag=sitesw-22&linkId=19f1d910822714b4b0db9c1f786ec504&language=ja_JP&ref_=as_li_ss_il">第3巻 『夏の旅団と神秘のカード』 販売ページへ(Amazon)<br><img border="2" src="../../image/2022/20220806.jpg"  loading="lazy" height="569"></a><br><br>TRPG本はうちのコンテンツではサブの立ち位置ですが<br>開発資金の助けとしても修行の1つとしてもとても役に立っております！<br>特にシナリオ作りに関してはデジタルゲームより試行回数多くて楽しいですね。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【今回のお話の目玉！】</strong></span><br><br><span style="font-size:large;"><strong>＜アルバート登場！＞</strong></span><br><img border="1" src="../../image/2022/20220528.jpg" height="400" loading="lazy"><br>2巻ではネムリが主人公チームに加わりましたが、3巻ではなんとアルバートが参戦！<br>戦闘では活躍するのに探索では頼りなかったり、<br>大人のものにウブな反応を見せるいつも通りのアルバートが見られます！<br><br><br><br><span style="font-size:large;"><strong>＜今回はサブカルチャー回！＞</strong></span><br><br><strong>カードゲーム大会、準々決勝に残った上位8人！</strong><br><img src="../../image/2022/20220806A.jpg" width="400" loading="lazy" height="400"><br>今回はトレーディングカードゲームが巻き起こす数々の事件が発生！<br>そんな中、ホワイトドーン旅団は危険な優勝賞品のカードを<br>なんとか確保すべくカードゲーム大会に参加！<br>ティセ（⑥）とリゼットは服のボタンを開ける作戦で挑む！<br><br>だがティセはリゼットの予想以上に過激な姿を見て、<br>「ボタン2つ開けるといいよって言ったけど2つは多すぎたかも……」<br>と思うものの、準々決勝まで来て今さら言い出せないのでした。<br><br><br><br><strong>アイドルプロデュース！</strong><br><img src="../../image/2022/20220806B.jpg" width="400" loading="lazy" height="393"><br>天使の少女のためにアイドルプロデュース活動！<br>4人はそれぞれネタを持ち寄って少女をプロデュースするのですが……!?<br>イラストはオーボス（左）の神聖ショー！<br>今回のオーボスは監督として大活躍！<br><br><br><hr size="1" /><br><span style="font-size:large;"><strong>【3巻の前日譚が動画で放送予定！】</strong></span><br><br>今回は前日譚の<span style="font-size:x-large;"><strong>動画リプレイ</strong></span>が公開！<br>リプレイ本での時系列としては2巻と3巻の間のお話なのですが、<br>たいていの旅団員らの始まりのお話である、<br>「新人達が資格試験に参加して旅団員ライセンスを取得するまで」<br>のお話となっています！<br><br>メインキャラ同士も全員他人だったり、設定上だけ知り合いという感じで<br>過去ストーリーの文脈もほぼ出てこないシナリオなので、<br>これまでのお話を知らない初めての人でも安心して見られます。<br>よければぜひ！<br><br>◆動画前編↓<br><iframe width="520" height="300" src="https://www.youtube.com/embed/vHI5hz1L15s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>チャット欄では私や来てくださった方のコメントも見られます！<br><br><br>チャンネルごと見に行きたい人はこちら！<br><a class="double-link red" target="_blank" href="https://www.youtube.com/c/SilverSecondChannel"><span style="font-size:large;"><strong>【Youtube　シルバーセカンドチャンネル】</strong></span></a></CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2022-08-06 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F08.html%232022-08-06&title=%E6%97%85%E5%9B%A3%E4%B8%96%E7%95%8C%E3%83%AA%E3%83%97%E3%83%AC%E3%82%A43%E5%B7%BB%208%2F27%E7%99%BA%E5%A3%B2%21" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F08.html%232022-08-06&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2022-08-06','旅団世界リプレイ3巻 8/27発売!', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/trpg/001.html'>TRPG</a></span></div></div><br><br><br>
+<a id='2022-05-14'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2022-05-14','旅団世界3巻仕上げ中！　新獣人キャラ特集', this)" style='cursor:pointer;'>2022-05-14 (土)&nbsp;&nbsp;&nbsp;旅団世界3巻仕上げ中！　新獣人キャラ特集</span><span style='float:right;'><a href='#bottom' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【旅団世界3巻仕上げ中！】</strong></span><br><br>今週はウディタ修正もしながら『片道勇者2』を進めたりしていましたが<br>そっちはバグ修正作業ばっかりで特に目玉情報がないので、<br>今回は夏頃発売予定の『旅団世界TRPGリプレイ3巻』の新キャラをご紹介！<br><br>3巻は全体的にかわいい度が増し増しです。<br>そして相変わらず動物フレグランスも多め！<br><br><br><span style="font-size:large;"><strong>【獣人の少年　パピオリア】</strong></span><br><CENTER><table><tr><td><img src="../../image/2022/20220514A.jpg" border="1"width="240" loading="lazy" height="430"></td><td>　こちらは新たにプレイヤー旅団に加わる<br>新プレイヤーキャラクター、パピオリア！<br>中の人も新プレイヤーさんです。<br><br>　純朴そうな見た目に反し、<br>自分のかわいさが武器に<br>なることを自覚しており、<br>それをよく利用している獣人の少年です。<br><br>　2巻の時点でパーティーが<br>女性キャラ多めになっていましたが<br>これはこれで違う方向性の<br>かわいさが確保されました。<br>　どんどんホワイトドーン旅団<br>（プレイヤー旅団）の<br>かわいさ密度が上がっていく！</td></tr></table></CENTER><br><br><br><span style="font-size:large;"><strong>【アマチュアアイドル　キャシール】</strong></span><br><CENTER><table><tr><td><img src="../../image/2022/20220514B.jpg" border="1"width="260" loading="lazy" height="451"></td><td>　NPCのキャシールは、ホームの<br>街のアマチュアアイドルです！<br><br>　一般投票型の『キュン死ランキング』<br>なる投票において、パピオリアと<br>トップを競っており、パピオリアを<br>一方的にライバル視しています。<br><br>（ちなみにパピオリアの方は<br>彼女のことはおろか、そんな<br>投票をされていることすら知りません）<br><br>　そして別にそんなつもりは<br>なかったんですが、<br>サイコロの出目のせいで<br>かなり不憫そうでした。</td></tr></table></CENTER><br><br><br><br><span style="font-size:large;"><strong>【翼の少女】</strong></span><br><CENTER><table><tr><td><img src="../../image/2022/20220514E.jpg" border="1"width="250" loading="lazy" height="473"></td><td>　NPC、翼を生やした謎の少女！<br>プレイヤーらがミッションの帰りに<br>道ばたで拾うことになる少女です。<br>今回のヒロインキャラ！<br><br>　プレイヤーキャラたちを<br>「お母さま」あるいは<br>「お父さま」などと呼び、<br>やたらなついてきます。<br><br>　でもよく見れば、リゼットがもらった<br>カードゲームのパックに入っていた、<br>「天使」のカードの挿絵の人物に<br>非常に似ている姿で……！？<br><br>　3巻では、とあるカードゲームが<br>起こす異変が大きなテーマです！<br>お楽しみに！<br></td></tr></table></CENTER><br><br><hr size="1" /><br>こんなキャラクターたちが出てくる旅団世界3巻はただいま仕上げ作業中！<br>今年2022年の7～9月頃発売を目指しています！<br><br>今回は発売に合わせてTRPGの動画での展開もしていこうぜー、<br>みたいな企画も出ているので、そちらもほんのりお楽しみに！<br><br>基本的にはメインのゲーム開発の方に時間を割いているので、<br>動画を作るならなるべく負担をかけずに高効率で作れる仕組みを<br>考えていきたいですね。</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2022-05-14 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F05.html%232022-05-14&title=%E6%97%85%E5%9B%A3%E4%B8%96%E7%95%8C3%E5%B7%BB%E4%BB%95%E4%B8%8A%E3%81%92%E4%B8%AD%EF%BC%81%E3%80%80%E6%96%B0%E7%8D%A3%E4%BA%BA%E3%82%AD%E3%83%A3%E3%83%A9%E7%89%B9%E9%9B%86" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2022%2F05.html%232022-05-14&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2022-05-14','旅団世界3巻仕上げ中！　新獣人キャラ特集', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/trpg/001.html'>TRPG</a></span></div></div>
+<div class='article_pos'>TRPG　1/1</div>
+<div class='nav'><span style='color:#ccc'>次のページ</span> | <span style='color:#ccc'>前のページ</span></div>
+<a id='bottom'></a>
+
+<BR><BR>
+<div align="right"><a href="#top" class="g">▲一番上へ戻る</a></div>
+<BR>
+<CENTER>
+<HR>
+<div>
+<div id="silsec-status" style="display:inline-block;line-height:12px;font-size:10px;"></div>　<div align="center" style="display:inline-block;line-height:12px;font-size:10px;"><a href="https://smokingwolf.github.io/" target="_blank" class="blue" border="1"><img src="https://smokingwolf.github.io/banner.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>アーカイブサイトへ</a></div>
+</div>
+<HR>
+Copyright © SmokingWOLF / Silver Second
+<HR>
+</CENTER>
+
+
+<script>
+  // シルバーセカンド公式のドメインに接続し、サイト存在確認用のTXT(SILVERSECOND_ALIVE!と書かれている)があれば存在する扱いにする
+  const statusDiv = document.getElementById('silsec-status');
+  const checkUrl = 'https://silversecond.net/SILVERSECOND_SITE_ALIVE_FLAG.txt';
+
+  fetch(checkUrl, { cache: 'no-store' })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('ネットワークエラー');
+      }
+      return response.text();
+    })
+    .then(text => {
+      if (text.trim() === 'SILVERSECOND_ALIVE!') {
+        statusDiv.innerHTML = '<a href="https://silversecond.net/" target="_blank" class="blue"><B><img src="https://silversecond.net/banner/a.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>運営中のサイトへ</a>　';
+      } else {
+        statusDiv.textContent = '　';
+      }
+    })
+    .catch(error => {
+      statusDiv.textContent = '　';
+      console.error('シルバーセカンド公式サイトチェック失敗:', error);
+    });
+</script>
+
+
+
+
+</div>
+<div id='sidebar'>
+<div style='font-weight:bold;'>開発日誌</div>
+<div><a class='sidebar_link' href='../../archive/top/index.html'>日誌トップへ</a></div>
+<div><B><a class='sidebar_link' href='../../index.html'>全記事一覧</a></B></div>
+<hr>
+<div style='font-weight:bold;'>【最新記事】</div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/08.html#2025-08-24'>●08/24 第17回ウディコン結果発表！　上位3作品とピックアップ紹介！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/08.html#2025-08-09'>●08/09 『シルバーセカンド思い出の部屋』を開設！＋ 来年よりウディコン規約追加</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-26'>●07/26 第17回ウディコン審査期間開始！ ＆ 規約の補足</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-12'>●07/12 ウディコン直前！ サイト＆ウディタ修正＋シェパード捜査録！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-28'>●06/28 ウディコン準備中！+ 開発日誌も移転作業中</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-14'>●06/14 サイト修正＋開発日誌をFC2から移転！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-31'>●05/31 ウディコン歴史資料館設立！+ ウディタ修正 + GitHubのサイト作り</a></div>
+<hr>
+<div style='font-weight:bold;'>【カテゴリ】</div>
+<div><a class='sidebar_link' href='../../category/woditor/001.html'>ウディタ&nbsp;<span class='sym'>(56)</span></a></div>
+<div><a class='sidebar_link' href='../../category/owh2dev/001.html'>片道勇者2&nbsp;<span class='sym'>(16)</span></a></div>
+<div><a class='sidebar_link' href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(15)</span></a></div>
+<div><a class='sidebar_link' href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(10)</span></a></div>
+<div><a class='sidebar_link' href='../../category/trpg/001.html'>TRPG&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(2)</span></a></div>
+<hr>
+<div style='font-weight:bold;'>【月別】</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2025-btn' onclick="toggleYear('y2025')">2025&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2025' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2025/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2024-btn' onclick="toggleYear('y2024')">2024&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2024' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2024/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/01.html'>01月&nbsp;<span class='sym'>(2)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2023-btn' onclick="toggleYear('y2023')">2023&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2023' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2023/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/09.html'>09月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2022-btn' onclick="toggleYear('y2022')">2022&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2022' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2022/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('a.double-link');
+
+  links.forEach(link => {
+    const primaryUrl = link.dataset.primary;
+    if (!primaryUrl) return;
+
+    const testUrl = primaryUrl + '?t=' + Date.now(); // キャッシュ無効化！
+
+    fetch(testUrl, { method: 'GET', cache: 'no-store' })
+      .then(res => {
+        const url = res.url || '';
+        if (!res.ok || url.includes('404.html') || res.status === 404) {
+          console.warn('【404または失敗】そのままアーカイブを使います:', link.href);
+          // そのまま
+        } else {
+          console.warn('【OK】hrefを本家に書き換えます:', primaryUrl);
+          link.href = primaryUrl;
+        }
+      })
+      .catch(() => {
+        console.warn('【通信エラー】そのままアーカイブを使います:', link.href);
+        // エラー時もhrefはそのまま
+      });
+  });
+});
+</script>
+
+
+
+</body>
+</html>
