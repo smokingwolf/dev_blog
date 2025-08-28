@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>シルバーセカンド開発日誌 / SmokingWOLF</title>
+<meta name="viewport" content="width=720">
+<script src="../../js/smoothscroll_up.js" type="text/javascript"></script> 
+
+<link rel="stylesheet" href="../../js/litebox/css/lightbox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../../js/litebox/js/prototype.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/moo.fx.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/litebox-1.0.js"></script>
+
+<style>
+html {
+  /* スマホ時は1.2倍フォントで表示 */
+  -webkit-text-size-adjust: 120%;
+  -ms-text-size-adjust: 120%;
+}
+
+BODY{
+  /*display:flex;*/
+  font-size:13px;
+  margin:0;
+  font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+  color:#558;
+}
+
+TD{
+  font-size:12px;
+}
+
+
+A:LINK,A:VISITED {  color:#5658f6;  text-decoration:underline ;}
+A:HOVER,A:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.red:LINK,A.red:VISITED{color:#d6385c;display: inline-block;text-shadow: 0 0 15px #ffddcc, 0 0 15px #ffddaa;}
+A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shadow: 0 0 15px #ffcccc, 0 0 15px #ffaaaa;}
+
+A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
+A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.g:LINK,A.g:VISITED{
+	color:#38a68c;
+	text-decoration:underline;
+}
+
+A.g:HOVER,A.g:ACTIVE{
+	color : #68b6ac;
+	text-decoration : underline;
+}
+
+
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38c6ac;
+}
+
+A.jumplink:HOVER,A.jumplink:ACTIVE{
+	color : #68f6ac;
+}
+
+A.jumplink{
+	text-shadow: 0 0 15px #ccddcc, 0 0 15px #aaddaa;
+	text-decoration : none;
+}
+
+
+.article_pos{
+	font-size:16px;
+	color:#aaf; 
+	font-weight:bold;
+	text-align:center;
+	margin:0px;
+	padding:0px;
+}
+
+#content {
+	font-size:14px;
+	
+}
+
+#sidebar {
+	background:#f8f8f8; 
+	border-left:1px solid #ddd; 
+	padding:4px 6px;
+	font-size:12px;
+}
+
+A.sidebar_link:LINK,A.sidebar_link:VISITED,
+A.sidebar_link_recent:LINK,A.sidebar_link_recent:VISITED{
+    color:#5658f6;
+	text-decoration: underline;
+}
+A.sidebar_link:HOVER,A.sidebar_link:ACTIVE,
+A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
+	color: #9698e6;
+	text-decoration: underline;
+}
+
+.sidebar_link{
+	font-size:13px;
+}
+
+.sidebar_link_recent{ /* 1つ1つの項目ごとに隙間を空ける */
+	font-size:11px;
+	line-height: 1.2;
+	display: inline-block;
+	margin-top:5px;
+}
+
+
+.entry {
+	border:1px solid #ccc; 
+	border-radius:8px; 
+	margin:14px 0; 
+	overflow:hidden;
+
+}
+.entry-title {
+	background:linear-gradient(to right,#4243ff,#aaaacf);
+
+	font-size:17px;
+	color:#fff; 
+	padding:4px; 
+	font-weight:bold;
+	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
+}
+
+.entry-body,.extended {
+	background:#fff; 
+	color:#444; 
+	padding:15px;
+	font-size:14px;
+	line-height:1.6em;
+}
+
+.entry-foot {
+	background:#fff; 
+	text-align:center;
+	vertical-align:middle;
+	color:#ccf;
+	font-size:12px;
+	padding-top:20px;
+	padding-right:20px;
+	padding-bottom:10px;
+}
+
+.linkbutton{
+	padding:3px;
+}
+
+/*--●形状整理用--*/
+body {display:flex; margin:0;}
+#content {width:600px; padding:0 8px;
+	font-size:14px;}
+#sidebar {width:120px;  box-sizing:border-box; }
+#sidebar div {line-height:1.6;}
+#sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
+.nav {margin:0px 0 -20px 0; text-align:center;}
+.sym {color:#999; font-weight:normal;}
+
+</style>
+
+
+<script>
+function toggle(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+function toggleDisp(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+</script>
+
+
+
+<!--★目次デザイン・処理★-->
+<style>
+.toc-box{background-color:#f0f0f0;border-radius:8px;padding:10px;} 
+.toc-list{list-style:none;margin:0;padding-left:0;} 
+.toc-list ul{list-style:none;margin:0;padding-left:20px;}
+.toc-list li{margin:5px 0;}
+.toc-level1{margin-left:0;}
+.toc-level2{margin-left:20px;}
+
+h1 {
+  background: #fff;
+  padding: 6px 10px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #2233cc; /* 青系 */
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 4px solid #3366ff;
+  display: block;
+  width:100%;
+  
+}
+
+
+h2,h3 {
+  background: #fff;
+  padding: 6px 10px;
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #5566ff; /* 青系 */
+  
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 2px solid #9999ff;
+  display: -block;
+
+}
+
+h2::before {
+  content: "- ";
+}
+
+.master_years{
+  margin-left:20px;
+  margin-right:20px;
+}
+
+.top_minicategory{
+  font-size:10px;
+  color:#ccccff;
+}
+</style>
+
+
+
+</head>
+<body onload="initLightbox();">
+<a id="top"></a>
+
+<style type='text/css'>
+.linkbutton{
+  font-size: 0.9em;
+  padding: 1px 6px;
+  vertical-align: baseline;
+  line-height: 1;
+  height: auto;
+  margin-left: 4px;
+  color:#66f;
+  background-color:#f9f9f9;
+  border: 1px solid #888;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.copy-popup{
+  background-color: #eef;
+  border: 1px solid #88c;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  color: #333;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.5s ease;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  max-width: 80vw;             /* 画面幅の 80% で折り返す */
+  overflow-wrap: anywhere;     /* 長い URL を途中で区切る */
+  word-break: break-all;       /* ↑が効かない旧ブラウザ保険 */
+  white-space: pre-wrap;       /* 
+ を改行として扱い、余計な連続空白は1個に */
+}
+.article_end_date{
+  font-size:0.9em;
+}
+</style>
+
+
+<script>
+function toggle(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+}
+
+// Year accordion with sessionStorage persistence
+function toggleYear(id){
+  const pane = document.getElementById(id);
+  const btn  = document.getElementById(id+'-btn');
+  if(!pane||!btn) return;
+  const sym  = btn.querySelector('.sym');
+  const isClosed = pane.style.display === 'none';
+  pane.style.display = isClosed ? 'block' : 'none';
+  sym.textContent   = isClosed ? '－' : '＋';
+  sessionStorage.setItem('year-'+id, isClosed ? 'open' : 'closed');
+}
+
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('[data-yearpane]').forEach(pane=>{
+    const id    = pane.id;
+    const state = sessionStorage.getItem('year-'+id);
+    const btn   = document.getElementById(id+'-btn');
+    const sym   = btn?.querySelector('.sym');
+    if(state === 'open'){
+      pane.style.display = 'block';
+      if(sym) sym.textContent = '－';
+    }else{
+      pane.style.display = 'none';
+      if(sym) sym.textContent = '＋';
+    }
+  });
+});
+
+function copyLink(date, title, el){
+  const url = `https://smokingwolf.github.io/dev_blog/archive/${date.slice(0,4)}/${date.slice(5,7)}.html#${date}`;
+  const text = `
+【${date}　${title}】
+ ${url}`;
+  navigator.clipboard.writeText(text).then(()=>{
+    if(el && el.tagName === 'BUTTON'){
+      const orig = el.textContent;
+      el.textContent = '✅ コピー完了!';
+      setTimeout(()=>{ el.textContent = '🔗 リンクをコピー'; }, 2000);
+    }
+
+    const popup = document.createElement('div');
+    popup.className = 'copy-popup';
+    popup.textContent = `✅ コピー完了：${text}`;
+    document.body.appendChild(popup);
+
+    const rect = el.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    const popupWidth = popup.offsetWidth;
+    const pageWidth = document.documentElement.clientWidth;
+
+    let left = rect.left + scrollLeft + (rect.width / 2) - (popupWidth / 2);
+    let top  = rect.top  + scrollTop - popup.offsetHeight - 8;
+    if(left < scrollLeft + 4) left = scrollLeft + 4;
+    if(left + popupWidth > scrollLeft + pageWidth - 4)
+        left = scrollLeft + pageWidth - popupWidth - 4;
+
+    popup.style.left = `${left}px`;
+    popup.style.top  = `${top}px`;
+    popup.style.opacity = '1';
+    popup.style.zIndex = '9999';
+
+    setTimeout(()=>{ popup.style.opacity = '0'; }, 1800);
+    setTimeout(()=>{ popup.remove(); }, 2500);
+  });
+}
+</script>
+
+<div id='content'>
+<style>
+
+.TopTitle{
+  width:515px;
+  font-weight:bold;
+  font-size:16pt;
+  color: #ffffff;
+  background-color:#535365 ;
+  border-width: 0px;
+  border-color:#535365;
+  border-style:solid;
+  background: -moz-linear-gradient(left top, #42435f, #fafaff);
+  background: -webkit-gradient(linear, left top, right bottom, from(#42435f), to(#fafaff));
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#DD42425f', endColorstr='#FFfafaff');
+  
+  text-align:left;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.header3{
+	color:#555588;
+	margin-bottom:16px;
+}
+
+.home-link {
+  font-size: 12px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: underline;
+}
+</style>
+
+<!--戻るリンク、サイトがなくなってたらアーカイブにつながるようにしたが404ページがアレなのかうまくいかない-->
+<!--
+<font id="home-link-placeholder">
+  <noscript>
+    <a href="https://smokingwolf.github.io/" class="home-link">← ホーム(アーカイブサイト)に戻る</a>
+  </noscript>
+</font>
+
+<script>
+(async () => {
+  try {
+    // HEADで軽くチェック（no-corsなのでステータス確認は不可）
+    // 自分のサイトのインフォメーションページにつなげるならサイトがまだあると認識する
+    await fetch("https://silversecond.net/contents/etc/info.shtml", { method: "HEAD", mode: "no-cors" });
+
+    const link = document.createElement("a");
+    link.href = "https://silversecond.net/";
+    link.textContent = "← ホームに戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  } catch {
+    const link = document.createElement("a");
+    link.href = "https://smokingwolf.github.io/";
+    link.textContent = "← ホーム(アーカイブサイト)に戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  }
+})();
+</script>
+-->
+
+<div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
+<!--ここにコメント文-->
+<div class="header3" style="margin-top:6px;">　ここはゲーム開発者SmokingWOLF(スモーキングウルフ)の開発日誌です。<BR>
+　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
+　<B style="color:#ff5555;">※以前のブログが使えなくなったので、ただいまこの開発日誌に移転中です。</B>
+</div>
+
+<div class='article_pos'>2020年08月</div>
+<div class='nav'><a href='09.html'>次の月へ</a> | <a href='07.html'>前の月へ</a></div>
+<a id='2020-08-30'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2020-08-30','第12回ウディコン、結果発表！', this)" style='cursor:pointer;'>2020-08-30 (日)&nbsp;&nbsp;&nbsp;第12回ウディコン、結果発表！</span><span style='float:right;'><a href='#2020-08-15' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【第12回ウディコン、結果発表！】</strong></span><br><br>ということで毎年の夏のお楽しみ、「WOLF RPGエディターコンテスト」も<br>8/29をもってとうとう結果発表＆閉幕となりました！<br><br><a data-primary="http://www.silversecond.com/WolfRPGEditor/Contest/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size:large;"><strong>【WOLF RPGエディターコンテスト　公式サイト】</strong></span><br><img src="../../image/2020/20200830.jpg" width="80%" loading="lazy" height="108"></a><br><br>今年の第12回は作品の数・品質、共に例年以上にすごい回となりました！<br>今回もいつも通り、上位3作品と、追加で気になった作品をご紹介します！<br><br><hr size="1" /><br><a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest12_2020/#15"><strong><span style="font-size:large;">【第１位　『DAY:0』】</span></strong>　PANO 様</a><br><br><img src="../../image/wodicon/Entry12_15.jpg" border="2" loading="lazy" height="240"><br><br>総合1位は、ユニットを自由に移動できる<br>タワーディフェンス風RTS（リアルタイムシミュレーション）、『DAY:0』！<br>類似ゲームが思いつかないので紹介用のジャンル名に悩む斬新さです。<br><br>基本的には時間経過で敵が出現してくる中、<br>射程範囲内の敵を自動で攻撃してくれる味方ユニットたちをうまく移動させ、<br>配置を工夫して、敵への火力や受けるダメージをコントールしながら<br>コアを守りつづけて進行していくというゲームです。<br><br>ステージの流れは固定で、ボス戦も用意されていますが、<br>ドロップするアイテムだけはランダムでローグライクっぽさがあり、<br>出たアイテムに応じて最善手が変わってくるのが特徴です。<br><br>最初はリアルタイムで進む戦闘に<br>「うわー今どうなってるんだーどうすればいいんだー！？」<br>とアタフタしてしまうのですが（※ポーズ機能は用意されています）、<br>慣れてくると、味方の配置やランダムに出てくる装備の付け方を最適化して、<br>何倍もの戦闘力を発揮させられるのが面白いところです。<br><br>特に編成を考え始めると試行錯誤が止まらないのが魅力！<br>最大10体（今は12体）から5体選べるどのユニットには、どれ一人として<br>役に立たないキャラというのが一切おらず、<br>組み合わせの有利不利が色々考えられており、<br>絶妙なバランス調整が行われているように感じました。<br><br>高難易度では色んな試行錯誤が効果を発揮してくるので、<br>「何か新しくて骨のあるゲームはないかなー」とお感じの、<br>ゲーマー寄りな人に特におすすめの一作です！<br><br>最初はアタフタしてしまってこの作品の奥深さが見えにくかったためか、<br>実は投票開始くらいのこの作品の暫定順位はそんなに高くなかったのですが、<br>時間が経って遊び込んでハマった人たちが増えてきたのか、<br>後半になるにつれて徐々に得点を伸ばしてきた一作でした。<br><br><hr size="1" /><br><a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest12_2020/#9"><strong><span style="font-size:large;">【第２位　『怪異探偵委員会』】</span></strong>　茸沢しめじ 様</a><br><br><img src="../../image/wodicon/Entry12_09.jpg" border="2" loading="lazy" height="240"><br><br>総合2位は、怪異を論理でぶった切る探索アドベンチャーゲーム『怪異探偵委員会』！<br>アンティークっぽさのあるインターフェースに、一貫性のある魅力的なキャラクターたち！<br>物語性で2位を獲得したのも納得の、気持ちよく遊べる一作です。<br><br>基本的には横スクロールの探索ADVとして進み、<br>色んなところを巡って情報収集し、オカルトを解き明かしていくのを見るゲームです。<br>目的ははっきり明示されており、やることも分かりやすいため、<br>スッキリ物語に集中できます。<br>推理は基本的にキャラクターたちが行ってくれるので、<br>配信者の方は実況プレイをしながら自分の推理を話しつつ、<br>答え合わせのつもりで話を進めると面白いかもしれませんね。<br><br>画像もおそらく全て自作で、全体的にすみずみまでこだわりたっぷりの一本！<br>特にマップ表現などは全体的にものすごいこだわりを感じました。<br>どこを見てもすごく『それっぽい』のがすごすぎる！<br><br>楽しそうなキャラクターたちの前向きになれる物語を楽しみたい人には、<br>ぜひおすすめしたい一作です。遊んでいるとラムネが飲みたくなります。<br><br><hr size="1" /><br><a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest12_2020/#46"><strong><span style="font-size:large;">【第3位　『ゲー製ゲーム』】</span></strong>　南天 様</a><br><br><img src="../../image/wodicon/Entry12_46.jpg" border="2" loading="lazy" height="240"><br><br>総合3位は、ウディコンに向けてゲーム制作するリソース管理ゲーム、<br>『ゲーム製ゲーム』！<br><br>ウディコンにウディコンに出すゲームを作るゲームを投稿する<br>（もう何を言ってるのか分からない）<br>というアイデアがすでに面白いのですが、内容も非常にしっかり作られています。<br><br>内容としては、ランダムな目が出るサイコロを2つまで保持できる中、<br>どっちのサイコロを使って進むか、いつアイテムを使うか、<br>どこでアイテムを補給するか、<br>を考えながら、HPやMPを維持しつつ、<br>少しでもうまいことコマを前に進めていくゲームです。<br>テーマやデザイン、ユーザビリティなどの発想を示す★を集めることも<br>最終得点に影響します。<br><br>ゲーム開発を表現するのに『すごろく』というベースを<br>採用しているのが凄いなと思ったところで、<br>日々色んな事件やバグが発生しながらも、今できる最善の解を重ねて<br>少しでも完成に近づけていく様子は非常に「ゲーム開発っぽさ」を<br>再現できていると感じます。<br><br>ちなみに、私がこのゲーム内で作った『地獄魔弾ドギンファス』は107点で11位でした。<br>「得点がすごく本物のウディコンっぽい数字だ……！」と感じました。<br>（参考までに、今年の第12回ウディコンの11位は総ポイント113.4点）<br><br>最新版では『将棋するエルフ』とか『弟が泣く頃に』とか『ハートフル謎の物体』など<br>微笑ましいゲームタイトルが出るようになってましたが、コメントによると超低確率で<br>『片道勇者』を作れるかもしれないらしいですよ。<br>元ネタに入れてくださってありがとうございます！<br><br>本作はゲームを作る人、特にウディコンをご存じの人におすすめな一作で、<br>遊んでみると「あるあるー！」と感じてしまうイベントの数々に<br>いっぱい共感できると思います。<br>（でもうちの近所じゃヤギとUFOはあんまり見ないです）<br>非常に遊びやすいので、色んな人におすすめできる一作です！<br><br><hr size="1" /><br><a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest12_2020/#19"><strong><span style="font-size:large;">【第4位　『扉は君の鍵で開く』】</span></strong>　暗闇行灯 様</a><br><br><img src="../../image/wodicon/Entry12_19.jpg" border="2" loading="lazy" height="240"><br><br>今回は総合4位まで総合得点がほぼ変わらない超高水準のバトルだったので、<br>ぜひこれも追加でご紹介させていただきたいと思います！<br><br>その4位は、推理アドベンチャーゲーム、『扉は君の鍵で開く』！<br>「推理ゲームとしてこれだけ硬派なのを見たのは久しぶりだ！」<br>と感じられる推理ゲーム作品です！<br><br>このゲームはNPCに対して「キーワードを選択」あるいは「自由入力で質問」し、<br>ストーリーを進めていくアドベンチャーゲームです。<br>それだけだと「へーそうなんだー」と思われるだけかもしれませんが、<br>ゲームを進めていくにつれて大量のワードが出てくるため、<br>その中で適切に質問して情報収集するのは<br>的確な予想ができていないとなかなかできません。<br><br>コメントによるとこういった対話型のゲームは今でもたまにあるそうですが、<br>個人的には数十年前のADV黎明期を思い出すストイックさを思い出させます。<br>（私も歴史資料でしか知らない時代なんですが）<br>使ったワードに反応が返ってきたり、当たりの資料を見つけたときに<br>「やった！」と思えるのはこういうゲームならではの楽しみです。<br><br>当然、推理や情報整理の素養が求められる場面も出てくるので、<br>「世の推理ADVなんてレールのついた記憶クイズじゃないか、<br>もっと歯ごたえが欲しいぞ！」<br>なんて普段お感じの、ガッツリとした推理に挑戦してみたい人には<br>宝物になるかもしれない、おすすめの一作です。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【個人的にプッシュしたいゲーム】</strong></span><br><br>そして最後に、私が個人的にプッシュしたい作品をご紹介！<br><br><a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest12_2020/#73"><strong><span style="font-size:large;">【『ベビーシッター2XXX』（総合11位）】</span></strong>　二六千里 様</a><br><br><img src="../../image/wodicon/Entry12_73.jpg" border="2" loading="lazy" height="240"><br><br>「こんなローグライクありか！　うわースゲー！　アリだ！　この発想はなかった！」<br>と感じた、『3文字で戦うノンフィールドRPG』がこの『ベビーシッター2XXX』です。<br><br>まず、文字をリソースとしてあつかうことでローグライク的に<br>ゲームを展開させるという発想に脱帽しました。<br><br>というのも、このゲームは保持できる「18個」の文字の中から<br>3つの文字を使って単語を作ることで攻撃や防御、回復などを行うのですが、<br>使った文字のうちの「どの文字を残すか」「手持ちをどう構成するか」の判断が<br>非常にアツい一作に仕上がっているのです！<br>そもそも手持ちの文字でどんな単語が作れるのか思いつくのが大変！<br>すごく頭を使います。<br><br>慣れてきてもかなり高めの難易度に感じられますが、<br>能力を上げて戦闘をラクにする要素があったり、<br>それでもダメなときは戦闘中の「リセット」で攻略の推奨ステータスにして<br>ステージ最初に戻れたりもするので、「詰んだ！」と思ったときも安心！<br><br>そういった配慮も各種用意されているので、言葉作りに自信があるひとや<br>変わったローグライクが好きな人におすすめしたい一作です。<br><br>作った単語ごとにそれらしい反応を示す、2人の表情もすごく好きですね！　う●こ！<br>といいますか、単語全部に表情とかデータを設定されているのがヤバい！<br><br><hr size="1" /><br>ここで挙げたのは上位作品と私の好みの作品ですが、<br>この他にも方向性の異なる面白い作品が総合順位の上位に<br>ピックアップされていますので、<br>部門別の評価やコメントなども見ながら、<br>よければ面白そうなのを遊んでみてくださると幸いです！<br><br>今年は全体的に品質が高く、上位40位から漏れた作品でさえ、<br>「これおすすめです！」と胸を張って言えそうな作品が<br>きっとたくさんあったと思います。<br>あなたの好きなゲームが今後も作られるよう、<br>もし好きなゲームがあったら、ぜひ作者の方を応援してあげてください！<br><br><a data-primary="http://www.silversecond.com/WolfRPGEditor/Contest/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><span style="font-size:large;"><strong>【WOLF RPGエディターコンテスト　公式サイト】</strong></span></a><br><br><hr size="1" /><br><span style="font-size:large;"><strong>【今後について】</strong></span><br><br>さて、ウディコンは来年2021年の『第13回』も開催予定です！<br>すでにスケジュールも決定済みなので、来年に向けての<br>残り32X日のカウントダウンを眺めながらの日常が再開されます。<br><br>祭りが終わってどこか寂しくなると同時に、<br>いつも気がつけば開催カウントダウンが0日になってるので<br>自分のゲームもしっかり開発していきたいですね。<br><br>それでは、第12回ウディコンに関わってくださった全ての関係者の皆さま、<br>今年も本当にありがとうございました！<br>よければ来年も、ぜひ見ていただけますと幸いです。</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2020-08-30 (日)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2020%2F08.html%232020-08-30&title=%E7%AC%AC12%E5%9B%9E%E3%82%A6%E3%83%87%E3%82%A3%E3%82%B3%E3%83%B3%E3%80%81%E7%B5%90%E6%9E%9C%E7%99%BA%E8%A1%A8%EF%BC%81" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2020%2F08.html%232020-08-30&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2020-08-30','第12回ウディコン、結果発表！', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/woditor/001.html'>ウディタ</a></span></div></div><br><br><br>
+<a id='2020-08-15'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2020-08-15','片道勇者2今どんな感じ？', this)" style='cursor:pointer;'>2020-08-15 (土)&nbsp;&nbsp;&nbsp;片道勇者2今どんな感じ？</span><span style='float:right;'><a href='#2020-08-02' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【片道勇者2今どんな感じ？】</strong></span><br><br>長らくゲームパッド/キーボード対応という何のご報告もできないような作業ばっかり<br>やってたので続報が途絶えていましたが、ようやく再び前進し始めたので<br>現状をお知らせします！<br><br><hr size="1" /><br><span style="font-size:large;"><strong>●システムの下地はおおよそ完成！</strong></span><br>アルファ1ではやりにくいところもあったゲームシステムですが、<br>あれからいくらか更新されました。<br><br>・キャラメイクなどいくつかの情報が（たぶん）シンプルになって見やすくなった。<br>（もっと詳しい情報はカーソルを合わせると見られるようになった）<br><a class="double-link blue" rel="[20200816]lightbox" target="_top" href="../../image/2020/20200816A.jpg"><img src="../../image/2020/20200816A.jpg" width="40%" border="2" loading="lazy" height="252"></a><br><br>・マップ画面のインターフェースを大幅修正、<br>スマホ向けを一旦頭から消して完全PC向けに。<br><a class="double-link blue" rel="[20200816]lightbox" target="_top" href="../../image/2020/20200815.jpg"><img src="../../image/2020/20200815.jpg" width="40%" border="2" loading="lazy" height="252"></a><br><br>・レベルアップは「どこでも」から「（定期的に出てくる）女神像でのみ行える」<br>ように。<br><br>・移動中の経験値は（レベルアップ画面を使わず）、<br>直接、自己強化や回復に使えるように。<br>分かりやすくなったのと、手札が経験値だらけで<br>行動できないということがなくなりました。<br><br>・近くの建物の方角が分かるように。<br>（マップ機能はまだ入れてません、特徴などで使える形？）<br><br>・デッキ内容がアイコン表示で常に出るようになって<br>デッキを俯瞰（ふかん）しやすくなった。<br><br>・流れた経験値や、いらないアイテムを「女神ポイント」に変換できるように。<br>「女神ポイント」があると女神像で追加の願いを叶えてもらえる。<br><br>・どこでも使用できる能力「アビリティ」を搭載。<br>たとえば「アイテム取り出し」アビリティを「特徴」として取得すると、<br>マップ中どこでもすぐ好きなアイテムを取り出せるようになります。<br>（クールタイムあり）<br><br>・これまで重かった部分の処理を2～3倍くらいに高速化<br>（メイン処理の全オーバーホール）<br><br><br>といった感じです。実際に遊ばないと全然伝わらない点ばっかりですが、<br>とにかく自分でもアルファ1でやりにくいなと感じているところは<br>どんどんつぶしてスッキリ遊べる方向性を模索中です。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>●念願のゲームパッド/キーボード対応ができた！</strong></span><br><br>おかげさまで、なんとかゲームの90％以上を<br>ゲームパッド/キーボード/マウス全対応にできました。<br>ここしばらくは作業に着手できる時間が少なかったのもありますが、<br>ここの作業だけですでに半年以上経っている気がします。<br><br>もともとは自分にも何％かやれる可能性がある『スマートフォン展開』を<br>狙うつもりだったので「マウス操作だけでいいでしょ！」と思ってたんですが、<br>どうもスマホ移植は自分の技術的に無理くさいと分かったのと、<br>ウディタ作品の移植成功によって、今では逆に<br>「家庭用ゲーム機」の方が出せる確率が上がってしまったため、<br>スマホはいったんやめてPC/家庭用ゲーム向けに本格移行した形になります。<br><br>普段の私だったらコストパフォーマンス的に<br>こんなに時間をかけてまでやる項目ではないのですが、<br>家庭用の確率が10％でもあるなら今やっておかないと絶対厳しいことになるので、<br>長い時間をかけて少しずつ実装していました。<br>やってもやっても全然ゲームの面白さと関係ない場所は精神的に作るのがキツいですね。<br><br>また、終わってからようやく総工数の重さが分かりましたが、<br>こんなに工数がかかる（あるいは工数が不透明だった）ところをもし外注なんてしたら、<br>たぶん私の活動に必要なお金と比べてとんでもない工賃がかかったでしょう。<br>といいますか、そもそも工数が予測できるほどの達人はやってくれないか、<br>そうでなくともいくらかやっつけ仕事でいかないと赤字が出かねない部分だと思います。<br><br>まだまだキーボード/ゲームパッド対応は大雑把なので、<br>今後テストしていくにあたってやりにくいところを修正していって、<br>まるで最初からゲームパッド用のゲームだったように<br>見えるくらいに仕上げていきたいですね。<br>プラスにあった「自動方向転換機能」など、マウス操作だけだったら<br>不要だった機能もこれから追加していかねばなりません。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>●アルファ1のカード絵を一通り作ってみて生産効率を確かめた。</strong></span><br><br>カード絵の生産効率を確かめるべく、今の時点でアルファ1に登場したカードの絵を<br>全部ざっくり作ってみました。一部ですがこんな感じです。<br><br><img src="../../image/2020/20200816B.jpg" width="450" loading="lazy" height="210"><br><strong><span style="font-size:x-small;">※文字が微妙にかぶってるところはこれから何とかしていきます。</span></strong><br><br>今のところ、「後から修正したい……」という気分になる気配もなく、<br>かつ短時間で満足できるものが出せているので、<br>ドット絵をカード絵で描こうと思ったのは当たりだったようです。<br>低コストかつ最大効率を狙える素材作りをしていきたい！<br><br><hr size="1" /><br><span style="font-size:large;"><strong>●アルファ2は75～90％あたりで出したい！</strong></span><br><br>今年中に公開したいなあ、と言っていた「アルファ2」ですが、<br>前のバージョンに比べると致命的な問題や遊びにくさは<br>予想以上に解消できた気がするので、このまま一通り完成させて<br><br>「システム面の拡張・修正はここまでだな！」<br><br>というのが分かった時点で「<span style="color:#3300FF"><strong>チュートリアル</strong></span>」も作り、<br>それらも含めて「ちゃんとゲーム内容が伝わるか」の部分まで<br>一気に見ていただく方がいいかな、と考えています。<br>全体の工期の75％～90％くらいで出す感じになるでしょうか。<br><br><span style="color:#CC0000"><strong>『一通り揃ってこれ以上は大きく変わらないけど、<br>情報があればいくらか軌道修正できる開発状態』<br>で<br>『チュートリアルや情報提示で足りないものを把握するために、<br>思いつく限りの情報提供を一通りうまく入れた状態でお見せする』</strong></span><br><br>あたりのタイミングを狙っていきたいと思いますので、<br>もうしばらくお待ちください。<br><br>家庭用ゲーム機の案件など、おかげさまで当面何ヶ月かの収入を得つつ<br>開発しやすい環境がようやく整ってきたので、<br>ここから開発のブーストをかけていきたいと思います。<br>今は久しぶりにゲーム部分を作っていける喜びをかみしめています。</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2020-08-15 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2020%2F08.html%232020-08-15&title=%E7%89%87%E9%81%93%E5%8B%87%E8%80%852%E4%BB%8A%E3%81%A9%E3%82%93%E3%81%AA%E6%84%9F%E3%81%98%EF%BC%9F" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2020%2F08.html%232020-08-15&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2020-08-15','片道勇者2今どんな感じ？', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/owh2dev/001.html'>片道勇者2</a></span></div></div><br><br><br>
+<a id='2020-08-02'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2020-08-02','『ゲーム開発者の地図』 紙版が発売！', this)" style='cursor:pointer;'>2020-08-02 (日)&nbsp;&nbsp;&nbsp;『ゲーム開発者の地図』 紙版が発売！</span><span style='float:right;'><a href='#bottom' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【『ゲーム開発者の地図』 紙版が発売！】</strong></span><br><br>このたび、私が書いた本<br><span style="font-size:large;color:#f44;"><strong>『ゲーム開発者の地図 ～20年の個人開発で学んだこと～』</strong></span><br>の【紙の本】を発売いたしました！<br><br>↓お買い上げはこちらから！　紙の版は【372ページ】となっております。<CENTER><br><table><tr><td align="center"><span style="font-size:large;"><strong><a class="double-link red"  target="_top" href="https://amzn.to/3pqGeAC"><font color="#F44">◆フルカラー本<BR><small>Amazonペーパーバック</small><BR>（￥3,660）</font></strong></span><br><img src="../../image/2020/20200802_03_color_page.jpg" width="140" border="2" loading="lazy" height="122"></a></td><td width="15"></td><td align="center"><span style="font-size:large;"><strong><font color="#44F">◆モノクロ本 (販売終了しました)<BR>（￥2,500）<br><img src="../../image/2020/20200802_03_monochro_page.jpg" width="140" border="2" loading="lazy" height="119"></font></strong></span></td><td width="15"></td><td align="center"><span style="font-size:large;"><strong><a class="double-link red"  target="_top" href="https://www.amazon.co.jp/gp/product/B076VM4ZMS/ref=as_li_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B076VM4ZMS&linkCode=as2&tag=smokingwolf-22&linkId=ee5fbbeb5a364a023ef32b98289bb766"><font color="#999">◆Kindle<BR>電子書籍版<BR>（￥1,080）<BR><img src="../../image/2020/20200802_01_screen1big.jpg" border="2" width="140" loading="lazy" height="88"><BR></a></strong></span>（スマホ/タブレット/PC）</font></td></tr></table></CENTER><br><br>◆こちらが紹介動画です↓<br><iframe width="500" height="280" src="https://www.youtube.com/embed/cwWYvDo_XKU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br><br><br>紙の本のバージョンとしては「フルカラー版」と「モノクロ版」の2つがございます。<br>フルカラーで作ってみたら値段が高すぎて目玉飛び出たので<br>お手頃価格のモノクロ版もご用意しました。<br><hr size="1" /><br><span style="font-size:large;"><strong>【どんな内容？】</strong></span><br><br>私がゲームを開発するときに「どんな意図をもって作っているのか」、<br>「効果的だと考えている手段」や「完成させる作り方とは？」、<br>そういった話題のゲーム開発話を色々まとめた一冊です！<br><br>この開発日誌で評判のよかった記事をまとめたもので、<br>開発者でない方にもそこそこお楽しみいただけるかもしれません。<br>もっぱらRPGのゲームデザインの話が多いとのことです。<br><br>初めての人にはゲーム開発における一つの考え方を提示し、<br>熟練者の人にはこれまでの経験を明文化する一助となったり、<br>色々言われて苦しいときのモチベーション回復の助けになるかも！<br>という感じのことがレビューに書いてあったのですが<br>書いた私自身には効用がないので分かりません。悲しい。<br><br>ほか、皆さまのご感想が気になる人はこちらからどうぞ↓<br><span style="font-size:large;"><a class="double-link red" target="_blank" href="https://twitter.com/WO_LF/timelines/1383276951683559434">【ツイッターでの皆さまのご感想まとめ】</a></span><br><br><hr size="1" /><br>そしてこの本、（知り合いを含む）ゲーム開発会社さまなどでも簡単な教材の一つとして<br>使ってくださっているというありがたいお話もうかがっておりますので、<br>そういった需要にもある程度お応えできると思います。<br><br>Kindleだと全員買わないと読みにくいですが、<br>これなら1～2冊で回し読み可能ですからね！<br>個人的には皆さんに電子版買っていただくのが一番得なので、<br>もちろん電子版で買ってくださっても構いません！<br><br><hr size="1" /><br>という感じで電子版よりはだいぶお高いと思いますが、<br>もし紙版が欲しい方は、よければぜひどうぞ！<br>どれも1本の収益は似たような感じに設定されているので、どれが買われても喜びます！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2020-08-02 (日)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2020%2F08.html%232020-08-02&title=%E3%80%8E%E3%82%B2%E3%83%BC%E3%83%A0%E9%96%8B%E7%99%BA%E8%80%85%E3%81%AE%E5%9C%B0%E5%9B%B3%E3%80%8F%20%E7%B4%99%E7%89%88%E3%81%8C%E7%99%BA%E5%A3%B2%EF%BC%81" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2020%2F08.html%232020-08-02&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2020-08-02','『ゲーム開発者の地図』 紙版が発売！', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/devlog/001.html'>開発日誌</a></span></div></div>
+<div class='article_pos'>2020年08月</div>
+<div class='nav'><a href='09.html'>次の月へ</a> | <a href='07.html'>前の月へ</a></div>
+<a id='bottom'></a>
+
+<BR><BR>
+<div align="right"><a href="#top" class="g">▲一番上へ戻る</a></div>
+<BR>
+<CENTER>
+<HR>
+<div>
+<div id="silsec-status" style="display:inline-block;line-height:12px;font-size:10px;"></div>　<div align="center" style="display:inline-block;line-height:12px;font-size:10px;"><a href="https://smokingwolf.github.io/" target="_blank" class="blue" border="1"><img src="https://smokingwolf.github.io/banner.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>アーカイブサイトへ</a></div>
+</div>
+<HR>
+Copyright © SmokingWOLF / Silver Second
+<HR>
+</CENTER>
+
+
+<script>
+  // シルバーセカンド公式のドメインに接続し、サイト存在確認用のTXT(SILVERSECOND_ALIVE!と書かれている)があれば存在する扱いにする
+  const statusDiv = document.getElementById('silsec-status');
+  const checkUrl = 'https://silversecond.net/SILVERSECOND_SITE_ALIVE_FLAG.txt';
+
+  fetch(checkUrl, { cache: 'no-store' })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('ネットワークエラー');
+      }
+      return response.text();
+    })
+    .then(text => {
+      if (text.trim() === 'SILVERSECOND_ALIVE!') {
+        statusDiv.innerHTML = '<a href="https://silversecond.net/" target="_blank" class="blue"><B><img src="https://silversecond.net/banner/a.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>運営中のサイトへ</a>　';
+      } else {
+        statusDiv.textContent = '　';
+      }
+    })
+    .catch(error => {
+      statusDiv.textContent = '　';
+      console.error('シルバーセカンド公式サイトチェック失敗:', error);
+    });
+</script>
+
+
+
+
+</div>
+<div id='sidebar'>
+<div style='font-weight:bold;'>開発日誌</div>
+<div><a class='sidebar_link' href='../../archive/top/index.html'>日誌トップへ</a></div>
+<div><B><a class='sidebar_link' href='../../index.html'>全記事一覧</a></B></div>
+<hr>
+<div style='font-weight:bold;'>【最新記事】</div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/08.html#2025-08-24'>●08/24 第17回ウディコン結果発表！　上位3作品とピックアップ紹介！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/08.html#2025-08-09'>●08/09 『シルバーセカンド思い出の部屋』を開設！＋ 来年よりウディコン規約追加</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-26'>●07/26 第17回ウディコン審査期間開始！ ＆ 規約の補足</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-12'>●07/12 ウディコン直前！ サイト＆ウディタ修正＋シェパード捜査録！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-28'>●06/28 ウディコン準備中！+ 開発日誌も移転作業中</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-14'>●06/14 サイト修正＋開発日誌をFC2から移転！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-31'>●05/31 ウディコン歴史資料館設立！+ ウディタ修正 + GitHubのサイト作り</a></div>
+<hr>
+<div style='font-weight:bold;'>【カテゴリ】</div>
+<div><a class='sidebar_link' href='../../category/woditor/001.html'>ウディタ&nbsp;<span class='sym'>(66)</span></a></div>
+<div><a class='sidebar_link' href='../../category/owh2dev/001.html'>片道勇者2&nbsp;<span class='sym'>(31)</span></a></div>
+<div><a class='sidebar_link' href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(25)</span></a></div>
+<div><a class='sidebar_link' href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(14)</span></a></div>
+<div><a class='sidebar_link' href='../../category/owh/001.html'>片道勇者&nbsp;<span class='sym'>(11)</span></a></div>
+<div><a class='sidebar_link' href='../../category/trpg/001.html'>TRPG&nbsp;<span class='sym'>(9)</span></a></div>
+<div><a class='sidebar_link' href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(2)</span></a></div>
+<hr>
+<div style='font-weight:bold;'>【月別】</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2025-btn' onclick="toggleYear('y2025')">2025&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2025' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2025/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2024-btn' onclick="toggleYear('y2024')">2024&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2024' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2024/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/01.html'>01月&nbsp;<span class='sym'>(2)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2023-btn' onclick="toggleYear('y2023')">2023&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2023' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2023/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/09.html'>09月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2022-btn' onclick="toggleYear('y2022')">2022&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2022' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2022/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2021-btn' onclick="toggleYear('y2021')">2021&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2021' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2021/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2020-btn' onclick="toggleYear('y2020')">2020&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2020' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2020/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/07.html'>07月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('a.double-link');
+
+  links.forEach(link => {
+    const primaryUrl = link.dataset.primary;
+    if (!primaryUrl) return;
+
+    const testUrl = primaryUrl + '?t=' + Date.now(); // キャッシュ無効化！
+
+    fetch(testUrl, { method: 'GET', cache: 'no-store' })
+      .then(res => {
+        const url = res.url || '';
+        if (!res.ok || url.includes('404.html') || res.status === 404) {
+          console.warn('【404または失敗】そのままアーカイブを使います:', link.href);
+          // そのまま
+        } else {
+          console.warn('【OK】hrefを本家に書き換えます:', primaryUrl);
+          link.href = primaryUrl;
+        }
+      })
+      .catch(() => {
+        console.warn('【通信エラー】そのままアーカイブを使います:', link.href);
+        // エラー時もhrefはそのまま
+      });
+  });
+});
+</script>
+
+
+
+</body>
+</html>

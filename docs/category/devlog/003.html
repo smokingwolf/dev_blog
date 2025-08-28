@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>シルバーセカンド開発日誌 / SmokingWOLF</title>
+<meta name="viewport" content="width=720">
+<script src="../../js/smoothscroll_up.js" type="text/javascript"></script> 
+
+<link rel="stylesheet" href="../../js/litebox/css/lightbox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../../js/litebox/js/prototype.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/moo.fx.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/litebox-1.0.js"></script>
+
+<style>
+html {
+  /* スマホ時は1.2倍フォントで表示 */
+  -webkit-text-size-adjust: 120%;
+  -ms-text-size-adjust: 120%;
+}
+
+BODY{
+  /*display:flex;*/
+  font-size:13px;
+  margin:0;
+  font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+  color:#558;
+}
+
+TD{
+  font-size:12px;
+}
+
+
+A:LINK,A:VISITED {  color:#5658f6;  text-decoration:underline ;}
+A:HOVER,A:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.red:LINK,A.red:VISITED{color:#d6385c;display: inline-block;text-shadow: 0 0 15px #ffddcc, 0 0 15px #ffddaa;}
+A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shadow: 0 0 15px #ffcccc, 0 0 15px #ffaaaa;}
+
+A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
+A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.g:LINK,A.g:VISITED{
+	color:#38a68c;
+	text-decoration:underline;
+}
+
+A.g:HOVER,A.g:ACTIVE{
+	color : #68b6ac;
+	text-decoration : underline;
+}
+
+
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38c6ac;
+}
+
+A.jumplink:HOVER,A.jumplink:ACTIVE{
+	color : #68f6ac;
+}
+
+A.jumplink{
+	text-shadow: 0 0 15px #ccddcc, 0 0 15px #aaddaa;
+	text-decoration : none;
+}
+
+
+.article_pos{
+	font-size:16px;
+	color:#aaf; 
+	font-weight:bold;
+	text-align:center;
+	margin:0px;
+	padding:0px;
+}
+
+#content {
+	font-size:14px;
+	
+}
+
+#sidebar {
+	background:#f8f8f8; 
+	border-left:1px solid #ddd; 
+	padding:4px 6px;
+	font-size:12px;
+}
+
+A.sidebar_link:LINK,A.sidebar_link:VISITED,
+A.sidebar_link_recent:LINK,A.sidebar_link_recent:VISITED{
+    color:#5658f6;
+	text-decoration: underline;
+}
+A.sidebar_link:HOVER,A.sidebar_link:ACTIVE,
+A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
+	color: #9698e6;
+	text-decoration: underline;
+}
+
+.sidebar_link{
+	font-size:13px;
+}
+
+.sidebar_link_recent{ /* 1つ1つの項目ごとに隙間を空ける */
+	font-size:11px;
+	line-height: 1.2;
+	display: inline-block;
+	margin-top:5px;
+}
+
+
+.entry {
+	border:1px solid #ccc; 
+	border-radius:8px; 
+	margin:14px 0; 
+	overflow:hidden;
+
+}
+.entry-title {
+	background:linear-gradient(to right,#4243ff,#aaaacf);
+
+	font-size:17px;
+	color:#fff; 
+	padding:4px; 
+	font-weight:bold;
+	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
+}
+
+.entry-body,.extended {
+	background:#fff; 
+	color:#444; 
+	padding:15px;
+	font-size:14px;
+	line-height:1.6em;
+}
+
+.entry-foot {
+	background:#fff; 
+	text-align:center;
+	vertical-align:middle;
+	color:#ccf;
+	font-size:12px;
+	padding-top:20px;
+	padding-right:20px;
+	padding-bottom:10px;
+}
+
+.linkbutton{
+	padding:3px;
+}
+
+/*--●形状整理用--*/
+body {display:flex; margin:0;}
+#content {width:600px; padding:0 8px;
+	font-size:14px;}
+#sidebar {width:120px;  box-sizing:border-box; }
+#sidebar div {line-height:1.6;}
+#sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
+.nav {margin:0px 0 -20px 0; text-align:center;}
+.sym {color:#999; font-weight:normal;}
+
+</style>
+
+
+<script>
+function toggle(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+function toggleDisp(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+</script>
+
+
+
+<!--★目次デザイン・処理★-->
+<style>
+.toc-box{background-color:#f0f0f0;border-radius:8px;padding:10px;} 
+.toc-list{list-style:none;margin:0;padding-left:0;} 
+.toc-list ul{list-style:none;margin:0;padding-left:20px;}
+.toc-list li{margin:5px 0;}
+.toc-level1{margin-left:0;}
+.toc-level2{margin-left:20px;}
+
+h1 {
+  background: #fff;
+  padding: 6px 10px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #2233cc; /* 青系 */
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 4px solid #3366ff;
+  display: block;
+  width:100%;
+  
+}
+
+
+h2,h3 {
+  background: #fff;
+  padding: 6px 10px;
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #5566ff; /* 青系 */
+  
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 2px solid #9999ff;
+  display: -block;
+
+}
+
+h2::before {
+  content: "- ";
+}
+
+.master_years{
+  margin-left:20px;
+  margin-right:20px;
+}
+
+.top_minicategory{
+  font-size:10px;
+  color:#ccccff;
+}
+</style>
+
+
+
+</head>
+<body onload="initLightbox();">
+<a id="top"></a>
+
+<style type='text/css'>
+.linkbutton{
+  font-size: 0.9em;
+  padding: 1px 6px;
+  vertical-align: baseline;
+  line-height: 1;
+  height: auto;
+  margin-left: 4px;
+  color:#66f;
+  background-color:#f9f9f9;
+  border: 1px solid #888;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.copy-popup{
+  background-color: #eef;
+  border: 1px solid #88c;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  color: #333;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.5s ease;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  max-width: 80vw;             /* 画面幅の 80% で折り返す */
+  overflow-wrap: anywhere;     /* 長い URL を途中で区切る */
+  word-break: break-all;       /* ↑が効かない旧ブラウザ保険 */
+  white-space: pre-wrap;       /* 
+ を改行として扱い、余計な連続空白は1個に */
+}
+.article_end_date{
+  font-size:0.9em;
+}
+</style>
+
+
+<script>
+function toggle(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+}
+
+// Year accordion with sessionStorage persistence
+function toggleYear(id){
+  const pane = document.getElementById(id);
+  const btn  = document.getElementById(id+'-btn');
+  if(!pane||!btn) return;
+  const sym  = btn.querySelector('.sym');
+  const isClosed = pane.style.display === 'none';
+  pane.style.display = isClosed ? 'block' : 'none';
+  sym.textContent   = isClosed ? '－' : '＋';
+  sessionStorage.setItem('year-'+id, isClosed ? 'open' : 'closed');
+}
+
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('[data-yearpane]').forEach(pane=>{
+    const id    = pane.id;
+    const state = sessionStorage.getItem('year-'+id);
+    const btn   = document.getElementById(id+'-btn');
+    const sym   = btn?.querySelector('.sym');
+    if(state === 'open'){
+      pane.style.display = 'block';
+      if(sym) sym.textContent = '－';
+    }else{
+      pane.style.display = 'none';
+      if(sym) sym.textContent = '＋';
+    }
+  });
+});
+
+function copyLink(date, title, el){
+  const url = `https://smokingwolf.github.io/dev_blog/archive/${date.slice(0,4)}/${date.slice(5,7)}.html#${date}`;
+  const text = `
+【${date}　${title}】
+ ${url}`;
+  navigator.clipboard.writeText(text).then(()=>{
+    if(el && el.tagName === 'BUTTON'){
+      const orig = el.textContent;
+      el.textContent = '✅ コピー完了!';
+      setTimeout(()=>{ el.textContent = '🔗 リンクをコピー'; }, 2000);
+    }
+
+    const popup = document.createElement('div');
+    popup.className = 'copy-popup';
+    popup.textContent = `✅ コピー完了：${text}`;
+    document.body.appendChild(popup);
+
+    const rect = el.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    const popupWidth = popup.offsetWidth;
+    const pageWidth = document.documentElement.clientWidth;
+
+    let left = rect.left + scrollLeft + (rect.width / 2) - (popupWidth / 2);
+    let top  = rect.top  + scrollTop - popup.offsetHeight - 8;
+    if(left < scrollLeft + 4) left = scrollLeft + 4;
+    if(left + popupWidth > scrollLeft + pageWidth - 4)
+        left = scrollLeft + pageWidth - popupWidth - 4;
+
+    popup.style.left = `${left}px`;
+    popup.style.top  = `${top}px`;
+    popup.style.opacity = '1';
+    popup.style.zIndex = '9999';
+
+    setTimeout(()=>{ popup.style.opacity = '0'; }, 1800);
+    setTimeout(()=>{ popup.remove(); }, 2500);
+  });
+}
+</script>
+
+<div id='content'>
+<style>
+
+.TopTitle{
+  width:515px;
+  font-weight:bold;
+  font-size:16pt;
+  color: #ffffff;
+  background-color:#535365 ;
+  border-width: 0px;
+  border-color:#535365;
+  border-style:solid;
+  background: -moz-linear-gradient(left top, #42435f, #fafaff);
+  background: -webkit-gradient(linear, left top, right bottom, from(#42435f), to(#fafaff));
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#DD42425f', endColorstr='#FFfafaff');
+  
+  text-align:left;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.header3{
+	color:#555588;
+	margin-bottom:16px;
+}
+
+.home-link {
+  font-size: 12px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: underline;
+}
+</style>
+
+<!--戻るリンク、サイトがなくなってたらアーカイブにつながるようにしたが404ページがアレなのかうまくいかない-->
+<!--
+<font id="home-link-placeholder">
+  <noscript>
+    <a href="https://smokingwolf.github.io/" class="home-link">← ホーム(アーカイブサイト)に戻る</a>
+  </noscript>
+</font>
+
+<script>
+(async () => {
+  try {
+    // HEADで軽くチェック（no-corsなのでステータス確認は不可）
+    // 自分のサイトのインフォメーションページにつなげるならサイトがまだあると認識する
+    await fetch("https://silversecond.net/contents/etc/info.shtml", { method: "HEAD", mode: "no-cors" });
+
+    const link = document.createElement("a");
+    link.href = "https://silversecond.net/";
+    link.textContent = "← ホームに戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  } catch {
+    const link = document.createElement("a");
+    link.href = "https://smokingwolf.github.io/";
+    link.textContent = "← ホーム(アーカイブサイト)に戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  }
+})();
+</script>
+-->
+
+<div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
+<!--ここにコメント文-->
+<div class="header3" style="margin-top:6px;">　ここはゲーム開発者SmokingWOLF(スモーキングウルフ)の開発日誌です。<BR>
+　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
+　<B style="color:#ff5555;">※以前のブログが使えなくなったので、ただいまこの開発日誌に移転中です。</B>
+</div>
+
+<div class='article_pos'>開発日誌　3/3</div>
+<div class='nav'><a href='002.html'>次のページ</a> | <span style='color:#ccc'>前のページ</span></div>
+<a id='2020-08-02'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2020-08-02','『ゲーム開発者の地図』 紙版が発売！', this)" style='cursor:pointer;'>2020-08-02 (日)&nbsp;&nbsp;&nbsp;『ゲーム開発者の地図』 紙版が発売！</span><span style='float:right;'><a href='#2020-04-18' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【『ゲーム開発者の地図』 紙版が発売！】</strong></span><br><br>このたび、私が書いた本<br><span style="font-size:large;color:#f44;"><strong>『ゲーム開発者の地図 ～20年の個人開発で学んだこと～』</strong></span><br>の【紙の本】を発売いたしました！<br><br>↓お買い上げはこちらから！　紙の版は【372ページ】となっております。<CENTER><br><table><tr><td align="center"><span style="font-size:large;"><strong><a class="double-link red"  target="_top" href="https://amzn.to/3pqGeAC"><font color="#F44">◆フルカラー本<BR><small>Amazonペーパーバック</small><BR>（￥3,660）</font></strong></span><br><img src="../../image/2020/20200802_03_color_page.jpg" width="140" border="2" loading="lazy" height="122"></a></td><td width="15"></td><td align="center"><span style="font-size:large;"><strong><font color="#44F">◆モノクロ本 (販売終了しました)<BR>（￥2,500）<br><img src="../../image/2020/20200802_03_monochro_page.jpg" width="140" border="2" loading="lazy" height="119"></font></strong></span></td><td width="15"></td><td align="center"><span style="font-size:large;"><strong><a class="double-link red"  target="_top" href="https://www.amazon.co.jp/gp/product/B076VM4ZMS/ref=as_li_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B076VM4ZMS&linkCode=as2&tag=smokingwolf-22&linkId=ee5fbbeb5a364a023ef32b98289bb766"><font color="#999">◆Kindle<BR>電子書籍版<BR>（￥1,080）<BR><img src="../../image/2020/20200802_01_screen1big.jpg" border="2" width="140" loading="lazy" height="88"><BR></a></strong></span>（スマホ/タブレット/PC）</font></td></tr></table></CENTER><br><br>◆こちらが紹介動画です↓<br><iframe width="500" height="280" src="https://www.youtube.com/embed/cwWYvDo_XKU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br><br><br>紙の本のバージョンとしては「フルカラー版」と「モノクロ版」の2つがございます。<br>フルカラーで作ってみたら値段が高すぎて目玉飛び出たので<br>お手頃価格のモノクロ版もご用意しました。<br><hr size="1" /><br><span style="font-size:large;"><strong>【どんな内容？】</strong></span><br><br>私がゲームを開発するときに「どんな意図をもって作っているのか」、<br>「効果的だと考えている手段」や「完成させる作り方とは？」、<br>そういった話題のゲーム開発話を色々まとめた一冊です！<br><br>この開発日誌で評判のよかった記事をまとめたもので、<br>開発者でない方にもそこそこお楽しみいただけるかもしれません。<br>もっぱらRPGのゲームデザインの話が多いとのことです。<br><br>初めての人にはゲーム開発における一つの考え方を提示し、<br>熟練者の人にはこれまでの経験を明文化する一助となったり、<br>色々言われて苦しいときのモチベーション回復の助けになるかも！<br>という感じのことがレビューに書いてあったのですが<br>書いた私自身には効用がないので分かりません。悲しい。<br><br>ほか、皆さまのご感想が気になる人はこちらからどうぞ↓<br><span style="font-size:large;"><a class="double-link red" target="_blank" href="https://twitter.com/WO_LF/timelines/1383276951683559434">【ツイッターでの皆さまのご感想まとめ】</a></span><br><br><hr size="1" /><br>そしてこの本、（知り合いを含む）ゲーム開発会社さまなどでも簡単な教材の一つとして<br>使ってくださっているというありがたいお話もうかがっておりますので、<br>そういった需要にもある程度お応えできると思います。<br><br>Kindleだと全員買わないと読みにくいですが、<br>これなら1～2冊で回し読み可能ですからね！<br>個人的には皆さんに電子版買っていただくのが一番得なので、<br>もちろん電子版で買ってくださっても構いません！<br><br><hr size="1" /><br>という感じで電子版よりはだいぶお高いと思いますが、<br>もし紙版が欲しい方は、よければぜひどうぞ！<br>どれも1本の収益は似たような感じに設定されているので、どれが買われても喜びます！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2020-08-02 (日)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2020%2F08.html%232020-08-02&title=%E3%80%8E%E3%82%B2%E3%83%BC%E3%83%A0%E9%96%8B%E7%99%BA%E8%80%85%E3%81%AE%E5%9C%B0%E5%9B%B3%E3%80%8F%20%E7%B4%99%E7%89%88%E3%81%8C%E7%99%BA%E5%A3%B2%EF%BC%81" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2020%2F08.html%232020-08-02&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2020-08-02','『ゲーム開発者の地図』 紙版が発売！', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/devlog/001.html'>開発日誌</a></span></div></div><br><br><br>
+<a id='2020-04-18'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2020-04-18','TRPGルールを作った話　アナログとデジタルゲームの差', this)" style='cursor:pointer;'>2020-04-18 (土)&nbsp;&nbsp;&nbsp;TRPGルールを作った話　アナログとデジタルゲームの差</span><span style='float:right;'><a href='#2020-04-01' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【TRPGルールを作った話　<br>アナログとデジタルゲームの差】</strong></span><br><br><img src="../../image/2020/20200418.jpg" loading="lazy" height="333"><br><br>今回は普段デジタルゲームを作っている人間から見た、<br>「アナログゲームの作り方」の知見・感想メモ！<br>『旅団世界TRPG』のルールを作ったときに<br>考えていたこと・意図していたことをご紹介します！<br>一言でいうと、<br><strong>「デジタルゲームとアナログゲーム作りってどう違った？」</strong><br>という話ですね。<br><br>これはゲームデザイン工程の一つとして、<br><span style="color:#CC0000"><strong>「過去の自作ルールにどういう問題があると認識していて」<br>「それをふまえてどんな意図でデータやシステムを実現したか」</strong></span><br>という一例として見ていただけますと幸いです。<br><br>もちろん、私の好みや経験不足からの思い込みが相当あると思いますので、<br>その点はあらかじめご了承ください。<br>私の経験値としては過去にアナログゲームのルールを1例作っただけのレベルで、<br>「1～2回作ってみて気付いたこと」くらいのレベルの内容だと思います。<br><br>なお、今回作ったTRPGルールの現物は以下のページにございます！<br><br><a data-primary="http://silversecond.net/contents/game/TRPG/ryodan_sekai_trpg/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/trpg/ryodan_sekai_trpg/"><strong>旅団世界TRPG　基本ルール</strong><br><img src="../../image/etc/banner_ryodan_rule.jpg" border="2" width="400" loading="lazy" height="59"></a><br><br><hr size="1" /><br><span style="font-size:large;"><strong>【最初に　前作のルール作りの反省点】</strong></span><br><br>まず最初に、前作の自作ルールである<a data-primary="https://silversecond.net/contents/game/TRPG/katamichi_trpg/Rule.html" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/trpg/katamichi_trpg/Rule.html"><strong>『＜自家製＞片道勇者TRPG』</strong></a>ルールを<br>作ったときに感じた問題を以下に列挙します。<br><br>そこで発生した問題は、もっぱら私がデジタルゲームとアナログゲームの違いを<br>よく理解していないことから起きたものでした。<br><br><strong>＜1回作ってみて感じた問題点＞</strong><br><br><strong>●人間はたくさんの計算をするのに向いていない<br>●特定条件だけで発生する効果は忘れやすい<br>●ターン持続能力はもっと忘れやすい<br>●デジタルゲームと違って「割り込み」能力は使いやすい<br>●ただし処理の変なところに「割り込み能力」が挟まるとモメやすくなる<br>●「サイコロを振る前にしか使えない能力」には一定の計算時間と心理負荷が発生する<br>●人間はキャラクターシートの書き換えを何％かの確率で必ず忘れる</strong><br><br>それぞれについて見ていきます。<br><br><br><strong>●人間はたくさんの計算をするのに向いていない</strong><br><br>→　<strong>【アイテムの重量計算が地獄すぎる】</strong><br>たとえば＜自家製＞片道勇者TRPGだと<br>持っている保存食の個数が頻繁に変わるのですが、<br>それにともなう「現在重量」の計算が非常に面倒臭くなってしまっていました。<br>アイテムの総重量計算をスプレッドシートで自動化しないと大変なほどだったので、<br>市販の有名なファンタジーTRPGルールに「所持重量」の概念がないのは、<br>リアルさの面では変なのですが、経験から導き出された『英断』なのだなと感じました。<br>重さの計算だけでプレイ時間の何割かでも持っていかれたら悲しいですもんね。<br><br>→　<strong>【成長すると時間がかかっていく】</strong><br>さらに、キャラクターが成長すると「持っている能力」が増えていき、<br>より良い解を探すパターンが増えたり、計算する補正が増えていく都合上、<br>1処理にかかる時間が単純に増えてしまいがちでした。<br>「能力の数が多い」というだけでも、<br>計算だけでプレイ時間が埋まっていく要因になりがちです。<br><br>→　<strong>【自分で補正を計算させるシステムより……】</strong><br>他にも装備の性能違いによる金額補正が複雑で、性能差の倍率計算がいっぱい入ると<br>ざっくり価格がいくらになるのか直感的に分かりづらくなっていたところがありました。<br>これなら最初から、その倍率で金額計算した後の「性能・価格違いの別アイテム」を<br>たくさん作って載せておく方がよかったなと感じます。<br><br>こういう失敗をすると、市販TRPGで「ちょっとずつの性能差しかない武器」が<br>別の名前でいっぱい用意されていたりするのも、<br>自力で武器の性能を計算させるよりはよい配慮なんだということがよく分かりました。<br><br><br><br><strong>●特定条件だけで発生する効果は忘れやすい</strong><br><br>→　たとえば自分の種族の特徴として、「沼地では命中判定＋2」<br>みたいなパッシブ能力があったとしましょう。<br>しかし今いるのが「沼地」であることを強く意識できないゲームだったりすると、<br>発動条件に当てはまっていることに気付かず、補正するのをたまに忘れがちです。<br><br><br><strong>●ターン持続能力はもっと忘れやすい</strong><br><br>→　たとえば「この攻撃を使うと『次のターン』の命中判定に＋2」、<br>みたいなスキルがあるとします。<br>こういう能力、結構な頻度で「次のターンの命中補正」を忘れてしまいます。<br>なのでスキルは、「使った時点で効果を発揮して、後に残らないようにする」のが<br>人間の記憶負荷の面ではやさしいなと感じました。<br><br><br><br><strong>●デジタルゲームと違って「割り込み」能力は使いやすい</strong><br><br>→　たとえば敵の攻撃を見てから割り込みで使える「かばう」能力がある場合、<br>それがデジタルゲームならば敵が攻撃してくるたびに毎回、<br>「この攻撃をかばいますか？　はい/いいえ」と聞いてくることになったりして、<br>プレイヤー的に面倒くさいことになってしまいがちです。<br>（もちろん、うまくやる方法はいくらでもありますけども）<br><br>ですが一方で、TRPGのようなアナログゲームならば<br>敵の攻撃を見てから【かばう】スキルを宣言して攻撃ターゲットを自分に変える、<br>攻撃が命中しなかった後に【必中】スキルを宣言して命中力を上げて当てる、<br>といった「処理に割り込んで使う」能力を、非常に簡単に処理することができます。<br><br>この辺りは、デジタルとアナログの差が特に出やすいところだと感じました。<br><br><br><br><strong>●ただし処理の変なところに「割り込み能力」が挟まるとモメやすくなる</strong><br><br>→　スキルの使用タイミングによっては、<br>うっかり次々処理を進めるとプレイヤーさんからの割り込み宣言が間に合わず<br>「あ、そこでXX使いたかったのに先に進めやがって！」<br>となってモメる状況が出てくる場合が出てきます。<br><br>たとえば「この能力は命中側がサイコロを振った後、<br>回避側のサイコロを振る『前』に使う」など<br>使用のタイミングがシビアな能力の場合、回避側が（他の人が持っている）そのスキルの<br>存在を忘れてパパッとサイコロを振ってしまい、モメたりするシーンが発生しがちです。<br>なのでテンポ良くやった場合でも、そういう事態が<br>そもそも起きない仕様で作るべきだと感じました。<br><br><br><strong>●「サイコロを振る前にしか使えない能力」には一定の計算時間と心理負荷が発生する</strong><br><br>→　これを問題と捉えるかどうかは、好みの問題だと思います。<br>一つ上と似た話ですが、サイコロを『振る前』に<br>スキル使用を宣言することが多いシステムの場合、<br>・ガチ勢は「今回どのスキルを使うべきか」確率や期待値を計算し出し、<br>・一方で不慣れな人はどうすればいいか迷ってしまって、<br>一手一手のテンポが遅くなってしまいがちでした。<br>まあ、主に私がそうだったんですが！<br><br>たとえば数回しか使えない<br>「サイコロを『振る前』に使うと命中結果に＋2できる」能力を<br>適切なタイミングで切るのってかなり難しいんですよ。<br>さらに「使うべきところで使わなかった後悔」も<br>「使わなくてもいいところで使ってしまった後悔」も<br>生まれやすいので、ゲーム慣れしてない人には心理的にキツいところもあります。<br><br><br><strong>●人間はキャラクターシートの書き換えを何％かの確率で必ず忘れる</strong><br><br>→　これまで全てのリプレイにおいて、HPやSTなどをどこかで減らし忘れていて<br>データのつじつまが合わないことが頻繁に発生していました。<br>人力でやるので多少のミスはしょうがないとしても、<br>なるべくミスの頻度を減らしたいと思います。<br><br><hr size="1" /><br><span style="font-size:x-large;"><strong>【今回作ったルールの方向性】</strong></span><br><br>言いたかったメインの話はここまでで95％くらい言えたので、<br>ここからは実質オマケです。<br><br>さて、上記の問題をふまえてルールを作ろうと考えた結果、<br>今回の『旅団世界TRPG』ルールは前回と比べ、<br>以下のような方向性で作ることになりました。<br>1つめはシステム面、それ以外はデータ作りに関するお話です。<br><br><strong>●管理するデータ量を少なくした<br>●多くのスキルは確率消費で、「未消費」か「消費済み」の2択の状態だけにした<br>●スキル効果は「後出し」で使えることを重視した<br>●ターン持続能力は基本的に作らないようにした</strong><br><br>それぞれについて見ていきます。<br><br><br><span style="font-size:large;"><strong>●管理するデータ量を少なくした</strong></span><br><br>まず最初に、キャラクターの持てる最大データ数に以下の制限を設けることにしました。<br><br><strong>・どんなに成長しても「所有できるスキルは最大10個」まで<br>・「冒険に持って行ける装備スキルは3つ」まで<br>・「所有できるアイテムは通常3～6個まで」</strong><br><br>上2つに関しては、どんなに習得済スキルがあっても、<br>装備スキルを3つ選んで冒険に出発すれば、<br>冒険中は基本はそのスキル3つだけを注視していればいい形にしています。<br><br>通常、TRPGは成長していくほど一気に<br>大量の技を使えるようになったり選択肢が増えていったりして、<br>一手の処理時間が増えてしまいやすいので、リプレイ収録にあたって<br>そういったプレイコストを上げたくなかった、というのが、こうした理由の一つです。<br><br>で、熟練者PC（プレイヤーキャラクター）も初心者PCも、<br>通常は同じ装備スキル数3つでやっていくので、<br>通常時は発揮できる能力にあまり差が出ないのも特徴です。<br><span style="font-size:x-small;">（危険な状況では、熟練者PCの側は「経験点」を間接的に消費して追加の活躍もできます。<br>それを使った場合、初心者PCとの経験点の差は縮まっていくことになりますし、<br>まったく使わなければ初心者PCとほぼ同じ活躍度になります）</span><br><br>また、「保存食」の管理などは基本ルール上ではおこなわないことにしました。<br>シナリオに応じて、必要なときにそういった処理を付け足す感じになるでしょう。<br><br><br><br><span style="font-size:large;"><strong>●多くのスキルは確率消費で、「未消費」か<br>「消費済み」の2択の状態しかないようにした</strong></span><br><br>シートを書き換える回数が増えるほど数値の更新ミスが出てくるので、<br>今回は試しに、ほとんどのスキルではMPやSTなどの<br>ポイントを消費するような形にせず、<br>スキルが「消費」されるかどうかはもっぱら「判定」で決定するようにしました。<br><br>多くのスキルは使う前に「維持判定」のサイコロを振り、<br><strong>「一定以上の出目なら次も使える」、<br>「出目が一定を下回るとスキルが『消費済み』になる」、</strong><br>という形にしています。<br>消費しなかった場合はシートを何も書き換える必要がなく、<br>消費済みになったら「×」を付けるだけです。<br><br>さらにスキルを消費するかどうかが運任せになるので、<br>「ぐわースキルなくなっちゃったぁぁ！」<br>といったリアクションが起きやすいのがこのルールの特徴です。<br>それならばシートの書き換え忘れが起きても、他の人が<br>「あれ、さっきスキル消耗してなかった？」と教えてくれるかもしれません。<br><br>一方でバランス面では、いつスキルが使えなくなるかが不透明になるので、<br>少し玄人向けの味になっているでしょう。<br>あと、MP制などのポイントを減らす方式より、<br>維持判定のサイコロを振る分の手間が増えてしまいます。<br><br>ですが、戦いが続いた場合の「全員の残りスキル」の減り具合が異なってくるおかげで、<br>「いま残っているスキル」に応じた適切な判断をおこなったり、<br>「セッションごとのキャラの活躍度」にランダム性が出やすくなったりするので、<br>「状況の変化を生みたいリプレイ収録」においては悪くない設計かなと考えています。<br>自分の予定した通りに遊びたい人には、<br>こういった処理のスキルは全然向かないと思います。<br><br><br><br><span style="font-size:large;"><strong>●スキル効果は「後出し」で使えることを重視した</strong></span><br><br>『旅団世界TRPG』ではサイコロを振った「後」で使える能力が多く用意されています。<br>ほとんどはサイコロを振って結果が出た後、<br>その結果をねじまげるためにスキルを使います。<br><br><span style="font-size:large;">・利点：サイコロだけでも先に振ってもらってテンポを良くできる。</span><br>→　ほとんどの結果補正スキルは「後出し」で使えるようにして、<br>スキル使用による成功率の計算などを気にせず、<br>とりあえず判定のサイコロだけを先に振ってもらえるようにしました。<br>これがそこそこテンポ向上に役立つ感じでした。<br><br>ただし、「『気力』消費による振り直し」システムのような、<br>「判定前」に使う成功率アップの能力自体は、少ないながらも用意されています。<br>「気力」は割といっぱい気軽に使えるので、とにかく成功させたい場面で<br>あんまり長考せずにバンバン使っていただきたいですね！<br><br><br><span style="font-size:large;">・利点：後出しの方がスキルのありがたみが出る。</span><br>→　サイコロを「振る前」に使う「判定の結果に＋2」のようなスキルを使ったとき、<br>「スキルを使ったものの、出目がよくて使う意味がなかった」<br>ということがたまに起きます。<br><br>ですが、今作はスキルの効果に『ありがたみ』を感じて欲しいと思ったので、<br><strong>「サイコロを振ってうまくいかなかった場合に、スキルを使ってむりやり成功させる」<br>「サイコロを振ってうまくいったことが分かった場合に<br>スキルを使ってさらにブーストする」</strong><br>という後出し効果を主に用意することにしました（「サイコロを振った後に使うと結果に＋2」など）。<br><br>冒険に持っていける装備スキルも「たった3つ」と少ないですから、<br>ここは「自分がスキルを取っていたおかげでうまくいった」と<br>強く感じてもらいたかった、という意図です。<br><br><br><span style="font-size:large;">・「振る前に使って欲しい能力」にも「後出し効果」を設定した。</span><br>→　作者として「サイコロを『振る前』に使ってもらいたい補助スキル」が<br>あったとしても、今回はそれに<br>「振った後に使った場合、効果は弱くなるが補助効果自体は発揮される」<br>という効果を付けるようにしました。<br><br>たとえば、【重量習熟II】スキルはダメージアップのスキルで、<br>「命中判定のサイコロを振る前に使えばダメージ【＋5】」（攻撃を外すと無駄になる）<br>ですが、後出しの効果として<br>「攻撃が当たったのが分かった後に使うとダメージ【＋3】」としており、<br>効果が減るものの、いちおう後出しでも効果が発揮できるようにしています。<br><br>こうしておくことの利点として、<br>「あースキル使い忘れた！　もうサイコロ振っちゃったけど使ったことにしていい？」<br>みたいなウッカリまたはズルをそもそも発生させないようにして、<br>モメる回数を減らすことにもいくらかつなげられるだろうと考えました。<br><span style="font-size:x-small;">（後出し用の効果が記載されていれば、このように本当にうっかり忘れていた場合でも、<br>スキル説明に書いてある「振った後の効果」の方を適用するように、とゲームマスターから言いやすくなります）</span><br><br>「モメることが減る」というのはアナログゲームではけっこう助けになる気がするので、<br>「プレイヤーがうっかりしてしまった場合にも適用できる効果」を<br>先にルール的に設定しておくのは結構アリだと思っています。<br><br><br><br><span style="font-size:large;"><strong>●ターン持続能力は基本的に作らないようにした</strong></span><br><br>先ほど、能力は「使った時点で効果を発揮して、後に残らないようにする」のが<br>記憶力に優しい造りだと言いました。<br>また、アナログゲームだと「割り込み」処理も扱いやすいということも言いました。<br><br>なので、今回はほとんどの補助効果のスキルを<br>「あらかじめ使っておく」ような形でなく、<br><strong>「必要になったときに【割り込み】で使う形にし、処理が終われば<br>一切の持続効果などをもう覚えておく必要がない」</strong><br>という形にすることを考えました。<br>これなら記憶するコストを払わなくていいので楽ですし、<br><strong>次以降のターンのために、いま発揮されている効果のメモを取る必要もありません。</strong><br><br>GMやプレイヤーがみんな疲れてくると戦闘でいま何ターン経ったかも忘れがちで、<br>持続効果がまだ残ってるかどうか怪しくなる場合があるので、<br>こういった点も、ややこしい事態を減らす工夫の一つかもしれません。<br><br>一方で、デジタルゲームから入った人にはこの「割り込み」の処理が直感的でなく、<br>逆に分かりにくくなる場合も多いだろうなと思っています。<br>初めての人には割り込み処理が基本的になく、ターン持続能力が多めの、<br>デジタルゲーム寄りのシステムの方が入りやすいかもしれません。<br><!--<hr size="1" /><br><span style="font-size:x-large;"><strong>【サイト作りでやったこと】</strong></span><br><br><span style="font-size:large;"><strong>●スマートフォン用とパソコン用ページの両立</strong></span><br><br>「Kindleから飛んできた人はたぶんほぼスマホだから、<br>ルールのページもスマホ対応にしなきゃいけないじゃん！」<br>ということに気付き、初めてのモバイル・パソコン両対応の<br>ルールページを作ることになりました。<br><br>→　<span style="font-size:large;">【ハンバーガーメニューは今回は合わなかった】</span><br>よく「三」を押すと横からニュッと出てくる「ハンバーガーメニュー」、ありますよね。<br>あれも最初、スマートフォンモード用にdrawerやら何やらを調べて試しに搭載してみました。<br>ですが、使い勝手はイマイチでした。<br><br>次に、今どきのスマホゲームみたく、<br>「下部ボタンで章を選ぶ　→　各章頭で細かいリンクを選ぶ」<br>というやり方にしてみると、選択のテンポが圧倒的によくなりました。<br>今回は「章」が少なかったので使えたやり方ですが、<br>「スマホゲームのメニュー処理はよく採用されているだけあって<br>やっぱりすばらしい方式だな！」と再認識しました。<br><br><img src="../../image/2020/20200418B.jpg" border="1" loading="lazy" height="368"><br><span style="font-size:x-small;"><strong>↑スマホモード用画面。下部のボタンから各章へ飛べます</strong></span><br><br><br>いちおう、端末に応じてスマホかパソコンかの「表示モード」が自動的に選択されますが、<br>文字サイズの大小や、でっかい画面のモバイル機器で「PCモード」で見たいときも<br>あると思ったので、手動での切り替えも可能にしています。<br><br>デジタルゲームでもそうですが、好みが分かれる部分は、<br>最終的にオプション切り替えでご自分で選んでもらう形が親切かなと考えています。<br>--><br><hr size="1" /><br>といった感じで、普段のコンピュータゲーム作りとは違いますが、<br>今回のTRPGルール作りはこんな意図でやってみましたよ、というご紹介でした。<br><br>とは言え、「私がどうやったか」の部分はぶっちゃけどうでもよくて、<br>今回は前半の「何も考えずにアナログゲームを作るとこういう問題が起きるよ」<br>というところが重要な話だと思います。<br><br>知ってる人からしたらたぶんヒヨコレベルの常識だと思いますけれど、<br>よくできた市販品だとすでにその辺りに配慮されていて<br>最初から問題が起きないように作られているため、<br>この辺りは実際に自分で作ってやってみないと分からないことばかりでした。<br><br><hr size="1" /><br>さて、最後は逆に、「アナログゲームから見たデジタルゲーム」の強みや弱点を<br>一言ずつ述べて、今回のお話の締めとさせていただきます。<br>アナログゲームを作ってみたからこそ分かる、デジタルゲームのありがたみの数々！<br><br><br><span style="font-size:large;"><strong>【デジタルゲームの強みと弱点】</strong></span><br><br><strong>●ルールミスをしないので、複雑すぎる計算や複雑なルールも平気で搭載できる。<br>戦闘の計算式が分からないことさえもはや日常的。<br>特に架空の物理演算ができるのはデジタルゲームならでは。<br><br>●大量のパッシブ能力やアイテムがあっても平気で処理できるので、<br>主人公のリソースや能力が質・量的に<br>どんどんインフレしていくゲームに非常に向いている。<br><br>●アイテムの重量計算も簡単なので、<br>「大量の細かいアイテム」を拾えるゲームにしたり、<br>所持重量に限界が設定されたシステムも楽に作ることができる。<br><br>●ターン持続能力が100個くらい付いても一瞬で計算できるし、<br>残りターン数も間違えないので、一定ターン持続する補助もかけ放題。<br>特殊な状況でのみ自動発動するパッシブ能力が無数にあっても間違えない。<br><br>●一方でデジタルゲームで「割り込み能力」や「後出し能力」を作ると、<br>プレイヤーに質問するタイミングが増えすぎて面倒臭くなりがちなので、<br>ターン制なら能力は「各キャラのターンが回ってきた時」だけで<br>使用指示するのが一般的。<br>（毎回かばうか聞くのでなく、「かばう」すると<br>HPの減った仲間を自動でかばう状態になる、など）<br><br>●人間のような柔軟なルール運用はできないので、制作者側は<br>状況ごとの処理を非常に細かく指示する必要がある。漏れがあるとバグになる。</strong><br><br><br>特に最後の1個は、デジタルゲームの制作コストが高くなりやすい原因の一つでしょう。<br>でも作るのが大変な分、「人間がゲームマスターをしなくていい」のは<br>ものすごい強みです。<br>その分、たくさんの人に「体験」を届けられますからね！<br><br>一方で、アナログゲームもといTRPGならではの、<br>プレイヤーの人を交えた予想外の発想の広がり方もとても好きなので、<br>私個人としてはデジタルとアナログゲーム、<br>どちらの面白さもいい感じに皆さんに伝えていければいいなと思っております。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【よければこのルール、お好きにご利用ください】</strong></span><br><br>そんなわけで、これまで書いたような意図で作った『旅団世界TRPGルール』！<br>「ちょっと難しめでもいいからちょっとTRPGやってみたいんだけど！」<br>という方は、必要でしたらよければぜひご利用ください。<br>そしてまず遊ぶお友達を集めるところで厳しい現実を味わってみてください！<br><br><br>また、このルールが理想と違ったり、物足りなくなったら、<br>このルールをアレンジして使っても構いません。<br>（それを「ハウスルール」と言うそうです）<br><br>さらには、部分的に参考にしつつ、新たに自分でゲームのルールを作って<br>お友達に遊んでもらったりするのもいいと思います。<br>それもまた、ゲーム開発の一つの形！<br>そうやってゲーム作りのステップアップの架け橋になれれば、私も幸いです。<br><br><a data-primary="http://silversecond.net/contents/game/TRPG/ryodan_sekai_trpg/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/trpg/ryodan_sekai_trpg/"><strong>旅団世界TRPG　基本ルール</strong></a><br><br><hr size="1" /><br>ちなみに今回作ったルールによるリプレイ<br>『旅団世界TRPGリプレイ①　緑の旅団と黒ヤギの悪魔』<br>はただいま好評発売中です！<br>読み放題（Kindle Unlimited）ならタダ読みできますのでよければぜひ。<br>↓<br><a class="double-link red" target="_blank" href="https://www.amazon.co.jp/dp/B085CG89YR/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=sitesw-22&linkId=ba8950e4091e4738831e22887df85744&language=ja_JP">Amazon購入ページへ<SMALL>（Kindle本￥942、Kindle Unlimited加入者なら￥0）</SMALL><BR><img height="250" border="2" src="../../image/2020/20200307C.jpg" loading="lazy"></a><br><br><br>チュートリアルリプレイ（↑の本の第1話）を見たい人はこちら！（無料）<br>どんな風にルールが使われているか把握することができます。<br>↓<br><a data-primary="http://silversecond.net/contents/game/TRPG/ryodan_sekai_trpg/replay01.shtml" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/trpg/ryodan_sekai_trpg/replay01.html"><B>旅団世界TRPG　チュートリアルリプレイ</B><br><img src="../../image/etc/banner_ryodan_replay1.jpg" width="60%" border="2" loading="lazy" height="103"></a></CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2020-04-18 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2020%2F04.html%232020-04-18&title=TRPG%E3%83%AB%E3%83%BC%E3%83%AB%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%9F%E8%A9%B1%E3%80%80%E3%82%A2%E3%83%8A%E3%83%AD%E3%82%B0%E3%81%A8%E3%83%87%E3%82%B8%E3%82%BF%E3%83%AB%E3%82%B2%E3%83%BC%E3%83%A0%E3%81%AE%E5%B7%AE" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2020%2F04.html%232020-04-18&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2020-04-18','TRPGルールを作った話　アナログとデジタルゲームの差', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/devlog/001.html'>開発日誌</a></span></div></div><br><br><br>
+<a id='2020-04-01'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2020-04-01','2020年エイプリル！', this)" style='cursor:pointer;'>2020-04-01 (水)&nbsp;&nbsp;&nbsp;2020年エイプリル！</span><span style='float:right;'><a href='#2020-01-20' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【2020年エイプリル！】</strong></span><br><br>ということで、今年もウソじゃないエイプリルフール発表を行いました！<br><br>製品そのものは先行してもう出ちゃってますが、今回は<br><strong>TRPGリプレイ物語本『旅団世界』シリーズ開始</strong>のお知らせです！<br><br><a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/event/2020_april/2020_april.html"><span style="font-size:large;"><strong>2020年エイプリルページ　『旅団世界』シリーズ開始のお知らせへ</strong></span><br><img src="../../image/2020/20200401.jpg" border="2" loading="lazy" height="504"></a><br><strong><span style="font-size:x-small;">↑クリックでこの続きが見られるページへ飛びます</span></strong><br><br><br>本作は、私がゲームを作れない時間をうまく活用しようという前提のもと、<br>「何でもいいからスモーキングウルフ味のコンテンツ見たい！」<br>という人に向けて始まったプロジェクトです。<br><br>スマホ一台あればちょっとした編集作業くらいできるこのご時世、<br>移動中であろうが体を起こせない状況であろうが（暇な）監視業務中であろうが、<br>本の編集や校正作業なら可能です！<br><br>ついでに私は、個人的にTRPGを遊べる機会があるなら遊びたい派なので、<br>自然と数年単位で長く続けられそう、というのもこのプロジェクトを始めた動機です。<br><br><br>そして実は、推定読者10人に1人以上の割合ですでに「人気投票」もいただいております！<br>いつも応援してくださる皆さま、本当にありがとうございます！<br><br>ひとまず、エイプリルお知らせページから飛べる今回の目玉コンテンツを<br>こちらでもご紹介させていただきます。<br><br><hr size="1" /><br><a data-primary="http://silversecond.net/contents/game/TRPG/ryodan_sekai_trpg/replay01.shtml" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/trpg/ryodan_sekai_trpg/replay01.html"><span style="font-size:large;"><strong>◆旅団世界TRPGリプレイ　『チュートリアル回』</strong></span><br><img src="../../image/etc/banner_ryodan_replay1.jpg" border="2" width="400" loading="lazy" height="127"></a><br><br>新ルールによるプレイの様子を読み物にした「リプレイ」です。<br>旅団世界TRPGのルールでどうプレイするの？　という見本になっていますが、<br>リアルの人間たちが描き出す一つのお話としてもお楽しみいただけます。<br><br>すでに過去のプレイをご存じの方は、<br>割といつも出目が悲惨なブリンク（元ンク/ワイズマン）の人が<br>今回ついに大事故を起こしてしまう展開は必見！<br><br><hr size="1" /><br><a class="double-link red" target="_blank" href="https://amzn.to/33ZJEhG"><span style="font-size:large;"><strong>◆Amazonページ　旅団世界TRPGリプレイ①<br>『緑の旅団と黒ヤギの悪魔』</strong></span><br><img src="../../image/2020/20200307C.jpg" border="2" width="200" loading="lazy" height="285"></a><br>税込942円　Kindle Unlimitedなら￥0<br><br>こちらは上の『チュートリアル回』から始まる、計6セッションのお話を1冊にしたもの！<br>Amazon換算で838ページ分になるそうなので<br>4人の冒険をたっぷりお楽しみいただけます！<br><br>これの「第2巻」は2021年発売予定！<br>1年1巻くらいのペースで、ゆっくり出せればと考えております。<br>それ以上やるとゲーム開発の時間もだいぶ割かねばなりませんからね。<br><br><hr size="1" /><br>今のところ新シリーズというのもあって手間賃も加味すると赤字ですが、<br>本来お金につながらない時間を使えているという点ではだいぶプラスなので、<br>どんなに結果が出せなくても「2巻」か「3巻」くらいまではやるつもりでいます。<br><br>個人で新しく何かをする場合、こういうのは3～5年くらい続けないと<br>どうなるか分からないので、当面は結果にかかわらず、<br>まったり育てていきたいと考えています。<br><br><hr size="1" /><br>ということで、これから始まる『旅団世界』シリーズの展開、<br>興味がある方はどうぞよろしくお願いいたします！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2020-04-01 (水)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2020%2F04.html%232020-04-01&title=2020%E5%B9%B4%E3%82%A8%E3%82%A4%E3%83%97%E3%83%AA%E3%83%AB%EF%BC%81" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2020%2F04.html%232020-04-01&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2020-04-01','2020年エイプリル！', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/devlog/001.html'>開発日誌</a></span></div></div><br><br><br>
+<a id='2020-01-20'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2020-01-20','会話動画[1/25の記事はおやすみです]', this)" style='cursor:pointer;'>2020-01-20 (月)&nbsp;&nbsp;&nbsp;会話動画[1/25の記事はおやすみです]</span><span style='float:right;'><a href='#2020-01-01' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【会話動画の準備中（1/25の記事はおやすみです）】</strong></span><br><br>出張につき、今週の土曜日の1/25は更新できないので早めの更新です！<br><br><span style="font-size:x-small;"><strong>動画の準備中です</strong></span><br><img src="../../image/2020/20200120.jpg" border="1" loading="lazy" height="281"><br><br>ただいま『片道勇者2』の開発も進めながら、その脇で<br>簡単なキャラクター会話動画を作れるように準備しています。<br>動画編集ツールがいいおかげで、仕組みさえ作れれば<br>あとはテキスト流し込むだけでババーッと簡単に作れるのでお手軽！<br>今は仕組みのところを整備中です。<br><br>何を動画化するのかというと、ノベライズ企画のときに作った<br>まだ表に出していない「キャラクター同士の会話見本資料」があったので、<br>それを動画にしてお楽しみいただこうかなと考えています。<br>もちろん小説版の販売促進運動も兼ねて！<br><br>今のところノベライズは隠れた名作的な感じになってますから、<br>もう少し色々PRしていきたいところです。<br>あとついでに動画を高速で作る練習もあります。<br><br>ということで片道勇者ノベライズ、<br>『片道勇者　滅びの闇と繰り返す英雄』、ただいま好評発売中です！　<br>電子版の方がお安いのですが、電子版の方が<br>私の懐がうるおいますのでダブルでお得です。まだの方はよかったらぜひ！<br><br><a class="double-link red" target="_blank" href="https://www.amazon.co.jp/%E7%89%87%E9%81%93%E5%8B%87%E8%80%85-%E6%BB%85%E3%81%B3%E3%81%AE%E9%97%87%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%99%E8%8B%B1%E9%9B%84-%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%83%8E%E3%83%99%E3%83%AB%E3%82%B9-%E7%B4%85%E4%BB%97-%E7%9B%B4-ebook/dp/B07YLHBNWT/ref=as_li_ss_il?_encoding=UTF8&qid=1567321009&sr=1-1&linkCode=li3&tag=smokingwolf-22&linkId=ba651b0464bd9617a7662ca4a128deb5&language=ja_JP"><img border="2" src="../../image/etc/banner_katamichi_novel.jpg"  loading="lazy" height="330"><br><strong>『片道勇者　滅びの闇と繰り返す英雄』</strong><br>Amazon販売ページへ<br>[書籍版 <strong>￥1,540</strong> / Kindle版 <strong>￥1,386</strong>]</a></CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2020-01-20 (月)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2020%2F01.html%232020-01-20&title=%E4%BC%9A%E8%A9%B1%E5%8B%95%E7%94%BB%5B1%2F25%E3%81%AE%E8%A8%98%E4%BA%8B%E3%81%AF%E3%81%8A%E3%82%84%E3%81%99%E3%81%BF%E3%81%A7%E3%81%99%5D" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2020%2F01.html%232020-01-20&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2020-01-20','会話動画[1/25の記事はおやすみです]', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/devlog/001.html'>開発日誌</a></span></div></div><br><br><br>
+<a id='2020-01-01'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2020-01-01','2020年あけまして！', this)" style='cursor:pointer;'>2020-01-01 (水)&nbsp;&nbsp;&nbsp;2020年あけまして！</span><span style='float:right;'><a href='#bottom' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【2020年あけまして！】</strong></span><br><br>おかげさまで無事、2020年をむかえることができました！<br>あけましておめでとうございます！<br><br><strong><span style="font-size:x-small;">開発日誌のマスコット、ラッシー冬衣装　＆　『シルエットノート』よりリス</span></strong><br><img src="../../image/2020/20200101.jpg" border="1" width="500" loading="lazy" height="511"><br><br><br>今年の目標は前回の21周年記事で書いた通り、<br><br><strong>●『片道勇者2』のα2リリース。<br>●『片道勇者2』製品版に向けてのデータ実装。<br>●電子書籍コンテンツを出す。</strong><br><br>の3つです！<br><br>色々ありますが、引き続き、体にだけ注意して<br>マイペースに進めていこうと思います。<br>並行プロジェクトも色々進んでいるので、そちらもいくつかは実るはず！<br>何かは出していきたいですね。<br><br>それでは今年も1年、よろしくお願いいたします！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2020-01-01 (水)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2020%2F01.html%232020-01-01&title=2020%E5%B9%B4%E3%81%82%E3%81%91%E3%81%BE%E3%81%97%E3%81%A6%EF%BC%81" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2020%2F01.html%232020-01-01&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2020-01-01','2020年あけまして！', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/devlog/001.html'>開発日誌</a></span></div></div>
+<div class='article_pos'>開発日誌　3/3</div>
+<div class='nav'><a href='002.html'>次のページ</a> | <span style='color:#ccc'>前のページ</span></div>
+<a id='bottom'></a>
+
+<BR><BR>
+<div align="right"><a href="#top" class="g">▲一番上へ戻る</a></div>
+<BR>
+<CENTER>
+<HR>
+<div>
+<div id="silsec-status" style="display:inline-block;line-height:12px;font-size:10px;"></div>　<div align="center" style="display:inline-block;line-height:12px;font-size:10px;"><a href="https://smokingwolf.github.io/" target="_blank" class="blue" border="1"><img src="https://smokingwolf.github.io/banner.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>アーカイブサイトへ</a></div>
+</div>
+<HR>
+Copyright © SmokingWOLF / Silver Second
+<HR>
+</CENTER>
+
+
+<script>
+  // シルバーセカンド公式のドメインに接続し、サイト存在確認用のTXT(SILVERSECOND_ALIVE!と書かれている)があれば存在する扱いにする
+  const statusDiv = document.getElementById('silsec-status');
+  const checkUrl = 'https://silversecond.net/SILVERSECOND_SITE_ALIVE_FLAG.txt';
+
+  fetch(checkUrl, { cache: 'no-store' })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('ネットワークエラー');
+      }
+      return response.text();
+    })
+    .then(text => {
+      if (text.trim() === 'SILVERSECOND_ALIVE!') {
+        statusDiv.innerHTML = '<a href="https://silversecond.net/" target="_blank" class="blue"><B><img src="https://silversecond.net/banner/a.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>運営中のサイトへ</a>　';
+      } else {
+        statusDiv.textContent = '　';
+      }
+    })
+    .catch(error => {
+      statusDiv.textContent = '　';
+      console.error('シルバーセカンド公式サイトチェック失敗:', error);
+    });
+</script>
+
+
+
+
+</div>
+<div id='sidebar'>
+<div style='font-weight:bold;'>開発日誌</div>
+<div><a class='sidebar_link' href='../../archive/top/index.html'>日誌トップへ</a></div>
+<div><B><a class='sidebar_link' href='../../index.html'>全記事一覧</a></B></div>
+<hr>
+<div style='font-weight:bold;'>【最新記事】</div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/08.html#2025-08-24'>●08/24 第17回ウディコン結果発表！　上位3作品とピックアップ紹介！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/08.html#2025-08-09'>●08/09 『シルバーセカンド思い出の部屋』を開設！＋ 来年よりウディコン規約追加</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-26'>●07/26 第17回ウディコン審査期間開始！ ＆ 規約の補足</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-12'>●07/12 ウディコン直前！ サイト＆ウディタ修正＋シェパード捜査録！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-28'>●06/28 ウディコン準備中！+ 開発日誌も移転作業中</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-14'>●06/14 サイト修正＋開発日誌をFC2から移転！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-31'>●05/31 ウディコン歴史資料館設立！+ ウディタ修正 + GitHubのサイト作り</a></div>
+<hr>
+<div style='font-weight:bold;'>【カテゴリ】</div>
+<div><a class='sidebar_link' href='../../category/woditor/001.html'>ウディタ&nbsp;<span class='sym'>(66)</span></a></div>
+<div><a class='sidebar_link' href='../../category/owh2dev/001.html'>片道勇者2&nbsp;<span class='sym'>(31)</span></a></div>
+<div><a class='sidebar_link' href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(25)</span></a></div>
+<div><a class='sidebar_link' href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(14)</span></a></div>
+<div><a class='sidebar_link' href='../../category/owh/001.html'>片道勇者&nbsp;<span class='sym'>(11)</span></a></div>
+<div><a class='sidebar_link' href='../../category/trpg/001.html'>TRPG&nbsp;<span class='sym'>(9)</span></a></div>
+<div><a class='sidebar_link' href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(2)</span></a></div>
+<hr>
+<div style='font-weight:bold;'>【月別】</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2025-btn' onclick="toggleYear('y2025')">2025&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2025' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2025/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2024-btn' onclick="toggleYear('y2024')">2024&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2024' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2024/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/01.html'>01月&nbsp;<span class='sym'>(2)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2023-btn' onclick="toggleYear('y2023')">2023&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2023' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2023/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/09.html'>09月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2022-btn' onclick="toggleYear('y2022')">2022&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2022' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2022/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2021-btn' onclick="toggleYear('y2021')">2021&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2021' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2021/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2020-btn' onclick="toggleYear('y2020')">2020&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2020' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2020/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/07.html'>07月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('a.double-link');
+
+  links.forEach(link => {
+    const primaryUrl = link.dataset.primary;
+    if (!primaryUrl) return;
+
+    const testUrl = primaryUrl + '?t=' + Date.now(); // キャッシュ無効化！
+
+    fetch(testUrl, { method: 'GET', cache: 'no-store' })
+      .then(res => {
+        const url = res.url || '';
+        if (!res.ok || url.includes('404.html') || res.status === 404) {
+          console.warn('【404または失敗】そのままアーカイブを使います:', link.href);
+          // そのまま
+        } else {
+          console.warn('【OK】hrefを本家に書き換えます:', primaryUrl);
+          link.href = primaryUrl;
+        }
+      })
+      .catch(() => {
+        console.warn('【通信エラー】そのままアーカイブを使います:', link.href);
+        // エラー時もhrefはそのまま
+      });
+  });
+});
+</script>
+
+
+
+</body>
+</html>

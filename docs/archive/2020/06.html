@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>シルバーセカンド開発日誌 / SmokingWOLF</title>
+<meta name="viewport" content="width=720">
+<script src="../../js/smoothscroll_up.js" type="text/javascript"></script> 
+
+<link rel="stylesheet" href="../../js/litebox/css/lightbox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../../js/litebox/js/prototype.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/moo.fx.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/litebox-1.0.js"></script>
+
+<style>
+html {
+  /* スマホ時は1.2倍フォントで表示 */
+  -webkit-text-size-adjust: 120%;
+  -ms-text-size-adjust: 120%;
+}
+
+BODY{
+  /*display:flex;*/
+  font-size:13px;
+  margin:0;
+  font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+  color:#558;
+}
+
+TD{
+  font-size:12px;
+}
+
+
+A:LINK,A:VISITED {  color:#5658f6;  text-decoration:underline ;}
+A:HOVER,A:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.red:LINK,A.red:VISITED{color:#d6385c;display: inline-block;text-shadow: 0 0 15px #ffddcc, 0 0 15px #ffddaa;}
+A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shadow: 0 0 15px #ffcccc, 0 0 15px #ffaaaa;}
+
+A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
+A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.g:LINK,A.g:VISITED{
+	color:#38a68c;
+	text-decoration:underline;
+}
+
+A.g:HOVER,A.g:ACTIVE{
+	color : #68b6ac;
+	text-decoration : underline;
+}
+
+
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38c6ac;
+}
+
+A.jumplink:HOVER,A.jumplink:ACTIVE{
+	color : #68f6ac;
+}
+
+A.jumplink{
+	text-shadow: 0 0 15px #ccddcc, 0 0 15px #aaddaa;
+	text-decoration : none;
+}
+
+
+.article_pos{
+	font-size:16px;
+	color:#aaf; 
+	font-weight:bold;
+	text-align:center;
+	margin:0px;
+	padding:0px;
+}
+
+#content {
+	font-size:14px;
+	
+}
+
+#sidebar {
+	background:#f8f8f8; 
+	border-left:1px solid #ddd; 
+	padding:4px 6px;
+	font-size:12px;
+}
+
+A.sidebar_link:LINK,A.sidebar_link:VISITED,
+A.sidebar_link_recent:LINK,A.sidebar_link_recent:VISITED{
+    color:#5658f6;
+	text-decoration: underline;
+}
+A.sidebar_link:HOVER,A.sidebar_link:ACTIVE,
+A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
+	color: #9698e6;
+	text-decoration: underline;
+}
+
+.sidebar_link{
+	font-size:13px;
+}
+
+.sidebar_link_recent{ /* 1つ1つの項目ごとに隙間を空ける */
+	font-size:11px;
+	line-height: 1.2;
+	display: inline-block;
+	margin-top:5px;
+}
+
+
+.entry {
+	border:1px solid #ccc; 
+	border-radius:8px; 
+	margin:14px 0; 
+	overflow:hidden;
+
+}
+.entry-title {
+	background:linear-gradient(to right,#4243ff,#aaaacf);
+
+	font-size:17px;
+	color:#fff; 
+	padding:4px; 
+	font-weight:bold;
+	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
+}
+
+.entry-body,.extended {
+	background:#fff; 
+	color:#444; 
+	padding:15px;
+	font-size:14px;
+	line-height:1.6em;
+}
+
+.entry-foot {
+	background:#fff; 
+	text-align:center;
+	vertical-align:middle;
+	color:#ccf;
+	font-size:12px;
+	padding-top:20px;
+	padding-right:20px;
+	padding-bottom:10px;
+}
+
+.linkbutton{
+	padding:3px;
+}
+
+/*--●形状整理用--*/
+body {display:flex; margin:0;}
+#content {width:600px; padding:0 8px;
+	font-size:14px;}
+#sidebar {width:120px;  box-sizing:border-box; }
+#sidebar div {line-height:1.6;}
+#sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
+.nav {margin:0px 0 -20px 0; text-align:center;}
+.sym {color:#999; font-weight:normal;}
+
+</style>
+
+
+<script>
+function toggle(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+function toggleDisp(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+</script>
+
+
+
+<!--★目次デザイン・処理★-->
+<style>
+.toc-box{background-color:#f0f0f0;border-radius:8px;padding:10px;} 
+.toc-list{list-style:none;margin:0;padding-left:0;} 
+.toc-list ul{list-style:none;margin:0;padding-left:20px;}
+.toc-list li{margin:5px 0;}
+.toc-level1{margin-left:0;}
+.toc-level2{margin-left:20px;}
+
+h1 {
+  background: #fff;
+  padding: 6px 10px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #2233cc; /* 青系 */
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 4px solid #3366ff;
+  display: block;
+  width:100%;
+  
+}
+
+
+h2,h3 {
+  background: #fff;
+  padding: 6px 10px;
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #5566ff; /* 青系 */
+  
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 2px solid #9999ff;
+  display: -block;
+
+}
+
+h2::before {
+  content: "- ";
+}
+
+.master_years{
+  margin-left:20px;
+  margin-right:20px;
+}
+
+.top_minicategory{
+  font-size:10px;
+  color:#ccccff;
+}
+</style>
+
+
+
+</head>
+<body onload="initLightbox();">
+<a id="top"></a>
+
+<style type='text/css'>
+.linkbutton{
+  font-size: 0.9em;
+  padding: 1px 6px;
+  vertical-align: baseline;
+  line-height: 1;
+  height: auto;
+  margin-left: 4px;
+  color:#66f;
+  background-color:#f9f9f9;
+  border: 1px solid #888;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.copy-popup{
+  background-color: #eef;
+  border: 1px solid #88c;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  color: #333;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.5s ease;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  max-width: 80vw;             /* 画面幅の 80% で折り返す */
+  overflow-wrap: anywhere;     /* 長い URL を途中で区切る */
+  word-break: break-all;       /* ↑が効かない旧ブラウザ保険 */
+  white-space: pre-wrap;       /* 
+ を改行として扱い、余計な連続空白は1個に */
+}
+.article_end_date{
+  font-size:0.9em;
+}
+</style>
+
+
+<script>
+function toggle(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+}
+
+// Year accordion with sessionStorage persistence
+function toggleYear(id){
+  const pane = document.getElementById(id);
+  const btn  = document.getElementById(id+'-btn');
+  if(!pane||!btn) return;
+  const sym  = btn.querySelector('.sym');
+  const isClosed = pane.style.display === 'none';
+  pane.style.display = isClosed ? 'block' : 'none';
+  sym.textContent   = isClosed ? '－' : '＋';
+  sessionStorage.setItem('year-'+id, isClosed ? 'open' : 'closed');
+}
+
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('[data-yearpane]').forEach(pane=>{
+    const id    = pane.id;
+    const state = sessionStorage.getItem('year-'+id);
+    const btn   = document.getElementById(id+'-btn');
+    const sym   = btn?.querySelector('.sym');
+    if(state === 'open'){
+      pane.style.display = 'block';
+      if(sym) sym.textContent = '－';
+    }else{
+      pane.style.display = 'none';
+      if(sym) sym.textContent = '＋';
+    }
+  });
+});
+
+function copyLink(date, title, el){
+  const url = `https://smokingwolf.github.io/dev_blog/archive/${date.slice(0,4)}/${date.slice(5,7)}.html#${date}`;
+  const text = `
+【${date}　${title}】
+ ${url}`;
+  navigator.clipboard.writeText(text).then(()=>{
+    if(el && el.tagName === 'BUTTON'){
+      const orig = el.textContent;
+      el.textContent = '✅ コピー完了!';
+      setTimeout(()=>{ el.textContent = '🔗 リンクをコピー'; }, 2000);
+    }
+
+    const popup = document.createElement('div');
+    popup.className = 'copy-popup';
+    popup.textContent = `✅ コピー完了：${text}`;
+    document.body.appendChild(popup);
+
+    const rect = el.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    const popupWidth = popup.offsetWidth;
+    const pageWidth = document.documentElement.clientWidth;
+
+    let left = rect.left + scrollLeft + (rect.width / 2) - (popupWidth / 2);
+    let top  = rect.top  + scrollTop - popup.offsetHeight - 8;
+    if(left < scrollLeft + 4) left = scrollLeft + 4;
+    if(left + popupWidth > scrollLeft + pageWidth - 4)
+        left = scrollLeft + pageWidth - popupWidth - 4;
+
+    popup.style.left = `${left}px`;
+    popup.style.top  = `${top}px`;
+    popup.style.opacity = '1';
+    popup.style.zIndex = '9999';
+
+    setTimeout(()=>{ popup.style.opacity = '0'; }, 1800);
+    setTimeout(()=>{ popup.remove(); }, 2500);
+  });
+}
+</script>
+
+<div id='content'>
+<style>
+
+.TopTitle{
+  width:515px;
+  font-weight:bold;
+  font-size:16pt;
+  color: #ffffff;
+  background-color:#535365 ;
+  border-width: 0px;
+  border-color:#535365;
+  border-style:solid;
+  background: -moz-linear-gradient(left top, #42435f, #fafaff);
+  background: -webkit-gradient(linear, left top, right bottom, from(#42435f), to(#fafaff));
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#DD42425f', endColorstr='#FFfafaff');
+  
+  text-align:left;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.header3{
+	color:#555588;
+	margin-bottom:16px;
+}
+
+.home-link {
+  font-size: 12px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: underline;
+}
+</style>
+
+<!--戻るリンク、サイトがなくなってたらアーカイブにつながるようにしたが404ページがアレなのかうまくいかない-->
+<!--
+<font id="home-link-placeholder">
+  <noscript>
+    <a href="https://smokingwolf.github.io/" class="home-link">← ホーム(アーカイブサイト)に戻る</a>
+  </noscript>
+</font>
+
+<script>
+(async () => {
+  try {
+    // HEADで軽くチェック（no-corsなのでステータス確認は不可）
+    // 自分のサイトのインフォメーションページにつなげるならサイトがまだあると認識する
+    await fetch("https://silversecond.net/contents/etc/info.shtml", { method: "HEAD", mode: "no-cors" });
+
+    const link = document.createElement("a");
+    link.href = "https://silversecond.net/";
+    link.textContent = "← ホームに戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  } catch {
+    const link = document.createElement("a");
+    link.href = "https://smokingwolf.github.io/";
+    link.textContent = "← ホーム(アーカイブサイト)に戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  }
+})();
+</script>
+-->
+
+<div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
+<!--ここにコメント文-->
+<div class="header3" style="margin-top:6px;">　ここはゲーム開発者SmokingWOLF(スモーキングウルフ)の開発日誌です。<BR>
+　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
+　<B style="color:#ff5555;">※以前のブログが使えなくなったので、ただいまこの開発日誌に移転中です。</B>
+</div>
+
+<div class='article_pos'>2020年06月</div>
+<div class='nav'><a href='07.html'>次の月へ</a> | <a href='05.html'>前の月へ</a></div>
+<a id='2020-06-20'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2020-06-20','ウディタ作品のゲーム機移植の話', this)" style='cursor:pointer;'>2020-06-20 (土)&nbsp;&nbsp;&nbsp;ウディタ作品のゲーム機移植の話</span><span style='float:right;'><a href='#2020-06-07' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【ゲーム機移植の話】</strong></span><br><br>エスカドラ様とPLAYISM様のお力によって、<br>なんと『片道勇者プラス』がNintendo Switchで発売されました！<br>というのが前回のお話でした。<br><br><img src="../../image/2020/20200620.jpg" border="1" title="ニンテンドースイッチ版の画面！" loading="lazy" height="282"><br><br>移植に関するエスカドラ様へのインタビュー記事も出ました（↓）ので、<br>特にウディタユーザの方で気になる方はぜひご覧ください！<br>具体的にどうやってウディタ作品をNintendo Switch上で動かしているのか説明されています。<br><br><strong>【「家庭用ゲーム機へ移植不可能」とされた<br>『片道勇者』がNintendo Switchデビュー。<br>難しすぎる移植はいかにして実現されたのか？】</strong><br><strong><a class="double-link red" target="_blank" href="https://automaton-media.com/devlog/interview/20200617-127872/">https://automaton-media.com/devlog/interview/20200617-127872/</a></strong><br><br><a class="double-link red" target="_blank" href="https://web.archive.org/web/20200718162803/https://automaton-media.com/devlog/interview/20200617-127872/">(見られない場合のｱｰｶｲﾌﾞﾍﾟｰｼﾞ)</a><br><br>リンク先記事のざっくりとした内容としては、<br><br>●ウディタの基本プログラムをUnityのネイティブプラグインにしてUnity上で動かした。<br>自分をWindowsのゲームだと思い込んでいるソースコードが<br>Nintendo SwitchのUnity内でそうとは知らずに走っている。<br><br><span style="font-size:x-small;">（このやり方でちゃんとなめらかに動かせてるのが一番ヤバい！<br>将来的に考えれば効率的な方法ではあるものの、普通こういうやり方したら動作がものすごく遅くなって<br>結局「その作品1本だけの」移植をした方が楽という話になりやすいので、<br>「ウディタまるごと移植」はむしろスーパー技術者にしかできないシンプルな力業です）</span><br><br>●移植の話は考えたことはありましたが、私には技術的に困難だと見込んでいました。<br>また、外部からの移植案件も実は来ていて、ご協力させていただいたのもあるのですが、<br>うまくいったという連絡は今のところありませんでした。<br><br>●エスカドラ様によると、『今後はウディタ作品の移植は短い時間で可能』とのこと！<br>様々なチューンや審査が必要なので一瞬で完了するということはないけど、<br>ウディタ作品からコンソールゲームがリリースされるのを惜しみなく協力していきます！<br>だそうです！<br>（そして記事の最後に株式会社エスカドラ様のお問い合わせページへのリンクが貼ってある。<br>カモーンウディタリアーン！）<br><br>という感じでした。<br><hr size="1" /><br>今回は上記記事の補足みたいな形で、<br>「別ハードへの移植」という課題についてなぜこれまで移植が実現しなかったか、<br>私個人の話をさせていただこうと思います。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【自分で別ハードへの移植はできなかったのか？】</strong></span><br><br>株式会社エスカドラ様のおかげで別ハード移植が実現した今だからこそ言えることですが、<br>自分で移植しなかった（できなかった）理由もありました。<br><br>家庭用ゲーム機移植はどういう点が難しいのか？<br>まずおおざっぱに、別ハードへの移植には<br>以下の3つのレベルの「課題」があると考えています。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【レベル1　移植先のハードへリリースする『権利』を得られるか？】</strong></span><br><br>そもそも私みたいな個人開発者の場合、<br>「家庭用ゲーム機などに移植する『権利』を得られるか」がまず問題でした。<br>これまでは個人だと、交渉しても「えー会社にしてから言ってよ」って<br>言われちゃうケースが多かったですからね。<br><br>ですがこれに関しては、ここ4年くらいで急激にハードルが下がってきた部分で、<br>ヘタすると「企業」という形を取っていなくても、<br>一部のゲーム機に出せる可能性が出てきている部分だと感じています。<br>（でも完全な個人でNintendo Swtichなどに出しておられるかたって<br>いらっしゃるのかな？　私も詳しくは存じません）<br><br>仮に、家庭用ゲーム機では個人で出すのがまだ大変だとしても、<br>少なくとも「スマートフォン」側のアプリ公開・販売に関しては<br>だいぶ前から個人に対してほぼ自由化されているので、すぐ出すことが可能です。<br>なのでこれまで一番高かった「そもそも移植の権利を得られるの？」というハードルは、<br>今ではだいぶ低くなってきていると考えています。<br><br>ところが、その先を乗り越えた場所にも大きな課題がありました。<br><br><br><br><span style="font-size:large;"><strong>【レベル2　移植先のハードで『期待通りの挙動』をさせられるか？】</strong></span><br><br>ここからが技術的な課題です。<br><br>まず技術的に第一の関門である、<br>「そもそも移植先のハードで『期待通りの挙動』をさせられるところまで行けるか？」<br>というのが、けっこう大きな問題です。<br><br>とはいえ、私の開発ツールは『WOLF　RPGエディター』であり、<br>プログラムのソースコード自体は全部持っているので<br>本当だったらわりかし簡単にできてもおかしくない部分です。本当だったら！！<br><br>ソースコードがひどすぎて、そのままだと動かないとこいっぱいすぎて<br>やっぱりすごい大変でしょうけど！<br>エスカドラ様のほうでも、私の爆弾入りうんこコードのせいで<br>大変なことになっていたと思います。<br><br>たとえば私が作ったウディタの実行部分は、ゲーム内処理を高速化させるために<br>どうやら本来の用途から外れているやり方で危険な処理を組んでいたらしく、<br>コンパイラのバージョンが変わっただけで微妙に挙動が変わるといった<br>見つけにくい問題が起きたりして大変なご迷惑をおかけしてしまいました。<br><br>ただそんな私みたいな「パソコン坊主＋α」のレベルでも、時間さえかければ、<br>いつかはゲーム機上で元とほぼ同じ挙動になるまで仕上げられるかもしれません。<br>ここは最低限の技術力やセンス、学習力さえあれば、あとは「根気」の問題だけで、<br>「実現できる可能性がまだある」部分だと考えています。<br><br>最大の問題は次でした。<br><br><br><br><span style="font-size:large;"><strong>【レベル3　移植先のハードで<span style="color:#CC0000">『期待通りの速度で』</span>動作するか？】</strong></span><br><br>このレベル3、「期待通りの『速度』で動作するか？」というのが<br>あまりにも重すぎる課題で、正直、<br>私の能力では手に負えないと考えていた部分でした。<br><br>「ウディタ作品（や『片道勇者』）をスマホやゲーム機で出せるようにしないんですか！？」<br><br>とたまにご要望をいただきますが、ウディタの処理を普通にスマートフォンで動かしたら<br><br>「いちおう動くけど毎秒5～10フレームしか出ない！　ここから3～6倍も速くしなきゃいけないの！？」<br><br>みたいなことになるのは、程度の差はあれほぼ確実です。<br>（通常、ゲームは毎秒30回更新や60回更新で動作させることが多いので、<br>5～10フレームだと目標の8％～33％分しか速度が出ていないことになります）<br><br>そして私は、こういった最適化技術に関してはやっぱり「パソコン坊主」レベルなのです。<br><br>仮に組んでみて5～10フレームしか出ない状態から、<br>なんとかして30フレーム出せるところまでいけるかというと、<br>それはもう<span style="color:#CC0000"><strong>「プログラム技術のうまさとセンスがどれだけあるか」かつ、<br>「スマートフォンやゲーム機での最適化にどれだけ熟知しているか」</strong></span><br>という問題になってくるわけで、私にとって初めてのスマホアプリ開発や<br>ゲーム機での開発でそれが達成できるとはとても思えません。<br><br>この「速度の問題」をクリアするための技術は、何年もその機種で作り続けてようやく、<br>「最初からこういう構造で作っていけば速く動かせるぞ」<br>と理解できるようになってくるもののはずです。<br><br>なので私がいま移植プロジェクトを立ち上げたとしたら、その結末は<br><span style="color:#CC0000"><strong>「何とか『元と同じ挙動』をするものは作れる」ものの、<br>「速度面の品質がダメすぎて何もリリースできない」</strong></span><br>という形で終わるパターンが最も有力ではないかと考えていました。<br>（もちろんそれ以前、レベル2の『挙動の再現』すら達せない可能性もあるでしょう）<br><br>そしてまた、移植会社さまが一番すごかったのが、<br>「ここを期待以上にやりこなせる非常に高い技術力をお持ちだった」ということです。<br>このレベル3をどうにかできる力があるならば、実際どんなやり方だってどうにでもできるんですよ！<br>でも一方で、できなければ一切成果にならない。このレベル3はそんな課題なのです。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【それで、スモーキングウルフの能力としては？】</strong></span><br><br>私の別機種への移植のハードルは前述のように考えていて、<br>このうちの「レベル3」を突破できる見込みが私にはありませんでした。<br><br>「でもウディタ作れたじゃん！」って？<br>実はウディタそのものは、<br>「Rubyでなんとか動く自作ゲーム（シルエットノート）を作れるスキル」の人間が、<br>「初めてのWindowsプログラミングでも時間をかければ作れてしまう」程度には、<br>「やる気さえあったらいつかは作れる」ものだったんですよ！<br><br>つまり、ウディタ開発は今回でいう「レベル2　意図通りに処理が動く」までの<br>必要能力やセンスだけで実現できるものだったのです。<br>私は採算度外視で動けるケースもあるので、<br>ウディタ開発プロジェクト単体で見れば労力の面ではすごい大赤字でも、<br>採算さえ無視すれば実現可能性が高いプロジェクトだったわけです。<br><br>なので私のプログラミングスキルは完全なポンコツではないかもしれませんが、<br>だからといってレベル3に至る技術力があるかというと、<br>そこにはあまりにもほど遠いものでした。<br><br><br>ということで、結局何が難しい点だったかをまとめると、<br><strong>【レベル3　期待通りの速度が出せるか】の課題が明らかに難しいのと、<br>【水準に達しなければ何も出せない】</strong>の2点が最大のネックだったのです。<br><br>特に、「品質次第では何も出せない可能性がある」というのが一番痛い！<br>仮に総合評価が50点くらいにしかならないゲームであっても、<br>リリースできる状況なら、完成すれば私は必ずリリースすると思います。<br><br>しかし今回のような「移植プロジェクト」は、評価が50点だとリリースすらできません。<br>「毎秒10フレームしか出ないゲームでも出していいよ！」という<br>家庭用ゲーム機の会社さんは今どきいらっしゃらないでしょうし、<br>プレイヤーの方も遊びたくないでしょう。<br>「ゲームの移植」という仕事が私のいつもの仕事とは違うのは、まさにその部分だったのです。<br><br>「経験値を得るための時間」を大量に費やしてもいいのなら<br>時間をかけて自分で試すこともできるのですが、<br>4年くらい前に事故で口座残高が2桁になってしまったので、<br>「時間をかけても何も出せないかもしれない」ハイリスクなお仕事に挑むのは、<br>ますます難しくなる一方でした。<br><br>そしてまた、そんなところに移植のチャンスが舞い込んできたので、<br>本当に関係者の皆さまには、頭が地面に埋まるほど感謝したい状況だったわけです。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【最後に　移植会社さんの技術も勇気も凄かった】</strong></span><br><br>『ゲームの移植』というのは、たとえちょっと処理が不安定でカクカクであろうと、<br>「なんとかリリースできる」だけでも実はかなりの能力があるはずなのに、<br>周りからは「それじゃ不十分だ、もっと完璧に仕事をこなして当たり前」<br>と思われがちな、過酷なお仕事です。<br><br>そしてこれは私の想像ですが、要求される技術力に達することができず、<br>「リリース基準を満たせずに消えてしまった移植プロジェクト」というのも、<br>ウディタ移植に限らず、実は裏で結構あるのではないでしょうか。<br><br>そんな「ゲーム移植」という仕事の難しさにも関わらずに果敢に挑戦してくださった<br>株式会社エスカドラの皆さまの勇気と、移植を実現してくださった<br>その高い技術力に、私は心から敬意を払いたいと思います。<br>このたびはウディタ作品の移植を手がけてくださって、本当にありがとうございました。<br><br><hr size="1" /><br>そんなわけで、関係者の皆さまの血と汗の結晶である<br>『片道勇者プラス』、Nintendo Switch版はただいま好評発売中です！<br>↓<br><a class="double-link red" target="_blank" href="https://ec.nintendo.com/JP/ja/titles/70010000027923"><span style="font-size:large;"><strong>【ニンテンドーeショップ　『片道勇者プラス』販売ページ】</strong></span></a><br>￥1,500<br><br>ただスイッチ版だと字が小さいので、それが気になる方にはPC版の方がおすすめみたいです。<br>（特にSwitch Liteだと小さすぎて厳しいというお声も！）<br><br>一方で、快適性はヘタにパソコンでやるより速い人もいらっしゃるらしいので、そこはご安心ください！<br>チャンスがあれば、また<a class="double-link red" target="_blank" href="https://www.nicovideo.jp/watch/sm26794526"><strong>フリカツのとき</strong>(ニコニコ動画)</a>みたく<br>プレイ動画などを作ってご紹介したいと考えています。</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2020-06-20 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2020%2F06.html%232020-06-20&title=%E3%82%A6%E3%83%87%E3%82%A3%E3%82%BF%E4%BD%9C%E5%93%81%E3%81%AE%E3%82%B2%E3%83%BC%E3%83%A0%E6%A9%9F%E7%A7%BB%E6%A4%8D%E3%81%AE%E8%A9%B1" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2020%2F06.html%232020-06-20&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2020-06-20','ウディタ作品のゲーム機移植の話', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/woditor/001.html'>ウディタ</a></span></div></div><br><br><br>
+<a id='2020-06-07'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2020-06-07','片道勇者プラスがNintendo Switchで発売！', this)" style='cursor:pointer;'>2020-06-07 (日)&nbsp;&nbsp;&nbsp;片道勇者プラスがNintendo Switchで発売！</span><span style='float:right;'><a href='#bottom' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【片道勇者プラスがNintendo Switchで発売！】</strong></span><br><br>ということで、たくさんの方のご協力があって<br>なんと『片道勇者プラス』がニンテンドースイッチで発売されることになりました！<br>これで寝ながら遊ぶこともできます！<br><br>自分のゲームがそのまま家庭用ゲーム機に出るなんて<br>子供時代の夢がもう一度叶ったみたいでうれしくて飛び上がる一方で<br>「えーこんなゲーム家庭用に出していいの……？」と思うところもあってちょっと恥ずかしいです。<br>移植を担当してくださったのは『<a class="double-link red" target="_blank" href="https://esquadra.co.jp/"><strong>株式会社エスカドラ</strong></a>』様という会社！<br>移植の経緯も含め、詳しくは後ほどご紹介します。<br><br>発売日は6/18（木）！<br>すでに「<big><big><a class="double-link red" target="_blank" href="https://ec.nintendo.com/JP/ja/titles/70010000027923"><strong>ニンテンドーeショップ（片道勇者プラス販売ページ）</strong></a></big></big>」で<br>予約購入が可能になっていますので、欲しい方はよかったらぜひどうぞ！<br>価格は<strong>1500円（税込）</strong>となっております。<br><br><img src="../../image/2020/20200607.jpg" border="1" title="ステイホームなネムリ（と妖精イーリスとフリーダ王女）　ゲーム中のポテチはおハシで食べるに限る！" loading="lazy" height="519"><br><span style="font-size:x-small;"><strong>ネムリ「あああ中ボスと戦ってたら魔王が！」<br>妖精イーリス「死ぬと私のアドバイスが見られるよ！」<br>ネムリ「死んじゃダメじゃないですか！　もうこうなったらフリーダ王女を盾に……」<br>（ソーシャルディスタンスをたもちつつ後ろに立つフリーダ王女）</strong></span><br><br><hr size="1" /><br>Switch版『片道勇者プラス』のプロモーションビデオ！<br><iframe width="520" height="300" src="https://www.youtube.com/embed/3ww-_BJ_r64" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br><br><hr size="1" /><br>今回はパソコン版とスイッチ版の違いをご紹介します！<br><br><br><span style="font-size:x-large;"><strong>【パソコン版とスイッチ版の違い】</strong></span><br><br><span style="font-size:large;"><strong>●ゲーム内容はほぼ同じ！　そのままお楽しみいただけます。</strong></span><br><br>ストーリーやデータなどはごく一部を除いて全く同じです！<br>なので、スイッチ版でどこでも遊びたい人や、<br>まだパソコン版に触れておらず「ゲーム機版があったらやろうかな」と思っていた人向け、<br>ということになると思います。<br><br>ゲームの動作速度はなんと原作とほぼ同じ！　というか比較用の私のパソコンより早い！<br>当たり前と思われるかもしれませんが、これは地味にものすごいことです。<br>移植してくださったエスカドラ様はとんでもない技術をお持ちでした。<br><br><br><span style="font-size:large;"><strong>●年齢制限の都合でちょっとだけ修正が入った部分があります。</strong></span><br><br>諸事情あってあやうく年齢制限がギューンと上がるところがあったので、<br>一部分だけ修正が入りました。<br><br>「（勇者のゼヌーラ全身絵が入ってた）リメイク作より原作のほうが年齢制限が高くなるの！？<br>規制ってムズかしいな！」<br><br>と思ったりもしましたが、規制に引っかかるような内容が入っていても<br>何の制約なくこれまで平気でネットで出すことができていたというのは、<br>本当にアマチュア作品やパソコンゲームの強みだとも思います。自由な世界！<br><br>もちろん、出す場所に応じた調整も大事ですからね！<br>どこが変わったかは発売されてしばらくしてからネタバレしますので、<br>よかったらぜひ探してみてください。<br>……と思いましたけどプレイ済みの人は気付かない人が多いかも。<br><br>でもいま見たら、なぜか対象年齢が「全年齢」になってるのが「？？？」となっています。<br>ローグライクってだけでB（12歳～）くらいになると思うんですが、<br>住人を殴れたりするのは「暴力」要素に入らないんですかね……。<br><br><br><span style="font-size:large;"><strong>●オンライン機能はないのでご注意！</strong></span><br><br>いわゆる「ウディタ作品プレイヤー on Switch」へのネット機能の搭載は<br>工数の問題ですぐにはできないっぽいので、今のところ、<br>Switch版の『片道勇者プラス』ではオンライン機能はナシとなっています。<br><span style="font-size:x-small;">（すごく売れればいずれ「プレイヤー」にもネット機能が搭載されるかも？<br>私も資金などは出せないので、Switch版で労力に見合う収益が生み出せるかが鍵ですね）</span><br><br>初期以外は『片道勇者プラス』のゲーム内では人が少なかったので、<br>オンライン機能がないのを気にする人は案外少ないのかもしれませんが、<br>初期に遊ばれた思い出がある方が<br>「昔遊んだワチャワチャ感をもう一度！」「友達と同じ世界で遊ぶ！」<br>といった期待で買われるとションボリしちゃうと思うので、この点はあらかじめご注意ください。<br><br>ただし、同じオンライン機能で作られている<br>「キャンペーンワールド機能」（必ず仲間が登場したり、特殊ルールが付く世界で遊べる）<br>などは他の形で再現されていますので、そこはご安心ください。<br>これがないとスタート時から仲間が欲しいときなどにしんどいですしね！<br><br>他にも、「前に挑戦した自分のデータ」が表示される機能が新搭載されていたり、<br>1周目でも「リアルタイムのプレイ時間」が表示されるようになったりして、<br>他の人や自分とのタイムアタック勝負がしやすい仕組みを入れてくださったので、<br>高速クリア勝負する遊びをするのは引き続きやれそうです。<br><br><br><br><span style="font-size:large;"><strong>●両脇に背景が付いて雰囲気アップ！</strong></span><br><br>Switch本体や最近のテレビだと、原作の4：3の画面サイズでは<br>画面の端っこが真っ黒になってしまうので、<br>移植会社の方が両端に背景を付けてくださいました！<br><br>シーンや地形に応じて背景が変わるようになっていまして、<br>これで進行に応じた雰囲気の伝わり度合いも大幅アップ！<br>キー操作も常時表示されるようになって、特殊なボタンがたまに分かりづらくなりがちな<br>ローグライクゲームにおけるプレイアビリティも向上！<br>ここは家庭用ゲーム機ならではの素敵なポイントです。<br><br><span style="font-size:x-small;"><strong>タイトル画面もさらに広がりが！　夜になるとちゃんと外側も変わります</strong></span><br><img src="../../image/2020/20200607A.jpg" border="1" title="" loading="lazy" height="253"><br><br><hr size="1" /><br><span style="font-size:large;"><strong>【移植の裏話】</strong></span><br><br>今回のSwitch移植は「<strong>PLAYISM</strong>」の中の人のおかげで、<br>私一人では絶対になかったであろう、<br>貴重な巡り合わせがあったことで初めて実現しました。<br><br>その巡り合わせのおかげで「<strong><a class="double-link red" target="_blank" title="株式会社エスカドラ" href="https://esquadra.co.jp/">株式会社エスカドラ</a></strong>」という会社の方が<br>移植作業を担当してくださることになったのですが、<br>今回のプロジェクトの中で一番すごいと思ったのが<br>そのエスカドラ様の技術！<br><br>実は「ウディタの別ハード移植」って裏ではもはや半分くらい地雷案件化していて、<br>非常に大変な難易度のことだと分かっている中での<br>まさかの移植成功だったので、本当に頭が下がります。<br>（少なくとも、私くらいの技術力の人間が簡単に成し得るレベルではなかったのです）<br><br>どこが一番すごかったかというと<br>「ちゃんとNintendo Switch上で元と同じくらいの速度で動作する」点！<br>正確には前述のPV通りのテンポで動作します、プレイ部分はSwitch直録り映像のはず。<br><br>『片道勇者』はもともと処理量がけっこう多いため、プロジェクト開始前は、<br>「元通りの処理速度では動かせない可能性が高いだろうな」と予想していたのに、<br>一体どうやってほぼ元通りの速度を実現できたのか私では想像も付きません。<br>私が愛用するレッツノート（中古で買ったCF-J10）で動作させたものと見比べると、<br>むしろスイッチ版の方が快適に動作するほどです、ヤバい！<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【つまり……ウディタ作品が家庭用ゲーム機で動く！】</strong></span><br><br>株式会社エスカドラ様は『ウディタ作品プレイヤー on Switch』みたいなのを作ってくださったっぽく、<br>「WOLF　RPGエディター（以下ウディタ）」のゲーム実行部分の挙動に関しては、<br>少なくとも『片道勇者プラス』上においては私の目では完璧に再現されています！<br><br>もちろん他のウディタ作品にも適用できそうなので、<br>コストに見合えば他のウディタ作品も<br>家庭用ゲーム機で出せる見込みが出てきたと言えるでしょう。<br>この辺の技術的な詳しい話はそのうち出てくるらしいので、出たらご紹介します！<br><br><br>とはいえ、ウディタ作品なら簡単にポンポン出せるというほどのニュアンスではなく、<br>1作ごとにゲーム機対応のチューンが必要みたいな言い方だったので、<br>移植可能なのは「その移植コストに見合う作品だけ」という感じにはなると思います。<br>おそらくですが、部分的に特殊な最適化をおこなわないと<br>期待通りの速度で動作しない部分があるなど、<br>私たちが想像できないような部分の課題が色々あるはずです。<br><br><br>しかしそれでも、<br><span style="color:#CC0000"><strong>「すでにニンテンドースイッチでリリースが通ったウディタ作品の実行環境」</strong></span><br>が存在しており、エスカドラ様が何らかの移植の仕組みをお持ちである、ということは<br>ウディタユーザの皆さまや他パブリッシャーさまにバーンとお知らせしていきたいですね！<br><br>家庭用ゲーム機に出したいウディタ作品をお持ちの方にとっては、<br>移植実績がある相談先としても安心ではないかなと思いますので、<br>やる気がある個人の方も、パブリッシャー様（！）も、<br>ぜひ株式会社エスカドラ様へご相談を！<br>（って勝手に言っていいのかなとも思いますが、やる気満々で積極的な人は<br>私がこうやって言わなくても自然とご相談されることでしょう）<br><br><br>また一方で、<br>「ウディタでどんなにすごいゲーム作っても絶対にゲーム機移植とかありえないしなー」<br>と思われていた方にとっても、いくらかのロマンが生まれるはずです！<br><br>ウディタ製で「これを家庭用ゲーム機に出せば儲かりそうだ！」と<br>思われる話題作が作れれば、あなたにお声がかかることもあるかもしれませんし、<br>あなた自身が売り込みをされる場合もあるかもしれません。<br>気になる方は、ぜひ今後のウディタ作品の家庭用ゲーム機展開にも<br>注目してみてください。<br><br><hr size="1" /><br>ということでニンテンドースイッチ版『片道勇者プラス』、<br>予約自体はすでにニンテンドーeショップで可能で、<br>遊べるようになるのは『6/18』となっております！<br><br>やってみたいと思われた方はよかったらこの機会にぜひご予約をどうぞ！<br>Switch内からだと「片道」で検索するとページが出てくると思います。</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2020-06-07 (日)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2020%2F06.html%232020-06-07&title=%E7%89%87%E9%81%93%E5%8B%87%E8%80%85%E3%83%97%E3%83%A9%E3%82%B9%E3%81%8CNintendo%20Switch%E3%81%A7%E7%99%BA%E5%A3%B2%EF%BC%81" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2020%2F06.html%232020-06-07&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2020-06-07','片道勇者プラスがNintendo Switchで発売！', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/owh/001.html'>片道勇者</a></span></div></div>
+<div class='article_pos'>2020年06月</div>
+<div class='nav'><a href='07.html'>次の月へ</a> | <a href='05.html'>前の月へ</a></div>
+<a id='bottom'></a>
+
+<BR><BR>
+<div align="right"><a href="#top" class="g">▲一番上へ戻る</a></div>
+<BR>
+<CENTER>
+<HR>
+<div>
+<div id="silsec-status" style="display:inline-block;line-height:12px;font-size:10px;"></div>　<div align="center" style="display:inline-block;line-height:12px;font-size:10px;"><a href="https://smokingwolf.github.io/" target="_blank" class="blue" border="1"><img src="https://smokingwolf.github.io/banner.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>アーカイブサイトへ</a></div>
+</div>
+<HR>
+Copyright © SmokingWOLF / Silver Second
+<HR>
+</CENTER>
+
+
+<script>
+  // シルバーセカンド公式のドメインに接続し、サイト存在確認用のTXT(SILVERSECOND_ALIVE!と書かれている)があれば存在する扱いにする
+  const statusDiv = document.getElementById('silsec-status');
+  const checkUrl = 'https://silversecond.net/SILVERSECOND_SITE_ALIVE_FLAG.txt';
+
+  fetch(checkUrl, { cache: 'no-store' })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('ネットワークエラー');
+      }
+      return response.text();
+    })
+    .then(text => {
+      if (text.trim() === 'SILVERSECOND_ALIVE!') {
+        statusDiv.innerHTML = '<a href="https://silversecond.net/" target="_blank" class="blue"><B><img src="https://silversecond.net/banner/a.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>運営中のサイトへ</a>　';
+      } else {
+        statusDiv.textContent = '　';
+      }
+    })
+    .catch(error => {
+      statusDiv.textContent = '　';
+      console.error('シルバーセカンド公式サイトチェック失敗:', error);
+    });
+</script>
+
+
+
+
+</div>
+<div id='sidebar'>
+<div style='font-weight:bold;'>開発日誌</div>
+<div><a class='sidebar_link' href='../../archive/top/index.html'>日誌トップへ</a></div>
+<div><B><a class='sidebar_link' href='../../index.html'>全記事一覧</a></B></div>
+<hr>
+<div style='font-weight:bold;'>【最新記事】</div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/08.html#2025-08-24'>●08/24 第17回ウディコン結果発表！　上位3作品とピックアップ紹介！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/08.html#2025-08-09'>●08/09 『シルバーセカンド思い出の部屋』を開設！＋ 来年よりウディコン規約追加</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-26'>●07/26 第17回ウディコン審査期間開始！ ＆ 規約の補足</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-12'>●07/12 ウディコン直前！ サイト＆ウディタ修正＋シェパード捜査録！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-28'>●06/28 ウディコン準備中！+ 開発日誌も移転作業中</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-14'>●06/14 サイト修正＋開発日誌をFC2から移転！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-31'>●05/31 ウディコン歴史資料館設立！+ ウディタ修正 + GitHubのサイト作り</a></div>
+<hr>
+<div style='font-weight:bold;'>【カテゴリ】</div>
+<div><a class='sidebar_link' href='../../category/woditor/001.html'>ウディタ&nbsp;<span class='sym'>(66)</span></a></div>
+<div><a class='sidebar_link' href='../../category/owh2dev/001.html'>片道勇者2&nbsp;<span class='sym'>(31)</span></a></div>
+<div><a class='sidebar_link' href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(25)</span></a></div>
+<div><a class='sidebar_link' href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(14)</span></a></div>
+<div><a class='sidebar_link' href='../../category/owh/001.html'>片道勇者&nbsp;<span class='sym'>(11)</span></a></div>
+<div><a class='sidebar_link' href='../../category/trpg/001.html'>TRPG&nbsp;<span class='sym'>(9)</span></a></div>
+<div><a class='sidebar_link' href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(2)</span></a></div>
+<hr>
+<div style='font-weight:bold;'>【月別】</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2025-btn' onclick="toggleYear('y2025')">2025&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2025' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2025/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2024-btn' onclick="toggleYear('y2024')">2024&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2024' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2024/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/01.html'>01月&nbsp;<span class='sym'>(2)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2023-btn' onclick="toggleYear('y2023')">2023&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2023' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2023/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/09.html'>09月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2022-btn' onclick="toggleYear('y2022')">2022&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2022' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2022/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2021-btn' onclick="toggleYear('y2021')">2021&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2021' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2021/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2020-btn' onclick="toggleYear('y2020')">2020&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2020' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2020/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/07.html'>07月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('a.double-link');
+
+  links.forEach(link => {
+    const primaryUrl = link.dataset.primary;
+    if (!primaryUrl) return;
+
+    const testUrl = primaryUrl + '?t=' + Date.now(); // キャッシュ無効化！
+
+    fetch(testUrl, { method: 'GET', cache: 'no-store' })
+      .then(res => {
+        const url = res.url || '';
+        if (!res.ok || url.includes('404.html') || res.status === 404) {
+          console.warn('【404または失敗】そのままアーカイブを使います:', link.href);
+          // そのまま
+        } else {
+          console.warn('【OK】hrefを本家に書き換えます:', primaryUrl);
+          link.href = primaryUrl;
+        }
+      })
+      .catch(() => {
+        console.warn('【通信エラー】そのままアーカイブを使います:', link.href);
+        // エラー時もhrefはそのまま
+      });
+  });
+});
+</script>
+
+
+
+</body>
+</html>
