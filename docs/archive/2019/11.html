@@ -2,19 +2,32 @@
 <html>
 <head>
 <meta charset='utf-8'>
-<title>シルバーセカンド開発日誌  - SmokingWOLFの記録 -</title>
-<meta name="viewport" content="width=700">
+<title>シルバーセカンド開発日誌 / SmokingWOLF</title>
+<meta name="viewport" content="width=720">
 <script src="../../js/smoothscroll_up.js" type="text/javascript"></script> 
+
+<link rel="stylesheet" href="../../js/litebox/css/lightbox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../../js/litebox/js/prototype.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/moo.fx.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/litebox-1.0.js"></script>
+
 <style>
+html {
+  /* スマホ時は1.2倍フォントで表示 */
+  -webkit-text-size-adjust: 120%;
+  -ms-text-size-adjust: 120%;
+}
+
 BODY{
   /*display:flex;*/
   font-size:13px;
   margin:0;
   font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+  color:#558;
 }
 
 TD{
-  font-size:1em;
+  font-size:12px;
 }
 
 
@@ -106,7 +119,7 @@ A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
 .entry-title {
 	background:linear-gradient(to right,#4243ff,#aaaacf);
 
-	font-size:1.4em;
+	font-size:17px;
 	color:#fff; 
 	padding:4px; 
 	font-weight:bold;
@@ -116,24 +129,37 @@ A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
 .entry-body,.extended {
 	background:#fff; 
 	color:#444; 
-	padding:10px;
+	padding:15px;
 	font-size:14px;
+	line-height:1.6em;
 }
 
+.entry-foot {
+	background:#fff; 
+	text-align:center;
+	vertical-align:middle;
+	color:#ccf;
+	font-size:12px;
+	padding-top:20px;
+	padding-right:20px;
+	padding-bottom:10px;
+}
+
+.linkbutton{
+	padding:3px;
+}
 
 /*--●形状整理用--*/
 body {display:flex; margin:0;}
-#content {width:580px; padding:0 8px;}
+#content {width:600px; padding:0 8px;
+	font-size:14px;}
 #sidebar {width:120px;  box-sizing:border-box; }
 #sidebar div {line-height:1.6;}
 #sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
-.nav {margin:4px 0; text-align:center;}
+.nav {margin:0px 0 -20px 0; text-align:center;}
 .sym {color:#999; font-weight:normal;}
 
 </style>
-
-
-
 
 
 <script>
@@ -146,11 +172,107 @@ function toggleDisp(id){
   if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
 }
 </script>
+
+
+
+<!--★目次デザイン・処理★-->
+<style>
+.toc-box{background-color:#f0f0f0;border-radius:8px;padding:10px;} 
+.toc-list{list-style:none;margin:0;padding-left:0;} 
+.toc-list ul{list-style:none;margin:0;padding-left:20px;}
+.toc-list li{margin:5px 0;}
+.toc-level1{margin-left:0;}
+.toc-level2{margin-left:20px;}
+
+h1 {
+  background: #fff;
+  padding: 6px 10px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #2233cc; /* 青系 */
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 4px solid #3366ff;
+  display: block;
+  width:100%;
+  
+}
+
+
+h2,h3 {
+  background: #fff;
+  padding: 6px 10px;
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #5566ff; /* 青系 */
+  
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 2px solid #9999ff;
+  display: -block;
+
+}
+
+h2::before {
+  content: "- ";
+}
+
+.master_years{
+  margin-left:20px;
+  margin-right:20px;
+}
+
+.top_minicategory{
+  font-size:10px;
+  color:#ccccff;
+}
+</style>
+
+
+
 </head>
-<body>
+<body onload="initLightbox();">
 <a id="top"></a>
 
-
+<style type='text/css'>
+.linkbutton{
+  font-size: 0.9em;
+  padding: 1px 6px;
+  vertical-align: baseline;
+  line-height: 1;
+  height: auto;
+  margin-left: 4px;
+  color:#66f;
+  background-color:#f9f9f9;
+  border: 1px solid #888;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.copy-popup{
+  background-color: #eef;
+  border: 1px solid #88c;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  color: #333;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.5s ease;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  max-width: 80vw;             /* 画面幅の 80% で折り返す */
+  overflow-wrap: anywhere;     /* 長い URL を途中で区切る */
+  word-break: break-all;       /* ↑が効かない旧ブラウザ保険 */
+  white-space: pre-wrap;       /* 
+ を改行として扱い、余計な連続空白は1個に */
+}
+.article_end_date{
+  font-size:0.9em;
+}
+</style>
 
 
 <script>
@@ -187,6 +309,45 @@ window.addEventListener('DOMContentLoaded', ()=>{
     }
   });
 });
+
+function copyLink(date, title, el){
+  const url = `https://smokingwolf.github.io/dev_blog/archive/${date.slice(0,4)}/${date.slice(5,7)}.html#${date}`;
+  const text = `
+【${date}　${title}】
+ ${url}`;
+  navigator.clipboard.writeText(text).then(()=>{
+    if(el && el.tagName === 'BUTTON'){
+      const orig = el.textContent;
+      el.textContent = '✅ コピー完了!';
+      setTimeout(()=>{ el.textContent = '🔗 リンクをコピー'; }, 2000);
+    }
+
+    const popup = document.createElement('div');
+    popup.className = 'copy-popup';
+    popup.textContent = `✅ コピー完了：${text}`;
+    document.body.appendChild(popup);
+
+    const rect = el.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    const popupWidth = popup.offsetWidth;
+    const pageWidth = document.documentElement.clientWidth;
+
+    let left = rect.left + scrollLeft + (rect.width / 2) - (popupWidth / 2);
+    let top  = rect.top  + scrollTop - popup.offsetHeight - 8;
+    if(left < scrollLeft + 4) left = scrollLeft + 4;
+    if(left + popupWidth > scrollLeft + pageWidth - 4)
+        left = scrollLeft + pageWidth - popupWidth - 4;
+
+    popup.style.left = `${left}px`;
+    popup.style.top  = `${top}px`;
+    popup.style.opacity = '1';
+    popup.style.zIndex = '9999';
+
+    setTimeout(()=>{ popup.style.opacity = '0'; }, 1800);
+    setTimeout(()=>{ popup.remove(); }, 2500);
+  });
+}
 </script>
 
 <div id='content'>
@@ -212,6 +373,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
 .header3{
 	color:#555588;
+	margin-bottom:16px;
 }
 
 .home-link {
@@ -257,17 +419,16 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
 <div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
 <!--ここにコメント文-->
-<div class="header3" style="margin-top:6px;">　ゲーム開発者SmokingWOLFの開発日誌です。ここまでずいぶん長く歩いてきました。<BR>
+<div class="header3" style="margin-top:6px;">　ここはゲーム開発者SmokingWOLF(スモーキングウルフ)の開発日誌です。<BR>
 　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
-　
-
+　<B style="color:#ff5555;">※以前のブログが使えなくなったので、ただいまこの開発日誌に移転中です。</B>
 </div>
 
 <div class='article_pos'>2019年11月</div>
 <div class='nav'><a href='12.html'>次の月へ</a> | <a href='10.html'>前の月へ</a></div>
-<div class='entry'><div class='entry-title'>■<a id='2019-11-30'></a>2019-11-30&nbsp;&nbsp;&nbsp;片道勇者2【42】 細かい修正と残り<span style='float:right;'><a href='#2019-11-16' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【片道勇者2　細かい修正】</strong></span><br><br>パーティーシステムなど大きな修正を入れると<br>だいたいバグがいっぱい出てきますので<br>内部処理の修正にほとんどの時間を費やした二週間でした。<br>見た目に変化がないし、期待通りに動くようにしていただけなので何もお見せできない！<br><br>今回の中で目に見える変更といえば以下くらいです。<br><br><br><strong>＜敵のHPゲージを「弧状」に変更！＞</strong><br><br><img src="../../image/2019/20191130.jpg" border="1" loading="lazy"><br><br>敵のHPゲージを「弧状」に変更しました。<br>ファイアーエムブレムの最新作などでも採用されている方式なのですが、<br>真横のバーより敵の見た目の邪魔にならないのがいいですね。<br><br>ウディタでの実装だと、ゲージの減り具合が違う画像を10パターンくらい作って<br>絵ごと切り替えるようにして作っています。実は『片道勇者1』の敵ゲージもそうでした。<br>ゲージが小さければ10％ごとの区切りでもそんなに困らない感じです。<br><br><hr size="1" /><br><strong><span style="font-size:large;">【アルファ2に向けての残り作業】</span></strong><br><br>ここからのアルファ2に向けての実装項目は以下の通りです。<br>たいていはこれら実装作業そのものとは別に、<br>バグ修正や微調整によって不明の追加時間がかかります。<br><br>●【システム】ショップ機能を抜本的に修正。売却は手持ち全部からまとめて行えるようにする。<br>（アルファ1ではドラ○もんのポケットみたいに買い物中に「引き直し」して<br>手札に売りたいアイテムが来るまで回すマニアックすぎる仕組みでした）<br><br>●【システム】視界制限機能（夜間に視界外のNPCを見えなくさせる機能）<br><br>●【システム】昼夜の切り替え機能。<br><br>●【システム】施設の位置を遠くからマーカーで教えてくれる機能。<br><br>●【システム】アドバイス機能を仲間コメント機能で出すよう全面的に変更。<br>（アドバイスが出るタイミングで仲間ボタンからピコッと吹き出しが出て、<br>その後に仲間に話すとアドバイスを教えてくれる）<br><br>●【データ】アルファ1で絵がなかったカードに絵を付ける。<br><br>●【データ】アイテムや特徴を少し増やしたい。<br><br>●【データ】敵の出現度合いや強さを距離によって変えてよりゲームらしさを増す。<br><br>●【キャラクター】ラフのままの妖精クリスをどうにかする。<br><br>●【通信】Twitter通信機能でエンド画面を3枚送信できるようにする。<br>→　要望が多かった、「死に際の画面」「所持カード一覧と能力値」「評価画面」の3枚を<br>一斉にTwitterに送信できるようにします。仮実装は済んでいます。<br><br>●【システム】仮オプションの完成。<br><br>●【システム】全体的な視認性の向上。従来で「いつの間にかXXしてた」<br>という状態になっていた地味な部分をもっと目立たせる。<br><br>●【システム】ゲームパッド・キーボードへの仮対応。<br>これが一体どのくらいかかるか分からないくらい大変そうです。<br>「移動状態のままカードを選べる」プレイ方式というのが<br>操作の構築のややこしさを生んでいます。<br>解法は色々あるでしょうけれども、何通りか試しに作っては壊しながら、<br>一番マシなのを探していく作業になると思います。<br>また、各画面モードごとに全部操作を作らないといけないので作業量も相当多い！<br>一方で、ここは評価に一定量影響しそうな部分だとも考えているので、<br>仮でもいいので第一版を作って見てもらいたいところです。<br><br>●その他、ここに書くのを忘れているであろう要素いろいろ。<br><br>という感じです。<br>この数だとペース的にまずあと一ヶ月で終わらない気がしたので、<br>うまく目標を区切りつつ最速でぼちぼち作っていきたいと思います。</CENTER></div></div><br><br><br>
-<div class='entry'><div class='entry-title'>■<a id='2019-11-16'></a>2019-11-16&nbsp;&nbsp;&nbsp;片道勇者2【41】　パーティー機能<span style='float:right;'><a href='#2019-11-02' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【片道勇者2　パーティー機能】</strong></span><br><br>今年中にアルファ2にたどり着けるかちょっと怪しいペースになってきました。<br>時間はほぼ全部お仕事やらなんらかの制作に使ってるんですけどね！<br><br>やれるペースでやっていきますが、今年中にα2を出すくらいは努力目標にしたいです。<br>そのα2時点のものをゲームの基幹部を固めたものとして、<br>「片道勇者2体験版（動作確認版）」の立ち位置にする予定でいます。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【1マス内パーティーシステム搭載！】</strong></span><br><br>『片道勇者1』には、主人公が1マス内で仲間とパーティーを組んで戦う機能がありました。<br>ローグライクゲームで「仲間が別マスにいる」とそれだけで管理コストが増して<br>不便だった記憶があったので、もっとライトなプレイ感にしようと思って採用したものです。<br><br><br>これは『片道勇者1』の画像です。仲間が1マス内にいます。<br><img src="../../image/2019/20191116A.jpg" border="1" loading="lazy"><br><br>この1マス内パーティーシステムは、<br><strong>・プレイヤーの向きを変えてダメージを仲間に分散させたり（後ろを向けば盾にもできる）<br>・敵に囲まれても1～2発くらいは平気になったり<br>・主人公が正面から戦うだけで仲間を実質かばうことができたり<br>・同じマスにいるので位置合わせを気にせずサポートを受けられる</strong><br>と、直感的で色々楽しみを生むことができる、悪くないアイデアだと思っていました。<br><br>（なお後の『片道勇者プラス』では、別マスにいる仲間として「協力NPC」が登場しますが、<br>ゲームの特性上、少し油断するとすぐにはぐれてしまいます）<br><br><br>前作では「味方側」しかパーティーを組めませんでしたが、<br>『片道勇者2』では、味方も敵も住人も同じパーティーシステムが使われます。<br>どうせ作るなら同じ処理を使い回せる方がいいですからね！<br><br>ということで実装したものがこれ！　処理が複雑で予想外に苦戦しました。<br><br>『片道勇者2』の1マス内パーティーシステム、画像では敵側に使っています<br><img src="../../image/2019/20191116.jpg" border="1" loading="lazy"><br><br>ここでは試しに野犬が1マス内に2～3体で群れて出てくるようにしています。<br>「敵の数が3倍になったら脅威度も3倍だろー」と思っていたら、<br>実はちゃんと先制して殴れば2～3体のうちの1～2体を倒せてしまって<br>受けるダメージも1/2や1/3になってしまうので、<br>「うまく戦えば」ほとんど脅威度が増した感じがしませんでした。<br>むしろ経験値の塊が来ておいしい。これは意外です。<br><br>もっとプレイ感を確かめてみたところ、<br><strong>「先手を取れば何体か倒せるので敵の攻撃力を削げてほぼ脅威でなくなる」</strong><br>が、<br><strong>「（他の敵にも囲まれるなどして）一体も倒せないと、<br>急に上位モンスター並みのダメージを与えてくる敵になる」</strong><br>という感じで「状況に応じて危険度が急激に変わる」のが面白く、<br>これだけでもかなりプレイに刺激が生まれる印象でした。<br><br><strong>「しっかり対応すると楽になる」、「油断すると被害がすごい増える」</strong><br>という、判断の善し悪しによる結果の振れ幅がかなり増すので、<br>すごくゲームしてる感覚が高まります。<br>「条件が整えば敵側も強くなる」という「油断できない感」が<br>片道勇者1でも欲しかったものの、うまく実現できていなかったので、<br>それが思わぬところから1つ出てきてラッキーだと感じました。<br><br><br><br><span style="font-size:large;"><strong>＜これによってどんなプレイが生まれそう？＞</strong></span><br><br>このパーティーシステムによって、敵を倒す順番の面白みが増しそうです。<br>群れた敵は簡単に(数を減らして）攻撃力を下げられるので、<br>「どの相手から減らせば一番ダメージを減らして勝てるか」<br>という優先度の揺らぎのパターンをもっと増やすことができ、<br>飽きにくくすることができそうです。<br><br>従来だと、「一撃が痛い敵はHPもだいたい高いので先に倒せない」場合も多くて<br>「こんなの正面からすぐつぶす以外の打開策がないじゃんかよおぉ！」<br>と思うシーンも多かったのですが、HPが低い敵が群れている場合は<br>対処法も多くできそうで結構アツいです。<br><br>群れている敵は「（仮に低威力でも）範囲攻撃に非常に弱い」のも魅力的！<br>アルファ1にあった「火炎の巻物（低威力2ヘクス貫通攻撃）」で<br>最大6体の野犬を一発で燃やせたりするのは爽快です。<br><br>あるいは、たとえば敵が複数方向から列になって並んでやってきる状況でも、<br>「敵パーティーを残り1体まで削って放置し、他方向の敵と戦う」<br>（ダメージは少しずつ受け続けるが、後続の敵を塞ぎつつ別の方位の戦いに集中できる）<br>といった具合に、新たな戦術も色々と考えられそうです。<br><br>さらにはプレイヤーの攻撃力について「敵を一撃で倒せる確殺ライン」の価値が<br>これまで以上に重要になるのも面白い点です。<br>群れている相手がほぼ一撃ずつで倒せる相手であっても、<br>倒すためのダメージが1点足りないだけで<br>敵の数を減らすのに「2倍の手間」がかかるわけですよ！<br><br>逆に言うと、「一定の攻撃力に達する」だけで<br>敵の数を減らす効率が急に2倍になったりするので、<br>「あとちょっとの攻撃力」を上げる価値が高まり、これも面白みに繋がりそうでした。<br><br>実は、「パワーを1割上げれば効率が1割上がる」という要素って<br>普通程度にしか面白くないんですが、<br>「パワーをあと1割上げれば効率が2倍になる」といった状況が出てくると、<br>急に頭をひねる余地が出てきてゲームが面白くなるんですよ。<br>このパーティーシステムは、そういう余地も増やせそうな感触でした。<br><br><hr size="1" /><br>こういった効用があることは全く予想外だったのですが、<br>この「1マス内パーティーシステム」を敵に使うのは、<br>思ったよりも楽しみの奥行きを増すことに貢献しそうです。<br><br><br>あと、試しに群れてくる敵ばっかりにしてみると、<br>ほぼ1回攻撃しかできない「重量武器」がなかなか敵の数を減らせず、<br>当初の想定通り、相対的に弱く感じるようになりました。<br>「重量武器はスキルと組み合わせると強い」がコンセプトなので、<br>「範囲攻撃スキル」なども用意して弱点を補えるようにしていきたいと考えています。<br>あと重量武器の単体攻撃力はもっと上げようと思います。<br><br>一方で群れている敵相手だと、ほどほどの攻撃力があり<br>いちおう2回攻撃もしやすい「中量武器」がすごく強い！<br>「中量武器」はなんか半端な立ち位置だと思ってましたが、<br>システムが一つ増えただけで急に強武器の仲間入りです。<br>（他にも多数回攻撃が行いやすい「軽量武器」が存在し、すぐ壊れる代わりにいつでも割と強いです）<br><br>こんな感じで急激にバランスが変わっていくからローグライク開発は面白い！<br>逆に言えばバランスも崩れやすい！<br>最終段階でもどこかしら強弱は出てくると思いますが、<br>うまいこと作っていきたいと思います。</CENTER></div></div><br><br><br>
-<div class='entry'><div class='entry-title'>■<a id='2019-11-02'></a>2019-11-02&nbsp;&nbsp;&nbsp;今回はおやすみです<span style='float:right;'><a href='#bottom' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER>今回の日誌はおやすみです！<br>この二週間はお仕事やら家庭の事情やら何やらあって<br>微妙に開発どころじゃありませんでした。<br><br><img src="../../image/2019/20191102.jpg" border="1" title="リアル事情がどうしても先になっちゃいます、色々なんとかしないと" loading="lazy"><br><br>毎日やることしっかりやってゲームも作っておられる方は<br>一体どれだけのバイタリティがあるのか！　本当に尊敬します。<br><br>少ない体力をうまく運用しないとキツい体だと、<br>やらねばならないことが増えると、<br>だんだんどん詰まりになってきてしまいますね。<br>稼げそうな大きな案件をいただいても、<br>まとまった時間が取れないと受注することさえ難しい！<br><br>そういう意味では、自分のペースで小さく成果を積み上げていけるゲーム開発や<br>創作業というのは柔軟性があるので、生きやすいのがいい点です。<br>成功しないと大変ですけれども！<br><br>とにかくより効率的に動いて、時間や心の余裕を持てる<br>生き方を工夫していきたいと思います。<br>隙間時間のさらに隙間も見つけてうまくやっていきたいですね！<br><br>最近は、パソコンさえ触れないときはスマホで本を作ったりしています。<br>スマホでも編集・校正作業ができる時代なので、<br>隙間時間を全部無駄なく投入できるのがいい！<br>そのうちKindleで出す予定です。ジャンルはTRPG系です。<br>こういった副業もうまく積み重ねて開発資金にしていきたいと考えています。</CENTER></div></div>
+<a id='2019-11-30'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2019-11-30','片道勇者2【42】 細かい修正と残り', this)" style='cursor:pointer;'>2019-11-30 (土)&nbsp;&nbsp;&nbsp;片道勇者2【42】 細かい修正と残り</span><span style='float:right;'><a href='#2019-11-16' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【片道勇者2　細かい修正】</strong></span><br><br>パーティーシステムなど大きな修正を入れると<br>だいたいバグがいっぱい出てきますので<br>内部処理の修正にほとんどの時間を費やした二週間でした。<br>見た目に変化がないし、期待通りに動くようにしていただけなので何もお見せできない！<br><br>今回の中で目に見える変更といえば以下くらいです。<br><br><br><strong>＜敵のHPゲージを「弧状」に変更！＞</strong><br><br><img src="../../image/2019/20191130.jpg" border="1" loading="lazy" height="302"><br><br>敵のHPゲージを「弧状」に変更しました。<br>ファイアーエムブレムの最新作などでも採用されている方式なのですが、<br>真横のバーより敵の見た目の邪魔にならないのがいいですね。<br><br>ウディタでの実装だと、ゲージの減り具合が違う画像を10パターンくらい作って<br>絵ごと切り替えるようにして作っています。実は『片道勇者1』の敵ゲージもそうでした。<br>ゲージが小さければ10％ごとの区切りでもそんなに困らない感じです。<br><br><hr size="1" /><br><strong><span style="font-size:large;">【アルファ2に向けての残り作業】</span></strong><br><br>ここからのアルファ2に向けての実装項目は以下の通りです。<br>たいていはこれら実装作業そのものとは別に、<br>バグ修正や微調整によって不明の追加時間がかかります。<br><br>●【システム】ショップ機能を抜本的に修正。<br>売却は手持ち全部からまとめて行えるようにする。<br>（アルファ1ではドラ○もんのポケットみたいに買い物中に「引き直し」して<br>手札に売りたいアイテムが来るまで回すマニアックすぎる仕組みでした）<br><br>●【システム】視界制限機能（夜間に視界外のNPCを見えなくさせる機能）<br><br>●【システム】昼夜の切り替え機能。<br><br>●【システム】施設の位置を遠くからマーカーで教えてくれる機能。<br><br>●【システム】アドバイス機能を仲間コメント機能で出すよう全面的に変更。<br>（アドバイスが出るタイミングで仲間ボタンからピコッと吹き出しが出て、<br>その後に仲間に話すとアドバイスを教えてくれる）<br><br>●【データ】アルファ1で絵がなかったカードに絵を付ける。<br><br>●【データ】アイテムや特徴を少し増やしたい。<br><br>●【データ】敵の出現度合いや強さを距離によって変えてよりゲームらしさを増す。<br><br>●【キャラクター】ラフのままの妖精クリスをどうにかする。<br><br>●【通信】Twitter通信機能でエンド画面を3枚送信できるようにする。<br>→　要望が多かった、「死に際の画面」「所持カード一覧と能力値」<br>「評価画面」の3枚を一斉にTwitterに送信できるようにします。<br>仮実装は済んでいます。<br><br>●【システム】仮オプションの完成。<br><br>●【システム】全体的な視認性の向上。従来で「いつの間にかXXしてた」<br>という状態になっていた地味な部分をもっと目立たせる。<br><br>●【システム】ゲームパッド・キーボードへの仮対応。<br>これが一体どのくらいかかるか分からないくらい大変そうです。<br>「移動状態のままカードを選べる」プレイ方式というのが<br>操作の構築のややこしさを生んでいます。<br>解法は色々あるでしょうけれども、何通りか試しに作っては壊しながら、<br>一番マシなのを探していく作業になると思います。<br>また、各画面モードごとに全部操作を作らないといけないので作業量も相当多い！<br>一方で、ここは評価に一定量影響しそうな部分だとも考えているので、<br>仮でもいいので第一版を作って見てもらいたいところです。<br><br>●その他、ここに書くのを忘れているであろう要素いろいろ。<br><br>という感じです。<br>この数だとペース的にまずあと一ヶ月で終わらない気がしたので、<br>うまく目標を区切りつつ最速でぼちぼち作っていきたいと思います。</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2019-11-30 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2019%2F11.html%232019-11-30&title=%E7%89%87%E9%81%93%E5%8B%87%E8%80%852%E3%80%9042%E3%80%91%20%E7%B4%B0%E3%81%8B%E3%81%84%E4%BF%AE%E6%AD%A3%E3%81%A8%E6%AE%8B%E3%82%8A" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2019%2F11.html%232019-11-30&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2019-11-30','片道勇者2【42】 細かい修正と残り', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/owh2dev/001.html'>片道勇者2</a></span></div></div><br><br><br>
+<a id='2019-11-16'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2019-11-16','片道勇者2【41】　パーティー機能', this)" style='cursor:pointer;'>2019-11-16 (土)&nbsp;&nbsp;&nbsp;片道勇者2【41】　パーティー機能</span><span style='float:right;'><a href='#2019-11-02' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【片道勇者2　パーティー機能】</strong></span><br><br>今年中にアルファ2にたどり着けるかちょっと怪しいペースになってきました。<br>時間はほぼ全部お仕事やらなんらかの制作に使ってるんですけどね！<br><br>やれるペースでやっていきますが、今年中にα2を出すくらいは努力目標にしたいです。<br>そのα2時点のものをゲームの基幹部を固めたものとして、<br>「片道勇者2体験版（動作確認版）」の立ち位置にする予定でいます。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【1マス内パーティーシステム搭載！】</strong></span><br><br>『片道勇者1』には、主人公が1マス内で仲間とパーティーを組んで<br>戦う機能がありました。<br>ローグライクゲームで「仲間が別マスにいる」とそれだけで管理コストが増して<br>不便だった記憶があったので、もっとライトなプレイ感にしようと思って<br>採用したものです。<br><br><br>これは『片道勇者1』の画像です。仲間が1マス内にいます。<br><img src="../../image/2019/20191116A.jpg" border="1" loading="lazy" height="223"><br><br>この1マス内パーティーシステムは、<br><strong>・プレイヤーの向きを変えてダメージを仲間に分散させたり<br>（後ろを向けば盾にもできる）<br>・敵に囲まれても1～2発くらいは平気になったり<br>・主人公が正面から戦うだけで仲間を実質かばうことができたり<br>・同じマスにいるので位置合わせを気にせずサポートを受けられる</strong><br>と、直感的で色々楽しみを生むことができる、悪くないアイデアだと思っていました。<br><br>（なお後の『片道勇者プラス』では、<br>別マスにいる仲間として「協力NPC」が登場しますが、<br>ゲームの特性上、少し油断するとすぐにはぐれてしまいます）<br><br><br>前作では「味方側」しかパーティーを組めませんでしたが、<br>『片道勇者2』では、味方も敵も住人も同じパーティーシステムが使われます。<br>どうせ作るなら同じ処理を使い回せる方がいいですからね！<br><br>ということで実装したものがこれ！　処理が複雑で予想外に苦戦しました。<br><br>『片道勇者2』の1マス内パーティーシステム、画像では敵側に使っています<br><img src="../../image/2019/20191116.jpg" border="1" loading="lazy" height="265"><br><br>ここでは試しに野犬が1マス内に2～3体で群れて出てくるようにしています。<br>「敵の数が3倍になったら脅威度も3倍だろー」と思っていたら、<br>実はちゃんと先制して殴れば2～3体のうちの1～2体を倒せてしまって<br>受けるダメージも1/2や1/3になってしまうので、<br>「うまく戦えば」ほとんど脅威度が増した感じがしませんでした。<br>むしろ経験値の塊が来ておいしい。これは意外です。<br><br>もっとプレイ感を確かめてみたところ、<br><strong>「先手を取れば何体か倒せるので敵の攻撃力を削げてほぼ脅威でなくなる」</strong><br>が、<br><strong>「（他の敵にも囲まれるなどして）一体も倒せないと、<br>急に上位モンスター並みのダメージを与えてくる敵になる」</strong><br>という感じで「状況に応じて危険度が急激に変わる」のが面白く、<br>これだけでもかなりプレイに刺激が生まれる印象でした。<br><br><strong>「しっかり対応すると楽になる」、「油断すると被害がすごい増える」</strong><br>という、判断の善し悪しによる結果の振れ幅がかなり増すので、<br>すごくゲームしてる感覚が高まります。<br>「条件が整えば敵側も強くなる」という「油断できない感」が<br>片道勇者1でも欲しかったものの、うまく実現できていなかったので、<br>それが思わぬところから1つ出てきてラッキーだと感じました。<br><br><br><br><span style="font-size:large;"><strong>＜これによってどんなプレイが生まれそう？＞</strong></span><br><br>このパーティーシステムによって、敵を倒す順番の面白みが増しそうです。<br>群れた敵は簡単に(数を減らして）攻撃力を下げられるので、<br>「どの相手から減らせば一番ダメージを減らして勝てるか」<br>という優先度の揺らぎのパターンをもっと増やすことができ、<br>飽きにくくすることができそうです。<br><br>従来だと、「一撃が痛い敵はHPもだいたい高いので先に倒せない」場合も多くて<br>「こんなの正面からすぐつぶす以外の打開策がないじゃんかよおぉ！」<br>と思うシーンも多かったのですが、HPが低い敵が群れている場合は<br>対処法も多くできそうで結構アツいです。<br><br>群れている敵は「（仮に低威力でも）範囲攻撃に非常に弱い」のも魅力的！<br>アルファ1にあった「火炎の巻物（低威力2ヘクス貫通攻撃）」で<br>最大6体の野犬を一発で燃やせたりするのは爽快です。<br><br>あるいは、たとえば敵が複数方向から列になって並んでやってきる状況でも、<br>「敵パーティーを残り1体まで削って放置し、他方向の敵と戦う」<br>（ダメージは少しずつ受け続けるが、後続の敵を塞ぎつつ別の方位の戦いに集中できる）<br>といった具合に、新たな戦術も色々と考えられそうです。<br><br>さらにはプレイヤーの攻撃力について「敵を一撃で倒せる確殺ライン」の価値が<br>これまで以上に重要になるのも面白い点です。<br>群れている相手がほぼ一撃ずつで倒せる相手であっても、<br>倒すためのダメージが1点足りないだけで<br>敵の数を減らすのに「2倍の手間」がかかるわけですよ！<br><br>逆に言うと、「一定の攻撃力に達する」だけで<br>敵の数を減らす効率が急に2倍になったりするので、<br>「あとちょっとの攻撃力」を上げる価値が高まり、これも面白みに繋がりそうでした。<br><br>実は、「パワーを1割上げれば効率が1割上がる」という要素って<br>普通程度にしか面白くないんですが、<br>「パワーをあと1割上げれば効率が2倍になる」といった状況が出てくると、<br>急に頭をひねる余地が出てきてゲームが面白くなるんですよ。<br>このパーティーシステムは、そういう余地も増やせそうな感触でした。<br><br><hr size="1" /><br>こういった効用があることは全く予想外だったのですが、<br>この「1マス内パーティーシステム」を敵に使うのは、<br>思ったよりも楽しみの奥行きを増すことに貢献しそうです。<br><br><br>あと、試しに群れてくる敵ばっかりにしてみると、<br>ほぼ1回攻撃しかできない「重量武器」がなかなか敵の数を減らせず、<br>当初の想定通り、相対的に弱く感じるようになりました。<br>「重量武器はスキルと組み合わせると強い」がコンセプトなので、<br>「範囲攻撃スキル」なども用意して弱点を補えるようにしていきたいと考えています。<br>あと重量武器の単体攻撃力はもっと上げようと思います。<br><br>一方で群れている敵相手だと、ほどほどの攻撃力があり<br>いちおう2回攻撃もしやすい「中量武器」がすごく強い！<br>「中量武器」はなんか半端な立ち位置だと思ってましたが、<br>システムが一つ増えただけで急に強武器の仲間入りです。<br>（他にも多数回攻撃が行いやすい「軽量武器」が存在し、<br>すぐ壊れる代わりにいつでも割と強いです）<br><br>こんな感じで急激にバランスが変わっていくからローグライク開発は面白い！<br>逆に言えばバランスも崩れやすい！<br>最終段階でもどこかしら強弱は出てくると思いますが、<br>うまいこと作っていきたいと思います。</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2019-11-16 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2019%2F11.html%232019-11-16&title=%E7%89%87%E9%81%93%E5%8B%87%E8%80%852%E3%80%9041%E3%80%91%E3%80%80%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%83%BC%E6%A9%9F%E8%83%BD" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2019%2F11.html%232019-11-16&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2019-11-16','片道勇者2【41】　パーティー機能', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/owh2dev/001.html'>片道勇者2</a></span></div></div><br><br><br>
+<a id='2019-11-02'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2019-11-02','今回はおやすみです', this)" style='cursor:pointer;'>2019-11-02 (土)&nbsp;&nbsp;&nbsp;今回はおやすみです</span><span style='float:right;'><a href='#bottom' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER>今回の日誌はおやすみです！<br>この二週間はお仕事やら家庭の事情やら何やらあって<br>微妙に開発どころじゃありませんでした。<br><br><img src="../../image/2019/20191102.jpg" border="1" title="リアル事情がどうしても先になっちゃいます、色々なんとかしないと" loading="lazy" height="450"><br><br>毎日やることしっかりやってゲームも作っておられる方は<br>一体どれだけのバイタリティがあるのか！　本当に尊敬します。<br><br>少ない体力をうまく運用しないとキツい体だと、<br>やらねばならないことが増えると、<br>だんだんどん詰まりになってきてしまいますね。<br>稼げそうな大きな案件をいただいても、<br>まとまった時間が取れないと受注することさえ難しい！<br><br>そういう意味では、自分のペースで小さく成果を積み上げていけるゲーム開発や<br>創作業というのは柔軟性があるので、生きやすいのがいい点です。<br>成功しないと大変ですけれども！<br><br>とにかくより効率的に動いて、時間や心の余裕を持てる<br>生き方を工夫していきたいと思います。<br>隙間時間のさらに隙間も見つけてうまくやっていきたいですね！<br><br>最近は、パソコンさえ触れないときはスマホで本を作ったりしています。<br>スマホでも編集・校正作業ができる時代なので、<br>隙間時間を全部無駄なく投入できるのがいい！<br>そのうちKindleで出す予定です。ジャンルはTRPG系です。<br>こういった副業もうまく積み重ねて開発資金にしていきたいと考えています。</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2019-11-02 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2019%2F11.html%232019-11-02&title=%E4%BB%8A%E5%9B%9E%E3%81%AF%E3%81%8A%E3%82%84%E3%81%99%E3%81%BF%E3%81%A7%E3%81%99" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2019%2F11.html%232019-11-02&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2019-11-02','今回はおやすみです', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/devlog/001.html'>開発日誌</a></span></div></div>
 <div class='article_pos'>2019年11月</div>
 <div class='nav'><a href='12.html'>次の月へ</a> | <a href='10.html'>前の月へ</a></div>
 <a id='bottom'></a>
@@ -277,40 +438,155 @@ window.addEventListener('DOMContentLoaded', ()=>{
 <BR>
 <CENTER>
 <HR>
+<div>
+<div id="silsec-status" style="display:inline-block;line-height:12px;font-size:10px;"></div>　<div align="center" style="display:inline-block;line-height:12px;font-size:10px;"><a href="https://smokingwolf.github.io/" target="_blank" class="blue" border="1"><img src="https://smokingwolf.github.io/banner.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>アーカイブサイトへ</a></div>
+</div>
+<HR>
 Copyright © SmokingWOLF / Silver Second
 <HR>
 </CENTER>
 
+
+<script>
+  // シルバーセカンド公式のドメインに接続し、サイト存在確認用のTXT(SILVERSECOND_ALIVE!と書かれている)があれば存在する扱いにする
+  const statusDiv = document.getElementById('silsec-status');
+  const checkUrl = 'https://silversecond.net/SILVERSECOND_SITE_ALIVE_FLAG.txt';
+
+  fetch(checkUrl, { cache: 'no-store' })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('ネットワークエラー');
+      }
+      return response.text();
+    })
+    .then(text => {
+      if (text.trim() === 'SILVERSECOND_ALIVE!') {
+        statusDiv.innerHTML = '<a href="https://silversecond.net/" target="_blank" class="blue"><B><img src="https://silversecond.net/banner/a.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>運営中のサイトへ</a>　';
+      } else {
+        statusDiv.textContent = '　';
+      }
+    })
+    .catch(error => {
+      statusDiv.textContent = '　';
+      console.error('シルバーセカンド公式サイトチェック失敗:', error);
+    });
+</script>
+
+
+
+
 </div>
 <div id='sidebar'>
 <div style='font-weight:bold;'>開発日誌</div>
-<div><a class='sidebar_link' href='../../archive/top/index.html'>トップへ</a></div>
+<div><a class='sidebar_link' href='../../archive/top/index.html'>日誌トップへ</a></div>
+<div><B><a class='sidebar_link' href='../../index.html'>全記事一覧</a></B></div>
 <hr>
 <div style='font-weight:bold;'>【最新記事】</div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/08.html#2025-08-24'>●08/24 第17回ウディコン結果発表！　上位3作品とピックアップ紹介！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/08.html#2025-08-09'>●08/09 『シルバーセカンド思い出の部屋』を開設！＋ 来年よりウディコン規約追加</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-26'>●07/26 第17回ウディコン審査期間開始！ ＆ 規約の補足</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-12'>●07/12 ウディコン直前！ サイト＆ウディタ修正＋シェパード捜査録！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-28'>●06/28 ウディコン準備中！+ 開発日誌も移転作業中</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-14'>●06/14 サイト修正＋開発日誌をFC2から移転！</a></div>
 <div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-31'>●05/31 ウディコン歴史資料館設立！+ ウディタ修正 + GitHubのサイト作り</a></div>
-<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-17'>●05/17 ウディタ3.6へ！バグ修正再び！ + 私がいなくなった後に備えて</a></div>
-<div><a class='sidebar_link_recent' href='../../archive/2025/05.html#2025-05-03'>●05/03 再び出てくるウディタ3.5のバグ！ 修正の毎日！</a></div>
-<div><a class='sidebar_link_recent' href='../../archive/2025/04.html#2025-04-19'>●04/19 ウディタ3.5落ち着いた！？ ＆シル幻20周年！</a></div>
-<div><a class='sidebar_link_recent' href='../../archive/2025/04.html#2025-04-05'>●04/05 さよならマイPC、それでも続くウディタ修正の日々</a></div>
-<div><a class='sidebar_link_recent' href='../../archive/2025/03.html#2025-03-22'>●03/22 ウディタ3.5開発開始からもうすぐ7ヶ月</a></div>
-<div><a class='sidebar_link_recent' href='../../archive/2025/03.html#2025-03-08'>●03/08 ウディタ3.5正式版公開！　したけど毎日バグ修正!!!</a></div>
 <hr>
 <div style='font-weight:bold;'>【カテゴリ】</div>
-<div><a class='sidebar_link' href='../../category/ウディタ/001.html'>ウディタ&nbsp;<span class='sym'>(15)</span></a></div>
-<div><a class='sidebar_link' href='../../category/片道勇者2/001.html'>片道勇者2&nbsp;<span class='sym'>(12)</span></a></div>
-<div><a class='sidebar_link' href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(7)</span></a></div>
-<div><a class='sidebar_link' href='../../category/片道勇者/001.html'>片道勇者&nbsp;<span class='sym'>(4)</span></a></div>
-<div><a class='sidebar_link' href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(3)</span></a></div>
-<div><a class='sidebar_link' href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../category/woditor/001.html'>ウディタ&nbsp;<span class='sym'>(70)</span></a></div>
+<div><a class='sidebar_link' href='../../category/owh2dev/001.html'>片道勇者2&nbsp;<span class='sym'>(43)</span></a></div>
+<div><a class='sidebar_link' href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(31)</span></a></div>
+<div><a class='sidebar_link' href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(17)</span></a></div>
+<div><a class='sidebar_link' href='../../category/owh/001.html'>片道勇者&nbsp;<span class='sym'>(15)</span></a></div>
+<div><a class='sidebar_link' href='../../category/trpg/001.html'>TRPG&nbsp;<span class='sym'>(9)</span></a></div>
+<div><a class='sidebar_link' href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../category/study/001.html'>勉強メモ&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../category/silgen/001.html'>シル幻&nbsp;<span class='sym'>(1)</span></a></div>
 <hr>
 <div style='font-weight:bold;'>【月別】</div>
 <div><a class='sidebar_link' href='javascript:void(0);' id='y2025-btn' onclick="toggleYear('y2025')">2025&nbsp;<span class='sym'>＋</span></a></div>
 <div id='y2025' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2025/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
 <div><a class='sidebar_link' href='../../archive/2025/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
 <div><a class='sidebar_link' href='../../archive/2025/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
 <div><a class='sidebar_link' href='../../archive/2025/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
 <div><a class='sidebar_link' href='../../archive/2025/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
-<div><a class='sidebar_link' href='../../archive/2025/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2024-btn' onclick="toggleYear('y2024')">2024&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2024' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2024/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/01.html'>01月&nbsp;<span class='sym'>(2)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2023-btn' onclick="toggleYear('y2023')">2023&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2023' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2023/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/09.html'>09月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2022-btn' onclick="toggleYear('y2022')">2022&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2022' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2022/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2021-btn' onclick="toggleYear('y2021')">2021&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2021' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2021/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2020-btn' onclick="toggleYear('y2020')">2020&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2020' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2020/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/07.html'>07月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
 </div>
 <div><a class='sidebar_link' href='javascript:void(0);' id='y2019-btn' onclick="toggleYear('y2019')">2019&nbsp;<span class='sym'>＋</span></a></div>
 <div id='y2019' data-yearpane style='display:none;margin-left:10px;'>
@@ -328,6 +604,37 @@ Copyright © SmokingWOLF / Silver Second
 <div><a class='sidebar_link' href='../../archive/2019/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
 </div>
 </div>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('a.double-link');
+
+  links.forEach(link => {
+    const primaryUrl = link.dataset.primary;
+    if (!primaryUrl) return;
+
+    const testUrl = primaryUrl + '?t=' + Date.now(); // キャッシュ無効化！
+
+    fetch(testUrl, { method: 'GET', cache: 'no-store' })
+      .then(res => {
+        const url = res.url || '';
+        if (!res.ok || url.includes('404.html') || res.status === 404) {
+          console.warn('【404または失敗】そのままアーカイブを使います:', link.href);
+          // そのまま
+        } else {
+          console.warn('【OK】hrefを本家に書き換えます:', primaryUrl);
+          link.href = primaryUrl;
+        }
+      })
+      .catch(() => {
+        console.warn('【通信エラー】そのままアーカイブを使います:', link.href);
+        // エラー時もhrefはそのまま
+      });
+  });
+});
+</script>
+
+
 
 </body>
 </html>
