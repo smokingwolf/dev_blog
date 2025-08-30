@@ -352,7 +352,7 @@ EXTENDED BODY:
 -----
 --------
 TITLE: ファイアーエムブレムエンゲージ お勉強メモ
-CATEGORY: その他
+CATEGORY: その他,勉強メモ
 DATE: 2023-01-28 10:59:56
 -----
 BODY:
@@ -2181,7 +2181,7 @@ EXTENDED BODY:
 -----
 --------
 TITLE: ゼルダの伝説 ティアーズオブザキングダムお勉強メモ
-CATEGORY: 開発日誌
+CATEGORY: 開発日誌,勉強メモ
 DATE: 2023-05-27 11:21:10
 -----
 BODY:
