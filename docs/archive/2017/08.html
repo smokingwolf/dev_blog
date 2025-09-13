@@ -637,14 +637,10 @@ Copyright © SmokingWOLF / Silver Second
 </div>
 </div>
 
-
-
-
-
-
 <script>
 window.addEventListener('DOMContentLoaded', () => {
-  const links = document.querySelectorAll('a.double-link');
+  // data-primary を持つ a のみ対象に
+  const links = document.querySelectorAll('a.double-link[data-primary]');
 
   links.forEach(link => {
     //const primaryUrl = link.dataset.primary;
