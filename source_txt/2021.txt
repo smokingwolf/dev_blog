@@ -1586,7 +1586,7 @@ BODY:
 <a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest13_2021/#24"><strong><span style="font-size:large;">【個人的ピックアップ　『ゴルガン』】</span></strong>　KindBird 様</a>
 
 <span style="font-size:x-small;">クリックで拡大</span>
-<a class="double-link red" rel="lightbox[wodicon13]" target="_top" href="http:../../image/wodicon/Entry13_24_big.jpg"><img src="../../image/wodicon/Entry13_24.jpg" border="2" loading="lazy" height="240"></a>
+<a class="double-link blue" rel="lightbox[wodicon13]" target="_top" href="../../image/wodicon/Entry13_24_big.jpg"><img src="../../image/wodicon/Entry13_24.jpg" border="2" loading="lazy" height="240"></a>
 
 『ゴルガン』はダークファンタジーRPGです。
 初めて遊ばせていただいたときは、とにかく

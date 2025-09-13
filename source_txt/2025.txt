@@ -4208,7 +4208,7 @@ CATEGORY: ウディタ,片道勇者
 DATE: 2025-09-06 00:00:00
 -----
 BODY:
-　ということでウディコンが終わって平穏になりましたが色々やることがあってリアルも少しドタバタしております！ 
+　ということでウディコンが終わって平穏になりましたが色々やることがあってリアルも少しドタバタしております！
 　引き続きのウディタの修正や、ご報告された片道勇者プラスのバグ修正などを行っております！
 
 <div class="toc-box"><ul class="toc-list"><li class="toc-level1"><a class="double-link g"  target="_top" href="#2025-09-06-1">◆ウディタの新機能2つ搭載！</a></li><ul><li class="toc-level2"><a class="double-link g"  target="_top" href="#2025-09-06-2">- 【キャラ表示Y位置を補正できるシステム変数を搭載！】</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2025-09-06-3">- 【デバッグ文の新機能 MoveWatch】</a></li></ul><li class="toc-level1"><a class="double-link g"  target="_top" href="#2025-09-06-5">◆『片道勇者プラス』のバグ修正</a></li><ul><li class="toc-level2"><a class="double-link g"  target="_top" href="#2025-09-06-6">- クラス内データ一覧のバグを修正！</a></li></ul><li class="toc-level1"><a class="double-link g"  target="_top" href="#2025-09-06-7">◆目標：『シェパード捜査録』のプレイ動画作成中！</a></li><li class="toc-level1"><a class="double-link g"  target="_top" href="#2025-09-06-8">◆目標：『シルフェイド学院物語』のDLsite版を作りたい！</a></li></ul></div>
