@@ -641,6 +641,7 @@ Copyright © SmokingWOLF / Silver Second
 
 
 
+
 <script>
 window.addEventListener('DOMContentLoaded', () => {
   const links = document.querySelectorAll('a.double-link');
@@ -648,14 +649,14 @@ window.addEventListener('DOMContentLoaded', () => {
   links.forEach(link => {
     //const primaryUrl = link.dataset.primary;
     
-	  
-    if (!primaryUrl) return;
     
     // ★ HTTP→HTTPS に強制変換してテスト
 	const primaryUrl = link.dataset.primary
 	  .replace(/^http:/, 'https:')
 	  .replace(/www\.silversecond/, 'silversecond');
 
+    if (!primaryUrl) return;
+    
     const testUrl = primaryUrl + '?t=' + Date.now(); // キャッシュ無効化！
 
     fetch(testUrl, { method: 'GET', cache: 'no-store' })
