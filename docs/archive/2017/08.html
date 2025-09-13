@@ -637,6 +637,8 @@ Copyright © SmokingWOLF / Silver Second
 </div>
 </div>
 
+
+
 <script>
 window.addEventListener('DOMContentLoaded', () => {
   const links = document.querySelectorAll('a.double-link');
@@ -647,7 +649,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // ★ HTTP→HTTPS に強制変換してテスト
     const httpsPrimary = primaryUrl.replace(/^http:/, 'https:');
-    httpsPrimary = httpsPrimary.replace(/www\.silversecond/, 'siversecond');
+    httpsPrimary = httpsPrimary.replace(/www.silversecond/, 'siversecond');
     const testUrl = httpsPrimary + (httpsPrimary.includes('?') ? '&' : '?') + 't=' + Date.now();
 
     // CORSを読めない前提の“存在チェック”：画像プローブでOK/NG判定
