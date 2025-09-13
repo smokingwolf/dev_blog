@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>シルバーセカンド開発日誌 / SmokingWOLF</title>
+<meta name="viewport" content="width=720">
+<script src="../../js/smoothscroll_up.js" type="text/javascript"></script> 
+
+<link rel="stylesheet" href="../../js/litebox/css/lightbox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../../js/litebox/js/prototype.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/moo.fx.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/litebox-1.0.js"></script>
+
+<style>
+html {
+  /* スマホ時は1.2倍フォントで表示 */
+  -webkit-text-size-adjust: 120%;
+  -ms-text-size-adjust: 120%;
+}
+
+BODY{
+  /*display:flex;*/
+  font-size:13px;
+  margin:0;
+  font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+  color:#558;
+}
+
+TD{
+  font-size:12px;
+}
+
+
+A:LINK,A:VISITED {  color:#5658f6;  text-decoration:underline ;}
+A:HOVER,A:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.red:LINK,A.red:VISITED{color:#d6385c;display: inline-block;text-shadow: 0 0 15px #ffddcc, 0 0 15px #ffddaa;}
+A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shadow: 0 0 15px #ffcccc, 0 0 15px #ffaaaa;}
+
+A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
+A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.g:LINK,A.g:VISITED{
+	color:#38a68c;
+	text-decoration:underline;
+}
+
+A.g:HOVER,A.g:ACTIVE{
+	color : #68b6ac;
+	text-decoration : underline;
+}
+
+
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38c6ac;
+}
+
+A.jumplink:HOVER,A.jumplink:ACTIVE{
+	color : #68f6ac;
+}
+
+A.jumplink{
+	text-shadow: 0 0 15px #ccddcc, 0 0 15px #aaddaa;
+	text-decoration : none;
+}
+
+
+.article_pos{
+	font-size:16px;
+	color:#aaf; 
+	font-weight:bold;
+	text-align:center;
+	margin:0px;
+	padding:0px;
+}
+
+#content {
+	font-size:14px;
+	
+}
+
+#sidebar {
+	background:#f8f8f8; 
+	border-left:1px solid #ddd; 
+	padding:4px 6px;
+	font-size:12px;
+}
+
+A.sidebar_link:LINK,A.sidebar_link:VISITED,
+A.sidebar_link_recent:LINK,A.sidebar_link_recent:VISITED{
+    color:#5658f6;
+	text-decoration: underline;
+}
+A.sidebar_link:HOVER,A.sidebar_link:ACTIVE,
+A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
+	color: #9698e6;
+	text-decoration: underline;
+}
+
+.sidebar_link{
+	font-size:13px;
+}
+
+.sidebar_link_recent{ /* 1つ1つの項目ごとに隙間を空ける */
+	font-size:11px;
+	line-height: 1.2;
+	display: inline-block;
+	margin-top:5px;
+}
+
+
+.entry {
+	border:1px solid #ccc; 
+	border-radius:8px; 
+	margin:14px 0; 
+	overflow:hidden;
+
+}
+.entry-title {
+	background:linear-gradient(to right,#4243ff,#aaaacf);
+
+	font-size:17px;
+	color:#fff; 
+	padding:4px; 
+	font-weight:bold;
+	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
+}
+
+.entry-body,.extended {
+	background:#fff; 
+	color:#444; 
+	padding:15px;
+	font-size:14px;
+	line-height:1.6em;
+}
+
+.entry-foot {
+	background:#fff; 
+	text-align:center;
+	vertical-align:middle;
+	color:#ccf;
+	font-size:12px;
+	padding-top:20px;
+	padding-right:20px;
+	padding-bottom:10px;
+}
+
+.linkbutton{
+	padding:3px;
+}
+
+/*--●形状整理用--*/
+body {display:flex; margin:0;}
+#content {width:600px; padding:0 8px;
+	font-size:14px;}
+#sidebar {width:120px;  box-sizing:border-box; }
+#sidebar div {line-height:1.6;}
+#sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
+.nav {margin:0px 0 -20px 0; text-align:center;}
+.sym {color:#999; font-weight:normal;}
+
+</style>
+
+
+<script>
+function toggle(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+function toggleDisp(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+</script>
+
+
+
+<!--★目次デザイン・処理★-->
+<style>
+.toc-box{background-color:#f0f0f0;border-radius:8px;padding:10px;} 
+.toc-list{list-style:none;margin:0;padding-left:0;} 
+.toc-list ul{list-style:none;margin:0;padding-left:20px;}
+.toc-list li{margin:5px 0;}
+.toc-level1{margin-left:0;}
+.toc-level2{margin-left:20px;}
+
+h1 {
+  background: #fff;
+  padding: 6px 10px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #2233cc; /* 青系 */
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 4px solid #3366ff;
+  display: block;
+  width:100%;
+  
+}
+
+
+h2,h3 {
+  background: #fff;
+  padding: 6px 10px;
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #5566ff; /* 青系 */
+  
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 2px solid #9999ff;
+  display: -block;
+
+}
+
+h2::before {
+  content: "- ";
+}
+
+.master_years{
+  margin-left:20px;
+  margin-right:20px;
+}
+
+.top_minicategory{
+  font-size:10px;
+  color:#ccccff;
+}
+</style>
+
+
+
+</head>
+<body onload="initLightbox();">
+<a id="top"></a>
+
+<style type='text/css'>
+.linkbutton{
+  font-size: 0.9em;
+  padding: 1px 6px;
+  vertical-align: baseline;
+  line-height: 1;
+  height: auto;
+  margin-left: 4px;
+  color:#66f;
+  background-color:#f9f9f9;
+  border: 1px solid #888;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.copy-popup{
+  background-color: #eef;
+  border: 1px solid #88c;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  color: #333;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.5s ease;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  max-width: 80vw;             /* 画面幅の 80% で折り返す */
+  overflow-wrap: anywhere;     /* 長い URL を途中で区切る */
+  word-break: break-all;       /* ↑が効かない旧ブラウザ保険 */
+  white-space: pre-wrap;       /* 
+ を改行として扱い、余計な連続空白は1個に */
+}
+.article_end_date{
+  font-size:0.9em;
+}
+</style>
+
+
+<script>
+function toggle(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+}
+
+// Year accordion with sessionStorage persistence
+function toggleYear(id){
+  const pane = document.getElementById(id);
+  const btn  = document.getElementById(id+'-btn');
+  if(!pane||!btn) return;
+  const sym  = btn.querySelector('.sym');
+  const isClosed = pane.style.display === 'none';
+  pane.style.display = isClosed ? 'block' : 'none';
+  sym.textContent   = isClosed ? '－' : '＋';
+  sessionStorage.setItem('year-'+id, isClosed ? 'open' : 'closed');
+}
+
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('[data-yearpane]').forEach(pane=>{
+    const id    = pane.id;
+    const state = sessionStorage.getItem('year-'+id);
+    const btn   = document.getElementById(id+'-btn');
+    const sym   = btn?.querySelector('.sym');
+    if(state === 'open'){
+      pane.style.display = 'block';
+      if(sym) sym.textContent = '－';
+    }else{
+      pane.style.display = 'none';
+      if(sym) sym.textContent = '＋';
+    }
+  });
+});
+
+function copyLink(date, title, el){
+  const url = `https://smokingwolf.github.io/dev_blog/archive/${date.slice(0,4)}/${date.slice(5,7)}.html#${date}`;
+  const text = `
+【${date}　${title}】
+ ${url}`;
+  navigator.clipboard.writeText(text).then(()=>{
+    if(el && el.tagName === 'BUTTON'){
+      const orig = el.textContent;
+      el.textContent = '✅ コピー完了!';
+      setTimeout(()=>{ el.textContent = '🔗 リンクをコピー'; }, 2000);
+    }
+
+    const popup = document.createElement('div');
+    popup.className = 'copy-popup';
+    popup.textContent = `✅ コピー完了：${text}`;
+    document.body.appendChild(popup);
+
+    const rect = el.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    const popupWidth = popup.offsetWidth;
+    const pageWidth = document.documentElement.clientWidth;
+
+    let left = rect.left + scrollLeft + (rect.width / 2) - (popupWidth / 2);
+    let top  = rect.top  + scrollTop - popup.offsetHeight - 8;
+    if(left < scrollLeft + 4) left = scrollLeft + 4;
+    if(left + popupWidth > scrollLeft + pageWidth - 4)
+        left = scrollLeft + pageWidth - popupWidth - 4;
+
+    popup.style.left = `${left}px`;
+    popup.style.top  = `${top}px`;
+    popup.style.opacity = '1';
+    popup.style.zIndex = '9999';
+
+    setTimeout(()=>{ popup.style.opacity = '0'; }, 1800);
+    setTimeout(()=>{ popup.remove(); }, 2500);
+  });
+}
+</script>
+
+<div id='content'>
+<style>
+
+.TopTitle{
+  width:515px;
+  font-weight:bold;
+  font-size:16pt;
+  color: #ffffff;
+  background-color:#535365 ;
+  border-width: 0px;
+  border-color:#535365;
+  border-style:solid;
+  background: -moz-linear-gradient(left top, #42435f, #fafaff);
+  background: -webkit-gradient(linear, left top, right bottom, from(#42435f), to(#fafaff));
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#DD42425f', endColorstr='#FFfafaff');
+  
+  text-align:left;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.header3{
+	color:#555588;
+	margin-bottom:16px;
+}
+
+.home-link {
+  font-size: 12px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: underline;
+}
+</style>
+
+<!--戻るリンク、サイトがなくなってたらアーカイブにつながるようにしたが404ページがアレなのかうまくいかない-->
+<!--
+<font id="home-link-placeholder">
+  <noscript>
+    <a href="https://smokingwolf.github.io/" class="home-link">← ホーム(アーカイブサイト)に戻る</a>
+  </noscript>
+</font>
+
+<script>
+(async () => {
+  try {
+    // HEADで軽くチェック（no-corsなのでステータス確認は不可）
+    // 自分のサイトのインフォメーションページにつなげるならサイトがまだあると認識する
+    await fetch("https://silversecond.net/contents/etc/info.shtml", { method: "HEAD", mode: "no-cors" });
+
+    const link = document.createElement("a");
+    link.href = "https://silversecond.net/";
+    link.textContent = "← ホームに戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  } catch {
+    const link = document.createElement("a");
+    link.href = "https://smokingwolf.github.io/";
+    link.textContent = "← ホーム(アーカイブサイト)に戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  }
+})();
+</script>
+-->
+
+<div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
+<!--ここにコメント文-->
+<div class="header3" style="margin-top:6px;">　ここはゲーム開発者SmokingWOLF(スモーキングウルフ)の開発日誌です。<BR>
+　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
+　<B style="color:#ff5555;">※以前のブログが使えなくなったので、ただいまこの開発日誌に移転中です。</B>
+</div>
+
+<div class='article_pos'>2017年02月</div>
+<div class='nav'><a href='03.html'>次の月へ</a> | <a href='01.html'>前の月へ</a></div>
+<a id='2017-02-25'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2017-02-25','キャラ作りで意識すること１', this)" style='cursor:pointer;'>2017-02-25 (土)&nbsp;&nbsp;&nbsp;キャラ作りで意識すること１</span><span style='float:right;'><a href='#2017-02-18' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><strong><span style="font-size:large;">【キャラ作りで意識すること１】</span></strong><br><br>今回もいただいた拍手コメントにお答えしていくコーナーです！<br>コメント、いつも本当にありがとうございます！<br><br><span style="color:#3300FF"><strong>＞エシュター・アルバート・ネムリ・サラなどなど、覚えやすく魅力的な　　　.<br>＞キャラクターを多数生み出されていますが、彼、彼女らはどういった経緯を<br>＞経て誕生する事が多いのかが、とても気になっています。 私も趣味で　　　.<br>＞小説を書いているのですが、最も悩むのがストーリーや世界観よりも、　　　.<br>＞キャラクターです。名前一つ考えるだけでなかなかしっくりくるものがなく、　.<br>＞どうしても無理矢理とって付けてしまう様な感じがしてしまいます。 　　　　　.<br>＞何か、キャラクターを考える際のこだわりなどがあれば、お聞きしてみたいです。</strong></span><br><br>キャラクター作りは私も悩みがちな部分です。<br>その辺りのコツはこれまであまり自覚したことがなかったので、<br>今回は今まで自分の作ってきたキャラの傾向から逆算して、<br>キャラクターの作り方やこだわりを整理してみたいと思います。<br><br>ということで今回はキャラ作りのお話の「外面」編として、<br><br><span style="color:#CC0000"><strong>・最初に決めるのは「見た目」（※個人的理由）<br>・「形」も大事？　キャラクターに名前を付けよう！</strong></span><br><br>の二本でお送りします！<br>今回は感覚的な話が多いので、全体的にモヤっとした語り口になると思いますが、<br>その点はどうかご容赦ください。<br>数値の効率の話と違って、断定できることがあんまりない話ですからね。<br><br><img src="../../image/2017/20170225.jpg" border="1" title="開発日誌子。本名はラーシア＝～～みたいな案が出てました、ちょっといい家の出ですが、家族がみんな亡くなって……とそんな物語が予定されてました。見た目は「イラスト・テキスト」コーナーにある2001年の絵が元です" loading="lazy" height="450"><br><br><hr size="1" /><br><strong><span style="font-size:large;">【最初に決めるのは「見た目」（※個人的理由）】</span></strong><br><br>私の場合、100％ではありませんが、<br>キャラの名前より先に外見を決めることが多いです。<br><br>というのも私の場合、お絵かきの技術不足で<br>「顔の雰囲気を希望通りに描けない」場合が多かったので、<br>作業の流れ的にどうしても<span style="color:#CC0000"><strong>「描けてしまった顔グラフィック」に合わせて<br>性格や名前を調整する</strong></span>ことになりがちだからです。<br><br>開発においてはどんな場面でも基本的に、<br>「技術不足で制御できなかったり希望通り出てこない方に、<br>動かしやすい他の部分を合わせる」<br>ほうがうまく行くはずですから、<br>「伝えたイメージを完全に希望通り実現してくれるほどの<br>すごく腕が立つイラストレーターさん」に頼むのでない限りは、<br>個人的には「キャラの特徴」から「見た目」を作って、その「見た目」に合わせて<br>最終的に性格やセリフを調整する方が違和感が出にくいと考えています。<br><br>ではどうやってキャラクターのどうやって「見た目」を決めるのか？<br>「見た目」の作り方に関して思いつくコツはあまり多くないんですが、<br>基本的にはできるだけ「プレイヤーさんと共有しやすいイメージ」を<br>取り入れて作りたいなとは考えています。<br>「髪色」の設定の仕方を一例に取って、私の頭の中の流れをご紹介します。<br><br><br><br><span style="color:#CC0000"><strong>＜パーツに備わるイメージ＞</strong></span><br><br>たとえばキャラクターの「髪の色」を設定するとき一つ取っても、私の中では<br>「庶民的なキャラなら茶髪や黒髪」、「高貴なキャラなら金髪系や薄い色」、<br>「異国キャラや不思議・神秘的な感じを持たせたいキャラなら薄い色や変わった色」、<br>にすると分かりやすいかな、といったイメージを持っています。<br><br>たぶん皆さんも、このうちいくつかは似たイメージを持っておられるか、<br>あるいは他の創作物にも似た傾向を見いだしたことがあるのではないでしょうか。<br><br>たとえば、私以外の方が作られた創作物において<br>実際に上の傾向が採用されている例として、<br>ファンタジー世界でモブキャラ（メインではない名無し村人系キャラ）を<br>登場させる場合は、なんとなく「茶髪」が採用されるケースが多そうに感じます。<br>これもおそらく「ファンタジー世界における茶色の髪」というのは、<br>他の人にとっても共通して庶民的な雰囲気を感じやすいからではないかなと考えます。<br><br>そんな感じで、なるべく他の人とも共有しやすそうな<br>「パーツに備わる最大公約数のイメージ」を<br>うまく活用できれば、効率的にキャラクターの個性を伝えられるはずです。<br>言い換えれば、単純に<span style="color:#CC0000"><strong>「設定に合ったそれっぽい見た目にする」<br>（あるいは見た目に合った中身にする）</strong></span>という、<br>ビックリするほど当たり前な話なんですけれどね。<br><br>ただ私が未熟な頃には、「オリジナルさを上げたい！」という欲に目がくらんだのか、<br><span style="color:#CC0000"><strong>全く人に伝わらない外見のキャラを考えまくっていた黒い歴史</strong></span>もあるので、<br>その頃に比べれば「効率的」にはなったのかなと思っています。<br><br><br><br><span style="color:#CC0000"><strong>＜服装について＞</strong></span><br><br>「見た目」といえば髪や顔だけではありません。「服装」も大事な一要素です。<br>ただ私の場合、服装はあまり得意ではないのと、<br>やはり明文化できるほど意識して作れていません。<br>「それっぽい衣装を着せたいなら、検索して資料集めるとよりそれっぽくなるかも」<br>というくらいですかね。当たり前ですって？　そうですね！<br><br>あと「服」は「職業」を表すのに便利なパーツなので、<br>「割とベタベタな服装にする」のは分かりやすくする上でとても有効そうです。<br><br>名前も役職も伝えずにキャラの絵だけ見せて「これなーんだ？」って聞いてみて、<br>分かってしまいそうなくらいの衣装が、<br>時間が足りない昨今においては望ましい気がしています。<br>明らかに勇者っぽいとか、王様っぽいとか、<br>お姫さまっぽいとか、大臣っぽいとか、そんなのですね。<br>学園ものだと個性化はなかなか難しいですけどね！<br><br>他に服装で気にしてることといえば、<br>RPGの場合はドット絵から男女の区別が困難になってしまうので、<br>「RPGでは遠目にも分かるよう女性キャラにはスカートを着けることが多い」<br>というくらいでしょうか。<br>もちろん性差別の意図は全くなく、これは見せやすさや分かりやすさの都合で、<br>見た目が左右されるというケースです。<br><br><br><br><span style="color:#CC0000"><strong>＜「見た目」についてのまとめ。多少かぶってても大丈夫かも？＞</strong></span><br><br>ということで「見た目」についてすぐ思いついた分はこれくらいです。<br>いかがでしょうか。<br><br>何はともあれ、自分のゲームにおいては、キャラクターに付くあらゆる「タグ」は<br>できるだけ「識別・区別・理解しやすくする」ことを<br>重視して設定するよう心がけています。<br>特に理由がなければ、見て分かりやすければ分かりやすいほど<br>見る人の理解のスピードも上がって効率的です。<br><br>ただ、私の未熟さによるところもありますが、<br>キャラが増えると好みが出すぎたり（私が）描き分けができなかったりして、<br>見た目がかぶってしまうこともよくあります。<br>特に何作も創作物を作ってると、まっとうにキャラを作っているだけでは<br>キャラ被りをどうしても回避しきれなくなってきます。<br><br>そんな中、私は「キャラ被りは悪だ！　いけないことだ！」と考えていたのですが、<br>年を追うごとに、<span style="color:#CC0000"><strong>「見た目が少しかぶってしまうこと」自体は、<br>「急に突飛な見た目のキャラばっかりになる」よりは遊ぶ方の期待に応えやすい</strong></span>ので、<br>それはそれでいいのかなと最近は考えるようになってきています。<br><br>というのも、たとえば<br>「従来作とのキャラのデザインや雰囲気がかぶる」のを恐れたのか、<br>「主役級キャラがどんどん突飛な見た目のキャラばかりになった」<br>シリーズものの作品を一度くらいはご覧になったこともあるのではないでしょうか。<br>それを見て、ファンの方が<br>「昔のキャラっぽいのが好きでやってたのに、最新作は合わない……」<br>と感じてしまったケースも、もしかしたらあるかもしれません。<br>私も経験上、何度かあります。<br><br>しかし、シリーズや作者のファンとして遊んでおられる方々は、<br><span style="color:#CC0000"><strong>「これまでのキャラなどの雰囲気や方向性が好きでファンになった」</strong></span>方々なのですから、<br>前述のような不満が発生してしまうことを考えれば、実はそこまで必死に<br>「登場させるキャラの雰囲気を変えなくてもいい」のかなと思うことがあります。<br>元はカレー屋だったのに、飽きられることを危惧して無理して<br>牛丼を出さなくてもいいのです。<br>カレーが一番上手に作れるなら、<br>カレーのトッピングを変えてみるくらいでもいいかもしれません。<br><br>ただしこれは、決して「似すぎているものを出し続けろ」という意味ではなく、<br>「変に突飛になってしまうくらいなら前と似ててもいいじゃん！」<br>くらいの意図ですからその辺りはどうか誤解なさらぬよう！<br><br>なお私の場合、キャラがかぶりすぎると判断した場合は<br>旧作のキャラをそのまま使い回すこともあります。<br>それが使えない場合は、「血縁っぽい見た目のキャラ」などでもいいかもしれません。<br>そうすることで、先ほど述べた「パーツに備わるイメージ」を再利用できるので、<br>どんなキャラかを見た目で伝えるにあたっては非常に効果的なはずです。<br>それでいて性格は元と全く同じじゃなくてもいいので扱いやすい！　おすすめです。<br><br><hr size="1" /><br><strong><span style="font-size:large;">【「形」も大事？　キャラクターに名前を付けよう！】</span></strong><br><br><span style="color:#CC0000"><strong>＜名前のイメージ＞</strong></span><br><br>見た目に続いて「名前」も、基本的には「既存のイメージに乗る」方向で決めています。<br><br>「過去の他人の創作物」からでも「実在の人物」でも<br>「音の感じ」でも何でもいいですが、<br>ある「名前」にはすでにいくらかのイメージが備わっているはずです。<br>基本的には、その名前に備わったイメージをそのまま継承する方が、<br>遊ぶ人の記憶する負荷が軽くなるのでいいだろうと考えています。<br><br>たとえば、私の昔のゲームですが『シルフェイド見聞録』の主要人物の名前は<br>以下のような発想で命名されています。<br><br><br><strong><span style="color:#CC0000">「アルバート」</span></strong>：正当派っぽい名前に感じたので、<br>まじめなキャラに合うと思っていました。<br><br><strong><span style="color:#CC0000">「シーナ」</span></strong>：「シイナ」という発音は東洋人にもありそうな名前の「音」なので、<br>黒髪キャラに使うにはちょうど合いそうだと思っていました。<br><br><strong><span style="color:#CC0000">「セト」</span></strong>：音が他キャラと違うので異民族っぽいキャラに合うと思っていました。<br>神様の名前が付いてると、未知や神秘性があるというのもあるかもしれません。<br><br><strong><span style="color:#CC0000">「ガゼル」</span></strong>：サバンナの動物の名前なので、<br>野生味のあるキャラに合いそうだと思っていました。<br><br><br>こんな感じに、これらの例では全体的に「それっぽい」と感じた<br>既存の名前をキャラクターに付けています。<br><br>他に「それっぽい名前」の面白い例としては、<br>「ミカエル」というと高貴そうな名前に聞こえるかもしれませんが、<br>同じスペルで「マイケル」と読むと、「よー俺マイケル！」なんて言ってそうな<br>ジョーク好きな黒人男性っぽいイメージになるという笑い話もあります。<br>あくまで日本人向けの話ですけど、おおよそ間違ってないんですよね。<br><br>このように「名前に備わった印象」は「覚えやすさ」に<br>大きく影響する部分だと思うので、<br>使えそうなら「既存の名前」をバンバン<br>借りてくる方がきっと効率的だと私は考えています。<br><br>逆に、「オリジナルな名前」や「見慣れない名前」は、<br>「名前に備わった印象」が物語の開始時点では全くないので、<br>覚えるのが大変になってしまう可能性もあると私は思います。<br>よって「できればオリジナルの名前はごく一部に使うようにして、<br>なるべくイメージが分かりやすい既存の名前を使う方が効率的」だと<br>私の頭の中では考えているようです。<br><br>「オリジナルの名前」「見慣れない名前」は、<br>「主人公」や「メインキャラのごく一部」など、<br>「頻出するキャラにピンポイントで使用」するならばアリかもしれません。<br>「エシュター」などは、あまり見慣れない名前だと思いますが、<br>主人公に使えば何とか覚えてもらえるかなと考えていました。<br><br><br><br><span style="color:#CC0000"><strong>＜名前の『形』＞</strong></span><br><br>そして名前といえば大事だと思っているのが<span style="color:#CC0000"><strong>「名前の形」</strong></span>！<br>テキストやゲームで表示する都合上、いつからか<br>「名前の形」には特に意識的にこだわるようになりました。<br><br>「名前の形」とは何かというと、以下のような違いです。<br><br><span style="color:#CC0000"><strong>アルバート　→　■■■－■<br>シーナ　→　■－■<br>エシュター　→　■■o■－<br>ガゼル　→　■■■<br>セト　→　■■</strong></span><br><br>この名前の、大文字「■」、小文字「o」、横棒「－」の組み合わせの違いを、<br>ここでは便宜上、<span style="color:#CC0000"><strong>「名前の形」</strong></span>と呼ぶことにします。<br><br>この「名前の形」が違うと、一瞬目に入ったときの<br><span style="color:#CC0000"><strong>「キャラ名の区別しやすさ」</strong></span>が段違いに上がります。<br>特にメインキャラの名前に関しては可能な限り<br>「形かぶりを避けよう」と考えていますし、<br>TRPGをプレイする際なども、チャンスがあればプレイヤーの皆さんに<br>「できる限り名前の形が異なるよう」に設定してもらうように要望しています。<br><br>TRPGの商業リプレイなどをよく見ると、この辺りの配慮が<br>よく行き届いているのに気付くときがあります。<br>当然、できれば文字の「音」も違うほうが理想的なので、<br>先頭一文字がかぶったりしないようにも注意しています。<br><br>一例としては、たとえば人物名が「リメロ」と「リオラ」と「レオナ」だと<br>音も形も似てるので覚えるのが少し大変かもしれませんが、<br>「バーン」「リラ」「レオナルド」だったらとりあえず長さから覚えればいいので、<br>読者の記憶力のコストが軽くなる期待ができると考えています。いかがでしょうか。<br><br>どうでもいいですが、私の印象だとレオナルド君は<br>なんとなくメガネを付けてそうな気がしますね。そうでもないです？<br>別の発明家の名前を取って、トーマス君とかエジソン君の方がメガネっぽいでしょうか。<br><br>ちなみに「トーマス」は、昔のＲＰＧ<br>『ロマンシング サ・ガ3』にも同名のメガネの人がいたので、<br>そういった観点でもメガネの人っぽいイメージが付いているかもしれません。<br>それもまた「名前に付いたイメージ」だと思いますので、必要なら利用できそうです。<br>被りすぎてるとパロディに思われたりして場合によってはマズいので、<br>そこは気をつけますけれどね。<br><br><hr size="1" /><br>ということで、キャラ作りの見た目や名前についてざっくり書いてみましたが、<br>いかがでしょうか。<br>共感できるところも、そうでないところもあるかもしれませんし、<br>「まだこんなレベルにしか達してないのか！」と思われるところもあるかもしれません。<br><br>ここに関してはまだまだ自信のない分野ですが、少しずつ便利な方法を見つけて<br>目指す方向へ効率化させたいなと考えている最中です。<br><br>そして、何だかんだで語ることがまだいっぱいあるので<br>キャラ作り編は次回も続きます！<br>よければお楽しみに。<br><br><hr size="1" /><br>他に聞いてみたいことや、私の想像力を試したい内容、<br>この記事へのコメントやご感想などあればぜひ拍手コメントからどうぞ！<br>お答えできそうなものは随時お答えしていきます。<br><CENTER><br><TABLE bgcolor="#f0f0ff"><TR><TD><a class="double-link red" target="_blank" href="https://www.amazon.co.jp/dp/B076VM4ZMS"><img border="2" src="../../image/etc/title_map_of_dev.jpg" width="120" loading="lazy" height="171"></a></TD><TD bgcolor="#fefeff">← 今回のような記事を<br>　1冊の本にまとめたゲーム開発本、<br>　『<strong>ゲーム開発者の地図</strong>』、<br>　Kindleで好評発売中です！</TD></TR></TABLE></CENTER></CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2017-02-25 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2017%2F02.html%232017-02-25&title=%E3%82%AD%E3%83%A3%E3%83%A9%E4%BD%9C%E3%82%8A%E3%81%A7%E6%84%8F%E8%AD%98%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8%EF%BC%91" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2017%2F02.html%232017-02-25&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2017-02-25','キャラ作りで意識すること１', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/devlog/001.html'>開発日誌</a></span></div></div><br><br><br>
+<a id='2017-02-18'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2017-02-18','バランスが崩れやすい要素の話', this)" style='cursor:pointer;'>2017-02-18 (土)&nbsp;&nbsp;&nbsp;バランスが崩れやすい要素の話</span><span style='float:right;'><a href='#2017-02-11' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><strong><span style="font-size:large;">【バランスが崩れやすい要素の話】</span></strong><br><br>今回はゲーム開発側から見て、ターン制バトルで「簡単にバランス崩壊しそうで恐い」と<br>個人的に思っている要素について、思いついたまま書いていきたいと思います。<br>これから話す内容は、「急激に強くなったり弱くなったりする可能性」を秘めているため<br>開発者として扱うのもドキドキしますが、<br>遊ぶ側も別の意味でドキドキできるという意味で、<br>弱点にも強みにもなりうると考えている要素のお話です。<br><br>今回のテーマは以下の3つです！　興味がある方はぜひお読みください。<br><br><strong><span style="color:#CC0000">・強すぎる？　弱すぎる？　『連続攻撃』の調整の難しさ<br>・ダメージ０で無敵！？　『引き算の防御力』の可能性<br>・速すぎる！　ウェイトターンバトル×制限なく上がる速さの組み合わせ</span></strong><br><br><img src="../../image/2017/20170218.jpg" border="1" title="連続攻撃って一発が小さいので、開発者的にはうっかり総ダメージを強くしたくなっちゃいます。なりません？" loading="lazy" height="450"><br><br><hr size="1" /><br><strong><span style="font-size:medium;">【強すぎる？　弱すぎる？　『連続攻撃』の調整の難しさ】</span></strong><br><br>ここでは文脈的に、「コストなしで撃てる連続攻撃」を前提とします。<br>たとえばロボット系シミュレーションにおけるマシンガン系の装備をしたロボや、<br>RPGにおいて二刀流という特殊能力を持ったキャラの通常攻撃などですね。<br><br>連続攻撃は、制御がすごく難しい要素です。<br>一発一発に「攻撃力」の値が加味されたり、かつ敵に防御力の概念があったりすると<br>非常に扱いが難しくなります。<br><br>たとえば例として、以下のような状況が発生する場合があります。<br>私が遊んできたゲームにもいくつかガッツリ当てはまるのがあります。<br><br><span style="color:#CC0000"><strong>【ケース1　連続攻撃が強くなりすぎる！】</strong></span><br><br>1．開発者「普通の攻撃は10点x1回になるようにして、連続攻撃は3点x3回くらい与えるようにしよう」<br><br>2．プレイヤー「レベルアップしたり装備付け替えたりパラメータ割り振りして攻撃力に特化するぜー！」<br><br>3．プレイヤー「攻撃力が30上がって連続攻撃で33点x3回＝99点のダメージを与えられるぜー！<br>　普通の攻撃は40点x1回ダメージで弱すぎぃ！」<br><br>4．開発者「喜んでもらえるのは嬉しいけどこれだと連続攻撃一択になっちゃうなあ……」<br><br><br><span style="color:#CC0000"><strong>【ケース2　連続攻撃のダメージが通らない！】</strong></span><br><br>1．開発者「敵の防御力を最初は5点に設定するとして……。<br>単発攻撃キャラは攻撃力15で10ダメージx1回与えられるようにして、<br>連続攻撃キャラは常にその半分の攻撃力8で3ダメージx3回くらい与えるようにしよう」<br><br>2．開発者「今回は後半になるにつれてしっかり<br>敵の防御力が上がっていくようにするぞ！<br>ケース1の愚はおかさない！」<br><br>3．プレイヤー「後半で敵の防御が25になった！<br>こっちの単発キャラの攻撃力は40あるから<br>普通の単発攻撃で40－25＝15ダメージ出るのはいいんだけど、攻撃力半分の<br>連続攻撃キャラが全部20-25＝0ダメージで役立たずになっちゃったんだけど……」<br><br>4．開発者「しまった今度は連続攻撃キャラが不遇に……ぐおお！」<br><br><br><br>何のゲームか忘れましたが、私はどちらのケースも<br>プレイヤーとして体験したことがあります。<br>そして開発側になった今、私はこの経験から<br>「連続攻撃は非常に注意して設定する必要がありそうだ」と考えるようになりました。<br><br>ただ、このケース1と2は、うまく調整して強さが偏りすぎない限りは、<br>「工夫次第で結果が大きく変化する」ものなので、すごく面白い要素なんですよね。<br>ケース2の敵味方の立場を入れ替えれば、<br><br><span style="color:#CC0000"><strong>「敵として出てくる連続攻撃キャラ」に大苦戦してたけど<br>こちらの防御力を上げたら完封できた！</strong></span><br><br>なんて体験ができる可能性もあるので、大きな可能性を感じられます。<br>一方で、やっぱりバランスが不安定になりやすいとは思いますので、<br>注意深い設定が要求されそうです。<br>実際に作る側になると、意外と「一発が小さいんだから合計ダメージだけでも<br>強くしないと同じくらい強く見えない！」となぜか思ってしまいがちで、<br>それも余計に強さの偏りを招く原因になる気がしています。<br>皆さまはいかがでしょうか。<br><br><br>さて、以下はおまけの一例で、<br>「あまりドキドキはしないけれど、作りやすくてバランスを安定させやすい」<br>連続攻撃の例です。<br><br><br><strong><span style="color:#CC0000">【おまけのケース3　最終ダメージの？％を何度も与える連続攻撃にする】</span></strong><br><br>例えば攻撃力200、敵の防御100なら、<br>200-100で単発なら100ダメージ与えられるのに対し、<br>「連続攻撃なら単発の最終ダメージの33％を3回与える」<br>という風にして、33！　33！　33！<br>と出して連続攻撃を表現する方法もあります。<br><br>これは数値を非常に安定させやすく、単発攻撃と連続攻撃を混ぜた場合の<br>ややこしいバランス調整をすることも考えなくていいので、開発者的には非常に楽です。<br>一方で、遊ぶ側の「バランスが崩れかねないドキドキ感」は<br>あまり感じられないんですけれどね。<br><br>「でもこれならもダメージ効率的には単発攻撃と一緒じゃん、何が違うのさ！」<br>ですって？<br>確かに一見そう見えます。もし連続攻撃を単発攻撃とゲーム的に差別化するとしたら、<br>一つは「命中したかどうかを判定する回数が多い」点などでしょうか。<br><br>たとえば「HPが1しかないけど回避率が80％で全然攻撃が当てられない敵」がいた場合、<br>命中率100％で単発100ダメージ与えられるキャラは<br>20％の確率でしか攻撃を当てられませんが、<br>命中率100％で33ダメージx3回攻撃できるキャラなら<br>だいたい49％の確率で一発以上当てられます。<br>（3回とも回避される確率は0.8×0.8×0.8＝0.512、つまり51％）<br>こういう場面だと、3回に割った連続攻撃の方が有利です。<br><br>ただしこのケースの場合、ダメージ効率が一緒だと<br>連続攻撃の方が有利になっちゃうので、<br>同じ命中率なら連続攻撃の方をダメージ効率を低めにした方がいいかもしれませんね。<br>単発なら100ダメージ1回、連続攻撃なら25ダメージを3回、といった具合です。<br><br>あるいは、命中率そのものを低くして<br>ダメージの振れ幅が大きい攻撃という立ち位置にする、<br>などでもいいかもしれません。差別化の仕方も千差万別！　お好きにどうぞ！<br><br><hr size="1" width="50%" /><br>ということで連続攻撃についてお話をしてみましたが、いかがでしょうか。<br>ゲームのプレイ中に、上のケース1や2にあるようなバランスの危険さを感じ取ると、<br>個人的には「どう工夫すればバランス崩壊レベルの結果が出せるかな！？」<br>とワクワクします。<br><br>普通に連続攻撃を導入するなら「装甲が薄い敵や回避率の高い敵には連続攻撃が有効」、<br>「そうでない敵には単発攻撃が有効」、<br>と差別化するのが比較的いいやり方なんでしょうけれど、<br>実際はどちらかに極端に偏りそうで、<br>いい塩梅のバランスを取るのはなかなか難しそうです。<br><br><br><hr size="1" /><br><strong><span style="font-size:medium;">【ダメージ０で無敵！？　『引き算の防御力』の可能性】</span></strong><br><br>これをお読みのあなたは、「パラメータを自由に割り振れる」システムを持つゲームを<br>遊んでいるとき、割り振れるパラメータの中に「防御力」という項目があったときに<br>ある可能性が脳裏によぎるかもしれません。<br><br><span style="color:#CC0000"><strong>「これ、もしかして防御力を上げまくれば敵からの攻撃を完封できるんじゃ？」</strong></span><br><br>その可能性がすぐ思いつく人は、たぶんけっこうなゲーム経験者の方だと思います。<br><br>『引き算の防御力』は多くのRPGで使われています。<br>たとえば、攻撃力10の敵が防御力4の味方に攻撃した場合、受ける最終ダメージが<br>10-4＝6ダメージになったりする、という風に、<br>防御力は敵の攻撃を防ぐための能力値です。<br><br>世の中には「割合」で防ぐ防御力もたまに使われます。<br>ここで話すにあたって、便宜上「引き算の防御力」に対して<br>「割合防御力」と名付けましょう。<br>それぞれ、以下のような違いがあります。<br><br><span style="color:#CC0000"><strong>・引き算の防御力：　攻撃力10に対して受ける側の防御力5なら、<br>10－5＝5で最終ダメージが5になる。<br><br>・割合防御力：　攻撃力10に対して受ける側の防御力が20％なら、<br>10×0.20（20％）＝2点防いで、最終ダメージが8になる。</strong></span><br><br>そしてここで話すテーマは、『引き算の防御力』の方です。<br>これ、ちょっと油断すると一気にゲームっぽさが失われる、結構危険な要素です。<br><br>たとえば攻撃力と防御力がほぼ拮抗して<br>ダメージ算出されるゲームをデザインしていると、<br>実際のプレイ中で以下のようなことが起きやすくなります。<br><br><br><span style="color:#CC0000"><strong>【ケース　攻撃力と防御力が拮抗する状況のプレイ】</strong></span><br>1．開発者「攻撃力30、防御力25で5ダメージを与えられるのが<br>ある時点の標準バランスとしよう」<br>2．プレイヤー「うひょー攻撃力が30から35になっただけで<br>与えるダメージが5→10の2倍になったぜー！」<br>3．プレイヤー「と思ったら次のエリアの敵の防御が35で<br>ダメージがまったく通らないぜー！」<br>4．プレイヤー「でもこっちもアクセサリ付けて防御を上げたら<br>受けるダメージが0になったぜー！」<br><br><br>つまり、与えるダメージがあっというまに何倍にもなったり、<br>逆に受けるダメージがあっという間にノーダメージになったりするのです。<br><br>装備でたった数ポイントの攻防の数値が変わるだけでも結果が大きく変化するので、<br>装備の組み合わせを試行錯誤したりするゲームならば、このように<br>攻撃力と防御力が拮抗してるのはかなり面白いゲームになるかもしれません。<br><br>また、プレイヤーのクリア想定レベルを開発者側でかなりガチガチに制御したい場合も<br>攻防が拮抗したこういうバランスがよく使われている気がします。<br>たとえば「一定レベル以上にならないとボスにほとんどダメージが通らないゲーム」<br>など、昔のゲームだとよく見たことはないでしょうか？<br><br>一方で、「かなり慎重なバランス取りが求められる」という意味においては、<br>この「引き算の防御力」はバランスが壊れやくて危険な要素です。<br>特に上の例にある4番の場合の「防御力を上げたら無敵になった」<br>というのが一番危険で、<br>こうなるとゲームを遊ぶにあたって何も考えなくてもよくなってしまいます。<br>棒立ちでバシバシ攻撃を受けても1ダメージや0ダメージしか受けない主人公！<br>強い！　けどゲームになってない！<br>最初から救済目的の調整なら、それでいいんですけれどね。<br><br>では引き算の防御力を導入した上で、<br>プレイヤー側が無敵にならないようにするためにはどうするか？<br>だいたいの場合は、攻撃力に対して防御力を半分以下に設定することで、<br>そういった問題を起きにくくしている印象があります。<br>例えばドラゴンクエストでは、「こうげき力」で与えられるダメージはその数値の1/2、<br>「しゅび力」で防御できるダメージは数値の1/4なので、<br>攻撃力250、防御力250同士の人が殴りあった場合は、<br>お互いに「(250/2-250/4)＝約62ダメージ」は通るわけです。<br><br>でもさらにそれが進んで、あまりにも防御力の影響が小さくなってしまった場合、<br>防具を更新しても「耐えられる打数」が変わらなくて<br>防御力に意味がなくなることがあるので、<br>この辺りは強すぎても弱すぎてもダメということで、<br>調整が難しいなと感じるところです。<br><br><br>ちなみに私の場合は、防御力の慎重な調整に開発コストを取られるのは好かないので、<br>ほとんどの場合では防御力の導入をしません。<br>たとえば『片道勇者』でも、ほとんどの敵には防御力を持たせておらず、<br>大部分の敵の防御力＝装甲は「0」です。つまり主人公の攻撃力がそのまま通ります。<br>そして「特に硬さがありそうな敵」だけ装甲を設定したり、盾を持たせたりしています。<br>味方にも防御力はありますが、効果はだいぶ小さめです。<br>盾みたいな、一定確率で防御するアイテムはめちゃ強力ですけれどね！<br><br>とにもかくにも、「敵を倒すための打数」が同じならば、<br>HPと防御力の両面を絡めるより、HP一つだけで計算した方が調整が簡単になります。<br>「防御力」を使わないバランス設定は、個人的には意外とおすすめですよ。<br><br><br><span style="color:#CC0000"><strong>＜おまけ話　割合防御力ってどうなの？＞</strong></span><br><br>余談ですが、「敵の硬さを表現したいけど、実際はそこまで硬くしたくない」場合や、<br>「プレイヤー側からのダメージが敵に通らないのが恐い」場合は<br>硬さを表現するにあたって「割合防御力」が便利でした。<br><br>たとえば『片道勇者』では、敵に接頭辞が付いた<br>「＜やたら硬い＞野犬」などが出てきます。<br>ゲーム中では、こういった敵に殴りかかると普段の半分以下しか<br>ダメージを与えられないので、ものすごく硬く感じます。<br>が、それでも主人公の与えるダメージが0になることは滅多にありません。<br><br>実はここで使われているのは主に「割合防御力」で、「やたら硬い」効果を<br>「受けるダメージを50％カットした上で最終ダメージ-5」という処理にしているためで、<br>どんなに弱いクラスでもレベル1で攻撃力17以上ある主人公なら<br>与えるダメージは0にはならないのです（最低でも17/2-5＝約3ダメージは出る）。<br>それでいて、与えられるダメージはいつもの半分以下に激減します。<br><br>プレイヤー側は敵の防御力がどのくらいかが見えないことが多いので、<br>こうすることで実質耐久力がほぼ2倍なだけの<br>「硬いように見える敵」を作ることができます。<br>さらに「全くダメージが通らず一方的にやられる」心配も少ないので、結構便利です。<br><br>またこれとは別に、「属性」への防御などには「割合防御力」がよく使われてますよね。<br>「炎ダメージを30％減少させる」とか、ああいった類の効果です。<br>これも数値が100％に達しない限りは無敵にするのは難しいので、<br>扱いやすい印象があります。<br><br><hr size="1" /><br><strong><span style="font-size:medium;">【速すぎる！　ウェイトターンバトル×制限なく上がる速さの組み合わせ】</span></strong><br><br>この話はプレイヤーには見えにくい処理なので、開発側の話になります。<br>あんまり面白くない話かもしれませんので、飛ばしても大丈夫です。<br><br>『片道勇者』では、敵味方の行動回数の算出において、<br>内部的に以下のようなウェイトターン方式を採用しています。<br>どんなものかというと……。<br><br><span style="color:#CC0000">・敵味方には「1ターンのウェイト値」が設定されている。敏捷0時のウェイト値は30。<br><br>・このウェイト値は1ずつ減り、0になると行動できる。<br><br>・能力値の『敏捷』が高くなると、「1ターンのウェイト値」が小さくなる。<br>1ターンに要する時間が短くなるので、状況によっては連続で動ける。<br><span style="font-size:x-small;">例：敏捷0だとウェイト値30だが、敏捷5になると「1ターンのウェイト値」が28になる。<br>　上がっていった果てにウェイト値は20まで減る。これは最初の1.5倍の速さ。<br>　ウェイト値20の主人公は、普通の速さの敵が2回行動する間に3回移動できる。</span></span><br><br>この方式は速度の微妙な差を表現する上でたまに使われます。<br>たとえば、100％（30/30）の速度と111％（30/27）の速度の差を<br>表現できたりするのです。<br><br><span style="color:#CC0000"><strong>【残りウェイト値の推移（1ターンのウェイトは、主人公は27、敵は30とする】</strong><br>[主人公]　4　→　0（行動）→　27　→　1　　　→　　　1　→　0（行動）　→　27　→　0（連続行動）<br>　[敵]　　30　→　　　26　　→　26　→　0（行動）→　30　→　29　　　　→　29　→　2　　　　　　　.</span><br><br>これだけ見るとややこしいかもしれませんが、主人公→敵→主人公→主人公→　と、<br>途中で主人公が連続行動できる状況を表現しています。<br>とにもかくにも、「相手より速い側がたまに連続で行動できるシステム」<br>くらいに思っておいていただければ結構です。<br><br>ただしこのシステム、ウェイト値が無限に下がる要素が入っていると、<br>最終的にとんでもないことになります。<br><br>たとえば、ウェイト値が極限まで下がった果てに<br>1ターンのウェイトが「1」になってしまったら、<br>なんと最初のキャラの「30倍」の速度で動けてしまうのです！<br>そうでなくともウェイトが「2」だと15倍、「3」だと10倍と、<br>ウェイト値が小さい段階まで行くと1の差による速度差がめちゃくちゃになるので、<br>皆さんのゲームをしていてこういう要素が搭載されていると、<br>どこまで速度を上げてしまえるのか私は非常にドキドキしてしまいます。<br><br>よくできたゲームなら速度の限界値がきっちり設定されているので、<br>限界が見えると安心できます。<br>たとえば『片道勇者（プラス）』では、<br>主人公の最大速度が1.5倍に設定されているのです。<br><br>が！　実は『片道勇者プラス』では敵の方に最大速度を設定し忘れていて、<br>敵の種類と接頭辞の組み合わせ次第で<br>「10～15倍速以上」で動く敵が出るようになっていたというひどい事件があり、<br>公開後1年くらい経ってようやく修正したという顛末があります。<br>「画面の端に一瞬白い鳥人が見えたと思ったら、<br>次の瞬間に目の前に敵が来て何度も殴られ続ける主人公！」<br>という、ひどい状況が起きていました。<br><br>今は、どんなに速くても敵の速度は「最大5倍速」くらいになっています。<br>そのときはだいたい主人公も「1.5倍速」まで成長しているので、<br>最高速の敵は3～4歩ずつ近付いてくる計算です。まだ何とかなりそうですね。<br><br>ということで、この項目は私自身への戒めの意味でも追加しています。<br>ウェイトターン方式を使うなら、敵にも味方にも忘れずに<br>限界速度を設けておきたいですね！！<br><br><hr size="1" /><br><strong><span style="font-size:large;">【まとめ】</span></strong><br><br>ということで、慎重に調整しないと大変なことになりやすいと考えている要素について、<br>いくつか紹介させていただきました。<br><br>もちろんこれら以外にもバランス的に危険な要素は無数にありますが、<br>ひとまず今回の要点を整理すると、結論はだいたい以下の2点にまとめられそうです。<br><br><strong><span style="color:#CC0000">・X倍で増えていく要素は調整が難しい（連続攻撃のダメージ）。<br><br>・0に近付いていく要素はヤバい（引き算の防御力、ウェイトターンの速度の計算）<br>　→　なので制限を設けた方が安全そう。</span></strong><br><br>特に「0に近付いていく要素」の方は制限なしだと<br>無思考なゲームプレイの元になりやすいので、<br>今後も使う際はちょっと注意していきたいなと考えている部分です。<br>防御力を上げてずっと無敵になってしまったり、<br>速度を上げて敵の3倍速で動けたりしたら、<br>ほとんど作業プレイになっちゃいますから、それはもったいない！<br>私のゲームでそんな状況になることがあったら、まさに私の未熟さの致すところです。<br><br><br>とはいえ、これまで挙げた要素は開発者的に扱いは難しいものの、<br>うまいこと使えるとプレイヤー側としてはすごく爽快なものになりえます。<br>「補助をかけまくって連続攻撃で莫大なダメージが出せたりする」のも、<br>「防御力アップによる無敵化」も、「敵を圧倒できる超スピード」も、<br>「一時的にだけ」達成できるものなら非常に爽快で面白くなりそうです。<br><br>これらはちょっぴり『劇薬』なだけで、それならそれで注意して、<br>状況に合わせて使えば問題ないのです。<br><br>ちょっぴり危ういバランスで遊ぶ人をドキドキワクワクさせたいと考えているなら<br>苦労してでもぜひ導入すべきかもしれませんし、逆に調整の時間が取れない状況下や、<br>検証のコストを上げたくない場合はこれらの要素をあまり使わない方がいいでしょう。<br>どんな要素も、使う価値があるかどうかはそのとき状況次第！<br>状況に合わせて適切なカードを出していきたい限りです。<br><br><br>……とはいえ、私は『引き算の防御力』に関しては、<br>これからもあまり入れない気がします。<br>「一定確率でだけ強い防御力を発揮できる」、<br>「少ない回数だけ無敵」といったものなら<br>強力にしてもいいと思うんですが、長いこと持続する防御力の扱いには、<br>どうしても慎重になってしまいますね。<br><br>そのせいで、『シルフェイド幻想譚』といい『片道勇者』といい、<br>私のRPGでは防具を着けなくてもさほど問題ないゲームが多くなってしまっています。<br>それはそれでどうなんだと思いながらも、私が「防御力」を<br>上手に使いこなせるようになるにはまだまだ道のりが遠い気がします。<br>しばらくは、半裸で冒険する主人公が活躍してしまいそうです。<br><br><hr size="1" /><br>他に聞いてみたいことや、私の想像力を試したい内容、<br>この記事へのコメントやご感想などあればぜひ拍手コメントからどうぞ！<br>お答えできそうなものは随時お答えしていきます。<br><CENTER><br><TABLE bgcolor="#f0f0ff"><TR><TD><a class="double-link red" target="_blank" href="https://www.amazon.co.jp/dp/B076VM4ZMS"><img border="2" src="../../image/etc/title_map_of_dev.jpg" width="120" loading="lazy" height="171"></a></TD><TD bgcolor="#fefeff">← 今回のような記事を<br>　1冊の本にまとめたゲーム開発本、<br>　『<strong>ゲーム開発者の地図</strong>』、<br>　Kindleで好評発売中です！</TD></TR></TABLE></CENTER></CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2017-02-18 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2017%2F02.html%232017-02-18&title=%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B9%E3%81%8C%E5%B4%A9%E3%82%8C%E3%82%84%E3%81%99%E3%81%84%E8%A6%81%E7%B4%A0%E3%81%AE%E8%A9%B1" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2017%2F02.html%232017-02-18&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2017-02-18','バランスが崩れやすい要素の話', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/devlog/001.html'>開発日誌</a></span></div></div><br><br><br>
+<a id='2017-02-11'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2017-02-11','片道勇者TRPG新作！', this)" style='cursor:pointer;'>2017-02-11 (土)&nbsp;&nbsp;&nbsp;片道勇者TRPG新作！</span><span style='float:right;'><a href='#2017-02-04' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【片道勇者TRPG、3巻目が発売します！】</strong></span><br><br>片道勇者TRPGの3巻目となる『片道勇者TRPGアペンド』の発売が決定しました！<br>2017年3月18日に発売予定です！<br><br>今回はどちらかというとリプレイ盛りだくさんの巻です。<br>リプレイにはなんと、プレイヤーキャラクターとしてアルバートが参戦します！<br>すでに『片道勇者TRPGアペンド』自体は予約可能になっているので、<br>よければぜひどうぞ！<br><br><span style="font-size:large;"><a class="double-link red" target="_blank" href="http://amzn.to/2lqkkxy"><strong>『片道勇者TRPGアペンド』Amazon予約ページ</strong></a></span><br><br>ちなみにアルバートの中身は私です！<br><br><hr size="1" /><br><strong><span style="font-size:large;">【片道勇者TRPGプラス版リプレイ公開！】</span></strong><br><br>ということでアペンド発売のお知らせに合わせて、<br>片道勇者TRPGプラス版のリプレイ『よみがえる闇』を公開しました！<br>私やPLの皆さまの語り口や文章が好きな方はぜひご覧ください。<br><br><a data-primary="http://silversecond.net/contents/game/TRPG/katamichi_trpg2/Replay_KatamichiTRPG_P01.shtml" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/trpg/katamichi_trpg2/Replay_KatamichiTRPG_P01.shtml"><span style="font-size:large;"><strong>片道勇者TRPGプラスリプレイ『よみがえる闇』</strong></span><br><img src="../../image/etc/title_TRPG_Katamichi3.jpg" width="90%" border="1" loading="lazy" height="194"></a><br><br>かつて世界を救うために戦った勇者であるロリア、クスクル、ワイズマンの3人が、<br>再び『闇』とそれをよみがえらせた謎の秘密結社『闇の一族』に<br>立ち向かっていく読み切りの外伝です！<br>少女ミラやアルバートと共に旅立つ三人、果たして彼らの運命やいかに……！？<br><br>今回はプラス版のデータも取り入れて、より苛烈になった冒険が繰り広げられます。<br>私のアドベンチャー的成分を楽しみたい方も、よければぜひご覧ください。<br><br>なお今回、関所の処理を間違ってて、<br>1人分の料金で3人とも通してしまったのが大失敗でした。<br>関所を通り越えるために壁を破壊したり徴収人と戦ったりするハメになって<br>もっとハードな冒険にできたのに！　ああ！<br><br><hr size="1" /><br><br>以下は2回前の記事「<a class="double-link blue"  target="_top" href="../../archive/2017/01.html#2017-01-28"><strong>どんな武装がお好き？</strong></a>」へいただいた<br>気になったコメントへの返信です。<br>様々なコメント、誠にありがとうございます！　非常に勉強になります。<br><br><strong><span style="color:#3333FF">＞個人的に武装で好きといえば連続攻撃系でしょうか。大剣よりもダガーが、<br>＞キャノンよりもマシンガンが好きですね。確実にダメージを通せる感じが好きです。<br>＞片道勇者でも重めの武器より軽めで連続攻撃が出るタイプをよく使ってました。<br>＞後は、元のダメージにプラスして追加ダメージが入るのも好きですね。<br>＞これはダメージの桁が多いゲームほどお得な感じが増すのでいい感じになります。</span></strong><br><br>連続攻撃系武器は私も好きです！<br>ただ私の場合は、連続攻撃で簡単に<br>バランス崩壊気味になるゲームと出会ってきたせいで、<br>連続攻撃が有利だった記憶が強かったからというのもあるかもしれません。<br><br>連続攻撃があるコンシューマのゲームでも、攻撃力を上げると、<br>たまに「連続攻撃の各一発ごとのダメージがそのまま上がる」ゲームがあったりして、<br>最終的に連続攻撃武器でバランス崩壊気味の破壊力を<br>出せるゲームを見たことがあります。<br>それ以来、「成長要素」と「連続攻撃」の組み合わせを見ると、<br>始まった瞬間からバランス面の危険さを感じて個人的に興奮するようになりました。<br>「バランス崩壊しやすいゲームシステム・要素集！」みたいな記事も<br>そのうち書いてみても面白いかもしれませんね。<br><br>あと元のダメージに＋αで追加ダメージが出るのも、<br>「表現方法」という意味では私もなぜか好きです。<br>敵に攻撃したとき、「ダメージ30！」と出た後に<br>「炎ダメージ10！」みたいなのが続けて出ると、<br>「あーこれ特殊な炎の剣だからなーさすがだなー！」みたいな感じで盛り上がります。<br>単純に加算したダメージを1回出すだけでなくて、それぞれの特別な効果を<br>分かりやすく見せた方が盛り上がるという好例かもしれませんね。<br><br>&#45;&#45;&#45;&#45;&#45;--<br><br><span style="color:#3333FF;font-size:0.9em;"><strong>＞片道勇者と同じローグライクでいうと、風来のシレン2の「スパークソード」が好きです！<br>＞効果は「2回攻撃を外すと、次の一撃は必中＆会心の一撃になる」というもので、<br>＞攻撃を連続で外してピンチになることも多いローグライクでは割と強力です。<br>＞（2回外したあとの「剣が光りだした！」というログや効果音もあってワクワク感も大きい）<br>＞しかし「会心攻撃を撃てる状態」は目の前の敵（攻撃を外したので当然目の前にいる）を<br>＞倒すために使うことが多くて、その状態を「持ち運ぶ」のはちょっと工夫が必要で面倒くさい。<br>＞そのため、あくまで「ちょっとしたご褒美」くらいですが、このバランスが好きです。</strong></span><br><br>スパークソード！　普通にコンピュータで確率を使うと<br>平気で10回連続で外したりなんてことも<br>当然ありうるんですが、こういう形で安心感を得られる仕組みはすばらしいと思います。<br>攻撃を連続で外して死ぬのがイヤだ！　という人向けにこういう選択肢を<br>与えているのがいい！　外したのにワクワク感まで感じられるところがもっといい！<br><br>このスパークソードみたいに、「2回ハズレが出たら次は当たりにする」とか、<br>そういった人為的な仕組みで乱数の結果を丸くするような方式を、<br>システムとして見える形で組み込むのはとてもいいアイデアだと思います。<br><br>そもそも乱数って、「人為的に偏らせる」とか<br>「裏でこっそりズルをする」とかやらないと、プレイヤーの皆さんさんが俗に言う<br>「偏らない乱数」（まんべんなく当たり外れが出る乱数）って作れないんですよ！<br>でも、もしコンピュータ側で見えないズルをすると<br>プレイヤーさんは数値から正しい判断をすることができなくなってしまいますから、<br>こうやって見える形にしてあるというのは上達のためにもいい方法かなと感じます。<br><br>スパークソードに限らず、ガチャでユニットを引いたりする最近のゲームだと、<br>「とてつもなく不幸な人」への配慮として、<br>「ハズレくじがたくさん集まるとお得になる」というような仕組みを<br>搭載しているゲームも割と頻繁に見るようになってきています。<br>というかむしろ、今出ている新しめのガチャ方式ゲームにおいては<br>この仕組みが基本文法として取り入れられつつある気がしますね。<br><br>具体的には、「ハズレが連続で続くと最高レアが出る確率が上がる」とか、<br>「いらないのを廃棄するとおまけが取れる」とか、<br>「はずれくじ何枚集めるといいことができる」とか、<br>そんな感じの「不運を積み重ねてもいずれいいことが起きる」システムを取り入れて、<br>「コストを払ったけど何も手に入れられなかった」という徒労感を<br>少しでも減らすよう配慮されているのです。<br><br>見えないところでの確率操作をしない場合は、<br>そういった救済要素がある方がたぶんみんな嬉しいと思います。<br>私の開発した強制横スクロールローグライクRPG『片道勇者』においても、<br>「90％の攻撃を3回連続で外した！　乱数が偏ってる！」というご意見を<br>ちょいちょいいただいていますが、そのお気持ちもごもっとです！<br>ゲーム的にイライラするだけのシステムを組み込むのもあんまりなので、<br>できれば不幸な人への配慮も入れられると<br>望ましいだろうなというのは最近思い始めています。<br>「損になる方向で使われる確率要素を最初から排除する」というのも一つの案でしょう。<br><br>どういう形であれ、自分の開発するゲームでも今後、<br>「はずれくじを集めるといいことが起きる」的な発想は<br>大事にしていきたいと考えています。<br><br>&#45;&#45;&#45;&#45;&#45;--<br><br><span style="color:#3333FF;font-size:0.9em;"><strong>＞「強いけど回数が少ない武具」より「長く使えてそれなりの性能の武具」が好きです。<br>＞『母なる海の杖』も好きですが入手する確率が高い『祈りの杖』の方が好きといった感じ。<br>＞「この武器は命中したら凄いんだよ！(命中率60％)」とか恐くて使えません。<br>＞安定思考というより単に臆病なだけのような気がします。　　　　　　　　.</strong></span><br><br>ローグライクにおいては安定性って大事だと思いますので、<br>入手のしやすさや耐久度に関してはまったく同意です。<br>強くて回数が少ない武器を使えるのも、まずバランスのいい装備を持っていてこそ！<br><br>命中率に関しては私も100％に近い方が好み……だと思っていたのですが、<br>「一撃で倒せるけど命中率75％」と、「二発かかるけど90％」<br>なんて区分になっているとかなり迷いますね！<br>これらは『片道勇者』で設定した武器の命中率で、<br>基本的に斧が命中率75％、普通の剣や槍が命中率90％、という感じになっています。<br><br>とはいえ、私は斧はよほど効く場面じゃないとあまり使わないようなプレイなので、<br>「4回連続で外す」などといった事故防止のためにも、<br>多少ダメージに劣っていたとしても<br>普段使いなら命中率の高い武器の方が好きなようです。<br>皆さんはいかがでしょうか？<br><br>&#45;&#45;&#45;&#45;&#45;--<br><br><span style="color:#3333FF"><strong>＞あと武装ではありませんが『荷運び兎』が好きです。<br>＞気まぐれにレベルを上げてみたらタックルを覚えたので<br>＞「小さいけど心強いお供が出来た」とか思い<br>＞敵を攻撃させてレベルを上げ続けてみたら、<br>＞敵を一撃で倒すくらいまで成長してしまいました。<br>＞敵を倒せば必ずレベルが１上がるというのは恐ろしい…<br>＞同じ種類ならいくらでもアイテムを持てるという能力も一見地味だけど、<br>＞1万kmの旅ではこれ程頼れる能力はありません。</strong></span><br><br>『荷運びウサギ』は性能的には個人的にいまいちですが、<br>ペット要素自体は好きなんですよ！！<br>『片道勇者』のペットは最終的に無限に成長してしまいますけれども、<br>仮にこれが「<strong>最初はペットがすごく弱くて非常に気を使って成長させないといけない</strong>」<br>「<strong>そしてペットを育てても三番手くらいにしかならない</strong>」<br>というバランスだったとしても大好きです。<br><br>ペットキャラクターへの、「自キャラ以外のものを育成するのが楽しい」という欲求、<br>お分かりになる方もいらっしゃるのではないでしょうか。<br>あまりに弱いと、さすがに私も使いませんけどね！<br><br>&#45;&#45;&#45;&#45;&#45;--<br><br><span style="color:#3333FF"><strong>＞私の好きな武器は「戦術的に状況を変化させるもの」です。<br>＞大体は移動スキル、移動制限スキル、武器ですね。<br>＞その為、移動が主体のゲームはそれだけで大喜びしています。<br>＞モノリスフィアとかずっとニヤニヤしながらやっていました。<br>＞片道勇者では「停止」系統、壁設置、川設置は自分としてはとてもおもしろい物でした<br>＞川でダンジョンの入り口を塞いでエルザイト爆弾を投げ込む！　すっきりします。</strong></span><br><br>移動関係や移動制限のスキルは、テクニカルで面白い要素ですね！<br>何より移動周りのアレコレは、細かい数値の変化ではなく<br>ゲームを知らない人でも目に見えて理解できるのが面白いところですし、<br>計画がうまくハマったのが見えると大興奮します。<br>もっと、移動周りだけに着目したゲームを作ってみてもいいのかもしれません。<br><br>一方で、いざ『片道勇者』を作ってみて思ったのが、<br>「移動の概念を含んだゲームの場合、移動周りだけで有利不利が出すぎるのでは」<br>というのが、実はちょっと気になったところだったりします。<br>ローグライクやシミュレーションRPGにおいては、<br>最強の戦術は「敵の射程に入らない場所から攻撃する」ことなので、<br>それが低コストでできてしまうと非常にまずいことになります。<br>たとえば「山に入って、そこから一方的に攻撃する」とかですね！<br>『片道勇者』の無印版では、あまりにも簡単にそれができてしまっていました。<br><br>幸いにもプラス版になって、それが常にできるというわけでは<br>なくなったのでよかったのですが、「移動関係の要素」は<br>すごく注意して扱わないと大変なことになるんだなと理解した一幕でした。<br><br>&#45;&#45;&#45;&#45;&#45;--<br><br><span style="color:#3333FF"><strong>＞厳密には武具でありまんが、風来のシレンの「盾に回復効果を付与」は好みです。<br>＞ダメージを受けるたびにHPが5ポイント回復するもので、単に　　<br>＞「ダメージが5ポイント減る」よりも＞効果を実感しやすい気がします。<br>＞(HPの表示値が一瞬減り、その直後に値が増える、<br>＞というのが見えるからだと思います)</strong></span><br><br>なるほどこういう見せ方も！<br>片道勇者の盾のように「減ったダメージを見せる」のも一手だと思ってましたが、<br>そんな特別な処理を作らなくても回復を挟むという手段もあるんですね、<br>勉強になります。<br><br><br><span style="color:#3333FF;font-size:0.9em;"><strong>＞あとはアクションゲームだと「爽快感をいかに出すか」が重要な気がします。　　　.<br>＞地球防衛軍シリーズの広範囲爆撃系武器は、一瞬でレーダーの敵数が減るとすごく気持ち良い。<br>＞あるいは「燃費悪いけど超威力の一撃」なども、強い相手が一発で倒れると爽快です。 .</strong></span><br><br>レーダーの点が大量に消える！<br>これも目に見えて強力さが分かる要素ですね。<br>とにかくなんでもそうですが、「目に見える」ようにしておくのは、<br>「気持ちよさ」から「効果がある感触」まで、<br>様々なプレイ感の源になっている気がします。<br><br><br>&#45;&#45;&#45;&#45;&#45;--<br><br><span style="color:#3333FF"><strong>＞シルフェイド幻想譚の集中+装備の小ネタ的な使い方だと、<br>＞行動回数3回の時に集中、集中2の理力、集中で　　　　　　.<br>＞次のターンには集中2の理力、回避や防御、集中で　　　　.<br>＞普通より多く集中を持ち越せるのが便利だった記憶があります。　.<br>＞それに関連してることで、WILL消費からの集中は一回で集中が4回溜まる<br>＞ので、それと隠し武器と行動回数4回分で18回分の集中の「衝撃」を<br>＞ぶっ放して気持ちいい！ってしてた記憶もありますね！　　　　　　　　　.</strong></span><br><br>「1つ得する武器だが、次に持ち越せるのは1つじゃなくて2つになる」という仕組みは<br>ちょっと面白いところですよね。テクニカルなプレイができる仕組みが<br>意図せず搭載できていたようで、こういったご意見をいただけると嬉しいです。<br><br>解説ですが、『シルフェイド幻想譚』は1ターンで複数回行動でき、<br>「集中」は理力（魔法）を発動させるのに行う準備行動を指します。<br>『祈りの短剣』という装備を使っていれば「集中」を<br>毎ターンの開始時に+1することができ、行動を圧縮することができます。<br>うまいこと使えば、次のターン開始に+2の「集中」を持ち越すことができるのです。<br><br>振り返ってみると、この「集中」システムのように、<br>「次のターンに持ち越せる要素」も先を読む楽しさがあって我ながら面白い気がします。<br><br>「WILL消費からの集中」など、<br>こういう要素も振り返ってみると気持ちよかったと思います。<br>トーテムの「スケイル」（いわゆる魔法重視型）でのプレイは、<br>とにかく色んな形で相乗効果やプレイの巧さが出せる形にデザインしたつもりなので、<br>最終的に非常に強かった気がしますし、面白かった気がしますね。<br>ただしバランスはすごくおおざっぱだった気もします。<br><br>&#45;&#45;&#45;&#45;&#45;--<br><br><span style="color:#3333FF"><strong>＞『太陽の剣』、使用感も好みだったのだけれど<br>＞「かつて英雄がブッ叩き過ぎてボロボロになってる」<br>＞って設定が何かツボに入った覚えがあります。</strong></span><br><br>これは『片道勇者』と同じ『太陽の剣』でも、<br>RPG『シルフェイド幻想譚』のほうの設定ですね。<br>やっぱり伝説の武器といったら、盛り上がる設定も大事だと思います！<br>でもこのケースは全然盛り上がらなくて、<br>逆にガッカリな方向にインパクトがある設定になっています。<br>『太陽の剣』の耐久度が低いことをしっかり意識してほしかったので、<br>少し意外性のある、印象深い理由を付けようとしていた記憶があります。<br><br>『片道勇者』だと伝説の装備の文脈を語る場を作れなかったので<br>雑に神殿に置いてあるだけになってしまったのが少し残念です。<br>少しずつ段階を踏んで情報を与えられつつ手に入る形でもよかったかもしれません。<br><br><hr size="1" /><br>ということで、今回はTRPGのお知らせとコメント返信でした。<br><br>他に聞いてみたいことや、私の想像力を試したい内容、<br>この記事へのコメントやご感想などあればぜひ拍手コメントからどうぞ！<br>お答えできそうなものは随時お答えしていきます。</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2017-02-11 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2017%2F02.html%232017-02-11&title=%E7%89%87%E9%81%93%E5%8B%87%E8%80%85TRPG%E6%96%B0%E4%BD%9C%EF%BC%81" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2017%2F02.html%232017-02-11&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2017-02-11','片道勇者TRPG新作！', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/owh/001.html'>片道勇者</a></span></div></div><br><br><br>
+<a id='2017-02-04'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2017-02-04','3ﾀｰﾝ攻撃力1.3倍になる魔法', this)" style='cursor:pointer;'>2017-02-04 (土)&nbsp;&nbsp;&nbsp;3ﾀｰﾝ攻撃力1.3倍になる魔法</span><span style='float:right;'><a href='#bottom' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="color:#CC0000">※こちらの記事は第1稿でイマイチなデキなので、<br>より面白く整理された、以下の本の「サンプル部分」を<br>お読みいただくことを推奨します。<br><span style="font-size:x-small;">（今回の内容とまったく同じ範囲までサンプルで読むことができます）</span></span><br><br>→　<a class="double-link red" target="_blank" href="https://www.amazon.co.jp/%E3%82%B2%E3%83%BC%E3%83%A0%E9%96%8B%E7%99%BA%E8%80%85%E3%81%AE%E5%9C%B0%E5%9B%B3-20%E5%B9%B4%E3%81%AE%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA%E3%81%8B%E3%82%89%E5%AD%A6%E3%82%93%E3%81%A0%E3%81%93%E3%81%A8-SmokingWOLF-ebook/dp/B076VM4ZMS/ref=as_li_ss_tl?_encoding=UTF8&amp;pd_rd_i=B076VM4ZMS&amp;pd_rd_r=66159298-ecff-4f1d-a988-a1d31f4426d3&amp;pd_rd_w=BAw7o&amp;pd_rd_wg=FzGIi&amp;pf_rd_p=1585d594-d9d0-474b-8a4e-69eca1566911&amp;pf_rd_r=PEFQ6TNTM48HV2X48SWH&amp;psc=1&amp;refRID=PEFQ6TNTM48HV2X48SWH&amp;linkCode=ll1&amp;tag=sitesw-22&amp;linkId=5c83af5e37eb954371df5a906378e328&amp;language=ja_JP"><span style="font-size:large;"><strong>『ゲーム開発者の地図』販売ページ</strong></span></a><br>リンク先の「左上の表紙」をクリック/タップすると、<br>ブラウザからすぐ試し読みサンプルを読むことができます。<br><br><HR><br><strong><span style="font-size:medium;">【「3ターン自分の攻撃力を1.3倍」にする補助魔法、使う？】</span></strong><br><br>さて、突然ですが問題です。<br><br>あなたはとあるRPGをしており、主人公は今<br><span style="color:#CC0000"><strong>「3ターン自分の『攻撃力』を1.3倍」</strong></span>にする補助魔法が使えます。<br><br>・この補助魔法の消費MPは3、今の主人公の残りMPは25です。<br><span style="font-size:x-small;">（消費量に意味はなく、「多少のコストが必要」という意図です）</span><br>・このゲームはよくあるターン制バトルのRPGです。<br>・主人公は補助なしで戦えば12ターンかけて勝てる程度のHPの敵を相手にしています。<br>・敵に防御力はなく、「攻撃力＝そのまま与えられるダメージ」になるものとします。<br>・味方は主人公一人で、1ターンに1回行動できます。<br><br>さて、この「3ターン自分の『攻撃力』を1.3倍」にする補助魔法、あなたは使いますか？<br><br><img src="../../image/2017/20170204.jpg" border="1" title="ゲームでは出番がなかったので開発日誌のマスコットにしたいキャラ" loading="lazy" height="437"><br><br>「攻撃するのも補助魔法を使うのにも1ターン使うの？」　はい、使うものとします。<br>「『3ターン攻撃力アップ』って、つまり攻撃力が上がった状態で<br>3回分殴れるってことでいい？」<br>　はい、3回分殴れますよ。<br>「これ途中で回復のターンがはさまるから3ターン分殴れなくない？」<br>今回は回復を考慮しません。とりあえず敵の攻撃は<br>4～5回くらい耐えられるものとします。<br><br>では皆さんのお答えは？<br><br>「少しでも早く倒せそうならMPを消費してでも補助魔法を使っちゃう」？　いいですね。<br>「まだダンジョンの途中かもしれないから使わず温存して戦う」？　なるほど。<br>「補助魔法の重ねがけとかできないの？」って？　してもいいですよ。<br>「もし回復魔法も使えるのなら、MPをそっちに回そうかな」ですか？<br>うーん、微妙に正解に近いですが、求めている答えはちょっと違うんです。<br><br>「もしかしてこの補助魔法、この状況では意味ないんじゃない？」<br><br>――そう疑問に思ったあなた！<br>そう、その疑問こそが、この話題における正解なんです！<br><br><hr size="1" /><br><strong><span style="font-size:large;">【なぜこの状況ではこの補助魔法の意味がないのか】<br></span></strong><br>ということで、解説です。<br>今回は前提として、「防御力のない耐久力の高い敵1体」を相手にしています。<br>「補助魔法をかけてから切れるまで」の、4ターン後までを1スパンとして、<br>この敵に与えられる総ダメージを計算してみましょう。<br><br>まず便宜上、主人公の攻撃力は10とし、<br>これがそのまま敵に与えられるダメージとします。<br>補助魔法を使うのに1ターン。攻撃力が1.3倍になった間に殴れるのが3回分なので、<br>各ターンのダメージは以下の通りとなり、4ターンで計39ダメージを与えられます。<br><br>【補助魔法　あり】　0、13、13、13　→　4ターンで39ダメージ<br><br>逆に補助魔法を使わなかった場合、殴れるのは4回分なので、<br>4ターン分のダメージは……。<br><br>【補助魔法　なし】　10、10、10、10　→　4ターンで40ダメージ<br><br>40ダメージ！　……おや？<br>なんと補助魔法を使わない方がダメージ効率が高いじゃないですか！<br>補助魔法を使うと、MPを消費した上に総ダメージも下がってしまいます。<br>なんという損！<br>ゆえに「もしかしてこの補助魔法、意味ないんじゃない？」が<br>この話題の正解だったのです。<br><br>私のようなアマチュアゲーム開発者のように<br>自由にゲーム内の数値を設定できる立場だと、<br>今回のような「一見そこそこ効果がありそうに見えて実はあまり意味がない魔法」が<br>容易に作れてしまいます。<br><br>「開発者の皆様はくれぐれも気をつけてくださいね！」なんて言うのは簡単ですが、<br>これは相当ゲーム慣れしていないとすぐには気づけないことです。<br>私もしっかり効率を計算できておらず、最近まで似たような過ちをしていました。<br><br><hr size="1" /><br><strong><span style="font-size:large;">【これと似た自分の失敗例】</span></strong><br><br>実は私も、過去作の強制横スクロールRPG『片道勇者』で<br>似た問題を起こしたことがあります。<br><br>『片道勇者』は装備として「武器」「防具」「追加装備」の3種を<br>身に付けられるのですが、その追加装備の中で、クリア特典として<br>「常時攻撃力・理力効果を20％アップする」という装備を実装していました。<br>一見、まあまあ効果がありそうに見えますが、実は多くの戦闘では<br>この上昇量はほとんど効果がなかったのです。<br><br>攻撃力が1.2倍になるということはすなわち、5発分の攻撃を当てたときに<br>やっと1発分の追加ダメージを与えられるということで、<br>倒すための打数を確実に1発減らすためには5発も攻撃せねばなりません。<br>ですがほとんどのザコ敵は1～3発程度で倒せる感じになっていたので、<br>確定で打数が減らせる場面があまりなかったのです。<br><br>打数1～3回で倒せる敵に対してその装備を使うと、<br><br>・<strong>元々2発で倒せた敵</strong>群（HPが1.1～2.0打分）のうち、<br><strong>2割だけは1発で倒せる</strong>ようになる、それ以外は同じ<br><br>・<strong>元々3発で倒せた敵</strong>群（HPが2.1～3.0打分）のうち、<br><strong>4割だけは2発で倒せる</strong>ようになる、それ以外は同じ<br><br>くらいにしかなりません。<br><br>敵の耐久力を正確に把握していればもっと使えるかもしれませんが、<br>これなら連続攻撃が出る確率の方がよっぽど高いし、<br>そもそも1割くらいの差ならダメージのゆらぎで吸収されてしまうし、<br>かつ他の追加装備にもっと有用なのがそろっていたのもあって、<br>その特典アイテムはほとんど使われませんでした。<br><br>あくまで「スキル」でなく「装備」なので、敵を倒すのに必要な打数が<br>たまにしか減らなくても、ある程度許されていたフシはあるかもしれません。<br>「装備」は永続的に効果があるので、どこかで打数が減らせることはあったでしょう。<br>でも、もしこれがスキルや魔法だったら、<br><strong>たった1.2倍</strong>なんてとても許されないレベルです。<br>そしてこのときの私の一番の過ちは、<br>「打数のことを全く計算に入れずに数値を設定していたこと」だったのです。<br><br>「それじゃあ具体的に補助魔法やスキルってどのくらいに設定すればいいの？」<br>というのが気になってくる頃かもしれません。<br>その話も、後ほどしましょう。<br><br><hr size="1" /><br><strong><span style="font-size:large;">【この魔法、有効なのはどんなとき？】</span></strong><br><br>さて、いきなり役に立たない宣告された先ほどの補助魔法ですが、<br>ではこんな数値設定の補助魔法は役に立たないのか？<br>と言われればそうではありません！<br>ということで、汚名返上のために「3ターン攻撃力1.3倍」の<br>補助魔法が有効そうなケースを考えてみます。<br>特に気にならない方は、次の項目まで読み飛ばしても大丈夫です。<br><br><br><span style="color:#CC0000"><strong>A.他に相乗効果を付けられる、または重ねがけができる場合</strong></span><br><br>たとえば、自分と別の仲間一人から同じ補助魔法を重ねがけしてもらって、<br>攻撃力を1.3倍×1.3倍＝1.69倍くらいにできたりすればだいぶ効果が高くなります。<br>二重がけされた主人公の各ターンのダメージは0、17、17、17＝4ターンで<br>51ダメージくらいになるので、<br>40ダメージよりは1打分以上マシになります。<br><br>ただし、もしその仲間も攻撃力10だったら、<br>2人の合計ダメージが素の状態で「80」になってしまいます。<br>補助魔法を1人目に重ねがけしてやっと<br>合計「81（上の51＋10×3ターン分）ダメージ」に<br>なるだけなので、こういう場合はMPを使う分だけ損になってしまうでしょう。<br><br>逆に、仲間が相対的に弱かったらバリバリ主人公の攻撃力を上げるべきです。<br>たとえば主人公の攻撃力が10、仲間の攻撃力が5と仮定すると、<br>2人で補助魔法を重ねた場合で「51＋15」＝66、使わない場合「40＋20」＝60なので<br>総ダメージを10％上げることができます！<br>というかこの際、主人公は攻撃し続けて仲間に毎ターン補助魔法を<br>重ねがけし続けてもらう方が有利かもしれませんね。<br>その場合、「10→13→17→22（仲間は常に0）」で4ターンで62ダメージが出せますし、<br>ここから先も「22」ダメージを出し続けられるので強そうです。<br>MP消費は激しくなります。<br>（3ターン経つと1回目分の補助魔法が切れ、<br>最大で3重がさねまでできるという前提です）<br><br>補助魔法をバリバリに使うゲームなら、火力の集中強化を楽しめるように<br>メインアタッカーとそれ以外の攻撃力を大きく差別化すると面白くなりそうです。<br><br><br><span style="color:#CC0000"><strong>B.敵に防御力が設定されていた場合</strong></span><br><br>敵に防御力が設定されていてダメージを減少させてくる場合、効率が変わってきます。<br>たとえば、防御力が「5」あってその分だけ物理ダメージを減らす敵を相手にした場合、<br>プレイヤーが3ターン攻撃力1.3倍の補助魔法をかければ、<br><br>【補助魔法　なし】　5（10－5）、5、5、5　→　4ターンで20ダメージ<br>　↓<br>【補助魔法　あり】　0、8（13－5）、8、8　→　4ターンで24ダメージ<br><br>という感じで1スパンあたりのダメージ効率が何もしない場合の20％分も上回ります！<br>「なるほど、敵に防御力があれば有効なんだ！」<br><br>もし問題があるとしたら、「敵の防御力」や「ダメージ計算式」<br>「敵の残りHP」などが見えない場合はこの判断を行うための<br>ハードルがだいぶ高くなってしまう点です。<br>「これを使えば敵を倒すための打数が減るのか？　そうじゃないのか？」<br>もしそれが分からない状態だと、使おうという判断はあまりしないでしょう。<br>逆にパラメータ丸見えだったり、敵のHPゲージが見えてるなら<br>バリバリ使えると思います。<br><br>その点、ドラゴンクエストシリーズの「バイキルト」は<br>「最終ダメージ」を2倍にするので、<br>初見の敵に対しても効果が把握しやすく、<br>シンプルで非常に分かりやすかったと思います。<br>これをかければ、「敵を倒すために必要な攻撃回数」は<br>ほぼ全ての場面で減りますからね！<br>むしろ強力すぎて必須になっちゃっている感もありますが、<br>MP消費も程々に高かったので時間で切れるならいいバランスかもしれません。<br><br><br><span style="color:#CC0000"><strong>C.一撃でギリギリ倒せない敵が3体出てきた場合</strong></span><br><br>これは、「3ターン攻撃力1.3倍」の補助魔法の効果を特に発揮できるであろう相手です！<br>たとえばHP13、防御力0の敵が3体出てきたら、攻撃力10のプレイヤーは<br>補助魔法なしで倒す場合、1匹あたり2ターンずつ、<br>計6ターン分も殴らなければなりませんが、<br>先ほどの補助魔法を使って攻撃力を13に上げればそれぞれ一撃で倒せるので、<br>1ターン目補助魔法＋3ターン分の攻撃で、計4ターンで勝利できるのです！<br>ここまで効果を発揮できれば誰も文句を言わないでしょう。<br><br>ただ実戦においてこのケースを活用するには、プレイヤー視点では<br>「戦う前から敵のHPがいくらか分かっていること」が前提になります。<br>すでに敵HPを正確に把握しているか、HPゲージが<br>見えていることはある程度前提だと思うので、<br>敵の能力が最初から見えているゲームに限られる戦法かもしれません。<br>また、与えられるダメージがランダムで何割か揺らぐゲームだと<br>さらに判断が難しくなります。<br><br><br><span style="color:#CC0000"><strong>D.使用回数が極めて少ない武器(スキル)を使う場合</strong></span><br><br>このケースは、「武器に残り使用回数などが設定されている」ゲームの場合の話です。<br>やや特殊なケースですが、「武器の耐久度をなるべく温存したい」状況においては<br>「3ターン攻撃力1.3倍」の補助魔法はけっこう使えます！<br>なにせ、3回分の攻撃で4打分近くのダメージを与えられるのですから！<br><br>言い換えれば、少々のMPと引き替えに武器の使用回数を約25％温存できるわけです。<br>「たった10回殴ると壊れてしまう超強力な武器」を使う場合などに便利でしょうし、<br>「1回しか使えない最強の武器（だけどそれだけではボスが倒せない）」<br>を使う場面でも有用です！<br><br>同じ発想で、補助魔法に比べて極端にMP消費が大きい強力なスキルや、<br>使用回数制限が厳しいスキルを使うときも同じように便利になるはずです。<br>とにかく、数をたくさん撃てない強力な攻撃を行う場合に活用できそうです。<br><br>なお主人公一人なら、どんなに強力な技でも<br>「補助魔法未満の消費MP」のスキルであれば<br>補助魔法なしで4ターンで4発そのまま技を撃った方が効率的です。<br>きっとすっごく攻撃力上げたくなっちゃうんですけどね！<br><br><br><span style="color:#CC0000"><strong>E.最初の1ターン目にお互い攻撃できない場合</strong></span><br><br>SRPG風バトルなどで距離が離れていて、最初のターンに<br>敵味方お互いに攻撃ができない場合には、<br>この補助魔法は割と必須レベルといっていいほど使えるものになるでしょう！<br><br>どのみち攻撃できない1ターン目でこちらの攻撃力を1.3倍にし、<br>そこから3ターンお互いに殴り合えば、こちらは3.9打分のダメージが出せるのに対し、<br>敵は3打分しかダメージが出せないのですから、<br>MPの消費さえ許容できれば確実に有利です。<br>ただし、使っても倒すために必要な打数が変わらないなら、<br>使う意味はありませんけれどね。<br><br><br><hr size="1" /><br>ということで「3ターン攻撃力1.3倍」が有効そうなゲームシステムや状況を<br>色々と想像してきましたが、いかがだったでしょうか。<br>ゲームの範囲やシステムを広げれば、有利なケースもまだまだ無数にあるはずです。<br><br>ただ、これらで挙げた例はあくまで理想的で都合のいい状況を想定した話で、<br>実戦においては、間に回復ターンがはさまったり、攻撃ミスの可能性があったりして<br>補助効果がいくらか無駄になったりすることも多く、<br>MP効率やダメージ効率的に意味がなくなったりするケースも出てきます。<br>効率計算は上で挙げた以上にもっと複雑になるでしょう。<br>基本的には、実戦で発揮される効率は計算よりも下がるはずです。<br><br>これまでの話を見て来た感じだと、たとえ状況次第で<br>辛うじて最大効率がプラスになっても、<br>ほんの少しのイレギュラーが発生すると意味のないものになってしまうくらいには、<br>3ターン攻撃力1.3倍の補助魔法は弱いかなという感触があります。<br><br><hr size="1" /><br><strong><span style="font-size:large;">【結局、補助魔法ってどのくらいの効果にすればいいの？】</span></strong><br><br>結局のところ、「攻撃力アップ」の補助魔法を作る際は、<br><strong>「倒すための打数が明確に変わる」</strong>ような数値設定にしないことには、<br>補助魔法の強さを実感することが困難だと私は考えています。<br><br>たとえば、ほとんどの敵を「およそ3回殴って倒せる」ように設定しているゲームなら、<br>攻撃力アップの効果を最低でも1.5倍以上にしないと<br>撃破に要する打数を3打→2打に減らせません。<br>もし「補助魔法を使ったけど、結局同じ3回殴るハメになった」<br>という経験がたまにでもあると、<br>効率を計算する習慣のない人も「イマイチ使えない魔法だなあ」と<br>思う人が増えるはずです。<br><br>また「防御力アップ」の補助魔法なら、それを使ったことで少なくとも<br>「敵の攻撃を1発は余分に耐えられる」ようにしないとありがたみが薄くなります。<br>「2発受けたら死ぬ敵」が出たので防御力アップ魔法を使ってみたら、<br>「確かにダメージは減ったけどやっぱり2発で死ぬ」、となったら<br>使えない魔法という印象へ一直線です。<br><br>状況次第とはいえ、MPとターンの完全なる無駄づかいがたまにでも起きてしまうと、<br>信頼性の低い魔法だと感じられてしまうでしょう。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【『打数』の発想を装備へ応用してみる】</strong></span><br><br>この補助効果による「打数の変化」は、武器や防具の換装の際にも通用する話です。<br>武器を新しいものに変えた場合は、「敵を倒すための攻撃回数が1回以上減る」と<br>かなり強くなった感じが出せるのです。<br><br>逆に数値設定によっては、武器を新しくても<br>「倒すための打数」が変わらない場合があります。<br>それでも「ダメージの数値」自体は増えてしまうので、<br>遊ぶ側は「あー強くなったー」と感じられてしまい、<br>「武器を新調したが打数の面での効率が全然変わってない」ことに<br>気付かないこともあるのです。<br>そういう私も、意識しないとほとんど気付きません。<br>でも打数が変わらないんだったら、<br>武器の換装を遅らせても実はゲーム上の効率は一緒です。<br><br>もしこれが、武器を換装することで<br>「倒すのに2発必要だった敵が1発で倒せる」ようになったなら、<br>きっと「武器のおかげでめちゃめちゃ強くなった」と感じるはずです。<br>古いゲームですが、『ドラゴンクエスト3』の「はがねのつるぎ」が特に思い出深くて、<br>「苦労してお金を貯めて買ったら一気に攻撃力が上がって<br>一発で敵が倒せるようになった」、<br>という体験が発生しやすく、名前のかっこよさとあわせて<br>とても素敵な武器というイメージがありました。<br><br><hr size="1" /><br>色々なパラメータを決めるのに悩んだときは、こういう観点で考えてみると<br>より興奮できるゲームに近付けやすくなるのではないかなと考えています。<br><br>……といっても情けないことに、この打数の話は<br>私も最近やっと気付いたことだったりします。<br>遊ぶ側でもあり作る側の私としては、<br>「数値さえ上がってれば+30％でも+50％でも一緒じゃん！」と<br>これまでずっと思っていて、「必要な打数」の発想にたどりつくまでには<br>想像以上に遠い道のりを経なければなりませんでした。<br>シミュレーションRPGだと敵を倒すために必要な打数をものすごく気にするのに、<br>普通のRPGをプレイするときはほとんど打数を意識していなかったのです。<br><br>特に、「ダメージ数値が出るゲーム」かつ「敵パラメータが隠されているゲーム」だと、<br>「打数が変わってない」ことに意外と気付かない場合があるので、<br>今後は遊ぶ側としても作る側としても、少し意識していきたいなと思うところです。<br><br><hr size="1" /><br>以上、「3ターン攻撃力1.3倍の補助魔法、使う？」から始まる<br>バランス調整のお話でした。<br>だいぶ長くなってしまいましたが、いかがだったでしょうか。<br><br>次回は、前回の記事「<a class="double-link blue"  target="_top" href="../../archive/2017/01.html#2017-01-28"><strong>どんな武装がお好き？</strong></a>」で<br>いただいたコメントのいくつかにもお答えしていきたいと思います。<br>皆様の様々なご意見、誠にありがとうございます！<br><br><hr size="1" /><br>他に聞いてみたいことや、私の想像力を試したい内容、<br>この記事へのコメントやご感想などあればぜひ拍手コメントからどうぞ！<br>お答えできそうなものは随時お答えしていきます。<br><br>それと、来週から『片道勇者TRPG』の件で動きがあります。<br>よければお楽しみに！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2017-02-04 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2017%2F02.html%232017-02-04&title=3%EF%BE%80%EF%BD%B0%EF%BE%9D%E6%94%BB%E6%92%83%E5%8A%9B1.3%E5%80%8D%E3%81%AB%E3%81%AA%E3%82%8B%E9%AD%94%E6%B3%95" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2017%2F02.html%232017-02-04&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2017-02-04','3ﾀｰﾝ攻撃力1.3倍になる魔法', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/devlog/001.html'>開発日誌</a></span></div></div>
+<div class='article_pos'>2017年02月</div>
+<div class='nav'><a href='03.html'>次の月へ</a> | <a href='01.html'>前の月へ</a></div>
+<a id='bottom'></a>
+
+<BR><BR>
+<div align="right"><a href="#top" class="g">▲一番上へ戻る</a></div>
+<BR>
+<CENTER>
+<HR>
+<div>
+<div id="silsec-status" style="display:inline-block;line-height:12px;font-size:10px;"></div>　<div align="center" style="display:inline-block;line-height:12px;font-size:10px;"><a href="https://smokingwolf.github.io/" target="_blank" class="blue" border="1"><img src="https://smokingwolf.github.io/banner.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>アーカイブサイトへ</a></div>
+</div>
+<HR>
+Copyright © SmokingWOLF / Silver Second
+<HR>
+</CENTER>
+
+
+<script>
+  // シルバーセカンド公式のドメインに接続し、サイト存在確認用のTXT(SILVERSECOND_ALIVE!と書かれている)があれば存在する扱いにする
+  const statusDiv = document.getElementById('silsec-status');
+  const checkUrl = 'https://silversecond.net/SILVERSECOND_SITE_ALIVE_FLAG.txt';
+
+  fetch(checkUrl, { cache: 'no-store' })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('ネットワークエラー');
+      }
+      return response.text();
+    })
+    .then(text => {
+      if (text.trim() === 'SILVERSECOND_ALIVE!') {
+        statusDiv.innerHTML = '<a href="https://silversecond.net/" target="_blank" class="blue"><B><img src="https://silversecond.net/banner/a.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>運営中のサイトへ</a>　';
+      } else {
+        statusDiv.textContent = '　';
+      }
+    })
+    .catch(error => {
+      statusDiv.textContent = '　';
+      console.error('シルバーセカンド公式サイトチェック失敗:', error);
+    });
+</script>
+
+
+
+
+</div>
+<div id='sidebar'>
+<div style='font-weight:bold;'>開発日誌</div>
+<div><a class='sidebar_link' href='../../archive/top/index.html'>日誌トップへ</a></div>
+<div><B><a class='sidebar_link' href='../../index.html'>全記事一覧</a></B></div>
+<hr>
+<div style='font-weight:bold;'>【最新記事】</div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/09.html#2025-09-06'>●09/06 ウディタ新機能2つ！(Y表示補正/MoveWatch)＆ 片道勇者プラス修正！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/08.html#2025-08-24'>●08/24 第17回ウディコン結果発表！　上位3作品とピックアップ紹介！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/08.html#2025-08-09'>●08/09 『シルバーセカンド思い出の部屋』を開設！＋ 来年よりウディコン規約追加</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-26'>●07/26 第17回ウディコン審査期間開始！ ＆ 規約の補足</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-12'>●07/12 ウディコン直前！ サイト＆ウディタ修正＋シェパード捜査録！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-28'>●06/28 ウディコン準備中！+ 開発日誌も移転作業中</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-14'>●06/14 サイト修正＋開発日誌をFC2から移転！</a></div>
+<hr>
+<div style='font-weight:bold;'>【カテゴリ】</div>
+<div><a class='sidebar_link' href='../../category/woditor/001.html'>ウディタ&nbsp;<span class='sym'>(83)</span></a></div>
+<div><a class='sidebar_link' href='../../category/owh2dev/001.html'>片道勇者2&nbsp;<span class='sym'>(78)</span></a></div>
+<div><a class='sidebar_link' href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(73)</span></a></div>
+<div><a class='sidebar_link' href='../../category/owh/001.html'>片道勇者&nbsp;<span class='sym'>(21)</span></a></div>
+<div><a class='sidebar_link' href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(19)</span></a></div>
+<div><a class='sidebar_link' href='../../category/trpg/001.html'>TRPG&nbsp;<span class='sym'>(9)</span></a></div>
+<div><a class='sidebar_link' href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(9)</span></a></div>
+<div><a class='sidebar_link' href='../../category/study/001.html'>勉強メモ&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../category/silgen/001.html'>シル幻&nbsp;<span class='sym'>(1)</span></a></div>
+<hr>
+<div style='font-weight:bold;'>【月別】</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2025-btn' onclick="toggleYear('y2025')">2025&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2025' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2025/09.html'>09月&nbsp;<span class='sym'>(1)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2024-btn' onclick="toggleYear('y2024')">2024&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2024' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2024/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/01.html'>01月&nbsp;<span class='sym'>(2)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2023-btn' onclick="toggleYear('y2023')">2023&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2023' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2023/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/09.html'>09月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2022-btn' onclick="toggleYear('y2022')">2022&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2022' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2022/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2021-btn' onclick="toggleYear('y2021')">2021&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2021' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2021/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2020-btn' onclick="toggleYear('y2020')">2020&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2020' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2020/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/07.html'>07月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2019-btn' onclick="toggleYear('y2019')">2019&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2019' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2019/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2018-btn' onclick="toggleYear('y2018')">2018&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2018' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2018/12.html'>12月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/11.html'>11月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/10.html'>10月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/09.html'>09月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/08.html'>08月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/07.html'>07月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/06.html'>06月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/04.html'>04月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/01.html'>01月&nbsp;<span class='sym'>(5)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2017-btn' onclick="toggleYear('y2017')">2017&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2017' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2017/12.html'>12月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/11.html'>11月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/09.html'>09月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/08.html'>08月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/07.html'>07月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/06.html'>06月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/05.html'>05月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/04.html'>04月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/01.html'>01月&nbsp;<span class='sym'>(5)</span></a></div>
+</div>
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('a.double-link');
+
+  links.forEach(link => {
+    const primaryUrl = link.dataset.primary;
+    if (!primaryUrl) return;
+
+    const testUrl = primaryUrl + '?t=' + Date.now(); // キャッシュ無効化！
+
+    fetch(testUrl, { method: 'GET', cache: 'no-store' })
+      .then(res => {
+        const url = res.url || '';
+        if (!res.ok || url.includes('404.html') || res.status === 404) {
+          console.warn('【404または失敗】そのままアーカイブを使います:', link.href);
+          // そのまま
+        } else {
+          console.warn('【OK】hrefを本家に書き換えます:', primaryUrl);
+          link.href = primaryUrl;
+        }
+      })
+      .catch(() => {
+        console.warn('【通信エラー】そのままアーカイブを使います:', link.href);
+        // エラー時もhrefはそのまま
+      });
+  });
+});
+</script>
+
+
+
+</body>
+</html>

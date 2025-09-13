@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>シルバーセカンド開発日誌 / SmokingWOLF</title>
+<meta name="viewport" content="width=720">
+<script src="../../js/smoothscroll_up.js" type="text/javascript"></script> 
+
+<link rel="stylesheet" href="../../js/litebox/css/lightbox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../../js/litebox/js/prototype.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/moo.fx.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/litebox-1.0.js"></script>
+
+<style>
+html {
+  /* スマホ時は1.2倍フォントで表示 */
+  -webkit-text-size-adjust: 120%;
+  -ms-text-size-adjust: 120%;
+}
+
+BODY{
+  /*display:flex;*/
+  font-size:13px;
+  margin:0;
+  font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+  color:#558;
+}
+
+TD{
+  font-size:12px;
+}
+
+
+A:LINK,A:VISITED {  color:#5658f6;  text-decoration:underline ;}
+A:HOVER,A:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.red:LINK,A.red:VISITED{color:#d6385c;display: inline-block;text-shadow: 0 0 15px #ffddcc, 0 0 15px #ffddaa;}
+A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shadow: 0 0 15px #ffcccc, 0 0 15px #ffaaaa;}
+
+A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
+A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.g:LINK,A.g:VISITED{
+	color:#38a68c;
+	text-decoration:underline;
+}
+
+A.g:HOVER,A.g:ACTIVE{
+	color : #68b6ac;
+	text-decoration : underline;
+}
+
+
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38c6ac;
+}
+
+A.jumplink:HOVER,A.jumplink:ACTIVE{
+	color : #68f6ac;
+}
+
+A.jumplink{
+	text-shadow: 0 0 15px #ccddcc, 0 0 15px #aaddaa;
+	text-decoration : none;
+}
+
+
+.article_pos{
+	font-size:16px;
+	color:#aaf; 
+	font-weight:bold;
+	text-align:center;
+	margin:0px;
+	padding:0px;
+}
+
+#content {
+	font-size:14px;
+	
+}
+
+#sidebar {
+	background:#f8f8f8; 
+	border-left:1px solid #ddd; 
+	padding:4px 6px;
+	font-size:12px;
+}
+
+A.sidebar_link:LINK,A.sidebar_link:VISITED,
+A.sidebar_link_recent:LINK,A.sidebar_link_recent:VISITED{
+    color:#5658f6;
+	text-decoration: underline;
+}
+A.sidebar_link:HOVER,A.sidebar_link:ACTIVE,
+A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
+	color: #9698e6;
+	text-decoration: underline;
+}
+
+.sidebar_link{
+	font-size:13px;
+}
+
+.sidebar_link_recent{ /* 1つ1つの項目ごとに隙間を空ける */
+	font-size:11px;
+	line-height: 1.2;
+	display: inline-block;
+	margin-top:5px;
+}
+
+
+.entry {
+	border:1px solid #ccc; 
+	border-radius:8px; 
+	margin:14px 0; 
+	overflow:hidden;
+
+}
+.entry-title {
+	background:linear-gradient(to right,#4243ff,#aaaacf);
+
+	font-size:17px;
+	color:#fff; 
+	padding:4px; 
+	font-weight:bold;
+	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
+}
+
+.entry-body,.extended {
+	background:#fff; 
+	color:#444; 
+	padding:15px;
+	font-size:14px;
+	line-height:1.6em;
+}
+
+.entry-foot {
+	background:#fff; 
+	text-align:center;
+	vertical-align:middle;
+	color:#ccf;
+	font-size:12px;
+	padding-top:20px;
+	padding-right:20px;
+	padding-bottom:10px;
+}
+
+.linkbutton{
+	padding:3px;
+}
+
+/*--●形状整理用--*/
+body {display:flex; margin:0;}
+#content {width:600px; padding:0 8px;
+	font-size:14px;}
+#sidebar {width:120px;  box-sizing:border-box; }
+#sidebar div {line-height:1.6;}
+#sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
+.nav {margin:0px 0 -20px 0; text-align:center;}
+.sym {color:#999; font-weight:normal;}
+
+</style>
+
+
+<script>
+function toggle(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+function toggleDisp(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+</script>
+
+
+
+<!--★目次デザイン・処理★-->
+<style>
+.toc-box{background-color:#f0f0f0;border-radius:8px;padding:10px;} 
+.toc-list{list-style:none;margin:0;padding-left:0;} 
+.toc-list ul{list-style:none;margin:0;padding-left:20px;}
+.toc-list li{margin:5px 0;}
+.toc-level1{margin-left:0;}
+.toc-level2{margin-left:20px;}
+
+h1 {
+  background: #fff;
+  padding: 6px 10px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #2233cc; /* 青系 */
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 4px solid #3366ff;
+  display: block;
+  width:100%;
+  
+}
+
+
+h2,h3 {
+  background: #fff;
+  padding: 6px 10px;
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #5566ff; /* 青系 */
+  
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 2px solid #9999ff;
+  display: -block;
+
+}
+
+h2::before {
+  content: "- ";
+}
+
+.master_years{
+  margin-left:20px;
+  margin-right:20px;
+}
+
+.top_minicategory{
+  font-size:10px;
+  color:#ccccff;
+}
+</style>
+
+
+
+</head>
+<body onload="initLightbox();">
+<a id="top"></a>
+
+<style type='text/css'>
+.linkbutton{
+  font-size: 0.9em;
+  padding: 1px 6px;
+  vertical-align: baseline;
+  line-height: 1;
+  height: auto;
+  margin-left: 4px;
+  color:#66f;
+  background-color:#f9f9f9;
+  border: 1px solid #888;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.copy-popup{
+  background-color: #eef;
+  border: 1px solid #88c;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  color: #333;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.5s ease;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  max-width: 80vw;             /* 画面幅の 80% で折り返す */
+  overflow-wrap: anywhere;     /* 長い URL を途中で区切る */
+  word-break: break-all;       /* ↑が効かない旧ブラウザ保険 */
+  white-space: pre-wrap;       /* 
+ を改行として扱い、余計な連続空白は1個に */
+}
+.article_end_date{
+  font-size:0.9em;
+}
+</style>
+
+
+<script>
+function toggle(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+}
+
+// Year accordion with sessionStorage persistence
+function toggleYear(id){
+  const pane = document.getElementById(id);
+  const btn  = document.getElementById(id+'-btn');
+  if(!pane||!btn) return;
+  const sym  = btn.querySelector('.sym');
+  const isClosed = pane.style.display === 'none';
+  pane.style.display = isClosed ? 'block' : 'none';
+  sym.textContent   = isClosed ? '－' : '＋';
+  sessionStorage.setItem('year-'+id, isClosed ? 'open' : 'closed');
+}
+
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('[data-yearpane]').forEach(pane=>{
+    const id    = pane.id;
+    const state = sessionStorage.getItem('year-'+id);
+    const btn   = document.getElementById(id+'-btn');
+    const sym   = btn?.querySelector('.sym');
+    if(state === 'open'){
+      pane.style.display = 'block';
+      if(sym) sym.textContent = '－';
+    }else{
+      pane.style.display = 'none';
+      if(sym) sym.textContent = '＋';
+    }
+  });
+});
+
+function copyLink(date, title, el){
+  const url = `https://smokingwolf.github.io/dev_blog/archive/${date.slice(0,4)}/${date.slice(5,7)}.html#${date}`;
+  const text = `
+【${date}　${title}】
+ ${url}`;
+  navigator.clipboard.writeText(text).then(()=>{
+    if(el && el.tagName === 'BUTTON'){
+      const orig = el.textContent;
+      el.textContent = '✅ コピー完了!';
+      setTimeout(()=>{ el.textContent = '🔗 リンクをコピー'; }, 2000);
+    }
+
+    const popup = document.createElement('div');
+    popup.className = 'copy-popup';
+    popup.textContent = `✅ コピー完了：${text}`;
+    document.body.appendChild(popup);
+
+    const rect = el.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    const popupWidth = popup.offsetWidth;
+    const pageWidth = document.documentElement.clientWidth;
+
+    let left = rect.left + scrollLeft + (rect.width / 2) - (popupWidth / 2);
+    let top  = rect.top  + scrollTop - popup.offsetHeight - 8;
+    if(left < scrollLeft + 4) left = scrollLeft + 4;
+    if(left + popupWidth > scrollLeft + pageWidth - 4)
+        left = scrollLeft + pageWidth - popupWidth - 4;
+
+    popup.style.left = `${left}px`;
+    popup.style.top  = `${top}px`;
+    popup.style.opacity = '1';
+    popup.style.zIndex = '9999';
+
+    setTimeout(()=>{ popup.style.opacity = '0'; }, 1800);
+    setTimeout(()=>{ popup.remove(); }, 2500);
+  });
+}
+</script>
+
+<div id='content'>
+<style>
+
+.TopTitle{
+  width:515px;
+  font-weight:bold;
+  font-size:16pt;
+  color: #ffffff;
+  background-color:#535365 ;
+  border-width: 0px;
+  border-color:#535365;
+  border-style:solid;
+  background: -moz-linear-gradient(left top, #42435f, #fafaff);
+  background: -webkit-gradient(linear, left top, right bottom, from(#42435f), to(#fafaff));
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#DD42425f', endColorstr='#FFfafaff');
+  
+  text-align:left;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.header3{
+	color:#555588;
+	margin-bottom:16px;
+}
+
+.home-link {
+  font-size: 12px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: underline;
+}
+</style>
+
+<!--戻るリンク、サイトがなくなってたらアーカイブにつながるようにしたが404ページがアレなのかうまくいかない-->
+<!--
+<font id="home-link-placeholder">
+  <noscript>
+    <a href="https://smokingwolf.github.io/" class="home-link">← ホーム(アーカイブサイト)に戻る</a>
+  </noscript>
+</font>
+
+<script>
+(async () => {
+  try {
+    // HEADで軽くチェック（no-corsなのでステータス確認は不可）
+    // 自分のサイトのインフォメーションページにつなげるならサイトがまだあると認識する
+    await fetch("https://silversecond.net/contents/etc/info.shtml", { method: "HEAD", mode: "no-cors" });
+
+    const link = document.createElement("a");
+    link.href = "https://silversecond.net/";
+    link.textContent = "← ホームに戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  } catch {
+    const link = document.createElement("a");
+    link.href = "https://smokingwolf.github.io/";
+    link.textContent = "← ホーム(アーカイブサイト)に戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  }
+})();
+</script>
+-->
+
+<div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
+<!--ここにコメント文-->
+<div class="header3" style="margin-top:6px;">　ここはゲーム開発者SmokingWOLF(スモーキングウルフ)の開発日誌です。<BR>
+　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
+　<B style="color:#ff5555;">※以前のブログが使えなくなったので、ただいまこの開発日誌に移転中です。</B>
+</div>
+
+<div class='article_pos'>2017年06月</div>
+<div class='nav'><a href='07.html'>次の月へ</a> | <a href='05.html'>前の月へ</a></div>
+<a id='2017-06-24'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2017-06-24','片道次回作3 新たな要素', this)" style='cursor:pointer;'>2017-06-24 (土)&nbsp;&nbsp;&nbsp;片道次回作3 新たな要素</span><span style='float:right;'><a href='#2017-06-17' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【片道勇者次回作3　新たな要素】</strong></span><br><br>ということで、前回に引き続き仮想画面写真に込めた要素について<br>ご紹介していきます。今回の話題は以下の通り！<br><br><span style="color:#CC0000"><strong>●マップがヘクス方式に！<br>●敵やNPCがグループ化して登場！　するかも？<br>●安心の自動支給カード（仮）</strong></span><br><br><img src="../../image/2017/20170617B.jpg" loading="lazy" height="293"><br>※これは完成目標を描いた「絵」であってゲーム画面ではありません。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【マップがヘクス方式に！】</strong></span><br><br>今回はマップがヘクス方式になります！<br>作るのが少し大変になる一方、以下のような利点があると考えました。<br><br><span style="color:#CC0000"><strong>◆インターフェース面　→　指で押しやすいかも</strong></span><br>スマートフォン展開の可能性を視野に入れているので、マスの押しやすさは重要です。<br>ヘクス型だと四角のマスよりも実質的に「押せる横幅」が増えるので、<br>たぶん指で押しやすい！　と考えました。<br>とにかく一定以上の横幅がないと、スマートフォンでは<br>選びたい場所をタップできませんからね。<br><br><br><span style="color:#CC0000"><strong>◆見た目の面　→　目新しい</strong></span><br>ヘクス型だと見た目が新しく感じるので、作品数が増えてきている昨今では<br>目を引きやすくなる可能性が期待できます。<br>PR力の面で大きな効果をもたらすかもしれません。<br><br><br><span style="color:#CC0000"><strong>◆ゲーム面　→　移動方向に意味が出る</strong></span><br>『片道勇者』では四角のマスで8方向に移動可能だったため、<br>「斜め移動」が基本的に有利でした。<br>「直進だけ行うメリットがあまりなかった」と言い換えてもいいかもしれません。<br><br>これがヘクスになる場合、斜め移動をするとその分「前進量」が減るので、<br>進行方向によるメリット、デメリットが以下のように変化します。<br><br><span style="color:#CC0000"><strong>・「直進」　：　探索量を絞る代わりに、闇から早く離れられる。<br>・「斜め移動」　：　色々見られるが闇から離れにくい。</strong></span><br><br>今作ではこの2択を、状況次第で切り換えていく感じになると思います。<br><br>なお、ずっと斜めに移動し続けても『闇』（強制スクロール）には<br>捕まらないと思うので、そこは以前同様だと思います。<br>『闇』が通常より速くなった場合や、急いで『闇』からの距離を稼ぎたい場合だけ、<br>前→ときどき斜め→前、みたいな感じで、<br>少しだけ進行方向を考える必要が出るくらいの変化だと思います。<br><br>ちなみに『片道勇者次回作』では、<span style="color:#CC0000"><strong>「右上」の方角が直進方向</strong></span>となります。<br>つまり、常に画面の右上あたりに向かって歩き続けることになります。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【敵やNPCがグループ化して登場！　するかも？】</strong></span><br><br><img src="../../image/2017/20170624A.jpg" loading="lazy" height="165"><br><br>今回は「NPCや敵がグループを組んで出現することがある」ようにする予定です。<br>『片道勇者』では味方が1マス内に最大4人いることがありましたが、<br>今作ではそれが敵にも適用されます。<br><br>敵が1ヘクス内に複数いると、味方の攻撃のターゲットがランダムになり、<br>また「後衛」にいる敵には「槍」「弓矢」などの特別な武器を使うか、<br>フォースやアイテムによる「エリア攻撃」を使わないと攻撃を当てることができません。<br>それっぽい「特徴」を持っていれば、<br>HPの低い敵から狙い撃ちにできたりするつもりです。<br><br>HPが非常に少ないが群れて出てくる敵（軽い連打の方が倒しやすい）や、<br>HPがそこそこあって連携してくる敵（重い一撃で各個撃破が有効）のように、<br>色々な敵バリエーションが出る中、戦うか逃げるか、<br>あるいは弱点を補えるスキルを取っておくか、<br>など、戦闘一つ取っても課題の幅を出せるようにしたいなと考えています。<br><br><br>また、キャラクターがグループを組めると何がいいって、<br>街のNPCや旅するNPCを組み合わせて登場させられること！<br>武器屋と防具屋が一緒にいるヘクスに話しかけたら、<br>防具屋「ボウグゥボウグゥ！！」　武器屋「ブーグゥー！！」<br>と一緒に叫んでいる光景などを作れるわけです。<br><br>『片道勇者プラス』では、少女ミラの父親が<br>ミラとセットで出ているか（両方生きていて、そばにいるか）を<br>判定できなかったために、父親にミラを会わせた後、<br>「父親が再登場した際は父親一人でも話の文脈が成立するように」と<br>真っ先に悲しい結末を付けてしまいましたが、NPCグループ化を導入できれば<br>その後も一緒に2人で旅をしているところに再会できたりしそうです。<br>その場合、敵に襲われたりして片方だけ生き残ってしまった場合の<br>セリフを考えるのが楽しみですね、ウェヒヒ！（悪い顔）<br><br>旅の商人は強い傭兵と一緒に旅をすることになるでしょうから、<br>旅商人を襲うのもきっと大仕事になるでしょう。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【安心の自動支給カード（仮）】</strong></span><br><br><img src="../../image/2017/20170624B.jpg" loading="lazy" height="173"><br><br><span style="color:#ccf">※2025/09/13：以下はまだ通常攻撃が実装されてなかった時期の話題です</span><br><br>クラス（職業）によっては「行動のたびに自動でもらえるカード」があります。<br>たとえば仮想画面写真の「弱攻撃」カードがそうです。<br><br>予定では、クラス「剣士」などは毎ドロー時に自動で<br>「弱攻撃」カードをもらうことができ、<br>「攻撃」カードが1枚も来なくても、必ず「弱攻撃」で1回分攻撃することができます。<br>つまり、<span style="color:#CC0000"><strong>「敵が目の前にいるのに攻撃できないターン」は<br>「剣士」の場合は発生しなくなります</strong></span>。<br><br>今回はコマンドをカードゲーム風にする都合上、回ってくる手札によっては<br>「敵が目の前にいるのに何もできない！」なんてことも発生しうるため、<br>この自動支給カードのように<br>「クラス別に毎行動、必ず手に入るカード」を設けたりして、<br>「運」によるストレスを低減させる要素を導入していくことを検討しています。<br><br>また、一部の「装備」を着けている場合も同様にカードが自動支給されます。<br>「レザーシールド」を装備すると「盾防御・レザーシールド」が使えるなど、そんな感じです。<br><br>プレイが上手になってカードの配分をうまく調整できるようになれば、<br>ドロー枠を1つ消費する「自動支給カード」がかえって邪魔になることもあるので、<br>熟練者の人は自動支給カードを持たないクラスの方が使いやすくなるかもしれません。<br>この辺り、熟練者とそうでない人で得意なクラスが棲み分けできるかもしれない点です。<br><br><hr size="1" /><br>と、こんな感じに、コマンドの管理をカードゲーム式にして発生しうる<br>「やりにくさ」への対策も、ある程度考え中です。<br>いきなりカードゲーム感バリバリな確率の渦に<br>放り込むのはいくら何でも過酷すぎるので、<br>従来のゲームと、本ゲームとの橋渡しができるような配慮は随所に入れたいですね。<br><br><br>こういったやりにくさ以外にも、人に見せるたびに新たなプレイアビリティの問題が<br>明らかになっていくでしょうから、その辺りの配慮には<br>細心の注意を払っていきたいと考えています。<br><br>とはいえ、まずはプロトタイプとして基本システムを作りあげるところから！<br>引き続き、開発を進めていきます。</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2017-06-24 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2017%2F06.html%232017-06-24&title=%E7%89%87%E9%81%93%E6%AC%A1%E5%9B%9E%E4%BD%9C3%20%E6%96%B0%E3%81%9F%E3%81%AA%E8%A6%81%E7%B4%A0" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2017%2F06.html%232017-06-24&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2017-06-24','片道次回作3 新たな要素', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/owh2dev/001.html'>片道勇者2</a></span></div></div><br><br><br>
+<a id='2017-06-17'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2017-06-17','片道次回作2 カード採用！', this)" style='cursor:pointer;'>2017-06-17 (土)&nbsp;&nbsp;&nbsp;片道次回作2 カード採用！</span><span style='float:right;'><a href='#2017-06-10' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【片道勇者次回作　カード方式の採用】</strong></span><br><br>プロトタイプを作ってきてだいぶいけそうな見込みが見えてきたので、<br>今回は『片道勇者次回作』で『片道勇者』から大きく変わる点についてご紹介です。<br><br>『片道勇者』から大きく変わる点として、片道勇者次回作では<br><span style="color:#CC0000"><strong><span style="font-size:large;">「カード」を使ってアイテムやスキルの表現を行う</span></strong></span>予定です。<br><br><img src="../../image/2017/20170617A.jpg" border="1" loading="lazy" height="155"><br><span style="color:#CC0000"><span style="font-size:x-small;">※これは「絵」として描いたカード見本のラフです。　アイコン：「化け猫缶」猫屋さま</span></span><br><br>なんでいきなりカードゲームっぽく！？<br>と思われるかもしれませんが、採用に至った理由は以下の通りです。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【万が一のスマホ展開を視野に入れた場合、<br>『片道勇者』のメニュー方式だと不便】</strong></span><br><br>→　『片道勇者』にスマートフォン展開の要望が出ていたのを見て思いましたが、<br>『片道勇者』のようにメニューをいちいち開いて「使える選択肢」を選ぶ方式は、<br>スマホ展開することを考えるとちょっと厳しいだろうと私は考えていました。<br>できないことはないんですが、メニューを開く形は必ず一手間が必須になるので、<br>テンポが少し悪くなってしまいます。<br><br><br>→　そこで考えた新たな方向性は<span style="color:#CC0000"><strong>「画面に一度に出す選択肢を少なくする」</strong></span>ことでした。<br>たとえばリズムローグライクの「Crypt of the NecroDancer」のように、<br>計4個5個くらいまでしかアイテムやスペルを持てないようにしちゃえば<br>画面上に全て出せるので、メニューなしで簡単に操作ができます。<br>そうでなくとも10個くらいなら、インターフェースをうまく作れば<br>いちいちメニューを開かずに選べる形にできるでしょう。<br><br><br>→　「選択肢を大幅に減らす」ことを前提とするにあたって、その選択肢一つ一つを<br><span style="color:#CC0000"><strong>「カードっぽい見た目にする」</strong></span>ことは非常に有りだと考えました。<br>カード型はインターフェース的には「縦長のボタン」とも言い替えられると思いますが、<br>縦長のボタンは人間の指でも選びやすい形ですし、5択くらいしか<br>選択肢が出ないことも自然に見えます。これいいな！　と思っていました。<br>何より、「山札」の要素を取り入れれば<br>「色んなアイテムやスキルを持たせたい」という欲求と<br>「一度に表示する選択肢を少なくする」の方向性を両立させられそうな期待があります。<br><br><br>→　『片道勇者』直後にアナログゲームを色々遊んでいて、<br>カードを使った「やべーこれスゲー！」と思ったゲームにも色々出会ってきたので、<br>そういった中で見いだした面白さを組み合わせて、<br>これまで以上に楽しく遊べるローグライクを目指したいと考えています。<br><br>現在も参考資料を探しながら色々検討を進めていますが、<br>今のところアイテムやスキルなどのリソース管理のベースは<br>「デッキ構築型ゲーム（※）」っぽくなる予定です。<br><br><span style="color:#3300FF"><span style="font-size:x-small;">※<strong>『デッキ構築型ゲーム』</strong>： 「プレイ前にカードを組み合わせてデッキ（カードの束）を作る」という<br>一般的なトレーディングカードゲーム（TCG）と違い、<br>「プレイ中にデッキにカードを足して/あるいは抜いて、臨機応変にデッキを強くしていく」<br>という方式の、カードを使ったボードゲームのことです。<br>基本的に山札を使い切ったらゲーム終了のTCGと異なり、デッキは何周も使い回されます。<br>2008年に発売された『ドミニオン』というボードゲームが元祖らしくて、<br>以後、デッキ構築型ゲームの要素を取り入れた派生作がたくさん出ています。</span></span><br><br><br><span style="color:#CC0000"><strong>＜前回から継承できそうなところと、懸念しているところ＞</strong></span><br><br>リソース周りがカード的な管理になっても、ローグライクRPGの面白い部分である<br>「取捨選択」や「相乗効果の楽しさ」は従来から引き続き継承できそうです。<br><br>『片道勇者』のプラス版で意識した「面白くするためのコツ」として、<br><span style="color:#CC0000"><strong>「ローグライクで面白い要素は『相乗効果』の部分だったと気付いた」</strong></span>、<br>というのは、『片道勇者開発記』でも述べさせていただいた話なんですが、<br>TCG的な組み合わせが活かせるカードがうまく作れれば、<br>相乗効果をこれまで以上に面白く、かつ過激に作れそうな期待があります。<br><br>一方でカードゲームぽくなる際の問題として、「予定通り」感は減少してしまいます。<br>たとえば強いスキルやアイテムを持っていても、<br>引きによってはすぐ使えない場合が出てきます。<br>なので、切り札となる組み合わせが使えるようになるまでどうしのぐかという、<br>ローグライクのアドリブ感の中にさらにアドリブ感が生まれるような形になります。<br><br>ですが、あまりにもカードの引きに左右される運ゲーは私も好きじゃないので、<br>ある程度「予定通り」っぽい行動が取れるようにするためのサポートは<br>随所に導入していきたいと考えています。<br>別にガチガチなカードゲームを作りたいと思っているわけではなく、<br>面白さを上げるための手段としてカードを使いたい、というのが一番の目的ですからね。<br><br>今のところ、前作以上に「相乗効果」で興奮できそうな形に仕上げられそうな<br>感触が出始めているので、その面ではもっと面白くなるかもしれません。<br>トレーディングカードゲーム的なゲームを何か遊ばれたことがある方なら、<br>強い組み合わせのカードが手札に来たときの興奮や、<br>あるいは来ることを期待するときの興奮もご存じだと思います。<br>ローグライクRPGにその興奮を足せたら、<br>きっともっとエキサイティングになるでしょう！<br>うまく足せたら……ですけれど。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【画面ラフ、初公開！】</strong></span><br><br>ということで、プロトタイプを作っている感じでは、<br>カードを使うシステムにも希望が見えてきたので、今回ついに初公開！<br>これが、一番最初にこっそり作っていた『片道勇者次回作』の画面ラフです！<br><br><img src="../../image/2017/20170617B.jpg" border="1" loading="lazy" height="293"><br><span style="font-size:x-small;">※画像は全て仮のものです。ヘクスも単色じゃなくてマップチップにしますよ！<br>※インターフェースの情報量はだいたいこんな感じを予定していますが、<br>足りない部分や不都合な点が発覚してすでにこの通りではありません。</span><br><br>これは「開発中のスクリーンショット」ではなく、<br><span style="color:#CC0000"><strong>「完成目標を描いた、ただの『絵』」</strong></span>です。<br>完全にこの通りに作っているわけではありませんが、主な雰囲気は掴めると思います。<br>現在、おおざっぱにはこれを目標とする形で開発を進めています。<br><br>イメージ画に込めた様々な特徴に関しては、<br>来週からもいろいろ紹介していきたいと思います。<br>想像が付く方は、ぜひいろいろ考えてみてください。<br><br>今回はまず、カード方式にすることで<br>ゲームプレイがどんな感じになるかという見込みをご紹介します。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【カードとして管理する方式って何が面白い？】</strong></span><br><br>『使える選択肢をカード風に表現』すると言いましたが、今作では<br>「通常攻撃」や「スキル」、「アイテム（装備）」、「経験値」も<br>1カードとして表現されます。<br>何かカードを使って攻撃したりすると「今の手札」は全部捨て札に流れ、<br>山札から「次の手札」を指定枚数分だけ取り出します。<br><br>そして「経験値」を消費したりして「スキル」を得ると、<br>買ったスキルカードが1枚ずつデッキに追加されます。<br>もちろん、同じスキルを複数買うこともできます。<br>カード形式なので『片道勇者』みたいに一度覚えたらそれっきりではなく、<br>必要な比率になるまでスキルカードを何度も買うわけです。<br><br>どういった配分でスキルを取るかによって手札に流れてくる確率も変わるので、<br><span style="color:#CC0000"><strong>『なるべく強いコンボが生み出しやすい配分を目指せるよう、取るカードを選んでいく』</strong></span><br>のがこの形式のキモとなります。<br><br>たとえば「1ターン攻撃力2倍」のスキルを大量に持ってても、<br>肝心の「攻撃」用のカードが1枚以上手札に回ってこないと<br>パワーアップさせた一発を撃つことができません。<br>なので「攻撃カードも適度に増やしておこう」、<br>あるいはもっと高いダメージを出せるよう「強い一発を撃てるカードも持っておこう」、<br>など、そんなことを考えながらプレイする感じになります。<br><br>もちろん、<br><span style="color:#CC0000"><strong>「うおおお1ターン攻撃力2倍のスキルを4枚同時使用で16倍攻撃力だぜー！！」</strong></span><br>みたいなことも狙えるようにするつもりです。<br>手札に4枚も同時に「1ターン攻撃力2倍スキル」が<br>来るようにするのはすごく大変なので、<br>たぶんそこでバランスが取れる……でしょう！　たぶん！<br><br>想定される最高の理論値があまりに過激すぎる数値になっていても、<br>手札に来る確率に制約されてなかなか出そうで出ないのが、<br>このカードゲーム風にする最大の面白みであり、<br>同時に調整に注意せねばならない部分だと考えています。<br><br><br><span style="font-size:large;"><strong>＜複数コマンド選択式＞</strong></span><br><br>すでに何となくお察しの方もいらっしゃるかもしれませんが、<br>今作では『シルフェイド幻想譚』や『シルフェイド学院物語』のように、<br><span style="color:#CC0000"><strong>『行動力の範囲なら1ターン内で連続コマンド選択』</strong></span>できる予定です。<br>（仮想画面写真ではその行動力を「AP」と書いてありますが、<br>たぶん「行動力」になると思います）<br><br>たとえば上の画面写真の例なら、「攻撃」してから「後退移動」を選んだりすると、<br>1ターン中に、「攻撃して、それから敵との距離を空ける」ことができます。<br><br>このコンボが決まれば、そのターンは敵がこちらに1歩近付いて終わりなので、<br>敵に攻撃させずにこちらが一方的に攻撃して次ターンをむかえられます！<br>もちろん、次のターンも似た組み合わせの手札が来るとは限らないので、<br>これがいつもできるわけではありません。<br><br><br><span style="font-size:large;"><strong>＜プレイ感はどう変わる？＞</strong></span><br><br>『片道勇者』に比べてどこがプレイ的に大きく変わるというと、最高効率を出すための、<br>「取捨選択の判断」のウェイトがより大きくなることだと考えています。<br>所有スキルやアイテムの「配分」に、前回よりも意識を割く必要があるからです。<br><br>たとえば、「普段は継戦能力を維持するために多少弱い手札が来る感じでも<br>アイテムなどを多く抱えておいた方が有利」、といった感じかもしれませんが、<br><span style="color:#CC0000"><strong>「ボス前ではいらないカードを事前に減らして精鋭カードで固めた方が<br>強い手札が来やすくなるので有利になる」</strong></span>といった、<br>リソースの調整が求められる可能性が出てきます。<br><br>そう、実はカード形式になることで、<br><span style="color:#CC0000"><strong>「いらないアイテムやスキルを持ってるほど欲しいものが手札に来なくなる」ので、<br>「何も考えずに取るとかえって邪魔になる」</strong></span>んですよ！<br>たぶんこれまでより、「取捨選択」の「捨てる」の方のウェイトが<br>従来以上に大きくなるかもしれません。<br><br>……と、色々述べてきましたが、プレイ中はたぶん、<br>「これ必要そうかなーどうかなー」と思いながら、出た選択肢を<br>ポチポチ選んだりいらないものを捨てたりしていくだけなので、<br>やること自体はきっとシンプルです。<br>そして「普通」や「やさしい」の難易度なら『片道勇者』同様、<br>多少ガンガンプレイしても平気なくらいにはしたいと考えています。<br><br>また取捨選択が苦手な人も、武装を強化して次元倉庫から出して<br>ヒャッハーできる仕組みは従来通りにするつもりなので、その辺りはご安心ください。<br>「遊ぶ人を選ぶ」という形にするよりも、各々ができる、<br>それぞれの判断力の度合いに応じて楽しめる仕組みを盛り込んでいきたいですね。<br><br><hr size="1" /><br>『片道勇者』も、強制横スクロールというコンセプトの時点で<br>だいぶマニアックな造りだと思いながら作っていたので、<br>今回もマニアックになりすぎないよう、<br>細心の注意を払って開発していきたいと考えています。<br><br>次回も引き続き、仮想画面写真の内容についてお伝えしていきます。<br>よければお楽しみに！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2017-06-17 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2017%2F06.html%232017-06-17&title=%E7%89%87%E9%81%93%E6%AC%A1%E5%9B%9E%E4%BD%9C2%20%E3%82%AB%E3%83%BC%E3%83%89%E6%8E%A1%E7%94%A8%EF%BC%81" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2017%2F06.html%232017-06-17&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2017-06-17','片道次回作2 カード採用！', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/owh2dev/001.html'>片道勇者2</a></span></div></div><br><br><br>
+<a id='2017-06-10'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2017-06-10','ゲーム開発話 小粒編', this)" style='cursor:pointer;'>2017-06-10 (土)&nbsp;&nbsp;&nbsp;ゲーム開発話 小粒編</span><span style='float:right;'><a href='#2017-06-03' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【ゲーム開発話　小粒編】</strong></span><br><br>今回はいただいたコメントやご質問などにお答えしていきます！<br>様々なコメント、いつも本当にありがとうございます。<br><br><img src="../../image/2017/20170610.jpg" border="1" loading="lazy" height="400"><br><hr size="1" /><br><span style="color:#3300FF"><strong>●ゲームのストーリー作りは、自分が面白いと思う話を考えるか<br>プレイしてくれる人が面白いと思う話を考えるか、どちらと捉えて作りますか？<br>自分はあまり世のゲームのストーリーにハマれないことが多いので気になります。</strong></span><br><br>私の場合は、ストーリー作りは開発の回数を重ねるほど、<br>「自分が面白い」と「プレイしてくれる人が面白い」が両方混ざってきています。<br>いま現在意識している方向性を一言で整理するなら、以下のような感じです。<br><br><span style="color:#CC0000"><strong>「『自分が面白いと思う話』を、自分が我慢できる範囲で<br>『プレイしてくれる人が面白い』と思えそうな範囲に寄せて作る」</strong></span><br><br>これはストーリーだけでなくゲームそのものにも言えますが、<br>私が自分の好みを100％反映すると一部の人に凄く刺さるものになる代わりに、<br>多くの人にとって「なにこれ合わない！」となってしまうものができがちです。<br>なので今は、できる限り多くの人に楽しく遊んでもらえることを目指すにあたって、<br><span style="color:#CC0000"><strong>「好み80％、配慮（＝我慢）20％」</strong></span>という感じを意識しています。<br><br>たとえば私が「好み100％」でゲームを作るとどうなるかというと、<br>『シルフドラグーンゼロ』が「エストック」の<br>機体しか選べないゲームになったりします。<br>（※エストック＝直感的でない操作の機体。他2種の機体は明快な操作だが<br>実はそれらは配慮のために後付けしたものだった）<br><br>そしてストーリーに関して、私がまったくユーザ寄りにせずに、<br>ただ「自分が面白い」と思うものを100％投入したのが<br>『レジェンドオブレストール』です。<br>そこで学んだことを糧に、少しプレイヤーさん向けに寄せようかなと考えたのが<br>『シルフェイド見聞録』や『シルフェイド幻想譚』だった気がします。<br><br>そういうわけなので、私が一切の配慮をせずに<br>『自分にとって面白い』と信じて作ったゲームが見たい方は、<br>ぜひ『レジェンドオブレストール』を遊んでみてください！<br>「薄めていないソーダみたいな味」（？）と<br>どなたかが評価してくださった記憶があります。<br><br>あと、私が好みを全力を出すと頻繁にバッドエンドにしたくなってしまうので、<br>ゲームのクリア時には必死にハッピーエンドっぽく描写するようにがんばっています。<br>ハッピーエンドはたいていの場合、私にとって「配慮」の部分です。<br>一方、ゲームオーバー場面などは堂々とバッドエンドにできるので「好み」の部分です。<br><br>一本道ストーリーは基本的にハッピーエンドが求められがちなのでどうしても苦手で、<br>何かを書きかけても途中で手が動かなくなることが多いです。<br>一方で、「がんばった人が目の前にいるから喜んでもらいたい」と<br>自然に思えることもあってか、TRPGでハッピーエンドを演出するのは楽しいですね。<br><br><hr size="1" /><br><span style="color:#3300FF"><strong>●SmokingWOLFさんがゲーム製作を続けられる理由を聞いてみたいです。<br>（生活のため、というのはあるかと思いますが、<br>それ以外でモチベーションになっているものがあれば）</strong></span><br><br>すごいおおざっぱな一般論でいうと、精神的な面では、<br>「投入した労力に対して相応以上の満足感があるから」だと思います。<br>それがあれば、「生活できないから」という理由でやめることはあっても、<br>続けられる状況下であればずっと続けるでしょう。<br>逆に満足感がないと、たとえ生活の糧で<br>やっていることでも続かないことが多い気がします。<br><br>「ゲーム開発」は、私にとっては全力で挑戦してみても<br>なかなか最適と思える解にたどり着けない、超絶難しいゲームですが、<br>一本作るたびに色々な発見があって次に活かせるので、とても楽しく感じています。<br><span style="color:#CC0000"><strong>「前回覚えたこの『意図』を使えば次はうまくやれるはず！」</strong></span><br>という感覚があると楽しいのは、きっとどんなゲームでもお仕事でも同じだと思います。<br><br><hr size="1" /><br><span style="color:#3300FF"><strong>●最近は、スマホで無料の（しかもそれなりに高品質の）ゲームが<br>あったりして、以前とはフリーゲーム界隈も変わってきたように思います<br>（コンパクで盛り上がっていた時代が懐かしい）。SmokingWOLFさんは<br>この辺の変化について、どのような感想を持っておられるでしょうか？</strong></span><br><br>ここ数年で、フリーゲームを遊んでいらした人が<br>企業製の基本無料ゲームに流れていったり、<br>フリーゲーム内でも遊ぶ人でも色んなジャンルに<br>散り散りになったりしている感じはします。<br>一方で、ツールを提供している側としては「ゲームを作りたい人」が<br>昔より減るどころか逆に増えている感じがあって、<br>「作る人が増えて、遊ぶ人は色んなところに散ったのかな？」という感触があります。<br><br>立場ゆえにそう感じている部分もあるでしょうけれど、<br>でも例えばウディコンでは、年々「投票者」様の数が減っていても<br>「作品数の減りはすごく遅い」ので、私には作る人が増えているように感じています。<br><br>スマホに関しては、<br>「スマホすごい！　どこでも遊べる上に、外からでは<br>遊んでるように見えないあたりが日本人的に最高のゲーム機だ！<br>そりゃこれは流行りますよ！」　と思っています。<br>私も面白いゲームができればスマホに展開することも<br>検討しているくらいには、大きい波になっていると考えています。<br>（果たしてそこで収益が上げられるかは別ですが！）<br><br>フリーゲームを出せる場所は昔と比べると増えた気がするんですが、どうでしょうね？<br>昔は盛り上がりどころが一カ所に集まっていたかもしれませんが、<br>今はホームページ時代からSNS時代になって投稿の場が散っている気がするので、<br>全てを総合すれば、投稿側の熱は昔より<br>盛り上がっているのではないかなと想像しています。<br><br>一方で、全てを知るには情報収集のコストが上がりすぎて追いつけないので、<br>一カ所あたりの「遊ぶ側の人」の数は昔より減少していたりして、<br>「昔と同じ情報収集コストで探せる範囲内では盛り上がりが落ちたように見える」<br>と感じておられる方も多いのではないかなと思います。<br>私も、作品が増えすぎて探すのが大変になったのと、自分の開発に忙しくて、<br>いつしか情報を追いかけられなくなってしまいました。<br><br>今はSNSなどで「このゲーム面白いよ！」と情報を発信してださる方を経由して<br>初めてそのゲームを知るということも多くなったので、<br>一カ所にみんな集まる時代は終わって、<br>小さな口コミが徐々に伝わっていく時代なのかなと思っています。<br><br><hr size="1" /><br><span style="color:#3300FF"><strong>●キャラづけネタは以前にもありましたが、好かれる（嫌われない）<br>キャラクター作り（※性格や発言など精神的な部分）、というテーマは<br>如何でしょうか。(微)エロあり下ネタありBLネタあり、と自分は苦手だと<br>思う要素がありながら、不思議と不快感を感じたことがありません。<br>キャラクター作りというよりは、ウルフさんの表現力の賜物、という部分も<br>ありますが……そのあたり、工夫や苦労話があれば聞いてみたいな、と思いました。</strong></span><br><br>その辺りはあまり深く意識したことがなくて、この前、人にシモネタ入りの初案を<br>見せたら「ちょっと過激じゃないですかね！」みたいなことを<br>言われた程度にはたびたびツッコまれています。<br><br>たぶん「セーフ」の許容ラインが私と近いか、もっと危険域にある人だけが<br>私の描写を不快感なく感じられる、というだけのことではないかなと私は考えています。<br>『シルフェイド見聞録』も「十分アウトだ」、「合わない」、<br>「ウマコ！」とおっしゃる方も多いので、<br>人によってセーフのラインがおのおの違うのだろうなとは常々感じています。<br><br>じゃあどうしていけばマシになるかというと、最近は<br>「具体的な部分は想像させるような表現にとどめる」ようにすれば<br>人に応じたレベルで想像できるのでいいのかな？　と今は考えています。<br><br>たとえば、<br>小学生の方が見てもその人の経験の範囲で想像できるし、<br>大人の方が見れば大人らしい想像ができるし、<br>汚いのが嫌いな人はきれいな想像もできる。<br>個々人が求めるものを映し出せるような、<br>そんな鏡のような描写を目指したいなと考えています。<br>そういう目的においては、「なすがままにされてしまうだろう」なんて<br>とても便利な言葉ですね！<br><br><hr size="1" /><br><span style="color:#3300FF"><strong>●わたしもウディタいじりでかれこれ1000時間以上は夢中になっているのですが<br>UDB(CDB)の立て方はいまだに大変悩みます。このあたり、ウルフさんのご経験で<br>なにかあれば話題にしていただけると嬉しいなーと思います。</strong></span><br><br>データベースを作る手順はいつも<br><br><span style="color:#CC0000"><strong>１．「項目がほとんど入っていない空のDBを作る」<br>→　たとえば「名前」と「グラフィック」「HP」しか入れてない<br>「ユニットDB」を最初に作ります。<br><br>↓<br><br>２．「処理を実装していく中で必要になったら項目を足す」<br>→　さっきの「ユニットDB」に「攻撃力」「防御力」などを追加します。<br><br>↓<br><br>１～２の繰り返し。</strong></span><br><br>という感じの、プロの開発者の人からは怒られそうなひどい作り方をしています。<br>要するにほとんど行き当たりばったりですが、ウディタはDBの項目追加がやりやすいので、<br>個人で開発している分にはあまり困らないと思います。<br><br>「いま処理を作っているけど何の項目が必要か分からない！」　という場合は、<br>もう少し整理が必要だと思います。<br>「どこに何を入れれば効率的か」を考え始めると私も頭が沸騰してしまいます。<br><br><hr size="1" /><br><span style="color:#3300FF"><strong>●途中で英題が『Katamichi Brave』から『One Way Heroics』へと変えたのも<br>何か理由があってのことだと思うので、よろしければお聞かせください。</strong></span><br><br>PLAYISMさんから海外展開用に翻訳したタイトル<br>「One Way Heroics」をいただいたので、<br>そのタイミングで『Katamichi Brave』から表記を切り換えました。<br><br>次は仮の英語タイトルを付けずに、付けてもらうのを待とうかなと思っています。<br><br><hr size="1" /><br><span style="color:#3300FF"><strong>●シル見の当初のプロットを伺いたいです。</strong></span><br><br>一番最初から決まっている部分である、<br>「主人公が医者を目指す少年エシュターで、ヒロインが不治の病の少女シーナ」<br>という構成にしたところから推測できると思いますが、<br>「最終的に主人公が女の子の病気を何とかするストーリー」<br>をメインにすることだけぼんやり想定していました。<br><br>シル見は永遠に連載し続けるつもりだったので途中はあいまいで、<br>次の話の展開を考え始めるのはいつも毎話をリリースした後でした。<br>途中で最終回の展開だけは色々ぼんやり考えていましたが、<br>その一つは少しアレンジして『シルフェイド学院物語』内で描かれています。<br><br><hr size="1" /><br><span style="color:#3300FF"><strong>●開発日誌や開発記を読んでて思ったのですが、（製作者サイドから見た）<br>欲しい意見や欲しくない意見―あるいは反映しやすい意見としずらい意見―<br>とはどのようなものがありますか？</strong></span><br><br>ゲームの改善や、知見を得るために欲しいご意見は主に以下の通りです。<br><br><span style="color:#CC0000"><strong>「～～が面倒臭く感じる」<br>「～～が理不尽に感じる」<br>「～～の部分がつまらないです」<br>「ここにあの情報を出して欲しい」<br>「ここにバグがあります！」</strong></span><br><br>ややネガティブっぽいコメントが多いと思われるかもしれませんが、<br>上の3個あたりは遊ばれた人にとっての間違いのない真実です。<br><br>また、どれも全て「そもそも私が気付いてなかった」部分が原因であることが多いので、<br>言っていただければ「何か対応を考えようか」、あるいは<br>「次回作からその辺も配慮できないか考えてみよう」と<br>初めて思考コストを投入できるようになります。<br>そしてそれができるようになった分だけ、今後の配慮の向上に繋がるはずです。<br><br>基本的には、「制作者が気付いていない」ことによって<br>発生する問題はかなり多いと考えているので、<br>プレイヤーさんからの多くの主観的コメントは全て大歓迎です。<br><br>もちろん、「ここが面白く感じた」「このキャラが好き」といった<br>ポジティブな部分へのコメントも大歓迎です。<br>たまたま一定数の人に対してうまく希望に沿うものが作れたということで、<br>「喜ばれやすい成果物」に近付ける意図であったことが分かるからです。<br>何より、私自身の精神的栄養に繋がりますしね。<br><br>ゲーム開発初心者の頃は、作れるものの中でどの部分がウケがいいのか知るためにも、<br>このポジティブなコメントがたくさん必要だと思います。<br><br><br>一方で難しいかもしれないこととして、「こういう仕様にしてほしい」系のご意見は、<br>他の部分と干渉せずに低コストで面白みを上げられそうなものならすぐ採用できますが、<br>他の部分が色々こじれそうな場合や、自分の好みじゃない、<br>導入によって得られそうな面白さと実装コストが見合わなさそう、<br>と判断した場合は反映しにくいと思います。<br><br>コストが安くて安全性さえ高ければできることも多いので、<br>その要望が出た意図を汲み取った上で、他の場所の問題も<br>一気に解決できるような方向性で何かできないかなー、<br>と考えることが多いです。要するにコストをかけるにしても、<br>できるだけ一気にたくさんのことを解決できるようにしたいと考えています。<br><br><hr size="1" /><br><span style="color:#3300FF"><strong>●数年前、某有名Civプレイヤーが何でゴブリンを兵糧攻めしないのか？<br>という趣旨のツイートで話題になりました。その話の中でその方は<br>「命懸けの冒険者が生存確率を高める為に物理的に可能な全ての手段を<br>講じないとしたらその世界は全く非現実的だ」という理由から、ＴＲＰＧにおける<br>ＧＭはＰＬの一見理不尽に思えるような提案でも一考し、咄嗟に筋の通った<br>ルールを構築すべきであるという論で話を進めていたように思います。<br>　そこでＴＲＰＧを幾度となくプレイされていて、その上実際に新作の<br>ＴＲＰＧの開発に携わったウルフさんにお聞きしたいのですが、<br>ウルフさんは上記の論についてどう思われますか？</strong></span><br><br>ゲーム開発とは微妙にずれていますが面白そうなお話！<br>私はTRPG属性がカオス寄りで、事故や意外な展開が大好きなので、<br>個人のＧＭ側としては<br>「無茶振りっぽい案でも面白かったら有りじゃないですかね！<br>　その場で何か考えますよ！」<br>と考えている派です。刑事役PCなのにいきなり「銃の威力を試したい」などといって、<br>突然何の罪もないそこらの住人を撃ってみたりするPLさんよりはだいぶ良心的です。<br><br>個人的には、ＧＭをする方が多い立場として<br>PLさんからそういった無茶振りに近い提案が出ること自体はもう前提としていて<br>（何十人かと遊べば、必ず何度かは無茶振りが出るはずです）、<br>そういった状況で私がご提案できそうなGMさんが使えそうなやり方は、<br><br><span style="color:#CC0000"><strong>ＧＭ「兵糧攻めか、いいぞ！　じゃあ実行するための費用と期間を考えてみよう。<br>まず兵糧攻めに必要な包囲人員に払う報酬とその間の食料一式から計算だ。<br>たぶんゴブリン退治の報酬だと圧倒的な赤字になると思うけど。<br>なお空腹ルールは人間と同じものを使用して……」</strong></span><br><br>とその場ですぐ思いつけるようなら言ってみるか、<br>そうでない場合、自分の知識や裁定力で瞬発的に手に負えなさそうだと思ったら、<br><br><span style="color:#CC0000"><strong>ＧＭ「その願いはゲームシミュレータとしての自分（GM）の能力を越えていそうだ！<br>そこまでしなくて大丈夫なクエストだから、<br>他になんか自分の手に負えそうな案はない？」</strong></span><br><br>なんてお手上げ宣言してしまってもいい気がしています。<br>ゲーム内リソースとルールの限界に加えて、基本的には<br>「GMが制御できるキャパシティの範囲内」で遊んだ方が楽なのがTRPGですし、<br>何よりそういう場面では早めにGM側から技術的に困難であることの主張と<br>方針転換の催促を宣言しないと、モメ方がヒートアップして<br>雰囲気が悪くなってしまう場合も多いですからね。<br><br>もちろんPCの皆さんとも協力して処理の仕方を考えていくのも楽しいので、<br>もしその卓にそういうのが好きなPCさんが多いなら、<br>協力してルールのアイデアを考えるのも楽しいと思います。<br><br><span style="color:#CC0000"><strong>GM「すぐには思いつかないので案を一緒に考えてくれないか！？<br>　認めた範囲で採用するよ！」</strong></span><br><br>みたいな感じですね。いざというときに備え、<br>「お手上げして別の案を求める」、「PLの手を借りてみる」という<br>選択肢を入れておくことで、<br>きっともっと落ち着いてGMができると思います。<br><br>ということで個人的なご提案としては、円滑さ重視を目的として<br><span style="color:#CC0000"><strong>「GMさん側は手に負えないような状況ならメタ（ゲーム外の都合）でもいいので<br>早めにお手上げ宣言する」<br>「PLさん側はGM的に難しそうな提案をするなら同時に<br>GMさんの手に負えるかも聞いてみる」</strong></span><br>といった感じで意識しておくといいのかなと考えています。<br>え？　ヤバいPLさんは「今からすること」がGMの手に負えるか<br>そもそも聞いてこないって？<br>ハハハ！　ズギューン！（罪のない住民を射殺する音）<br><br>上記は割とGM側の立場のお話ですが、PLとしての私も回数を重ねるごとに、<br><span style="color:#CC0000"><strong>「こうしてみたいんだけど処理できる？」とか<br>「これもしかしてとっとと進んだ方がいい？（＝テンポ破壊するほど警戒しすぎ？）」</strong></span><br>などGMに聞くようにした方がいい場面も<br>あるということを徐々に学びつつあります。<br>特に、GMさん側の経験が少ない場合は余計にです。<br><br>なお、私がGMやるときによく関わるTRPGプレイヤーさんは<br>ゲーム開発者同士なのもあってか、<br><br><span style="font-size:large;"><span style="color:#CC0000"><strong>「GMがダンジョンを用意してない気がするから<br>行くのはやめた方がいいんじゃ？」</strong></span></span><br><br>といった感じのことを言っていただけるくらい優しいので、<br>ある意味で助かっていますがどこか切なくなったりします。<br>でも仮に私が準備してなくても、5分いただければ<br>「判定に成功したら1歩進める4マス分くらいのミニダンジョン」<br>を出したりするといった工夫もできるので別に行っていいんですよ！？<br><br>刑事役PCの人が突然いきなり住民を射殺しても、そのまま上手に話の筋を戻して<br>物語を進められてしまうGMさんもいれば、対応不能なGMさんもいます。<br>良くも悪くも、人を見てプレイしなければならないのがTRPGの楽しいところであり、<br>難しいところでもあるなあと思いますが、PLさんからの提案の実現が難しいと思ったら<br>とりあえずGMさん側としては堂々と<br>お手上げしていいんじゃないかなと私は考えています。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>＜おまけ　ゴブリン退治は恐いかも？＞</strong></span><br><br>ここからは主題ではないお話です。今回のお話だとゴブリン退治は<br>「特に兵糧攻めするほどでもない仕事」という文脈で使われていて、<br>TRPG慣れしている人なら私も含め、<br>無意識にそんな感じで受け取っているかもしれません。<br>でも前提なしで想像してみると、ゴブリン退治はかなり恐い戦いになる気がします。<br><br>たとえば私が一人の冒険者の場合でも、<br>「数が不明なゴブリンが洞窟に潜んでいる」という情報しかない状況だったら、<br>実は洞窟内がゴブリンたちの集合住宅になっていて、<br>うかつに入ったら死んでしまう危険性を考えるでしょう。<br><br>なので私もおそらく、パーティの死傷率を抑えるためにも、<br><br><strong>「食料集めにゴブリンが洞窟から出てくるまで待ち、<br>少し離れたところで仕掛けて各個撃破」<br><span style="font-size:x-small;">（もしこの時点で手に負えない量になったら退却して依頼者に任務遂行が難しいことを報告）</span><br>↓<br>「帰ってこないのを心配したか、腹を空かして仕方なく出てきたゴブリンを同様に狩る」<br>↓<br>（もし洞窟への煙攻めがGMに許可されたなら実行して外で待ち伏せ。でも洞窟内を<br>いぶすのは実は相当に難しそうです。入口を埋めないとうまく行きにくいでしょうし）<br>↓<br>「まだ生き残りがいないか洞窟探索開始、隠れても無駄だぜグヘヘ」</strong><br><br>という、ほぼ兵糧攻め（＝包囲戦）に近い作戦を最初に提案してみると思います。<br>とにかく「相手の戦力を少しずつ削るか、ある程度正確な数を知るための作戦」<br>を取るでしょう。<br><br>GMさんの殺意やリアリティ重視度などにもよりますが、<br>一般的な「最初のゴブリン退治クエスト」的な雰囲気で何も考えずに<br>洞窟に入った場合、もしかしたら以下のような展開が待ち構えているかもしれません。<br><br><span style="color:#CC0000"><strong>GM「洞窟に入った4人のＰＣたち。だが夜目がきくゴブリンにはすでに気付かれており、<br>洞窟内の少し広い場所に出たところで、待ち伏せしていた20体以上の<br>老若男女様々なゴブリンから一斉に投石攻撃を受けた！　20回分のダメージ！」</strong></span><br><br>こんな状況に陥って一瞬で仲間が何人か死んだらたまったものではありません！<br>でも、このくらいの展開ならゴブリン相手でも普通にありえそうな気がします。<br>ある程度の知能がある敵対種族の住み処に入るのは、情報不足の中では危険すぎます。<br><br>そして、戦術眼・戦略眼に優れた人ほどそういった<br>「ありうる」最悪の想定をすると思うので、<br>GMさんはそういった傾向のPLさんがあまりにも慎重に考えすぎるようなら、<br>円滑に進めるためにも、安心してもらうための情報提供を意識すると<br>いいのかなという気がしています。<br><br><span style="color:#CC0000"><strong>GM「60年生きてる長老の記憶によると、この地方のゴブリンは3匹以下の<br>グループが住み着いた事例しか聞いたことがないとのことだ。<br>だからとっとと突入して！　お願い！」</strong></span><br><br>さすがにこうぶっちゃけられれば「じゃあ突入するかー」となるかもしれません。<br>といいますか、私自身が「慎重に考えすぎるPL」になってしまいがちなので、<br>似たタイプのPLさんがもしうっかり過剰に策を練りすぎたり慎重になりすぎて<br>ゲーム進行を遅らせてしまっているようなら、<br>GMさんから指摘していただけると嬉しいです、という立場です。<br><br>慎重タイプのPLさんは、究極的にはサイコロを振らないで<br>任務を遂行する手段まで考え始めますからね！<br>「サイコロに頼る状況に陥った時点で作戦負けである！」<br>ウォーゲーム出身の人や、少しのミスで即死するゲームを多く経てきた人には、<br>それに近い発想をする人も多いかもしれません。<br><br><br><span style="font-size:large;"><strong>＜便利な時間制限＞</strong></span><br><br>あと、今回の件にも関わる話ですが、TRPGのミッションには<br>常に「日数制限」を付けた方がいいかなと私は考えています。　<br>明確な制限がなくても、一日経つたびに何のためか分からないダイスを振って、<br>「一日ごとに裏で状況が進んでいきますからねグヒヒ（本当は何も考えてない）」<br>というやり方でも構いません。<br><br>『シルフェイド幻想譚』みたく、最終的には時間が余り気味だったとしても、<br>「時間制限」があることで最も効率的な判断が求められますし、<br>かつ状況次第で「情報不足でも行くしかない」という意識が働くので、<br>ゲーム進行を円滑にしたり勇気を働かせてもらうにあたって便利な方法です。<br><br>時間制限は遊ぶ方もドキドキできますし、メタな見方をすれば<br>「その日数の中で解決できるミッション」であることも暗黙に明示されるわけです。<br>2日以内に解決しなければならない冒険なら、<br>さすがに突然ゴブリンが20体も出てくることはないでしょう。<br>でも、これが一ヶ月も与えられたら敵が20体くらい出るかもしれませんし、<br>もしかしたら何か裏の事情があるのかもしれません。<br>時間制限一つとっても、様々な情報を与えることができるはずです。<br><br><hr size="1" /><br>ということで、今回は以上です。いかがだったでしょうか？<br>皆さまの多くのご意見コメント、本当にありがとうございます！<br><br>他にもし何か「こんな話題を聞いてみたい！」というお話がございましたら、<br>ぜひ拍手コメントからお送りください！<br>答えられそうなものはどんどんお答えしていきます。<br><br><CENTER><br><TABLE bgcolor="#f0f0ff"><TR><TD><a class="double-link red" target="_blank" href="https://www.amazon.co.jp/dp/B076VM4ZMS"><img border="2" src="../../image/etc/title_map_of_dev.jpg" width="120" loading="lazy" height="171"></a></TD><TD bgcolor="#fefeff">← 今回のような記事を<br>　1冊の本にまとめたゲーム開発本、<br>　『<strong>ゲーム開発者の地図</strong>』、<br>　Kindleで好評発売中です！</TD></TR></TABLE></CENTER></CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2017-06-10 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2017%2F06.html%232017-06-10&title=%E3%82%B2%E3%83%BC%E3%83%A0%E9%96%8B%E7%99%BA%E8%A9%B1%20%E5%B0%8F%E7%B2%92%E7%B7%A8" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2017%2F06.html%232017-06-10&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2017-06-10','ゲーム開発話 小粒編', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/devlog/001.html'>開発日誌</a></span></div></div><br><br><br>
+<a id='2017-06-03'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2017-06-03','ゲームタイトルを振り返る', this)" style='cursor:pointer;'>2017-06-03 (土)&nbsp;&nbsp;&nbsp;ゲームタイトルを振り返る</span><span style='float:right;'><a href='#bottom' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【これまで作ったゲームタイトルを振り返る】</strong></span><br><br>前回は<a class="double-link blue" target="_blank" href="../../archive/2017/05.html#2017-05-27"><strong>「私のゲームタイトルの付け方」</strong></a>だったので、<br>今回はこれまでの私の主要作品に付けてきたゲームタイトルを<br>振り返って自己レビューしてみます。<br><br><img src="../../image/2017/20170603.jpg" border="1" title="日常コメディもので「レジェンド」はどこか皮肉っぽいものを感じます" loading="lazy" height="500"><br><br>今回は、私が作ってきた主要作品に対して、<br><span style="color:#3300FF"><strong>＜名前から推測されるイメージ＞</strong></span>と<span style="color:#CC0000"><strong>＜実際のゲーム内容＞</strong></span>の<br>2つについてそれぞれ述べていきます。<br>「名前から推測されるイメージ」は、私がタイトルだけを見た場合に<br>どんなゲームだと予想するか、という主観です。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>●レジェンドオブレストール（アドベンチャーゲーム）</strong></span><br><br><span style="color:#3300FF"><strong>＜名前から推測されるイメージ＞</strong></span><br>レジェンド（伝説）とあるので、レストールという人物による<br>壮大な物語のRPGっぽい印象があります。<br>あるいは大陸以上の世界を股に掛けたシミュレーションRPGかもしれません。<br>何にせよ戦いが多そうなイメージです。<br><br><span style="color:#CC0000"><strong>＜実際のゲーム内容＞</strong></span><br>これはゲーム一覧の古いところに置いてある私の処女作です。<br>耳長の青年レストールが主人公の、マッチョや亜人やモンスターと共に<br>一つの街で繰り広げる日常コメディADVです。ほとんど街から出ません。<br>タイトル命名の際は、「誰に向けて送り出すか」といった一切の考慮はなく、<br>ただひたすら雑に決められたタイトルです。<br>当初は友達にしか見せないつもりのゲームでしたから。<br><br>せめてかっこよくしようと思ったんですが、<br>今では「レジェンドオブ～～」はありきたりすぎてイマイチかもしれません。<br><br><hr size="1" width="80%"/><br><span style="font-size:large;"><strong>●シルフェイド見聞録（アドベンチャーゲーム）</strong></span><br><br><span style="color:#3300FF"><strong>＜名前から推測されるイメージ＞</strong></span><br>『見聞録』なので、『シルフェイド』という地での冒険もののようです。<br>新たな地での出会いや発見が多そうなRPG、<br>あるいは紀行物ADVっぽい印象です。<br><br><span style="color:#CC0000"><strong>＜実際のゲーム内容＞</strong></span><br>実際は『シルフェイド』という世界で、<br>ノーマ学院に入学した医者を目指す少年エシュターが<br>学校内で繰り広げるドタバタコメディが中心になっているADVです。<br>『見聞録』的な場面まで行ってないので、少し名付けを失敗してしまった感があります。<br><br>いずれ旅に出る予定があったり、話のコアに<br>『見聞録』が関わる予定だけはありましたが、<br><span style="color:#CC0000"><strong>作り始めたときはそんなことを一切考えていませんでした</strong></span>。<br>これはたぶん、前作がレジェンドオブレストール（レストールの伝説）<br>というタイトルにも関わらず<br>割とほのぼの生活コメディものだったので、その流れを汲んだものと思われます。<br>要するに、<span style="color:#CC0000"><strong>「かっこよさそう」というだけで名前を決めました。</strong></span><br><br>あと、当時の私は背景のグラフィックがほとんど描けなかったので、<br>ほとんどの物語を学院内で進行せざるを得なかったというのも理由の一つにあります。<br>「劇中で行ける範囲」の制約は、そのまま「私が作れる素材の種類と量」に<br>左右されていたのです。<br><br><hr size="1" width="80%"/><br><span style="font-size:large;"><strong>●シルフェイド幻想譚（RPG）</strong></span><br><br><span style="color:#3300FF"><strong>＜名前から推測されるイメージ＞</strong></span><br>『シルフェイド』世界のお話っぽいですが『幻想』なので<br>ファンタジー世界のお話のようです。<br>人によってはファンタジー童話の物語系なゲームにも見えるかもしれません。<br>たぶんADVかRPGのどちらかだと思いますが、幻想って付くゲームはRPGが多いかも？<br><br><span style="color:#CC0000"><strong>＜実際のゲーム内容＞</strong></span><br>シルフェイド世界の浮遊島を舞台にした半フリーシナリオRPGです。<br>おおよそ内容から外れていないタイトルだと思っています。<br><br>ただこのタイトル名には少し問題があって、一部の漢字変換ソフトだと<br>『譚』の字がなかなか出ない場合があるらしく、それで<br>正式名称の普及力が少し低下してしまった感じがあります。<br>それでも、「シルフェイド」や「シル幻」といった略称のおかげでだいぶ救われました。<br>当時はSNSがそんなに流行っていなくて、掲示板時代だったせいもあるかもしれません。<br>（掲示板の名前を見て語り場を探しに行くことはあっても、<br>自分から打つ機会は今より多くなかったため）<br><br><hr size="1" width="80%"/><br><span style="font-size:large;"><strong>●シルエットノート（アドベンチャーゲーム）</strong></span><br><br><span style="color:#3300FF"><strong>＜名前から推測されるイメージ＞</strong></span><br>「シルエット」はおそらくファンタジーというよりは<br>「現代」や「未来」を感じさせる用語で、<br>「ノート」という単語から、これも現代感や、何かを調べるゲームである雰囲気が<br>予想されるかもしれません。アドベンチャーで<br>探偵ものっぽく感じられるかもしれませんね。<br><br><span style="color:#CC0000"><strong>＜実際のゲーム内容＞</strong></span><br>近未来の海上都市アクアフロートで繰り広げられる、ときどき魔法少女もので<br>ときどき学園ものでときどきサスペンスなアドベンチャーゲームです。<br>登場キャラクターはある程度シルフェイド系に登場したキャラを元にしており、<br>シルフェイド系列であることをほんのり示すために、<br>「シル」から始まる単語を選びました。<br><br>あえて『シルフェイド』と付けなかったのは、初の有料ゲームだったということもあり、<br>シルフェイドの名前に頼らずいくら売れるか挑戦したかった、という理由でした。<br><br><hr size="1" width="80%"/><br><span style="font-size:large;"><strong>●モノリスフィア（マウスアクションゲーム）</strong></span><br><br><span style="color:#3300FF"><strong>＜名前から推測されるイメージ＞</strong></span><br>モノリス（石柱、四角っぽいイメージ）とスフィア（球体）を繋げた名前から察するに、<br>どことなく幾何学感があるので、前知識なしだと<br>パズルゲームっぽい印象があるかもしれません。<br>というか、一番最初はパズルゲームのつもりで作ってたんですよ。<br><br><span style="color:#CC0000"><strong>＜実際のゲーム内容＞</strong></span><br>実際は女神モノリスが力の源である<br>（モノリ）スフィアを集めにいくアクションゲームです。<br>前回の「新ブランドなら分かりやすい名前の方がいいかも」という話の筋からすると、<br>あまり直感的じゃないゲームタイトルかもと個人的に思っている一本です。<br>だったらどう名付ければより効率的か、というのも、すぐ思いつかないんですけれどね。<br><br>語感の面では、『モノリスフィア』は割とよく付けられた方だと思います。<br>英語では『Monolith Sphere』となっています。<br>英語名だとこの矛盾したような名前に「おっ？」と思えるかもしれないので、<br>個人的に好きです。<br>日本語だとその効果を活用しきれていない気がします。<br><br><hr size="1" width="80%"/><br><span style="font-size:large;"><strong>●シルフドラグーンゼロ（シューティングゲーム）</strong></span><br><br><span style="color:#3300FF"><strong>＜名前から推測されるイメージ＞</strong></span><br>「ドラグーン」という単語がいかにもシューティング風なので、<br>これは多くの人がシューティングゲームだと推測できると思います。<br>かつて『シルフィード』というシューティングゲームも家庭用にあったので、<br>「シルフ」部分もシューティングゲームを想起させるかもしれません。<br>また、「ゼロ」と付いていれば竜に乗った<br>ファンタジーものだと誤解する人は減るでしょう。<br>（「シルフドラグーン」だけだと「風の竜騎士」みたいに<br>捉える人もいるかもしれません）<br><br>「ドラグーン」はその語感から、日本では「竜に乗った騎士」みたいな意味で<br>使われるケースも多いらしいのですが、<br>元の意味は「竜騎兵」→「銃で武装した騎兵」のことだそうです。<br>作中でも、近世ヨーロッパの竜騎兵から名前を借りて航宙戦闘機に付けている、<br>といった記述を入れています。<br><br><span style="color:#CC0000"><strong>＜実際のゲーム内容＞</strong></span><br>航宙戦闘機ドラグーンを駆って戦う1画面全方位シューティングゲームです。<br>だいたいゲームタイトル通りな感じがしますが、<br>全方位シューティングっぽさはさすがに出せませんでした。<br><br>これは『シルエットノート』の作中ゲーム『シルフドラグーン』が元で、<br>本作はその続編なのですが、そもそも元の方に「シルフ」を付けたのは<br>「シル」シリーズの系列であることをアピールしたかったからだったと記憶しています。<br><br>あと「ゼロ」が付くと、ゲームタイトルのかっこよさが<br>簡単にいくらか増える感じがしたので、<br>開発開始時にはとりあえず「ゼロ」を付けることを決めていました。<br>ストーリーも、この『ゼロ』のタイトルに合わせて作られています。<br><br><hr size="1" width="80%"/><br><span style="font-size:large;"><strong>●シルフェイド学院物語（育成シミュレーション）</strong></span><br><br><span style="color:#3300FF"><strong>＜名前から推測されるイメージ＞</strong></span><br>『シルフェイド』という学院で繰り広げられるお話を描いたゲームのようです。<br>アドベンチャーか、RPGか、といった感じでしょうか。<br>『物語』と付いている場合、個人的にはアクションゲームっぽさを感じにくくなって、<br>ターン制など非リアルタイム進行のゲームっぽさを感じます。<br><br><span style="color:#CC0000"><strong>＜実際のゲーム内容＞</strong></span><br>実際は、このゲームは『シルフェイド』島の学院で１年を過ごす、<br>近未来世界の育成シミュレーションゲームです。<br>タイトルだけ見ると『シルフェイド』の学院のお話っぽいので、<br>これこそ学園内のお話が多かった『シルフェイド見聞録』に<br>本来付くべき名前だった気もしますね。<br><br>『シルフェイド』と名前が付くゲームを並べてみると、<br>登場キャラやトーテムという存在や世界観が近いだけで、<br>結局のところベースとなる世界や時代は毎回変わってるので、<br>『シルフェイド』の定義とは一体何なのか考えさせられます。<br><br><hr size="1" width="80%"/><br><span style="font-size:large;"><strong>●片道勇者/片道勇者プラス（ローグライクRPG）</strong></span><br><br><span style="color:#3300FF"><strong>＜名前から推測されるイメージ＞</strong></span><br>ゲームタイトル名から察するに、「片道」なので出発したきり二度と帰って来られない、<br>「勇者」の冒険を描いたゲームのようです。<br><br>「勇者」と付いているので、ジャンルはいかにもなスタンダードRPGを想像させます。<br>クラシックな画面に大きいドットのキャラクターが歩き回ってるような、<br>そんなゲームかもしれません。<br><br><br><span style="color:#CC0000"><strong>＜実際のゲーム内容＞</strong></span><br>このゲームは『闇』によって画面左から世界が呑み込まれていく中、<br>二度と戻ることのできない一方通行の冒険を繰り広げるローグライクRPGです。<br>主人公が勇者だったり、魔王を倒しに行ったりするゲームなので、<br>ほぼタイトル通りの内容かもしれません。ドットはそこまで大きくないですけれど。<br><br>『片道勇者』は伝わりやすい名前ですし、<br>人によってはほんのり悲壮感も伝わってとてもいい名前だと思います。<br>（とても鉄砲玉っぽいあたりが）<br>これほど短く、かつ何かを想像させられそうな名前はもう付けられない気がします。<br><br><hr size="1" width="80%"/><br><span style="font-size:large;"><strong>●プラネットハウル（マウスアクションゲーム）</strong></span><br><br><span style="color:#3300FF"><strong>＜名前から推測されるイメージ＞</strong></span><br>「プラネット」という名前が付いてるので少しSFっぽい気がします。<br>「ハウル」は分かる人には分かる「遠吠え」という意味の単語なので、<br>分かれば動物っぽいニュアンスを掴めるかもしれません……が、<br>多くの人にはあんまりピンと来ないかもしれませんね。<br><br>SF感が伝わる一方、ジャンルは分かりにくいと思われます。<br>惑星を股に掛けたSFアドベンチャーか、異色のSF RPGか、アクションゲームか、<br>あるいは星ごとどうにかする惑星シミュレーションゲームかもしれません。<br><br><span style="color:#CC0000"><strong>＜実際のゲーム内容＞</strong></span><br>獣人系のキャラがいっぱい出てくる、<br>宇宙を舞台とした変則操作の機体を操るマウスアクションゲームです。<br><br>タイトル案として『アストロ・ケモノーツ』<br>（「アストロノーツ＝宇宙飛行士」にかけた名前）<br>という案が一瞬出たのですが、開発に関わる人が完全に私一人だけだったら<br>もしかしたらそう名付けていた可能性もいくらかあったかもしれません。<br>ちょっとお間抜け感があるので厳しい世界観には合わない感じもありますけれど、<br>アクションゲームっぽさが出るのと、獣人が出ることが非常に分かりやすいからです。<br><br>もう一つは『星の遠吠え』というタイトル案もあって、<br>「SF小説みたいなタイトルになるね」と共同開発者の方と話していました。<br>結局、アクションゲームっぽさを重視して『プラネットハウル』に決定した気がします。<br>日本語名のタイトルだと、あんまりアクションゲームっぽくない気がしたもので。<br><br><hr size="1" /><br>という感じです。いかがだったでしょうか。<br><br>ジャンルが伝わりそうなタイトルもあれば、全然分からないものもあります。<br>特に変則操作アクション系はジャンルが分かりにくい名前だったので、<br>タイトルで変則操作アクションっぽいアピールができれば、<br>そういうのが好きな（おそらく少数派の）人がもっと見つけてくれたかもしれません。<br><br>この多ゲーム時代、タイトルそのものが詳細情報を見てくれる確率に影響するのは<br>ほぼ間違いないので、今後もますますゲームタイトルの名付けは<br>重要になってくる気がしています。<br><br>たくさん作っていても、タイトルを付けるのはいまだに難しいことです。<br>中身が面白いことは大前提ですが、<br>「見ただけでおいしそうに見えるゲームタイトル」が付けられれば最高です。<br>中身が味なら、ゲームタイトルは香りの一部なのですから。<br><br>ゲームタイトルは普段あまり他人と比べないところなので、記事を書いていて、<br>「せめて自分に刺さるタイトルを見つけたらメモしておこう」と思い直しています。<br>ゲームタイトルは人にゲームをアピールするにあたって重要なパーツなので、<br>これまで以上によく考えていきたい部分です。<br><br><hr size="1" /><br>他にもし何か「こんな話題を聞いてみたい！」というお話がございましたら、<br>ぜひ拍手コメントからお送りください！<br>すでにいくつかいただいております、ありがとうございます！<br>答えられそうなものはどんどんお答えしていきます。<br><CENTER><br><TABLE bgcolor="#f0f0ff"><TR><TD><a class="double-link red" target="_blank" href="https://www.amazon.co.jp/dp/B076VM4ZMS"><img border="2" src="../../image/etc/title_map_of_dev.jpg" width="120" loading="lazy" height="171"></a></TD><TD bgcolor="#fefeff">← 今回のような記事を<br>　1冊の本にまとめたゲーム開発本、<br>　『<strong>ゲーム開発者の地図</strong>』、<br>　Kindleで好評発売中です！</TD></TR></TABLE></CENTER></CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2017-06-03 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2017%2F06.html%232017-06-03&title=%E3%82%B2%E3%83%BC%E3%83%A0%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB%E3%82%92%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8B" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2017%2F06.html%232017-06-03&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2017-06-03','ゲームタイトルを振り返る', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/devlog/001.html'>開発日誌</a></span></div></div>
+<div class='article_pos'>2017年06月</div>
+<div class='nav'><a href='07.html'>次の月へ</a> | <a href='05.html'>前の月へ</a></div>
+<a id='bottom'></a>
+
+<BR><BR>
+<div align="right"><a href="#top" class="g">▲一番上へ戻る</a></div>
+<BR>
+<CENTER>
+<HR>
+<div>
+<div id="silsec-status" style="display:inline-block;line-height:12px;font-size:10px;"></div>　<div align="center" style="display:inline-block;line-height:12px;font-size:10px;"><a href="https://smokingwolf.github.io/" target="_blank" class="blue" border="1"><img src="https://smokingwolf.github.io/banner.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>アーカイブサイトへ</a></div>
+</div>
+<HR>
+Copyright © SmokingWOLF / Silver Second
+<HR>
+</CENTER>
+
+
+<script>
+  // シルバーセカンド公式のドメインに接続し、サイト存在確認用のTXT(SILVERSECOND_ALIVE!と書かれている)があれば存在する扱いにする
+  const statusDiv = document.getElementById('silsec-status');
+  const checkUrl = 'https://silversecond.net/SILVERSECOND_SITE_ALIVE_FLAG.txt';
+
+  fetch(checkUrl, { cache: 'no-store' })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('ネットワークエラー');
+      }
+      return response.text();
+    })
+    .then(text => {
+      if (text.trim() === 'SILVERSECOND_ALIVE!') {
+        statusDiv.innerHTML = '<a href="https://silversecond.net/" target="_blank" class="blue"><B><img src="https://silversecond.net/banner/a.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>運営中のサイトへ</a>　';
+      } else {
+        statusDiv.textContent = '　';
+      }
+    })
+    .catch(error => {
+      statusDiv.textContent = '　';
+      console.error('シルバーセカンド公式サイトチェック失敗:', error);
+    });
+</script>
+
+
+
+
+</div>
+<div id='sidebar'>
+<div style='font-weight:bold;'>開発日誌</div>
+<div><a class='sidebar_link' href='../../archive/top/index.html'>日誌トップへ</a></div>
+<div><B><a class='sidebar_link' href='../../index.html'>全記事一覧</a></B></div>
+<hr>
+<div style='font-weight:bold;'>【最新記事】</div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/09.html#2025-09-06'>●09/06 ウディタ新機能2つ！(Y表示補正/MoveWatch)＆ 片道勇者プラス修正！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/08.html#2025-08-24'>●08/24 第17回ウディコン結果発表！　上位3作品とピックアップ紹介！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/08.html#2025-08-09'>●08/09 『シルバーセカンド思い出の部屋』を開設！＋ 来年よりウディコン規約追加</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-26'>●07/26 第17回ウディコン審査期間開始！ ＆ 規約の補足</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-12'>●07/12 ウディコン直前！ サイト＆ウディタ修正＋シェパード捜査録！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-28'>●06/28 ウディコン準備中！+ 開発日誌も移転作業中</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-14'>●06/14 サイト修正＋開発日誌をFC2から移転！</a></div>
+<hr>
+<div style='font-weight:bold;'>【カテゴリ】</div>
+<div><a class='sidebar_link' href='../../category/woditor/001.html'>ウディタ&nbsp;<span class='sym'>(83)</span></a></div>
+<div><a class='sidebar_link' href='../../category/owh2dev/001.html'>片道勇者2&nbsp;<span class='sym'>(78)</span></a></div>
+<div><a class='sidebar_link' href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(73)</span></a></div>
+<div><a class='sidebar_link' href='../../category/owh/001.html'>片道勇者&nbsp;<span class='sym'>(21)</span></a></div>
+<div><a class='sidebar_link' href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(19)</span></a></div>
+<div><a class='sidebar_link' href='../../category/trpg/001.html'>TRPG&nbsp;<span class='sym'>(9)</span></a></div>
+<div><a class='sidebar_link' href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(9)</span></a></div>
+<div><a class='sidebar_link' href='../../category/study/001.html'>勉強メモ&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../category/silgen/001.html'>シル幻&nbsp;<span class='sym'>(1)</span></a></div>
+<hr>
+<div style='font-weight:bold;'>【月別】</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2025-btn' onclick="toggleYear('y2025')">2025&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2025' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2025/09.html'>09月&nbsp;<span class='sym'>(1)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2024-btn' onclick="toggleYear('y2024')">2024&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2024' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2024/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/01.html'>01月&nbsp;<span class='sym'>(2)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2023-btn' onclick="toggleYear('y2023')">2023&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2023' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2023/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/09.html'>09月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2022-btn' onclick="toggleYear('y2022')">2022&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2022' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2022/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2021-btn' onclick="toggleYear('y2021')">2021&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2021' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2021/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2020-btn' onclick="toggleYear('y2020')">2020&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2020' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2020/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/07.html'>07月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2019-btn' onclick="toggleYear('y2019')">2019&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2019' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2019/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2018-btn' onclick="toggleYear('y2018')">2018&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2018' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2018/12.html'>12月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/11.html'>11月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/10.html'>10月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/09.html'>09月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/08.html'>08月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/07.html'>07月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/06.html'>06月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/04.html'>04月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/01.html'>01月&nbsp;<span class='sym'>(5)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2017-btn' onclick="toggleYear('y2017')">2017&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2017' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2017/12.html'>12月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/11.html'>11月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/09.html'>09月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/08.html'>08月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/07.html'>07月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/06.html'>06月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/05.html'>05月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/04.html'>04月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/01.html'>01月&nbsp;<span class='sym'>(5)</span></a></div>
+</div>
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('a.double-link');
+
+  links.forEach(link => {
+    const primaryUrl = link.dataset.primary;
+    if (!primaryUrl) return;
+
+    const testUrl = primaryUrl + '?t=' + Date.now(); // キャッシュ無効化！
+
+    fetch(testUrl, { method: 'GET', cache: 'no-store' })
+      .then(res => {
+        const url = res.url || '';
+        if (!res.ok || url.includes('404.html') || res.status === 404) {
+          console.warn('【404または失敗】そのままアーカイブを使います:', link.href);
+          // そのまま
+        } else {
+          console.warn('【OK】hrefを本家に書き換えます:', primaryUrl);
+          link.href = primaryUrl;
+        }
+      })
+      .catch(() => {
+        console.warn('【通信エラー】そのままアーカイブを使います:', link.href);
+        // エラー時もhrefはそのまま
+      });
+  });
+});
+</script>
+
+
+
+</body>
+</html>

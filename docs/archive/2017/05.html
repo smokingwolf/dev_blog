@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>シルバーセカンド開発日誌 / SmokingWOLF</title>
+<meta name="viewport" content="width=720">
+<script src="../../js/smoothscroll_up.js" type="text/javascript"></script> 
+
+<link rel="stylesheet" href="../../js/litebox/css/lightbox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../../js/litebox/js/prototype.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/moo.fx.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/litebox-1.0.js"></script>
+
+<style>
+html {
+  /* スマホ時は1.2倍フォントで表示 */
+  -webkit-text-size-adjust: 120%;
+  -ms-text-size-adjust: 120%;
+}
+
+BODY{
+  /*display:flex;*/
+  font-size:13px;
+  margin:0;
+  font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+  color:#558;
+}
+
+TD{
+  font-size:12px;
+}
+
+
+A:LINK,A:VISITED {  color:#5658f6;  text-decoration:underline ;}
+A:HOVER,A:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.red:LINK,A.red:VISITED{color:#d6385c;display: inline-block;text-shadow: 0 0 15px #ffddcc, 0 0 15px #ffddaa;}
+A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shadow: 0 0 15px #ffcccc, 0 0 15px #ffaaaa;}
+
+A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
+A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.g:LINK,A.g:VISITED{
+	color:#38a68c;
+	text-decoration:underline;
+}
+
+A.g:HOVER,A.g:ACTIVE{
+	color : #68b6ac;
+	text-decoration : underline;
+}
+
+
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38c6ac;
+}
+
+A.jumplink:HOVER,A.jumplink:ACTIVE{
+	color : #68f6ac;
+}
+
+A.jumplink{
+	text-shadow: 0 0 15px #ccddcc, 0 0 15px #aaddaa;
+	text-decoration : none;
+}
+
+
+.article_pos{
+	font-size:16px;
+	color:#aaf; 
+	font-weight:bold;
+	text-align:center;
+	margin:0px;
+	padding:0px;
+}
+
+#content {
+	font-size:14px;
+	
+}
+
+#sidebar {
+	background:#f8f8f8; 
+	border-left:1px solid #ddd; 
+	padding:4px 6px;
+	font-size:12px;
+}
+
+A.sidebar_link:LINK,A.sidebar_link:VISITED,
+A.sidebar_link_recent:LINK,A.sidebar_link_recent:VISITED{
+    color:#5658f6;
+	text-decoration: underline;
+}
+A.sidebar_link:HOVER,A.sidebar_link:ACTIVE,
+A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
+	color: #9698e6;
+	text-decoration: underline;
+}
+
+.sidebar_link{
+	font-size:13px;
+}
+
+.sidebar_link_recent{ /* 1つ1つの項目ごとに隙間を空ける */
+	font-size:11px;
+	line-height: 1.2;
+	display: inline-block;
+	margin-top:5px;
+}
+
+
+.entry {
+	border:1px solid #ccc; 
+	border-radius:8px; 
+	margin:14px 0; 
+	overflow:hidden;
+
+}
+.entry-title {
+	background:linear-gradient(to right,#4243ff,#aaaacf);
+
+	font-size:17px;
+	color:#fff; 
+	padding:4px; 
+	font-weight:bold;
+	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
+}
+
+.entry-body,.extended {
+	background:#fff; 
+	color:#444; 
+	padding:15px;
+	font-size:14px;
+	line-height:1.6em;
+}
+
+.entry-foot {
+	background:#fff; 
+	text-align:center;
+	vertical-align:middle;
+	color:#ccf;
+	font-size:12px;
+	padding-top:20px;
+	padding-right:20px;
+	padding-bottom:10px;
+}
+
+.linkbutton{
+	padding:3px;
+}
+
+/*--●形状整理用--*/
+body {display:flex; margin:0;}
+#content {width:600px; padding:0 8px;
+	font-size:14px;}
+#sidebar {width:120px;  box-sizing:border-box; }
+#sidebar div {line-height:1.6;}
+#sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
+.nav {margin:0px 0 -20px 0; text-align:center;}
+.sym {color:#999; font-weight:normal;}
+
+</style>
+
+
+<script>
+function toggle(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+function toggleDisp(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+</script>
+
+
+
+<!--★目次デザイン・処理★-->
+<style>
+.toc-box{background-color:#f0f0f0;border-radius:8px;padding:10px;} 
+.toc-list{list-style:none;margin:0;padding-left:0;} 
+.toc-list ul{list-style:none;margin:0;padding-left:20px;}
+.toc-list li{margin:5px 0;}
+.toc-level1{margin-left:0;}
+.toc-level2{margin-left:20px;}
+
+h1 {
+  background: #fff;
+  padding: 6px 10px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #2233cc; /* 青系 */
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 4px solid #3366ff;
+  display: block;
+  width:100%;
+  
+}
+
+
+h2,h3 {
+  background: #fff;
+  padding: 6px 10px;
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #5566ff; /* 青系 */
+  
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 2px solid #9999ff;
+  display: -block;
+
+}
+
+h2::before {
+  content: "- ";
+}
+
+.master_years{
+  margin-left:20px;
+  margin-right:20px;
+}
+
+.top_minicategory{
+  font-size:10px;
+  color:#ccccff;
+}
+</style>
+
+
+
+</head>
+<body onload="initLightbox();">
+<a id="top"></a>
+
+<style type='text/css'>
+.linkbutton{
+  font-size: 0.9em;
+  padding: 1px 6px;
+  vertical-align: baseline;
+  line-height: 1;
+  height: auto;
+  margin-left: 4px;
+  color:#66f;
+  background-color:#f9f9f9;
+  border: 1px solid #888;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.copy-popup{
+  background-color: #eef;
+  border: 1px solid #88c;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  color: #333;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.5s ease;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  max-width: 80vw;             /* 画面幅の 80% で折り返す */
+  overflow-wrap: anywhere;     /* 長い URL を途中で区切る */
+  word-break: break-all;       /* ↑が効かない旧ブラウザ保険 */
+  white-space: pre-wrap;       /* 
+ を改行として扱い、余計な連続空白は1個に */
+}
+.article_end_date{
+  font-size:0.9em;
+}
+</style>
+
+
+<script>
+function toggle(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+}
+
+// Year accordion with sessionStorage persistence
+function toggleYear(id){
+  const pane = document.getElementById(id);
+  const btn  = document.getElementById(id+'-btn');
+  if(!pane||!btn) return;
+  const sym  = btn.querySelector('.sym');
+  const isClosed = pane.style.display === 'none';
+  pane.style.display = isClosed ? 'block' : 'none';
+  sym.textContent   = isClosed ? '－' : '＋';
+  sessionStorage.setItem('year-'+id, isClosed ? 'open' : 'closed');
+}
+
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('[data-yearpane]').forEach(pane=>{
+    const id    = pane.id;
+    const state = sessionStorage.getItem('year-'+id);
+    const btn   = document.getElementById(id+'-btn');
+    const sym   = btn?.querySelector('.sym');
+    if(state === 'open'){
+      pane.style.display = 'block';
+      if(sym) sym.textContent = '－';
+    }else{
+      pane.style.display = 'none';
+      if(sym) sym.textContent = '＋';
+    }
+  });
+});
+
+function copyLink(date, title, el){
+  const url = `https://smokingwolf.github.io/dev_blog/archive/${date.slice(0,4)}/${date.slice(5,7)}.html#${date}`;
+  const text = `
+【${date}　${title}】
+ ${url}`;
+  navigator.clipboard.writeText(text).then(()=>{
+    if(el && el.tagName === 'BUTTON'){
+      const orig = el.textContent;
+      el.textContent = '✅ コピー完了!';
+      setTimeout(()=>{ el.textContent = '🔗 リンクをコピー'; }, 2000);
+    }
+
+    const popup = document.createElement('div');
+    popup.className = 'copy-popup';
+    popup.textContent = `✅ コピー完了：${text}`;
+    document.body.appendChild(popup);
+
+    const rect = el.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    const popupWidth = popup.offsetWidth;
+    const pageWidth = document.documentElement.clientWidth;
+
+    let left = rect.left + scrollLeft + (rect.width / 2) - (popupWidth / 2);
+    let top  = rect.top  + scrollTop - popup.offsetHeight - 8;
+    if(left < scrollLeft + 4) left = scrollLeft + 4;
+    if(left + popupWidth > scrollLeft + pageWidth - 4)
+        left = scrollLeft + pageWidth - popupWidth - 4;
+
+    popup.style.left = `${left}px`;
+    popup.style.top  = `${top}px`;
+    popup.style.opacity = '1';
+    popup.style.zIndex = '9999';
+
+    setTimeout(()=>{ popup.style.opacity = '0'; }, 1800);
+    setTimeout(()=>{ popup.remove(); }, 2500);
+  });
+}
+</script>
+
+<div id='content'>
+<style>
+
+.TopTitle{
+  width:515px;
+  font-weight:bold;
+  font-size:16pt;
+  color: #ffffff;
+  background-color:#535365 ;
+  border-width: 0px;
+  border-color:#535365;
+  border-style:solid;
+  background: -moz-linear-gradient(left top, #42435f, #fafaff);
+  background: -webkit-gradient(linear, left top, right bottom, from(#42435f), to(#fafaff));
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#DD42425f', endColorstr='#FFfafaff');
+  
+  text-align:left;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.header3{
+	color:#555588;
+	margin-bottom:16px;
+}
+
+.home-link {
+  font-size: 12px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: underline;
+}
+</style>
+
+<!--戻るリンク、サイトがなくなってたらアーカイブにつながるようにしたが404ページがアレなのかうまくいかない-->
+<!--
+<font id="home-link-placeholder">
+  <noscript>
+    <a href="https://smokingwolf.github.io/" class="home-link">← ホーム(アーカイブサイト)に戻る</a>
+  </noscript>
+</font>
+
+<script>
+(async () => {
+  try {
+    // HEADで軽くチェック（no-corsなのでステータス確認は不可）
+    // 自分のサイトのインフォメーションページにつなげるならサイトがまだあると認識する
+    await fetch("https://silversecond.net/contents/etc/info.shtml", { method: "HEAD", mode: "no-cors" });
+
+    const link = document.createElement("a");
+    link.href = "https://silversecond.net/";
+    link.textContent = "← ホームに戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  } catch {
+    const link = document.createElement("a");
+    link.href = "https://smokingwolf.github.io/";
+    link.textContent = "← ホーム(アーカイブサイト)に戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  }
+})();
+</script>
+-->
+
+<div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
+<!--ここにコメント文-->
+<div class="header3" style="margin-top:6px;">　ここはゲーム開発者SmokingWOLF(スモーキングウルフ)の開発日誌です。<BR>
+　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
+　<B style="color:#ff5555;">※以前のブログが使えなくなったので、ただいまこの開発日誌に移転中です。</B>
+</div>
+
+<div class='article_pos'>2017年05月</div>
+<div class='nav'><a href='06.html'>次の月へ</a> | <a href='04.html'>前の月へ</a></div>
+<a id='2017-05-27'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2017-05-27','私のゲームタイトルの付け方', this)" style='cursor:pointer;'>2017-05-27 (土)&nbsp;&nbsp;&nbsp;私のゲームタイトルの付け方</span><span style='float:right;'><a href='#2017-05-20' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【私のゲームタイトルの付け方】</strong></span><br><br>ご要望をいただいたので、今回は「ゲームタイトルの付け方」について、<br>個人的に意識していることをお話しします。<br><br><img src="../../image/2017/20170527.jpg" border="1" title="" loading="lazy" height="500"><br><small><small>※人形とおもちゃの世界に飛ばされてしまった愛称ラッシー（仮本名ラーシア）の少女が<br>重量比の軽い人形軍団を蹴り飛ばしたりトランプの兵隊を四つ折りにしたりして<br>「これで暴力の快感に目覚めたらどうしよう……」などと不安になりながら元の世界に帰るべく旅をする物語で、<br>マウスだけで遊べるジャンプ方向アナログな「地上戦ベースのモノリスフィア」みたいになる予定でした。</small></small><br><br><br>といっても「タイトルの決め方」ってあまりに感覚的な話なので、<br>私も断定できるようなことはほとんどありません。<br>基本的には、私がこれまでやってきて「うまくいったかな」と思うことや、<br>私が開催しているゲームコンテストを見ていて感じたことなどを記していきます。<br>方向性としては、<br>「なるべくゲームのポテンシャル限界まで普及させる・人気を取る」ために<br>私が目指している内容です。<br><br><br>主な内容は以下の通りです。<br><br><span style="color:#CC0000"><strong>●「英語」や「難しい漢字」を避けて覚えやすい名前に。<br>覚えやすいほど普及力の面で有利になりそう。<br><br>●『内容が伝わりやすいゲーム名』は、ライバルが多い中ほど有利そう。<br><br>●『前に遊んだゲームの関連作品だと分かる』よう、<br>ブランドを意識して名前を付けると長続きするかも。<br><br>●同じゲーム名がないか調べておく。</strong></span><br><br>ネットを検索すれば他の方もたくさん似たような話をしておられるので、<br>これだけ読んで全部分かる人には飛ばしてくださっても大丈夫だと思います。<br><br>ここからは、各内容の詳細説明です。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【「英語」や「難しい漢字」を避けて覚えやすい名前にすると<br>普及力の面で有利そう】</strong></span><br><br>もうこれは誰もが言っている話なんですが、「SNSなどでの普及力を上げる」目的なら、<br>「英語」や「難しい漢字」を使うのを避け、<br>覚えやすいゲーム名を目指す方が普及力の面で効率的です。<br><br>「打ち込みにくい文字」「誤字を誘発する単語」「長い名前」は、<br><br><span style="color:#CC0000"><strong>●見た人がゲーム名を記憶することが難しくなる。<br>●情報を拡散してくれる人がゲーム名を打ち込むためのコストも増大する</strong></span><br><br>ことから、人の頭に入るのも、場に出てくる回数も減ってしまいます。<br><br>逆に入出力コストが小さければ小さい名前であるほど、<br>人々への「ゲームタイトル」の記憶回数と出現回数は増えます。<br><span style="color:#CC0000"><strong>「覚えやすく、入力しやすく、短い名前」というのはそういう点でとても有利で、<br>「正式名称の普及度」が段違いに上がります。</strong></span><br>ユニーク（単一）な名前を目指す目的でも、難しすぎたり、<br>打ちにくい単語はあまり使わない方がいいだろうと今は考えています。<br><br>私の付けたゲーム名だと、『片道勇者』が覚えやすさと入力しやすさの面で<br>最もうまくいった例になりそうです。<br><br>一方、『シルフェイド幻想譚』は昔、<br>「譚」が漢字変換ソフトで出ないケースがあったり、<br>読み方が分からない人が一定数いらっしゃったので、<br>その点がちょっとマイナスに働いたかもしれないと感じているケースです。<br><br>なお、長いゲーム名でも「略称」がうまく流行すれば<br>普及の面での問題は小さくなります。<br>が、うまいことインターネットの検索対策をしないと<br><span style="color:#CC0000"><strong>「略称」を検索してもサイトが見つからないことがある</strong></span>ので、<br>ゲームの公式サイトがあるなら公式ページ内に必ず略称も入れた方がいいと思います。<br><br>私のツール『WOLF RPGエディター』では、一時期「ウディタ」と入れても<br>直接サイトが見つからなかったので、公式サイトの先頭にも<br>「ウディタ」という略称を書いたという経緯があります。<br><br><br><span style="color:#CC0000"><strong>＜日本でリリースする場合、英語は不利かも？＞</strong></span><br><br>日本でアピールするにあたって、<br>「英語のゲーム名」は注意した方がいいかもしれません。<br>『Elona』ほどに誤字が発生しにくく<br>短いゲームタイトルなら全く問題ないと思いますが、<br>以下の条件に当てはまりそうなものは普及力の面で不利になると考えています。<br><br><span style="color:#CC0000"><strong>●7文字以上のスペルの英単語が含まれる。<br>●スペルをまちがえそうな単語である（flightなど難しめです）。<br>rとlで迷う、erやorなどが入る英単語、など。</strong></span><br><br>こういった単語が含まれる名前だと、SNSなどでは<br>「ゲーム名を間違えるリスク」などから名前を気軽に入力されにくくなってしまうので、<br>カタカナを使う場合より普及力が一定以上低下すると思っています。<br>日本で出す場合は、せめてその英語のタイトルを<br>そのままカタカナにした方が有利かもしれません。<br><br>たとえば「Celestial Silfade Story」は<br>私が雑に付けた『シルフェイド幻想譚』の英語名ですが、<br>もし正式名称がこの英語名の方だったら、<br>掲示板などで滅多に入力されなかったと思います。<br>特に「Celestial」の部分！　長い！　エルとアールがややこしい部分もある！<br>ので、まだカタカナで『セレスティアル　シルフェイドストーリー』<br>にする方がいいかもしれません。<br>それでも長すぎてあんまりですけれどね！<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【『内容が伝わりやすいゲーム名』は、<br>ライバルが多い中ほど有利そう】</strong></span><br><br>今はフリーゲームどころか、企業さまが送る<br>基本無料ゲームでさえもあまりに大量に出ていて、<br>ゲームのタイトルを覚えることも、全ゲームの詳細情報をチェックするのも<br>大変な時代になってしまいました。<br><br>こんな状況になると、個人開発のゲーム、あるいは企業製の「新作ブランド」も、<br>「一つ一つが注目される確率」は相対的にかなり低下すると私は考えています。<br><br>では、<strong>過去の資産に頼れない新作ブランド</strong>で売り出す場合は、<br>一体どんな名前にするのが普及させるにあたって効率的でしょうか？<br>そう考えた場合、だいぶ昔ながらの命名法である、<br><br><span style="color:#CC0000"><strong>●ジャンル名やゲーム内容が強く伝わるゲーム名</strong></span><br><br>を付けることは、割と強力な策なのではないかなと思っています。<br>というのも、<br><br><span style="color:#CC0000"><strong>●現在はゲームの数が多すぎて、「名前のみ表示された一覧ページ」から飛んで<br>「詳細ページ」まで見てくれる人が割合的に減っているため</strong></span><br><br>です。サイトにもよりますが、ダウンロードサイトで多くのゲームが並んでいる場合、<br>まず一番最初の一覧に出るのは「ゲーム名」と<br>「バナー・アイコン」（＋あって短い紹介文）が主で、<br>「詳しい紹介内容」はそのゲーム名をクリックして飛んだ先で表示されます。<br>現実世界の店舗で棚に置いてもらう場合も、ほぼ同様でしょう。<br><br>その中で少しでもお客さまに見てもらおうとするなら、<br>「ゲーム名」と「バナー・アイコン」だけでなんとか自分の作品に<br>注意を割いてもらうべく、情報を届けることが最重要です。<br><br>たとえば今のSteamでは、一日20～30件ずつゲームがアップされるので、<br>うちみたいな宣伝力に圧倒的に劣るところが何かゲームを出した場合、<br>「見ただけで興味を引く可能性がある名前＋バナー・アイコン」でないと<br>ほとんど注目されずに流れてしまうリスクがあると考えています。<br>「ゲーム一覧」に並んでいる時点でお客様を引き寄せるかなりの努力をしないと、<br>そもそもゲーム詳細ページまで開いてくれないでしょう。<br><br>1日何十本もゲームがリリースされている中で、<br>あなたがたまたま「ゲーム詳細ページ」まで飛んだゲームがあるのでしたら、<br>それは作者様やパブリッシャー様が「ゲーム一覧」の時点で<br>うまくお客様を引き寄せる仕事ができている、ということなのだと思います。<br><br><br><span style="color:#CC0000"><strong>＜たとえばどんな名前を付ける？＞</strong></span><br><br>たとえば名前が決まっていないファンタジーのシミュレーションゲームがあるとします。<br>それは、重厚で練り込んだ世界観がバックにあるゲームですが、<br>そこであえてジャンル名重視の<br><strong>「タクティクスナイツ」</strong>という名前で売り出すことを考えてみます。<br><br>『タクティクスナイツ』なら、ファンタジー系シミュレーションRPGに興味がある人なら<br>ゲームタイトルだけ見て「もしかしたら好みに合うヤツかな？」と思われるでしょうし、<br>そのまま詳細説明ページまで見てもらえる確率も上がりそうに思えます。<br>もちろんその際、同時に表示されるであろうバナーやアイコンも、<br>雰囲気の方向性を伝えるのに役立つでしょう。<br><br>一方で、これが『タクティクスナイツ』という名前でなく、<br>ゲーム世界の名前から取って『クロモア・ロコマ』なんて名前にしていたら、<br>その名前だけではシミュレーションRPGを探している人は<br>クリックしなくなるかもしれません。<br><br>代わりに、「独特なアート系の雰囲気のゲーム」を探している人には<br>クリックされやすくなる名前かもしれませんし、アイコンの雰囲気と名前から<br>「世界観重視のRPG」を期待する人もいるかもしれません。<br>そういうお客様は、詳細ページを見て期待と違うゲームだと気付いたら<br>前のページに戻ってしまうかもしれませんけれどね。<br><br>「ゲーム名」は多くのプレイヤー候補を獲得するための<span style="color:#CC0000"><strong>「第一の網」</strong></span>です。<br>自分の欲しい作品を探している人に少しでも見つかりやすくなるよう、<br>「タイトル」で中身のジャンルや方向性などを表現できれば強力です。<br><br>先の『クロモア・ロコマ』の例を取っても、名前の付け方一つで、<br>「第一の網」にかかるお客様の層が恐らくガラっと変わってしまうので、<br>私としては一番興味を持ってもらえそうな人に届くよう名付けたいと思います。<br><br><br>それと、<span style="color:#CC0000"><strong>「バナーやアイコン、画面にこだわっておけば<br>タイトルはザツでもいいんじゃ？」</strong></span><br>と思われることもあるかもしれません。<br>しかし、SNS上では<br><span style="color:#CC0000"><strong>画面やアイコンなしでゲームタイトルの文字だけが挙がる</strong></span><br>ことが一番多いので、そこで名前を見た<br>潜在ユーザさんに興味を持ってもらうためにも、<br>「ゲームタイトルそのもの」の重要度はとても大きいと考えています。<br><br><br><span style="color:#CC0000"><strong>＜分かりやすさ重視の弱点＞</strong></span><br><br>「分かりやすさ重視のゲームタイトル」は、もっぱら<br>「新しいゲーム性を持った作品」に使いやすい方法かもしれません。<br>ただこの発想で命名する場合、失敗するとタイトルがかっこ悪くなりがちだったり<br>あるいは雰囲気を伝えにくくなりがちなのが難点という気がしています。<br><br>たとえば前の方のイラストにある例の『ジャンプガールラッシー』は、<br>ジャンルの分かりやすさと引き替えに、メルヘン感の伝わり方が<br>だいぶ削れてしまっている印象があります。<br><br>一方で『片道勇者』は、「内容が伝わる名前」という方向性においては、<br>「かっこよさ」は微妙ながら「王道っぽさ」「RPGっぽさ」「戻れないゲーム性」は<br>伝わりやすいと思うので、そういった意味では<br>バランスがよい名前にできたと考えています。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【『前に遊んだゲームの関連作品だと分かる』よう、<br>ブランドを意識して付けると長続きしそう】</strong></span><br><br>これはさっきの「内容を表現したゲームタイトルを付ける」とは<br>少し別の方向性になるかもしれません。<br>こちらは、私の経験談やブランドについてどう考えてきたか、<br>ということをお話しします。<br><br>私が本格的にインターネット上でゲーム制作者として活動し始めたとき、<br>長くやっていくことを前提にしていたので、<br>『ブランド』を確立していくべきだと考えていました。<br>最初に意図していたのは、以下の点です。<br><br><span style="color:#CC0000"><strong>●タイトルを見ただけで同じ開発者が作ったということを分かるようにしたい。</strong></span><br><br><span style="color:#CC0000">→　たとえば私が最初に意図していたこととして、『シルフェイド』という世界を、<br>私が開発するゲームの共通の世界観として使うことで、<br>今後もタイトルを使い回しできるようにすることや、<br>連作にしてプレイヤーさんに続けて興味を持ち続けてもらうことを考えていました。<br><strong>遊ぶ人は「作った人の名前」ではなく先に「ゲームタイトル」を見るはず</strong>なので、<br>同じ人が作ったということを示すなら<br>それをタイトルに込めた方が有効だと考えたのです。</span><br><br><br>『シルフェイド』という名前は当時、<br>競合がないオリジナルな名前であるにもかかわらず、<br>割と覚えやすく、たまたま私が思いついた名前の中では最高のものでした。<br>それもあってか、今では割と多くの人に認知されて感謝の限りなのですが、<br>仮にうまくいかなくても、<br>基本的には共用世界観としてずっとこの名前を使っていくつもりだったのです。<br><br>そして実際のところ、『シルフェイド見聞録』と『シルフェイド幻想譚』までは、<br>この発想はうまくいったように思えます。<br>今でも、『シルフェイド』と付いていれば<br>それだけで興味を持ってくださる潜在プレイヤーさまも、<br>たぶん少なくないと思います。時間経過と共に、徐々に減ってはいるでしょうけれどね。<br><br><br><span style="color:#CC0000"><strong>＜ブランド付けの分岐点　方向性が違うゲームも同じブランドにすべき？＞</strong></span><br><br>そしてあるとき、『シルフェイド』のブランド付けの分岐点が訪れました。<br>私が初めてアクションゲームを作ろうとしたときに、<br>そのゲームに『シルフェイド』と付けることも考えたのですが、<br><br><span style="color:#CC0000"><strong>『ジャンルが大きく違う場合は完全に別のゲームタイトルを付けた方がいいかも』</strong></span><br><br>と立ち止まることになりました。<br>プレイヤーさんから、以下のような感じ方をされるかもしれないからです。<br><br><span style="color:#CC0000"><strong>●『シルフェイド』って名前が付いていたから、<br>これまでに近いゲーム性を期待して始めたのに、<br>いざやってみたら完全に人を選ぶアクションゲームじゃないか！　なんだこれは！</strong></span><br><br>これは、それまでアドベンチャーやRPGとして<br>2作出していた『シルフェイド』シリーズの次に、<br>マウスアクションゲーム『モノリスフィア』を作る際に私が想像していたことで、<br>「あまりにゲーム性が違う場合は同じ名前を付けるのは危ないかな」と考えていました。<br><br>それまでに、『シルフェイド』という名には<br>「とりあえずほぼ誰でも遊べるゲーム」という印象が<br>根付いてきた感じだったので、それはそれで大事にしたいなと私は思いました。<br>もしここで『シルフェイド』という名前に対し、<br>「この名には人を極めて選ぶゲームも含まれる」<br>という警戒感を持たれてしまったら、<br>安心感という意味でのブランド価値は一定量落ちてしまうでしょう。<br>それはちょっと今後を考えるともったいないかな、と私は考えました。<br><br>その結果、私は新作のアクションゲームに、<br>まったく別の名前である『モノリスフィア』と名付けることにし、<br>世界観も新たなものにしたのです。<br><br><br><span style="color:#CC0000"><strong>＜同じ名前を、大きく異なるジャンルで使えるか？＞</strong></span><br><br>ちなみに、家庭用ゲームの世界では<br><span style="color:#CC0000"><strong>「元がアクションやシューティングゲームだったシリーズの世界観を<br>シミュレーションゲームとして出したりしてうまくいっている例」</strong></span><br>などもあったので、「アクションにするから別の名前にしよう」という発想が<br>よかったのかどうかは、今になっても分かりません。<br><br>例えば家庭用ゲームにおいて、●●という名のアクションゲームが、<br>「●●ウォーズ」というリアルタイムストラテジーゲームになったり、<br>▲▲というシューティングゲームが<br>「▲▲タクティクス」という戦略シミュレーションゲームになったり、<br>といった事例が過去に存在しています。それなりにうまくいっていました。<br><br>ただ、このケースでは「リアルタイム進行」のアクション/シューティングゲームから<br>ある程度進行がゆっくりめまたはターン制のシミュレーションゲームになっていたので、<br>その部分もある程度うまくいっていた理由なのかもしれません。<br>理屈を付けるとしたら、以下の通りです。<br><br><span style="color:#CC0000"><strong>●「激しいアクションゲームができる人が、シミュレーションゲームを遊べる可能性」<br>はそれなりに高いと予想される。<br><br>●逆に「シミュレーションゲームしか遊ばない人が激しいアクションを遊べる可能性」<br>は低そうな気がする。<br>（仮にアクション化するなら、ゆるめで素直なゲームの方がよさそう？）</strong></span><br><br>上記の推測はたぶん、ある程度は合っていると思うのですが、<br>こういった仮説の上では、『モノリスフィア』に<br>『シルフェイド』系の名を付けようとした例のように、<br><span style="color:#CC0000"><strong>「ターン制ゲームのシリーズと同じゲームタイトル」を付けて<br>「人を選ぶ変則操作のアクションゲーム」を出すのは危険すぎる</strong></span>気がしています。<br><br>結果として、それまで『シルフェイド』という名前を使っていたけれど、<br>変則操作マウスアクションゲームに『モノリスフィア』という<br>新たな名前を付けたことには、今でも満足しています。<br><br>そして、もし違うジャンルでブランドを使い回す場合は、<br>「アクションゲームのブランドをターン制ゲーム化する」<br>（ゆるい方向に変化させるのはＯＫ）<br>という方向性で使った方がいいかもしれない、と今は思っています。<br><br>私はこういった発想で、ブランド面を意識したゲームのタイトルを付けてきています。<br><br><br><span style="color:#CC0000"><strong>＜現状のブランド＞</strong></span><br><br>今のところ、私の作るゲームでは、以下のような使い分けで<br>ブランド化していくことを考えています。<br><br><span style="color:#CC0000"><strong>●『シルフェイド』シリーズ</strong></span><br>　→　攻略法を知れば割と誰でもクリアできる、<br>お話が多めの固定ステージ進行のターン制ゲーム。<br>ランダム生成なゲームはあまりこの名を使わないようにしたいと考えています。<br><br><span style="color:#CC0000"><strong>●『片道』シリーズ</strong></span><br>　→　腕前を問われる、お話少なめのアドリブ重視ターン制ゲーム。現在次回作開発中。<br>これも最初は、『シルフェイド』と付けてしまうと<br>「なんだこれは！」と言われそうだったので、<br>『シルフェイド』の名は使わず、別名として『片道勇者』と付けました。<br><br><span style="color:#CC0000"><strong>●その他：オリジナル名の変則アクション</strong></span><br>　→　人を選ぶ、変わった操作性のアクションゲーム。もちろんリアルタイム進行型。<br>シリーズ・ブランド化する前提としては部分的にでも<br>「世界観の共有」が必要だと思うので<br>毎回世界観が変わるアクションではブランド化はなかなか難しそうです。<br><br>ちなみに、アクションゲームではそこまでギチギチに物語を詰めなくてもいいので、<br>私のネタの中で使われずに浮いている短いストーリーや<br>世界観を突っ込むのに便利に使わせていただいております。<br><br><span style="color:#CC0000"><strong>●それ以外のゲーム</strong></span><br>　→　世界観が違っても、付けられそうならとりあえず「シル」だけでも<br>名前の先頭に付けてみて、うちのゲームっぽさをアピールします。<br>すごい雑な発想ですが、『シルエットノート』もその考えで名付けられました。<br>『シル』と先頭に付いたゲーム名を見たとき、ごく一部の人でいいので<br>なぜか私のことを一瞬思い出せるくらいには<br>印象に残せるといいなという期待があります。<br><br><hr size="1" width="50%"/><br>という感じです。ブランドを考慮して名前を付けられれば<br>それまでの<span style="color:#CC0000"><strong>「知名度資産」</strong></span>とでもいうべきものを活かしやすくなるので、<br>ゲーム開発人生を長続きさせやすい気がしています。<br>長く続けていきたいとお考えの方は、よければぜひご一考を。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【同じゲーム名がないか調べておく】</strong></span><br><br>最後に。すごく当たり前ですが、思いついたタイトルは必ず検索エンジンでかけて、<br>同名の既存作品がないか調べておきましょう。<br><br>といっても、今回述べた中の「内容が伝わりやすい名前」を付ける場合、<br>「ありきたりな単語」だけで分かりやすいゲームタイトルを組もうとすると、<br>かなりの確率ですでに同名のゲームが存在するんですよね！<br><br>さっき挙げた『タクティクスナイツ』などは偶然にも<br>日本語ゲームにはまだなさそうですが、<br>こんなシンプルな名前ほど、<br>すでにその名前のゲームが存在していることが多いはずです。<br>『片道勇者』なども、こう名付けられたのはたまたま運がよかっただけです。<br><br>もしまだ誰も名付けていない<br>「非常に分かりやすく内容を表せるゲーム名」を思いついたのなら、<br>誰かとかぶってしまう前に、早く発表したほうがいいかもしれません。<br>できれば念のため、「商標」も検索しておくとよさそうです。<br><br><hr size="1" /><br>ということで、私がぼんやり考えている、<br>「なるべく普及させる/長続きさせるつもりで考えているタイトルの付け方」<br>として意識していることを一通り紹介させていただきました。<br><br>ゲームタイトルは潜在ユーザさんに興味を持ってもらう第一の網である都合上、<br>名前が違っていればここまで遊ばれなかっただろうな、と思うゲームも、<br>私が開発してきた中にはあります。<br>一方で、名前がイマイチで私が作ったことに気付かれていなかったり、<br>覚えにくかったりしたであろうものもあるので、<br>中にはゲームタイトルが普及の足を引っ張ってしまったものもあると思います。<br><br>「違うタイトルで同じゲームを出す」ことはできないので、<br>ゲーム名の差による効果を検証することはなかなかできません。<br>なので、今回お話ししたこともどれだけ有用か、私にはあまりハッキリしません。<br><br>最終的には皆さんのお好きなように付けてくださればいいと思っていますが、<br>寄せられる範囲で、<br>「潜在ユーザさんに興味を持ってもらえる確率が高まる」よう意識してみたり、<br>「ゲーム開発を長く続けることも考慮に入れて名付けてみる」ことで、<br>ゲームのポテンシャルを最大限に引き出す結果を出せるかもしれません。<br><br><br>できれば私も、他の人のも並んだゲーム一覧を眺めて、<br>ゲームタイトルやバナー・アイコンを見ただけで<br>「これは商品ページを開きたくなる」「これはそうではなさそう」<br>と直感できるセンスも鍛えていきたいですね。<br><br>私の場合はSteamをときどき見ているんですが、<br>つくづく「分かりやすいタイトルは強いな！」と感じます。<br>私が詳細ページまで飛ぼうと思えるゲーム名は、<br><br><span style="color:#CC0000"><strong>●内容が想像できる、自分の興味と合うゲーム名<br>●どこかの記事ですでに見たことがあるゲーム名</strong></span><br><br>の2つだけでほぼ100％になります。<br>皆さまのゲーム選びにおいても、これと近い基準の方は多いかもしれません。<br><br>自分のゲームも、せめて「詳細ページ」まで見てもらえるよう、<br>興味を持ってもらえるゲーム名にすることを心がけたいです。<br><br><hr size="1" /><br>来週はこのお話のおまけとして、私の各ゲームの名前について<br>簡単に自己レビューしていこうと思います。<br><br>そして「こんな話を聞いてみたい」などの拍手コメントをお寄せくださっている皆さま、<br>いつも本当にありがとうございます！　お答えできそうなものは、<br>ぜひ今後の記事で取り上げさせていただきたいと考えております。<br><br><CENTER><br><TABLE bgcolor="#f0f0ff"><TR><TD><a class="double-link red" target="_blank" href="https://www.amazon.co.jp/dp/B076VM4ZMS"><img border="2" src="../../image/etc/title_map_of_dev.jpg" width="120" loading="lazy" height="171"></a></TD><TD bgcolor="#fefeff">← 今回のような記事を<br>　1冊の本にまとめたゲーム開発本、<br>　『<strong>ゲーム開発者の地図</strong>』、<br>　Kindleで好評発売中です！</TD></TR></TABLE></CENTER></CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2017-05-27 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2017%2F05.html%232017-05-27&title=%E7%A7%81%E3%81%AE%E3%82%B2%E3%83%BC%E3%83%A0%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB%E3%81%AE%E4%BB%98%E3%81%91%E6%96%B9" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2017%2F05.html%232017-05-27&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2017-05-27','私のゲームタイトルの付け方', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/devlog/001.html'>開発日誌</a></span></div></div><br><br><br>
+<a id='2017-05-20'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2017-05-20','片道次回作1　ﾌﾟﾛﾄﾀｲﾌﾟ', this)" style='cursor:pointer;'>2017-05-20 (土)&nbsp;&nbsp;&nbsp;片道次回作1　ﾌﾟﾛﾄﾀｲﾌﾟ</span><span style='float:right;'><a href='#2017-05-13' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><strong><span style="font-size:large;">【片道次回作1　開発中！】</span></strong><br><br>ここ最近、開発日誌をじっくり書いてしまって<br>作業の進行が少し遅れてしまっていたので、<br>今週は全力で開発の方に労力を投入していました。<br><br>ということで、現在、私が何をやっているかをお知らせです！<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【ただいまの作業　プロトタイプ開発中】</strong></span><br><br>ただいま「片道勇者の次回作」のプロトタイプを開発中です。<br>今は基本システムを作成中で、できているのは以下のあたりです。<br><br><span style="color:#CC0000"><strong>・マップの表示処理（今回はこれも自作です、ヘクスマップ！）<br><img src="../../image/2017/20170520.jpg" border="1" loading="lazy" height="270"><br><br>・基本的な移動処理（クリックした先に移動できる、経路探索が少し大変）<br><br>・攻撃やスキルなど基本コマンドの実装<br>（今回はメニューを開く必要なし！　詳しいことはいずれまた）<br><br>・敵のAIのひな形（近付いたらこっちに気付いて、寄ってきて殴るだけのAI）<br><br>・落ちてるアイテムと交換できる処理<br><br>・ランダムで敵やアイテムが沸いてくる処理</strong></span><br><br><br>そしてこれから最低限「骨」として作らねばならないのは、<br>いま思いつくだけでも以下のあたりです。<br><br><br><span style="color:#CC0000"><strong>・情報を表示するための各種インターフェース<br>（HPゲージやら何やら。表示するだけなので楽）<br><br>・マップ自動生成処理（そもそもマップのあり方を再検討する必要がありそう。<br>『片道勇者』では「大局的にどう進むか」を楽しめる部分が少なかった気がするので）<br><br>・ショップの取引機能（地味にすごく面倒臭い処理です）<br><br>・レベルアップ処理（今回はプラス版の女神像的な数択ランダム選択肢から、<br>上げるパラメータや取れるスキルを自分で選べる予定です）<br><br>・キャラクターとの会話処理や選択肢機能・テキストスクリプト<br><br>・強制スクロールの処理（当然今回も強制スクロールします）<br><br>・マップ上の「壁」の実装（マップのアクセントとして優秀すぎる！）<br><br>・タイトル画面の実装（片道勇者みたく少し凝ってみたいですね）<br><br>・ワールド選択画面の実装（いつも通り）<br><br>・キャラメイク画面の実装（今回はワールド選択の次に出すかも）<br><br>・ゲーム終了時評価画面の実装（いつも通り）<br><br>・街やダンジョンの生成処理<br><br>・ミニマップ処理（今のところ必要か分かりません、別の手段で補える？）<br><br>・各種便利機能（最後まで考え続けることになるでしょう）</strong></span><br><br><hr size="1" /><br><span style="font-size:large;"><strong>【マップ自動生成、どうしよう？】</strong></span><br><br>この開発予定の部分で、いま特に悩んでいるのが「マップ自動生成」です。<br><br>『片道勇者』のマップ自動生成は、<br>「とりあえずそれっぽいマップが奇跡的にできた！」というところで満足してしまい、<br>「どう楽しんでもらうか」という点において何の意図も持っていませんでした。<br><br>「山の近くにいれば敵のランダムイベント襲撃に対応しやすい」など、<br>たまたま局所的には行動の方針が生まれたりもしたのですが、<br>無思考で作るのはあまりにも偶然頼りすぎるので、<br>今度はしっかり「意図」を持って作りたいなと思います。<br>せっかく2Dマップを使っているのに、そこで面白さを出せないのはもったいない！<br>せめて、上あたりを攻めるか下あたりを攻めるかを<br>「狙って判断」して進められる感じにしたいですね。<br><br>「たまに1地形に2つの属性がある（北側が雪原、南が荒野など）」とか、<br>「たまに危険だけど実入りが大きい細道ルートがある」とか、<br>いただいたコメントからもいろいろと考えてみています。<br>一方で、ある片方の選択肢ばかりが有利になると面白くないので、<br>バランス調整の労力はますます上がるかもしれません。<br><br>基本は「リターンが大きい道はリスクが高い」でそれっぽくなるでしょうけれど、<br>「状況次第では自主的に危険な道を回避したほうがいい」くらいの<br>微妙なバランス感で行きたいですね。<br>『片道勇者』のダンジョンみたいに、変に毎度突っ込みすぎると死ぬくらいが理想です。<br><br><hr size="1" /><br>以下はいただいた拍手コメントへの返信です。<br><br><span style="color:#3300FF"><strong>＞PLAYISMでローカライズする際、全テキストのエクセルデータを<br>＞用意するそうですが、これをウディタで準備する場合は始めから<br>＞DBに打ち込んで呼び出すように作るのでしょうか？ それとも全部<br>＞手作業で打ち込み直したり？ 選択肢やインターフェイス周りの<br>＞テキストはどう管理すべきでしょうか？ 　　　　　　　　　　　　　.<br>＞何か効率的な方法があれば紹介してほしいなあと思っています。</strong></span><br><br>PLAYISMさんちの<a class="double-link red" target="_blank" href="https://web.archive.org/web/20170726213035/http://playism.jp/creators#services"><strong>こちらの手順(当時のｱｰｶｲﾌﾞ)</strong></a>にある内容ですね。<br>ウディタの場合、ローカライズすることを前提にするなら<br>全ての文字列を始めからユーザデータベースや<br>テキストファイルに入れてしまうのが一番早いと思います。<br>片道勇者では一定以上を手作業で入力することになってしまいましたが、<br>それでも大変な地獄を見てしまいました。<br>うまいことデータベースに入れておけば整理もある程度ラクになるはずです。<br><br>さらに、もしPerlやPHPなど何かスクリプトが使えるのでしたら、<br>データベースに雑に文字を入れていても以下のような方法が使えます。<br><br><strong>１．ウディタで各データベースをCSVとして出力する。<br>２．スクリプトなどを組んで「日本語部分だけ抽出」し、<br>それをエクセルファイル化して先方に渡して翻訳を依頼。<br>３．英語化されたテキストをもらったら、またスクリプトを組んで<br>「１」のCSVに対して「日本語部分を英語文で置換」する。<br>４．以上の手順でできた翻訳済CSVをウディタに読み込ませる。</strong><br><br>という手順で、比較的楽にゲームを翻訳できると思います。<br>私がほぼそんなやり方でした。<br><br>ウディタには文字列置換などの機能もあるので、その気になれば<br>ウディタのコモンイベントを組んで上の全工程を行えるかもしれません。<br>とにかくローカライズにおいて<span style="color:#CC0000"><strong>「抽出」と「置換」は自動化しないと大変</strong></span>です、<br>人間の目だと絶対に見逃しますから。<br><br>ちなみに私が見た海外のゲームだと、ゲームに使用する文字列だけが<br>全部数個のXMLファイルにまとまっていたりして、<br>そこから呼び出す形にしていたケースがあります。<br>そこまでやっていれば翻訳も手軽なんですが、その場合、<br>ゲーム内に1テキスト入れるにもいちいち文字列ファイル側に<br>入力しなければならなくて、作るのがちょっと大変になってしまいます。<br><br>使えるリソースと使える技術の範囲で、うまくやってみていただければと思います。<br><br><hr size="1" /><br>開発日誌のゲーム開発ネタが尽きてきているので、<br>もし何か「こんな話題を聞いてみたい！」というお話がございましたら、<br>ぜひ拍手コメントからお送りください！<br>答えられるものはどんどんお答えしていきます。</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2017-05-20 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2017%2F05.html%232017-05-20&title=%E7%89%87%E9%81%93%E6%AC%A1%E5%9B%9E%E4%BD%9C1%E3%80%80%EF%BE%8C%EF%BE%9F%EF%BE%9B%EF%BE%84%EF%BE%80%EF%BD%B2%EF%BE%8C%EF%BE%9F" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2017%2F05.html%232017-05-20&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2017-05-20','片道次回作1　ﾌﾟﾛﾄﾀｲﾌﾟ', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/owh2dev/001.html'>片道勇者2</a></span></div></div><br><br><br>
+<a id='2017-05-13'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2017-05-13','楽しくて学べるゲームの作り方', this)" style='cursor:pointer;'>2017-05-13 (土)&nbsp;&nbsp;&nbsp;楽しくて学べるゲームの作り方</span><span style='float:right;'><a href='#2017-05-06' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【楽しくて学べるゲームの作り方】</strong></span><br><br>前回から引き続き、今回もゲームの作り方のお話です！<br><br>前回の記事でご紹介した<a class="double-link blue" target="_blank" href="../../archive/2017/05.html#2017-05-06">『完成させるための作り方』</a>は、<br>「あまり楽しくない部分もあるので、たぶん経験者向けです」と私は言いました。<br><br>では、初心者におすすめな<span style="color:#CC0000"><strong>「楽しくて、かつ経験値を多く得られる作り方」</strong></span>には、<br>どんな方法があるでしょうか？<br><br>今回お話しするのは、あくまで私の体験を元におすすめするやり方ですので、<br>だいぶ主観が強いですし、どれほどの人にお役に立てる話かは分かりません。<br>また、このやり方は<span style="color:#CC0000"><strong>「完成させること」を前提にしていません</strong></span>ので、<br>それも念頭に置いた上で、読み進めてくだされば幸いです。<br><br><img src="../../image/2017/20170513.jpg" border="1" title="このやり方で実際に私が取った方法は「連載形式」という形でした" loading="lazy" height="461"><br><br><hr size="1" /><br><span style="font-size:large;"><strong>【初心者向けの作り方、まずどんな『方向性』？】</strong></span><br><br>前回の最後にも言いましたが、<span style="color:#CC0000"><strong>「一つ一つのものを面白く作るコツ」さえ<br>よく知らない状態でいきなり大きなものに挑むと、<br>10個作ったもののうち、1～2個くらいしか面白く作れない</strong></span>かもしれません。<br>そうなった場合、たとえ完成しても辛い結末しか待っていないのは明白です。<br><br>よって初めてのうちは「大きなものを完成させる」ことよりも、別の方法で<br>多く経験値を得て、一つ一つのものを面白く作れるようになったり、<br>その他の経験を積むことを優先した方がたぶん効率的ではないか、と考えています。<br><br>そこで今回ご紹介するやり方の大きな方向性は、以下の通りとなります。<br><br><br><span style="color:#CC0000"><strong>＜ 『楽しくて得るものが大きい作り方』の方向性 ＞<br><br>●作る面白さや短期的な満足感を重視して作る。<br>●なるべく素早く、多く評価してもらえる形態で作る。<br>●プレイヤーからのフィードバックをすぐに反映できる形で作る。<br>●完成させることは考慮に入れない。</strong></span><br><br><br>それぞれについて、少し詳しく説明します。<br><br><br><span style="color:#CC0000"><strong>●作る面白さや短期的な満足感を重視して作る。</strong></span><br>→　あなたが初心者の人なら、ここはもう当然外せないところです！<br>といってもどんなことでも、たぶん無意識に取りかかると、<br>自然と面白さ重視の方向性になってしまうと思います。<br><br><br><span style="color:#CC0000"><strong>●なるべく素早く、多く評価してもらえる形態で作る。</strong></span><br>→　よりテンポ良く、たくさんの回数評価してもらう方が<br>当然、経験値の溜まり方が早くなります。<br>最短でたくさん評価してもらうにあたって、よさそうな方法を目指します。<br><br><br><span style="color:#CC0000"><strong>●プレイヤーからのフィードバックをすぐに反映できる形で作る。</strong></span><br>→　プレイヤーの人から送られてきた意見を取り入れ、実験してみるのは重要です。<br>「これがダメなら、一体どうやれば君たちは満足するんだ！　これか！？」<br>と腹の内で思いつつ、色々試して、何度も見てもらうやり方を目指します。<br><br><br><span style="color:#CC0000"><strong>●完成させることは考慮に入れない。</strong></span><br>→　今回のやり方では、「完成させる」ことは二の次とします。<br><span style="color:#CC0000">「完成させるように作る」だけで作る面白さが相当に削がれる</span>ためです。<br><br>というのも、完成させようとすると、計画性が要求されたり、<br>追加の不安が生まれたり、素材作成へのコスト配分やペース配分も必要だったりで、<br>思考にかかる総コストが大幅に上がってしまう割に、<br>部分部分への満足感が減ってしまいやすくなります。<br><br>なので慣れない間は「楽しいところだけ最低限の手間で味わってもらう」ということで、<br>今回のやり方は<span style="color:#CC0000"><strong>完成させることを考えずにとにかく「作る面白さ」を重視</strong></span>します。<br>もちろん、最終的に完成してしまう分には全く問題ありません！<br><br>あと、私はゲーム作りに初めて触れてからの最初の数年間、<br><span style="color:#CC0000"><strong>「完成を目指そうとしてしまって、ずっと詰まっていた」</strong></span>ので、<br>それも「最初は完成させない」ことをおすすめする理由の一つです。<br><br>私と似たタイプの人だと、たぶん、ただ「完成させる」という要求を入れるだけでも、<br><span style="color:#CC0000"><strong>簡単に何年も完成させられない状態</strong></span>になってしまうことでしょう。<br>きっと、<span style="color:#CC0000"><strong>「よいものを出さねば」と思っている人</strong></span>ほど、そうなってしまうと思います。<br><br>あの頃は、「人にお見せするからには『よいもの』でないといけない」<br>と内心では思っていながらも、<br>最初から上手に作ることなどできなかったので、<br>作ってみた一個のものにさえ満足できず、<br>ずっとゴールのない『練習』や『試行錯誤』をし続けて、<br>先に進まなくなってしまいました。<br><br>具体的には、完成品を作る気概だけはあったものの、<br>全然進まないまま細部を何度も作り直してみたり、<br>ドットやマップやイベント作りを色々試したりするだけになってしまい、<br>結局いま振り返れば、何年もかけて<span style="color:#CC0000"><strong>完成させるふりをして<br>「経験を貯める作業」に従事するだけ</strong></span>になってしまっていたのです。<br><br>ですが、こうなるくらいなら、最初からもっと<br>効率的に経験を貯めることを目的にしたほうが、<br>人生の時間を無駄にせずに済むかもしれません。<br>それに、<span style="color:#CC0000"><strong>一人で悩んでいたことの7割くらいは実は大した問題ではありませんでした</strong></span>し、<br><span style="color:#CC0000"><strong>本当に大事なことは、<br>「実際に人に見せて意見をもらって、初めて気付いた点」の方が<br>圧倒的に多かった</strong></span>のです。<br><br><br>私は上記の経緯で一度挫折した後、たまたま新たな取り組み方を選んだのですが、<br>それは偶然にも、レベルアップする目的において非常に効果的なやり方でした。<br>今回はそれをご紹介します。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【初心者の人におすすめする作り方】</strong></span><br><br>ということで、いよいよ本題の「初心者の人におすすめする作り方」です！<br><br>早速ですが、「面白さや満足感を重視」「素早く多く評価してもらう体制」<br>「フィードバックを反映してすぐ試せる」「完成させることは考えない」<br>の4つが揃った、私がゲーム開発初心者の人におすすめするゲームの作り方は、<br>以下のようなやり方です。<br><br><hr size="1" width="80%" /><br><span style="color:#CC0000"><strong>＜1．何も考えずに、前から順に『全力の質』で作る＞</strong></span><br>全力でゲームを前から作る。素材やテキスト全てに対し、<br>後先を考えずに全身全霊で労力やネタを詰め込んでいいものとする。<br>ゲームシステムも、動くならまずは一部分からだけで構わないとする。<br><br><span style="color:#CC0000"><strong>＜2．一定以上できたら、そのたびに必ず『見てもらう』＞</strong></span><br>作ったものが「少し」できたら、必ず人に見せて意見や感想をもらう。<br>「少し」のペースは、数週間から一ヶ月程度、最大でも三ヶ月くらいが望ましい印象。<br>見せるのは友達でもSNSの知り合いでも一般公開でも、範囲や対象は自由。<br><br><span style="color:#CC0000"><strong>＜3．『やる気が尽きるまで1→2を続ける。飽きたらやめる＞</strong></span><br>ひたすら1→2の手順を繰り返してゲームを大きくしていく。<br>やる気が尽きたり飽きたりしたら、完成していなくてもそこで終わってよい。<br>あるいは、1→2の手順が1回で終わる<br>「ミニゲームをいくつも完成させ続ける」やり方もOK。<br><br><hr size="1" width="80%" /><br>一言で言うと、<br><span style="color:#CC0000"><strong>「小さい単位で全力で作って、少しずつ人に見てもらう」</strong></span>というやり方です。<br>連載形式で出していくやり方や、徐々にアップデートしていく方式、<br>あるいはミニゲームをポンポン出していくような形になるでしょう。<br><br>実は、前回の記事で最初に「完成させられなかった失敗例」として挙げた<br>「全力で前から順にひたすら絵やデータを作っていく」というやり方は、<br><span style="color:#CC0000"><strong>「一番早く開発の満足感を得る」ことにおいては非常に効率的</strong></span>な方法でした。<br><br>そして今回ご紹介した上のやり方は、その「一番早く満足感を得る方法」に加えて、<br><span style="color:#CC0000"><strong>「たくさんの経験値を得るため」の工夫として『見せる』手順</strong></span>を<br>混ぜた方法となっています。<br><br>私の場合は、最短で多くの経験値を得られる『修行』を楽しくやるにあたって、<br><br><span style="color:#CC0000"><strong>「全力で少しずつ作る連載形式を取り、<br>1話分をアップデートしたらそのたびに見てもらう」</strong></span><br><br>というやり方をこれまで3回ほど使いました。<br><br>その3回中、2回は未完になってしまいましたが、とにかくこのやり方の一番重要な点は、<br><span style="color:#CC0000"><strong>『完成させるためのペース配分だとか後先をまったく考えずに、<br>全身全霊で自分の力をぶつけて好きなものを作って』</strong></span>、<br>そしてそれを<strong><span style="color:#CC0000">『見せて』</span></strong>いくことです。<br><br>『見せる』の部分が特に重要ですので、<br>いくら恥ずかしくても絶対にそこは外さないでください。<br>私も相当な勇気がいりましたが、そのとき誰かに何度も『見せて』いなければ、<br>今の私はここにはいなかったでしょう。<br><br>どのくらい勇気がいるかというと、公衆の面前で<br>下着を全開にして見せるくらい恥ずかしいです。<br>さらに『物語』のように、見られるのが自分の『内面』だったりすると、<br>もしかしたら全裸になるくらい恥ずかしいかもしれません。<br><span style="color:#CC0000"><strong>創作はそもそも自分の見えない部分をさらす行為</strong></span>なので、どうか耐えてください。<br><br>といっても私の場合は運がいいことに、最初は学校の友達だけに見てもらって、<br>そこで「これなら次は広い場で見てもらっても大丈夫かな？」と自信をもらった上で<br>インターネット上に公開する流れを取ることができました。<br>内気で恐がりだった私では、一人だと<br>インターネット公開までできなかったでしょうから、<br>いい友達に巡り会えたのも今ここにいる理由だと思います。<br><br><hr size="1" /><br>この『少しずつ全力で作っては見せる』やり方には、<br>私がゲーム開発者としての初期段階の栄養を得るために<br>とても大きな利点がありました。<br><br>このやり方で私が得ることができたものを、以下に挙げていきます。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【質の最大値を知ることができる】</strong></span><br><br>まずペース配分や後先を考えずに全力で挑むことで、<br>自分が作れる「質の最大値」を知ることができます。<br>絵だけはすごくきれいに作れるとか、お話だけは面白く作れるとか、<br>快適なインターフェースが自作できる、キャラのドット絵がすごく動く、など、<br>何かしらの点であなたのピーク値を出せるはずです。<br><br>「完成させる」方向でいくと、どうしても労力やアイデアを<br>ある程度配分せざるをえなくなり、<br>『あとさき考えずにやたら全力で作る』といったことがやりにくくなるため、<br><span style="color:#CC0000"><strong>「どこまでも遠慮なく質の最大値を試し続けられる」のは<br>「完成させない」前提だからこその最大のメリット</strong></span>です。<br><br>もちろん「全力を出した結果、どういう評価をもらえるか」<br>という点に着目するのはもっと重要です。<br>期待通りの反応を得られてその技にもっと自信を付けられるかもしれませんし、<br>あなたが得意だと思い込んでいた技術が<br>実はそれほど評価を得られないかもしれません。<br><br>あるいは、<span style="color:#CC0000"><strong>自分としては平凡だと思っていたことが<br>なぜか異常に評価されたりして、自分の新たな『素質』を知る</strong></span>かもしれません。<br>この話は、2つ後ろの項目でも述べていきます。<br><br><hr size="1" width="80%" /><br><span style="font-size:large;"><strong>【量の限界を知ることができる】</strong></span><br><br>限界の質で作り続けていれば、いつかやる気の減少や飽きなど何らかの原因で<br>続けられなくなるでしょうから、そこで開発を終わりにします。<br>（これに備えて、プレイヤーさんにはいつ開発を打ち切るか分からないことを<br>あらかじめ伝えておくといいでしょう）<br><br>開発を続けられなくなった時点で、<br><span style="color:#CC0000"><strong>「あなたが最大値の質を出し続けた場合に、一体どのくらいの『量』を作れるのか」</strong></span><br>ということが分かるはずです。これは後々、貴重な情報になります。<br><br>たいていの場合、意外と多くのものを作れないことを知るかもしれません。<br>「よく動くキャラクターのドット絵を描けるが、いざやると10体くらいが限界だった」<br>「無限に書けると思っていたが3時間プレイできるくらいの<br>テキストを書くのが限界だった」<br>などです。<br><br>この『量』に関しては、<span style="color:#CC0000"><strong>『期間』</strong></span>と言い換えてもいいと思います。<br>最初に情熱を持って始めて一本を開発するにあたって、<br>一体どのくらいの期間までなら飽きずに続けられるか。<br>それはあなたにとっては三ヶ月かもしれませんし、一年かもしれません。<br>それが分かっていれば、本格的に一本作るときに、<br>無理のない計画を立てやすくなります。<br><br>私の場合はとても意欲的な状態でも、1年くらい経った辺りから<br>気力が目に見えて減少し始めるようなので、<br>できる限りそれまでに決着を付けられるようにするか、<br>あるいはコアのところを開発し終われるように意識しています。<br><br>たいてい、この<span style="color:#CC0000"><strong>『期間』をオーバーすると<br>作れるものの質が急激に低下していく</strong></span>と思うので、<br>密度の高いゲームを作りたいならば、開発期間の設定は重要です。<br><br><hr size="1" width="80%" /><br><span style="font-size:large;"><strong>【自分の素質や弱点、高コストな部分を知ることができる】</strong></span><br><br>作ったのがほんの一部分であれど、一定以上の人に見てもらうことで、<br>「あなたが平凡だと思っていた成果物なのになぜか評判がよかったもの」、<br>言い換えると、<br><span style="color:#CC0000"><strong>「あなたが通常攻撃やパッシブスキルみたいなつもりで使ってるのに、<br>実は大きな成果を発揮できていた『素質』」</strong></span><br>に気づく機会も増えるはずです。<br><br>というのも、自分にとって一番得意なことってたいてい<br>「無意識にやれてしまう」ことなので、<br>自分自身では気付けないことが多いと私は考えています。<br>なので「普通に作っただけなのになぜか高い評価をもらった」部分というのは<br>おそらくあなたにとっての強い『素質』であり、<br>それは今後もずっと多用できる武器になります。<br>なにせ、「低コストで高い結果を出せる」んですからね。<br><br>それ以外にも、<br>「作るのは好きなんだけど、なぜか不評ばかりな部分（苦手な技）」<br>「ウケはすごくいいんだけど、作るのが大変な部分（MP消費が激しい強い技）」<br>などに気付くこともあるでしょう。<br>早期にそれらを学べれば、今後の「自分の使い方」を考えるにあたって重要な材料になります。<br><br>たとえば、新たなゲームを作るときにも、<br><br><span style="color:#CC0000"><strong>●「低コストで大きな効果が出せていた」技をなるべく多用できるような設計にする。<br>●「MP消費が激しいけどウケはいい部分」は要所ごとに使うようにする。<br>●「どうがんばってもウケが悪かった部分」はそもそも多く作らずに済むようにする。</strong></span><br><br>といった風に、周りからの評価によって自分を知れば知るほど、<br>「自分を最大限に活かせるゲーム開発」ができるようになっていくはずです。<br>「他者からのウケがいい技」を中心に使って作ったゲームは、<br>そりゃ基本的には良い品質になります。自分の強みは遠慮なく活かしましょう。<br><br>私の場合、人からの評価で<br>「自分はキャラ作りやセリフを書くのが得意なのかも」と感じましたが、<br>後に、それをメインに据えると期待した量が全然作れないことを知りました。<br>実は、それをメインの武器にするにはMP消費が大きすぎたのです。<br>一部の小説家の人のように、ものすごい量の文章を<br>バリバリ生産し続けることはできません。<br><br>今はそういったMP消費が多い技は、なるべく要所要所だけに使うか、<br>あるいは量が足りなさそうな場合は他の人の手を借りるように意識しています。<br><br><hr size="1" width="80%" /><br><span style="font-size:large;"><strong>【自分の作ったもので喜んでもらえることを知る】</strong></span><br><br><span style="color:#CC0000"><strong>「一部分だけを作って誰かに喜んでもらう」ということは、<br>実は「完成品を見て喜んでもらう」ことよりもある程度簡単</strong></span>だと私は考えています。<br>なぜかというと、一部分だけに最高の情熱とアイデアを詰め込んで作った「密度」は、<br>ほとんどの場合、「完成品」よりも高くなるからです。<br>何より、1回あたりの挑戦のコストが段違いに少なくて済みます。<br><br>そしてゲーム作りの原体験として、<br><span style="color:#CC0000"><strong>「自分の作ったものが、一部分といえど喜んでもらえた」</strong></span><br>という経験を少しでも早い内に得ておくのは、後々とても大事になります。<br>喜んでもらえるかどうかは運次第とはいえ、見てもらう回数を増やせば、<br>それだけ「自分の力で喜んでもらえる部分」を発見するチャンスが増えるはずです。<br><br>「誰かに喜んでもらえた部分」は、今後も自信を持って作れるようになると思います。<br>ゲーム開発では大きな我慢が必要になることもたびたびありますが、<br>経験に裏打ちされた「たぶんここは喜んでもらえるだろう」という自信は、<br>心をとてつもなく折れにくくします。<br>その「自信」は開発におけるほぼ全ての面において、あなたを助けるでしょう。<br><br>なお、最初はその自信を得た影響でいくらか<br>『慢心』してしまうこともあると思うんですが、<br>どこかで怒られたり、慢心のせいで失敗したりすることで、<br>いずれバランスの良い『自信』に調整されていくはずです。<br><br>大人になるまで、生きててずっと自分の存在意義を<br>確認できなかった私のような人の場合、<br>「自分の意志で始めたことで誰かに喜んでもらえた」という体験をしてしまうと、<br>嬉しすぎて何年かおかしくなってしまいます。でもきっと、いつか通る道です。<br><br><hr size="1" width="80%" /><br><span style="font-size:large;"><strong>【細かい部分への肌感覚を学ぶことができる】</strong></span><br><br>「小さく作る」のに比べ、「完成品を作る」ことで<br>逆に不利になってしまう点があります。<br>その中でも<span style="color:#CC0000"><strong>『評価や意見、感想をもらうこと』</strong></span>に関しては、<br>完成品の方に以下の不利な点があるのではないかと私は考えています。<br><br><span style="color:#CC0000"><strong>●完成品を一気に見てもらっても、含まれている要素が多くて<br>目立つところしかコメントされないことが多く、<br>細部のどこがよかったかがあいまいになりやすい。</strong></span><br><br>ほとんどの場合、完成品をまるっと見せたときには、<br>プレイヤーさんはゲーム全体のうちで最も気になったところの<br>いくつかしかコメントしてくれないことが多いはずです。<br><br>そしてたいてい、一番目立ついい点、あるいは悪い点に<br>注目が集まってしまって、その影響で他の<br><span style="color:#CC0000"><strong>細かな「いい部分」「悪い部分」を教えてもらい損ねてしまう</strong></span>こともあるでしょう。<br><br>たとえば「完成品」を見せて、<br>劇中のワンシーンや物語のどんでん返しが非常によかったとしたら、<br>そこだけがみんなの主なコメントとして挙がってしまって、<br>せっかく作ったゲームシステムや細々としたキャラクター、<br>小ネタなどの細部についてはコメントされにくくなると思います。<br>それによって、<span style="color:#CC0000"><strong>街の住人にもいっぱい面白い会話を作ったのに、<br>どれにも何のコメントがない</strong></span>、なんてことは日常的に起こりえます。<br><br>すごく丁寧にレビューしてくれる人や、凄くたくさんの人に遊ばれたなら、<br>細かい点にコメントしてもらえることもあるのですけれど、<br>私の印象的には、完成品を一回見せてコメントをもらえる部分はたいてい<br>「全体の10％にも満たない場所から」で、<br><span style="color:#CC0000"><strong>作った内の残り90％の部分はコメントに挙がりません</strong></span>。<br><br><br>一方、<span style="color:#CC0000"><strong>「小さな部分ごとに見せて評価してもらう」ようにすれば、<br>作った単位ごとにコメントをもらうことができ、<br>善し悪しを細かく把握しやすくなります</strong></span>。<br>また、もし足した「小さな部分」の中であなたが「新たな挑戦」をしたならば、<br>「その挑戦した部分だけ」の善し悪しをプレイヤーさんに<br>評価してもらえる可能性も上がります。<br>そしてそこに問題があれば、そのたびに直して、見せて、次の評価を待てばよいのです。<br><br><span style="color:#CC0000"><strong>「新たに作った部分や改善した点について、一つ一つフィードバックをもらえる」</strong></span><br>という状況は、ゲーム開発についてまだ何も知らない状態から、<br>色々試行錯誤してみたり、ゲーム開発の知見を得るにあたってものすごく強力です。<br>プレイヤーさんも、見るものが少なければ新たな範囲だけを<br>注視してコメントしてくれるので、<br>例えば「5％分」を作って見せれば、<br>うち半分の2.5％分くらいに意見をもらえる可能性があります。<br><br>そうやって細かく見せたことで、最終的に100％分作ったうちの合計50％の部分について<br>何かしらのコメントがもらえたとしたら、<br>完成品から10％のコメントをもらう場合に比べ、<br>単純計算でなんと5倍の速度で経験値が溜まるのです！<br>これらの数値は仮のものですが、得られる情報はまちがいなく何倍にもなります。<br><br>私にとっては、そうやって得てきた様々な肌感覚が今でも非常に役に立っていますし、<br>細かい部分への配慮について学ぶきっかけにもなりました。<br><br><br>逆に、<span style="color:#CC0000"><strong>「見てもらう」ことをしていなかった期間は<br>ずっと自分の力に対して疑心暗鬼のままで、<br>「自分が何をすれば人に喜んでもらえるのか」を知ることができないまま</strong></span>でした。<br>本当に、ただ『人に見せる』ことをするようになった瞬間から<br>急激に世界が開けたのです。<br><br>私の見て来た中では、<span style="color:#CC0000"><strong>ゲーム開発の初期の成長が早かった人は、だいたい何らかの形で、<br>「小さいものを作って、早いサイクルで人に見てもらう」<br>という体験をしている人が多いような気がしています</strong></span>。<br>実は、彼らが持っていたのは「短期間で多くを学べる才能」ではなく、<br><span style="color:#CC0000"><strong>「自分の『育成』の仕方が、とてつもなく効率がよかった」</strong></span>だけかもしれません。<br><br><br>なお、細かい部分についての反応を見たいならば、<br>今では「実況配信プレイをしてもらう」という方法も強力です。<br>（実況配信プレイ：ゲームをプレイしながら声でもコメントしつつ<br>映像配信するプレイのこと）<br>友達に実況配信でテストプレイしてもらうだけでも、<br>たくさんの情報を得られるはずです。<br><br>昔は、ゲームへのコメントを得る方法といえば、<br>掲示板などに書き込まれる「自発的に言ってもらう発言」しかありませんでしたが、<br>実況プレイなら細かい部分への不満や、楽しめている点も把握しやすいので、<br>小さい単位での情報収集が以前よりも容易になっていると思います。<br><br>とにかくどんな手段でもいいので、細かい部分への反応を収集することに<br>どん欲になることが、レベルアップのためには一番重要なことだと私は考えています。<br><br>耳が痛い意見もたくさん飛んできますが、<br>そのたびにそれまで気付かなかったことに気付いたり、<br>または自分とプレイヤーの感覚が微妙に違うことを知ったり、<br>あるいは意見への対応がうまくいかなくて大変な目にあう経験もするでしょう。<br>しかしそれを繰り返していくうちに、<br>だんだんとうまく作れるようになっていくはずです。<br><br><hr size="1" /><br>ということで、<br>「完成させる前提を持たずに、全力で少しずつ作っては見せていく」やり方の<br>利点をまとめると以下の通りです。<br><br><span style="color:#CC0000"><strong>●自分が出せる『質』の最大値を知ることができる。<br>●その質で作れる『量』の最大値を知ることができる。<br>●気づかなかった自分の『素質』、『弱点』を知ることができる。<br>●『自分の作りたいものを作って喜んでもらえる』ことを知ることができる。<br>●作ったものごとにプレイヤーがどう感じるかという、<br>『細かな部分への肌感覚』を知ることができる。</strong></span><br><br>私が未完にさせてきてしまった作品によって得た上記の情報は全て、<br>今でもずっと私の支えになっていますし、<br>より良い成果物を作る重要なヒントになっています。<br><br>未完の連載ADV『シルフェイド見聞録』は、1話を公開後、<br>短い方だと1～3ヶ月くらいのスパンで新しい話を作って<br>皆さんに見てもらっていたと思います。<br><br>普通、ゲーム開発ではそんなスパンで新作をリリースしたり、<br>感想をもらえることはありませんが、『シルフェイド見聞録』では<br>途中で自作の戦闘システムを入れたり、物語の見せ方を少しずつ変えてみたりと、<br>やりたいことも織り交ぜて色んな感覚を掴んでいくことができました。<br><br>意外とプレイヤーさんは期待通りには遊んでくれないことや、<br>同じ課題でもできる人とできない人がいることや、<br>同じ内容に対してもつまらないと思う人や面白いと思う人がいることや、<br>自分がこういう意図で作ったものは賛否両論だったけど、<br>こういう意図で作ったものは多くの人に受け入れられやすいとか、<br>「自分の手の動かし方」に対する様々な知見をこの身で感じることができたのです。<br><br>たとえ頭では分かっていることでも、<br><span style="color:#CC0000"><strong>「自分がどう考え、どう手を動かしたか」というインプットと<br>「皆さんの反応」というアウトプットの組み合わせが大量にそろって、<br>初めて理解できた</strong></span>ことは山ほどあります。<br>これまで開発日誌に書いてきた数々のことも、まさにそうして得たものです。<br><br>初めて完成させられた中編RPGの<br>『シルフェイド幻想譚』で運良く良い評価を得られたのも、<br>その前に「小さなものを早いサイクルで見てもらっていた」ことで<br>多くの経験を得られたからこそだと私は考えています。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【この方法、『完成品』に対しても使えます】</strong></span><br><br>復習ですが、前回はレベル1「最低限の骨を作る」→<br>レベル2「肉付けをする（短編完成）」→レベル3「成長させる」、という順に進め、<br>レベル3でやる気や時間がなくなったら終わり、という方法をご紹介しました。<br><br>そして今回の「少しずつ作っては見せる」やり方は、<br>前回の「完成させる作り方」の<span style="color:#CC0000"><strong>レベル3「成長させる」だけを抽出して、<br>そこに『小さい単位で見てもらう』工程を挟んだもの</strong></span>ということもできます。<br><br>つまり、『完成させる作り方』でレベル3まで達した後、<br><span style="color:#CC0000"><strong>徐々にアップデートしながら小さい単位ごとに『見せる』方法にすれば、<br>今回の利点をほぼそのまま得ることができる</strong></span>のです！<br><br>「早期アクセス（アーリーアクセス）」や「リリース後に随時アップデート」<br>といった形でリリースしているゲームは、そういったやり方に近い気がします。<br>開発者側もプレイヤーさん側も楽しみやすい上に、<br>開発の経験値も溜まりやすくて、一石二鳥です。<br><br>私の場合は、『片道勇者プラス』のベータ版を公開した後などがそれに近い状態でした。<br>ほぼ毎日のようにバグ修正や微調整を計10～20点くらいやっては、<br>そのたびに皆さんに見てもらうという大変なサイクルを繰り返していたのですが、<br>当時はその大変さを乗り越えられてしまうほどに、<br>「修正に対してフィードバックをもらえるループ」が楽しかったと思います。<br>そしてもちろん、その過程で得られた知見も山ほどありました。<br><br>ある程度熟練した開発者の人でも楽しくやれる上に、さらなる成長もしやすい！<br>私は今になっても、『少しずつ作って見てもらう』というのは<br>素敵なやり方だと感じます。<br><br><br><span style="font-size:large;"><strong>＜まとめ＞</strong></span><br><br>小さい単位ごとに見せることで、『細かく反応や意見をもらう』というのは、<br>小さく作って見せていく最大の利点であり、<br>大きな完成品を一度に見てもらうことではなかなか得られないことだと思います。<br><br>ゲーム作りが初めてで、何もかもが未知である状況下では、<br>この方法を使ってまず自分の能力について知ったり、肌感覚を学んだり、<br>自分の力で作ったものが誰かに喜んでもらえる機会を増やすのが、<br>きっと楽しくて、最終的には自分の強化にも繋がるのではないかなと私は考えています。<br><br>何より、何も知らない状況で最初から大きなものを作ろうとすると、<br>致命的に見当違いのものを作ってしまう可能性が高くなってしまいます。<br><br>まず少しの労力を色んな方向に使ってみて、あなたの力で喜ばれる方向性を学んで、<br>効率的に喜ばれる方法が分かったら、その方向により大きく力をそそげばいいのです。<br>大きなものを完成させるのは、色々なことを掴んでからでも遅くないと思っています。<br><br>……と、私は考えているのですけれど、いかがでしょうか。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【おまけ　昔の話とこれからの話】</strong></span><br><br>最後に、私が初めて人にゲームを見せたときの、昔の話をします。<br><br>私は子供時代からずっと「ゲームは完成させないとダメだ！」と思っていましたが、<br>結局、何年間も何も完成させられままでした。<br>ゲーム作り自体はずっと続けていたものの、<br>あるとき、目標にしていたゲームコンテストが終了してしまい、<br>目指す場所を失った私は絶望にくれてしまいました。<br><br>ある日、完全に吹っ切れた私は、何だかんだでたった5分間しか遊べない<br>レジェンドオブレストール1の「1話だけ」を作って友人に見せたのですが、<br>それが思った以上に喜んでもらえました。<br>「誰にも指図されず、完全に自分の意志だけで生みだしたもの」で、<br>なんと友達に笑ってもらえたのです！<br><br>そのとき、<span style="color:#CC0000"><strong>「すごいものを作らなくても楽しんでもらうことはできるんだ！」</strong></span><br>という、当時の自分にとって衝撃的な事実を私は生まれて初めて知りました。<br>その原体験は今でも、私の開発における心の支えになっています。<br>それ以後、その友人たちに対してレジェンドオブレストール1を「連載」し続け、<br>それが一段落ついたあたりでこのサイトが生まれることになりました。<br><br>私にはこういう経験があったので、初心者の人や自信のない人は最初はぜひ、<br><span style="color:#CC0000"><strong>「量はほんの少しでもいいから、自分が全力で作れるものを作ってみて、<br>それを見てもらって、運が良ければ喜んでもらう」</strong></span><br>という挑戦をおすすめしたいと思っています。<br><br>そして、その繰り返しの中であなたの自信が溜まったら、ようやく、<br>一本を完成させるつもりで作り始めてもいいかもしれません。<br><br><br>私自身も今後、手探りで始めていかねばならない新たなことをすることになったら、<br>「いつ打ち切るか分かりません！」と叫びながら少しずつ全力で作ってみて、<br>細かく意見をいただきながら学んで、力尽きた時点で終わるという、<br>今回のやり方を使うことになりそうな気がします。<br>もちろん途中で終わるにしても、打ち切り三回目ともなればある程度マシな終わり方に<br>できるようになっていることを期待したいんですけれどね。<br><br><br>ゲームを完成させるのは難しいことです。<br>私は、一番最初にゲーム開発に触れてからその10年後に至るまで、<br>一本も中編を完成させられないままだったので、<br>人によっては「一定以上のサイズのものをただ完成させる」ことでさえ、<br>まず多くの経験を重ねることが必要になるかもしれません。<br><br>しかし、完成させられないこと自体は、それほど嘆く必要はないと考えています。<br><span style="color:#CC0000"><strong>最初から「完成品を作る」ことだけに意識を取られてしまうよりは、<br>「規模にかかわらずあなたの作ったもので誰かが喜んでくれるのだ」ということや、<br>「自分がどんなものを作れば人に喜んでもらえるか」を学ぶ</strong></span>ことの方が、<br>より重要なことだと私は思っています。<br><br>皆さんが持っている創作の『武器』は、最初はみんな『未鑑定』です。<br>自分の武器が全部「？？？」の状態ではいきなりボス戦に挑みたくはないと思うので、<br>最初は色んなシチュエーションの小さな戦いを繰り返して、<br>数多くの自分の武器の性能を知ることが先決です。<br><br>そしてある程度、自分の武器についての知識を得て、いくらかの戦い方も知ったなら、<br>そのときこそいよいよ長くて大きな戦いに挑むときです！<br>己の武器に適した戦いを選べばきっと大きな壁でも打ち破れるはずですし、<br>運が良ければ高い成果を得ることもできるでしょう。<br><br>評価してもらえるかどうかは、最後は運です。<br>でも、歩いて行く道のりは、あなたが選ぶことができます。<br>私が紹介させていただいた方法に限らず、あなたにとって、<br>いつか一番いいやり方が見つかることを祈っています。<br><br><hr size="1" /><br>以上、長くなってしまいましたが、私なりの<br>「楽しくて学べるゲームの作り方」について紹介させていただきました。<br><br>今回の方法は、<br><span style="color:#CC0000"><strong>「私がやってきた中で、たまたま、楽しみながら一番経験値を得られたやり方」</strong></span><br>というだけなので、合理性を追求して試行錯誤してきた結果ではありませんし、<br>人によっては合わない可能性もあると思います。<br><br>他にももっといい方法があると思いますが、今回のやり方が、<br>よりよい方法にたどりつくための一つの手がかりにでもなれば幸いです。<br><br><hr size="1" /><br>他にもし何か語って欲しいことや、開発において聞いてみたいこだわり部分などが<br>ございましたら、ぜひ拍手コメントからどうぞ！　<br><br><CENTER><br><TABLE bgcolor="#f0f0ff"><TR><TD><a class="double-link red" target="_blank" href="https://www.amazon.co.jp/dp/B076VM4ZMS"><img border="2" src="../../image/etc/title_map_of_dev.jpg" width="120" loading="lazy" height="171"></a></TD><TD bgcolor="#fefeff">← 今回のような記事を<br>　1冊の本にまとめたゲーム開発本、<br>　『<strong>ゲーム開発者の地図</strong>』、<br>　Kindleで好評発売中です！</TD></TR></TABLE></CENTER></CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2017-05-13 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2017%2F05.html%232017-05-13&title=%E6%A5%BD%E3%81%97%E3%81%8F%E3%81%A6%E5%AD%A6%E3%81%B9%E3%82%8B%E3%82%B2%E3%83%BC%E3%83%A0%E3%81%AE%E4%BD%9C%E3%82%8A%E6%96%B9" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2017%2F05.html%232017-05-13&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2017-05-13','楽しくて学べるゲームの作り方', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/devlog/001.html'>開発日誌</a></span></div></div><br><br><br>
+<a id='2017-05-06'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2017-05-06','ゲームを完成させる作り方', this)" style='cursor:pointer;'>2017-05-06 (土)&nbsp;&nbsp;&nbsp;ゲームを完成させる作り方</span><span style='float:right;'><a href='#bottom' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【ゲームを完成させる作り方】</strong></span><br><br><span style="font-size:large;"><span style="color:#3300FF"><strong>＞ゲームを最後まで作り終えるコツを知りたいです！</strong></span></span><br><br>というコメントをいただいたので、<br>現時点での私の「完成させるゲームの作り方」をまとめておきます！<br><br>ちなみに私には、最後まで作り終えられなかったゲームとコンテンツが計2つあります。<br>凍結中となっている連載ADVゲーム『<a data-primary="http://silversecond.net/contents/game/silfade_kenbun/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/game_silfade_kenbunroku/"><strong>シルフェイド見聞録</strong></a>』と、<br>半分打ち切り気味に終わったテキストコンテンツ『<a data-primary="http://www.silversecond.net/contents/game/TRPG/katamichi_trpg/Replay00.shtml" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/trpg/katamichi_trpg/Replay00.shtml"><strong>＜自家製＞片道勇者TRPGリプレイ</strong></a>』です。<br><br>どちらもお話としては半端な状態で終わっており、<br>続きを楽しみにしてくださっていた方には本当に申し訳ございません。<br><br>まず、どうしてそれらを作り終えることができなかったかについて、<br>自分の考えを述べていきます。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【私の失敗例　完成しなかったゲーム/コンテンツ】</strong></span><br><br>まず参考として、私が体験した「完成まで作れなかった失敗例」を挙げます。<br><br>私がゲーム作り初心者だった頃は、<br><span style="color:#CC0000"><strong>「前から順番に全力で画像やお話を作っていって、根性と気合で<br>最後まで作っていって、最後の最後にようやくラストシーンを作って開発終了！」</strong></span><br>という流れで作ることを考えていました。<br><br>これだけ聞いて<strong>「あ、それは危ない！」</strong>と思われた方は、<br>たぶん色々と経験済みのゲーム開発者さんではないかなと思います。<br><br>というのも実はこのやり方、おそらく結構な確率で完成にいたりません。<br>このやり方で私がどんなことになったかというと、<br><br><span style="color:#CC0000"><strong>1．最初は気合を入れて全力でグラフィックやシーンなどを作っていく。<br><br>2．しかしどんどん「モチベーション」や「作業の新鮮味」や「ネタ」といった<br>リソースが消耗されていき、それまでと同じ熱意で<br>グラフィックやシーンなどを作ることができなくなる。<br><br>3．いずれかのリソースが消耗されきった果てに、開発が進められなくなる。<br>あるいは質が激しく低下していく。<br><br>4．そして最終的に取りかかる気力がなくなって挫折へ……。</strong></span><br><br>という感じになりました。私が何かのコンテンツを<br>打ち切りにしてしまった大きな理由は、<br>だいたいの場合、<strong>『自分のモチベーションや作業への新鮮味、<br>使いたいネタがどの辺りで尽きるかをよく把握できていなかったから』</strong>です。<br><br>ADV『シルフェイド見聞録』連載は全体のプロットさえ考えずに<br>永遠に作るつもりで書いていましたし、<br>『＜自家製＞片道勇者ＴＲＰＧリプレイ』連載も<br>永遠に続けられるつもりで作っていましたが、<br>最後はどちらもネタと気力がなくなって開発中断を迎えてしまいました。<br><br>しかし未完に終わったとはいえ、今考えると、これらの作品を経て得られたものは、<br>普通にゲームを完成させてリリースした場合よりも大きなものでした。<br>どちらの未完作品も、私にとっては終わりまでとても真剣に挑むことができ、<br>皆さんのご意見を細かくいただけて自信と経験を得られたので、<br>皆さんに見てもらえたことは私にとって大きな糧になっています。<br><br>今は、<span style="color:#CC0000"><strong>この「完成させられなかったやり方」自体にも、<br>当時の私のようなゲーム開発初心者にとっては大きな利点がある</strong></span>と考えています。<br>それも次回の記事としてまとめる予定ですので、気になる方はご期待ください。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【ゲームを完成させるための作り方】</strong></span><br><br>ということで、いよいよ本題！　先の失敗例をふまえた上で、<br>『個人開発』で『一本のゲームを完成させる確率を上げる作り方』を考えていきます。<br><br>これからお話しすることは「私の現時点のやり方」というだけで、<br>向いてる人とそうでない人がいるはずですし、今後新たな方法に変化していく可能性も、<br>私が把握している『弱点』もあります。その辺りは、あらかじめご了承ください。<br><br><img src="../../image/2017/20170506.jpg" border="1" title="メガネは女性教師さんキャラの4割くらいのテンプレートみたいになってる気がします。胸元も気になるって！？　エッチ！" loading="lazy" height="500"><br><br>まず前述の失敗を元に、今の私はちょっと見方を変えていて、<br><span style="color:#CC0000"><strong>「モチベーション切れや時間切れがいつ起きるか分からない前提で開発を行うべき」</strong></span><br>という発想でゲームを作ることを考えています。<br><br>すでに一度作ったことのあるジャンルでさえ、<br>自分のモチベーションがどこまで持つかはハッキリしません。<br>もしかしたら同じものを作るのに飽きてて、次は前より長持ちしないかもしれません。<br><br>そういったモチベーション切れのリスクに対応すべく、<br>開発を重ねる中で私の「完成させるやり方」は、<br>徐々に以下の条件を満たすやり方になっていきました。<br><br><span style="color:#CC0000"><strong>●何のデータや素材がどのくらい必要なのか、早期に把握できるようにする。<br><br>●肉付けは全体の量を把握してから始める。<br><br>●残りモチベーションや残り時間が不安定になる開発後半は、<br>「いつ開発をやめても問題ない状態」を維持しながら開発する。</strong></span><br><br>そしてこれらの条件を満たせるやり方として、<br>今は以下のレベル1～3の順に開発を行うようになっています。<br>最近だと『片道勇者』の開発時に、このままの順序で開発しています。<br><br><hr size="1" /><br><span style="color:#CC0000"><strong>＜レベル1　最低限の骨を作る　プロトタイプ＞</strong></span>　（『片道勇者』ではアルファ版）<br><br>ゲームシステムに加え、最初からエンディングまで通しで遊ぶための<br>「ありえないほど小さい」と考えられる規模の「骨」だけのゲームを作る段階。<br>ゲームシステム、スタートやエンディング、街やダンジョン一つずつなど、<br>絶対に外せない要素のみここで開発する。<br><br>ゲームシステムが自作の場合はそれを最重視して、なるべくしっかり固めておく。<br>データに関しては、見た目や内容は雑だったり仮でいいのでここでは量を確保する。<br>かつ、街やダンジョンなど作業量が一気に増える要素の数はここでは最低限にする。<br>物語系ＲＰＧなら、ダンジョンや街は本当に必要な数個くらいを作ることを<br>メドにしてみる、など。<br><br><br><span style="color:#CC0000"><strong>＜レベル2　肉付け　短編の完成＞</strong></span><br>（『片道勇者』では無印版のアルファ～ベータ間辺り）<br><br>大きな要素は増やさず、レベル1の「骨」に対して見た目や内容を肉付けしたり、<br>画像やゲームバランスをブラッシュアップしたりする段階。<br><br>いらなかった場所を切ったり、作りかえたり、<br>プレイ途上で足りないと感じた細かいデータを<br>足すのは「肉付け」に含めるが、入れることで逆に作業項目が一気に増えてしまう<br>大きな「骨」となる要素を増やすのは次のレベル3までなるべく我慢する。<br>たとえば、物語系RPGなら街やダンジョンは基本的に増やさないようにする。<br>これが終わった段階で、ひとまず最初から最後まで遊べる、<br>『公開可能な』短編ゲームが完成する。<br><br><br><span style="color:#CC0000"><strong>＜レベル3　さらなる成長＞</strong></span>　（『片道勇者』では無印完成版とプラス版）<br><br>作りたかった要素がきっとまだ残ってるはずなので、<br>レベル2の質を維持しつつ、「入れて面白くなると思う順」に<br>「骨」も含めて追加していく。<br><br>たとえばRPGなら、合間のストーリーやダンジョン、またはクリア後の新ストーリーや、<br>元々なかった「図鑑」といったおまけのシステムなど。<br>ここからはいつでも切り上げられるように意識して作業を進めつつ、<br>やる気が尽きるか、期限が来るか、ネタ切れするまでこれを続ける。<br>終わったときが、そのゲームの完成！<br><br><hr size="1" /><br>「レベル1　最低限の骨を作る」→「レベル2　肉付けする」→「レベル3　成長」の<br>レベル順にゲームを開発していけば、少なくともレベル2の段階を突破できれば<br>あとはモチベーションや時間が尽きた瞬間にいつでも<br>「完成！」と宣言することができます。<br><br>このやり方は、<span style="color:#CC0000"><strong>「モチベーションがあるうちにコアになる場所だけ作っておいて、<br>いつでも開発終了できるようにするやり方」</strong></span>と言ってもいいかもしれません。<br><br>私が明らかにこの手順で開発したと言えるのは、<br>ADV『シルエットノート』とRPG『片道勇者』の2本です。<br><br>『シルエットノート』は流れ上、<br>たまたま開発手順がそうなってしまっただけなのですが、<br>「締め切りが決まっていたので作る量を最初に決めていて、<br>『枠』を作ってから肉付けした」のと、<br>「リリース後に追加データを足した」という順に開発したことから、<br>この手順にほぼ該当すると考えています。<br><br>一方で『片道勇者』は、最初から上記の手順を意識して開発していました。<br>まず最低限、スタートから終わりまで遊べる<br>「データが各1～2種しかないアルファ版」を作り、<br>それに肉付けをし、その後に入れたかったものを色々足して<br>「無印版」を完成させました。<br>また運に恵まれて、無印版のリリース後にさらに「レベル3」を続行し、<br>『片道勇者プラス』という拡張版も作ることができました。<br><br><br>それではレベル1～3のそれぞれの段階について、詳しく解説していきます。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【レベル1　最小限の骨を作る】</strong></span><br><br>レベル1は「骨」だけを作る段階です。<br><strong>ゲームシステムだけはじっくり作っていいものとしますが、<br>それ以外の「データ」に関しては最初から最後の分まで最小限かつ<br>一通りかなり雑に作っていきます</strong>。<br><br>レベル1の最重要目的は、<br><br><span style="color:#CC0000"><strong>●「作ったゲームシステムに素質や将来性がありそうか」を確認すること。<br>●「全体的にどのくらいのデータや素材の量が必要か」をおおまかに把握すること。<br><br></strong></span>の2つです。<br><br>レベル1まで完成した段階のゲームは<br>「雑に作っただけのつまらない短編」かもしれませんが、それでもこのレベル1では<br><span style="color:#CC0000"><strong>「一つ一つの質を上げるのを我慢して量を作り続ける」</strong></span>ことがとても重要です。<br><span style="color:#CC0000"><strong>時間をかけて一つずつ素材やデータを作ると、<br>多くの場合、レベル1さえ達成できません。</strong></span><br>一つずつの質を上げるのは、レベル2まで必死で我慢します。<br><br>この段階では、作るデータは最小限にします。<br>たとえばストーリーRPGなら、データは<br>「仮オープニング」、「スタートの街」、「途中のダンジョン」、<br>「途中の街」、「ラストダンジョン」、「仮エンディング」、<br>各１つくらいのデータ量を目標に作るといいと思っています。<br><span style="color:#CC0000"><strong>「ありえないほど少ない」くらいの量</strong></span>がちょうどいいです。<br><br>このレベル1では、キャラ絵も<br>「雑なシルエットにキャラ名だけ描いた仮の立ち絵」だって構いませんし、<br>ダンジョンごとの敵キャラもたった1～2種類ずつで構いません。<br>アイテムも各数種類でいいですし、キャラクターチップは<br>サンプルのチップを使って構いません。<br><span style="color:#CC0000"><strong>全て仮のデータ、仮の画像で行く</strong></span>くらいの覚悟の方が、<br>レベル1を達成しやすいでしょう。<br><br>ただし、<span style="color:#CC0000"><strong>画像の『サイズ』だけはこの時点で決定しておく</strong></span>と、レベル2が楽になります。<br><span style="color:#CC0000"><strong>画像のサイズが途中で変わると、<br>インターフェースや画面デザインを<br>何度も作り直す必要が出てきてしまう</strong></span>からです。<br>私は、既存の素材や自分の過去作の素材を拡大縮小して配置して、<br>ゲーム画面の構成を考えることが多いです。<br><br>この「レベル1」の段階までできたものを、<br>私は「アルファ版」や「プロトタイプ」と呼んでます。<br>画像も仮ですし、データ量も、調整も十分ではないため、<br><span style="color:#CC0000"><strong>遊んでも面白いものではありません。</strong></span><br>誰にも褒めてもらえないゲームの状態が続くので、やる気の維持には苦労します。<br><br>もしここで挫折してしまったら、プロジェクトは終了です。<br>その場合、たぶんレベル1として計画した「骨」が大きすぎると思うので、<br>小さくして再挑戦する方がいいかもしれません。<br><br>あるいは、作ってみたゲームシステムが面白くなくて、<br>これからの期待が持てなかったのかもしれません。<br>それならそれで、中断することは立派な判断ですし、必要なことだったはずです。<br>私もシステムだけ作ってみたら、<br>思ったより将来性が見いだせなくてボツにしたことがあります。<br><br><span style="color:#CC0000"><strong>＜レベル1のコツ＞</strong><br>・ゲームシステムはしっかり作っておいて、面白さの素質がどれだけありそうか知る。<br>・最初からエンディングまで最小限の「骨」を作り、<br>どの程度のデータや素材量が必要か把握する。<br>・モンスターやらアイテムやらのデータ量も最小限でOK。素材も仮の画像でOK。<br>ただし画像の『サイズ』だけは確定させておいた方がレベル2以降が楽。</span><br><br><hr size="1" /><br><span style="font-size:large;"><strong>【レベル2　使える労力を配分して肉付け】</strong></span><br><br>レベル2では、<span style="color:#CC0000"><strong>使える労力を『配分』して肉付け</strong></span>を行っていきます。<br>レベル1で必要最低限の「骨」となる要素を作れたなら、<br><span style="color:#CC0000"><strong>「どのくらいの量のデータや画像を追加・ブラッシュアップしなければならないか」<br>という感覚がおおよそ掴めている</strong></span>はずです。<br><br>キャラの数やダンジョンの数、必要な画像、テキスト、<br>必要そうな敵の種類、あるいは戦いを面白くするための新しい技やアイテムなど、<br>具体的な数を書き出してみると、意外とたくさんのものが必要だと分かると思います。<br>そのリストを見るたび、<span style="color:#CC0000"><strong>「もしこの全てを一つずつめちゃめちゃ凝って作っていたら、<br>果たしてレベル1の量だけでも作れたか……」</strong></span>とゾッとしてしまうのが私です。<br><br>たとえば、もしレベル1の時点で技のアニメーションにすごく凝ってしまったら、<br>「このクオリティで今後も行くとなると、技の数が増やしにくい」となってしまって、<br>ゲームを面白くするために必要だった「多くの新しい技」を作ることが<br>心理的に困難になってしまうかもしれません。<br><br>その結果、技を増やすことができず、<br>「アニメーションはすごいけどバトルの選択肢が少なくてつまらない……」<br>なんて結末になると悲しいことになるので、とにかくレベル1で<br>「何がどのくらいの量、必要になるか」を先に知ることはとても大切だと考えています。<br><br>そしてまた、レベル1で作った量に対して、<br><span style="color:#CC0000"><strong>「残りの使える労力」を配分して全体をブラッシュアップしようとすると、<br>「意外と大したものが作れない」</strong></span>と思われるかもしれません。<br><br>たとえばキャラのドット絵だけでも、レベル1で必要になりそうな量を<br>全てオリジナルで作るとなると、10体か20体か分かりませんが、<br>きっと非常に大変でしょう。<br><span style="color:#CC0000"><strong>自作するか、できあいの画像を使うか……それを考え直せるタイミングが、レベル2の開始時</strong></span>です。<br><br>ゲームを完成させようと思った場合、<br><span style="color:#CC0000"><strong>「あなたが満足できるほど一つ一つのものに凝る」<br>というのは、実はとても難しいことです。</strong></span><br>びっくりするほどの短編でさえ、全ての箇所を凝るときっとヘトヘトになるでしょう。<br><br>なのでたぶん、ある程度は「質」の密度を<br>薄く引き延ばすことが求められる場面もあるはずです。<br>「最初で敵のギミックのネタを使いすぎると後半が何もなくなるから、<br>ネタを温存して後半に回そう」、<br>「キャラ絵1枚1枚に気合いを入れすぎると描ききれないから、量産できる質で描こう」<br>といった具合です。<br><br>そういった「労力」や「やる気」の配分に失敗するとやっぱり挫折するので、<br>慣れないうちはレベル2もきっと難しいことでしょう。<br>それでも、<strong>何も情報がない状態でひたすら前から順番に作っていく</strong>よりは、<br>レベル1を作ってある方が遙かに見通しがよくなります。<br><br>特に、レベル1で作ってある「骨」のおかげで、<br><strong>「レベル2が今どのくらいまで進んでいるか分かる」</strong>というのは非常に大きな利点です。<br>いつ終わるか分からない作業というのはたいていとても辛いものですが、<br><span style="color:#CC0000"><strong>「ゴールまであと何割か」が目に見えて分かると、人はより長く耐えることができます。</strong></span><br>さらにいくらか進めば、作業項目を処理する速度もだいたい把握できるので、<br><span style="color:#CC0000"><strong>「あと何日で終わるか」がおおよそ計算できるのもこのやり方の強み</strong></span>です。<br><br>そしてそういった苦労の末、何とかこのレベル2の<br>肉付け・ブラッシュアップまで完了させられれば……<br><span style="color:#CC0000"><strong>「スタートから終わりまで遊べる、満足感が程々に高いであろう短編」</strong></span>が完成です！<br><br>この段階で、あなたは「どのくらいのクオリティのものを<br>どのくらいのペースで作れるか」が<br>分かってきているはずですし、何より今後はいつゲームをリリースしても<br>それなりに許される状態になっていることでしょう。<br>仮とは言えゴールを迎えられたことで、だいぶ安心感が出てくると思います。<br><br>ここまでたどり着ければ、ひとまず第一の完成です。<br><br><span style="color:#CC0000"><strong>＜レベル2のコツ＞</strong><br>・使える労力を配分して、レベル1の「骨」にデータ追加や<br>画像付けやバランス調整など肉付け。<br>・入れることで新たな作業が増える「骨」となる部分は、なるべく増やさない。<br>・「最初から最後まで遊べる短編ゲーム」としてリリース可能な状態に<br>するのがレベル2のゴール。</span><br><br><hr size="1" /><br><span style="font-size:large;"><strong>【レベル3　気力や時間の限り増やしたり磨いたりする】</strong></span><br><br>レベル2が終わった時点でまだ余裕があれば、これまでと同じ要領で<br>レベル3のデータ追加やブラッシュアップの段階に入っていきます。<br><span style="color:#CC0000"><strong>「入れて面白くなると思う順」</strong></span>に、「骨」となる部分も含めて追加していきましょう。<br><br>追加のゲームシステムを入れるもよし、物語に関わる仲間を増やすもよし、<br>追加ストーリーやダンジョンを入れるも良し、クリア後の何かを作ったりするもよし、<br>より面白くなるよう調整するもよし、エクストラメニューなどを作るもよしです。<br>個人的には、このレベル3の工程が一番ゲームが面白くなる部分だと感じています。<br><br>ただし、なるべく<br><span style="color:#CC0000"><strong>いつでも「完成！」と言えるような状態を維持しつつ作業していく</strong></span>のがコツです。<br>風呂敷は一気に広げるのでなく、少しずつ、少しずつです。<br><br>新たな仲間キャラクターを物語に増やしたりした場合など、場合によっては<br>整合を取るためにエンディングやオープニングの修正も必要になるでしょう。<br>そうやって一定量を増やすたびに全体の整合性の修正も行うと、<br>不安になりくくて済みます。<br><br>また、レベル2の状態ができあがっていると、<br>レベル3の作業にはかなり余裕と安心が生まれます。<br>「完成するか分からない状態で続ける」よりも作りやすいし、<br>気力が長持ちすると感じるかもしれません。<br>レベル1～3の中だと、レベル3が一番楽しいのではないかと個人的に思っています。<br><br>実は、<span style="color:#CC0000"><strong>「完成にたどり着けるか分からない」という『不安』は、そこにあるだけで<br>自分の体力や精神力をスリップダメージのように削っていきます。</strong></span><br>（少なくとも私にとっては）<br><br>そういった意味でも、「ひとまずの完成」を早期に持ってきて、<br>「完成するか分からない不安」をさっさと倒してしまうのは、<br>ゲーム開発という長期戦においてとても効率的だと私は考えています。<br><br>そしてこのレベル3の作業を続けているうちに、いずれやる気が尽きてしまうか、<br>期限が近付いてきてしまうと思うので、そのタイミングが来たら、<br>そのときがおそらくあなたの作品のゴールになるでしょう。<br>そうなったら、あとは作りかけの部分の整合が取れるよう、<br>最終仕上げをやって完了です。<br><br>お疲れ様でした、いよいよプレイヤーの皆さんにゲームを届けるときがやってきます！<br><br><br>それと、この<span style="color:#CC0000"><strong>「レベル3」の作業は、リリース後に行うこともできます。</strong></span><br>レベル2ができた時点で、「この先は評判がよかったら開発を続行してみよう」<br>といった判断でとりあえずリリースすることもできるので、<br>まだまだいくらか作り続ける事を宣言して公開するのも素敵なやり方でしょう。<br><br>そのやり方は、プレイヤーさんの興味を持続させられるので長く展開しやすく、<br>楽しく開発できるかもしれません。<br><br><span style="color:#CC0000"><strong>＜レベル3のコツ＞</strong><br>・気力や時間がある限り「骨」も含めたデータを追加していく。<br>・「完成！」と言える状態をなるべく常に維持できるよう、広げるのは少しずつ。<br>・このレベル3はリリース後にやってもOK！</span><br><br><hr size="1" /><br><span style="font-size:large;"><strong>【この方法の利点　　ダメなら気軽に切り上げられる】</strong></span><br><br>このやり方はレベル1の段階で、<br>「ゲームが面白くなりそうな期待があまり持てない」とか、<br>あるいは「レベル2の終わりまで気力が持たなさそうだ」と感じたなら、<br><span style="color:#CC0000"><strong>その時点で気軽に開発を終了してしまえる</strong></span>のが一つの利点です。<br>一つ一つをブラッシュアップしていない段階なので、たぶんまだ損切りができます。<br><br>もしこれがきれいなグラフィックや、オリジナルの素材などを色々用意した後だと、<br>開発を中断するのがとても辛くなってしまうでしょう。<br><br>その場合、さらにまずいのが、<br><br><span style="color:#CC0000"><strong>「ゲーム部分はつまらないけど、絵を色々作っちゃったから心理的にボツにできない」</strong></span><br><br>となってズルズル作り続けてしまい、さらに時間が経った末に、<br><br><span style="color:#CC0000"><strong>「ここまで時間をかけたのを開発中断したくない。<br>でも完成させてもつまらなさそうだし作る気力も出ない」</strong></span><br><br>と続き、作りかけの作品を手放せないまま、そのまま創作家としても<br>フェードアウトしてしまう状況が発生する可能性があることです。<br>「ごめーんボツった！」とさらっと言うのが難しい、<br>ある意味で責任感の強い人においては、<br>これはそこまで珍しくない例のような気がしています。<br><br><span style="color:#CC0000"><strong>「未来が不透明な間は、気軽に撤退できる状態のままで進める」</strong></span><br>というこのやり方には、こういった危険を避ける効果もあると考えています。<br>見た目が全然面白くなさそうな状態のゲームであれば、<br>たぶん作者さん自身も含めて、開発を中断しても大きく悲しまずに済むでしょう。<br><br>そして同時に、<span style="color:#CC0000"><strong>その「なくなっても悲しまないもの」を作り続けなければならないのが、<br>このやり方におけるレベル1の一番辛いところ</strong></span>でもあります。<br><br><hr size="1" /><br><span style="font-size:large;"><strong>【このやり方の注意点】</strong></span><br><br>このやり方には、一つ注意があります。<br>実はこれ、ちょっと上級者向けの方法だと私は考えています。<br><br>というのもこのやり方には問題があって、それは<br><span style="color:#CC0000"><strong>「あまり面白くないやり方かもしれない」</strong></span>ということです。<br><br>特に、さっきも言っていますが<br><span style="color:#CC0000"><strong>「レベル1」の「骨だけを作る段階」って面白くない</strong></span>ことが多いんですよ！<br>「見た目もしょっぱい状態で最低限の挙動と最低限のデータを作り続ける」というのは、<br>つまり「誰にも褒めてもらえない状態のモノを作り続ける」ということなので、<br><strong>「最終的には面白くできるから、今は面白くなくても大丈夫だ」</strong></span><br>と信じられるほどの経験から湧き出る自信がないと実行が難しいことだと考えています。<br><br><br>そして「レベル2」に入れても、<br>全体を肉付けするために労力を「配分」しなければならない都合上、<br>完遂させるには<span style="color:#CC0000"><strong>あなたの想像する「理想形」をいくらか妥協することになる</strong></span><br>ケースが多いと思います。<br>「自作画像にしたかったけど、既存画像にしなきゃ作りきれない」<br>などといった事情です。<br>そういう状況もまた、ときにあなたの気力を奪う原因になるでしょう。<br>「ゲームを完成させるには、時に目標を下げることも必要だ」という経験則を<br>持っていなかった場合、理想と現実のギャップにショックを受けるかもしれません。<br><br>そんなわけで、この完成させ方はあくまで、<br><span style="color:#CC0000"><strong>「あんまり面白くないかもしれないけど完成させられる確率は上がる」<br>という、一定以上経験者向けの方法</strong></span>だと私は感じています。<br>それは、心に留めておいてください。<br><br><hr size="1" /><br>ということで、ゲームを完成させるための確率が高いと考えている<br>私の現時点のやり方を紹介させていただきましたが、いかがだったでしょうか。<br><br>自分も似たやり方だという人も多くいらっしゃるでしょうし、<br>他にも探せば色んなやり方があると思います。<br><br>何度も言いますが、この作り方は、<br><span style="color:#CC0000"><strong>「ゲームの開発が終わるのは『全ての項目を作り終えたとき』でなく、<br>『自分のモチベーションが尽きたとき』である」</strong></span><br>という考えに基づいています。<br><br>「作りたいものを全て作り終えられる」ことを前提とせず、<br>「一定ラインを越えたらいつでも終われるようにする」のがこの方法のコツです。<br><br>言い換えると、単純に<br><span style="color:#CC0000"><strong>「完成のライン」を最後じゃなくてもっと前に持ってくるだけ</strong></span>なんですが、<br>やり方をアレンジする場合も、そこさえ意識していれば<br>完成させるための効用はほぼ変わらないと思います。<br><br><hr size="1" /><br><span style="font-size:large;"><span style="color:#CC0000"><strong>＜次回予告　　初心者向けのやり方は？＞</strong></span></span><br><br>私がゲーム開発初心者の頃だったら、この方法を使っても成功しにくいと思っています。<br>「仮に完成させられたとしても、よい評価をもらえる確率が低そう」<br>という意味でもです。<br><br>「一つ一つのものを面白く作るコツ」さえ<br>よく知らない状態でいきなり大きなものに挑むと、<br>10個作ったもののうち、1～2個くらいしか面白く作れないかもしれません。<br>そうなった場合、たとえ完成しても辛い結末しか待っていないのは明白です。<br><br>よって初めてのうちは<span style="color:#CC0000"><strong>「大きなものを完成させる」ことよりも、別の方法で<br>多く経験値を得ることを優先した方がたぶん効率的</strong></span>だと私は考えています。<br><br>ということで、来週の記事は、私が初めての人におすすめしたいと思っている、<br><span style="color:#CC0000"><strong>「今回よりも楽しくて、得るものが多いゲームの作り方」</strong></span><br>についてご紹介したいと思います。<br><br>先に予告しておくと、そのやり方とはほぼ<br>「私が完成させられなかったやり方」なのですが、<br>その中には短い時間で経験値を大量に獲得するためのコツがいくつかありました。<br><br>最終的に完成させられなかった方法であるにも関わらず、<br>そのやり方には一体どういった利点があったのか？<br><br>次回はそのやり方と、それについての私見をお話ししていきます。<br>よければぜひ、お楽しみに！<br><br>→　<a class="double-link blue"  target="_top" href="../../archive/2017/05.html#2017-05-13"><span style="font-size:large;"><strong>次回「楽しくて学べるゲームの作り方」</strong></span></a></CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2017-05-06 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2017%2F05.html%232017-05-06&title=%E3%82%B2%E3%83%BC%E3%83%A0%E3%82%92%E5%AE%8C%E6%88%90%E3%81%95%E3%81%9B%E3%82%8B%E4%BD%9C%E3%82%8A%E6%96%B9" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2017%2F05.html%232017-05-06&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2017-05-06','ゲームを完成させる作り方', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/devlog/001.html'>開発日誌</a></span></div></div>
+<div class='article_pos'>2017年05月</div>
+<div class='nav'><a href='06.html'>次の月へ</a> | <a href='04.html'>前の月へ</a></div>
+<a id='bottom'></a>
+
+<BR><BR>
+<div align="right"><a href="#top" class="g">▲一番上へ戻る</a></div>
+<BR>
+<CENTER>
+<HR>
+<div>
+<div id="silsec-status" style="display:inline-block;line-height:12px;font-size:10px;"></div>　<div align="center" style="display:inline-block;line-height:12px;font-size:10px;"><a href="https://smokingwolf.github.io/" target="_blank" class="blue" border="1"><img src="https://smokingwolf.github.io/banner.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>アーカイブサイトへ</a></div>
+</div>
+<HR>
+Copyright © SmokingWOLF / Silver Second
+<HR>
+</CENTER>
+
+
+<script>
+  // シルバーセカンド公式のドメインに接続し、サイト存在確認用のTXT(SILVERSECOND_ALIVE!と書かれている)があれば存在する扱いにする
+  const statusDiv = document.getElementById('silsec-status');
+  const checkUrl = 'https://silversecond.net/SILVERSECOND_SITE_ALIVE_FLAG.txt';
+
+  fetch(checkUrl, { cache: 'no-store' })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('ネットワークエラー');
+      }
+      return response.text();
+    })
+    .then(text => {
+      if (text.trim() === 'SILVERSECOND_ALIVE!') {
+        statusDiv.innerHTML = '<a href="https://silversecond.net/" target="_blank" class="blue"><B><img src="https://silversecond.net/banner/a.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>運営中のサイトへ</a>　';
+      } else {
+        statusDiv.textContent = '　';
+      }
+    })
+    .catch(error => {
+      statusDiv.textContent = '　';
+      console.error('シルバーセカンド公式サイトチェック失敗:', error);
+    });
+</script>
+
+
+
+
+</div>
+<div id='sidebar'>
+<div style='font-weight:bold;'>開発日誌</div>
+<div><a class='sidebar_link' href='../../archive/top/index.html'>日誌トップへ</a></div>
+<div><B><a class='sidebar_link' href='../../index.html'>全記事一覧</a></B></div>
+<hr>
+<div style='font-weight:bold;'>【最新記事】</div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/09.html#2025-09-06'>●09/06 ウディタ新機能2つ！(Y表示補正/MoveWatch)＆ 片道勇者プラス修正！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/08.html#2025-08-24'>●08/24 第17回ウディコン結果発表！　上位3作品とピックアップ紹介！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/08.html#2025-08-09'>●08/09 『シルバーセカンド思い出の部屋』を開設！＋ 来年よりウディコン規約追加</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-26'>●07/26 第17回ウディコン審査期間開始！ ＆ 規約の補足</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-12'>●07/12 ウディコン直前！ サイト＆ウディタ修正＋シェパード捜査録！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-28'>●06/28 ウディコン準備中！+ 開発日誌も移転作業中</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-14'>●06/14 サイト修正＋開発日誌をFC2から移転！</a></div>
+<hr>
+<div style='font-weight:bold;'>【カテゴリ】</div>
+<div><a class='sidebar_link' href='../../category/woditor/001.html'>ウディタ&nbsp;<span class='sym'>(83)</span></a></div>
+<div><a class='sidebar_link' href='../../category/owh2dev/001.html'>片道勇者2&nbsp;<span class='sym'>(78)</span></a></div>
+<div><a class='sidebar_link' href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(73)</span></a></div>
+<div><a class='sidebar_link' href='../../category/owh/001.html'>片道勇者&nbsp;<span class='sym'>(21)</span></a></div>
+<div><a class='sidebar_link' href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(19)</span></a></div>
+<div><a class='sidebar_link' href='../../category/trpg/001.html'>TRPG&nbsp;<span class='sym'>(9)</span></a></div>
+<div><a class='sidebar_link' href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(9)</span></a></div>
+<div><a class='sidebar_link' href='../../category/study/001.html'>勉強メモ&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../category/silgen/001.html'>シル幻&nbsp;<span class='sym'>(1)</span></a></div>
+<hr>
+<div style='font-weight:bold;'>【月別】</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2025-btn' onclick="toggleYear('y2025')">2025&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2025' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2025/09.html'>09月&nbsp;<span class='sym'>(1)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2024-btn' onclick="toggleYear('y2024')">2024&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2024' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2024/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/01.html'>01月&nbsp;<span class='sym'>(2)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2023-btn' onclick="toggleYear('y2023')">2023&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2023' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2023/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/09.html'>09月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2022-btn' onclick="toggleYear('y2022')">2022&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2022' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2022/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2021-btn' onclick="toggleYear('y2021')">2021&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2021' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2021/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2020-btn' onclick="toggleYear('y2020')">2020&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2020' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2020/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/07.html'>07月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2019-btn' onclick="toggleYear('y2019')">2019&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2019' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2019/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2018-btn' onclick="toggleYear('y2018')">2018&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2018' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2018/12.html'>12月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/11.html'>11月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/10.html'>10月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/09.html'>09月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/08.html'>08月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/07.html'>07月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/06.html'>06月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/04.html'>04月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/01.html'>01月&nbsp;<span class='sym'>(5)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2017-btn' onclick="toggleYear('y2017')">2017&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2017' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2017/12.html'>12月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/11.html'>11月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/09.html'>09月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/08.html'>08月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/07.html'>07月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/06.html'>06月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/05.html'>05月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/04.html'>04月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/01.html'>01月&nbsp;<span class='sym'>(5)</span></a></div>
+</div>
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('a.double-link');
+
+  links.forEach(link => {
+    const primaryUrl = link.dataset.primary;
+    if (!primaryUrl) return;
+
+    const testUrl = primaryUrl + '?t=' + Date.now(); // キャッシュ無効化！
+
+    fetch(testUrl, { method: 'GET', cache: 'no-store' })
+      .then(res => {
+        const url = res.url || '';
+        if (!res.ok || url.includes('404.html') || res.status === 404) {
+          console.warn('【404または失敗】そのままアーカイブを使います:', link.href);
+          // そのまま
+        } else {
+          console.warn('【OK】hrefを本家に書き換えます:', primaryUrl);
+          link.href = primaryUrl;
+        }
+      })
+      .catch(() => {
+        console.warn('【通信エラー】そのままアーカイブを使います:', link.href);
+        // エラー時もhrefはそのまま
+      });
+  });
+});
+</script>
+
+
+
+</body>
+</html>
