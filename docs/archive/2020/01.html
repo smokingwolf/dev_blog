@@ -644,23 +644,24 @@ window.addEventListener('DOMContentLoaded', () => {
     const primaryUrl = link.dataset.primary;
     if (!primaryUrl) return;
 
-    const testUrl = primaryUrl + '?t=' + Date.now(); // キャッシュ無効化！
+    // ★ HTTP→HTTPS に強制変換してテスト
+    const httpsPrimary = primaryUrl.replace(/^http:/, 'https:');
+    httpsPrimary = httpsPrimary.replace(/www\.silversecond/, 'siversecond');
+    const testUrl = httpsPrimary + (httpsPrimary.includes('?') ? '&' : '?') + 't=' + Date.now();
 
-    fetch(testUrl, { method: 'GET', cache: 'no-store' })
-      .then(res => {
-        const url = res.url || '';
-        if (!res.ok || url.includes('404.html') || res.status === 404) {
-          console.warn('【404または失敗】そのままアーカイブを使います:', link.href);
-          // そのまま
-        } else {
-          console.warn('【OK】hrefを本家に書き換えます:', primaryUrl);
-          link.href = primaryUrl;
-        }
-      })
-      .catch(() => {
-        console.warn('【通信エラー】そのままアーカイブを使います:', link.href);
-        // エラー時もhrefはそのまま
-      });
+    // CORSを読めない前提の“存在チェック”：画像プローブでOK/NG判定
+    const img = new Image();
+    img.onload = () => {
+      console.warn('【OK(画像ロード)】hrefを本家(HTTPS)に書換:', httpsPrimary);
+      link.href = httpsPrimary;
+    };
+    img.onerror = () => {
+      console.warn('【NG(画像失敗)】アーカイブのまま:', link.href);
+      // そのまま
+    };
+    // Mixed Content回避のため HTTPS のみ叩く
+    img.referrerPolicy = 'no-referrer'; // お好み
+    img.src = testUrl;
   });
 });
 </script>
