@@ -10,6 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // ★ HTTP→HTTPS に強制変換してテスト
     const httpsPrimary = primaryUrl.replace(/^http:/, 'https:');
+    httpsPrimary = httpsPrimary.replace(/www\.silversecond/, 'siversecond');
     const testUrl = httpsPrimary + (httpsPrimary.includes('?') ? '&' : '?') + 't=' + Date.now();
 
     // CORSを読めない前提の“存在チェック”：画像プローブでOK/NG判定
