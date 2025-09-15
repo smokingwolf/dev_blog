@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>シルバーセカンド開発日誌 / SmokingWOLF</title>
+<meta name="viewport" content="width=720">
+<script src="../../js/smoothscroll_up.js" type="text/javascript"></script> 
+
+<link rel="stylesheet" href="../../js/litebox/css/lightbox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../../js/litebox/js/prototype.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/moo.fx.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/litebox-1.0.js"></script>
+
+<style>
+html {
+  /* スマホ時は1.2倍フォントで表示 */
+  -webkit-text-size-adjust: 120%;
+  -ms-text-size-adjust: 120%;
+}
+
+BODY{
+  /*display:flex;*/
+  font-size:13px;
+  margin:0;
+  font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+  color:#558;
+}
+
+TD{
+  font-size:12px;
+}
+
+
+A:LINK,A:VISITED {  color:#5658f6;  text-decoration:underline ;}
+A:HOVER,A:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.red:LINK,A.red:VISITED{color:#d6385c;display: inline-block;text-shadow: 0 0 15px #ffddcc, 0 0 15px #ffddaa;}
+A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shadow: 0 0 15px #ffcccc, 0 0 15px #ffaaaa;}
+
+A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
+A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.g:LINK,A.g:VISITED{
+	color:#38a68c;
+	text-decoration:underline;
+}
+
+A.g:HOVER,A.g:ACTIVE{
+	color : #68b6ac;
+	text-decoration : underline;
+}
+
+
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38c6ac;
+}
+
+A.jumplink:HOVER,A.jumplink:ACTIVE{
+	color : #68f6ac;
+}
+
+A.jumplink{
+	text-shadow: 0 0 15px #ccddcc, 0 0 15px #aaddaa;
+	text-decoration : none;
+}
+
+
+.article_pos{
+	font-size:16px;
+	color:#aaf; 
+	font-weight:bold;
+	text-align:center;
+	margin:0px;
+	padding:0px;
+}
+
+#content {
+	font-size:14px;
+	
+}
+
+#sidebar {
+	background:#f8f8f8; 
+	border-left:1px solid #ddd; 
+	padding:4px 6px;
+	font-size:12px;
+}
+
+A.sidebar_link:LINK,A.sidebar_link:VISITED,
+A.sidebar_link_recent:LINK,A.sidebar_link_recent:VISITED{
+    color:#5658f6;
+	text-decoration: underline;
+}
+A.sidebar_link:HOVER,A.sidebar_link:ACTIVE,
+A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
+	color: #9698e6;
+	text-decoration: underline;
+}
+
+.sidebar_link{
+	font-size:13px;
+}
+
+.sidebar_link_recent{ /* 1つ1つの項目ごとに隙間を空ける */
+	font-size:11px;
+	line-height: 1.2;
+	display: inline-block;
+	margin-top:5px;
+}
+
+
+.entry {
+	border:1px solid #ccc; 
+	border-radius:8px; 
+	margin:14px 0; 
+	overflow:hidden;
+
+}
+.entry-title {
+	background:linear-gradient(to right,#4243ff,#aaaacf);
+
+	font-size:17px;
+	color:#fff; 
+	padding:4px; 
+	font-weight:bold;
+	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
+}
+
+.entry-body,.extended {
+	background:#fff; 
+	color:#444; 
+	padding:15px;
+	font-size:14px;
+	line-height:1.6em;
+}
+
+.entry-foot {
+	background:#fff; 
+	text-align:center;
+	vertical-align:middle;
+	color:#ccf;
+	font-size:12px;
+	padding-top:20px;
+	padding-right:20px;
+	padding-bottom:10px;
+}
+
+.linkbutton{
+	padding:3px;
+}
+
+/*--●形状整理用--*/
+body {display:flex; margin:0;}
+#content {width:600px; padding:0 8px;
+	font-size:14px;}
+#sidebar {width:120px;  box-sizing:border-box; }
+#sidebar div {line-height:1.6;}
+#sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
+.nav {margin:0px 0 -20px 0; text-align:center;}
+.sym {color:#999; font-weight:normal;}
+
+</style>
+
+
+<script>
+function toggle(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+function toggleDisp(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+</script>
+
+
+
+<!--★目次デザイン・処理★-->
+<style>
+.toc-box{background-color:#f0f0f0;border-radius:8px;padding:10px;} 
+.toc-list{list-style:none;margin:0;padding-left:0;} 
+.toc-list ul{list-style:none;margin:0;padding-left:20px;}
+.toc-list li{margin:5px 0;}
+.toc-level1{margin-left:0;}
+.toc-level2{margin-left:20px;}
+
+h1 {
+  background: #fff;
+  padding: 6px 10px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #2233cc; /* 青系 */
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 4px solid #3366ff;
+  display: block;
+  width:100%;
+  
+}
+
+
+h2,h3 {
+  background: #fff;
+  padding: 6px 10px;
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #5566ff; /* 青系 */
+  
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 2px solid #9999ff;
+  display: -block;
+
+}
+
+h2::before {
+  content: "- ";
+}
+
+.master_years{
+  margin-left:20px;
+  margin-right:20px;
+}
+
+.top_minicategory{
+  font-size:10px;
+  color:#ccccff;
+}
+</style>
+
+
+
+</head>
+<body onload="initLightbox();">
+<a id="top"></a>
+
+<style type='text/css'>
+.linkbutton{
+  font-size: 0.9em;
+  padding: 1px 6px;
+  vertical-align: baseline;
+  line-height: 1;
+  height: auto;
+  margin-left: 4px;
+  color:#66f;
+  background-color:#f9f9f9;
+  border: 1px solid #888;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.copy-popup{
+  background-color: #eef;
+  border: 1px solid #88c;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  color: #333;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.5s ease;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  max-width: 80vw;             /* 画面幅の 80% で折り返す */
+  overflow-wrap: anywhere;     /* 長い URL を途中で区切る */
+  word-break: break-all;       /* ↑が効かない旧ブラウザ保険 */
+  white-space: pre-wrap;       /* 
+ を改行として扱い、余計な連続空白は1個に */
+}
+.article_end_date{
+  font-size:0.9em;
+}
+</style>
+
+
+<script>
+function toggle(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+}
+
+// Year accordion with sessionStorage persistence
+function toggleYear(id){
+  const pane = document.getElementById(id);
+  const btn  = document.getElementById(id+'-btn');
+  if(!pane||!btn) return;
+  const sym  = btn.querySelector('.sym');
+  const isClosed = pane.style.display === 'none';
+  pane.style.display = isClosed ? 'block' : 'none';
+  sym.textContent   = isClosed ? '－' : '＋';
+  sessionStorage.setItem('year-'+id, isClosed ? 'open' : 'closed');
+}
+
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('[data-yearpane]').forEach(pane=>{
+    const id    = pane.id;
+    const state = sessionStorage.getItem('year-'+id);
+    const btn   = document.getElementById(id+'-btn');
+    const sym   = btn?.querySelector('.sym');
+    if(state === 'open'){
+      pane.style.display = 'block';
+      if(sym) sym.textContent = '－';
+    }else{
+      pane.style.display = 'none';
+      if(sym) sym.textContent = '＋';
+    }
+  });
+});
+
+function copyLink(date, title, el){
+  const url = `https://smokingwolf.github.io/dev_blog/archive/${date.slice(0,4)}/${date.slice(5,7)}.html#${date}`;
+  const text = `
+【${date}　${title}】
+ ${url}`;
+  navigator.clipboard.writeText(text).then(()=>{
+    if(el && el.tagName === 'BUTTON'){
+      const orig = el.textContent;
+      el.textContent = '✅ コピー完了!';
+      setTimeout(()=>{ el.textContent = '🔗 リンクをコピー'; }, 2000);
+    }
+
+    const popup = document.createElement('div');
+    popup.className = 'copy-popup';
+    popup.textContent = `✅ コピー完了：${text}`;
+    document.body.appendChild(popup);
+
+    const rect = el.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    const popupWidth = popup.offsetWidth;
+    const pageWidth = document.documentElement.clientWidth;
+
+    let left = rect.left + scrollLeft + (rect.width / 2) - (popupWidth / 2);
+    let top  = rect.top  + scrollTop - popup.offsetHeight - 8;
+    if(left < scrollLeft + 4) left = scrollLeft + 4;
+    if(left + popupWidth > scrollLeft + pageWidth - 4)
+        left = scrollLeft + pageWidth - popupWidth - 4;
+
+    popup.style.left = `${left}px`;
+    popup.style.top  = `${top}px`;
+    popup.style.opacity = '1';
+    popup.style.zIndex = '9999';
+
+    setTimeout(()=>{ popup.style.opacity = '0'; }, 1800);
+    setTimeout(()=>{ popup.remove(); }, 2500);
+  });
+}
+</script>
+
+<div id='content'>
+<style>
+
+.TopTitle{
+  width:515px;
+  font-weight:bold;
+  font-size:16pt;
+  color: #ffffff;
+  background-color:#535365 ;
+  border-width: 0px;
+  border-color:#535365;
+  border-style:solid;
+  background: -moz-linear-gradient(left top, #42435f, #fafaff);
+  background: -webkit-gradient(linear, left top, right bottom, from(#42435f), to(#fafaff));
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#DD42425f', endColorstr='#FFfafaff');
+  
+  text-align:left;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.header3{
+	color:#555588;
+	margin-bottom:16px;
+}
+
+.home-link {
+  font-size: 12px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: underline;
+}
+</style>
+
+<!--戻るリンク、サイトがなくなってたらアーカイブにつながるようにしたが404ページがアレなのかうまくいかない-->
+<!--
+<font id="home-link-placeholder">
+  <noscript>
+    <a href="https://smokingwolf.github.io/" class="home-link">← ホーム(アーカイブサイト)に戻る</a>
+  </noscript>
+</font>
+
+<script>
+(async () => {
+  try {
+    // HEADで軽くチェック（no-corsなのでステータス確認は不可）
+    // 自分のサイトのインフォメーションページにつなげるならサイトがまだあると認識する
+    await fetch("https://silversecond.net/contents/etc/info.shtml", { method: "HEAD", mode: "no-cors" });
+
+    const link = document.createElement("a");
+    link.href = "https://silversecond.net/";
+    link.textContent = "← ホームに戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  } catch {
+    const link = document.createElement("a");
+    link.href = "https://smokingwolf.github.io/";
+    link.textContent = "← ホーム(アーカイブサイト)に戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  }
+})();
+</script>
+-->
+
+<div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
+<!--ここにコメント文-->
+<div class="header3" style="margin-top:6px;">　ここはゲーム開発者SmokingWOLF(スモーキングウルフ)の開発日誌です。<BR>
+　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
+　<B style="color:#ff5555;">※以前のブログが使えなくなったので、ただいまこの開発日誌に移転中です。</B>
+</div>
+
+<div class='article_pos'>2016年07月</div>
+<div class='nav'><a href='08.html'>次の月へ</a> | <a href='06.html'>前の月へ</a></div>
+<a id='2016-07-31'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2016-07-31','片道勇者ｵﾝﾗｲﾝ完結!+ｳﾃﾞｨｺﾝ', this)" style='cursor:pointer;'>2016-07-31 (日)&nbsp;&nbsp;&nbsp;片道勇者ｵﾝﾗｲﾝ完結!+ｳﾃﾞｨｺﾝ</span><span style='float:right;'><a href='#2016-07-23' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><strong><span style="font-size:large;">【片道勇者オンライン、最終イベント公開！】</span></strong><br><br><img src="../../image/2016/20160731.jpg" border="1" title="40日超に渡るアルバートの冒険、ついに完結！　アルバートに恋した亡国の姫、コナ王女ともお別れです" loading="lazy" height="366"><br><br>ということで、片道勇者TRPGの販促イベントとして行われていた<br>『<a class="double-link red" target="_blank" href="https://web.archive.org/web/20210319143340/https://ssl.fujimi-trpg-online.jp/twittergame2/index.html"><strong>片道勇者オンライン</strong>(ｱｰｶｲﾌﾞ)</a>』ですが、7/25に最終イベントが公開され、<br>一旦の終了を迎えました！<br>運営の方も関係者の方も本当にお疲れ様でした！<br><br>なお診断自体はそのまま残っているので、続けて遊ぶことも、<br>最初からやり始めることも可能です。やり損ねた人も安心！<br><br>そして『片道勇者オンライン』の見本プレイとして行っていた、<br>皆さまおなじみの傭兵アルバートによる冒険も7/30をもってついに完結しました！<br>様々な出会いと別れ、戦いと安らぎの冒険記をツイッターログのまとめとして<br>公開しておりますので、よければぜひどうぞ！　<br><br><a data-primary="https://silversecond.net/contents/library/event/2017_albert_katamichi_online.html" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/event/2017_albert_katamichi_online/2017_albert_katamichi_online.html"><strong><span style="font-size:large;">『アルバート片道冒険記』</span></strong></a><br><br>これまで単体では語られなかったアルバートの冒険ですが、<br>普段はこんな感じで異世界渡りをしています、<br>というのが分かるお話になっています。<br><br>せっかく40日以上に渡って書いたので、余裕があればいずれ、<br>うちのサイトのテキストコンテンツとして読みやすく再編集して<br>載せておこうかなと考えています。<br><hr size="1" /><br><strong><span style="font-size:large;">【第八回ウディコン　審査開始！】</span></strong><br><br>そしてこちらも本題！　7/30までエントリー受付していたウディコンですが、<br>いよいよ本日7/31から皆さまによる審査が開始となります！<br><br><a data-primary="http://silversecond.com/WolfRPGEditor/Contest/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><strong><span style="font-size:large;">【ウディコン公式ページ】</span></strong></a>(新ｳｨﾝﾄﾞｳ)<br><br>作品数は全部でなんと68作品！<br>今年はいつになくクオリティの密度がかなり高く、他の大きいコンテストに<br>出したほうが良かったんじゃ……と主観で感じる作品も多かったです。<br><br>審査の締め切りは<strong>8/23の23:59</strong>まで！<br>皆さまの審査、お待ちしております！<br><br><hr size="1" /><br><strong><span style="font-size:large;">【Steamセール中！】</span></strong><br><br>毎月セールしてるので4記事に一回はSteamセールです！<br><span style="font-size:large;"><strong>8/6 頃</strong></span>までSteamで片道勇者のセールやってます！<br><br><a class="double-link red" target="_blank" href="http://store.steampowered.com/bundle/827/"><span style="font-size:x-small;">クリックで 『片道勇者　＆　片道勇者プラス』 セット購入ページへ（新ｳｨﾝﾄﾞｳ）</span><br><img src="../../image/2016/20160701_231x87_Small_Cupsule_JP.jpg" border="2" loading="lazy" height="87"></a><br>『片道勇者　＆　片道勇者プラス』　のセットパックが、今ならなんと<br><span style="font-size:large;"><strong>￥1,000→ <span style="color:#CC0000">￥312</span></strong></span> (69％OFF)　です！<br><br>Steamで遊ぶと何がいいって、クラウドセーブされるので<br>ゲームを消したり他のPCで遊んだりするときも続きから遊べることです！<br>（ただし保存されるのは「システムセーブデータ」だけですのでご注意ください。<br>冒険途中で記録した個別のセーブデータは保存されません）<br>『<a class="double-link red" target="_blank" href="http://www.amazon.co.jp/gp/product/4040709446/ref=as_li_tf_il?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=4040709446&amp;linkCode=as2&amp;tag=smokingwolf-22"><strong>片道勇者TRPG</strong></a>』の原作を見てみたい人も、よければこの機会にぜひ。</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2016-07-31 (日)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2016%2F07.html%232016-07-31&title=%E7%89%87%E9%81%93%E5%8B%87%E8%80%85%EF%BD%B5%EF%BE%9D%EF%BE%97%EF%BD%B2%EF%BE%9D%E5%AE%8C%E7%B5%90%21%2B%EF%BD%B3%EF%BE%83%EF%BE%9E%EF%BD%A8%EF%BD%BA%EF%BE%9D" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2016%2F07.html%232016-07-31&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2016-07-31','片道勇者ｵﾝﾗｲﾝ完結!+ｳﾃﾞｨｺﾝ', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/owh/001.html'>片道勇者</a></span></div></div><br><br><br>
+<a id='2016-07-23'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2016-07-23','第8回ウディコン！', this)" style='cursor:pointer;'>2016-07-23 (土)&nbsp;&nbsp;&nbsp;第8回ウディコン！</span><span style='float:right;'><a href='#2016-07-16' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><strong><span style="font-size:large;">【第8回ウディコン、いよいよ開催！】</span></strong><br><br><img src="../../image/2016/20160723.jpg" title="ウルファール、ストラップも発売中！" loading="lazy" height="410"><br><br>ということで、明日7/24の0時よりいよいよウディコンの作品公開が始まります！<br>募集自体はデータ破損などを避ける都合上、7/23の夜頃から開始します。<br><br><a data-primary="http://silversecond.com/WolfRPGEditor/Contest/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><strong><span style="font-size:large;">【WOLF RPGエディターコンテスト公式サイト】</span></strong></a><span style="font-size:x-small;">(新ｳｨﾝﾄﾞｳ)</span><br><br>そろそろ他コンテストも増えてきたので、応募規模も縮小して<br>少しは楽になるんじゃないかなーと期待しつつあるんですが、<br>今年は果たしてどうなるでしょうか。今となっては、運営は私一人ですからね。<br><br>ちなみに、来年2017年の第9回ウディコンもすでに開催が決定しておりますので、<br>「今年が最後だったら出さなきゃ！」とお考えになる必要はございません。<br>いいアイデアのゲームはぜひじっくり熟成させてください。<br>作っている間に、もっと大きなコンテストに出せる作品に育つかもしれませんしね。<br><br><hr size="1" /><br><strong><span style="font-size:large;">【片道勇者オンライン　終了間際！】</span></strong><br><br>先月１４日に始まったツイッターゲーム『片道勇者オンライン』ですが、<br>いよいよ7/25に最終イベント公開予定とのことです！<br><br><a class="double-link red" target="_blank" href="https://web.archive.org/web/20210319143343/https://fujimi-trpg-online.jp/twittergame2/"><span style="font-size:large;"><strong>【片道勇者オンライン公式サイト】</strong></span></a><span style="font-size:x-small;">(ｱｰｶｲﾌﾞ)</span><br><br>薬師ネムリがクモにされかけたり大陸一個分のサイズの超巨大迷宮が<br>発見されたりと色々ありましたが、いよいよクライマックス！<br>これまで遊んでくださっている皆さま、よければ最後まで<br>お付き合いいただければ幸いです。<br><br>なお、私はおなじみのキャラクター、「アルバート」を使用して<br>片道勇者オンラインの見本プレイを行っております。<br>よければこちらもぜひご覧ください。意外と波乱万丈の冒険でした。<br><br><a data-primary="https://silversecond.net/contents/library/event/2017_albert_katamichi_online.html" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/event/2017_albert_katamichi_online/2017_albert_katamichi_online.html"><strong>【アルバート片道冒険記（プレイまとめ）】</strong></a><span style="font-size:x-small;"></span><br><br>自分で作っておきながらツイッターゲームを遊ぶのは実は初めてだったんですが、<br>演出を書いたりキャラクターを表現したりする遊び方をするならば<br>まさにTRPGの訓練にすごく向いてるなあ、という印象でした。<br><br><hr size="1" /><br><strong>＜元々、片道勇者オンラインは『片道勇者TRPG』のPRゲームでした＞</strong><br><br>ものすごく原作の再現性が高くてシステムも美しく再構築された<strong>『片道勇者TRPG』</strong>も<br>絶賛発売中ですので、よければこの夏にぜひどうぞ！<br>私が剣士のお姫さまキャラになったりしているリプレイも半分くらい載ってます。<br><br><br>（たぶん）来月中には片道勇者TRPGの連載リプレイも開始予定！<br>お楽しみに！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2016-07-23 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2016%2F07.html%232016-07-23&title=%E7%AC%AC8%E5%9B%9E%E3%82%A6%E3%83%87%E3%82%A3%E3%82%B3%E3%83%B3%EF%BC%81" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2016%2F07.html%232016-07-23&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2016-07-23','第8回ウディコン！', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/woditor/001.html'>ウディタ</a></span></div></div><br><br><br>
+<a id='2016-07-16'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2016-07-16','片道勇者TRPG 7 収録', this)" style='cursor:pointer;'>2016-07-16 (土)&nbsp;&nbsp;&nbsp;片道勇者TRPG 7 収録</span><span style='float:right;'><a href='#2016-07-08' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【片道勇者TRPG　その7　収録中！】</strong></span><br><br>片道勇者TRPG連載リプレイ用の収録、徐々に進んでおります！<br><br>来週のウディコン募集開始までには、ある程度の収録を<br>済ませたいなという勢いで進行中です。<br>その後に、一番大変なリプレイ編集作業が待ってます！<br><br><strong><span style="font-size:x-small;">プレイヤーキャラクター、4人のうちの2人</span></strong><br><img src="../../image/2016/20160716.jpg" border="1" title="中の人は、サントリナさんの中の人とンクさんの中の人です" loading="lazy" height="547"><br><br>収録の進行状況としてはただいま7～8セッション予定中の<br>5セッションが終わっているところです。<br><br><自家製>片道勇者TRPGのときみたいにいつも通り<br>下品なネタが飛び交うひどいセッションになってますが、<br>ブリッツPさんの動画と違って公式扱いはされていないので安心です！<br>どこまで検閲が入るか戦々恐々です。<br><br>今回は全部収録が終わってから、調整したり色々とアレコレしてもらったりして<br>完全に準備が整ってからようやく連載開始する予定なので、<br>連載が途中で頓挫したりはしないはずです！　ご安心を！<br><br>ということなので、ウディコンなども楽しんでいただきつつ、<br>もう少々お待ちいただければ幸いです。<br><br><hr size="1" /><br><strong><span style="font-size:large;">【第8回ウディコン、まもなく開催！】</span></strong><br><br>さて、来週からはついに第8回ウディコンの募集期間開始です！<br>募集開始は7/24となっております！<br>（が、例年通りなら集中によるデータ破損など事故を避けるために<br>7/23の夜頃にこっそり募集開始すると思います）<br><br>今年の応募作品も非常に楽しみです。<br>なお、私が生きていれば2017年にも「第9回ウディコン」を開催する予定ですので、<br>「すごくいいアイデアなんだけど作り込みがどう考えても足りない！」<br>というゲームを開発しておられる場合は来年を狙ってくださるのも手ですよ。<br><br>また、最近は他にもゲームコンテストや投稿の場が<br>たくさん出ていていますので、そちらもぜひご検討ください！<br>広い場に出られる素質がある作品ならば、<br>ぜひ広いところへ展開していただきたい、というのが私の願いです。<br>（あと、私のコンテスト運営も楽になりますしね！）<br><br><hr size="1" /><br>以下は気になった拍手コメントへの返信です。<br>皆さま、いつもコメントありがとうございます！<br><br><br><strong>＞ぎゃあー！　（ストラップ）かわいい！！　キャラクターの追加うれしすぎまーす！<br>＞絶対に買います買わせてください！！！！　第一弾のネムリンは、マイ財布にて<br>＞日々お金の出入りを見張っ……見守ってくれています♪　引っ張ったりして　　　.<br>＞結構酷使しているはずですが元気元気です。ほんとに丈夫ですよね！　　　　　.<br></strong><br>ありがとうございます！　機会があればぜひお気に入りのキャラをどうぞ！<br>来月頃には送料も320円のが選べるようになるので、気になっている方は<br>どれにするか考えておいていただくのもいいかもしれませんね。<br>小さいグッズでありながら頑丈なのは頑丈なので、安心して日用品に付けられます。<br><br><br><strong>＞遅ればせながら！　片道勇者開発記を！　購入しました！　<br>＞念願のフリーダ王女のお話が、読めた……（中略）　　　　　.<br>＞読んで良かったです、本当に。王女ファンにとって　　　　　 .<br>＞救いになるお話だったなぁと思います。　　　　　　　　　　　　.</strong><br><br>『片道勇者開発記』のお買い上げありがとうございます！<br>楽しんでいただけたのでしたら幸いです。<br><br>フリーダ王女の裏側が見られる片道勇者開発記は<br>ただいま絶賛発売中です、興味がある方はこの機会にぜひどうぞ！<br><br><a data-primary="http://silversecond.net/contents/game/katamichi_making/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/ebook_one_way_heroics_making/">『片道勇者開発記』公式サイト<br><img src="../../image/etc/katamichiM_banner.jpg" border="1" loading="lazy" height="40"></a></CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2016-07-16 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2016%2F07.html%232016-07-16&title=%E7%89%87%E9%81%93%E5%8B%87%E8%80%85TRPG%207%20%E5%8F%8E%E9%8C%B2" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2016%2F07.html%232016-07-16&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2016-07-16','片道勇者TRPG 7 収録', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/owh/001.html'>片道勇者</a></span></div></div><br><br><br>
+<a id='2016-07-08'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2016-07-08','片道勇者グッズ、予約開始！', this)" style='cursor:pointer;'>2016-07-08 (金)&nbsp;&nbsp;&nbsp;片道勇者グッズ、予約開始！</span><span style='float:right;'><a href='#2016-07-02' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><strong><span style="font-size:large;">【メタルストラップ、予約開始！】</span></strong><br><br>ついに来ました、今回は新発売のグッズのご紹介です！<br>片道勇者＆ウルファールのミニメタルストラップの<strong><span style="color:#CC0000">【予約受付】</span></strong>を開始しました！<br><br>今回は珍しく物質的な商品で、数量には限りがございますのでご注意ください。<br>もうワンセット生産してもよさそうな勢いで出れば増産されると思いますが、<br>そうでない場合は販売終了になる可能性がございます。<br><br>予約ページはこちらです↓<br><br><a class="double-link red" target="_blank" href="https://silversecond.booth.pm/items/284665"><span style="font-size:large;"><strong>【BOOTH　ストラップ予約ページ】</strong></span><br><img src="../../image/2016/20160709A.jpg" border="2" title="BOOTHさんページへ" loading="lazy" height="176"></a><br><span style="font-size:x-small;">※ご予約にはpixiv IDが必要です（前はいらなかったのにー！）</span><br><br>念押ししておきますが、今はあくまで <strong>【予約】</strong> 段階となっております！<br>来月以降、<span style="color:#CC0000"><strong>8～9月頃</strong>に商品をお届け予定</span>です。<br><br>製造のほうはすでに発注済みで、たぶん完了まで１ヶ月くらいかかるとのことで、<br>それに加えて「BOOTHさんへの倉庫に送って受理されるまでの時間」や<br>「注文を受け付けてから発送されるまで」のラグなどもろもろを足して、<br>「平均的にいけば8月中にお届けできるかな？」という雰囲気だと思います。<br>（不幸が重なると9月にずれこむと思います）<br><br><hr size="1" /><br><strong><span style="font-size:large;">【メタルストラップってどんな商品？】</span></strong><br><br><img src="../../image/2016/20160709B.jpg" loading="lazy" height="225"><br><br>メタルストラップは、キャラ身長2.5cmくらいの小さい金属製ストラップです。<br><br>付けられる先としては『スマホのイヤホン穴』や、『ジッパー』や、<br>『ストラップ穴（イヤホンジャック部分だけヒモからはずせます）』など<br>割と自由度があるので、付ける先には困らない印象です。<br>そして何より頑丈！　もはや傷つけるのが難しいレベルなので雑に扱っても安心です。<br><br><hr size="1" /><br><strong><span style="font-size:large;">【どんな種類があるの？】</span></strong><br><br>商品は『片道勇者プラス』のアンケート等で厳正に選ばれた以下の7種類！<br><img src="../../image/2016/20160709C.jpg" border="1" title="商品一覧、在庫の山になるのは果たして誰だ！？" loading="lazy" height="400"><br><br>単価は600円、現在の送料はまとめて700円となっておりますので、<br>お気に入りのキャラをいくつか選んでいただくのがおすすめかもしれません<br>（前は1種類買うのに700円も送料かかったのでお客様が<br>グギャーとなっていました、申し訳ございません！）<br><br>また、送料が約半分（320円）で済む「メール便」が使えるようになるのは<br>実際に商品が発売されてからになるようですので、<br>「送料が安い方で買いたい！」という方は、発売開始まで少々お待ちください。<br>それまでに売り切れになるようでしたら、さすがに再生産が入ると思います。<br><br>ちなみにストラップのデザインや作成その他諸々は、<br>前回のネムリストラップに引き続き、<br><a class="double-link red" target="_blank" href="https://web.archive.org/web/20160921133511/http://girotin.blogspot.jp/"><strong>同人サークル「ギロチン銀座」</a></strong>様(当時のｱｰｶｲﾌﾞﾍﾟｰｼﾞへ)にお願いしています。<br>いつも大変お世話になっております！<br><br>ということで、欲しい方がいらっしゃいましたら、よければぜひ。<br>↓<br>【BOOTH　片道勇者ストラップ予約ページ】<br><S>https://silversecond.booth.pm/items/284665</S> (販売終了)</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2016-07-08 (金)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2016%2F07.html%232016-07-08&title=%E7%89%87%E9%81%93%E5%8B%87%E8%80%85%E3%82%B0%E3%83%83%E3%82%BA%E3%80%81%E4%BA%88%E7%B4%84%E9%96%8B%E5%A7%8B%EF%BC%81" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2016%2F07.html%232016-07-08&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2016-07-08','片道勇者グッズ、予約開始！', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/devlog/001.html'>開発日誌</a></span></div></div><br><br><br>
+<a id='2016-07-02'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2016-07-02','片道勇者TRPG 6 + PayPal', this)" style='cursor:pointer;'>2016-07-02 (土)&nbsp;&nbsp;&nbsp;片道勇者TRPG 6 + PayPal</span><span style='float:right;'><a href='#bottom' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><strong><span style="font-size:large;">【片道勇者TRPG その6】</span></strong><br><br>リプレイ連載開始までだいぶ遠そうなので、しばらくお茶濁しのターンです！<br>今回は片道勇者TRPG、連載セッションで登場予定のNPCをご紹介！<br>第一弾はこれ！<br><br><img src="../../image/2016/20160702.jpg" border="1" title="もうネタバレしたほうが興味を持ってくれる人が増えるのでは説が出ている片道勇者開発記" loading="lazy" height="620"><br><br>今回ご紹介するのは連載セッションにゲスト参加したNPC、<br><a data-primary="http://silversecond.net/contents/game/katamichi_making/" class="double-link blue" target="_blank" title="『片道勇者開発記』" href="https://smokingwolf.github.io/ebook_one_way_heroics_making/"><strong>『片道勇者開発記』</strong></a> より狩人レインです！<br>無印版の開発段階からぼんやりとした構想だけはあったのですが、<br>出す機会がなくて関係キャラのストーリーと共に原作から消滅したキャラです。<br><br>元はお城で召使いの仕事をしていましたが、強くなろうとするフリーダ王女を見て、<br>レイン自身も弓使いとしての訓練を始めたという経緯があります。<br>本来ならフリーダ王女と旅立つ予定だったのですが……？<br><br>彼女が何者か詳しく知ってる人はまだ世界に数百人しかいませんので<br>気になる人はぜひ<a data-primary="http://silversecond.net/contents/game/katamichi_making/" class="double-link blue" target="_blank" title="『片道勇者開発記』" href="https://smokingwolf.github.io/ebook_one_way_heroics_making/"><strong>『片道勇者開発記』</strong></a>（税込500円）をどうぞ！<br><br><br><a data-primary="http://silversecond.net/contents/game/katamichi_making/" class="double-link blue" target="_blank" title="『片道勇者開発記』" href="https://smokingwolf.github.io/ebook_one_way_heroics_making/"><strong>『片道勇者開発記』 公式ページはこちらをクリック！</strong><br><img src="../../image/etc/banner_katamichi_dev.jpg" border="1" title="" loading="lazy" height="176"></a><br><strong>ゲーム版（WebMoneyかPayPalで購入可）</strong> と <strong>Kindle版（Amazonで購入可）</strong>があります。<br><br><hr size="1" /><br><strong><span style="font-size:large;">【PayPal搭載！】</span></strong><br><br>今のところは<a data-primary="http://silversecond.net/contents/game/katamichi_plus/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/game_one_way_heroics_plus/"><strong>『片道勇者プラス』</strong></a>と<a data-primary="http://silversecond.net/contents/game/katamichi_making/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/ebook_one_way_heroics_making/"><strong>『片道勇者開発記』</strong></a>だけですが、<br><strong>PayPalお支払い</strong>に対応しました！<br><br>PayPalというのは海外の老舗（しにせ）のクレジットカード利用可能決済サービスで、<br>クレジットカード番号をお店で直接入れずにPayPalを経由して支払いできるため、<br>カード番号の漏洩などを心配せずに使えるのが魅力です。<br><br>が、いざPayPalを使ってみると、初めての人には<br>意外と不便なところがあったりしておすすめしにくい感じだったりしたので、<br>このお支払い方法は「すでにアカウントをお持ちの方向け」な印象でした。<br><br>簡単に言うと、初登録後、2回目のお買い物をするときにカードの認証プロセスが挟まって、<br>数日～1ヶ月近く待たねばならない場合がある、ということです（それ以降はお手軽！）。<br><br>一方でWebMoneyさんの方は、WebMoneyウォレットのアカウントを取れば<br>クレジットカードで1000円からチャージ（入金）できるので、<br>どのみちアカウントを取るのならば初めての人には一周戻って<br>こっちのほうがおすすめな気がします。<br>一番簡単で安全なのは、コンビニでWebMoneyカードを<br>買ってきていただくことですけれどね。<br><br><hr size="1" /><br><strong><span style="font-size:large;">【Steamセール中！】</span></strong><br><br>「おまえんちの片道勇者っていつもセールやってるよな」<br>と言われそうですが、<span style="font-size:large;"><strong>7/4 か 7/5 頃</strong></span>までSteamで片道勇者のセールやってます！<br><br><a class="double-link red" target="_blank" href="http://store.steampowered.com/bundle/827/"><span style="font-size:x-small;">クリックで 『片道勇者　＆　片道勇者プラス』 セット購入ページへ</span><br><img src="../../image/2016/20160701_231x87_Small_Cupsule_JP.jpg" border="2" loading="lazy" height="87"></a><br>『片道勇者　＆　片道勇者プラス』　のセットパックが、今ならなんと<br><span style="font-size:large;"><strong>￥1,000→ <span style="color:#CC0000">￥312</span></strong></span> (69％OFF)　です！<br><br>これまでよりさらに安くなっておりますので、気になっていた方はぜひどうぞ。<br><br>Steamで遊ぶと何がいいって、クラウドセーブされるので<br>ゲームを消したり他のPCで遊んだりするときも続きから遊べることです！<br>（ただし保存されるのは「システムセーブデータ」だけですのでご注意ください。<br>冒険途中で記録した個別のセーブデータは保存されません）</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2016-07-02 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2016%2F07.html%232016-07-02&title=%E7%89%87%E9%81%93%E5%8B%87%E8%80%85TRPG%206%20%2B%20PayPal" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2016%2F07.html%232016-07-02&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2016-07-02','片道勇者TRPG 6 + PayPal', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/owh/001.html'>片道勇者</a></span></div></div>
+<div class='article_pos'>2016年07月</div>
+<div class='nav'><a href='08.html'>次の月へ</a> | <a href='06.html'>前の月へ</a></div>
+<a id='bottom'></a>
+
+<BR><BR>
+<div align="right"><a href="#top" class="g">▲一番上へ戻る</a></div>
+<BR>
+<CENTER>
+<HR>
+<div>
+<div id="silsec-status" style="display:inline-block;line-height:12px;font-size:10px;"></div>　<div align="center" style="display:inline-block;line-height:12px;font-size:10px;"><a href="https://smokingwolf.github.io/" target="_blank" class="blue" border="1"><img src="https://smokingwolf.github.io/banner.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>アーカイブサイトへ</a></div>
+</div>
+<HR>
+Copyright © SmokingWOLF / Silver Second
+<HR>
+</CENTER>
+
+
+<script>
+  // シルバーセカンド公式のドメインに接続し、サイト存在確認用のTXT(SILVERSECOND_ALIVE!と書かれている)があれば存在する扱いにする
+  const statusDiv = document.getElementById('silsec-status');
+  const checkUrl = 'https://silversecond.net/SILVERSECOND_SITE_ALIVE_FLAG.txt';
+
+  fetch(checkUrl, { cache: 'no-store' })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('ネットワークエラー');
+      }
+      return response.text();
+    })
+    .then(text => {
+      if (text.trim() === 'SILVERSECOND_ALIVE!') {
+        statusDiv.innerHTML = '<a href="https://silversecond.net/" target="_blank" class="blue"><B><img src="https://silversecond.net/banner/a.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>運営中のサイトへ</a>　';
+      } else {
+        statusDiv.textContent = '　';
+      }
+    })
+    .catch(error => {
+      statusDiv.textContent = '　';
+      console.error('シルバーセカンド公式サイトチェック失敗:', error);
+    });
+</script>
+
+
+
+
+</div>
+<div id='sidebar'>
+<div style='font-weight:bold;'>開発日誌</div>
+<div><a class='sidebar_link' href='../../archive/top/index.html'>日誌トップへ</a></div>
+<div><B><a class='sidebar_link' href='../../index.html'>全記事一覧</a></B></div>
+<hr>
+<div style='font-weight:bold;'>【最新記事】</div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/09.html#2025-09-06'>●09/06 ウディタ新機能2つ！(Y表示補正/MoveWatch)＆ 片道勇者プラス修正！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/08.html#2025-08-24'>●08/24 第17回ウディコン結果発表！　上位3作品とピックアップ紹介！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/08.html#2025-08-09'>●08/09 『シルバーセカンド思い出の部屋』を開設！＋ 来年よりウディコン規約追加</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-26'>●07/26 第17回ウディコン審査期間開始！ ＆ 規約の補足</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-12'>●07/12 ウディコン直前！ サイト＆ウディタ修正＋シェパード捜査録！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-28'>●06/28 ウディコン準備中！+ 開発日誌も移転作業中</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-14'>●06/14 サイト修正＋開発日誌をFC2から移転！</a></div>
+<hr>
+<div style='font-weight:bold;'>【カテゴリ】</div>
+<div><a class='sidebar_link' href='../../category/woditor/001.html'>ウディタ&nbsp;<span class='sym'>(87)</span></a></div>
+<div><a class='sidebar_link' href='../../category/owh2dev/001.html'>片道勇者2&nbsp;<span class='sym'>(78)</span></a></div>
+<div><a class='sidebar_link' href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(78)</span></a></div>
+<div><a class='sidebar_link' href='../../category/owh/001.html'>片道勇者&nbsp;<span class='sym'>(59)</span></a></div>
+<div><a class='sidebar_link' href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(19)</span></a></div>
+<div><a class='sidebar_link' href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(11)</span></a></div>
+<div><a class='sidebar_link' href='../../category/trpg/001.html'>TRPG&nbsp;<span class='sym'>(9)</span></a></div>
+<div><a class='sidebar_link' href='../../category/study/001.html'>勉強メモ&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../category/planethowl/001.html'>ﾌﾟﾗﾈｯﾄﾊｳﾙ&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../category/silgen/001.html'>シル幻&nbsp;<span class='sym'>(1)</span></a></div>
+<hr>
+<div style='font-weight:bold;'>【月別】</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2025-btn' onclick="toggleYear('y2025')">2025&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2025' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2025/09.html'>09月&nbsp;<span class='sym'>(1)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2024-btn' onclick="toggleYear('y2024')">2024&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2024' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2024/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/01.html'>01月&nbsp;<span class='sym'>(2)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2023-btn' onclick="toggleYear('y2023')">2023&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2023' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2023/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/09.html'>09月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2022-btn' onclick="toggleYear('y2022')">2022&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2022' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2022/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2021-btn' onclick="toggleYear('y2021')">2021&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2021' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2021/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2020-btn' onclick="toggleYear('y2020')">2020&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2020' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2020/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/07.html'>07月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2019-btn' onclick="toggleYear('y2019')">2019&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2019' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2019/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2018-btn' onclick="toggleYear('y2018')">2018&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2018' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2018/12.html'>12月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/11.html'>11月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/10.html'>10月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/09.html'>09月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/08.html'>08月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/07.html'>07月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/06.html'>06月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/04.html'>04月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/01.html'>01月&nbsp;<span class='sym'>(5)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2017-btn' onclick="toggleYear('y2017')">2017&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2017' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2017/12.html'>12月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/11.html'>11月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/09.html'>09月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/08.html'>08月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/07.html'>07月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/06.html'>06月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/05.html'>05月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/04.html'>04月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/01.html'>01月&nbsp;<span class='sym'>(5)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2016-btn' onclick="toggleYear('y2016')">2016&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2016' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2016/12.html'>12月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2016/11.html'>11月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2016/10.html'>10月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2016/09.html'>09月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2016/08.html'>08月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2016/07.html'>07月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2016/06.html'>06月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2016/05.html'>05月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2016/04.html'>04月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2016/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2016/02.html'>02月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2016/01.html'>01月&nbsp;<span class='sym'>(5)</span></a></div>
+</div>
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  // data-primary を持つ a のみ対象に
+  const links = document.querySelectorAll('a.double-link[data-primary]');
+
+  links.forEach(link => {
+    //const primaryUrl = link.dataset.primary;
+    
+    
+    // ★ HTTP→HTTPS に強制変換してテスト
+	const primaryUrl = link.dataset.primary
+	  .replace(/^http:/, 'https:')
+	  .replace(/www\.silversecond/, 'silversecond');
+
+    if (!primaryUrl) return;
+    
+    const testUrl = primaryUrl + '?t=' + Date.now(); // キャッシュ無効化！
+
+    fetch(testUrl, { method: 'GET', cache: 'no-store' })
+      .then(res => {
+        const url = res.url || '';
+        if (!res.ok || url.includes('404.html') || res.status === 404) {
+          console.warn('【404または失敗】そのままアーカイブを使います:', link.href);
+          // そのまま
+        } else {
+          console.warn('【OK】hrefを本家に書き換えます:', primaryUrl);
+          link.href = primaryUrl;
+        }
+      })
+      .catch(() => {
+        console.warn('【通信エラー】そのままアーカイブを使います:', link.href);
+        // エラー時もhrefはそのまま
+      });
+  });
+});
+</script>
+
+
+
+</body>
+</html>
