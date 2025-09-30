@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>シルバーセカンド開発日誌 / SmokingWOLF</title>
+<meta name="viewport" content="width=720">
+<script src="../../js/smoothscroll_up.js" type="text/javascript"></script> 
+
+<link rel="stylesheet" href="../../js/litebox/css/lightbox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../../js/litebox/js/prototype.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/moo.fx.js"></script>
+<script type="text/javascript" src="../../js/litebox/js/litebox-1.0.js"></script>
+
+<style>
+html {
+  /* スマホ時は1.2倍フォントで表示 */
+  -webkit-text-size-adjust: 120%;
+  -ms-text-size-adjust: 120%;
+}
+
+BODY{
+  /*display:flex;*/
+  font-size:13px;
+  margin:0;
+  font-family: "Verdana",YuGothic, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+  color:#558;
+}
+
+TD{
+  font-size:12px;
+}
+
+
+A:LINK,A:VISITED {  color:#5658f6;  text-decoration:underline ;}
+A:HOVER,A:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.red:LINK,A.red:VISITED{color:#d6385c;display: inline-block;text-shadow: 0 0 15px #ffddcc, 0 0 15px #ffddaa;}
+A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline; text-shadow: 0 0 15px #ffcccc, 0 0 15px #ffaaaa;}
+
+A.blue:LINK,A.blue:VISITED {  color:#5658f6;text-decoration:underline ;}
+A.blue:HOVER,A.blue:ACTIVE{ color: #9698e6;  text-decoration: underline;}
+
+A.g:LINK,A.g:VISITED{
+	color:#38a68c;
+	text-decoration:underline;
+}
+
+A.g:HOVER,A.g:ACTIVE{
+	color : #68b6ac;
+	text-decoration : underline;
+}
+
+
+A.jumplink:LINK,A.jumplink:VISITED{
+	color:#38c6ac;
+}
+
+A.jumplink:HOVER,A.jumplink:ACTIVE{
+	color : #68f6ac;
+}
+
+A.jumplink{
+	text-shadow: 0 0 15px #ccddcc, 0 0 15px #aaddaa;
+	text-decoration : none;
+}
+
+
+.article_pos{
+	font-size:16px;
+	color:#aaf; 
+	font-weight:bold;
+	text-align:center;
+	margin:0px;
+	padding:0px;
+}
+
+#content {
+	font-size:14px;
+	
+}
+
+#sidebar {
+	background:#f8f8f8; 
+	border-left:1px solid #ddd; 
+	padding:4px 6px;
+	font-size:12px;
+}
+
+A.sidebar_link:LINK,A.sidebar_link:VISITED,
+A.sidebar_link_recent:LINK,A.sidebar_link_recent:VISITED{
+    color:#5658f6;
+	text-decoration: underline;
+}
+A.sidebar_link:HOVER,A.sidebar_link:ACTIVE,
+A.sidebar_link_recent:HOVER,A.sidebar_link_recent:ACTIVE{
+	color: #9698e6;
+	text-decoration: underline;
+}
+
+.sidebar_link{
+	font-size:13px;
+}
+
+.sidebar_link_recent{ /* 1つ1つの項目ごとに隙間を空ける */
+	font-size:11px;
+	line-height: 1.2;
+	display: inline-block;
+	margin-top:5px;
+}
+
+
+.entry {
+	border:1px solid #ccc; 
+	border-radius:8px; 
+	margin:14px 0; 
+	overflow:hidden;
+
+}
+.entry-title {
+	background:linear-gradient(to right,#4243ff,#aaaacf);
+
+	font-size:17px;
+	color:#fff; 
+	padding:4px; 
+	font-weight:bold;
+	/*text-shadow: 0 0 15px #ddccff, 0 0 15px #ddaaff;*/
+}
+
+.entry-body,.extended {
+	background:#fff; 
+	color:#444; 
+	padding:15px;
+	font-size:14px;
+	line-height:1.6em;
+}
+
+.entry-foot {
+	background:#fff; 
+	text-align:center;
+	vertical-align:middle;
+	color:#ccf;
+	font-size:12px;
+	padding-top:20px;
+	padding-right:20px;
+	padding-bottom:10px;
+}
+
+.linkbutton{
+	padding:3px;
+}
+
+/*--●形状整理用--*/
+body {display:flex; margin:0;}
+#content {width:600px; padding:0 8px;
+	font-size:14px;}
+#sidebar {width:120px;  box-sizing:border-box; }
+#sidebar div {line-height:1.6;}
+#sidebar hr {border:none; border-top:1px dashed #aaa; margin:4px 0;}
+.nav {margin:0px 0 -20px 0; text-align:center;}
+.sym {color:#999; font-weight:normal;}
+
+</style>
+
+
+<script>
+function toggle(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+function toggleDisp(id){
+  var e=document.getElementById(id);
+  if(e.style.display==='none'){e.style.display='block';}else{e.style.display='none';}
+}
+</script>
+
+
+
+<!--★目次デザイン・処理★-->
+<style>
+.toc-box{background-color:#f0f0f0;border-radius:8px;padding:10px;} 
+.toc-list{list-style:none;margin:0;padding-left:0;} 
+.toc-list ul{list-style:none;margin:0;padding-left:20px;}
+.toc-list li{margin:5px 0;}
+.toc-level1{margin-left:0;}
+.toc-level2{margin-left:20px;}
+
+h1 {
+  background: #fff;
+  padding: 6px 10px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #2233cc; /* 青系 */
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 4px solid #3366ff;
+  display: block;
+  width:100%;
+  
+}
+
+
+h2,h3 {
+  background: #fff;
+  padding: 6px 10px;
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #5566ff; /* 青系 */
+  
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 2px solid #9999ff;
+  display: -block;
+
+}
+
+h2::before {
+  content: "- ";
+}
+
+.master_years{
+  margin-left:20px;
+  margin-right:20px;
+}
+
+.top_minicategory{
+  font-size:10px;
+  color:#ccccff;
+}
+</style>
+
+
+
+</head>
+<body onload="initLightbox();">
+<a id="top"></a>
+
+<style type='text/css'>
+.linkbutton{
+  font-size: 0.9em;
+  padding: 1px 6px;
+  vertical-align: baseline;
+  line-height: 1;
+  height: auto;
+  margin-left: 4px;
+  color:#66f;
+  background-color:#f9f9f9;
+  border: 1px solid #888;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.copy-popup{
+  background-color: #eef;
+  border: 1px solid #88c;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  color: #333;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.5s ease;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  max-width: 80vw;             /* 画面幅の 80% で折り返す */
+  overflow-wrap: anywhere;     /* 長い URL を途中で区切る */
+  word-break: break-all;       /* ↑が効かない旧ブラウザ保険 */
+  white-space: pre-wrap;       /* 
+ を改行として扱い、余計な連続空白は1個に */
+}
+.article_end_date{
+  font-size:0.9em;
+}
+</style>
+
+
+<script>
+function toggle(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+}
+
+// Year accordion with sessionStorage persistence
+function toggleYear(id){
+  const pane = document.getElementById(id);
+  const btn  = document.getElementById(id+'-btn');
+  if(!pane||!btn) return;
+  const sym  = btn.querySelector('.sym');
+  const isClosed = pane.style.display === 'none';
+  pane.style.display = isClosed ? 'block' : 'none';
+  sym.textContent   = isClosed ? '－' : '＋';
+  sessionStorage.setItem('year-'+id, isClosed ? 'open' : 'closed');
+}
+
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('[data-yearpane]').forEach(pane=>{
+    const id    = pane.id;
+    const state = sessionStorage.getItem('year-'+id);
+    const btn   = document.getElementById(id+'-btn');
+    const sym   = btn?.querySelector('.sym');
+    if(state === 'open'){
+      pane.style.display = 'block';
+      if(sym) sym.textContent = '－';
+    }else{
+      pane.style.display = 'none';
+      if(sym) sym.textContent = '＋';
+    }
+  });
+});
+
+function copyLink(date, title, el){
+  const url = `https://smokingwolf.github.io/dev_blog/archive/${date.slice(0,4)}/${date.slice(5,7)}.html#${date}`;
+  const text = `
+【${date}　${title}】
+ ${url}`;
+  navigator.clipboard.writeText(text).then(()=>{
+    if(el && el.tagName === 'BUTTON'){
+      const orig = el.textContent;
+      el.textContent = '✅ コピー完了!';
+      setTimeout(()=>{ el.textContent = '🔗 リンクをコピー'; }, 2000);
+    }
+
+    const popup = document.createElement('div');
+    popup.className = 'copy-popup';
+    popup.textContent = `✅ コピー完了：${text}`;
+    document.body.appendChild(popup);
+
+    const rect = el.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    const popupWidth = popup.offsetWidth;
+    const pageWidth = document.documentElement.clientWidth;
+
+    let left = rect.left + scrollLeft + (rect.width / 2) - (popupWidth / 2);
+    let top  = rect.top  + scrollTop - popup.offsetHeight - 8;
+    if(left < scrollLeft + 4) left = scrollLeft + 4;
+    if(left + popupWidth > scrollLeft + pageWidth - 4)
+        left = scrollLeft + pageWidth - popupWidth - 4;
+
+    popup.style.left = `${left}px`;
+    popup.style.top  = `${top}px`;
+    popup.style.opacity = '1';
+    popup.style.zIndex = '9999';
+
+    setTimeout(()=>{ popup.style.opacity = '0'; }, 1800);
+    setTimeout(()=>{ popup.remove(); }, 2500);
+  });
+}
+</script>
+
+<div id='content'>
+<style>
+
+.TopTitle{
+  width:515px;
+  font-weight:bold;
+  font-size:16pt;
+  color: #ffffff;
+  background-color:#535365 ;
+  border-width: 0px;
+  border-color:#535365;
+  border-style:solid;
+  background: -moz-linear-gradient(left top, #42435f, #fafaff);
+  background: -webkit-gradient(linear, left top, right bottom, from(#42435f), to(#fafaff));
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#DD42425f', endColorstr='#FFfafaff');
+  
+  text-align:left;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.header3{
+	color:#555588;
+	margin-bottom:16px;
+}
+
+.home-link {
+  font-size: 12px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: underline;
+}
+</style>
+
+<!--戻るリンク、サイトがなくなってたらアーカイブにつながるようにしたが404ページがアレなのかうまくいかない-->
+<!--
+<font id="home-link-placeholder">
+  <noscript>
+    <a href="https://smokingwolf.github.io/" class="home-link">← ホーム(アーカイブサイト)に戻る</a>
+  </noscript>
+</font>
+
+<script>
+(async () => {
+  try {
+    // HEADで軽くチェック（no-corsなのでステータス確認は不可）
+    // 自分のサイトのインフォメーションページにつなげるならサイトがまだあると認識する
+    await fetch("https://silversecond.net/contents/etc/info.shtml", { method: "HEAD", mode: "no-cors" });
+
+    const link = document.createElement("a");
+    link.href = "https://silversecond.net/";
+    link.textContent = "← ホームに戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  } catch {
+    const link = document.createElement("a");
+    link.href = "https://smokingwolf.github.io/";
+    link.textContent = "← ホーム(アーカイブサイト)に戻る";
+    link.className = "home-link";
+
+    document.getElementById("home-link-placeholder").appendChild(link);
+  }
+})();
+</script>
+-->
+
+<div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
+<!--ここにコメント文-->
+<div class="header3" style="margin-top:6px;">　ここはゲーム開発者SmokingWOLF(スモーキングウルフ)の開発日誌です。<BR>
+　<B>【現在の目標】</B>→ ウディタ3.5のバグを落ち着かせる！ ＆ 『片道勇者2』の開発！<BR>
+　<B style="color:#ff5555;">※以前のブログが使えなくなったので、ただいまこの開発日誌に移転中です。</B>
+</div>
+
+<div class='article_pos'>片道勇者　12/<a href='../../category/owh/013.html'>13</a></div>
+<div class='nav'><a href='011.html'>次のページ</a> | <a href='013.html'>前のページ</a></div>
+<a id='2014-06-14'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2014-06-14','片道+ 40 決戦シナリオ', this)" style='cursor:pointer;'>2014-06-14 (土)&nbsp;&nbsp;&nbsp;片道+ 40 決戦シナリオ</span><span style='float:right;'><a href='#2014-05-31' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><strong><span style="font-size:large;">【片道勇者+　その40　決戦シナリオ】</span></strong><br><br>クラス解放シナリオが一段落し、次はいつでも開発を<br>終わらせられるように「決戦シナリオ」の作成を始めることにしました。<br><br>というのも「アレとアレを作らないと終わりにできない」状態よりは<br>「もう最低限必要なのは作り終わったから後は面白さを足すだけだ！」<br>という状態のほうがモチベーションが高くなるからです。<br><br><img src="../../image/2014/20140614.jpg" border="1" title="" loading="lazy" height="196"><br><br>今のところ大きな作業はその「決戦シナリオ」と、<br>「仲間を何人かくらい増やしたい」なと思っているくらいです。<br>残りは膨大な小さい調整とデータ追加で、<br>途中で何か思いついたら随時追加していく予定です。<br>とはいえ、その「残り」に一番時間がかかっちゃうんですけれどね。<br><br>しかし、もともとクリアへの道が数種類しかないゲームとはいえ、<br>追加パッケージとして考えてみると、もうちょっとくらい<br>目玉が欲しいかなと思うところもあるので、<br>その辺りで何とか目玉を用意できないかなと徐々に検討中です。<br><br>シレン5を遊んでみたときは、クリアまではイベントがあって面白いんですが<br>クリア後のダンジョンにストーリー要素が少なくて<br>自分にとってモチベーションを感じにくい部分もどこかありました。<br>そこはまあ好みの問題といえばそうなんですが、せっかくなので何とか<br>決戦シナリオまでへの導線を繋げられるよううまいことパーツを組み上げたり、<br>必要なデータを見定めて追加していきたいなと思った次第です。<br><br>データはそろってきたので、次は簡単でもいいから、<br>何か「進んでるな」と実感できる仕組みを考える必要がありそうです。<br><br><hr size="1" /><br>以下は前回の気胸についていただいたコメントです。<br><br><strong>＞「私も気胸で入院したことがあります。一度目は補助具を付けて<br>＞　自然治癒しましたが、10年くらい後にまたなりまして、その時は<br>＞　手術しなければなりませんでした。大変ですが、頑張って下さい」</strong><br><br><strong>＞「私も気胸経験者なのですが、2回目の発病で手術までいったので、<br>＞ マジで気をつけてください。1週間くらい動けなくなるので。」　　.</strong><br><br><strong>＞「気胸は再発が多いのでいずれ慣れますよ」</strong><br><br>こここここわい情報ありがとうございます！<br>おかげで異常を感じたらすぐ病院に飛び込む心の準備ができました。</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2014-06-14 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2014%2F06.html%232014-06-14&title=%E7%89%87%E9%81%93%2B%2040%20%E6%B1%BA%E6%88%A6%E3%82%B7%E3%83%8A%E3%83%AA%E3%82%AA" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2014%2F06.html%232014-06-14&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2014-06-14','片道+ 40 決戦シナリオ', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/owh/001.html'>片道勇者</a></span></div></div><br><br><br>
+<a id='2014-05-31'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2014-05-31','片道+ 39　シナリオ', this)" style='cursor:pointer;'>2014-05-31 (土)&nbsp;&nbsp;&nbsp;片道+ 39　シナリオ</span><span style='float:right;'><a href='#2014-04-19' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><span style="font-size:large;"><strong>【片道勇者+　その39　クラス解放シナリオ】</strong></span><br><br>久々にナンバーが付く正規の進捗報告です。<br>5月中に終わらせたいと言っていたクラス解放シナリオは<br>マリオカートの影響で2日くらい遅れそうですが段々とまとまってきました。<br><br><img src="../../image/2014/20140531.jpg" border="1" title="" loading="lazy" height="204"><br>忍者シナリオ　襲ってくる敵の忍者を倒すシナリオです<br><br>基本的に片道勇者はランダム生成のマップなので、<br>その上で展開されるストーリーはものすごくご都合主義的です。<br>今のところ、<br><br>「進むと刺客がやってくる！　進むと探している建物が見つかる！」<br><br>という感じで、とにかく何も考えずに旅を進めて、<br>クエストごとにときどき現れる危険な課題を<br>クリアしていってねという内容になっています。<br><br>どのシナリオも、（あれば）建物に入る→戦闘する、の流れがメインです。<br>実際に動かしてみて単調だと思ったら、ブラッシュアップ段階で<br>バリエーションを色々と変えてみようかなと思っています。<br><br>課題の内容にもランダム性を設けようかなと思いましたが<br>考えるコストが足りなかったので今のところ課題は固定です。<br>「絶対に勝てないモンスターがときどき出現して逃げ切ればOK」とか<br>そういうのも面白そうなんですけれどね。<br>しかし書いてみるとなんだか面白そうな気もするので、<br>高難易度に限って出してみるのも面白いかもしれません。　<br>倒せないんだけど、闇に追い込むと報酬がもらえる感じで。<br><br><hr size="1" /><br>しかしいつもながら、シナリオ作りは難しいです。<br>ストーリーやギミック的な話をすると、原作で「あっ」と言わせるネタは<br>裏ボスとか世界観の話などでだいたい使い切ってしまったので、<br>ここからまた何か「あっ」と言わせるのは難しそうです。<br><br>こればかりは、開発中に思いつくか思いつかないかが全くの偶然で、<br>ひねり出してもなかなか出てこないものなので、片道勇者+では<br>そういった面での満足度はあまり確保できないかもしれません。<br>ひとまずある程度の新鮮さを確保できているように感じられるくらいは<br>努力で何とかしてみせたいところです。<br><br><hr size="1" /><br>以下は拍手返信です、いつもありがとうございます！<br><br><strong>＞ライターやってる人間ですが、仕事じゃなくて趣味の感覚でやってます。　　.<br>＞凄い小説家になると１ヶ月で２０万字とか書きますからね（私の仕事だと　.<br>＞５万字くらいだから相当楽）。それだけの文章、好きじゃなきゃやれませんよ。<br>＞テキスト、ですか。キャラクターの台詞など、でしょうか？　　　　　　　　.</strong><br>それも含めて、私がテキストと言う場合はイベントスクリプト全般ですね。<br>「どういう経緯でその場面までたどり着くか」、<br>「どういった分岐が必要か」というパターンを想像してテキストを書くのが<br>ゲーム開発独特の悩みなのか、いつもすごく大変に感じます。<br>書くこと自体より、その場面が「どういう文脈・前提を持ちうるか」を<br>イメージする方が疲れるのかもしれません。<br><br>もちろんそれだけでなく、文章にちょっとした意外性や<br>個性を持たせつつ自然に書くのも大変に感じます。<br>物書きの達人はこの辺を楽々こなせるくらいに<br>成熟できてるのだと思うと、頭が下がるばかりです。<br><br><br><strong>＞ガイコツが現れたら「マイネームイズ透ける豚」とか言い出したり<br>＞「ウマコォォ！！」って言いながらウマコを一定のペースで　　　　.<br>＞床に落とす敵が現れたりするカオスモード導入とか無いですか？</strong><br>なにそれ面白そうですよ！？　と思うものの、そういう系は<br>一斉にネタで飽和攻撃しないと面白さがマックスになりにくいと私は思ってるので、<br>面白くできそうな形で搭載するのはローグライクだと難しそうです（全部は多い！）。<br>今作はこの場でのご紹介まででご勘弁ください！面白いネタありがとうございます！<br><br>でもウマコをポロポロ落とす敵自体は普通に入れてもネタになるかもしれませんね。<br>ウマコを投げると敵にバッドステータスを与えられるぞ！みたいな。<br><br><br><strong>＞片道勇者TRPGも友人と一緒にセッションして倒れかけたりしています(笑)<br>＞そこで、TRPGルールについて質問なのですが戦闘スキルにある「二刀流」<br>＞このスキルは一刀目が完全に防御された場合は二刀目はどうなりますか？<br>＞完全に防御された場合二刀目も完全に防御されたと見なして良いのでしょうか。</strong><br>遊んでくださってありがとうございます！　【二刀流】は、<br>「仮に一刀目がノーダメージでも、二刀目は二刀目でまた防御判定を行う」<br>という形を想定しています。ただ一刀目が防がれる相手だと、<br>まず二刀目なんて通らない気がしますから、運用上<br>面倒くさければおっしゃる手順でもあまり問題ないと思います。<br><br>とはいえ二刀攻撃はHPを1消費するので、PCが二刀攻撃するときは<br>いちおう両方とも防御ロールを振ってあげたい気はしますね。<br><br><br><strong>＞シル学のクリアデータページの文字化けを修正したとのことですが、<br>＞また日本語だけ文字化けしているようです　　　　　　　　　　　　　　.</strong><br>これは失礼しました！　うまくいったのはテストデータだけだったようです。<br>また時間を見つけて調査してみます、ご報告ありがとうございました！</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2014-05-31 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2014%2F05.html%232014-05-31&title=%E7%89%87%E9%81%93%2B%2039%E3%80%80%E3%82%B7%E3%83%8A%E3%83%AA%E3%82%AA" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2014%2F05.html%232014-05-31&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2014-05-31','片道+ 39　シナリオ', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/owh/001.html'>片道勇者</a></span></div></div><br><br><br>
+<a id='2014-04-19'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2014-04-19','片道+ 38 病と展開と', this)" style='cursor:pointer;'>2014-04-19 (土)&nbsp;&nbsp;&nbsp;片道+ 38 病と展開と</span><span style='float:right;'><a href='#2014-04-12' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><strong><span style="font-size:large;">【片道勇者＋　その38】</span></strong><br><br>激しい嘔吐と下痢の症状が出て死ぬかと思った状態が<br>今週の半分くらいを占めていた私です。<br>全部出してゆっくり寝てたらケロッと治ったので<br>さほど大きな問題ではありませんでした。<br><br>今週の残りの半分は、今後の片道勇者の<br>新（？）展開の対応や準備に追われていました。<br>『片道勇者』は、よくもわるくも私の手の届く範囲から<br>離れて展開していくことになるかもしれません。<br><br>というか今現在もSteamで販売とか、すでに<br>私一人じゃ届かないところにいってしまってますけれどね！　<br>手を貸してくださっている皆さまには感謝の限りです。<br><br><br><span style="font-size:large;"><strong>◆今回実装を試みていたもの</strong></span><br><br>さて、今回は開発以外でドタバタしていたので、<br>片道勇者＋は小さい項目だけちょこちょこ進めていました。<br><br><br><strong>【プレイヤーキャラの外部画像の使用】</strong><br><br>片道勇者＋では「プレイヤーのキャラクターチップや顔画像を差し替え」<br>することができるようになる予定です。<br>特定のフォルダに「Class01_B_Chip.png」や「Class01_B_Face.png」<br>といった画像を入れると、プレイ時にその画像に置き換わります。<br><br><img src="../../image/2014/20140419.jpg" border="1" title="ネムリ" loading="lazy" height="185"><br>※剣士Bの顔とチップの画像をネムリにしてみた例<br>なお、ネット機能によるプレイヤー一覧は元の画像で表示されます。<br><br>これで配信プレイのときもなりきりプレイができて安心！（？）<br>キャラチップの作成にはグラフィック合成器をぜひどうぞ。<br><br><br><strong>【好みのBGM設定】</strong><br><br>また、「好みのBGMを地形ごとに追加」することができるようになります。<br>たとえば砂漠地形に新BGMを4曲入れて、オプションで「外部BGMの再生率」を<br>「20％」にしておけば、5回に1回の確率でその4曲からランダム抽選されます。<br><br>他にも、特徴として「どこでも外部曲再生」スキルを実装予定です。<br>最大で9曲のOGGファイルを登録できて、<br>地形の曲を好きな曲に変化させることができます。<br><br>これは既存曲に飽きてどうしようもなくなった人向けの機能です！<br>というのも、そこまでイメージに合いそうな曲がもう残ってないものでして<br>「自分で入れてくれー！」と白ハタを揚げてる状態なんですね。<br><br><hr size="1" /><br>以下は拍手コメントです。<br>前回の片道勇者のバランスについてのコメントや案など、<br>たくさんありがとうございます！<br><br>全部読ませていただいた上で、面白そうなのは検討事項に<br>入れさせていただきましたので、もし他にもあれば遠慮なくどうぞ！　<br>ゲームは部分的に要望を聞くとグニャグニャになったりすることも多いので、<br>うまく咀嚼（そしゃく）して、うまく仕上がるようにがんばります。<br><br><br><strong>（前の記事の　日本ゲーム大賞　の応募要項について）<br>＞シェアウェアの報酬に関しては、プロと見なされるかどうかは<br>＞微妙なところじゃないでしょうか。問い合わせてみては？　　.</strong><br>実はシェパード捜査録やクリフ深淵録など、企業様から<br>お仕事として請けた仕事がモバイル方面でいくつかあるんですよ。<br>さすがに「まだ2回しか請けてないから大丈夫だよね？」<br>って問い合わせる勇気はありません。<br><br><br><strong>＞おおよその開発のロードマップが気になります<br>＞あと、いつ頃発売予定なのかも気になります</strong><br>ごめんなさい、予定は分からない、というのが正直なところです！<br>面白いアイデアが出るとその分だけどんどん遅れていきますし、<br>一ヶ月くらい半分のペースしか出せないときもありますしね。<br>それでも、今で8割くらいは終わった感触はあります。<br><br>残りの作業は前回挙げた通りですが、片道勇者に関しては<br>開発以外にも色んな脇の話が入ってくるのもあるので、<br>不確定要素が多くて計算ができないのもあります。<br><br>一般的なゲームも発売数ヶ月くらい前にならないと<br>予定が立たないのと同じく、こちらもおおまかな終わりが見えた頃に<br>発売予定などをご報告できると思います。</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2014-04-19 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2014%2F04.html%232014-04-19&title=%E7%89%87%E9%81%93%2B%2038%20%E7%97%85%E3%81%A8%E5%B1%95%E9%96%8B%E3%81%A8" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2014%2F04.html%232014-04-19&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2014-04-19','片道+ 38 病と展開と', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/owh/001.html'>片道勇者</a></span></div></div><br><br><br>
+<a id='2014-04-12'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2014-04-12','片道+ 37 実装まとめ', this)" style='cursor:pointer;'>2014-04-12 (土)&nbsp;&nbsp;&nbsp;片道+ 37 実装まとめ</span><span style='float:right;'><a href='#2014-03-29' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><strong><span style="font-size:large;">【片道勇者+　その37】　実装まとめ</span></strong><br><br><img src="../../image/2014/20140412.jpg" border="1" title="観光客プレイ" loading="lazy" height="234"><br>自動ターゲット機能を実装！<br>これのおかげでShiftがほぼいらなくなりました。<br><br>ということで、なんだか久々に片道勇者＋のお話です。<br>たまたま経過版を人に渡す機会があったので、現状のプラス版が<br>通常版からどれだけ修正されたか整理してみました。<br><br><center><table><tr><td align=left><font class=ten><br>●データの追加<br> - 新しいクラスの追加　→　忍者・理騎士・観光客の3つ<br> - 新しいNPC・敵・アイテム・スキル・付与の追加<br> 　ここで紹介するとそれだけでスペースが溢れるほど増えましたのでお楽しみに。<br> - 新しい施設・マップパーツの追加<br> - 新しい地形の追加　→　要塞・海岸・洞窟、など<br> - 初期創世時のメッセージを追加<br> <br><br>●総合的なバランス調整<br> - [クラス] クラスの基礎能力、スキル、成長率を一部調整しました。<br>　　　たとえば、剣士の連続攻撃率の補正が「2倍」から「+30％」になりました。<br> - [能力値] 全ての能力値の効果を調整しました。<br> - [スキル] スキルの性能を一部調整しました。<br>　　　たとえば、集中スキルの重複限界を5回までに設定しました。<br>　　　また、雷光の有効範囲が周囲5x5マスから前方3x3マスになりました。<br> - [特徴] 特徴のパラメータを一部調整しました。<br> - [アイテム] 装備・アイテムのパラメータや効果を一部調整しました。<br>　　　食品アイテムの多くは腐るように。肉は焼けるようになります。<br> - [付与系の巻物] 剣の巻物など「ランダムで効果が付与されるアイテム」は、<br>　　　　出現した時点で付与される効果が固定されるようになりました。<br>　　　　アイテム名は「剣の巻物『頑丈』」などに変わります。<br> - [敵]敵の能力値・経験値を調整。一部の敵はスキルを一定確率で使用します。<br> - [付与] 「伝説の～」などの一部の付与は、巻物では付けられなくなります。<br>　　　　　　かわりに、そういったレア付与の効果は大幅に上昇しました。<br> - [付与] 多くの付与に「消耗速度増加」が付きました。<br> - [素手] 素手の物体破壊効果を減少。素手では<br>　　　　　　壁やガイコツなどにダメージを与えにくくなります。<br> - [連続攻撃] 連続攻撃の3回目以降の発生確率を調整しました。<br>　　　　　　　一定数値を超えると連続攻撃が出過ぎていたので、その修正です。<br> - [連続攻撃] 武器ごとに連続攻撃率に補正がかかるようになりました。<br>　　　　　　　剣なら1.3倍、槍や素手は1倍、斧は0.6倍です（※現在も数値調整中）。<br> - [地形移動] 水泳スキルと登山スキルの侵入ターンへの影響を調整しました。<br>　　 　　　　　 なお、山へ侵入するときの最低移動ターンは1から2になります。<br> - [矢] 矢を直接「投げる」できなくなりました。<br> 　　　　しかし装備として身につけることで、攻撃時に2マス投げられます。<br>　　　　※近接武器が届く場合は武器で攻撃します。<br> - [経験値] 経験値取得の計算式を修正しました。後半の経験値がよりマイルドに。<br> - [NPCの所持金] NPCに最大所持金が設定されました。<br> 　　　　　　　　商人は5000シルバ以上のお金を持っていますが、<br> 　　　　　　　　セーブ屋や料理屋は2000シルバしか持っていません。<br> - [地形] 世界によって、出現する地形にかたよりが出るようになりました。<br>  　　　　ただし特定の地形がまったく出なくなるようなことはありません。<br> - [イベント] 女神像による強化内容は、ランダムの最大4択になります。<br>　　　　　その中から最も重要なものを選択していく判断が要求されます。<br><br><br><br>●新システム<br> - 城の改装システム<br>　　プチレアアイテム「次元の金貨」を5枚以上集めると解放されます。<br>　　次元の金貨を消費して増築し、住人を配置することで<br>　　ゲーム開始時に様々な特典を得ることができます。<br><br> - 追尾仲間システム<br>　　従来の「主人公と同じマスで戦う仲間」とは違い、<br>　　「別のマスにいて追尾してくる傭兵NPC」が新たに実装。<br>　　うまくやれば敵の側面を突いて戦うことが容易になります。<br><br> - 食品の腐敗システムの実装<br> 　数日に一回、ランダムで食品が腐って別のアイテムに変化します。<br> 　食品が腐るのを防止する防具の「付与」も存在します。<br> 　<br> - 国システムの実装<br> 　遠くまで旅をすると「最初の民族の国」以外に、<br>　「異民族の国」や「獣人の国」を通過することがあります。<br>　 そこでは変わった住人に出会えるでしょう。<br> 　<br> - 中ボスの実装<br> 　一定距離進むごとに、「中ボス」級に強化された敵がお供と一緒に出現します。<br> 　高い難易度では頻繁に襲い来るでしょう。勝てば得られるものも多いものの、<br> 　砂漠で鳥人の中ボスが（偶然にも）魔王と一緒に現れたりすると楽しいことに。<br><br> - トラップの実装<br> 　足元に設置でき、誰かが踏むと起爆する「トラップ」が新たに実装されました。<br>　 今のところ忍者専用ですが、アイテムとして増やしたいと思っています。<br><br> - ゲーム終了時、死亡時のスクリーンショットを見られるようになりました<br><br> - 「高い山」を導入しました。高い山はマップの上下の端に広がっており、<br> 　　従来の山よりも移動に時間がかかります。<br><br> - 宝箱に対する新たな処理を導入しました<br> 　1.宝箱を一度でも攻撃すると、箱の上に「宝箱の中身」の種類が表示されます。<br> 　　たとえば、癒しの草が入っていれば箱の上に草のマークが表示されます。<br> 　2.宝箱を攻撃で破壊すると、まれに中身が一つ破壊されるようになりました。<br> 　　「開錠」スキルや「宝箱のカギ」で開ければ安全に開けられ、経験値も入手できます。<br><br> - 詩人や冒険家など、弱いクラスはクラスに応じた施設に入るだけで<br>　　経験値が入手できるようになります。<br> 　 詩人は街へ、冒険家は迷宮へ足を踏み入れると経験値を入手します。<br><br> - どのクラスでも、新たな地形へ到達するたびに100％の<br>　　経験値を得られるようになります。<br><br> - 「吹き飛ばし」を実装しました。<br>　 キャラクターが特定のアイテムやスキルによって吹き飛ばされるようになります。<br> 　うまくやれば、敵を溶岩に落として倒すことも可能です。<br><br> - 闇の影響で、ごくまれに正体が分からないNPC・敵が出現します。<br> 　その場合、正体が分からない相手は「黒い影」で表され、<br>　 名前は「？？？」になります。性能や会話内容自体はいつものままです。<br>　 先制攻撃するか、正体を見極めるか、判断を要します。<br> 　旅をした距離が長くなればなるほど、出現しやすくなります。<br><br> - 主人公を探知すると壁を壊してでも向かってこようとする敵がごくまれに出現します。<br> 　旅をした距離が長くなればなるほど、出現しやすくなります。<br><br> <br> <br>●インターフェース調整<br><br> - 敵探知機能の実装<br> 　画面の右へ移動中に敵を探知すると、<br> 　主人公の上に「！」と表示されて移動を停止させる安全機能を実装しました。<br> 　操作を停止させたくない場合はオプションから設定できます。<br><br> - ショートカット機能の実装<br>　1～8キーにショートカットを登録できます。ショートカットに設定するには、<br>　メニューからスキルやアイテムを選んで1～8キーを押します。<br>　使用時は、マップ上で使いたい1～8のキーを1秒ほど<br>　「押しっぱなし」にすることで使用できます。<br><br> - 加速機能の実装<br>　　加速キーを押すと移動速度が3倍になります。メッセージもスキップ可能。<br><br> - 自動ターゲット機能の実装<br>　　「移動ごと」または「毎ターン」、近くにいるNPCの方角に自動で方向転換します。<br>　　また、サブキーを押すたびに対象を自動切り替えできます。<br><br> - 敵が強化された場合、+1など強さのプラス値が明示されるようになりました。<br>　 敵の強化条件は「高い難易度にする」「距離を進める」「敵が別NPCを倒す」など。<br><br> - ダメージを受けてLIFEが一定％以下に減少すると効果音を鳴らす仕様を追加<br><br> - セーブデータ一覧において、終了時に次元倉庫が使えるデータと<br>　　使えなくなったデータが分かるよう修正<br><br> - 開始時のキャラクター作成画面で連続攻撃率・必殺率・識別率も表示するよう修正<br><br> - アイテムが炎上したときに効果音を鳴らし、ウェイトを持たせるよう修正<br> 　（これまで何が起きているか把握しづらかったため）<br><br> - 画面左にいくと同じ世界のプレイヤー一覧を薄くする処理を追加<br> - キャンペーンの残り時間が表示されるようになりました。<br>　 同時に、キャンペーンごとのクリア済み状況もマークで表示されます。<br> - 背面ダメージ補正が表示されるようになりました（x1.6　など）<br> - 日付が変わるたびに「2日目になった。」などと表示されるようになりました。<br> - 範囲スキルの使用時、効果範囲が一瞬青く表示されるようになりました。<br> - ミニマップのマークの色が識別しづらかったので、色を分かりやすく調整<br> <br><br>●オプション強化<br> - ゲージの配置変更機能の実装。いくつかのパターンから選択できます。<br> - ショートカットの配置変更機能の実装。いくつかのパターンから選択可能。<br> - 自動取得設定の実装。「自動的に拾うアイテム」をいくつかのパターンから選択可能。<br> - 自動ターゲット機能の実装。頻度を「なし・移動ごと・毎ターン」から選択可能。<br>　 その頻度に応じて、隣接する敵やNPCを自動的にターゲットします。<br> 　また「なし」以外にしておくと、「サブキーを押すたび」に<br>　 「異なる対象」にターゲット切り替えできます。<br> - ゲーム終了時のイーリスのアドバイスをオン・オフできるようになりました。<br>　 これによってただでさえ熟練者に影が薄いイーリスの気配が完全になくなります。<br> - 「エクストラ」に『クラス別データ』が追加されます。<br>　 クラス別のプレイ状況や、クラス・難易度別の最高レベル・到達距離を閲覧可能。<br> - 「エクストラ」に『スペシャル要素』が追加されます。<br> 　　従来の「クリア時のおまけ画像」を見たり、「スタッフロール」の閲覧が可能です。<br><br><br>【セーブデータについて】<br> - 片道勇者のオリジナル版からのセーブデータのコンバートが可能です。<br>　 プラス版の初回起動時に詳しい説明が表示されます。<br><br><br>【今後の予定】<br> - クラス解放シナリオを作成。<br>　　忍者・理騎士・観光客は専用のシナリオをクリアすることで解放される予定です。<br> - 新たな敵との最終決戦シナリオを作成<br> - 観光客の専用ゴールを作成<br> - 新システムをブラッシュアップする作業<br> - 新たな仲間とそのエンディングを作成<br> - アイテム・敵・NPC・スキルデータ追加。ここはまだ非常にたくさんあります。<br> - その他書き忘れてること全部　（※たぶんここが一番多い）<br></font></td></tr></table></center><br><hr size="1" /><br>という感じです。ご意見を頂いた点や、私自身も面倒だと思ったところは<br>より遊びやすく、そして最適の選択肢が自明になってしまっていた部分は、<br>もっと判断力を要求される形にブラッシュアップしています。<br><br>どうもローグライク系は（意味のある）データ量の多さが<br>「飽きるまでの時間」に直結するみたいなので、<br>今も思いついたアイデアを惜しみなく投入している最中です。<br>少しは片道勇者の世界に広がりを感じられるようになっていると<br>いいんですけれどね。<br><br><hr size="1" /><br>以下はいただいた拍手への返信です。いつも本当にありがとうございます！<br><br><br><strong>＞今年の日本ゲーム大賞はアマチュア部門も募集するようですが、<br>＞Wolfさんは参加に興味あったりするのでしょうか？　　　　 　　　 .</strong><br>おおー！？　と思ってアマチュア部門の応募要項を見てみたら、<br><br>※会社所属、契約、フリーランスなどの勤務・雇用形態に関わらず、<br>ゲーム制作の対価報酬を得られている方につきましては、<br>プロのゲームクリエイターとみなします。<br><br>と書かれているので、この基準だと私はプロ扱いになって<br>私はそもそも参加できないようです。<br>つまり日本ゲーム大賞基準なら、私も堂々とプロを名乗れます！！！！<br><br>……プロか否かで能力が変わるわけじゃないんですけどね、ええ。<br><br><br><strong>＞片道勇者TRPGのルールに鳴子トラップが二重に書かれています。</strong><br>修正しておきました、ご指摘ありがとうございます！<br><br><br>（忍者就職活動記リプレイに対して）<br><strong>＞読み終わって、「ふー面白かったーでもこれは次回ないだろ」と思ってたら続<br>＞くんですか！？　「つづく！」の部分だけエイプリルフールの嘘だったりはし<br>＞ませんか…？　本当に続くなら、このサイトのTRPGリプレイ好きなので嬉<br>＞しいです。内輪向けの備忘録のような、本来の（？）楽しみ方をするリプレイが<br>＞多い中、読み手を意識した丁寧な編集と個性あるキャラ付けでスムーズに読<br>＞み進められます。料理大会と聞くと嫌な予感しかしませんが、そんなところも<br>＞楽しみにしてます！！　　　　　　　　　　　　　　　　　　　.</strong><br>読んでくださって ＆ 評価してくださってありがとうございます！<br>忍者編のリプレイ編集は、ＧＭであるンクの中の人さんによるもので、<br>かなりしっかり編集してくださっているので読みやすくなっていると思います。<br><br>次の料理大会編は本当にありますのでお楽しみに！ こちらが本番です。</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2014-04-12 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2014%2F04.html%232014-04-12&title=%E7%89%87%E9%81%93%2B%2037%20%E5%AE%9F%E8%A3%85%E3%81%BE%E3%81%A8%E3%82%81" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2014%2F04.html%232014-04-12&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2014-04-12','片道+ 37 実装まとめ', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/owh/001.html'>片道勇者</a></span></div></div><br><br><br>
+<a id='2014-03-29'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2014-03-29','片道+ 36 残り作業', this)" style='cursor:pointer;'>2014-03-29 (土)&nbsp;&nbsp;&nbsp;片道+ 36 残り作業</span><span style='float:right;'><a href='#2014-03-22' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><strong><span style="font-size:large;">【片道勇者+　その36】</span></strong><br><br><img src="../../image/2014/20140329.jpg" border="1" title="冒険者B、これもお気に入りです" loading="lazy" height="378"><br>冒険家B、よく見ると生足なんです。<br><br>さて、そろそろ片道勇者+途中版に対する<br>約100個のフィードバック対応の終わりが見えてきました。<br>あと25個くらいでしょうか。ほとんどはバグや微調整の類です。<br><br>これが終わった後、完成に向けて行う必要がある作業をまとめてみました。<br><br><strong>◆サブシナリオの追加</strong> …… 新クラス解放の条件となるシナリオ。<br><strong>◆真、最終決戦の追加</strong> …… やはり1つはないと！<br><strong>◆システムの追加 </strong>…… 国システムの調整やら色々。<br><strong>◆おまけ機能の搭載</strong> …… キャラチップ・顔画像入れ替えなど。<br><strong>◆NPCやアイテムの追加</strong> …… 時間経過でどんどんネタが増えてます。<br><strong>◆やり込み用特徴の追加</strong> …… 単に特徴の搭載、ですが迷ってます。<br><strong>◆書き忘れてること色々</strong> …… 常に何か抜けてますし後から増えます。<br><br>まだまだゴールは遠いですが、途中にテストプレイを挟んで<br>調整しながら、ボチボチと進めていきたいと思います。<br><br>で、この中の「<strong>やり込み用特徴の追加</strong>」については、<br>実装をかなり迷っています。というのも、考えれば考えるほど<br>自分の力では全体を崩しかねないヤバい予感がプンプンしているからです。<br><br><hr size="1" /><br><strong><span style="font-size:large;">【「やり込み特徴」をなくして別の形にする？】</span></strong><br><br>「やり込み用特徴」とは、ゲーム開始時にそれを選ぶことで<br>プレイが不利になる代わりに、最終スコアが上昇したりする「特徴」です。<br><br>要望があって、簡単に入れられそうなので何も考えずに入れてしまいそうに<br>なってるんですが、このやり込み特徴に関しては<br>実装をちょっと迷っているところがあります。<br><br>この特徴は、入れれば入れるだけ難しくできます。しかしこれ、最終的には<br><strong>「一番スコアを稼げてデメリットが少ない組合せ」</strong>に収束して<br>いくと思うんですよ。ハイスコア狙いの人は楽に狙いたいでしょうし、<br>だいたい「強化枠」をつぶして「縛り」にする仕組みがいまいちピンと来ません。<br><br>いっそ逆に、<strong>「使えるものを全部使った上で<br>困難な条件をこなしたらポイントが大幅に増える」</strong>とか<br>そうした仕組みにほうが素直な気がして、いま悩んでいるところです。<br><br>たとえば「ライフx0.7（でスコア+10%)」のやり込み特徴を5つ取る（ほぼ即死）のも、<br>クリア時に「ノーダメージでクリアした　スコアx1.5」の項目を入れるのも<br>おそらく最終的な意味としてはほとんど同じです。<br>今の私は、そうやってやり込みを評価する方向に考えが移りつつあります。<br>（もちろん、無傷だったらユーザ一覧に目立つマークを付ける報酬も必要）<br><br>モヤモヤ感が残るまま要素を搭載するのは非常に恐いことです。<br>なるべくスッキリ遊べるよう、注意しながら実装していきたいので、<br>提案してくださった方には申し訳ないのですが、<br>最終版には「やり込み特徴」は残らないかもしれません。<br><br>もし残らなければ、今度はやり込みによるボーナスのヒントを<br>ゲーム中のどこかに載せられるようにしたいと思っています。<br>とにかく、もっと上を目指すための何かは入れていきたいですね。<br><br><hr size="1" /><br><strong>＞SilverSecondのサイト名由来に関して調べないといけない<br>＞機会ができてしまいました！！調べても出てきません！！　<br>＞ウルフさん回答できればお願いします！！　　　　　　　　　.</strong><br>SilverSecondは「銀（賞）2番目」とか「銀の（価値がある）1秒」<br>という意味です。「銀（賞）2番目」なのは、<br>「誇りを持てる結果を目指したいと同時に、常に<br>もっと上を目指す気持ちを持ち続けたい」という願いです。<br><br>私は、賞やら何やらバリバリ取っててもなお全力でいられる人を<br>うらやましいと思っています。すぐ調子に乗っちゃうもので。<br><br><br><strong>＞片道勇者でパンティ死亡時に手に入るパンティの剣の耐久が　　　　　.<br>＞10減ってる状態で手に入るのはパンティが使用済みだからですか?</strong><br>はい、パンティが使用済みだからです！<br>じゃなくてたぶん私のミスですが、デュークガルツはちゃんと剣を直して<br>渡してくれそうなので、別にその解釈でもいい気がしてきました。<br><br><br><strong>＞片道勇者+が完成間近っぽいので、今のうちに要望出します！<br>＞SmokingWOLFさんのゲーム開発論や、RPGに対して思うこと、<br>＞製作手順などをまとめた本が欲しいです（略）　　　　　　　　　　　.<br>＞（※例として「魔王物語物語のつくりかた」を挙げておられました）</strong><br>「片道勇者のつくりかた」はいずれ書いてみたいなと思ってます。<br>たぶんデータ販売になると思いますけれど、それでもよければ。<br><br>何が面白そうって、同じゲームを一度プラス版として作り直す機会が<br>できたので、気兼ねなく自分のゲームをディスれるところですね！<br>こういうゲームにこれは合わなかったとか、これは絶対必要だったとか、<br>こういう意図をもってこれとこれを用意したとか、色々ネタはありそうです。<br><br>なお同じRPGでも、シルフェイド幻想譚の作り方は忘れました。<br>なぜあんなものができたのか、いまだに分かりません。<br>今あれをまねて作ると、焦点が定まらないダメゲーしかできない気がします。<br>同じ人が同じジャンルを作ってもまた評価されるとは限らなくて、<br>だからゲーム開発って恐いなと思っています。</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2014-03-29 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2014%2F03.html%232014-03-29&title=%E7%89%87%E9%81%93%2B%2036%20%E6%AE%8B%E3%82%8A%E4%BD%9C%E6%A5%AD" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2014%2F03.html%232014-03-29&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2014-03-29','片道+ 36 残り作業', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/owh/001.html'>片道勇者</a></span></div></div><br><br><br>
+<a id='2014-03-22'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2014-03-22','片道+ 35 ﾌｨｰﾄﾞﾊﾞｯｸ', this)" style='cursor:pointer;'>2014-03-22 (土)&nbsp;&nbsp;&nbsp;片道+ 35 ﾌｨｰﾄﾞﾊﾞｯｸ</span><span style='float:right;'><a href='#2014-03-01' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><strong><span style="font-size:large;">【片道勇者+　その35】</span></strong>　フィードバック対応中<br><br>[特に関係ないキツネっ娘]<br><img src="../../image/2014/20140322.jpg" border="1" title="「猫耳」のテリトリーを徐々におびやかす存在へ" loading="lazy" height="331"><br><br><span style="font-size:large;"><strong>＜今やってることについて＞</strong></span><br><br>片道勇者＋は現在、テストプレイやイベント会場で得られた<br>約100個近くのフィードバックに対応している最中です。<br><br>たとえば会場では方向固定キーに気付かずに苦労してる方が多く、<br><strong>「なんで敵隣接時のオートターゲット機能を付けなかった！」</strong><br>と後悔しているところです（※「Shift押さなくても」勝手に敵側を向く機能）。<br>たぶん、この機能を付ければ移動後のShift押しも必要なくなるので、<br>慣れた人にとってもある程度は快適になるんじゃないかなと思います。<br><br>実はこのオートターゲット希望のご意見はゲーム公開後にも頂いてて、<br>当時は優先度がそんなに高く見えなかったんですが、リアルで問題を見ると<br>「付ければよかった」後悔がふつふつと！　どうもすみません！<br>やっぱりちょっと新しめのゲームを出すときは、不特定多数の人による<br>画面共有状態でテストしてもらうのがとても重要ですね。<br><br>プレイを見ていた中では、上記の件が一番致命的だったなと思いました。<br>幼女が遊んでて、攻撃方向が合わずになすすべもなく<br>死んでいるのを見たときは土下座したくなりました。<br><br><br><span style="font-size:large;"><strong>＜説明の仕方について思ったこと＞</strong></span><br><br>あと、これは今さらなのでもう変えないと思いますが、<br>プレイを見ていると、仮に「方向転換に関する説明」を出すにしても<br>イーリスのアドバイス「CやShiftを押し続けると方向転換だよ」は、<br>「ゲームの最初」だけでなく「敵に斜めから隣接されたとき」にも出す方が<br>より適切だったのではないかなと感じました。<br>この件はプレイ初心者向けの話なので、今や完全に手遅れなんですけどね。<br><br>これはメニューを出す説明もそうで、たとえばLIFEが減った場合にも<br>「回復しよう！メニューを出すには～」と説明した方がよかったと思います。<br><br>ちなみにこれらの「ここで説明を出すべきだ」と思った部分はすべて<br>私がイベント会場で「いま私が直接教えるべきだ」と感じた状況です。<br>目の前でテストプレイしてもらって、「ここで教えるべきだ」と<br>感じたタイミングに小さいヘルプを放り込んでいくだけでも、<br>手軽に良いチュートリアルが作れそうな気がしてきました。<br><br>何はともあれ「最も困りそうな瞬間に説明しないと覚えられない」は<br>個人的には基本中の基本だったはずなので、これからは<br>リリースする前に気づけるようになりたいです。<br>細かい違いとはいえ、これによってゲームを投げられてしまう<br>可能性も十分にありますからね。<br><br><br><span style="font-size:large;"><strong>＜総合的には＞</strong></span><br><br>しかしこういった気になる部分はあったものの、ひとまずプレイ経験者の<br>方々によると、プラス版は総合的にはおおむね好印象なようでした。<br>が、これは奥の浅さに気付くとゲンナリするコースかもしれません。<br><br>ローグライク作りはリソース的にも判断的にもまだ難しいテーマですが<br>挑戦としてはすごく楽しいので、私のやれる限り<br>よりよく仕上げていきたいと思います。<br><br><hr size="1" /><br><strong><span style="font-size:large;">【ストラップのお話】</span></strong><br><br><img src="../../image/2014/20140306.jpg" height=150 loading="lazy"><br><B>ネムリストラップ</B>（販売終了）を購入してくださった皆さま、<br>本当にありがとうございます！<br><br>今のところ、数週間かけてゆっくり売り切れそうなペースなので、<br>この初回生産分で販売を終える予定です。欲しい方はお早めに。<br>この記事を書いている段階では、在庫は57％となっております。<br><br>しかし通販は大変ですね。お客さんも住所を書かないといけませんし、<br>住所がまちがってたら届かないですし（実際2％くらい事故が出てる感）、<br>ある一定数を超えれば作業量の都合で委託しないと辛いしで。<br><br>特に個人情報周りの心配は、ネット上での情報管理力に優れた人ほど<br>データ販売に比べての購入ハードルが高くなる気がします。<br>情報流出は企業規模にかかわらず起こりえますからね。<br><br>そんな中でも買ってくださった皆さまに感謝すると同時に、<br>プリペイド式のデータ販売の良さも再確認しているところです。<br><br><hr size="1" /><br>以下は気になった拍手への返信です。<br>皆さまのコメント、いつも本当にありがとうございます！<br><br><strong>＞＋版では冒険家のLIFEの成長率を修正するとのことですが　　.<br>＞オリジナル版は従来のままということになりますか？　　　　　　.<br>＞成長に関してもう一つ、女神像ではカバーしきれない　　　　　　.<br>＞成長パターンを引いてしまった時のために　　　　　　　　　　　　.<br>＞成長パターンを変化させるNPCを配置することは出来ませんか？</strong><br>はい、冒険家の成長率は、オリジナル版ではそのままです。　<br>成長パターンに関してもオリジナル版はそのままですが、<br>＋版では一度終わった成長テーブルが書き換えられるようになるので、<br>高レベルの状況は、これまでよりも平坦化されると思います。<br><br><br><strong>＞大激震で武器の耐久を消費しないのはバグですか？</strong><br>同じ範囲攻撃の「雷光」は武器の耐久を消費するっぽいのでバグです。<br>しかし翻訳システムの都合上、直すのが非常に困難に<br>なってしまったため、これに関しては＋版で修正予定です。<br><br><br><strong>＞ネムリンに貢いできました～！！　　　　　　　　 　　　　　　.<br>＞コンビニで入金手続きしてきました～！！　　　　　　　 　　.<br>＞送料700円にブフォワッてなりましたけどそうですよね、　　.<br>＞倉庫代と梱包材費用と決済手数料と純粋な送料と人件費と<br>＞（あちら（カートシステムの会社）の儲け分）って考えると（略）</strong><br>お買い上げありがとうございます！　BOOTHさんちの<br>送料が高くて私もブフォッってなりますが、これはおっしゃる通り<br>この送料で倉庫費と人件費を稼ぐタイプのショップだからみたいです。<br>皆さまの負担が大きくて申し訳ありません。<br>せめてまとめ買いできる商品が置ければ良かったんですけれどね。<br><br>普通の同人ショップの委託は事前審査が必要なのと、<br>商品定価の約3割くらいを手数料として持っていかれるので、<br>今回は追加生産しない前提で、開始の手軽さと収入を重視することを<br>ふまえて、BOOTHさんを使わせていただきました。<br><br>出店側からは手数料をあまり取らないのが、今の私にとって助かってます。<br>逆に、同人ショップさんへの委託に比べるとBOOTHさんの方は<br>トラブルがあったときに少し面倒になる欠点もついてくるようです。<br><br>受け入れてくれる分だけを同人ショップさんに預けて、<br>預かってもらえなかった分をBOOTHさんで売るとか<br>そういう使い方もいいかもしれませんね。<br>次に物販する機会があったら色々考えてみたいと思います。<br><br><br><strong>>自分も気になって調べてみましたが、　　　　　　　　　　.<br>>(Steam実績の)jerbはおそらくアメリカで流行っている？<br>>「THEY TOOK OUR JERB!!」　　　　　　　　 　　　.<br>>コラから来ているのではないかと。　　　　　　　　　　　.</strong><br>ああ、これですこれ！　どのくらいの認知度か<br>分からなかったんですが、調べると確かによく<br>二次ネタにされてる感じです。調査ありがとうございます！<br><br><strong>[このセリフのネタ　まとめ（英語ページ）]</strong><br><a class="double-link red" target="_blank" href="https://web.archive.org/web/20140508030112/https://knowyourmeme.com/memes/they-took-our-jobs">http://knowyourmeme.com/memes/they-took-our-jobs</a></CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2014-03-22 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2014%2F03.html%232014-03-22&title=%E7%89%87%E9%81%93%2B%2035%20%EF%BE%8C%EF%BD%A8%EF%BD%B0%EF%BE%84%EF%BE%9E%EF%BE%8A%EF%BE%9E%EF%BD%AF%EF%BD%B8" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2014%2F03.html%232014-03-22&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2014-03-22','片道+ 35 ﾌｨｰﾄﾞﾊﾞｯｸ', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/owh/001.html'>片道勇者</a></span></div></div><br><br><br>
+<a id='2014-03-01'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2014-03-01','Steam販売開始！', this)" style='cursor:pointer;'>2014-03-01 (土)&nbsp;&nbsp;&nbsp;Steam販売開始！</span><span style='float:right;'><a href='#2014-02-22' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><strong><span style="font-size:medium;">【Steamで片道勇者が発売されました】</span></strong><br><br>色んな人達や皆さまの手助けにより、本日午前3時、<br>Steamにて「<strong>片道勇者 / One Way Heroics</strong>」がリリースされました！<br><br><strong>【Steam購入ページへのリンク】</strong><br><iframe src="http://store.steampowered.com/widget/266210/34837/?l=japanese" frameborder="0" width="410" height="190"></iframe><br><br><hr size="1" /><br>何がよかったのか、Steamトップページの「おすすめPC用ゲーム」の<br>目立つ場所にまで載せてくださって、スタートはとても順調なようです。<br>バナーのクリック率がよかったので、それが効いたのかもしれません。<br>（Steamが目立つところに載せてくれる基準は、クリック率などの<br>データに基くよ、というようなことが説明書に書いてありました）<br>↓<br><img src="../../image/2014/20140301.jpg" border="1" title="おすすめゲーム欄" loading="lazy" height="126"><br><br>なお、内容はフリー版とほぼ同じなので、<br>すでに散々プレイ済みの日本の皆さまにとっては<br>私への金銭的援助を目的として買ってくださる以外、<br>あまりこれといった価値はないと思います。<br><br><hr size="1" /><strong>2014/3/1　18:31 追記</strong><br>Steam版は【プラス版ではありません】のでご注意ください！<br>インターフェース調整やデータ追加を行った【プラス版】は<br>現在開発中であり、どこにもリリースしておりません。<br><hr size="1" /><br>いちおう、Steam版とフリー版の違うところを述べますと以下の通りです。<br><br><br><strong>【1】Steamのオマケが付く</strong><br>これはもっぱらSteamで遊んでおられる人しか得をしませんが、<br>「トレーディングカード」や「Steam内で使えるアイコン」がもらえます。<br>レアなトレカやアイコンを引くとSteamのマーケットで$10で売れたりして、<br>買った値段を取り戻せたりすることもあるという面白い仕様です。<br><br><br><strong>【2】ちょっとだけ創世時のロードが早い</strong><br>ちょっとがんばりました。<br>40％カットくらいになってると思います。<br><br><br><strong>【3】英語版も遊べる！</strong><br>ただし「日本語版とはセーブデータ・サーバは別」です！<br>英語版モードでは日本語が表示できないためですね。<br><br><br><strong>【4】プラス版に向けてのプレイ統計がこっそり記憶される</strong><br>プラス版ではクラス別の統計を表示できる機能が<br>追加されるのですが、Steam版からは内部的に<br>それに備えたデータ蓄積を行うようになっています。<br><br>たとえばSteam版で剣士で30分遊んでプラス版にセーブをコンバートすると、<br>プラス版で新たに増える「クラス別データ一覧」ページでも<br>剣士のプレイ時間が30分になっている、という具合です。<br><br>フリー版やPLAYISM英語版ではこれらの統計データは<br>記憶されませんので、ご了承下さい。<br><br><br><strong>【5】ネットの接続先がSteam専用サーバになってる</strong><br>プレイヤー一覧の表示や、世界別のクリア者の保存は<br>Steam版専用のサーバによって行われておりますので、<br>フリー版とSteam版で一緒にプレイすることはできません、ご了承ください。<br><br><br><strong>【6】クラウドセーブでデータ保管も安心！</strong><br>Steamのクラウドセーブ機能により、システムセーブデータは<br>常時Steamに保存されています。これで何ができるかというと、仮に<br>アンインストールして、別のパソコンで同じSteamIDでログインして<br>再びインストールし直した場合、「<strong>アンインストールした時点の<br>システムセーブデータから再開できる</strong>」のです！<br>ただし、旅の途中でセーブしたデータは容量の都合で保存されません。<br><br><br>という感じです。これ以外は、フリー版と同じとなっております。<br><br><hr size="1" /><br>以下は拍手返信です、Steam版を買ってくださった皆さま、<br>本当にありがとうございます。<br><br><strong>＞Steamというものがどういう存在なのか分かっていない<br>＞イマイチな私ですが、きっとすごいことなのだろうなぁと<br>＞心の中で拍手することしきりです。京都のイベントも<br>＞成功しますようにお祈りしていますっ！　　　　　　　　　.</strong><br>ありがとうございます！　Steamはだいぶメジャーみたいなんですが、<br>日本にいるとどのくらいすごいのか私にもよく分かりませんね。<br><br>京都のイベントは一般の皆さまもご参加いただけますので、<br>もしお暇な方は、よろしければぜひ3/8～3/9のみやこめっせまでどうぞ！<br><br><br><strong>＞Steamの配信を見てここまで辿り着きました！　こうやって日本の<br>＞ゲームが登録されるのは同じ日本人ユーザとして嬉しく思います。<br>＞最近は女性の方も含め、日本のSteamユーザは増えている印象です。<br>＞早速開発してきましたのでこれから少しづつ遊ばせていただきます。</strong><br><br>うおおーフリー版とほぼ一緒なのにご購入ありがとうございます！<br>（※注：Steamで購入することをスラングで「開発する」という）<br>最近はGreenlight（ユーザによるゲーム登録審査）も通過しやすくなったのと、<br>日本にも力を入れるというような公式のコメントが<br>あったとかなかったとか聞いたので、<br>日本のゲームも少しずつ載るようになるかもしれませんね。<br>日本の開発者として恥ずかしくないよう、やれるだけがんばります。</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2014-03-01 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2014%2F03.html%232014-03-01&title=Steam%E8%B2%A9%E5%A3%B2%E9%96%8B%E5%A7%8B%EF%BC%81" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2014%2F03.html%232014-03-01&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2014-03-01','Steam販売開始！', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/owh/001.html'>片道勇者</a></span></div></div><br><br><br>
+<a id='2014-02-22'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2014-02-22','片道+ 34 海外展開準備', this)" style='cursor:pointer;'>2014-02-22 (土)&nbsp;&nbsp;&nbsp;片道+ 34 海外展開準備</span><span style='float:right;'><a href='#2014-02-15' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><strong><span style="font-size:large;">【片道勇者+ その34】</span></strong><br><br>今週は3/7～9のBitSummitに向けてのメディアキットの準備や<br>Steamの作業で忙しい場面がありました。<br>あと各種税務手続きのシーズンなのでそれも進めています。<br>実は盆と正月がダブルで来るのは2月や3月じゃないでしょうか。<br><br>なお、第一次海外展開の準備に関しては少しずつ終わりが見えています。<br><br>ただしイベント用の自前の資料に関して言うと、<br>英作文は完全に機械翻訳で出てきた中から<br>まともそうなのを選んで入れる作業と化していますけれどね！<br>「英語」の仕組み自体は割と簡単なはずなので、<br>あといくつかブレークスルーすればスラスラ読み書きが<br>できるのかもしれませんが、まだまだそこまでは遠いです。<br><br>しかし、変な英文になってることくらいは何となく分かるので、<br>そこは義務教育に感謝しています！英語はしっかり勉強しましょう！<br>ある程度読めれば、海外のゲームも気軽に遊べますよ！<br><br><hr size="1" /><br>そして今週の片道勇者+はインターフェース周りの強化を行っていました。<br>オプション設定が増えたので初期化する項目を付けたり、<br>加速モードを実装したりしています。<br><br>【加速モード】<br><img src="../../image/2014/20140222.jpg" border="1" title="加速モード" loading="lazy" height="204"><br>加速モード！　これのおかげでかなり<br>無駄な時間をカットして楽しめるようになりました。<br>アドバイスくださった皆さま、ありがとうございます！<br><br>他にもダメージの文字を色変えして、<br>プレイヤーが受けたダメージと仲間が受けたダメージを分かりやすくしたりと、<br>人に見せるにあたってシステム周りの微調整を行っています。<br><br><hr size="1" /><br>以下は気になった拍手返信です。いつも本当にありがとうございます！<br><br>（TRPGページについて）<br><strong>＞IE8ですがルールページがなんかおかしいです。<br>＞メニューが本文の上側に表示されてます。　　　.</strong><br>修正しておきました！　ご報告ありがとうございます！<br><br><br><strong>＞Steamのライブラリ上の名称がOne Way Heroicsなのは　　 .<br>＞別にいいんですが、日本語で起動したときのタイトル画面も　 .<br>＞One Way Heroicsなんでしょうか？　例えば、メゾンド魔王は .<br>＞ライブラリ上ではUnholy Heightsですが、起動するとちゃんと .<br>＞メゾンド魔王と表示されます。九十九神は99 Spirits（英語版）と<br>＞Tsukumogami（日本語版）の2種類が登録されます。　　　　　　.</strong><br><br>ご安心ください、日本語版で起動したときのタイトル画面には<br>「片道勇者　- One Way Heroics -　」と表示されます。<br><img src="../../image/2014/20140222B.jpg" border="1" title="タイトル" loading="lazy" height="129"><br><br>また、購入時のタイトルのテキスト自体は「One Way Heroics」ですが、<br>日本語モードでSteamにつないだ場合だけストアの「バナー」に<br>「片道勇者/One Way Heroics」と書かれた画像を表示させる方法が<br>分かったので、今はそう設定したところです。<br><br>Steamの機能で言語別にローカライズできる部分と<br>そうでない部分があるので、ローカライズできる範囲で<br>うまくプロモーションしていきたいと思います。</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2014-02-22 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2014%2F02.html%232014-02-22&title=%E7%89%87%E9%81%93%2B%2034%20%E6%B5%B7%E5%A4%96%E5%B1%95%E9%96%8B%E6%BA%96%E5%82%99" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2014%2F02.html%232014-02-22&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2014-02-22','片道+ 34 海外展開準備', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/owh/001.html'>片道勇者</a></span></div></div><br><br><br>
+<a id='2014-02-15'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2014-02-15','片道+ 33 続Steam準備', this)" style='cursor:pointer;'>2014-02-15 (土)&nbsp;&nbsp;&nbsp;片道+ 33 続Steam準備</span><span style='float:right;'><a href='#2014-02-08' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><strong><span style="font-size:large;">【片道勇者+ その33】</span></strong><br><br>今週もSteam用のグラフィックの作成や<br>Steam版のテストプレイでドタバタしていました。<br><br>何度も告知しますが、Steam版は<br>オリジナル版に実績機能が加わった程度のもので、<br>内容自体はフリー版と基本的に変わりません。<br><br>Steamへの各種画像は一通り搭載し終えてまして、<br>いまはテストプレイの段階です。<br>リリースの時期については1～2週間くらいで<br>まもなく発表されるんじゃないかなと思います。<br>他にも準備がたくさんありますが、おいおい片付けていきます。<br><br><strong>＜イベント用ポスターよりポチ＞</strong><br><img src="../../image/2014/20140215.jpg" border="1" title="" loading="lazy" height="226"><br>※ポチの名前は英語版では「Spot」になってます。<br><br>それと、3/7～3/9に京都で開催されるBitSummitという<br>インディーゲームのイベントに参加することになりました。<br>そこで作りかけの片道勇者+を出展する予定です。<br>新機能はほぼ一通りそろってますが、ベースは同じなので<br>さほど変化は感じられないかもしれません。<br><br><strong>BitSummit</strong><br><a class="double-link red" target="_blank" href="https://web.archive.org/web/20140308013914/http://www.pref.kyoto.jp/sangyo-sien/bitsummit.html">http://www.pref.kyoto.jp/sangyo-sien/bitsummit.html</a>(2014/03/08時点のｱｰｶｲﾌﾞ)<br><br>3/8、3/9は一般の方々も入場が可能だそうです。<br>物販OKとのことで、やれるならちょっとした<br>グッズ販売もやってみて、物販の感触をつかみたいなと思っています。<br>しかしリソースの限り片道勇者+の完成を目指すほうが<br>今は大事だと思っているので、予定は未定です。<br>全年齢イベントなのでセクシー本とかも出せませんしね！！！<br><br>ということで、イベントの準備も発生したので、<br>しばらくはちょっと寄り道の作業が増えそうです。<br><br><hr size="1" /><br>以下は気になった拍手返信です。いつも本当にありがとうございます！<br><br><strong>＞休憩がてらって言う割には長文過ぎなんですけど<br>＞何時間かかったんですかあああ？ｗ　　　　　   .</strong><br>休憩といっても、頭が煮えてて発散しないと<br>ヤバかった状況なので、厳密には「休息」ですね！<br>だいたい実プレイ時間は6～7時間くらいじゃないでしょうか。<br><br>オンラインセッションは3倍の時間がかかるというので、<br>オフラインだと2～3時間で終わる内容かもしれません。<br>私はやったことはないんですが、ちょうど<br>ダブルクロスの1回分くらいのような気がします。<br>　<br><br><strong>＞ゴリラTRPGって初めて聞きましたゴリ。ホモ山さんとかウホホッとか<br>＞いちいちツボにハマり、いい腹筋運動になったゴリ。ンクゴリラさんは<br>＞やっぱり軍師だし、サンゴリラさんは微妙ヒロインだし(筋力4)、<br>＞Smokingゴリラさんは生き生きと笑いを取りに行ってるし、<br>＞とても楽しかったゴリ。ホモ山さんありがとうございましたゴリ。</strong><br>ありがとうございます！私もゴリラTRPGは今回初めて聞きましたねウホ。<br>片道TRPGもそうですが、あれほどの長文をどれだけの人が<br>読むんだろうといつも謎になっているので、<br>感想をいただけるのはとてもありがたいことですゴリ。</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2014-02-15 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2014%2F02.html%232014-02-15&title=%E7%89%87%E9%81%93%2B%2033%20%E7%B6%9ASteam%E6%BA%96%E5%82%99" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2014%2F02.html%232014-02-15&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2014-02-15','片道+ 33 続Steam準備', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/owh/001.html'>片道勇者</a></span></div></div><br><br><br>
+<a id='2014-02-08'></a><BR><div class='entry'><div class='entry-title'>■<span onclick="copyLink('2014-02-08','片道+ 32 Steam&TRPG話', this)" style='cursor:pointer;'>2014-02-08 (土)&nbsp;&nbsp;&nbsp;片道+ 32 Steam&amp;TRPG話</span><span style='float:right;'><a href='#bottom' class='jumplink' title='次の記事へ'>▼</a></span></div><div class='entry-body'><CENTER><strong><span style="font-size:large;">【片道勇者+ その32】</span></strong><br><br>今回はSteamの準備でドタバタしていました。<br>来週もほとんどSteam配信の準備に費やすと思います。<br><br><img src="../../image/2014/20140208.jpg" border="1" title="" loading="lazy" height="84"><br>Steam用に作ってる画像<br><br>ということで今回はマジでご報告することがありませんので、<br>Steamについて知ったことを書き残しておきます。<br><br><br><strong>【Steam　トレーディングカード】</strong><br><br>2013年中頃からSteamには「<strong>トレーディングカード</strong>」の機能が<br>追加されており、ゲームを遊ぶほどトレカをもらえるようになりました。<br>ただし一人がもらえるのは全トレカの半分くらいなので、<br>そろえるためにはトレードをする必要があります。<br><br>カードは10円くらいで買えたり、<strong>マーケット</strong>で売り出すこともできます。<br>有名ゲームのキラカードは50円くらいで売り買いされるようです。<br>ほぼ1クリックで売りに出せるのでお手軽です。<br><br>で、トレーディングカードを全種類揃えると「<strong>バッジ</strong>」がもらえ、<br>プロフィール画面で自分のアイコン（？）として設定できるようです。<br>また、オマケとしてSteamのチャットで使える「<strong>チャットアイコン</strong>」や<br>そのゲームの「<strong>プロフィール背景画像</strong>」ももらえたりするので、<br>これにより、Steamの自画面をそのゲーム一色にできるわけです！<br>当該ゲームのファンの人には嬉しい要素ですね。<br><br>で、私は今週、そのオマケ画像を延々と作っていたわけです！<br>やたら解像度が高い画像もあったので、<br>低解像度しかなかった立ち絵を書き直したりしていました。疲れた！<br><br>なお、書き下ろし画像は基本的にありませんのでご容赦ください！<br>（というか、リソースが限られてるので書き下ろしても<br>絶対に別のところで流用しますので！）<br><br><hr size="1" /><br>Steamには日本語ゲームが少ないので、これを読んでくださってる<br>皆さまの中にはSteamユーザの方はそんなにおられないと思いますが、<br>今もSteamの陰におかせてもらうべく頑張ってます、というご報告でした。<br><br>なお片道勇者はSteamで日本語版も遊べますのでご安心ください。<br>管理の都合上、タイトルはOne Way Heroicsになっちゃいますけどね。<br><br><hr size="1" /><br><strong><span style="font-size:large;">【オマケ　ゴリラTRPG】</span></strong><br><br>先週の週末、休憩がてらなぜか<br><a class="double-link red" target="_blank" href="https://web.archive.org/web/20150105072700/http://www55.atwiki.jp/gorillatrpg/"><strong>ゴリラTRPG(ルールサイト)</strong>(ｱｰｶｲﾌﾞ)</a>なるものに参加させていただきました。<br>ＧＭのねおしのさんという方がリプレイを<br>編集してくださったので、興味のあるかたはぜひご覧ください。<br>なおンクＰＬさんとサントリナＰＬさんが同席しています。<br><br><a class="double-link red" target="_blank" href="https://web.archive.org/web/20140331145333/http://neosino.blog99.fc2.com/blog-entry-814.html"><span style="font-size:medium;"><strong>【ゴリラTRPGリプレイ　ゴリラ vs メカゴリラ】</strong></span>(ｱｰｶｲﾌﾞ)</a><br><br><strong>■リプレイ解説</strong>（※ルールサイトの紹介文より引用）<br>　世界初のゴリラTRPGリプレイとなった作品。<br>　ゴリラ同士の恋愛模様、ゴリラと人間の友情、<br>　そしてボスとしての在り方……。<br>　奥深いテーマを斬新な切り口で描く感動の作品。<br>　ゴリラ達を待ち受ける運命とは――その目で確かめていただきたい。<br><br><hr size="1" /><br>以下は気になった拍手返信です。いつも本当にありがとうございます！<br><br><strong>＞最近片道勇者ＴＲＰＧのキャンペーンをＧＭとして始めた者です。　　.<br>＞毎回モンスターの能力値を考えるのに四苦八苦し、　　　　　　　　　.<br>＞先日も目立つ弱点はあるけれど、能力値は少し強いかな？　　　 　.<br>＞というモンスターを出したら前線崩壊の危機に陥りました。　　　　　.<br>＞（無事に突破しましたが）　　　　　　　　　　　　　　　　　　　　.<br>＞ＴＲＰＧ版のモンスターの能力はどのように考えればよいでしょうか。<br>＞私がシナリオを考える際は休憩所を１か所作成することを前提で<br>＞ダンジョンを作成しているので、結構瀕死上等な部分はありますが。</strong><br><br>私もせいぜい、【PC側の防御力+与えたいダメージ】で<br>敵の基本攻撃力を決めてるくらいで、それ以外はテキトーです。<br><br>作りたてキャラ相手なら、肉弾ボスは期待値で4～5ダメージを想定して<br>【体力か機敏攻撃力7～8】くらい、【強打】など有りなら【敵攻撃力5～6】。<br>防御力は「体力」か「機敏」のどちらか1つを【2以下】のよわよわにして、<br>弱点を突けば2ターンで倒せるくらいの数値にする感じでしょうか。<br>群れるザコなら、期待値ダメージが0～1でも十分だと思います。<br><br>どれだけ強くても、一撃で前衛が戦闘不能になる確率は0.5%未満に<br>抑えるべきでしょう（2D6で敵が12、味方が3でも死なないくらい）。<br>というくらいで、あとはテストプレイしてみるしかないと思います。<br>もともと片道勇者TRPGは瀕死上等なバランスですから、<br>おっしゃるくらいの難度でもさほど問題ないと思いますよ。<br><br><br>さて、ここから先は、肝心なアドバイスからはちょっと逸れます。<br><br>私がGMをやっていたときは後半になるにつれて「敵の出し方」や、<br>仮に負けた場合でもPCたちを死なせないための<br>「負けても生きて帰れる方法」の方を考えるようになっていました。<br>逆説的なようですが、負けても大きな問題にならないように<br>準備しておけば、多少バランスを厳しくしても平気だからです。<br><br>「敵の出し方」や「負けたときの対策」の<br>具体例としては以下の通りです。<br><br><strong>◆例1：敵を少しずつ追加で出すようにする</strong><br>→　まず絶対勝てる数体の敵をぶつけて、いけそうだと<br>GMが判断した時点で適切な量の増援を追加。<br><br><strong>◆例2：敵が少しずつ本気を出すようにする。</strong><br>→　ボスや野生生物でも使いやすい。<br><br><strong>◆例3：いざというとき助けてくれる/身代わりになるNPCを用意</strong><br>→ 味方として能力値や持ち物があいまいなNPCを入れておくと調節しやすい。<br>（公式リプレイの初の野犬戦でピンチなときはマルギが爆弾を投擲しててもいいし、<br>後半では全滅しかけるとクーが命と引き替えに暴走する予定だった）<br>私の場合、GMアドバイスをNPCの口からPCに伝えやすくなるという都合も含め、<br>プレイ中はほぼ必ずNPCを同行させるようにしていました。<br><br><strong>◆例4：負けても平気な物語の背景を作る＋全滅時の流れを考えておく</strong><br>→ エクトルや海賊ガルーのようにPCを殺すことが目的じゃない敵を出す。<br>→ 負けたらとっつかまって、次セッションは脱出クエストから。<br>→ 戦闘中に、割と簡単に逃げられる状況であることをアドバイスする。<br>→ PCが生き残るのは簡単だけど負ければ何かを失う戦いにする。<br>（たとえば鳥人戦はミルお持ち帰りされるが全員生存という可能性が高い）<br><br><br>などです。なお、慣れないPLさんは経験不足から<br>「<strong>負け戦になりそうな状況でも逃げようとしない</strong>」人が多いらしいので、<br>逃走の選択肢はＧＭからかなり積極的に提示してあげてください。<br>公式片道TRPGリプレイの人達は、なんだかんだでゲーム的に熟練者です。<br><br>リプレイのオマケ回では、私が【NPCは残機】なんて言ってますが、<br>ストーリー展開も含めた【残機】になりうる上記のような手段を<br>しっかり用意しておけば、PLをハラハラさせながら、<br>GMは余裕を持ってプレイができるんじゃないかなと思っています。<br><br>以上、「バランスは崩れる前提でシナリオを組む！！」という、<br>あまり役に立たないゲームバランス講座でした。</CENTER></div><div class='entry-foot'>　<font class='article_end_date'>2014-02-08 (土)</font>　<a href="//clap.fc2.com/post/smokingwolf/?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2014%2F02.html%232014-02-08&title=%E7%89%87%E9%81%93%2B%2032%20Steam%26TRPG%E8%A9%B1" target="_blank" title="web拍手 by FC2"><img src="//clap.fc2.com/images/button/white/smokingwolf?url=https%3A%2F%2Fsmokingwolf.github.io%2Fdev_blog%2Farchive%2F2014%2F02.html%232014-02-08&lang=ja" alt="web拍手 by FC2" style="border:none;" /></a><span style='display:inline-block;width:15px;'></span> <button class='linkbutton' onclick="copyLink('2014-02-08','片道+ 32 Steam&TRPG話', this)">📋 リンクをコピー</button> <span style='float:right;'>カテゴリ: <a href='../../category/owh/001.html'>片道勇者</a></span></div></div>
+<div class='article_pos'>片道勇者　12/<a href='../../category/owh/013.html'>13</a></div>
+<div class='nav'><a href='011.html'>次のページ</a> | <a href='013.html'>前のページ</a></div>
+<a id='bottom'></a>
+
+<BR><BR>
+<div align="right"><a href="#top" class="g">▲一番上へ戻る</a></div>
+<BR>
+<CENTER>
+<HR>
+<div>
+<div id="silsec-status" style="display:inline-block;line-height:12px;font-size:10px;"></div>　<div align="center" style="display:inline-block;line-height:12px;font-size:10px;"><a href="https://smokingwolf.github.io/" target="_blank" class="blue" border="1"><img src="https://smokingwolf.github.io/banner.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>アーカイブサイトへ</a></div>
+</div>
+<HR>
+Copyright © SmokingWOLF / Silver Second
+<HR>
+</CENTER>
+
+
+<script>
+  // シルバーセカンド公式のドメインに接続し、サイト存在確認用のTXT(SILVERSECOND_ALIVE!と書かれている)があれば存在する扱いにする
+  const statusDiv = document.getElementById('silsec-status');
+  const checkUrl = 'https://silversecond.net/SILVERSECOND_SITE_ALIVE_FLAG.txt';
+
+  fetch(checkUrl, { cache: 'no-store' })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('ネットワークエラー');
+      }
+      return response.text();
+    })
+    .then(text => {
+      if (text.trim() === 'SILVERSECOND_ALIVE!') {
+        statusDiv.innerHTML = '<a href="https://silversecond.net/" target="_blank" class="blue"><B><img src="https://silversecond.net/banner/a.png" border="1" style="box-shadow:0 0 10px #44f;"><BR>運営中のサイトへ</a>　';
+      } else {
+        statusDiv.textContent = '　';
+      }
+    })
+    .catch(error => {
+      statusDiv.textContent = '　';
+      console.error('シルバーセカンド公式サイトチェック失敗:', error);
+    });
+</script>
+
+
+
+
+</div>
+<div id='sidebar'>
+<div style='font-weight:bold;'>開発日誌</div>
+<div><a class='sidebar_link' href='../../archive/top/index.html'>日誌トップへ</a></div>
+<div><B><a class='sidebar_link' href='../../index.html'>全記事一覧</a></B></div>
+<hr>
+<div style='font-weight:bold;'>【最新記事】</div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/09.html#2025-09-20'>●09/20 『シェパード捜査録』第1話、9/20夜に動画公開！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/09.html#2025-09-06'>●09/06 ウディタ新機能2つ！(Y表示補正/MoveWatch)＆ 片道勇者プラス修正！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/08.html#2025-08-24'>●08/24 第17回ウディコン結果発表！　上位3作品とピックアップ紹介！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/08.html#2025-08-09'>●08/09 『シルバーセカンド思い出の部屋』を開設！＋ 来年よりウディコン規約追加</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-26'>●07/26 第17回ウディコン審査期間開始！ ＆ 規約の補足</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/07.html#2025-07-12'>●07/12 ウディコン直前！ サイト＆ウディタ修正＋シェパード捜査録！</a></div>
+<div><a class='sidebar_link_recent' href='../../archive/2025/06.html#2025-06-28'>●06/28 ウディコン準備中！+ 開発日誌も移転作業中</a></div>
+<hr>
+<div style='font-weight:bold;'>【カテゴリ】</div>
+<div><a class='sidebar_link' href='../../category/owh/001.html'>片道勇者&nbsp;<span class='sym'>(124)</span></a></div>
+<div><a class='sidebar_link' href='../../category/devlog/001.html'>開発日誌&nbsp;<span class='sym'>(92)</span></a></div>
+<div><a class='sidebar_link' href='../../category/woditor/001.html'>ウディタ&nbsp;<span class='sym'>(91)</span></a></div>
+<div><a class='sidebar_link' href='../../category/owh2dev/001.html'>片道勇者2&nbsp;<span class='sym'>(78)</span></a></div>
+<div><a class='sidebar_link' href='../../category/etc/001.html'>その他&nbsp;<span class='sym'>(25)</span></a></div>
+<div><a class='sidebar_link' href='../../category/illust/001.html'>落書き&nbsp;<span class='sym'>(15)</span></a></div>
+<div><a class='sidebar_link' href='../../category/planethowl/001.html'>ﾌﾟﾗﾈｯﾄﾊｳﾙ&nbsp;<span class='sym'>(13)</span></a></div>
+<div><a class='sidebar_link' href='../../category/trpg/001.html'>TRPG&nbsp;<span class='sym'>(9)</span></a></div>
+<div><a class='sidebar_link' href='../../category/study/001.html'>勉強メモ&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../category/silgen/001.html'>シル幻&nbsp;<span class='sym'>(1)</span></a></div>
+<div><a class='sidebar_link' href='../../category/petit/001.html'>プチ作品&nbsp;<span class='sym'>(1)</span></a></div>
+<hr>
+<div style='font-weight:bold;'>【月別】</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2025-btn' onclick="toggleYear('y2025')">2025&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2025' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2025/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2025/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2024-btn' onclick="toggleYear('y2024')">2024&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2024' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2024/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2024/01.html'>01月&nbsp;<span class='sym'>(2)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2023-btn' onclick="toggleYear('y2023')">2023&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2023' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2023/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/09.html'>09月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2023/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2022-btn' onclick="toggleYear('y2022')">2022&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2022' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2022/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2022/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2021-btn' onclick="toggleYear('y2021')">2021&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2021' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2021/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/08.html'>08月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/04.html'>04月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/03.html'>03月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2021/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2020-btn' onclick="toggleYear('y2020')">2020&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2020' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2020/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/11.html'>11月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/07.html'>07月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/05.html'>05月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/02.html'>02月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2020/01.html'>01月&nbsp;<span class='sym'>(3)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2019-btn' onclick="toggleYear('y2019')">2019&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2019' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2019/12.html'>12月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/11.html'>11月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/09.html'>09月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/08.html'>08月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/07.html'>07月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/06.html'>06月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/04.html'>04月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2019/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2018-btn' onclick="toggleYear('y2018')">2018&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2018' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2018/12.html'>12月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/11.html'>11月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/10.html'>10月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/09.html'>09月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/08.html'>08月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/07.html'>07月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/06.html'>06月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/05.html'>05月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/04.html'>04月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2018/01.html'>01月&nbsp;<span class='sym'>(5)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2017-btn' onclick="toggleYear('y2017')">2017&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2017' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2017/12.html'>12月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/11.html'>11月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/10.html'>10月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/09.html'>09月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/08.html'>08月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/07.html'>07月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/06.html'>06月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/05.html'>05月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/04.html'>04月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/03.html'>03月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2017/01.html'>01月&nbsp;<span class='sym'>(5)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2016-btn' onclick="toggleYear('y2016')">2016&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2016' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2016/12.html'>12月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2016/11.html'>11月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2016/10.html'>10月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2016/09.html'>09月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2016/08.html'>08月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2016/07.html'>07月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2016/06.html'>06月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2016/05.html'>05月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2016/04.html'>04月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2016/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2016/02.html'>02月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2016/01.html'>01月&nbsp;<span class='sym'>(5)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2015-btn' onclick="toggleYear('y2015')">2015&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2015' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2015/12.html'>12月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2015/11.html'>11月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2015/10.html'>10月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2015/09.html'>09月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2015/08.html'>08月&nbsp;<span class='sym'>(7)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2015/07.html'>07月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2015/06.html'>06月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2015/05.html'>05月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2015/04.html'>04月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2015/03.html'>03月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2015/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2015/01.html'>01月&nbsp;<span class='sym'>(5)</span></a></div>
+</div>
+<div><a class='sidebar_link' href='javascript:void(0);' id='y2014-btn' onclick="toggleYear('y2014')">2014&nbsp;<span class='sym'>＋</span></a></div>
+<div id='y2014' data-yearpane style='display:none;margin-left:10px;'>
+<div><a class='sidebar_link' href='../../archive/2014/12.html'>12月&nbsp;<span class='sym'>(3)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2014/11.html'>11月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2014/10.html'>10月&nbsp;<span class='sym'>(2)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2014/09.html'>09月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2014/08.html'>08月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2014/07.html'>07月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2014/06.html'>06月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2014/05.html'>05月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2014/04.html'>04月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2014/03.html'>03月&nbsp;<span class='sym'>(5)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2014/02.html'>02月&nbsp;<span class='sym'>(4)</span></a></div>
+<div><a class='sidebar_link' href='../../archive/2014/01.html'>01月&nbsp;<span class='sym'>(4)</span></a></div>
+</div>
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  // data-primary を持つ a のみ対象に
+  const links = document.querySelectorAll('a.double-link[data-primary]');
+
+  links.forEach(link => {
+    //const primaryUrl = link.dataset.primary;
+    
+    
+    // ★ HTTP→HTTPS に強制変換してテスト
+	const primaryUrl = link.dataset.primary
+	  .replace(/^http:/, 'https:')
+	  .replace(/www\.silversecond/, 'silversecond');
+
+    if (!primaryUrl) return;
+    
+    const testUrl = primaryUrl + '?t=' + Date.now(); // キャッシュ無効化！
+
+    fetch(testUrl, { method: 'GET', cache: 'no-store' })
+      .then(res => {
+        const url = res.url || '';
+        if (!res.ok || url.includes('404.html') || res.status === 404) {
+          console.warn('【404または失敗】そのままアーカイブを使います:', link.href);
+          // そのまま
+        } else {
+          console.warn('【OK】hrefを本家に書き換えます:', primaryUrl);
+          link.href = primaryUrl;
+        }
+      })
+      .catch(() => {
+        console.warn('【通信エラー】そのままアーカイブを使います:', link.href);
+        // エラー時もhrefはそのまま
+      });
+  });
+});
+</script>
+
+
+
+</body>
+</html>
