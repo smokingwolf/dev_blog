@@ -2206,7 +2206,7 @@ EXTENDED BODY:
 
 -----
 --------
-TITLE: 第12回ウディコン、結果発表！
+TITLE: 第12回ウディコン、結果発表！ 上位4作+ピックアップ紹介
 CATEGORY: ウディタ
 DATE: 2020-08-30 11:40:35
 -----
@@ -2220,7 +2220,7 @@ BODY:
 <img src="../../image/2020/20200830.jpg" width="80%" loading="lazy" height="108"></a>
 
 今年の第12回は作品の数・品質、共に例年以上にすごい回となりました！
-今回もいつも通り、上位3作品と、追加で気になった作品をご紹介します！
+今回もいつも通り、上位4作品と、追加で気になった作品をご紹介します！
 
 <hr size="1" />
 <a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/wolf_rpg_editor_contest12_2020/#15"><strong><span style="font-size:large;">【第１位　『DAY:0』】</span></strong>　PANO 様</a>
