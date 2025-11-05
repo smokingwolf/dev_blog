@@ -593,7 +593,7 @@ EXTENDED BODY:
 -----
 --------
 TITLE: 言語とモノリスの速度
-CATEGORY: ウディタ,モノリスフィア
+CATEGORY: ウディタ,ﾓﾉﾘｽﾌｨｱ
 DATE: 2009-02-13 18:16:02
 -----
 BODY:
