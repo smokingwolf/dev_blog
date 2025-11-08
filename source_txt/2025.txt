@@ -1,4 +1,4 @@
-TITLE: 2025年！　新年あけまして！
+TITLE: 2025年！　新年あけまして！ + 過去インタビュー3本
 CATEGORY: 開発日誌
 DATE: 2025-01-01 00:00:33
 -----
@@ -53,10 +53,39 @@ BODY:
 
 <HR>
 　という感じで今年もさっそくがんばっていきますので、2025年もよろしくお願いいたします！
-　まずはウディタ3.5修正の完了を目指して全力でがんばります！　うおおお！
+　まずはウディタ3.5修正の完了を目指して全力でがんばります！　うおおお！</td></tr></table>
+　
+　追記は過去のインタビュー3本の話です。
 -----
 EXTENDED BODY:
+　シルバーセカンド公式サイトのコンテンツ整理につき、『インタビュー一覧』をイラスト・テキスト作品集からはずしたので、こっそりこちらに掲載させていただきます！
+　気になる方はよければぜひ！
 
+<HR>
+<a class="double-link red"  target="_top" href="https://www.moguragames.com/smokingwolfinterview/"><B><span style="font-size:18px;">【2015-11-7】もぐらゲームス様より</span>
+『ゲームの半分はフリーゲームとして作り続けたい』
+ 開発者SmokingWolf氏インタビュー（前/後編のうちの前編へ）</B></a>
+ (※もしなくなっていた場合は<a class="double-link red" target="_blank" href="https://web.archive.org/web/20240526192230/https://www.moguragames.com/smokingwolfinterview/"><B>インターネットアーカイブ</B></a>より見られます)
+
+→　16年以上にわたるゲーム開発との出会いから商売やらいろいろなお話！　レジェンドオブレストールから片道勇者、有料作品、ウディタの話までインタビューしていただきました！
+
+<HR>
+<a class="double-link red"  target="_top" href="https://web.archive.org/web/20160718211534/http://blog.playism.jp/smoking-wolf/"><B><span style="font-size:18px;">【2015-09-15】PLAYISM 様より</span> 
+『ゲームの半分はフリーゲームとして作り続けたい』
+ シル幻、ウディタ、そして片道勇者を生んだ
+SmokingWOLF氏インタビュー</B> (サイトが消えていたのでアーカイブページへ)</a>
+
+→　こちらもゲーム開発の最初からウディタの誕生などいろいろなことについて聞いてくださっています。
+　夢は1秒でも長く自由なゲーム開発を続けることです！
+
+
+<HR>
+<a class="double-link red"  target="_top" href="http://reviewers.s602.xrea.com/interview/006smokingwolf.html"><B><span style="font-size:18px;">【2011-7-3】赤松弥太郎 様より</span>
+『「ゲーム開発」は私にとって「呼吸」と同じです』
+ 開発者SmokingWolf氏インタビュー（前/後編のうちの前編へ）</B></a>
+ (※もしなくなっていた場合は<a class="double-link red" target="_blank" href="https://web.archive.org/web/20150828232339/http://reviewers.s602.xrea.com/interview/006smokingwolf.html"><B>インターネットアーカイブ</B></a>より見られます)
+
+→　ゲーム開発の始まりから、初めて遊んだアマチュアゲームで衝撃を受けた話、シルフェイド見聞録の話……などなどいろいろな質問をしていただきました！
 -----
 --------
 TITLE: ウディタ3.5開発中その8　BGSチャンネル･コマンド折りたたみ等
@@ -3762,44 +3791,6 @@ BODY:
 　ちなみにウディコン期間中は（みんなウディコン作品を遊ばれるので）私のゲームがほぼ完全に売れなくなっちゃうので、<a class="double-link red" target="_blank" href="https://silversecond.booth.pm/items/4455722"><B>ご支援</B></a>はいつでも募集中です！　いつもご支援くださっている皆さまには本当に感謝の限りです、生活の助けになります！
 
 　ではここから8月までのウディコン運営、がんばっていきます！　うおおおー！！
------
-EXTENDED BODY:
-
------
---------
-TITLE: 過去のインタビューまとめ（3本）！
-CATEGORY: その他
-DATE: 2025-01-02 00:00:00
------
-BODY:
-　シルバーセカンド公式サイトのコンテンツ整理につき、『インタビュー一覧』をイラスト・テキスト作品集からはずしたので、こっそりこちらに掲載させていただきます！
-　気になる方はよければぜひ！
-
-<HR>
-<a class="double-link red"  target="_top" href="https://www.moguragames.com/smokingwolfinterview/"><B><span style="font-size:18px;">【2015-11-7】もぐらゲームス様より</span>
-『ゲームの半分はフリーゲームとして作り続けたい』
- 開発者SmokingWolf氏インタビュー（前/後編のうちの前編へ）</B></a>
- (※もしなくなっていた場合は<a class="double-link red" target="_blank" href="https://web.archive.org/web/20240526192230/https://www.moguragames.com/smokingwolfinterview/"><B>インターネットアーカイブ</B></a>より見られます)
-
-→　16年以上にわたるゲーム開発との出会いから商売やらいろいろなお話！　レジェンドオブレストールから片道勇者、有料作品、ウディタの話までインタビューしていただきました！
-
-<HR>
-<a class="double-link red"  target="_top" href="https://web.archive.org/web/20160718211534/http://blog.playism.jp/smoking-wolf/"><B><span style="font-size:18px;">【2015-09-15】PLAYISM 様より</span> 
-『ゲームの半分はフリーゲームとして作り続けたい』
- シル幻、ウディタ、そして片道勇者を生んだ
-SmokingWOLF氏インタビュー</B> (サイトが消えていたのでアーカイブページへ)</a>
-
-→　こちらもゲーム開発の最初からウディタの誕生などいろいろなことについて聞いてくださっています。
-　夢は1秒でも長く自由なゲーム開発を続けることです！
-
-
-<HR>
-<a class="double-link red"  target="_top" href="http://reviewers.s602.xrea.com/interview/006smokingwolf.html"><B><span style="font-size:18px;">【2011-7-3】赤松弥太郎 様より</span>
-『「ゲーム開発」は私にとって「呼吸」と同じです』
- 開発者SmokingWolf氏インタビュー（前/後編のうちの前編へ）</B></a>
- (※もしなくなっていた場合は<a class="double-link red" target="_blank" href="https://web.archive.org/web/20150828232339/http://reviewers.s602.xrea.com/interview/006smokingwolf.html"><B>インターネットアーカイブ</B></a>より見られます)
-
-→　ゲーム開発の始まりから、初めて遊んだアマチュアゲームで衝撃を受けた話、シルフェイド見聞録の話……などなどいろいろな質問をしていただきました！
 -----
 EXTENDED BODY:
 
