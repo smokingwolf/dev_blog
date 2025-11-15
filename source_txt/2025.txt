@@ -4579,7 +4579,7 @@ DATE: 2025-11-15 00:00:00
 -----
 BODY:
 　作業は引き続き続行中ですが、今回は記念のお話！
-　なんと（本家）開発日誌の記事数が大台に乗りました！！
+　なんと開発日誌の記事数が大台に乗りました！！
 
 <div class="toc-box"><ul class="toc-list"><li class="toc-level1"><a class="double-link g"  target="_top" href="#2025-11-15-1">◆開発日誌がついに『1000件』到達！</a></li><ul><li class="toc-level2"><a class="double-link g"  target="_top" href="#2025-11-15-2">- 【気付いたら999記事も書いていた！ この記事が1000件目！】</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2025-11-15-3">- 【開発日誌を続けてきたメリット】</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2025-11-15-4">- 【開発日誌は続けますが、これからどう進める？】</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2025-11-15-5">- 【これからも続けたい開発日誌】</a></li></ul></ul></div>
 <a id="2025-11-15-1"></a><h1>◆開発日誌がついに『1000件』到達！</h1><img src="../../image/2025/20251115.jpg" border="1" style="height:580px;border-radius:8px;" loading="lazy" height="1500">
