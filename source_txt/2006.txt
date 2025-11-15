@@ -1331,7 +1331,7 @@ BODY:
 といってもキャラが動いて攻撃の当たり判定が設定できるように
 なっただけですが、お暇な方は↓からどうぞ。
 
-<a class="double-link blue" class=red target="_top" href="../../data/shooting.exe"><B>【シューティングプロトタイプ(500KB)のダウンロードはこちら】</B></a>
+<a class="double-link blue" class=red target="_top" href="https://smokingwolf.github.io/etc_games/Shooting.zip"><B>【シューティングプロトタイプ(500KB)のダウンロードはこちら】</B></a>
 移動は方向キーかWASD(W:上、A:左、D:右、S:下）で、
 ショットはマウス左クリックです。右クリックで敵が出ます。
 DirectX9じゃないと動かないかもしれません。
