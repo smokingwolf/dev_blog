@@ -4582,7 +4582,7 @@ BODY:
 　なんと（本家）開発日誌の記事数が大台に乗りました！！
 
 <div class="toc-box"><ul class="toc-list"><li class="toc-level1"><a class="double-link g"  target="_top" href="#2025-11-15-1">◆開発日誌がついに『1000件』到達！</a></li><ul><li class="toc-level2"><a class="double-link g"  target="_top" href="#2025-11-15-2">- 【気付いたら999記事も書いていた！ この記事が1000件目！】</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2025-11-15-3">- 【開発日誌を続けてきたメリット】</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2025-11-15-4">- 【開発日誌は続けますが、これからどう進める？】</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2025-11-15-5">- 【これからも続けたい開発日誌】</a></li></ul></ul></div>
-<a id="2025-11-15-1"></a><h1>◆開発日誌がついに『1000件』到達！</h1><img src="../../image/2025/20251115.jpg" border="1" style="height:500px;border-radius:8px;" loading="lazy" height="1500">
+<a id="2025-11-15-1"></a><h1>◆開発日誌がついに『1000件』到達！</h1><img src="../../image/2025/20251115.jpg" border="1" style="height:580px;border-radius:8px;" loading="lazy" height="1500">
 <span style="font-size: 80%">　↑<a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/dev_blog/archive/2003/08.html#2003-08-03"><B>開発日誌の1記事目</B></a>は、日誌開始宣言とリクレールというキャラの紹介でした。1000件目も記念リクレール！　結局このときのシル見RPGと呼んでいたものは『シルフェイド幻想譚』になった感じです。</span>
 
 <a id="2025-11-15-2"></a><h2>【気付いたら999記事も書いていた！ この記事が1000件目！】</h2>　これまで少しずつGitHub内に移植し続けていたこの<B>開発日誌</B>の復旧作業ですが、ようやく前週、2003年8月から2025年までの、22年3ヶ月にわたる全ての記事の復旧が完了しました！
@@ -4591,7 +4591,7 @@ BODY:
 　やったぁぁぁぁぁーー！！！
 
 　そしていざ作業を完了して<a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/dev_blog/index.html"><B>「全記事一覧」</B></a>の総記事数の数字を見たら衝撃の事実が判明！
-<img src="../../image/2025/20251115A.jpg" border="1" style="height:400px;border-radius:8px;" loading="lazy" height="834">
+<img src="../../image/2025/20251115A.jpg" border="1" style="height:360px;border-radius:8px;" loading="lazy" height="834">
 　
 　なんとこの記事の原稿を書いてる時点の<span style="color: #2962ff"><span style="font-size: 150%"><B>総記事数が999件</B>！</span></span>
 
