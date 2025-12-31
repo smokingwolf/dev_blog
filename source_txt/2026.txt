@@ -8,7 +8,7 @@ BODY:
 <div class="toc-box"><ul class="toc-list"><li class="toc-level1"><a class="double-link g"  target="_top" href="#2026-01-03-1">◆新年イラスト！　今年の干支はウマ！</a></li><li class="toc-level1"><a class="double-link g"  target="_top" href="#2026-01-03-2">◆今年の抱負・目標！</a></li><ul><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-01-03-3">- 【シルフェイド学院物語のリファイン！】</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-01-03-4">- 【『片道勇者2』の開発再開！】</a></li></ul></ul></div>
 <a id="2026-01-03-1"></a><h1>◆新年イラスト！　今年の干支はウマ！</h1>　今年のイラストは午年（ウマ年）ということで、『シルフェイド幻想譚』より、いちおうユニコーンっ子のリクレールです！
 　　<img src="../../image/2026/20260101.jpg" border="1" style="height:550px;border-radius:8px;" loading="lazy" height="1000">
-
+　　<span style="font-size: 80%"><span style="color: #64b5f6">↑アップして気付いたけどリクレールのしっぽがない……いえ角度的に見えないことにしておきましょう！</span></span>
 
 <a id="2026-01-03-2"></a><h1>◆今年の抱負・目標！</h1>　年始と言えば今年の目標！　といっても去年からやってきたことの続きがメインです！
 <a id="2026-01-03-3"></a><h2>【シルフェイド学院物語のリファイン！】</h2>　まずは『シルフェイド学院物語』のリファイン！
