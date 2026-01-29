@@ -99,3 +99,43 @@ EXTENDED BODY:
 
 -----
 --------
+TITLE: シルフェイド幻想譚のアレンジアルバムが発表！
+CATEGORY: シル幻
+DATE: 2026-01-29 00:00:00
+-----
+BODY:
+　今回はついに発表された『シルフェイド幻想譚』のアレンジアルバムについてのご紹介です！
+
+<div class="toc-box"><ul class="toc-list"><li class="toc-level1"><a class="double-link g"  target="_top" href="#2026-01-31-1">◆めあらす様による『シルフェイド幻想譚』メモリアル コンピレーションアルバム企画進行中！</a></li><ul><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-01-31-2">- 【シル幻20周年アレンジアルバムが制作中！】</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-01-31-3">- 【収録されている曲は？】</a></li></ul></ul></div>
+<a id="2026-01-31-1"></a><h1>◆めあらす様による『シルフェイド幻想譚』メモリアル コンピレーションアルバム企画進行中！</h1><a id="2026-01-31-2"></a><h2>【シル幻20周年アレンジアルバムが制作中！】</h2>　なんと！
+　『シルフェイド幻想譚』20周年を記念して、シル幻で多くの曲を使わせていただいたサイト<a class="double-link red" target="_blank" href="https://takedtm.web.fc2.com/"><B>Minstrel's treasure</B></a>の管理人、めあらす様と作曲者のみなさまによるメモリアル（記念）コンピレーションアルバムが制作中です！　という情報が公開されました！
+　私は音楽用語について無知なので「コンピレーションアルバムって何！？」と思ったのですが、これは「特定のテーマやコンセプトにしたがって集められた楽曲で構成されたアルバム」のことです。
+　今回のものについては、<B>『複数の作曲者さまによる、シル幻楽曲のアレンジ曲集アルバム』</B>という感じになります！
+
+<span style="color: #42a5f5"><span style="font-size: 80%">主催である、めあらす様の告知ツイート↓　今回収録される楽曲の一部も聴くことができます！</span></span>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr"><a class="double-link red" hash&amp;ref_src=twsrc%5Etfw"" target="_top" href="https://twitter.com/hashtag/%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%A0%E3%83%84%E3%82%AF%E3%83%BC%E3%83%AB%E3%83%87%E3%83%BC?src=">#プレミアムツクールデー</a><br>不朽の名作「シルフェイド幻想譚」公開20周年を記念した音楽作品を制作中です！！✨<br><br>クレジットはツリーにて！<br>応援よろしくお願いします！🙇 <a class="double-link red"  target="_top" href="https://t.co/mewU21Ml8R">pic.twitter.com/mewU21Ml8R</a></p>&mdash; めあらす (@mearas4192) <a class="double-link red"  target="_top" href="https://twitter.com/mearas4192/status/2012187831876391358?ref_src=twsrc%5Etfw">January 16, 2026</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+　このアルバムは『シルフェイド幻想譚』の20周年音楽作品とのことで、リリース予定は<span style="color: #f44336"><span style="font-size: 150%"><B>『2026年春ごろ』</B></span></span>とのこと！
+　私も作成にあたって、楽曲以外の部分で各種お手伝いをさせていただいている最中です！
+
+　紹介映像のラストに出ているイラスト（↓告知動画よりキャプチャ）も私が描かせていただきました！
+　リクレールとトーテムたちですね！
+<img src="../../image/2026/20260129.jpg" border="1" style="height:300px;border-radius:8px;" loading="lazy" height="326">
+
+<a id="2026-01-31-3"></a><h2>【収録されている曲は？】</h2>　曲は過去に<B>Minstrel's treasure</B>サイトさまで公開されていた楽曲のアレンジ曲集となります！
+　シル幻はいろんな方の楽曲を使わせていただいているのですが、今回のアルバムは主催者さまが権利を持つ曲のアレンジ集になるという意味ですね！　その点はあらかじめご理解いただけますと幸いです。
+　それでもシル幻の曲の半分以上を占めており、すごくたくさんの量を使わせていただいたことが分かりますよ！　特にバトル系！
+
+　ちょうど曲も聴かせていただいておりますが、本当に素敵な曲ばかりです！
+　リリースされる日をお楽しみに！
+
+<HR>
+　ということで初報でした！
+　発売されましたらまた開発日誌でお知らせいたしますので、その折にはよければぜひ！
+
+　このたびはすばらしい企画、本当にありがとうございます！　完成が楽しみです！
+-----
+EXTENDED BODY:
+
+-----
+--------
