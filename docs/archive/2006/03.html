@@ -199,13 +199,13 @@ h1 {
 }
 
 
-h2,h3 {
+h2 {
   background: #fff;
   padding: 6px 10px;
   margin-left: 10px;
   font-size: 15px;
   font-weight: bold;
-  color: #5566ff; /* 青系 */
+  color: #7788ff; /* 青系 */
   
   background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
   border-radius: 4px;
@@ -215,6 +215,27 @@ h2,h3 {
 }
 
 h2::before {
+  content: "- ";
+}
+
+
+
+h3 {
+  background: #fff;
+  padding: 2px 10px;
+  margin-left: 15px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #5566ff; /* 青系 */
+  
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 12px;
+  border-left: 4px solid #ccccff;
+  display: inline-block;
+
+}
+
+h3::before {
   content: "- ";
 }
 
