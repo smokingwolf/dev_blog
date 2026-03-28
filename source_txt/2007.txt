@@ -1070,7 +1070,7 @@ PC版を期待してくださっていた皆さんには申し訳ありません
 
 とりあえず暫定的にシェパード捜査録の紹介ページを作りました。
 こちらからどうぞ↓
-<a data-primary="http://www.silversecond.net/main/contents/game/etc_games/shephard.html" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/etc_games/shephard.html">『シェパード捜査録紹介ページ』</a></CENTER>
+<a class="double-link blue" target="_blank" href="https://smokingwolf.github.io/etc_games/shephard.html">『シェパード捜査録紹介ページ』</a></CENTER>
 -----
 EXTENDED BODY:
 
