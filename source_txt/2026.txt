@@ -1039,7 +1039,7 @@ BODY:
 
 <div class="toc-box"><ul class="toc-list"><li class="toc-level1"><a class="double-link g"  target="_top" href="#2026-04-18-1">◆シルフェイド学院物語 紹介動画を作成！</a></li><li class="toc-level1"><a class="double-link g"  target="_top" href="#2026-04-18-2">◆『シルフェイド学院物語』 体験版公開！</a></li><li class="toc-level1"><a class="double-link g"  target="_top" href="#2026-04-18-3">◆【ウディタ新機能】パフォーマンスモニター（イベント負荷計測）追加！</a></li></ul></div>
 <a id="2026-04-18-1"></a><h1>◆シルフェイド学院物語 紹介動画を作成！</h1>　難産だった『シルフェイド学院物語』の紹介動画、ようやく完成しました！
-　長さは約2分未満です！　ゲームシステム紹介や選べる住居、クラス（メインシナリオ）、その他諸々の紹介です。
+　長さは約2分です！　ゲームシステム紹介や選べる住居、クラス（メインシナリオ）、その他諸々の紹介です。
 
 <iframe width="520" height="300" src="https://www.youtube.com/embed/mel-232OAQI?si=4sq14Ruxopg8uDzz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 　いつものことながら、ゲームの紹介動画ってものすごく作るのが億劫なんですよ！
