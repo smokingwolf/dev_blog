@@ -67,5 +67,5 @@
 <div class="TopTitle" style="margin-top:15px;">　　シルバーセカンド開発日誌</div>
 <!--ここにコメント文-->
 <div class="header3" style="margin-top:6px;">　ここはゲーム開発者SmokingWOLF(スモーキングウルフ)の開発日誌です。<BR>
-　<B>【現在の目標】</B>→ シル学リファインしてDLsite販売！ ＆ 『片道勇者2』の開発！<BR>
+　<B>【現在の目標】</B>→ 『片道勇者2』の開発！<BR>
 </div>
