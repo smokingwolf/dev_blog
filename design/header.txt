@@ -231,7 +231,7 @@ h3 {
   background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
   border-radius: 12px;
   border-left: 4px solid #ccccff;
-  display: inline-block;
+  display: table;
 
 }
 
