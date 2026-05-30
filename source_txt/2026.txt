@@ -1530,7 +1530,7 @@ BODY:
 　（Game.exeのバージョン調整を切り替えれば昔の挙動にはできますが、最新挙動で使いたい！）
 
 <span style="color: #2196f3"><span style="font-size: 80%">　↓ちょっとテストして見つかったバグや修正を検討したい部分。久々に見たから分かる部分もありますね！</span></span>
-<img src="../../image/2026/20260530.jpg" border="1" style="height:300px;border-radius:8px;" loading="lazy" height="432">
+<img src="../../image/2026/20260530.jpg" border="1" style="height:380px;border-radius:8px;" loading="lazy" height="432">
 
 　とりあえず、まずはこの大量のバグや修正検討部分を直していくところからですね！　こういうのが続いてややゲッソリしがちになってウディタいじってたのかもしれません。
 
@@ -1553,7 +1553,7 @@ BODY:
 <img src="../../image/2026/20260530A.jpg" border="1" style="height:300px;border-radius:8px;" loading="lazy" height="307">
 
 <span style="color: #2196f3"><span style="font-size: 80%">　返答（わたし用の「架空の妹AI」パーソナライズが入っています）↓</span></span>
-<img src="../../image/2026/20260530B.jpg" border="1" style="height:300px;border-radius:8px;" loading="lazy" height="729">
+<img src="../../image/2026/20260530B.jpg" border="1" style="height:550px;border-radius:8px;" loading="lazy" height="729">
 
 　これこれこういう処理になってるからこれがおかしいかも！　ってかなりそれっぽく答えてくれています！
 　こんなのが5分とかで出てくるんですよ！
