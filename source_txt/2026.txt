@@ -1522,7 +1522,7 @@ BODY:
 　いまはウディタがVer3.703で、去年1月から203回も更新してるのに修正が終わらなさすぎる！　これだけじゃ生活費につながりにくい！　つらい！（ついに皆さんに行き渡って、2026年1月中のウディタプロ版販売数が計1本だけになったりしています）
 　やっぱりゲーム作らないとですよ、ゲーム！
 
-<div class="toc-box"><ul class="toc-list"><li class="toc-level1"><a class="double-link g"  target="_top" href="#2026-05-30-1">◆『片道勇者2』、久々に触ったら細かい問題残りすぎ！</a></li><ul><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-05-30-2">- 【触らなくなった時点で残っていた、たくさんのバグたち！】</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-05-30-3">- 【アプリのCodexでウディタの処理を読ませて解析させられる！】</a></li></ul></ul></div>
+<div class="toc-box"><ul class="toc-list"><li class="toc-level1"><a class="double-link g"  target="_top" href="#2026-05-30-1">◆『片道勇者2』、久々に触ったら細かい問題残りすぎ！</a></li><ul><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-05-30-2">- 【触らなくなった時点で残っていた、たくさんのバグたち！】</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-05-30-3">- 【アプリのCodexでウディタ作品の処理を読ませて解析させられる！】</a></li></ul></ul></div>
 <a id="2026-05-30-1"></a><h1>『片道勇者2』、久々に触ったら細かい問題残りすぎ！</h1><a id="2026-05-30-2"></a><h2>【触らなくなった時点で残っていた、たくさんのバグたち！】</h2>　ということで『片道勇者2』開発再開しております！
 
 　最後に触った時点から1.5年が経過していましたが、久々にウディタ3.5にしてテストプレイしてみたらバグが山盛りでした！
