@@ -1545,7 +1545,9 @@ BODY:
 
 <B>【Codexにウディタの処理を見てもらうには？】</B>
 
-1．まずはエディターオプション内の「<B>基本データTXT出力</B>」ボタンを使って、『片道勇者2』の「Data_AutoTXT」フォルダ内に「CommonEvent.Auto.txt（コモンイベント内容）」や「DataBase.Auto.txt（ユーザデータベース）」、「CDataBase.Auto.txt（可変データベース）」などを出力します。
+1．まずはエディターオプション内の「<B>基本データTXT出力</B>」ボタンを押します。
+　すると『片道勇者2』の「Data_AutoTXT」フォルダ内に「CommonEvent.Auto.txt（コモンイベント内容）」や「DataBase.Auto.txt（ユーザデータベース）」、「CDataBase.Auto.txt（可変データベース）」などが出力されます。
+
 
 2．次にCodexで、その「Data_AutoTXT」フォルダを作業フォルダに指定して、「これこれこういう問題があるんだけどどこが悪いか分かる？」と聞いた結果がこれ！
 
