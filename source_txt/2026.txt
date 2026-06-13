@@ -1639,8 +1639,8 @@ BODY:
 <B>「あああー！！！　なんでウディタにこの機能が付いてないんだー！！　っていうか作ったの自分なんだから今から入れればいいじゃないかー！！」</B>
 　と叫びながらウディタに実装する流れが非常に多いんですよ！
 
-<div class="toc-box"><ul class="toc-list"><li class="toc-level1"><a class="double-link g"  target="_top" href="#2026-06-13-1">◆『片道勇者2』　標準成長パート作成とバグ取り</a></li><ul><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-06-13-2">- 【シンプルな成長パートを作成】</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-06-13-3">- 【片道勇者2はこんなバグ取りもしてました！】</a></li></ul><li class="toc-level1"><a class="double-link g"  target="_top" href="#2026-06-13-4">◆ウディタにも地味な便利修正！</a></li></ul></div>
-<a id="2026-06-13-1"></a><h1>◆『片道勇者2』 標準成長パート作成とバグ取り</h1><a id="2026-06-13-2"></a><h2>【シンプルな成長パートを作成】</h2>　『片道勇者2』、レベルアップする画面が最初からややマニアックめな仕組みになってたので、そっちは熟練者の方が好きに選べる立ち位置（たとえばマニアモードとか、特徴によって得られるもの）にして、標準の成長パートは分かりやすくしました。
+<div class="toc-box"><ul class="toc-list"><li class="toc-level1"><a class="double-link g"  target="_top" href="#2026-06-13-1">◆『片道勇者2』　標準成長パート作成とバグ取り</a></li><ul><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-06-13-2">- 【分かりやすい「標準」成長パートを作成！】</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-06-13-3">- 【片道勇者2はこんなバグ取りもしてました！】</a></li></ul><li class="toc-level1"><a class="double-link g"  target="_top" href="#2026-06-13-4">◆ウディタにも地味な便利修正！</a></li></ul></div>
+<a id="2026-06-13-1"></a><h1>◆『片道勇者2』 標準成長パート作成とバグ取り</h1><a id="2026-06-13-2"></a><h2>【分かりやすい「標準」成長パートを作成！】</h2>　『片道勇者2』、レベルアップする画面が最初からややマニアックめな仕組みになってたので、そっちは熟練者の方が好きに選べる立ち位置（たとえばマニアモードとか、特徴によって得られるもの）にして、標準の成長パートは分かりやすくしました。
 
 　「標準版」は安定して好きな成長を選べる方式、「上級者版」は経験値が増える代わりに、手札運と判断力が強く問われる方式です。
 
