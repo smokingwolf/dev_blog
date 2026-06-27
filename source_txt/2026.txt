@@ -1735,7 +1735,7 @@ EXTENDED BODY:
 
 -----
 --------
-TITLE: ウディタタブレットPC対応！  表現警告だらけの自作品！
+TITLE: ウディタWinタブレットPC対応！  表現警告だらけの自作品！
 CATEGORY: ウディタ,ゲーム開発,
 DATE: 2026-06-27 00:00:00
 -----
@@ -1744,17 +1744,17 @@ BODY:
 
 　今回はウディタの修正とウディコンの話を少し！　と、おまけ（一番長い）として表現規制に関する印象深かった出来事をご紹介！
 
-<div class="toc-box"><ul class="toc-list"><li class="toc-level1"><a class="double-link g"  target="_top" href="#2026-06-27-1">◆ウディタ修正！</a></li><ul><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-06-27-2">- 【タブレットPC上でマウスクリックが有効に！】</a></li></ul><li class="toc-level1"><a class="double-link g"  target="_top" href="#2026-06-27-3">◆第18回ウディコン、開催三週間前！</a></li><li class="toc-level1"><a class="double-link g"  target="_top" href="#2026-06-27-4">◆あまりに表現警告だらけのシル学、ヌード込み扱い片道勇者</a></li><ul><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-06-27-5">- 【健全ゲーム（？）のはずが表現警告欄がにぎやかすぎるシル学！】</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-06-27-6">- 【『片道勇者』もちょっとヤバい！】</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-06-27-7">- 【どっちも犯罪描写がある】</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-06-27-8">- 【この地雷源を歩かなきゃいけない現場の人が大変すぎる！】</a></li></ul></ul></div>
-<a id="2026-06-27-1"></a><h1>◆ウディタ修正！</h1><a id="2026-06-27-2"></a><h2>【タブレットPC上でマウスクリックが有効に！】</h2>　この期間で直した中で最も大きい修正点がこれ！
+<div class="toc-box"><ul class="toc-list"><li class="toc-level1"><a class="double-link g"  target="_top" href="#2026-06-27-1">◆ウディタ修正！</a></li><ul><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-06-27-2">- 【WindowsタブレットPC上でマウスクリックが有効に！】</a></li></ul><li class="toc-level1"><a class="double-link g"  target="_top" href="#2026-06-27-3">◆第18回ウディコン、開催三週間前！</a></li><li class="toc-level1"><a class="double-link g"  target="_top" href="#2026-06-27-4">◆あまりに表現警告だらけのシル学、ヌード込み扱い片道勇者</a></li><ul><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-06-27-5">- 【健全ゲーム（？）のはずが表現警告欄がにぎやかすぎるシル学！】</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-06-27-6">- 【『片道勇者』もちょっとヤバい！】</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-06-27-7">- 【どっちも犯罪描写がある】</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-06-27-8">- 【この地雷源を歩かなきゃいけない現場の人が大変すぎる！】</a></li></ul></ul></div>
+<a id="2026-06-27-1"></a><h1>◆ウディタ修正！</h1><a id="2026-06-27-2"></a><h2>【WindowsタブレットPC上でマウスクリックが有効に！】</h2>　この期間で直した中で最も大きい修正点がこれ！
 
-　<span style="color: #d50000"><B><span style="font-size: 150%">『タブレットPC上のタップがマウスクリックに変換される機能！』（デフォルトでオン）</span></B></span>
+　<span style="color: #d50000"><B><span style="font-size: 150%">『WindowsタブレットPC上のタップがマウスクリックに変換される機能！』（デフォルトでオン）</span></B></span>
 
 　というのも、『シルフェイド学院物語』でタブレットPC上で仮想マウスのクリックが効かなくて遊べないというご報告が来たので苦労しながら慌てて実装したんですよ！
 　ただ思ったより仕様整理に手間がかかりました！
 　<B>「触れてから一定以上ポインタを動かしたらクリックとしては無視する」、「タブレットPC側のWindowsクリックが入っちゃった場合（！）も入らなかった場合も1回分のクリックにしなきゃいけない（これの仕様固めが地獄でした）」</B>みたいなのが意外に面倒くさかったです！
 　そう、タブレットPCによっては、タップでWindowsとしてのクリックが入るやつと入らないやつがあるみたいなんですよね。
 
-　なお最新の仕様では以下のように、タブレットPC上の操作が
+　なお最新の仕様では以下のように、WindowsタブレットPC上の操作が
 
 <span style="color: #f44336"><B>●タップする（すぐ離す） → 離した瞬間に『左クリック1回』
 ●長押しで0.5秒 → 触れている位置に『右クリック1回』</B></span>
