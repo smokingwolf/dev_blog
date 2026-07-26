@@ -1969,7 +1969,7 @@ EXTENDED BODY:
 
 -----
 --------
-TITLE: 
+TITLE: 第18回ウディコン審査開始！(8/24まで)　エントリー84作品！
 CATEGORY: ウディタ,落書き
 DATE: 2026-07-26 00:00:00
 -----
@@ -1979,7 +1979,7 @@ BODY:
 
 <a class="double-link blue" target="_blank" data-primary="https://silversecond.com/WolfRPGEditor/Contest/" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><B><span style="font-size: 150%">【ウディコン公式サイトへ】</span></B></a>
 
-<img src="../../image/2026/20260726.jpg" border="1" style="height:520px;border-radius:8px;" loading="lazy">
+<img src="../../image/2026/20260726.jpg" border="1" style="height:520px;border-radius:8px;" loading="lazy" height="900">
 
 <div class="toc-box"><ul class="toc-list"><li class="toc-level1"><a class="double-link g"  target="_top" href="#2026-08-01-1">◆第18回ウディコン、審査開始！</a></li><ul><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-08-01-2">- 【今回集まったのは84作品！！】</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-08-01-3">- 【審査期間は8/24(月)の23:59まで！】</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-08-01-4">- ◆今年のウディコンはどんな感じ？</a></li></ul></ul></div>
 <a id="2026-08-01-1"></a><h1>◆第18回ウディコン、審査開始！</h1><a id="2026-08-01-2"></a><h2>【今回集まったのは84作品！！】</h2>　今回エントリーされたのはなんと<B><span style="color: #d50000"><span style="font-size: 200%">84</span></span></B>作品！（エントリー停止除く）
