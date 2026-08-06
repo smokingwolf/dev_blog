@@ -2034,3 +2034,53 @@ EXTENDED BODY:
 
 -----
 --------
+TITLE: ウディタのデバッグ機能を超強化！
+CATEGORY: ウディタ
+DATE: 2026-08-08 00:00:00
+-----
+BODY:
+　<a class="double-link blue" target="_blank" data-primary="https://silversecond.com/WolfRPGEditor/Contest/" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><B>第18回ウディコン</B></a>の審査期間が始まって二週間です！　ちょっとウディコンの熱にあてられて<a class="double-link blue" target="_blank" href="https://www.silversecond.net/"><B>ウディタ</B></a>の修正もジャンジャンおこなっております！
+　いきなり最新版に差し替えるのはリスクもありますが、少しでもバグ直しなどのお役に立てればと思います！
+
+
+<div class="toc-box"><ul class="toc-list"><li class="toc-level1"><a class="double-link g"  target="_top" href="#2026-08-08-1">◆ウディタのデバッグ機能を超強化！</a></li><ul><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-08-08-2">- 【デバッグウィンドウで変数や可変DBの中身を見られる！】</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-08-08-3">- 【ゲーム側からEditorへのジャンプ機能を強化】</a></li><ul><li class="toc-level3"><a class="double-link g"  target="_top" href="#2026-08-08-4">- 【緑帯画面からF2キーでEditorのエラー箇所をひらける！】</a></li><li class="toc-level3"><a class="double-link g"  target="_top" href="#2026-08-08-5">- 【デバッグウィンドウ内に出たイベント行からでもF2で飛べる！】</a></li></ul><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-08-08-6">- 【検索で一覧表示機能も搭載！】</a></li></ul></ul></div>
+<a id="2026-08-08-1"></a><h1>◆ウディタのデバッグ機能を超強化！</h1>　ウディタVer3.715付近でデバッグ機能を大幅に強化しました！
+　まずは全部を映像でご紹介！　見られる方はこれが一番分かりやすいと思います！
+<a class="double-link red" target="_blank" href="https://www.youtube.com/watch?v=9iFzttXD9xA">https://www.youtube.com/watch?v=9iFzttXD9xA</a>
+　以下、それぞれ見ていきます！
+<a id="2026-08-08-2"></a><h2>【デバッグウィンドウで変数や可変DBの中身を見られる！】</h2><img src="../../image/2026/20260808.jpg" border="1" style="height:300px;border-radius:8px;" loading="lazy">
+　今回の目玉機能です！　デバッグウィンドウから、ゲーム実行中の変数値や可変DB（CDB）の内容をリアルタイムで確認できるようになりました！
+　一見するとシンプルですが、可変DBをいつでもその場で見られるのは本当に革命的です！
+　これまで内部の変数を見ようと思ったら大量のデバッグ文を入れたり、あるいはデバッグ用コモンを作ったりしなければならなかったのですが、これからはそういった手間から脱却できます！
+　コモンイベントごとのコモンセルフ変数を調べるのも面倒ですし、バグが起きてからデバッグ文を追加して再確認するのも手間！
+　でもこれからは、必要な値が最初から見えています！　とても便利なので、ぜひ使ってみてください。
+
+　おかげさまでXなどでも評判です！（お名前を隠して抜粋させていただきましたが「ウディタ　デバッグウィンドウ」で検索すると確認可能です）
+<img src="../../image/2026/20260808A.jpg" border="1" style="height:300px;border-radius:8px;" loading="lazy" height="353">
+
+
+<a id="2026-08-08-3"></a><h2>【ゲーム側からEditorへのジャンプ機能を強化】</h2><a id="2026-08-08-4"></a><h3>【緑帯画面からF2キーでEditorのエラー箇所をひらける！】</h3>　さて、続いてはゲーム画面からエディターの該当箇所へ直接飛べる便利機能です！
+　緑帯のエラー画面で「<B>F2</B>」キーを押すと、エラーが発生したイベント行をエディターで直接開けるようになりました！
+<img src="../../image/2026/20260808B.jpg" border="1" style="height:300px;border-radius:8px;" loading="lazy" height="470">
+
+
+<a id="2026-08-08-5"></a><h3>【デバッグウィンドウ内に出たイベント行からでもF2で飛べる！】</h3>　ちなみに、デバッグ文に「SysS55:[読]Ev実行経路」を表示させておけば、コモンイベントの呼び出し経路を確認しながら、各行から「<B>F2</B>」キーで呼び出し元へジャンプできます！
+<img src="../../image/2026/20260808C.jpg" border="1" style="height:300px;border-radius:8px;" loading="lazy" height="291">
+
+　
+<a id="2026-08-08-6"></a><h2>【検索で一覧表示機能も搭載！】</h2><img src="../../image/2026/20260808D.jpg" border="1" style="height:300px;border-radius:8px;" loading="lazy" height="458">
+　検索ウィンドウに『結果を全件表示』機能が付きました！
+　一覧が表示されて、項目をダブルクリックするとその位置へジャンプできます。
+
+　これまでは「検索」すると次の位置へジャンプするだけでしたが、この一覧機能を使えばもっと広い視野で調べやすくなるはずです！
+
+<HR>
+　という感じで、今回の更新で「ゲーム内の値を見る」「原因箇所へ直接飛ぶ」「関連箇所を一覧で調べる」という、デバッグ作業全体の流れがかなり短くなりました！
+　とにかくかなり調査効率が上がると思いますので、これから新作を作られる方や、最新版に変えてもいい方はぜひご利用ください！
+
+　<a class="double-link blue" target="_blank" data-primary="https://silversecond.com/WolfRPGEditor/Contest/" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><B>第18回ウディコン</B></a>も審査期間も残り約16日！　お楽しみください！
+-----
+EXTENDED BODY:
+
+-----
+--------
