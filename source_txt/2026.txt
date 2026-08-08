@@ -2039,7 +2039,7 @@ CATEGORY: ウディタ
 DATE: 2026-08-08 00:00:00
 -----
 BODY:
-　<a class="double-link blue" target="_blank" data-primary="https://silversecond.com/WolfRPGEditor/Contest/" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><B>第18回ウディコン</B></a>の審査期間が始まって二週間です！　ちょっとウディコンの熱にあてられて<a class="double-link blue" target="_blank" href="https://www.silversecond.net/"><B>ウディタ</B></a>の修正もジャンジャンおこなっております！
+　<a class="double-link blue" target="_blank" data-primary="https://silversecond.com/WolfRPGEditor/Contest/" href="https://smokingwolf.github.io/wolf_rpg_editor_contest/"><B>第18回ウディコン</B></a>の審査期間が始まって二週間です！　ちょっとウディコンの熱にあてられて<a data-primary="https://silversecond.com/WolfRPGEditor/" class="double-link blue" target="_blank" href="https://smokingwolf.github.io/tool_wolf_rpg_editor/"><B>ウディタ</B></a>の修正もジャンジャンおこなっております！
 　いきなり最新版に差し替えるのはリスクもありますが、少しでもバグ直しなどのお役に立てればと思います！
 
 
