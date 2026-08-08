@@ -2048,7 +2048,7 @@ BODY:
 　まずは全部を映像でご紹介！　見られる方はこれが一番分かりやすいと思います！
 <a class="double-link red" target="_blank" href="https://www.youtube.com/watch?v=9iFzttXD9xA">https://www.youtube.com/watch?v=9iFzttXD9xA</a>
 　以下、それぞれ見ていきます！
-<a id="2026-08-08-2"></a><h2>【デバッグウィンドウで変数や可変DBの中身を見られる！】</h2><img src="../../image/2026/20260808.jpg" border="1" style="height:300px;border-radius:8px;" loading="lazy">
+<a id="2026-08-08-2"></a><h2>【デバッグウィンドウで変数や可変DBの中身を見られる！】</h2><img src="../../image/2026/20260808.png" border="1" style="height:300px;border-radius:8px;" loading="lazy">
 　今回の目玉機能です！　デバッグウィンドウから、ゲーム実行中の変数値や可変DB（CDB）の内容をリアルタイムで確認できるようになりました！
 　一見するとシンプルですが、可変DBをいつでもその場で見られるのは本当に革命的です！
 　これまで内部の変数を見ようと思ったら大量のデバッグ文を入れたり、あるいはデバッグ用コモンを作ったりしなければならなかったのですが、これからはそういった手間から脱却できます！
