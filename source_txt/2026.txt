@@ -2046,9 +2046,9 @@ BODY:
 <div class="toc-box"><ul class="toc-list"><li class="toc-level1"><a class="double-link g"  target="_top" href="#2026-08-08-1">◆ウディタのデバッグ機能を超強化！</a></li><ul><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-08-08-2">- 【デバッグウィンドウで変数や可変DBの中身を見られる！】</a></li><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-08-08-3">- 【ゲーム側からEditorへのジャンプ機能を強化】</a></li><ul><li class="toc-level3"><a class="double-link g"  target="_top" href="#2026-08-08-4">- 【緑帯画面からF2キーでEditorのエラー箇所をひらける！】</a></li><li class="toc-level3"><a class="double-link g"  target="_top" href="#2026-08-08-5">- 【デバッグウィンドウ内に出たイベント行からでもF2で飛べる！】</a></li></ul><li class="toc-level2"><a class="double-link g"  target="_top" href="#2026-08-08-6">- 【検索で一覧表示機能も搭載！】</a></li></ul></ul></div>
 <a id="2026-08-08-1"></a><h1>◆ウディタのデバッグ機能を超強化！</h1>　ウディタVer3.715付近でデバッグ機能を大幅に強化しました！
 　まずは全部を映像でご紹介！　見られる方はこれが一番分かりやすいと思います！
-<a class="double-link red" target="_blank" href="https://www.youtube.com/watch?v=9iFzttXD9xA">https://www.youtube.com/watch?v=9iFzttXD9xA</a>
+<iframe width="520" height="300" src="https://www.youtube.com/embed/9iFzttXD9xA?si=LE9IleGVVtevZRB5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 　以下、それぞれ見ていきます！
-<a id="2026-08-08-2"></a><h2>【デバッグウィンドウで変数や可変DBの中身を見られる！】</h2><img src="../../image/2026/20260808.png" border="1" style="height:300px;border-radius:8px;" loading="lazy">
+<a id="2026-08-08-2"></a><h2>【デバッグウィンドウで変数や可変DBの中身を見られる！】</h2><img src="../../image/2026/20260808.png" border="1" style="height:300px;border-radius:8px;" loading="lazy" height="515">
 　今回の目玉機能です！　デバッグウィンドウから、ゲーム実行中の変数値や可変DB（CDB）の内容をリアルタイムで確認できるようになりました！
 　一見するとシンプルですが、可変DBをいつでもその場で見られるのは本当に革命的です！
 　これまで内部の変数を見ようと思ったら大量のデバッグ文を入れたり、あるいはデバッグ用コモンを作ったりしなければならなかったのですが、これからはそういった手間から脱却できます！
