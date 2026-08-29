@@ -2261,7 +2261,7 @@ BODY:
 <a id="2026-08-29-2"></a><h2><a class="double-link blue" target="_blank" href="https://www.silversecond.com/WolfRPGEditor/Contest/result18.shtml#72"><B><span style="font-size: 150%">【第１位　『カルゥドの鳥』】</span></B></a></h2>　作者：にわりん 様　<span style="font-size: 80%">↑タイトルクリックで作品へ</span>
 　<span style="font-size: 80%"><span style="color: #2196f3">熱中 35.9点(6位)+斬新 27.3点(3位)+物語性 35.3点(1位)+画像音声 25.0点(5位)+遊びやすさ37.2点(2位)+その他21.5点(5位)  = 182.2点</span></span>
 
-<img src="../../image/wodicon/Entry18_72_big.jpg" loading="lazy" height="600">
+<a class="double-link blue" rel="lightbox[20260829]" target="_top" href="../../image/wodicon/Entry18_72_big.jpg"><img src="../../image/wodicon/Entry18_72_big.jpg" border="2" style="max-width:400px;border-radius:8px;" loading="lazy" height="300"></a>
 
 　『カルゥドの鳥』は、古代文を集めて古代語の訳を収集し、読めない儀式書を読み解いて儀式を再現することが目的の探索アドベンチャーRPGです！
 　主人公のユライさんが非常に魅力的で、嫌みっぽさがない！　積極的だけど距離感が適切！　空気は読める！　みたいな感じで見ていてかなりの安心感があります！
@@ -2276,8 +2276,8 @@ BODY:
 　その土地ごとのバックグラウンドストーリーは考えさせる内容のものが多く、どれも印象に残るものばかり！
 　主人公と関わったり同行してくれるキャラクターも魅力的で、全体を通して隠された重さはありつつも、ユライさんの性格もあいまって全体的に味わいやすく、非常に遊びやすいものとなっています！
 
-　実は、元は単語解析部分も手動だったそうですが、ウディコン向けにするにあたって自動解析にされたり英断があったり、しっかり評価軸に沿って調整されておられたとのこと！
-　ですが自動解析をすることが多くとも、物語の中で出てくる一部のメッセージは自分で理解する余地が残されており、「うおお読める！」と思える喜びも！
+　実は、元は単語解析部分も手動だったそうですが、ウディコン向けにするにあたって自動解析にされたという英断があったり、しっかり評価軸に沿って調整されておられたとのこと！
+　ですが自動解析をすることが多くとも、物語の中で出てくる一部のメッセージは自分で理解する余地も残されており、「うおお読める！」と思える喜びもあります！
 　他にもメニューのインターフェースなども含めてすみずみまでこだわられており、一位も納得の品質です！
 
 　物語中心のゲームが1位になるのは本当に何年ぶりでしょうか！
@@ -2288,7 +2288,7 @@ BODY:
 <a id="2026-08-29-3"></a><h2><a class="double-link blue" target="_blank" href="https://www.silversecond.com/WolfRPGEditor/Contest/result18.shtml#21"><B><span style="font-size: 150%">【第２位　『RIMWING』】</span></B></a></h2>　作者：ぴけ・九乃頭虫 様　<span style="font-size: 80%">↑タイトルクリックで作品へ</span>
 　<span style="font-size: 80%"><span style="color: #2196f3">熱中 36.7点(5位)+斬新 30.1点(1位)+物語性 26.8点(6位)+画像音声 27.1点(2位)+遊びやすさ13.9点(23位)+その他22.0点(4位)  = 156.5点</span></span>
 
-<img src="../../image/wodicon/Entry18_21_big.jpg" loading="lazy" height="600">
+<a class="double-link blue" rel="lightbox[20260829]" target="_top" href="../../image/wodicon/Entry18_21_big.jpg"><img src="../../image/wodicon/Entry18_21_big.jpg" border="2" style="max-width:400px;border-radius:8px;" loading="lazy" height="300"></a>
 
 　そして今年の第2位は……ウェポンコントロールアクション<B>『RIMWING』</B>です！
 　本作の一番の特徴は、ロボットの兵装の操作盤をマウスで手動操作して戦うという点！
@@ -2330,7 +2330,7 @@ BODY:
 <a id="2026-08-29-4"></a><h2><a class="double-link blue" target="_blank" href="https://www.silversecond.com/WolfRPGEditor/Contest/result18.shtml#57"><B><span style="font-size: 150%">【第３位　『がむしゃら勇者』】</span></B></a></h2>　作者：ポルゼンヌ小林 様　<span style="font-size: 80%">↑タイトルクリックで作品へ</span>
 　<span style="font-size: 80%"><span style="color: #2196f3">熱中 38.3点(4位)+斬新 28.4点(2位)+物語性 21.6点(11位)+画像音声 16.7点(13位)+遊びやすさ34.3点(4位)+その他15.5点(11位)  = 154.8点</span></span>
 
-<img src="../../image/wodicon/Entry18_57_big.jpg" loading="lazy" height="600">
+<a class="double-link blue" rel="lightbox[20260829]" target="_top" href="../../image/wodicon/Entry18_57_big.jpg"><img src="../../image/wodicon/Entry18_57_big.jpg" border="2" style="max-width:400px;border-radius:8px;" loading="lazy" height="300"></a>
 
 　そして今年の第3位は！
 　キーを押したら停止できるまで連打しっぱなしになる呪いをかけられた勇者のRPG<B>『がむしゃら勇者』</B>です！
