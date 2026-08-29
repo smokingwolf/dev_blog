@@ -2321,7 +2321,7 @@ BODY:
 　企画から設計、担当、製作分担や開発コストについても触れられており、開発者の方はきっと参考になると思います！　↓
 
 <B>『10年ぶりのウディコン参加を終えて｜『RIMWING』製作後記』</B>
-　<a class="double-link red" target="_blank" href="https://note.com/act_pike/n/nd41b42bf6d43?sub_rt=share_pb">https://note.com/act_pike/n/nd41b42bf6d43?sub_rt=share_pb</a>
+　<a class="double-link red" target="_blank" href="https://note.com/act_pike/n/nd41b42bf6d43">https://note.com/act_pike/n/nd41b42bf6d43</a>
 
 　ちなみに、今年の私の「個人ピックアップ作品」もこれでした！
 　ロボットものが大好きで変則操作ゲームも大好きだったので私の一押しです！
