@@ -2264,7 +2264,7 @@ BODY:
 <a class="double-link blue" rel="lightbox[20260829]" target="_top" href="../../image/wodicon/Entry18_72_big.jpg"><img src="../../image/wodicon/Entry18_72_big.jpg" border="2" style="max-width:400px;border-radius:8px;" loading="lazy" height="300"></a>
 
 　『カルゥドの鳥』は、古代文を集めて古代語の訳を収集し、読めない儀式書を読み解いて儀式を再現することが目的の探索アドベンチャーRPGです！
-　主人公のユライさんが非常に魅力的で、嫌みっぽさがない！　積極的だけど距離感が適切！　空気は読める！　みたいな感じで見ていてかなりの安心感があります！
+　なんといっても主人公のユライさんが非常に魅力的！　積極的だけど距離感が適切！　空気は読める！　みたいな感じで見ていてかなりの安心感があります！
 
 　基本的なゲームの流れは、
 
