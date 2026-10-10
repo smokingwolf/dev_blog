@@ -2648,7 +2648,8 @@ BODY:
 　すぐサイトを見てみたい方はこちらから！　投稿もご自由に！（ただし試験運用中なのでロールバック等がありえます）
 　　↓　
 
-<a class="double-link red" target="_blank" href="https://asobita.jp/"><span style="font-size: 150%"><B>【ゲームアソビタへ】</B></span>ウディタ製ゲームをブラウザ・スマホで遊べるサイト</a>
+<a class="double-link red" target="_blank" href="https://asobita.jp/"><span style="font-size: 150%"><B>【ゲームアソビタへ】</B></span>ウディタ製ゲームをブラウザ・スマホで遊べるサイト
+<img src="../../image/2026/20261010TITLE.jpg" border="1" style="height:240px;border-radius:8px;" loading="lazy" height="720"></a>
 　※外で紹介してくださる場合も、手入力で『<B>asobita.jp</B>』で飛べます！
 
 
