@@ -34,6 +34,34 @@ var ss = {
     }
   },
 
+  // Open only the addendum that contains the requested anchor.
+  revealHiddenAddenda: function(target) {
+    var opened = false;
+    for (var node = target; node && node !== document; node = node.parentNode) {
+      if (node.classList && node.classList.contains('extended') &&
+          window.getComputedStyle(node).display === 'none') {
+        node.style.display = 'block';
+        opened = true;
+      }
+    }
+    return opened;
+  },
+  // A direct #link may be resolved before its hidden addendum is visible.
+  followHashIntoAddendum: function() {
+    var hash = window.location.hash;
+    if (!hash || hash.length < 2) return;
+    var anchor;
+    try { anchor = decodeURIComponent(hash.slice(1)); }
+    catch (e) { anchor = hash.slice(1); }
+    var destination = document.getElementById(anchor);
+    if (!destination || !ss.revealHiddenAddenda(destination)) return;
+
+    setTimeout(function() {
+      var y = destination.getBoundingClientRect().top + ss.getCurrentYPos() - 60;
+      window.scrollTo(0, Math.max(0, y));
+    }, 0);
+  },
+
   smoothScroll: function(e) {
     if (window.event) {
       target = window.event.srcElement;
@@ -60,6 +88,8 @@ var ss = {
     }
   
     if (!destinationLink) return true;
+
+    ss.revealHiddenAddenda(destinationLink);
   
     // Find the destination's position
     var destx = destinationLink.offsetLeft;
@@ -132,3 +162,5 @@ var ss = {
 ss.STEPS = 5;
 
 ss.addEvent(window,"load",ss.fixAllLinks);
+ss.addEvent(window,"load",ss.followHashIntoAddendum);
+ss.addEvent(window,"hashchange",ss.followHashIntoAddendum);
