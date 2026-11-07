@@ -4031,7 +4031,7 @@ CATEGORY: ウディタ
 DATE: 2025-08-24 02:00:00
 -----
 BODY:
-<img src="../../image/2025/20250824.jpg" width="400" border="1" style="border-radius:10px;" loading="lazy" height="225">
+<img src="../../image/2025/20250824.jpg" width="400" border="1" style="border-radius:10px;" loading="lazy">
 　うおおおおおおおおおということで第17回ウディコン、ついに結果発表です！！　参加された方も投票してくださった方も、みなさま本当にお疲れさまでした！
 　この記事では例年のように、上位の作品と個人的ピックアップ作品をご紹介します！
 
